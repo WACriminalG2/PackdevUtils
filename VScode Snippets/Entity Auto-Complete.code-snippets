@@ -1,0 +1,46 @@
+{
+	"Vanilla Entities": {
+		"prefix": "@minecraft/entities/",
+		"body": "minecraft:${1|area_effect_cloud,armor_stand,arrow,bat,bee,blaze,boat,cat,cave_spider,chest_minecart,chicken,cod,command_block_minecart,cow,creeper,dolphin,donkey,dragon_fireball,drowned,egg,elder_guardian,end_crystal,ender_dragon,ender_pearl,enderman,endermite,evoker,evoker_fangs,experience_bottle,experience_orb,eye_of_ender,falling_block,fireball,firework_rocket,fishing_bobber,fox,furnace_minecart,ghast,giant,guardian,hoglin,hopper_minecart,horse,husk,illusioner,iron_golem,item,item_frame,leash_knot,lightning_bolt,llama,llama_spit,magma_cube,minecart,mooshroom,mule,ocelot,painting,panda,parrot,phantom,pig,piglin,piglin_brute,pillager,player,polar_bear,potion,pufferfish,rabbit,ravager,salmon,sheep,shulker,shulker_bullet,silverfish,skeleton,skeleton_horse,slime,small_fireball,snow_golem,snowball,spawner_minecart,spectral_arrow,spider,squid,stray,strider,tnt,tnt_minecart,trader_llama,trident,tropical_fish,turtle,vex,villager,vindicator,wandering_trader,witch,wither,wither_skeleton,wither_skull,wolf,zoglin,zombie,zombie_horse,zombie_villager,zombified_piglin|}"
+	},
+
+	"Alex's Mobs Entities": {
+		"prefix": "@alexsmobs/entities/",
+		"body": "alexsmobs:${1|alligator_snapping_turtle,bald_eagle,blobfish,bone_serpent,bone_serpent_part,cachalot_echo,cachalot_whale,capuchin_monkey,centipede_body,centipede_head,centipede_tail,cockroach,cockroach_egg,crimson_mosquito,crocodile,crow,dropbear,elephant,emu,emu_egg,endergrade,enderiophage,enderiophage_rocket,fly,frilled_shark,gazelle,gorilla,grizzly_bear,gust,guster,hammerhead_shark,hemolymph,hummingbird,kangaroo,komodo_dragon,leafcutter_ant,lobster,mantis_shrimp,mimic_octopus,mimicube,moose,mosquito_spit,mungus,orca,platypus,raccoon,rattlesnake,roadrunner,sand_shot,seal,shark_tooth_arrow,shoebill,snow_leopard,soul_vulture,spectre,straddleboard,straddler,stradpole,sunbird,tarantula_hawk,tasmanian_devil,tiger,tossed_item,void_portal,void_worm,void_worm_part,void_worm_shot,warped_mosco,warped_toad|}"
+	},
+
+	"Lycanites Mobs Entities": {
+		"prefix": "@lycanitesmobs/entities/",
+		"body": "lycanitesmobs:${1|abaia,abtu,acidglob,acidsplash,aegis,aetherwave,afrit,aglebemu,amalgalich,apollyon,aquapulse,arcanelaser,arcanelaserstorm,argus,arisaur,arix,asmodeus,aspid,astaroth,banshee,barghest,behemophet,belphegor,blizzard,bloodleech,boulderblast,brucha,calpod,cephignis,chaosorb,cherufe,chupacabra,cinder,clink,cockatrice,conba,concapede,concapedesegment,crusk,cryptkeeper,crystalshard,darkling,dawon,deioneus,demonicblast,demonicspark,devilgatling,devilstar,doomfireball,eechetik,ember,ent,epion,erepede,ettin,eyewig,faebolt,fear,feradon,frostbolt,frostweaver,frostweb,geist,geken,geonach,ghoul,gnekk,gorgomite,grell,grigori,grue,hellfireball,hellfirebarrier,hellfirebarrierpart,hellfireorb,hellfirewall,hellfirewave,hellfirewavepart,helllaser,helllaserend,hellshield,herma,icefireball,ignibus,ika,ioray,jabberwock,jengu,joust,joustalpha,kathoga,khalk,kobold,krake,lacedon,laserend,lifedrain,lightball,lobdarklings,lycosa,magma,maka,makaalpha,malwrath,manticore,maug,morock,mudshot,naxiris,ningen,nymph,ostimien,pixen,poisonray,poop,primeember,quetzodracl,quill,rahovart,raidra,raiko,rapidfire,reaper,reiver,remobra,roa,roc,salamander,scorchfireball,serpix,shade,shadowfirebarrier,shambler,silex,skylus,spectralbolt,spectre,spriggan,summoningportal,summoningseed,sutiramu,sylph,thresher,throwingscythe,treant,tremor,tricksterflare,triffid,trite,troll,tundra,umibas,uvaraptor,vapula,venomshot,ventoraptor,vespid,vespidqueen,volcan,vorach,warg,waterjet,wendigo,whirlwind,wildkin,wisp,wraamon,wraith,xaphan,yale,yeti,zephyr,zoataur|}"
+	},
+
+	"Project Rankine Entities": {
+		"prefix": "@rankine/entities/",
+		"body": "rankine:${1|alloy_arrow,alloy_spear,amalgam_spear,beaver,black_gold_spear,blue_gold_spear,bronze_spear,cedar_boat,cobalt_superalloy_spear,demonyte,desmoxyte,diamond_mantle_golem,diamond_spear,dragonyte,flint_spear,green_gold_spear,iron_spear,magnesium_arrow,mantle_golem,meteoric_iron_spear,netherite_spear,nickel_superalloy_spear,peridot_mantle_golem,pewter_spear,purple_gold_spear,reactive_item,rose_gold_spear,stainless_steel_spear,steel_spear,thorium_arrow,titanium_alloy_spear,tungsten_heavy_alloy_spear,white_gold_spear|}"
+	},
+
+	"Quark Entities": {
+		"prefix": "@quark/entities/",
+		"body": "quark:${1|chest_passenger,colored_frame,crab,forgotten,foxhound,frog,glass_frame,gravisand,leash_knot_fake,pickarang,shiba,skull_pike,soul_bead,stoneling,stool,toretoise,totem,wraith,wrapped|}"
+	},
+
+	"Mushroom Quest Entities": {
+		"prefix": "@mushroomquest/entities/",
+		"body": "mushroomquest:${1|brown_amanita_fungling,crimson_fungling,entitybulletbottleddreamscape,entitybulletbrewofintoxication,entitybulletdevilsbrew,morel_fungling,red_amanita_fungling,warped_fungling,wine_cap_fungling,yellow_amanita_fungling|}"
+	},
+
+	"Tinker's Construct Entities": {
+		"prefix": ["@tinkersconstruct/entities/","@tconstruct/entities/"],
+		"body": "tconstruct:${1|earth_slime,efln_ball,ender_slime,fancy_item_frame,flint_shuriken,glow_ball,indestructible_item,quartz_shuriken,sky_slime|}"
+	},
+
+	"Upgrade Aquatic Entities": {
+		"prefix": "@upgrade_aquatic/entities/",
+		"body": "upgrade_aquatic:${1|box_jellyfish,cassiopea_jellyfish,flare,glow_squid,goose,great_thrasher,immortal_jellyfish,lionfish,nautilus,perch,pike,sonar_wave,thrasher,ululu|}"
+	},
+
+	"Silent's Gems 3 Entities": {
+		"prefix": "@silentgems/entities/",
+		"body": "silentgems:${1|chaos_wisp,chaos_wisp_shot,corrupted_slime,ender_slime,fire_wisp,fire_wisp_shot,ice_wisp,ice_wisp_shot,lightning_wisp,lightning_wisp_shot,water_wisp,water_wisp_shot|}"
+	}
+}
