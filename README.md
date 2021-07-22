@@ -1,7 +1,7 @@
 # PackdevUtils
 Tools to help with Minecraft modpack development.
 
-## Current Contents
+## Contents
 
 VSCode Snippets -- Snippet files for VScode that support auto-complete for both vanilla and modded resources, such as block and entity IDs, and common scripting syntax for Open Terrain Generator. More to come. The correct syntax for invoking a snippet is ``@<modID>/``. You'll then see options such as ``@minecraft/blocks/`` or ``@minecraft/entities/`` to allow you to select the correct auto-complete list.
 
