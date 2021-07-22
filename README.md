@@ -5,7 +5,7 @@ Tools to help with Minecraft modpack development.
 
 VSCode Snippets -- Snippet files for VScode that support auto-complete for both vanilla and modded resources, such as block and entity IDs, and common scripting syntax for Open Terrain Generator. More to come.
 
-#### Open Terrain Generator
+### Open Terrain Generator
 
 [CustomHeightControl Worksheet](https://docs.google.com/spreadsheets/d/1dSklabHyzcGs6Q6xZoG-X24nCHNKlnoJ_WUBMqP7ans/edit?usp=sharing) -- A Google Sheets template for working with Open Terrain Generator CHC values. Editing is not enabled; copy it to your own account before use.
 
