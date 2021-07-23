@@ -1,17 +1,102 @@
 {
-	"OTG Resources": {
-		"prefix": "OTGresource:",
-		"body": "${1|SmallLake(BlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude),Dungeon(Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude),UnderGroundLake(MinSize\\,MaxSize\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude),Ore(BlockName\\,Size\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),UnderWaterOre(BlockName\\,Size\\,Frequency\\,Rarity\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),CustomObject(Object[\\,AnotherObject[\\,...]]),CustomStructure([Object\\,Object_Chance[\\,AnotherObject\\,Object_Chance[\\,...]]]),SurfacePatch(BlockName\\,DecorationBlockName\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),Tree(Frequency\\,TreeType\\,TreeTypeChance[\\,AdditionalTreeType\\,AdditionalTreeTypeChance.....]),Plant(PlantType\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),Grass(PlantType\\,Grouped/NotGrouped\\,Frequency\\,Rarity\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),Reed(BlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),Cactus(BlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),Liquid(BlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,BlockSource3.....]),AboveWaterRes(BlockName\\,Frequency\\,Rarity),Vines(Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude),Vein(BlockName\\,MinRadius\\,MaxRadius\\,Rarity\\,OreSize\\,OreFrequency\\,OreRarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,..]),Well(BaseBlockName\\,HalfSlabBlockName\\,WaterBlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,..]),Boulder(BlockName\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,BlockSource[\\,BlockSource2\\,..]),IceSpike(BlockName\\,IceSpikeType\\,Frequency\\,Rarity\\,MinAltitude\\,MaxAltitude\\,Blocksource[\\,BlockSource2\\,...]),Iceberg(BlockName1\\,BlockName2\\,Chance[\\,AdditionalBlockName1\\,AdditionalBlockName2\\,AdditionalChance.....]\\,TotalChance)|}"
+    "AboveWaterRes Resource": {
+        "body": "AboveWaterRes(${1:BlockName}, ${2:Frequency}, ${0:Rarity})",
+        "prefix": "@otg/resource/AboveWaterRes/"
+    },
+	"Surface And Ground Control": {
+		"prefix": "@otg/SurfaceAndGroundControl/",
+		"body": "${1:SurfaceBlock}, ${2:UnderwaterSurfaceBlock}, ${3:GroundBlock}, ${0:MaxNoise}"
 	},
-
-	"OTG Sapling Resource": {
-		"prefix": "OTGsapling:",
-		"body": "Sapling(SaplingType,TreeType,TreeType_Chance[,Additional_TreeType,Additional_TreeType_Chance.....])"
+	"Replace Blocks": {
+		"prefix": "@otg/ReplaceBlocks/",
+		"body": "(${1:SourceBlock}, ${2:BlockName}, ${3:MinAltitude}, ${0:MaxAltitude})"
 	},
-
-	"OTG BiomeGroup": {
-		"prefix": "BiomeGroup(",
-		"body": "BiomeGroup(Name\\, Size\\, Rarity\\, BiomeName[\\, AnotherName[\\, ...]])"
-	}
-
+    "BiomeGroup": {
+        "body": "BiomeGroup(${1:Name}, ${2:Size}, ${3:Rarity}, ${0:BiomeName[, AnotherName[, ...]]})",
+        "prefix": "@otg/world/BiomeGroup/"
+    },
+    "Boulder Resource": {
+        "body": "Boulder(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/Boulder/"
+    },
+    "Cactus Resource": {
+        "body": "Cactus(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/Cactus/"
+    },
+    "CustomObject Resource": {
+        "body": "CustomObject(${1:Object}${0:,AnotherObject...})",
+        "prefix": "@otg/resource/CustomObject/"
+    },
+    "CustomStructure Resource": {
+        "body": "CustomStructure(${1:Object}, ${2:Object_Chance}${0:[,AnotherObject,Object_Chance...]})",
+        "prefix": "@otg/resource/CustomStructure/"
+    },
+    "Dungeon Resource": {
+        "body": "Dungeon(${1:Frequency}, ${2:Rarity}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "prefix": "@otg/resource/Dungeon/"
+    },
+    "Grass Resource": {
+        "body": "Grass(${1:PlantType}, ${2|Grouped,NotGrouped}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/Grass/"
+    },
+    "Iceberg Resource": {
+        "body": "Iceberg(${1:BlockName1}, ${2:BlockName2}, ${3:Chance}, ${4:[,AdditionalBlockName1,AdditionalBlockName2,AdditionalChance...]}, ${0:TotalChance})",
+        "prefix": "@otg/resource/Iceberg/"
+    },
+    "IceSpike Resource": {
+        "body": "IceSpike(${1:BlockName}, ${2|Basement,HugeSpike,SmallSpike|}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${6:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/IceSpike/"
+    },
+    "Liquid Resource": {
+        "body": "Liquid(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/Liquid/"
+    },
+    "Ore Resource": {
+        "body": "Ore(${1:BlockName}, ${2:Size}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${6:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/Ore/"
+    },
+    "Plant Resource": {
+        "body": "Plant(${1:PlantType}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/Plant/"
+    },
+    "Reed Resource": {
+        "body": "Reed(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/Reed/"
+    },
+    "Sapling Resource": {
+        "body": "Sapling(${1:SaplingType}, ${2:TreeType}, ${3:TreeType_Chance}${0:[,Additional_TreeType,Additional_TreeType_Chance.....]})",
+        "prefix": "@otg/resource/Sapling/"
+    },
+    "SmallLake Resource": {
+        "body": "SmallLake(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${0:MaxAltitude})",
+        "prefix": "@otg/resource/SmallLake/"
+    },
+    "SurfacePatch Resource": {
+        "body": "SurfacePatch(${1:BlockName}, ${2:DecorationBlockName}, ${3:MinAltitude}, ${4:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "prefix": "@otg/resource/SurfacePatch/"
+    },
+    "Tree Resource": {
+        "body": "Tree(${1:Frequency}, ${2:TreeType}, ${3:TreeTypechance}${0:[,AdditionalTreeType,AdditionalTreeTypeChance...]})",
+        "prefix": "@otg/resource/Tree/"
+    },
+    "UnderGroundLake Resource": {
+        "body": "UnderGroundLake(${1:MinSize}, ${2:MaxSize}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${0:MaxAltitude})",
+        "prefix": "@otg/resource/UnderGroundLake/"
+    },
+    "UnderWaterOre Resource": {
+        "body": "UnderWaterOre(${1:BlockName}, ${2:Size}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/UnderWaterOre/"
+    },
+    "Vein Resource": {
+        "body": "Vein(${1:BlockName}, ${2:MinRadius}, ${3:MaxRadius}, ${4:Rarity}, ${5:OreSize}, ${6:OreFrequency}, ${7:OreRarity}, ${8:MinAltitude}, ${9:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/Vein/"
+    },
+    "Vines Resource": {
+        "body": "Vines(${1:Frequency}, ${2:Rarity}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "prefix": "@otg/resource/Vines/"
+    },
+    "Well Resource": {
+        "body": "Well(${1:BaseBlockName}, ${2:HalfSlabBlockName}, ${3:WaterBlockName}, ${4:Frequency}, ${5:Rarity}, ${6:MinAltitude}, ${7:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "prefix": "@otg/resource/Well/"
+    }
 }
