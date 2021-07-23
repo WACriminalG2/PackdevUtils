@@ -1,5 +1,6 @@
 # PackdevUtils
 Tools to help with Minecraft modpack development.
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W75F9FH)
 
 ## Contents
 
