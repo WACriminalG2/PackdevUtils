@@ -3,14 +3,6 @@
         "body": "AboveWaterRes(${1:BlockName}, ${2:Frequency}, ${0:Rarity})",
         "prefix": "@otg/AboveWaterRes/"
     },
-	"Surface And Ground Control": {
-		"prefix": "@otg/SurfaceAndGroundControl/",
-		"body": "${1:SurfaceBlock}, ${2:UnderwaterSurfaceBlock}, ${3:GroundBlock}, ${0:MaxNoise}"
-	},
-	"Replace Blocks": {
-		"prefix": "@otg/ReplaceBlocks/",
-		"body": "(${1:SourceBlock}, ${2:BlockName}, ${3:MinAltitude}, ${0:MaxAltitude})"
-	},
     "BiomeGroup": {
         "body": "BiomeGroup(${1:Name}, ${2:Size}, ${3:Rarity}, ${0:BiomeName[, AnotherName[, ...]]})",
         "prefix": "@otg/BiomeGroup/"
@@ -36,7 +28,7 @@
         "prefix": "@otg/Dungeon/"
     },
     "Grass Resource": {
-        "body": "Grass(${1:PlantType}, ${2|Grouped,NotGrouped}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2...]})",
+        "body": "Grass(${1:PlantType}, ${2|Grouped,NotGrouped|}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2...]})",
         "prefix": "@otg/Grass/"
     },
     "Iceberg Resource": {
@@ -63,6 +55,10 @@
         "body": "Reed(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
         "prefix": "@otg/Reed/"
     },
+    "Replace Blocks": {
+        "body": "(${1:SourceBlock}, ${2:BlockName}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "prefix": "@otg/ReplaceBlocks/"
+    },
     "Sapling Resource": {
         "body": "Sapling(${1:SaplingType}, ${2:TreeType}, ${3:TreeType_Chance}${0:[,Additional_TreeType,Additional_TreeType_Chance.....]})",
         "prefix": "@otg/Sapling/"
@@ -70,6 +66,10 @@
     "SmallLake Resource": {
         "body": "SmallLake(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${0:MaxAltitude})",
         "prefix": "@otg/SmallLake/"
+    },
+    "Surface And Ground Control": {
+        "body": "${1:SurfaceBlock}, ${2:UnderwaterSurfaceBlock}, ${3:GroundBlock}, ${0:MaxNoise}",
+        "prefix": "@otg/SurfaceAndGroundControl/"
     },
     "SurfacePatch Resource": {
         "body": "SurfacePatch(${1:BlockName}, ${2:DecorationBlockName}, ${3:MinAltitude}, ${4:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
