@@ -1,102 +1,561 @@
 {
     "AboveWaterRes Resource": {
         "body": "AboveWaterRes(${1:BlockName}, ${2:Frequency}, ${0:Rarity})",
+        "description": [
+            "Generates blocks on the surface of the biome's water, such as lilypads. Does not work underground.",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed."
+        ],
         "prefix": "@otg/AboveWaterRes/"
+    },
+    "Bamboo Resource": {
+        "body": "Bamboo(${1:Frequency}, ${2:Rarity}, ${3:PodzolChance}, ${0:SourceBlocks})",
+        "description": [
+            "Generates bamboo on the surface of the biome. Does not work underground.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "PodzolChance: Float. The percentage chance that podzol will spawn in a radius around the base of the bamboo.",
+            "SourceBlocks: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
+        "prefix": "@otg/Bamboo/"
     },
     "BiomeGroup": {
         "body": "BiomeGroup(${1:Name}, ${2:Size}, ${3:Rarity}, ${0:BiomeName[, AnotherName[, ...]]})",
+        "description": [
+            "Name: A descriptive name for the biome group.",
+            "Size: Integer. From 0 to GenerationDepth, all biomes in the group must have a BiomeSize higher than or equal to this value.",
+            "Rarity: Integer. Relative spawn chance.",
+            "BiomeName: Name of a BC file in the current preset."
+        ],
         "prefix": "@otg/BiomeGroup/"
+    },
+    "BO3 Block": {
+        "body": "Block(${1:X}, ${2:Y}, ${3:Z}, ${4:BlockName}, ${0:NBT})",
+        "description": [
+            "Places a block in the BO3.",
+            " ",
+            "X,Y,Z: Integers. Coordinates for the block to be placed, relative to the origin block of the object.",
+            "BlockName: A block ID to be placed.",
+            "NBT: OPTIONAL. Name of an NBT file in the current preset to be applied to the block."
+        ],
+        "prefix": "@otg/BO3/Block/"
+    },
+    "BO3 BlockCheck": {
+        "body": "BlockCheck(${1:X}, ${2:Y}, ${3:Z}, ${0:BlockName})",
+        "description": [
+            "Tests the block at the given coordinates to see if it matches the given block(s). If it does not match, the BO3 will fail to spawn.",
+            " ",
+            "X,Y,Z: Integers. Coordinates for the block to be tested, relative to the origin block of the object.",
+            "BlockName: A block ID or array of block IDs to be tested for."
+        ],
+        "prefix": "@otg/BO3/BlockCheck/"
+    },
+    "BO3 BlockCheckNot": {
+        "body": "BlockCheckNot(${1:X}, ${2:Y}, ${3:Z}, ${0:BlockName})",
+        "description": [
+            "Tests the block at the given coordinates to see if it matches the given block(s). If it matches, the BO3 will fail to spawn.",
+            " ",
+            "X,Y,Z: Integers. Coordinates for the block to be tested, relative to the origin block of the object.",
+            "BlockName: A block ID or array of block IDs to be tested for."
+        ],
+        "prefix": "@otg/BO3/BlockCheckNot/"
+    },
+    "BO3 Branch": {
+        "body": "Branch(${1:X}, ${2:Y}, ${3:Z}, ${4:BranchName}, ${5|Rotation,NORTH,SOUTH,EAST,WEST|}, ${6:Chance} ${7:[,AnotherBranchName,Rotation,Chance[,...]]}${0:[IndividualChance]})",
+        "description": [
+            "Spawns additional child BO3s when this BO3 is used as a CustomStructure.",
+            " ",
+            "X,Y,Z: Integers. Coordinates at which to spawn the branch, relative to the origin block of the object.",
+            "BranchName: Name of a BO3 to spawn as a branch.",
+            "Rotation: Rotation of the branch relative to the parent BO3.",
+            "Chance: Chance for this branch to spawn.",
+            "AnotherBranchName/AnotherRotation/AnotherChance: OPTIONAL. Additional possible branches that may spawn instead.",
+            "IndividualChance: OPTIONAL. Integer. The overall percentage chance for each branch to spawn. If left blank, assumed to be 100."
+        ],
+        "prefix": "@otg/BO3/Branch/"
+    },
+    "BO3 Entity": {
+        "body": "Entity(${1:X}, ${2:Y}, ${3:Z}, ${4:EntityName}, ${5:GroupSize}, ${0:[NameTagOrNBTFileName]})",
+        "description": [
+            "Spawns a mob or group of mobs as part of the object.",
+            " ",
+            "X,Y,Z: Integers. Coordinates at which to spawn the mobs, relative to the origin block of the object.",
+            "EntityName: Registry ID of the mob to spawn.",
+            "GroupSize: Integer. Amount of the mob to spawn.",
+            "NameTagOrNBTFileName: OPTIONAL. Can either be a nametag for the mob, or the file name of a .txt file containing NBT data for the mob."
+        ],
+        "prefix": "@otg/BO3/Entity/"
+    },
+    "BO3 LightCheck": {
+        "body": "LightCheck(${1:X}, ${2:Y}, ${3:Z}, ${4:MinLightLevel}, ${0:MaxLightLevel})",
+        "description": [
+            "Tests the block at the given coordinates to see if it has a certain light level. If it does not, the BO3 will fail to spawn.",
+            " ",
+            "X,Y,Z: Integers. Coordinates for the block to be tested, relative to the origin block of the object.",
+            "MinLightLevel: Integer. Minimum light level to test for.",
+            "MaxLightLevel: Integer. Maximum light level to test for."
+        ],
+        "prefix": "@otg/BO3/LightCheck/"
+    },
+    "BO3 ModCheck": {
+        "body": "ModCheck(${0:ModName[,ModName[,...]]})",
+        "description": [
+            "Tests to see whether the listed mods are loaded. If they are not, the BO3 will fail to spawn.",
+            " ",
+            "ModName: The registry namespaces of the mods to test for."
+        ],
+        "prefix": "@otg/BO3/ModCheck/"
+    },
+    "BO3 ModCheckNot": {
+        "body": "ModCheckNot(${0:ModName[,ModName[,...]]})",
+        "description": [
+            "Tests to see whether the listed mods are loaded. If they are, the BO3 will fail to spawn.",
+            " ",
+            "ModName: The registry namespaces of the mods to test for."
+        ],
+        "prefix": "@otg/BO3/ModCheckNot/"
+    },
+    "BO3 RandomBlock": {
+        "body": "RandomBlock(${1:X}, ${2:Y}, ${3:Z}, ${4:BlockName}, ${5:NBT}, ${6:Chance}, ${0:AnotherBlockName, AnotherNBT, AnotherChance...})",
+        "description": [
+            "Places a random block from a list in the BO3.",
+            " ",
+            "X,Y,Z: Integers. Coordinates for the block to be placed, relative to the origin block of the object.",
+            "BlockName: A block ID to be placed.",
+            "NBT: OPTIONAL. Name of an NBT file in the current preset to be applied to the block.",
+            "Chance: Integer. Percentage chance that the listed block will be selected. Percentages are not cumulative, and are processed in the order they appear. Once a block is selected and placed, no further chances will be calculated.",
+            "AnotherBlockName/AnotherNBT/AnotherChance: Array of blocks that may be selected instead."
+        ],
+        "prefix": "@otg/BO3/RandomBlock/"
+    },
+    "BO3 Weighted Branch": {
+        "body": "WeightedBranch(${1:X}, ${2:Y}, ${3:Z}, ${4:BranchName}, ${5|Rotation,NORTH,SOUTH,EAST,WEST|}, ${6:Chance} ${7:[,AnotherBranchName,Rotation,Chance[,...]]}${0:[MaxChanceOutOf]})",
+        "description": [
+            "Similar to Branch(), but uses a weighted probability system.",
+            " ",
+            "X,Y,Z: Integers. Coordinates at which to spawn the branch, relative to the origin block of the object.",
+            "BranchName: Name of a BO3 to spawn as a branch.",
+            "Rotation: Rotation of the branch relative to the parent BO3.",
+            "Chance: Chance for this branch to spawn.",
+            "AnotherBranchName/AnotherRotation/AnotherChance: OPTIONAL. Additional possible branches that may spawn instead.",
+            "MaxChanceOutOf: OPTIONAL. Integer. The maximum chance that individual branch weights are checked against. If left blank, assumed to be 100."
+        ],
+        "prefix": "@otg/BO3/WeightedBranch/"
     },
     "Boulder Resource": {
         "body": "Boulder(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Generates large clusters of blocks on the surface.",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Boulder/"
     },
     "Cactus Resource": {
         "body": "Cactus(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Generates stacks of blocks in a manner similar to vanilla's cactus generation.",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Cactus/"
     },
+    "CoralClaw Resource": {
+        "body": "CoralClaw(${1:Frequency}, ${0:Rarity})",
+        "description": [
+            "Generates coral claws.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed."
+        ],
+        "prefix": "@otg/CoralClaw/"
+    },
+    "CoralMushroom Resource": {
+        "body": "CoralMushroom(${1:Frequency}, ${0:Rarity})",
+        "description": [
+            "Generates coral mushrooms.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed."
+        ],
+        "prefix": "@otg/CoralMushroom/"
+    },
+    "CoralTree Resource": {
+        "body": "CoralTree(${1:Frequency}, ${0:Rarity})",
+        "description": [
+            "Generates coral trees.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed."
+        ],
+        "prefix": "@otg/CoralTree/"
+    },
+    "Custom Sapling Resource": {
+        "body": "Sapling(Custom, ${1:Material}, ${2:WideTrunk}, ${3:TreeType}, ${4:TreeType_Chance}${0:[,Additional_TreeType,Additional_TreeType_Chance.....]})",
+        "description": [
+            "Similar to the standard Sapling() resource, but allows you to define variant BO3s by the sapling's block ID, rather than an enumerated list. This allows you to set Sapling() behaviors for modded saplings.",
+            " ",
+            "Material: Block ID for the sapling you wish to configure.",
+            "WideTrunk: Boolean. Defines whether this Sapling() behavior should apply to 2x2 sapling growth, or only to 1x1.",
+            "TreeType: A BO3 name for the sapling to grow into.",
+            "TreeType_Chance: Integer. The weighted probability the listed TreeType will be selected.",
+            "Additional_TreeType/Additional_TreeType_Chance: An optional array of other possible BO3s to be selected."
+        ],
+        "prefix": "@otg/Sapling/"
+    },
     "CustomObject Resource": {
-        "body": "CustomObject(${1:Object}${0:,AnotherObject...})",
+        "body": "CustomObject(${0:Object[,AnotherObject,AnotherObject...]})",
+        "description": [
+            "Generates custom objects in the biome from BO3 files.",
+            " ",
+            "Object: A BO3 file."
+        ],
         "prefix": "@otg/CustomObject/"
     },
     "CustomStructure Resource": {
         "body": "CustomStructure(${1:Object}, ${2:Object_Chance}${0:[,AnotherObject,Object_Chance...]})",
+        "description": [
+            "Generates custom structures in the biome from BO3 files.",
+            " ",
+            "Object: A BO3 or BO4 file.",
+            "Object_Chance: Float. The chance that this structure will generate."
+        ],
         "prefix": "@otg/CustomStructure/"
     },
     "Dungeon Resource": {
         "body": "Dungeon(${1:Frequency}, ${2:Rarity}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Generates dungeons in this biome.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate."
+        ],
         "prefix": "@otg/Dungeon/"
+    },
+    "Fossil Resource": {
+        "body": "Fossil(${1:Chance}, ${2:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Generates fossils.",
+            " ",
+            "Chance: Float. The percentage chance that an individual chunk will contain a fossil.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate."
+        ],
+        "prefix": "@otg/Fossil/"
     },
     "Grass Resource": {
         "body": "Grass(${1:PlantType}, ${2|Grouped,NotGrouped|}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Places blocks in patterns similar to vanilla's grass generation. Does not generate underground. For a similar function that can generate underground, use Plant().",
+            " ",
+            "PlantType: A block ID, or name of a vanilla plant type to be placed.",
+            "Grouped/NotGrouped: Whether the blocks should be clustered, or evenly spread.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Grass/"
     },
     "Iceberg Resource": {
         "body": "Iceberg(${1:BlockName1}, ${2:BlockName2}, ${3:Chance}, ${4:[,AdditionalBlockName1,AdditionalBlockName2,AdditionalChance...]}, ${0:TotalChance})",
+        "description": [
+            "Generates clusters of blocks similar to vanilla's icebergs.",
+            " ",
+            "BlockName1: A block ID to compose part of the iceberg.",
+            "BlockName2: A different block ID to randomly mix into the iceberg.",
+            "Chance: Integer. The weighted chance that this variant of the iceberg will be selected for placement.",
+            "AdditionalBlockName1/AdditionalBlockName2/AdditionalChance: Other variant icebergs that may generate.",
+            "TotalChance: Integer. The total chance against which individual variant chances are compared."
+        ],
         "prefix": "@otg/Iceberg/"
     },
     "IceSpike Resource": {
         "body": "IceSpike(${1:BlockName}, ${2|Basement,HugeSpike,SmallSpike|}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${6:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Generates large spikes in the biome similar to vanilla's ice spikes.",
+            " ",
+            "BlockName: A block ID.",
+            "Basement/HugeSpike/SmallSpike: The general shape of the spike to generate.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/IceSpike/"
+    },
+    "Kelp Resource": {
+        "body": "Kelp(${1:Frequency}, ${0:Rarity})",
+        "description": [
+            "Generates kelp.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed."
+        ],
+        "prefix": "@otg/Kelp/"
     },
     "Liquid Resource": {
         "body": "Liquid(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Randomly places single blocks of a liquid.",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Liquid/"
     },
     "Ore Resource": {
         "body": "Ore(${1:BlockName}, ${2:Size}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${6:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Generates clusters of ore.",
+            " ",
+            "BlockName: A block ID.",
+            "Size: Integer. The size of the ore cluster. Does not directly correspond to the number of blocks placed for each cluster. Must be between 1 and 32.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Ore/"
     },
     "Plant Resource": {
         "body": "Plant(${1:PlantType}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Places blocks in a manner similar to flowers. Works both underground and on the surface. For a similar resource that only works on the surface, use Grass().",
+            " ",
+            "PlantType: A block ID, or name of a vanilla plant type to be placed.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Plant/"
     },
     "Reed Resource": {
         "body": "Reed(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Generates stacks of blocks similar to vanilla's reed generation.",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Reed/"
+    },
+    "Registry Resource": {
+        "body": "Registry(${0:RegistryID})",
+        "description": [
+            "Generates a worldgen feature by its configured feature ID, such as minecraft:spring_closed or minecraft:patch_melon.",
+            " ",
+            "RegistryID: The configured feature ID to spawn in this biome."
+        ],
+        "prefix": "@otg/Registry/"
     },
     "Replace Blocks": {
         "body": "(${1:SourceBlock}, ${2:BlockName}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Used to replace a specific block with another block in a particular biome.",
+            " ",
+            "SourceBlock: A block ID for the block to be replaced.",
+            "BlockName: A block ID for the block to place instead.",
+            "MinAltitude: Integer. The lowest Y level where this replacement will occur.",
+            "MaxAltitude: Integer. The highest Y level where this replacement will occur."
+        ],
         "prefix": "@otg/ReplaceBlocks/"
     },
     "Sapling Resource": {
-        "body": "Sapling(${1:SaplingType}, ${2:TreeType}, ${3:TreeType_Chance}${0:[,Additional_TreeType,Additional_TreeType_Chance.....]})",
+        "body": "Sapling(${1|SaplingType,All, Oak, Redwood, Birch, SmallJungle, BigJungle, RedMushroom, BrownMushroom, Acacia, DarkOak, HugeRedwood|}, ${2:TreeType}, ${3:TreeType_Chance}${0:[,Additional_TreeType,Additional_TreeType_Chance.....]})",
+        "description": [
+            "Configures vanilla saplings to grow into custom BO3s within a specific biome, rather than following their default growth behavior.",
+            " ",
+            "SaplingType: The name of the sapling to be configured.",
+            "TreeType: A BO3 name for the sapling to grow into.",
+            "TreeType_Chance: Integer. The weighted probability the listed TreeType will be selected.",
+            "Additional_TreeType/Additional_TreeType_Chance: An optional array of other possible BO3s to be selected."
+        ],
         "prefix": "@otg/Sapling/"
+    },
+    "SeaGrass Resource": {
+        "body": "SeaGrass(${1:Frequency}, ${2:Rarity}, ${0:TallChance})",
+        "description": [
+            "Generates seagrass.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "TallChance: Float. The percentage chance that a given instance of seagrass will be 2 blocks tall."
+        ],
+        "prefix": "@otg/SeaGrass/"
+    },
+    "SeaPickle Resource": {
+        "body": "SeaPickle(${1:Frequency}, ${2:Rarity}, ${0:Attempts})",
+        "description": [
+            "Generates sea pickles.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "Attempts: Seems to be identical to frequency."
+        ],
+        "prefix": "@otg/SeaPickle/"
     },
     "SmallLake Resource": {
         "body": "SmallLake(${1:BlockName}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Places small lakes on the surface. Does not work underground. For a similar resource that works underground, use UnderGroundLake().",
+            " ",
+            "BlockName: A block ID.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate."
+        ],
         "prefix": "@otg/SmallLake/"
     },
     "Surface And Ground Control": {
         "body": "${1:SurfaceBlock}, ${2:UnderwaterSurfaceBlock}, ${3:GroundBlock}, ${0:MaxNoise}",
+        "description": [
+            "Varies the materials used for terrain generation based on random noise.",
+            " ",
+            "SurfaceBlock: A block ID to be used for the topmost solid block in a given area. For example, minecraft:grass_block.",
+            "UnderwaterSurfaceBlock: A block ID to be used as the topmost solid block under water features, such as rivers and lakes. For example, minecraft:sand.",
+            "GroundBlock: A block ID to be used for the next several solid blocks beneath a SurfaceBlock. For example, minecraft:dirt.",
+            "MaxNoise: Float. Determines the maximum random noise value for which the preceding materials will be used. Random noise uses a bell curve distribution between -7.0 and 7.0, with values near 0.0 being far more common."
+        ],
         "prefix": "@otg/SurfaceAndGroundControl/"
     },
     "SurfacePatch Resource": {
         "body": "SurfacePatch(${1:BlockName}, ${2:DecorationBlockName}, ${3:MinAltitude}, ${4:MaxAltitude}, ${0:BlockSource[,BlockSource2...]})",
+        "description": [
+            "Generates small patches of blocks on the surface. Does not work underground.",
+            " ",
+            "BlockName: A block ID.",
+            "DecorationBlockName: A block ID to be placed on top of the surface patch, in a manner similar to flowers or shrubs.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/SurfacePatch/"
     },
     "Tree Resource": {
         "body": "Tree(${1:Frequency}, ${2:TreeType}, ${3:TreeTypechance}${0:[,AdditionalTreeType,AdditionalTreeTypeChance...]})",
+        "description": [
+            "Places trees on the surface. Does not work underground.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource",
+            "TreeType: A BO3 file or vanilla tree name to place.",
+            "TreeTypeChance: Integer. The weighted probability this tree type will be selected for placement.",
+            "AdditionalTreeType/AdditionalTreeTypeChance: More types of trees with weighted probabilities for their own selection."
+        ],
         "prefix": "@otg/Tree/"
     },
     "UnderGroundLake Resource": {
         "body": "UnderGroundLake(${1:MinSize}, ${2:MaxSize}, ${3:Frequency}, ${4:Rarity}, ${5:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Places small lakes of the biome's water block underground.",
+            " ",
+            "MinSize: Integer. Minimum size of the lake.",
+            "MaxSize: Integer. Maximum size of the lake.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate."
+        ],
         "prefix": "@otg/UnderGroundLake/"
     },
     "UnderWaterOre Resource": {
         "body": "UnderWaterOre(${1:BlockName}, ${2:Size}, ${3:Frequency}, ${4:Rarity}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Places clusters of blocks such as ores in the surface underneath water features, similar to vanilla's clay generation in rivers.",
+            " ",
+            "BlockName: A block ID.",
+            "Size: Integer. The average size of the clusters to generate.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/UnderWaterOre/"
+    },
+    "UnderWaterPlant Resource": {
+        "body": "UnderWaterPlant(${1:PlantType}, ${2:Frequency}, ${3:Rarity}, ${4:MinAltitude}, ${5:MaxAltitude}, ${0:SourceBlocks})",
+        "description": [
+            "What if Plant(), but...UnderWater?",
+            " ",
+            "PlantType: A block ID, or name of a vanilla plant type to be placed.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "SourceBlocks: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
+        "prefix": "@otg/UnderWaterPlant/"
     },
     "Vein Resource": {
         "body": "Vein(${1:BlockName}, ${2:MinRadius}, ${3:MaxRadius}, ${4:Rarity}, ${5:OreSize}, ${6:OreFrequency}, ${7:OreRarity}, ${8:MinAltitude}, ${9:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Generates large, spread out veins with dense distributions of a block, such as an ore.",
+            " ",
+            "BlockName: A block ID.",
+            "MinRadius: Integer. The minimum size of the vein in blocks.",
+            "MaxRadius: Integer. The maximum size of the vein in blocks.",
+            "Rarity: Float. The percentage of chunks that will contain a vein center.",
+            "OreSize: Integer. Size of the ore clusters to be placed in the vein.",
+            "OreFrequency: Integer. The number of attempts OTG will make to place ore clusters in the vein for each chunk.",
+            "OreRarity: Integer. The percentage chance that a cluster placement will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Vein/"
     },
     "Vines Resource": {
         "body": "Vines(${1:Frequency}, ${2:Rarity}, ${3:MinAltitude}, ${0:MaxAltitude})",
+        "description": [
+            "Places vines. Does not work underground.",
+            " ",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate."
+        ],
         "prefix": "@otg/Vines/"
     },
     "Well Resource": {
         "body": "Well(${1:BaseBlockName}, ${2:HalfSlabBlockName}, ${3:WaterBlockName}, ${4:Frequency}, ${5:Rarity}, ${6:MinAltitude}, ${7:MaxAltitude}, ${0:BlockSource[,BlockSource2,BlockSource3...]})",
+        "description": [
+            "Generates a well-style structure on the surface. Does not work underground.",
+            " ",
+            "BaseBlockName: A block ID to be used for the solid blocks in the well structure.",
+            "HalfSlabBlockName: A block ID to be used for the decorative slabs.",
+            "WaterBlockName: A block ID to fill the interior of the well.",
+            "Frequency: Integer. The number of attempts OTG will make to place this resource.",
+            "Rarity: Float. The percentage chance that an individual attempt will succeed.",
+            "MinAltitude: Integer. The lowest Y level where this resource will generate.",
+            "MaxAltitude: Integer. The highest Y level where this resource will generate.",
+            "BlockSource: A block ID or an array of block IDs. This determines which blocks will serve as valid placement targets for this resource. You can also use Solid or All."
+        ],
         "prefix": "@otg/Well/"
     }
 }
