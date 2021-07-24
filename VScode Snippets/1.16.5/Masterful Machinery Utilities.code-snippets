@@ -1,0 +1,485 @@
+{
+	"MM Machine Process": {
+		"prefix": ["@masterfulmachinery/process/","@masterfulmachinery/recipe/","@mm/process/","@mm/recipe/"],
+		"body": [
+			"{",
+				"\t\"type\":\"masterfulmachinery:machine_process\",",
+				"\t\"structureId\":\"${1:StructureName}\",",
+				"\t\"controllerId\":\"${2:ControllerName}\",",
+				"\t\"ticks\":${0:100},",
+				"\t\"inputs\":[],",
+				"\t\"outputs\":[]",
+			"}"
+		]
+	},
+
+	"MM Item Input": {
+		"prefix": ["@masterfulmachinery/input/item/","@mm/input/item/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:items\",",
+				"\t\"data\": {",
+					"\t\t\"item\":\"${1:minecraft:potato}\",",
+					"\t\t\"count\": ${2:10}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"consumeInstantly\": ${4|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Energy Input": {
+		"prefix": ["@masterfulmachinery/input/energy/","@mm/input/energy/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:energy\",",
+				"\t\"data\": {",
+					"\t\t\"amount\":${1:8675309}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"consumeInstantly\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Fluid Input": {
+		"prefix": ["@masterfulmachinery/input/fluid/","@mm/input/fluid/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:fluids\",",
+				"\t\"data\": {",
+					"\t\t\"fluid\":\"${1:minecraft:lava}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"consumeInstantly\": ${4|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Gas Input": {
+		"prefix": ["@masterfulmachinery/input/mekanism_gas/","@mm/input/mekanism_gas/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_gas\",",
+				"\t\"data\": {",
+					"\t\t\"gas\":\"${1:mekanismgenerators:tritium}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"consumeInstantly\": ${4|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Slurry Input": {
+		"prefix": ["@masterfulmachinery/input/mekanism_slurry/","@mm/input/mekanism_slurry/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_slurry\",",
+				"\t\"data\": {",
+					"\t\t\"slurry\":\"${1:mekanism:clean_osmium}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"consumeInstantly\": ${4|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Infuse Input": {
+		"prefix": ["@masterfulmachinery/input/mekanism_infuse/","@mm/input/mekanism_infuse/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_infuse\",",
+				"\t\"data\": {",
+					"\t\t\"infuse\":\"${1:mekanism:refined_obsidian}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"consumeInstantly\": ${4|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Create Rotation Input": {
+		"prefix": ["@masterfulmachinery/input/create_rotation/","@mm/input/create_rotation/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:create_rotation\",",
+				"\t\"data\": {",
+					"\t\t\"speed\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"consumeInstantly\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM PNCR Pressure Input": {
+		"prefix": ["@masterfulmachinery/input/pncr_pressure/","@mm/input/pncr_pressure/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:pncr_pressure\",",
+				"\t\"data\": {",
+					"\t\t\"air\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"consumeInstantly\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Astral Starlight Input": {
+		"prefix": ["@masterfulmachinery/input/astral_starlight/","@mm/input/astral_starlight"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:astral_starlight\",",
+				"\t\"data\": {",
+					"\t\t\"amount\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"consumeInstantly\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Botania Mana Input": {
+		"prefix": ["@masterfulmachinery/input/botania_mana/","@mm/input/botania_mana/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:botania_mana\",",
+				"\t\"data\": {",
+					"\t\t\"amount\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"consumeInstantly\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Item Output": {
+		"prefix": ["@masterfulmachinery/output/item/","@mm/output/item/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:items\",",
+				"\t\"data\": {",
+					"\t\t\"item\":\"${1:minecraft:potato}\",",
+					"\t\t\"count\": ${2:10}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Energy Output": {
+		"prefix": ["@masterfulmachinery/output/energy/","@mm/output/energy/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:energy\",",
+				"\t\"data\": {",
+					"\t\t\"amount\":${1:8675309}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Fluid Output": {
+		"prefix": ["@masterfulmachinery/output/fluid/","@mm/output/fluid/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:fluids\",",
+				"\t\"data\": {",
+					"\t\t\"fluid\":\"${1:minecraft:lava}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Gas Output": {
+		"prefix": ["@masterfulmachinery/output/mekanism_gas/","@mm/output/mekanism_gas/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_gas\",",
+				"\t\"data\": {",
+					"\t\t\"gas\":\"${1:mekanismgenerators:tritium}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Slurry Output": {
+		"prefix": ["@masterfulmachinery/output/mekanism_slurry/","@mm/output/mekanism_slurry/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_slurry\",",
+				"\t\"data\": {",
+					"\t\t\"slurry\":\"${1:mekanism:clean_osmium}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Infuse Output": {
+		"prefix": ["@masterfulmachinery/output/mekanism_infuse/","@mm/output/mekanism_infuse/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_infuse\",",
+				"\t\"data\": {",
+					"\t\t\"infuse\":\"${1:mekanism:refined_obsidian}\",",
+					"\t\t\"amount\": ${2:1000}",
+				"\t},",
+				"\t\"perTick\": ${3|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Create Rotation Output": {
+		"prefix": ["@masterfulmachinery/output/create_rotation/","@mm/output/create_rotation/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:create_rotation\",",
+				"\t\"data\": {",
+					"\t\t\"speed\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM PNCR Pressure Output": {
+		"prefix": ["@masterfulmachinery/output/pncr_pressure/","@mm/output/pncr_pressure/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:pncr_pressure\",",
+				"\t\"data\": {",
+					"\t\t\"air\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Astral Starlight Output": {
+		"prefix": ["@masterfulmachinery/output/astral_starlight/","@mm/output/astral_starlight/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:astral_starlight\",",
+				"\t\"data\": {",
+					"\t\t\"amount\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Botania Mana Output": {
+		"prefix": ["@masterfulmachinery/output/botania_mana/","@mm/output/botania_mana/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:botania_mana\",",
+				"\t\"data\": {",
+					"\t\t\"amount\": ${1:1000}",
+				"\t},",
+				"\t\"perTick\": ${2|false,true|},",
+				"\t\"chance\": ${0:1.0}",
+			"}"
+		]
+	},
+
+	"MM Machine Structure": {
+		"prefix": ["@masterfulmachinery/structure/","@mm/structure/","@masterfulmachinery/machine/","@mm/machine/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:machine_structure\",",
+				"\t\"id\": \"${1:UniqueID}\",",
+				"\t\"controllerId\": \"${2:ControllerName}\",",
+				"\t\"name\": \"${0:Machine Name}\",",
+				"\t\"layout\": [[\"AAA\",\"ACA\"],[\"BAB\",\"AAA\"]],",
+				"\t\"legend\": {@mm/structure/legend/}",
+			"}"
+		]
+	},
+
+	"MM Machine Legend": {
+		"prefix": ["@masterfulmachinery/structure/legend/","@masterfulmachinery/machine/legend/","@mm/structure/legend/","@mm/machine/legend/"],
+		"body": [
+			"\"A\": {",
+				"\t\"${1|block,tag|}\": \"${2|minecraft:dark_oak_stairs,forge:stone|}\",",
+				"\t\"props\": {",
+					"\t\t\"facing\": \"north\",",
+					"\t\t\"waterlogged\": false",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Items Port": {
+		"prefix": ["@masterfulmachinery/port/item/","@mm/port/item/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:items\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"rows\": ${3:3},",
+					"\t\t\"columns\": ${0:3}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Fluid Port": {
+		"prefix": ["@masterfulmachinery/port/fluid/","@mm/port/fluid/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:fluids\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Energy Port": {
+		"prefix": ["@masterfulmachinery/port/energy/","@mm/port/energy/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:energy\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Gas Port": {
+		"prefix": ["@masterfulmachinery/port/mekanism_gas/","@mm/port/mekanism_gas/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_gas\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Slurry Port": {
+		"prefix": ["@masterfulmachinery/port/mekanism_slurry/","@mm/port/mekanism_slurry/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_slurry\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Mekanism Infuse Port": {
+		"prefix": ["@masterfulmachinery/port/mekanism_infuse/","@mm/port/mekanism_infuse/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:mekanism_infuse\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Astral Starlight Port": {
+		"prefix": ["@masterfulmachinery/port/astral_starlight/","@mm/port/astral_starlight/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:astral_starlight\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Botania Mana Port": {
+		"prefix": ["@masterfulmachinery/port/botania_mana/","@mm/port/botania_mana/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:botania_mana\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"capacity\": ${0:1000}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM Create Rotation Port": {
+		"prefix": ["@masterfulmachinery/port/create_rotation/","@mm/port/create_rotation/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:create_rotation\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"stress\": ${0:1}",
+				"\t}",
+			"}"
+		]
+	},
+
+	"MM PNCR Pressure Port": {
+		"prefix": ["@masterfulmachinery/port/pncr_pressure/","@mm/port/pncr_pressure/"],
+		"body": [
+			"{",
+				"\t\"type\": \"masterfulmachinery:pncr_pressure\",",
+				"\t\"name\": \"${1:Port Name}\",",
+				"\t\"id\": \"${2:UniqueID}\",",
+				"\t\"data\": {",
+					"\t\t\"volume\": ${3:5000},",
+					"\t\t\"dangerPressure\": ${4:10},",
+					"\t\t\"criticalPressure\": ${0:30}",
+				"\t}",
+			"}"
+		]
+	}	
+}
