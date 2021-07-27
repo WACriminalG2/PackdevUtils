@@ -133,6 +133,10 @@
             "@extragolems/entities/"
         ]
     },
+        "Fairy Lights Entities": {
+        "prefix": "@fairylights/entities/",
+        "body": "fairylights:${1|fastener|}"
+    },
 	"Farming for Blockheads Entities": {
 		"prefix": "@farmingforblockheads/entities/",
 		"body": "farmingforblockheads:${1|merchant|}"
@@ -164,6 +168,10 @@
         "body": "lycanitesmobs:${1|abaia,abtu,acidglob,acidsplash,aegis,aetherwave,afrit,aglebemu,amalgalich,apollyon,aquapulse,arcanelaser,arcanelaserstorm,argus,arisaur,arix,asmodeus,aspid,astaroth,banshee,barghest,behemophet,belphegor,blizzard,bloodleech,boulderblast,brucha,calpod,cephignis,chaosorb,cherufe,chupacabra,cinder,clink,cockatrice,conba,concapede,concapedesegment,crusk,cryptkeeper,crystalshard,darkling,dawon,deioneus,demonicblast,demonicspark,devilgatling,devilstar,doomfireball,eechetik,ember,ent,epion,erepede,ettin,eyewig,faebolt,fear,feradon,frostbolt,frostweaver,frostweb,geist,geken,geonach,ghoul,gnekk,gorgomite,grell,grigori,grue,hellfireball,hellfirebarrier,hellfirebarrierpart,hellfireorb,hellfirewall,hellfirewave,hellfirewavepart,helllaser,helllaserend,hellshield,herma,icefireball,ignibus,ika,ioray,jabberwock,jengu,joust,joustalpha,kathoga,khalk,kobold,krake,lacedon,laserend,lifedrain,lightball,lobdarklings,lycosa,magma,maka,makaalpha,malwrath,manticore,maug,morock,mudshot,naxiris,ningen,nymph,ostimien,pixen,poisonray,poop,primeember,quetzodracl,quill,rahovart,raidra,raiko,rapidfire,reaper,reiver,remobra,roa,roc,salamander,scorchfireball,serpix,shade,shadowfirebarrier,shambler,silex,skylus,spectralbolt,spectre,spriggan,summoningportal,summoningseed,sutiramu,sylph,thresher,throwingscythe,treant,tremor,tricksterflare,triffid,trite,troll,tundra,umibas,uvaraptor,vapula,venomshot,ventoraptor,vespid,vespidqueen,volcan,vorach,warg,waterjet,wendigo,whirlwind,wildkin,wisp,wraamon,wraith,xaphan,yale,yeti,zephyr,zoataur|}",
         "prefix": "@lycanitesmobs/entities/"
     },
+        "Macaw's Furniture Entities": {
+        "prefix": "@mcwfurnitures/entities/",
+        "body": "mcwfurnitures:${1|sittable_block|}"
+    },
     "Mekanism Entities": {
         "body": "mekanism:${1|flame,robit|}",
         "prefix": "@mekanism/entities/"
@@ -184,6 +192,10 @@
         "body": "mysticalworld:${1|beetle,deer,endermini,frog,hell_sprout,lava_cat,owl,silkworm,silver_fox,sprout|}",
         "prefix": "@mysticalworld/entities/"
     },
+        "Nature's Aura Entities": {
+        "prefix": "@naturesaura/entities/",
+        "body": "naturesaura:${1|effect_inhibitor,light_projectile,mover_cart,structure_finder|}"
+    },
     "Neapolitan Entities": {
         "body": "neapolitan:${1|banana_peel,bananarrow,chimpanzee,plantain_spider|}",
         "prefix": "@neapolitan/entities/"
@@ -195,6 +207,10 @@
     "Pandora's Creatures Entities": {
         "body": "pandoras_creatures:${1|acidic_archvine,arachnon,bufflon,crab,end_troll,end_troll_bullet_damage,end_troll_bullet_poison,end_troll_bullet_wither,hellhound,seahorse|}",
         "prefix": "@pandoras_creatures/entities/"
+    },
+        "Paraglider Entities": {
+        "prefix": "@paraglider/entities/",
+        "body": "paraglider:${1|wind|}"
     },
     "Project Rankine Entities": {
         "body": "rankine:${1|alloy_arrow,alloy_spear,amalgam_spear,beaver,black_gold_spear,blue_gold_spear,bronze_spear,cedar_boat,cobalt_superalloy_spear,demonyte,desmoxyte,diamond_mantle_golem,diamond_spear,dragonyte,flint_spear,green_gold_spear,iron_spear,magnesium_arrow,mantle_golem,meteoric_iron_spear,netherite_spear,nickel_superalloy_spear,peridot_mantle_golem,pewter_spear,purple_gold_spear,reactive_item,rose_gold_spear,stainless_steel_spear,steel_spear,thorium_arrow,titanium_alloy_spear,tungsten_heavy_alloy_spear,white_gold_spear|}",
