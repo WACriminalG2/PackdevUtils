@@ -15,6 +15,10 @@
             "@aoa3/blocks/"
         ]
     },
+        "Alex's Mobs Blocks": {
+        "prefix": "@alexsmobs/blocks/",
+        "body": "alexsmobs:${1|banana_peel,capsid,crocodile_egg,gustmaker,leafcutter_ant_chamber,leafcutter_anthill,void_worm_beak|}"
+    },
     "Apotheosis Blocks": {
         "body": "apotheosis:${1|beeshelf,blazing_hellshelf,boss_spawner,crystal_seashelf,draconic_endshelf,endshelf,glowing_hellshelf,heart_seashelf,hellshelf,melonshelf,pearl_endshelf,prismatic_altar,seashelf|}",
         "prefix": "@apotheosis/blocks/"
