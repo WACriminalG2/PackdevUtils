@@ -1,4 +1,8 @@
 {
+    "Abundance Potions": {
+        "prefix": "@abundance/potions/",
+        "body": "abundance:${1|succumbing,supportive|}"
+    },
     "Alex's Mobs Potions": {
         "body": "alexsmobs:${1|bug_pheromones,clinging,debilitating_sting,ender_flu,exsanguination,fear,knockback_resistance,lava_vision,oiled,orcas_might,poison_resistance,soulsteal,sunbird_blessing,sunbird_curse,tigers_blessing|}",
         "prefix": "@alexsmobs/potions/"
@@ -7,9 +11,21 @@
         "body": "astralsorcery:${1|bleed,cheat_death,drop_modifier|}",
         "prefix": "@astralsorcery/potions/"
     },
+       "Atmospheric Potions": {
+        "prefix": "@atmospheric/potions/",
+        "body": "atmospheric:${1|gelled,persistence,relief,spitting,worsening|}"
+    },
     "Atum 2 Potions": {
         "body": "atum:${1|marked_for_death|}",
         "prefix": "@atum/potions/"
+    },
+        "Autumnity Potions": {
+        "prefix": "@autumnity/potions/",
+        "body": "autumnity:${1|extension,foul_taste|}"
+    },
+        "Better End Potions": {
+        "prefix": "@betterendforge/potions/",
+        "body": "betterendforge:${1|end_veil|}"
     },
     "Blood Magic Potions": {
         "body": "bloodmagic:${1|firefuse,plantleech,sacrificiallamb,soulfray,soulsnare|}",
@@ -18,6 +34,14 @@
     "Botania Potions": {
         "body": "botania:${1|allure,bloodthirst,clear,emptiness,feather_feet,soul_cross|}",
         "prefix": "@botania/potions/"
+    },
+        "Bumblezone Potions": {
+        "prefix": ["@the_bumblezone/potions/","@bumblezone/potions/"],
+        "body": "the_bumblezone:${1|protection_of_the_hive,wrath_of_the_hive|}"
+    },
+       "Buzzier Bees Potions": {
+        "prefix": "@buzzier_bees/potions/",
+        "body": "buzzier_bees:${1|sunny|}"
     },
     "CoFH Core Potions": {
         "body": "cofh_core:${1|chilled,clarity,enderference,explosion_resistance,lightning_resistance,love,magic_resistance,panacea,shocked,sundered,wrenched|}",
@@ -34,6 +58,10 @@
     "Eidolon Potions": {
         "body": "eidolon:${1|anchored,chilled|}",
         "prefix": "@eidolon/potions/"
+    },
+        "Environmental Potions": {
+        "prefix": "@environmental/potions/",
+        "body": "environmental:${1|panic,serenity|}"
     },
     "Farmer's Delight Potions": {
         "body": "farmersdelight:${1|comfort,nourished|}",
