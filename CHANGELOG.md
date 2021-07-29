@@ -1,3 +1,116 @@
+# v1.6.0 -- 7/29/21
+
+# v1.5.0 -- 7/29/21
+
+* Added test JSON schema validation for tag files.
+* Universal registry added:
+
+## BLOCKS
+
+* Agricraft
+* BlockLayering
+* Comforts
+* ComputerCraft Tweaked
+* EvilCraft
+* Exotic Critters
+* Habitat (Bloom and Gloom)
+* Immersive Petroleum
+* Infernal Expansion
+* Jellyfishing
+* Lord of the Rings Renewed
+* MrCrayfish's Furniture
+* Odd Water Mobs
+* PneumaticCraft
+* Reliquary
+* Serene Seasons
+* SwitchBow
+* Traverse
+* Treemendous
+
+## ITEMS
+
+* Agricraft
+* Antique Atlas
+* Archer's Paradox
+* BlockLayering
+* Comforts
+* ComputerCraft Tweaked
+* EvilCraft
+* Exotic Critters
+* Goblin Traders
+* Habitat (Bloom and Gloom)
+* Hats
+* Immersive Petroleum
+* Infernal Expansion
+* Jellyfishing
+* Lord of the Rings Renewed
+* MrCrayfish's Furniture
+* Nature's Compass
+* Odd Water Mobs
+* PneumaticCraft
+* Reliquary
+* Serene Seasons
+* Spartan Shields
+* SwitchBow
+* Traverse
+* Treemendous
+* Waddles
+* Water Strainer
+
+## ENTITIES
+
+* Archer's Paradox
+* ComputerCraft Tweaked
+* EvilCraft
+* Exotic Critters
+* Goblin Traders
+* Habitat (Bloom and Gloom)
+* Hats
+* Immersive Petroleum
+* Infernal Expansion
+* Jellyfishing
+* Lord of the Rings Renewed
+* MrCrayfish's Furniture
+* Odd Water Mobs
+* PneumaticCraft
+* Reliquary
+* SwitchBow
+* Traverse
+* Treemendous
+* Waddles
+
+## POTIONS
+
+* Archer's Paradox
+* EvilCraft
+* Exotic Critters
+* Habitat (Bloom and Gloom)
+* Immersive Petroleum
+* Infernal Expansion
+* Odd Water Mobs
+* Reliquary
+* SwitchBow
+
+## ENCHANTMENTS
+
+* AgriCraft
+* EvilCraft
+* Jellyfishing
+* Spartan Shields
+* SwitchBow
+
+## BIOMES
+
+* Bayou Blues
+* EvilCraft
+* Exotic Critters
+* Infernal Expansion
+* Jellyfishing
+* Lord of the Rings Renewed
+* Odd Water Mobs
+* Traverse
+* Treemendous
+
 # v1.4.3 -- 7/29/21
 
 * Pluralizing arrays.

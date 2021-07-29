@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.4.3",
+    "version": "1.5.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -32,6 +32,7 @@
                 "aliases": ["ZenScript"]
             }
         ],
+        
           "snippets": [
               {
                   "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -81,6 +82,13 @@
                 "languages": ["json","javascript","typescript","zenscript"],
                 "path": "./Snippets/Resourceful Bees Utilities.code-snippets"
             }
+          ],
+
+          "jsonValidation": [
+              {
+                  "fileMatch": "*/tags/*.json",
+                  "url": "./Schema/minecraft/tag.json"
+              }
           ]
       }
 }

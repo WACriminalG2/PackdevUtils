@@ -35,6 +35,10 @@
         "body": "aquaculture:${1|acacia_fish_mount,arapaima,arrau_turtle,atlantic_cod,atlantic_halibut,atlantic_herring,bayad,birch_fish_mount,blackfish,bluegill,bobber,boulti,box_turtle,brown_shrooma,brown_trout,capitaine,carp,catfish,dark_oak_fish_mount,gar,jellyfish,jungle_fish_mount,minnow,muskellunge,oak_fish_mount,pacific_halibut,perch,pink_salmon,piranha,pollock,rainbow_trout,red_grouper,red_shrooma,smallmouth_bass,spectral_water_arrow,spruce_fish_mount,starshell_turtle,synodontis,tambaqui,tuna,water_arrow|}",
         "prefix": "@aquaculture/entities/"
     },
+    "Archer's Paradox Entities": {
+        "body": "archers_paradox:${1|blaze_arrow,challenge_arrow,diamond_arrow,displacement_arrow,ender_arrow,explosive_arrow,frost_arrow,glowstone_arrow,lightning_arrow,phantasmal_arrow,prismarine_arrow,quartz_arrow,redstone_arrow,shulker_arrow,slime_arrow,spore_arrow,training_arrow,verdant_arrow|}",
+        "prefix": "@archers_paradox/entities/"
+    },
     "Astral Sorcery Entities": {
         "body": "astralsorcery:${1|flare,grappling_hook,illumination_spark,item_crystal,item_explosion_resistant,item_highlighted,item_starmetal,nocturnal_spark,observatory_helper,spectral_tool|}",
         "prefix": "@astralsorcery/entities/"
@@ -93,9 +97,13 @@
         "body": "charm:${1|coral_squid,endermite_powder,glowball,moobloom|}",
         "prefix": "@charm/entities/"
     },
-    "Cold's Enchants 2.0 Entities":{
-        "prefix": "@coldenchants2/entities/",
-        "body": "coldenchants2:${1|summoned_wisp,summoner_attacker,summoner_healer|}"
+    "Cold's Enchants 2.0 Entities": {
+        "body": "coldenchants2:${1|summoned_wisp,summoner_attacker,summoner_healer|}",
+        "prefix": "@coldenchants2/entities/"
+    },
+    "ComputerCraft Tweaked Entities": {
+        "body": "computercraft:${1|turtle_player|}",
+        "prefix": "@computercraft/entities/"
     },
     "Create Entities": {
         "body": "create:${1|contraption,crafting_blueprint,gantry_contraption,potato_projectile,seat,stationary_contraption,super_glue|}",
@@ -132,9 +140,20 @@
         "body": "environmental:${1|deer,duck,duck_egg,koi,mud_ball,slabfish,yak|}",
         "prefix": "@environmental/entities/"
     },
+    "EvilCraft Entities": {
+        "body": "evilcraft:${1|anti_vengeance_beam,attack_vengeance_beam,biome_extract,blood_pearl,broom,controlled_zombie,item_dark_stick,item_empowerable,item_undespawnable,lightning_bomb_primed,lightning_grenade,necromancers_head,netherfish,poisonous_libelle,redstone_grenade,vengeance_spirit,weather_container,werewolf|}",
+        "prefix": "@evilcraft/entities/"
+    },
     "Exotic Birds Entities": {
         "body": "exoticbirds:${1|bird_egg,bluejay,booby,budgerigar,cardinal,cassowary,cockatoo,crane,duck,flamingo,gouldianfinch,gull,heron,hummingbird,kingfisher,kiwi,kookaburra,lyrebird,macaw,magpie,ostrich,owl,peafowl,pelican,penguin,pigeon,roadrunner,robin,swan,toucan,woodpecker|}",
         "prefix": "@exoticbirds/entities/"
+    },
+    "Exotic Critters Entities": {
+        "body": "experimental_m:${1|acid_slime,aegiroca,agresibou,baby_acid_slime,baby_skeleton,babykuko,babyvinci,bad_aegiroca,batalla,boaa,boapacificada,bou,bougga,brachini,brachiniclones,bush,charco,charrus,charrusprimerestado,coral,cuboi,demon_wolf,demoniodealmas,distis,dollo,doryas,dripbag,dripdomest,ekio,endermancito,endorial,entitybulletarcokrill,entitybulletarconormal,entitybulletass,entitybulletburbujas,entitybulletflutooooooonnnn,entitybulletforestflecha,entitybulletglowball,entitybulletgolemball,entitybulletguisobla,entitybulleticeeeee,entitybulletkukaegg,entitybulletlaser,entitybulletlaser_2,entitybulletmorso,entitybulletnada,entitybulletpalo_de_faros,entitybulletpalo_de_telas,entitybulletpalodetelasend,entitybulletpes,entitybulletpes_2,entitybulletpesadillafal_2,entitybulletpiedras,entitybulletpistola_de_agua,entitybulletpistoladelava,entitybulletpurrrrrum,entitybulletrayo,entitybulletspidermann,entitybullettele,entitybulletteleporbaston,entitybulletteleport,entitybullettntvegetal,eorrape,estrella,estrellaamarilla,estrellaazul,estrellablanco,estrellamarron,estrellanegro,estrellaverde,euripio,fasola,fasolabajoarena,fernesio,fernesioescondido,fluto,flutoqueen,flutotext_2,forest,gaunt,goodaegiroca,gooddemonwolf,grillydomes,guiso,harpago,harpago_2,harpago_3,hipnocol,hoho,holoteme,infected_bou,jaekel,jaekel_pillar,jepe,jumper,krill,krivill,kuko,lamprea,lava_behemoth,lichen_2,lover,luphii,luphiidomest,mongos,mongosmalo,morso,mummybeetle,ninna,oilurus,oilurusdomes,oiwaxi,oiwaxi_2,onis,onisbolita,opabinia,osodelend,otto,pachachito,palpur,pesadilla,pesadillafal,pesadillafal_2,phantom_eggentity,phantonormus,pinnia,pithecus,plasma_mishi,plasmamishidomes,plobo,praying_mantis,procarionte,pupet_zombie,pupettallgrasses,pupetzombies_2,quama,quama_2,quama_3,raffle,rhino_beetle,sombra,sorbete,sorbetenoj,soull,sprinckles_golem,sueno,taxite,teler,temnopo,temnopodomest,temnopospawn,the_other_endorial,the_otherendorial_2,to,to_2,ululu,vinci,vixi,warped_grilly,wiamond,wonkler,xilotero|}",
+        "prefix": [
+            "@experimental_m/entities/",
+            "@exoticcritters/entities/"
+        ]
     },
     "Extra Golems Entities": {
         "body": "golems:${1|golem_andesite,golem_basalt,golem_bedrock,golem_blackstone,golem_bone,golem_bookshelf,golem_clay,golem_coal,golem_colored_terracotta,golem_concrete,golem_coral,golem_crafting,golem_crimson_stem,golem_crying_obsidian,golem_diamond,golem_diorite,golem_dispenser,golem_emerald,golem_end_stone,golem_furnace,golem_glass,golem_glowstone,golem_gold,golem_granite,golem_honey,golem_honeycomb,golem_ice,golem_kelp,golem_lapis,golem_leaves,golem_magma,golem_melon,golem_mushroom,golem_nether_brick,golem_nether_wart,golem_netherite,golem_obsidian,golem_prismarine,golem_purpur,golem_quartz,golem_red_sandstone,golem_redstone,golem_redstone_lamp,golem_sandstone,golem_sea_lantern,golem_shroomlight,golem_slime,golem_smooth_stone,golem_sponge,golem_stained_glass,golem_straw,golem_terracotta,golem_textured,golem_tnt,golem_warped_stem,golem_wooden,golem_wool|}",
@@ -158,9 +177,24 @@
             "@finsandtails/entities/"
         ]
     },
+    "Goblin Traders Entities": {
+        "body": "goblintraders:${1|goblin_trader,vein_goblin_trader|}",
+        "prefix": "@goblintraders/entities/"
+    },
     "Greek Fantasy Entities": {
         "body": "greekfantasy:${1|ara,arachne,arion,baby_spider,bronze_bull,centaur,cerastes,cerberus,charybdis,circe,cretan_minotaur,curse,cyclopes,cyprian,discus,dragon_tooth,drakaina,dryad,elpis,empusa,fury,geryon,giant_boar,gigante,golden_ram,gorgon,harpy,healing_spell,hydra,hydra_head,mad_cow,makhai,minotaur,naiad,nemean_lion,orthus,orthus_head_item,pegasus,poison_spit,python,satyr,shade,siren,sparti,spear,swine_spell,talos,unicorn,web_ball,whirl|}",
         "prefix": "@greekfantasy/entities/"
+    },
+    "Habitat (Bloom and Gloom) Entities": {
+        "body": "bloom_and_gloom:${1|kabloom_fruit|}",
+        "prefix": [
+            "@bloom_and_gloom/entities/",
+            "@habitat/entities/"
+        ]
+    },
+    "Hats Entities": {
+        "body": "hats:${1|hat|}",
+        "prefix": "@hats/entities/"
     },
     "Ice and Fire Entities": {
         "body": "iceandfire:${1|amphithere,amphithere_arrow,chain_tie,cockatrice,cockatrice_egg,cyclops,cylcops_multipart,deathworm,deathworm_egg,dragon_arrow,dragon_egg,dragon_multipart,dragon_skull,dread_beast,dread_ghoul,dread_horse,dread_knight,dread_lich,dread_lich_skull,dread_scuttler,dread_thrall,fire_dragon,fire_dragon_charge,ghost,ghost_sword,gorgon,hippocampus,hippogryph,hippogryph_egg,hydra,hydra_arrow,hydra_breath,hydra_multipart,ice_dragon,ice_dragon_charge,lightning_dragon,lightning_dragon_charge,mob_skull,multipart,myrmex_egg,myrmex_queen,myrmex_royal,myrmex_sentinel,myrmex_soldier,myrmex_swarmer,myrmex_worker,pixie,pixie_charge,sea_serpent,sea_serpent_arrow,sea_serpent_bubbles,siren,stone_statue,stymphalian_arrow,stymphalian_bird,stymphalian_feather,tide_trident,troll|}",
@@ -170,9 +204,28 @@
         "body": "immersiveengineering:${1|cart_metalbarrel,cart_reinforcedcrate,cart_woodenbarrel,cart_woodencrate,chemthrower_shot,explosive,fluorescent_tube,railgun_shot,revolver_shot_flare,revolver_shot_homing,revolver_shot_wolfpack,revolvershot,sawblade,skyline_hook|}",
         "prefix": "@immersiveengineering/entities/"
     },
+    "Immersive Petroleum Entities": {
+        "body": "immersivepetroleum:${1|speedboat|}",
+        "prefix": "@immersivepetroleum/entities/"
+    },
     "Industrial Foregoing Entities": {
         "body": "industrialforegoing:${1|infinity_nuke,launcher_projectile_entity,trident_entity|}",
         "prefix": "@industrialforegoing/entities/"
+    },
+    "Infernal Expansion Entities": {
+        "body": "infernalexp:${1|ascus_bomb,basalt_giant,blackstone_dwarf,blindsight,embody,glowsilk_moth,glowsquito,infernal_painting,shroomloin,throwable_fire_charge,throwable_magma_cream,voline,warpbeetle|}",
+        "prefix": "@infernalexp/entities/"
+    },
+    "Jellyfishing Entities": {
+        "body": "jellyfishing:${1|blue_jellyfish,jellyfish,patty_wagon|}",
+        "prefix": "@jellyfishing/entities/"
+    },
+    "Lord of the Rings Entities": {
+        "body": "lotr:${1|alignment_bonus,blue_mountains_dwarf,blue_mountains_warrior,boat,caracal,coast_southron,coast_southron_warrior,dale_man,dale_soldier,dunlending,dunlending_warrior,dwarf,dwarf_warrior,falling_treasure_block,galadhrim_elf,galadhrim_warrior,gondor_man,gondor_soldier,gundabad_orc,harnedhrim,harnennor_warrior,hobbit,lindon_elf,lindon_warrior,mordor_orc,ring_portal,rivendell_elf,rivendell_warrior,rohan_man,rohirrim_warrior,smoke_ring,thrown_plate,umbar_man,umbar_soldier,uruk|}",
+        "prefix": [
+            "@lotr/entities/",
+            "@lordoftherings/entities/"
+        ]
     },
     "Lycanites Mobs Entities": {
         "body": "lycanitesmobs:${1|abaia,abtu,acidglob,acidsplash,aegis,aetherwave,afrit,aglebemu,amalgalich,apollyon,aquapulse,arcanelaser,arcanelaserstorm,argus,arisaur,arix,asmodeus,aspid,astaroth,banshee,barghest,behemophet,belphegor,blizzard,bloodleech,boulderblast,brucha,calpod,cephignis,chaosorb,cherufe,chupacabra,cinder,clink,cockatrice,conba,concapede,concapedesegment,crusk,cryptkeeper,crystalshard,darkling,dawon,deioneus,demonicblast,demonicspark,devilgatling,devilstar,doomfireball,eechetik,ember,ent,epion,erepede,ettin,eyewig,faebolt,fear,feradon,frostbolt,frostweaver,frostweb,geist,geken,geonach,ghoul,gnekk,gorgomite,grell,grigori,grue,hellfireball,hellfirebarrier,hellfirebarrierpart,hellfireorb,hellfirewall,hellfirewave,hellfirewavepart,helllaser,helllaserend,hellshield,herma,icefireball,ignibus,ika,ioray,jabberwock,jengu,joust,joustalpha,kathoga,khalk,kobold,krake,lacedon,laserend,lifedrain,lightball,lobdarklings,lycosa,magma,maka,makaalpha,malwrath,manticore,maug,morock,mudshot,naxiris,ningen,nymph,ostimien,pixen,poisonray,poop,primeember,quetzodracl,quill,rahovart,raidra,raiko,rapidfire,reaper,reiver,remobra,roa,roc,salamander,scorchfireball,serpix,shade,shadowfirebarrier,shambler,silex,skylus,spectralbolt,spectre,spriggan,summoningportal,summoningseed,sutiramu,sylph,thresher,throwingscythe,treant,tremor,tricksterflare,triffid,trite,troll,tundra,umibas,uvaraptor,vapula,venomshot,ventoraptor,vespid,vespidqueen,volcan,vorach,warg,waterjet,wendigo,whirlwind,wildkin,wisp,wraamon,wraith,xaphan,yale,yeti,zephyr,zoataur|}",
@@ -182,9 +235,9 @@
         "body": "mcwfurnitures:${1|sittable_block|}",
         "prefix": "@mcwfurnitures/entities/"
     },
-    "Mana and Artifice Entities":{
-        "prefix": "@mana-and-artifice/entities/",
-        "body": "mana-and-artifice:${1|affinity_icon_entity,ancient_council,animated_construct,animus_block,broker,bubble_boat,decoy_entity,demon_imp,demon_lord,demon_stone,faction_raid,faerie_light,faerie_queen,flat_lands,flat_lands_projectile,lantern_wraith,magic_broom,manaweave_entity,mushroom_soldier,pixie,portal_entity,presentation_entity,reagent_entity,residual_magic,rift,rising_block_entity,ritual_entity,sentry_projectile,smite_projectile,spell_breaker,spell_entity_beam,spell_entity_emanation,spell_entity_wall,spell_entity_wave,spell_fx,spell_projectile,spell_rune_entity,starball_entity,thrown_manaweave_potion,wand_clone,wandering_wizard,witch_hunter,witch_hunter_arrow,witch_hunter_trickshot|}"
+    "Mana and Artifice Entities": {
+        "body": "mana-and-artifice:${1|affinity_icon_entity,ancient_council,animated_construct,animus_block,broker,bubble_boat,decoy_entity,demon_imp,demon_lord,demon_stone,faction_raid,faerie_light,faerie_queen,flat_lands,flat_lands_projectile,lantern_wraith,magic_broom,manaweave_entity,mushroom_soldier,pixie,portal_entity,presentation_entity,reagent_entity,residual_magic,rift,rising_block_entity,ritual_entity,sentry_projectile,smite_projectile,spell_breaker,spell_entity_beam,spell_entity_emanation,spell_entity_wall,spell_entity_wave,spell_fx,spell_projectile,spell_rune_entity,starball_entity,thrown_manaweave_potion,wand_clone,wandering_wizard,witch_hunter,witch_hunter_arrow,witch_hunter_trickshot|}",
+        "prefix": "@mana-and-artifice/entities/"
     },
     "Mekanism Entities": {
         "body": "mekanism:${1|flame,robit|}",
@@ -198,13 +251,17 @@
         "body": "mowziesmobs:${1|axe_attack,baby_foliaath,barako,barakoa_sunblocker,barakoa_sunblocker_player,barakoan_barakoana,barakoan_player,barakoana,barakoaya,block_swapper,boulder_huge,boulder_large,boulder_medium,boulder_small,dart,falling_block,ferrous_wroughtnaut,foliaath,frostmaw,frozen_controller,grottol,ice_ball,ice_breath,lantern,naga,poison_ball,solar_beam,sunstrike,super_nova|}",
         "prefix": "@mowziesmobs/entities/"
     },
-    "MrCrayfish's Guns Entities":{
-        "prefix": "@cgm/entities/",
-        "body": "cgm:${1|grenade,missile,projectile,throwable_grenade,throwable_stun_grenade|}"
+    "MrCrayfish's Furniture Entities": {
+        "body": "cfm:${1|seat|}",
+        "prefix": "@cfm/entities/"
     },
-    "MrCrayfish's Vehicles Entities":{
-        "prefix": "@vehicles/entities/",
-        "body": "vehicles:${1|aluminum_boat,atv,bumper_car,dirt_bike,dune_buggy,fertilizer,fluid_trailer,go_kart,golf_cart,jack,jet_ski,lawn_mower,mini_bike,mini_bus,moped,off_roader,seeder,shopping_cart,smart_car,speed_boat,sports_plane,storage_trailer,tractor,vehicle_trailer|}"
+    "MrCrayfish's Guns Entities": {
+        "body": "cgm:${1|grenade,missile,projectile,throwable_grenade,throwable_stun_grenade|}",
+        "prefix": "@cgm/entities/"
+    },
+    "MrCrayfish's Vehicles Entities": {
+        "body": "vehicles:${1|aluminum_boat,atv,bumper_car,dirt_bike,dune_buggy,fertilizer,fluid_trailer,go_kart,golf_cart,jack,jet_ski,lawn_mower,mini_bike,mini_bus,moped,off_roader,seeder,shopping_cart,smart_car,speed_boat,sports_plane,storage_trailer,tractor,vehicle_trailer|}",
+        "prefix": "@vehicles/entities/"
     },
     "Mushroom Quest Entities": {
         "body": "mushroomquest:${1|brown_amanita_fungling,crimson_fungling,entitybulletbottleddreamscape,entitybulletbrewofintoxication,entitybulletdevilsbrew,morel_fungling,red_amanita_fungling,warped_fungling,wine_cap_fungling,yellow_amanita_fungling|}",
@@ -222,6 +279,10 @@
         "body": "neapolitan:${1|banana_peel,bananarrow,chimpanzee,plantain_spider|}",
         "prefix": "@neapolitan/entities/"
     },
+    "Odd Water Mobs Entities": {
+        "body": "oddwatermobs:${1|anglerfish,anglerfish_puff,baby_spider_crab,coelacanth,dark_ghost_shark,faefa,ghost_shark,horseshoe_crab,isopod,long_nosed_ghost_shark,mudskipper,pink_ghost_shark,spider_crab|}",
+        "prefix": "@oddwatermobs/entities/"
+    },
     "Oh the Biomes You'll Go Entities": {
         "body": "byg:${1|boat|}",
         "prefix": [
@@ -237,6 +298,10 @@
         "body": "paraglider:${1|wind|}",
         "prefix": "@paraglider/entities/"
     },
+    "PneumaticCraft Entities": {
+        "body": "pneumaticcraft:${1|amadrone,collector_drone,crop_support,drone,guard_drone,harvesting_drone,heat_frame,logistics_drone,logistics_frame_active_provider,logistics_frame_default_storage,logistics_frame_passive_provider,logistics_frame_requester,logistics_frame_storage,micromissile,programmable_controller,ring,spawner_agitator,transfer_gadget,tumbling_block,vortex|}",
+        "prefix": "@pneumaticcraft/entities/"
+    },
     "Project Rankine Entities": {
         "body": "rankine:${1|alloy_arrow,alloy_spear,amalgam_spear,beaver,black_gold_spear,blue_gold_spear,bronze_spear,cedar_boat,cobalt_superalloy_spear,demonyte,desmoxyte,diamond_mantle_golem,diamond_spear,dragonyte,flint_spear,green_gold_spear,iron_spear,magnesium_arrow,mantle_golem,meteoric_iron_spear,netherite_spear,nickel_superalloy_spear,peridot_mantle_golem,pewter_spear,purple_gold_spear,reactive_item,rose_gold_spear,stainless_steel_spear,steel_spear,thorium_arrow,titanium_alloy_spear,tungsten_heavy_alloy_spear,white_gold_spear|}",
         "prefix": "@rankine/entities/"
@@ -245,9 +310,9 @@
         "body": "psi:${1|spell_charge,spell_circle,spell_grenade,spell_mine,spell_projectile|}",
         "prefix": "@psi/entities/"
     },
-    "Pyromancer Entities":{
-        "prefix": "@pyromancer/entities/",
-        "body": "pyromancer:${1|borov,charred_unburned,entitybulletash_projectile,entitybulletbombsack,entitybulletbottle_of_vapors,entitybulletnapalm_bombsack,entitybulletpygromancer_fireball,entitybulletscatter_bombsack,entitybulletslingshot_brimstone,entitybulletslingshot_flint,entitybulletslingshot_magma_cream,entitybulletslingshot_pebbles,entitybulletslingshot_slime,ignited,pigman_breaker,pigman_chief,pigman_protector,pigman_vexillary,pygromancer,pyroroots,rooted_unburned,sporeder,unburned|}"
+    "Pyromancer Entities": {
+        "body": "pyromancer:${1|borov,charred_unburned,entitybulletash_projectile,entitybulletbombsack,entitybulletbottle_of_vapors,entitybulletnapalm_bombsack,entitybulletpygromancer_fireball,entitybulletscatter_bombsack,entitybulletslingshot_brimstone,entitybulletslingshot_flint,entitybulletslingshot_magma_cream,entitybulletslingshot_pebbles,entitybulletslingshot_slime,ignited,pigman_breaker,pigman_chief,pigman_protector,pigman_vexillary,pygromancer,pyroroots,rooted_unburned,sporeder,unburned|}",
+        "prefix": "@pyromancer/entities/"
     },
     "Quark Entities": {
         "body": "quark:${1|chest_passenger,colored_frame,crab,forgotten,foxhound,frog,glass_frame,gravisand,leash_knot_fake,pickarang,shiba,skull_pike,soul_bead,stoneling,stool,toretoise,totem,wraith,wrapped|}",
@@ -257,25 +322,33 @@
         "body": "rats:${1|black_death,demon_rat,pied_piper,plague_beast,plague_cloud,plague_doctor,plague_shot,purifying_liquid,rat,rat_arrow,rat_capture_net,rat_dragon_fire,rat_king,rat_mount_beast,rat_mount_chicken,rat_mount_golem,rat_mount_strider,rat_shot,rat_spawner,small_arrow,thrown_block|}",
         "prefix": "@rats/entities/"
     },
+    "Reliquary Entities": {
+        "body": "xreliquary:${1|aphrodite_potion,blaze_shot,buster_shot,concussive_shot,ender_shot,ender_staff_projectile,exorcism_shot,fertile_potion,glowing_water,holy_hand_grenade,kraken_slime,lyssa_hook,neutral_shot,sand_shot,seeker_shot,special_snowball,storm_shot,thrown_potion,tipped_arrow|}",
+        "prefix": "@xreliquary/entities/"
+    },
     "Resourceful Bees Entities": {
-        "prefix": "@resourcefulbees/entities/",
-        "body": "resourcefulbees:${1|coal_bee,creeper_bee,diamond_bee,dragon_bee,dungeon_bee,emerald_bee,ender_bee,gold_bee,icy_bee,iron_bee,kitten_bee,lapis_bee,nether_quartz_bee,netherite_bee,oreo_bee,pigman_bee,redstone_bee,rgbee_bee,skeleton_bee,slimy_bee,wither_bee,zombie_bee|}"
+        "body": "resourcefulbees:${1|coal_bee,creeper_bee,diamond_bee,dragon_bee,dungeon_bee,emerald_bee,ender_bee,gold_bee,icy_bee,iron_bee,kitten_bee,lapis_bee,nether_quartz_bee,netherite_bee,oreo_bee,pigman_bee,redstone_bee,rgbee_bee,skeleton_bee,slimy_bee,wither_bee,zombie_bee|}",
+        "prefix": "@resourcefulbees/entities/"
     },
     "Silent's Gems 3 Entities": {
         "body": "silentgems:${1|chaos_wisp,chaos_wisp_shot,corrupted_slime,ender_slime,fire_wisp,fire_wisp_shot,ice_wisp,ice_wisp_shot,lightning_wisp,lightning_wisp_shot,water_wisp,water_wisp_shot|}",
         "prefix": "@silentgems/entities/"
     },
     "Sophisticated Backpacks Entities": {
-        "prefix": "@sophisticatedbackpacks/entities/",
-        "body": "sophisticatedbackpacks:${1|everlasting_backpack_item|}"
+        "body": "sophisticatedbackpacks:${1|everlasting_backpack_item|}",
+        "prefix": "@sophisticatedbackpacks/entities/"
     },
     "Supplementaries Entities": {
         "body": "supplementaries:${1|supplementaries:bomb,supplementaries:brick_projectile,supplementaries:firefly,supplementaries:label,supplementaries:orange_trader,supplementaries:rope_arrow|}",
         "prefix": "@supplementaries/entities/"
     },
+    "SwitchBow Entities": {
+        "body": "switchbow:${1|entityarrowair,entityarrowairupgrade,entityarrowbone,entityarrowboneaoe,entityarrowbouncy,entityarrowburial,entityarrowburialaoe,entityarrowchorus,entityarrowdiamond,entityarrowdragonbreath,entityarrowenderperle,entityarrowfire,entityarrowfireupgrade,entityarrowflytomoon,entityarrowfrost,entityarrowknockback,entityarrowlightningbolt,entityarrowlightningboltstorm,entityarrowlove,entityarrowluck,entityarrowluckupgrade,entityarrowofthesearcher,entityarrowpiercing,entityarrowprotector,entityarrowredstone,entityarrowsplit,entityarrowsplitlove,entityarrowsplitloveupgrade,entityarrowsplitupgrade,entityarrowsprinkler,entityarrowtnt,entityarrowtorch,entityarrowtriple,entityarrowunderwater,entityarrowvampier,entityarrowwither,entityburial,entityfire,entitylittleirongolem|}",
+        "prefix": "@switchbow/entities/"
+    },
     "Tetra Entities": {
-        "prefix": "@tetra/entities/",
-        "body": "tetra:${1|extractor_projectile,thrown_modular_item|}"
+        "body": "tetra:${1|extractor_projectile,thrown_modular_item|}",
+        "prefix": "@tetra/entities/"
     },
     "Thermal Series Entities": {
         "body": "thermal:${1|basalz,basalz_projectile,blitz,blitz_projectile,blizz,blizz_projectile,earth_grenade,earth_tnt,earth_tnt_minecart,fire_grenade,fire_tnt,fire_tnt_minecart,grenade,ice_grenade,ice_tnt,ice_tnt_minecart,lightning_grenade,lightning_tnt,lightning_tnt_minecart,nuke_grenade,nuke_tnt,nuke_tnt_minecart,phyto_grenade,phyto_tnt,phyto_tnt_minecart,underwater_minecart|}",
@@ -287,6 +360,14 @@
             "@tinkersconstruct/entities/",
             "@tconstruct/entities/"
         ]
+    },
+    "Traverse Entities": {
+        "body": "traverse:${1|fir_boat|}",
+        "prefix": "@traverse/entities/"
+    },
+    "Treemendous Entities": {
+        "body": "treemendous:${1|boat|}",
+        "prefix": "@treemendous/entities/"
     },
     "Twilight Forest Entities": {
         "body": "twilightforest:${1|adherent,armored_giant,bighorn_sheep,blockchain_goblin,bunny,chain_block,charm_effect,cicada_shot,cube_of_annihilation,death_tome,deer,falling_ice,fire_beetle,giant_miner,goblin_knight_lower,goblin_knight_upper,harbinger_cube,hedge_spider,helmet_crab,hostile_wolf,hydra,hydra_mortar,ice_arrow,ice_crystal,ice_snowball,king_spider,knight_phantom,kobold,lich,lich_bolt,lich_bomb,lich_minion,loyal_zombie,maze_slime,mini_ghast,minoshroom,minotaur,mist_wolf,moonworm_shot,mosquito_swarm,naga,nature_bolt,penguin,pinch_beetle,plateau_boss,protection_box,quest_ram,raven,redcap,redcap_sapper,rising_zombie,roving_cube,seeker_arrow,skeleton_druid,slider,slime_beetle,slime_blob,snow_guardian,snow_queen,squirrel,stable_ice_core,swarm_spider,thrown_ice,thrown_wep,tiny_bird,tome_bolt,tower_broodling,tower_ghast,tower_golem,tower_termite,troll,unstable_ice_core,ur_ghast,wand_bolt,wild_boar,winter_wolf,wraith,yeti,yeti_alpha|}",
@@ -314,6 +395,10 @@
             "@variousoddities/entities/",
             "@varodd/entities/"
         ]
+    },
+    "Waddles Entities": {
+        "body": "waddles:${1|adelie_penguin|}",
+        "prefix": "@waddles/entities/"
     },
     "World-Building Plus Entities": {
         "body": "worldbuildinggen:${1|amphipod,corus_bear,corus_citizen,corus_guard,entitybulletglowstick,entitybulletperidot_staff,feral_kobold,hogsback,hound,hussein_bull,hussein_native,kobold,mourning_tooth,orc,parasite,puffpuff,strongarm_muncher,tamive_elf,tamive_shelly,tau_jelly,troll|}",

@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Validation schema for Minecraft tag files. Credit to https://minecraft.fandom.com/wiki/Tag#JSON_format for descriptions.",
+    "properties": {
+        "replace": {
+            "description": "Optional. Whether or not contents of this tag should completely replace tag contents from different lower priority data packs with the same namespaced ID. When false the tag's content is appended to the contents of the higher priority data packs, instead. Defaults to false.",
+            "type": "boolean"
+        },
+        "values": {
+            "description": "A list of mix and match of object names and tag names. For tags, recursive reference is possible, but a circular reference causes a loading failure.",
+            "items": {
+                "description": "An object's namespaced ID (such as minecraft:cobblestone), or the ID of another tag of the same type in the form #(namespaced ID).",
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "title": "Minecraft Tag",
+    "type": "object"
+}

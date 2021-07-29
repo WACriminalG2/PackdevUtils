@@ -1,4 +1,8 @@
 {
+    "AgriCraft Enchantments": {
+        "body": "agricraft:${1|agri_seed_bag|}",
+        "prefix": "@agricraft/enchant/"
+    },
     "Apotheosis Enchantments": {
         "body": "apotheosis:${1|bane_of_illagers,berserk,capturing,crescendo,depth_miner,hell_infusion,icy_thorns,knowledge,life_mending,magic_protection,natures_blessing,obliteration,rebounding,reflective,scavenger,sea_infusion,shield_bash,splitting,stable_footing,tempting,true_infinity|}",
         "prefix": "@apotheosis/enchant/"
@@ -15,37 +19,45 @@
         "body": "coldenchants2:${1|blinding,botanist,bounding,butchering,cat_paw,chopper,cleave,counter,crit,death_wish,elder_protection,ender_pull,ender_throw,escape_artist,fireball,firebrand,float,flurry,freeze,frostball,frostfire,golden_bite,gravity,healing,hearthing,juggernaut,levitate,lifestealing,momentum,nether_bane,nether_run,night_vision,nourish,phantom,poison_cloud,poseidons_call,radiance,reinforced,renew,restful,sand_wall,scavenger,slimy,smithing,steal,strength,summoner,torchbringer,venom,wanderer,warding,water_breathing,weighted,wisdom,wisp_caller,wither,yoyo|}",
         "prefix": "@coldenchants2/enchant/"
     },
-    "Cursed Enchantments":{
-        "prefix": "@cursed/enchant/",
-        "body": "cursed:${1|blindness,curtail,dullness,echo,encumbrance,fading,fragility,ignorance,insomnia,midas,misfortune,obedience,radiance,ruin,silence,sinking|}"
+    "Cursed Enchantments": {
+        "body": "cursed:${1|blindness,curtail,dullness,echo,encumbrance,fading,fragility,ignorance,insomnia,midas,misfortune,obedience,radiance,ruin,silence,sinking|}",
+        "prefix": "@cursed/enchant/"
     },
-    "Cursery Enchantments":{
-        "prefix": "@cursery/enchant/",
-        "body": "cursery:${1|curse_anvil,curse_blindness,curse_electrified,curse_explosive,curse_heavy_enchant,curse_hungry,curse_hungryhealth,curse_hurtful,curse_illusion,curse_laddering,curse_loose,curse_poison,curse_recoil,curse_slowness,curse_steelfeet,curse_stubby,curse_switchy,curse_undead,curse_weakness|}"
+    "Cursery Enchantments": {
+        "body": "cursery:${1|curse_anvil,curse_blindness,curse_electrified,curse_explosive,curse_heavy_enchant,curse_hungry,curse_hungryhealth,curse_hurtful,curse_illusion,curse_laddering,curse_loose,curse_poison,curse_recoil,curse_slowness,curse_steelfeet,curse_stubby,curse_switchy,curse_undead,curse_weakness|}",
+        "prefix": "@cursery/enchant/"
     },
-    "Cyclic Enchantments":{
-        "prefix": "@cyclic/enchant/",
-        "body": "cyclic:${1|auto_smelt,beekeeper,beheading,curse,disarm,ender,excavate,experience_boost,growth,launch,life_leech,magnet,multishot,quickshot,reach,step,traveler,venom|}"
+    "Cyclic Enchantments": {
+        "body": "cyclic:${1|auto_smelt,beekeeper,beheading,curse,disarm,ender,excavate,experience_boost,growth,launch,life_leech,magnet,multishot,quickshot,reach,step,traveler,venom|}",
+        "prefix": "@cyclic/enchant/"
     },
-    "Enchantable Enchantments":{
-        "prefix": "@enchantable/enchant/",
-        "body": "enchantable:${1|cultivator,excavator,iron_skull,ore_eater,replanting,stomping|}"
+    "Enchantable Enchantments": {
+        "body": "enchantable:${1|cultivator,excavator,iron_skull,ore_eater,replanting,stomping|}",
+        "prefix": "@enchantable/enchant/"
     },
-    "Ensorcellation Enchantments":{
-        "prefix": "@ensorcellation/enchant/",
-        "body": "ensorcellation:${1|air_affinity,angler,bulwark,cavalier,curse_fool,curse_mercy,damage_ender,damage_illager,damage_villager,displacement,excavating,exp_boost,fire_rebuke,frost_aspect,frost_rebuke,furrowing,gourmand,hunter,instigating,leech,magic_edge,magic_protection,phalanx,pilfering,quick_draw,reach,soulbound,tilling,trueshot,vitality,volley,vorpal,weeding|}"
+    "Ensorcellation Enchantments": {
+        "body": "ensorcellation:${1|air_affinity,angler,bulwark,cavalier,curse_fool,curse_mercy,damage_ender,damage_illager,damage_villager,displacement,excavating,exp_boost,fire_rebuke,frost_aspect,frost_rebuke,furrowing,gourmand,hunter,instigating,leech,magic_edge,magic_protection,phalanx,pilfering,quick_draw,reach,soulbound,tilling,trueshot,vitality,volley,vorpal,weeding|}",
+        "prefix": "@ensorcellation/enchant/"
     },
-    "Flowing Agony Enchantments":{
-        "prefix": "@flowingagony/enchant/",
-        "body": "flowingagony:${1|agony_screamer,an_enchanted_golden_apple_a_day,armor_up,back_and_fill,burial_object,burning_phobia,carefully_identified,cleansing_before_using,come_back_at_dusk,constrained_heart,corrupted_kindred,covert_knife,cutting_watermelon_dream,deathpunk,destruction_worship,dirty_money,drowning_phobia,encious_kind,exotic_healer,eyesore,fresh_revenge,frivolous_step,guidens_regret,hatred_bloodline,i_see_you_now,infectious_malice,insane_poet,last_sweet_dream,lightburn_fungal_parasitic,malice_outbreak,miraculous_escape,morirs_deathwish,morirs_lifebound,necessary_evil,nimble_finger,original_sin_erosion,outrageous_spirit,paper_brain,perceived_malice,piercing_fever,pilferage_creed,potential_burst,prayer_of_pain,prototype_chaotic,prototype_chaotic_type_beta,regular_customer_program,resentful_soul,savor_the_tasted,scholar_of_original_sin,shadowborn,shock_therapy,source_of_envy,stubborn_step,survival_ruse,survival_shortcut,thorn_in_flesh,too_resentful_to_die,trickster,vengeance|}"
+    "EvilCraft Enchantments": {
+        "body": "evilcraft:${1|breaking,life_stealing,poison_tip,unusing,vengeance|}",
+        "prefix": "@evilcraft/enchant/"
     },
-    "Ma Enchants Enchantments":{
-        "prefix": "@ma-enchants/enchant/",
-        "body": "ma-enchants:${1|blazing_walker,butchering,combo,curse_aquaphobia,curse_breaking,curse_butterfingers,curse_death,detonation,faster_attack,floating,ice_aspect,lifesteal,lumberjack,momentum,multi_jump,night_vision,paralysis,quick_draw,reinforced_tip,soft_fall,step_assist,stone_mending,timeless,true_shot,wisdom|}"
+    "Flowing Agony Enchantments": {
+        "body": "flowingagony:${1|agony_screamer,an_enchanted_golden_apple_a_day,armor_up,back_and_fill,burial_object,burning_phobia,carefully_identified,cleansing_before_using,come_back_at_dusk,constrained_heart,corrupted_kindred,covert_knife,cutting_watermelon_dream,deathpunk,destruction_worship,dirty_money,drowning_phobia,encious_kind,exotic_healer,eyesore,fresh_revenge,frivolous_step,guidens_regret,hatred_bloodline,i_see_you_now,infectious_malice,insane_poet,last_sweet_dream,lightburn_fungal_parasitic,malice_outbreak,miraculous_escape,morirs_deathwish,morirs_lifebound,necessary_evil,nimble_finger,original_sin_erosion,outrageous_spirit,paper_brain,perceived_malice,piercing_fever,pilferage_creed,potential_burst,prayer_of_pain,prototype_chaotic,prototype_chaotic_type_beta,regular_customer_program,resentful_soul,savor_the_tasted,scholar_of_original_sin,shadowborn,shock_therapy,source_of_envy,stubborn_step,survival_ruse,survival_shortcut,thorn_in_flesh,too_resentful_to_die,trickster,vengeance|}",
+        "prefix": "@flowingagony/enchant/"
     },
-    "Mana and Artifice Enchantments":{
-        "prefix": "@mana-and-artifice/enchant/",
-        "body": "mana-and-artifice:${1|aura-depths,aura-healing,aura-jumping,aura-mining,aura-repair,aura-running,bouncing,cloudstep,transitorystep|}"
+    "Jellyfishing Enchantments": {
+        "body": "jellyfishing:${1|agility,plundering|}",
+        "prefix": "@jellyfishing/enchant/"
+    },
+    "Ma Enchants Enchantments": {
+        "body": "ma-enchants:${1|blazing_walker,butchering,combo,curse_aquaphobia,curse_breaking,curse_butterfingers,curse_death,detonation,faster_attack,floating,ice_aspect,lifesteal,lumberjack,momentum,multi_jump,night_vision,paralysis,quick_draw,reinforced_tip,soft_fall,step_assist,stone_mending,timeless,true_shot,wisdom|}",
+        "prefix": "@ma-enchants/enchant/"
+    },
+    "Mana and Artifice Enchantments": {
+        "body": "mana-and-artifice:${1|aura-depths,aura-healing,aura-jumping,aura-mining,aura-repair,aura-running,bouncing,cloudstep,transitorystep|}",
+        "prefix": "@mana-and-artifice/enchant/"
     },
     "Minecraft Enchantments": {
         "body": "minecraft:${1|aqua_affinity,bane_of_arthropods,binding_curse,blast_protection,channeling,depth_strider,efficiency,feather_falling,fire_aspect,fire_protection,flame,fortune,frost_walker,impaling,infinity,knockback,looting,loyalty,luck_of_the_sea,lure,mending,multishot,piercing,power,projectile_protection,protection,punch,quick_charge,respiration,riptide,sharpness,silk_touch,smite,soul_speed,sweeping,thorns,unbreaking,vanishing_curse|}            ",
@@ -55,27 +67,35 @@
         "body": "cgm:${1|accelerator,collateral,fire_starter,lightweight,over_capacity,puncturing,quick_hands,reclaimed,trigger_finger|}",
         "prefix": "@cgm/enchant/"
     },
-    "Nature's Aura Enchantments":{
-        "prefix": "@naturesaura/enchant/",
-        "body": "naturesaura:${1|aura_mending|}"
+    "Nature's Aura Enchantments": {
+        "body": "naturesaura:${1|aura_mending|}",
+        "prefix": "@naturesaura/enchant/"
     },
-    "Pyromancer Enchantments":{
-        "prefix": "@pyromancer/enchant/",
-        "body": "pyromancer:${1|ashen_pages,blazing_wounds,breakthrough,goliath_slayer,hook,infernal_harvest,legerdemain,lightspeed,resilience,rush,scalding_spikes,sturdiness,tamer,two_handed,undertaker,volcanic_mark,yatagarasu|}"
+    "Pyromancer Enchantments": {
+        "body": "pyromancer:${1|ashen_pages,blazing_wounds,breakthrough,goliath_slayer,hook,infernal_harvest,legerdemain,lightspeed,resilience,rush,scalding_spikes,sturdiness,tamer,two_handed,undertaker,volcanic_mark,yatagarasu|}",
+        "prefix": "@pyromancer/enchant/"
     },
-    "Unique Enchantments (Battle) Enchantments":{
-        "prefix": "@uniquebattle/enchant/",
-        "body": "uniquebattle:${1|ares_fragment,celestial_blessing,lunatic_despair|}"
+    "Spartan Shields Enchantments": {
+        "body": "spartanshields:${1|firebrand,payback,spikes|}",
+        "prefix": "@spartanshields/enchant/"
     },
-    "Unique Enchantments (Core) Enchantments":{
-        "prefix": "@uniquee/enchant/",
-        "body": "uniquee:${1|alchemistsgrace,all,aresblessing,arthropods,berserk,bone_crusher,climate_tranquility,cloudwalker,deaths_odium,demeters_soul,ecological,ender_eyes,ender_librarian,ender_mending,endermarksmen,endest_reap,fastfood,focus_impact,icarus_aegis,ifrits_grace,midas_blessing,momentum,naturesgrace,perpetualstrike,pestilences_odium,phoenixs_blessing,ranged,sages_blessing,smart_ass,spartanweapon,swift,swiftblade,treasurers_eyes,undead,vitae,warriorsgrace|}"
+    "SwitchBow Enchantments": {
+        "body": "switchbow:${1|activescope,cooldownreduce,pullspeed|}",
+        "prefix": "@switchbow/enchant/"
     },
-    "Unique Enchantments (Util) Enchantments":{
-        "prefix": "@uniqueutil/enchant/",
-        "body": "uniqueutil:${1|climber,demeters_blessing,famines_odium,mounting_aegis,phanes_regret,poseidons_soul,rocketman,sleipnirs_grace,thick_pick|}"
+    "Unique Enchantments (Battle) Enchantments": {
+        "body": "uniquebattle:${1|ares_fragment,celestial_blessing,lunatic_despair|}",
+        "prefix": "@uniquebattle/enchant/"
     },
-    "Wonderful Enchantments":{
+    "Unique Enchantments (Core) Enchantments": {
+        "body": "uniquee:${1|alchemistsgrace,all,aresblessing,arthropods,berserk,bone_crusher,climate_tranquility,cloudwalker,deaths_odium,demeters_soul,ecological,ender_eyes,ender_librarian,ender_mending,endermarksmen,endest_reap,fastfood,focus_impact,icarus_aegis,ifrits_grace,midas_blessing,momentum,naturesgrace,perpetualstrike,pestilences_odium,phoenixs_blessing,ranged,sages_blessing,smart_ass,spartanweapon,swift,swiftblade,treasurers_eyes,undead,vitae,warriorsgrace|}",
+        "prefix": "@uniquee/enchant/"
+    },
+    "Unique Enchantments (Util) Enchantments": {
+        "body": "uniqueutil:${1|climber,demeters_blessing,famines_odium,mounting_aegis,phanes_regret,poseidons_soul,rocketman,sleipnirs_grace,thick_pick|}",
+        "prefix": "@uniqueutil/enchant/"
+    },
+    "Wonderful Enchantments": {
         "body": "wonderful_enchantments:${1|absorber,corrosion_curse,dodge,elder_guardian_favor,enlightenment,fatigue_curse,fishing_fanatic,fuse_cutter,gotta_mine_fast,harvester,horse_frost_walker,horse_protection,human_slayer,hunter,immortality,incompatibility_curse,leech,magic_protection,mithridatism,phoenix_dive,pufferfish_vengeance,sixth_sense,slowness_curse,smelter,swiftness,telekinesis,vampirism_curse,vitality|}",
         "prefix": "@wonderful_enchantments/enchant/"
     }
