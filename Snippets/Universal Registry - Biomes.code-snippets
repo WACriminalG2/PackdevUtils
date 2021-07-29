@@ -1,0 +1,46 @@
+{
+    "Abundance Biomes":{
+        "prefix": "@abundance/biomes/",
+        "body": "abundance:${1|lavender_fields,lavender_forest,nemophila_fields|}"
+    },
+    "Biomes O' Plenty Biomes":{
+        "prefix": "@biomesoplenty/biomes/",
+        "body": "biomesoplenty:${1|gravel_beach,tropic_beach,alps_foothills,redwood_forest_edge,volcanic_plains,orchard,bayou_mangrove,alps,bamboo_blossom_grove,bayou,burnt_forest,cherry_blossom_grove,cold_desert,coniferous_forest,coniferous_lakes,dead_forest,deep_bayou,dense_marsh,dense_woodland,dryland,dry_boneyard,fir_clearing,flower_meadow,fungal_field,fungal_jungle,golden_prairie,grassland,grassland_clover_patch,grove,grove_clearing,grove_lakes,highland,highland_crag,highland_moor,jade_cliffs,lavender_field,lavender_forest,lush_desert,lush_savanna,marsh,meadow,meadow_forest,muskeg,mystic_grove,mystic_plains,ominous_woods,ominous_mire,origin_valley,prairie,rainbow_hills,rainforest,rainforest_cliffs,rainforest_floodplain,redwood_forest,redwood_hills,scrubland,seasonal_forest,seasonal_orchard,seasonal_pumpkin_patch,shroomy_wetland,shrubland,shrubland_hills,snowy_coniferous_forest,snowy_maple_forest,snowy_fir_clearing,tall_dead_forest,tropics,tundra,tundra_basin,tundra_bog,volcano,wasteland,wetland,wetland_forest,wooded_scrubland,woodland,crystalline_chasm,undergrowth,visceral_heap,withered_abyss|}"
+    },
+    "BYG (Oh the Biomes You'll Go) Biomes":{
+        "prefix": "@byg/biomes/",
+        "body": "byg:${1|allium_fields,alps,amaranth_fields,ancient_forest,aspen_forest,autumnal_valley,baobab_savanna,bayou,blue_taiga,bluff_steeps,boreal_forest,cold_swamplands,crag_gardens,cika_woods,cherry_blossom_forest,redwood_tropics,coniferous_forest,cypress_swamplands,dover_mountains,dead_sea,deciduous_forest,dunes,ebony_woods,enchanted_forest,evergreen_taiga,glowshroom_bayou,grassland_plateau,great_lakes,grove,enchanted_grove,guiana_shield,jacaranda_forest,mangrove_marshes,maple_taiga,meadow,mojave_desert,lush_tundra,orchard,prairie,red_desert,red_desert_dunes,red_oak_forest,red_rock_mountains,seasonal_birch_forest,seasonal_deciduous_forest,seasonal_forest,seasonal_taiga,shattered_glacier,shrublands,skyris_highlands,snowy_blue_taiga,snowy_coniferous_forest,snowy_deciduous_forest,snowy_evergreen_taiga,the_black_forest,tropical_fungal_forest,tropical_rainforest,vibrant_swamplands,sierra_valley,weeping_witch_forest,woodlands,zelkova_forest,redwood_clearing,redwood_mountains,coral_mangroves,cika_mountains,glowing_ancient_forest,flowering_ancient_forest,snowy_evergreen_clearing,snowy_evergreen_hills,enchanted_forest_hills,ebony_hills,evergreen_clearing,evergreen_hills,fungal_patch,weeping_witch_clearing,pumpkin_forest,bamboo_forest,cherry_blossom_clearing,coniferous_clearing,zelkova_clearing,aspen_clearing,boreal_clearing,deciduous_clearing,seasonal_deciduous_clearing,guiana_clearing,jacaranda_clearing,snowy_coniferous_clearing,snowy_deciduous_clearing,maple_hills,black_forest_clearing,black_forest_hills,forest_fault,flowering_grove,flowering_enchanted_grove,northern_forest,lush_red_desert,sierra_range,alpine_foothills,aspen_forest_hills,blue_taiga_hills,blue_giant_taiga,bluff_peaks,boreal_forest_hills,bog,deciduous_forest_hills,coniferous_forest_hills,fresh_water_lake,frozen_lake,great_lake_isles,jacaranda_forest_hills,marshlands,oasis,polluted_lake,prairie_clearing,red_oak_forest_hills,red_rock_lowlands,red_rock_highlands,wooded_red_rock_mountains,seasonal_birch_forest_hills,seasonal_deciduous_forest_hills,seasonal_forest_hills,seasonal_giant_taiga,seasonal_taiga_hills,snowy_blue_giant_taiga,snowy_blue_taiga_hills,snowy_coniferous_forest_hills,snowy_deciduous_forest_hills,tropical_fungal_rainforest_hills,tropical_rainforest_hills,wooded_grassland_plateau,zelkova_forest_hills,flowering_meadow,wooded_meadow,rocky_beach,snowy_rocky_black_beach,snowy_black_beach,white_beach,rainbow_beach,tropical_islands,warped_desert,sythian_torrids,glowstone_gardens,embur_bog,ivis_fields,araucaria_savanna,rose_fields,stone_forest,twilight_valley,basalt_barrera,canyon_edge,araucaria_forest,pointed_stone_forest,twilight_valley_hills,red_spruce_taiga,brimstone_caverns,crimson_gardens,magma_wastes,subzero_hypogeal,wailing_garth,withering_woods,weeping_mire,quartz_desert,nightshade_forest,ethereal_islands,viscal_isles,bulbis_gardens,shattered_desert,shulkren_forest,purpur_peaks,cryptic_wastes,canyons,shattered_viscal_isles,bulbis_gardens_edge,ethereal_forest,ethereal_clearing,shattered_desert_isles,imparius_grove,imparius_clearing,skyris_highlands_clearing,skyris_peaks,skyris_steeps,guiana_springs,dummy|}"
+    },
+    "Druidcraft Biomes":{
+        "prefix": "@druidcraft/biomes/",
+        "body": "druidcraft:${1|darkwood_forest|}"
+    },
+    "Environmental Biomes":{
+        "prefix": "@environmental/biomes/",
+        "body": "environmental:${1|marsh,mushroom_marsh,blossom_woods,blossom_hills,blossom_highlands,blossom_valleys|}"
+    },
+    "Minecraft Biomes": {
+        "prefix": "@minecraft/biomes/",
+        "body": "minecraft:${1|ocean,plains,desert,mountains,forest,taiga,swamp,river,nether_wastes,the_end,frozen_ocean,frozen_river,snowy_tundra,snowy_mountains,mushroom_fields,mushroom_field_shore,beach,desert_hills,wooded_hills,taiga_hills,mountain_edge,jungle,jungle_hills,jungle_edge,deep_ocean,stone_shore,snowy_beach,birch_forest,birch_forest_hills,dark_forest,snowy_taiga,snowy_taiga_hills,giant_tree_taiga,giant_tree_taiga_hills,wooded_mountains,savanna,savanna_plateau,badlands,wooded_badlands_plateau,badlands_plateau,small_end_islands,end_midlands,end_highlands,end_barrens,warm_ocean,lukewarm_ocean,cold_ocean,deep_warm_ocean,deep_lukewarm_ocean,deep_cold_ocean,deep_frozen_ocean,the_void,sunflower_plains,desert_lakes,gravelly_mountains,flower_forest,taiga_mountains,swamp_hills,ice_spikes,modified_jungle,modified_jungle_edge,tall_birch_forest,tall_birch_hills,dark_forest_hills,snowy_taiga_mountains,giant_spruce_taiga,giant_spruce_taiga_hills,modified_gravelly_mountains,shattered_savanna,shattered_savanna_plateau,eroded_badlands,modified_wooded_badlands_plateau,modified_badlands_plateau,bamboo_jungle,bamboo_jungle_hills,soul_sand_valley,crimson_forest,warped_forest,basalt_deltas|}            "
+    },
+
+    "Twilight Forest Biomes":{
+        "prefix": "@twilightforest/biomes/",
+        "body": "twilightforest:${1|forest,dense_forest,firefly_forest,clearing,oak_savannah,stream,lake,mushroom_forest,dense_mushroom_forest,enchanted_forest,spooky_forest,swamp,fire_swamp,dark_forest,dark_forest_center,snowy_forest,glacier,highlands,thornlands,final_plateau|}"
+    },
+
+    "Twist Biomes":{
+        "prefix": "@twist/biomes/",
+        "body": "twist:${1|volcanic,charredwastes,burntforest|}"
+    },
+
+    "Undergarden Biomes":{
+        "prefix": "@undergarden/biomes/",
+        "body": "undergarden:${1|barren_abyss,dense_forest,forgotten_field,frostfields,gronglegrowth,mushroom_bog,smogstem_forest,smog_spires,wigglewood_forest|}            "
+    },
+
+    "Unnamed Animal Mod Biomes":{
+        "prefix": "@unnamedanimalmod/biomes/",
+        "body": "unnamedanimalmod:${1|mangrove_forest|}"
+    }
+}

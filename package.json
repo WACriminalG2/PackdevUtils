@@ -1,0 +1,65 @@
+{
+    "name": "packdevutils",
+    "displayName": "Packdev Utils",
+    "version": "1.4.0",
+    "publisher": "PackDevUtils",
+    "engines": {
+        "vscode": "^1.8.0"
+      },
+    "repository": {"url": "https://github.com/WACriminalG2/PackdevUtils"},
+    "categories": ["Snippets"],
+
+    "contributes": {
+          "snippets": [
+              {
+                  "language": "",
+                  "path": "./Snippets/Universal Registry - Blocks.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/Universal Registry - Items.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/Universal Registry - Entities.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/Universal Registry - Potions.code-snippets"
+              },
+              {
+                "language": "",
+                "path": "./Snippets/Universal Registry - Enchantments.code-snippets"
+            },
+            {
+                "language": "",
+                "path": "./Snippets/Universal Registry - Biomes.code-snippets"
+            },
+              {
+                  "language": "",
+                  "path": "./Snippets/Masterful Machinery Utilities.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/OTG Utilities.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/KubeJS Utilities.code-snippets"
+              },
+              {
+                  "language": "",
+                  "path": "./Snippets/Cave Generator Utilities.code-snippets"
+              },
+              {
+                "language": "",
+                "path": "./Snippets/Mystic Alchemy Utilities.code-snippets"
+            },
+            {
+                "language": "",
+                "path": "./Snippets/Resourceful Bees Utilities.code-snippets"
+            }
+          ]
+      }
+
+}

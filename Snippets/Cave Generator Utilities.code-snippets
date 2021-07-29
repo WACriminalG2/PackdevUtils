@@ -1,0 +1,580 @@
+{
+	"CG Preset": {
+		"prefix": ["@cavegenerator/preset/","@cg/preset/"],
+		"body": [
+			"{",
+				"\tenabled: ${1|true,false|}",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${2|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${3|false,true|}",
+				"\theight: [ ${4:0, 255} ]",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"\treplaceableBlocks: [ ${5:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+				"\trooms: {}",
+				"\tbranches: {}",
+				"\ttunnels: []",
+				"\travines: []",
+				"\tcaverns: []",
+				"\tburrows: []",
+				"\tlayers: []",
+				"\tclusters: []",
+				"\tstalactites: []",
+				"\tpillars: []",
+				"\tstructures: []",
+			"}"
+		]
+	},
+
+	"CG Biomes": {
+		"prefix": ["@cavegenerator/biomes/", "@cg/biomes/"],
+		"body": [
+			" ",
+			"\tnames: [$1]",
+			"\tIDs: [$2]",
+			"\ttypes: [$0]",
+			""
+		]
+	},
+
+	"CG CaveBlocks": {
+		"prefix": ["@cavegenerator/caveBlocks/", "@cg/caveBlocks/"],
+		"body": [
+			"{",
+				"\tstates: []",
+				"\tintegrity: ${1:1.0}",
+				"\theight: [ ${0:0, 50} ]",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG WallDecorators": {
+		"prefix": ["@cavegenerator/wallDecorators/","@cg/wallDecorators/"],
+		"body": [
+			"{",
+				"\tstates: []",
+				"\tintegrity: ${1:1.0}",
+				"\theight: [ ${2:0, 50} ]",
+				"\tdirections: []",
+				"\tmatchers: []",
+				"\tplacement: ${0:embed}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Ponds": {
+		"prefix": ["@cavegenerator/ponds/","@cg/ponds/"],
+		"body": [
+			"{",
+				"\tstates: [$1]",
+				"\tintegrity: ${2:1.0}",
+				"\theight: [ ${3:0, 50} ]",
+				"\tdepth: ${0:2}",
+				"\tmatchers: []",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Shell": {
+		"prefix": ["@cavegenerator/shell/","@cg/shell/"],
+		"body": [
+			"",
+			"\tradius: ${1:0.0}",
+			"\tsphereResolution: ${2:2}",
+			"\tnoiseThreshold: ${0:0.0}",
+			"\tdecorators: []",
+			""
+		]
+	},
+
+	"CG Decorators": {
+		"prefix": ["@cavegenerator/decorators/","@cg/decorators/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null or empty**.",
+				"\tstates: []",
+				"\t# **This value may not be null or empty**.",
+				"\tmatchers: []",
+				"\theight: [ ${1:0, 63} ]",
+				"\tintegrity: ${0:1.0}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Rooms": {
+		"prefix": ["@cavegenerator/rooms/","@cg/rooms/"],
+		"body": [
+			"",
+				"\tscale: ${1:6}",
+				"\tchance: ${2:0.1}",
+				"\tstretch: ${3:0.5}",
+			"",
+				"\treplaceableBlocks: [ ${4:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+			""
+		]
+	},
+
+	"CG Branches": {
+		"prefix": ["@cavegenerator/branches/","@cg/branches/"],
+		"body": [
+			"",
+				"\tcount: ${1:15}",
+				"\toriginHeight: [ ${2:8, 128} ]",
+				"\tresolution: ${3:4}",
+				"\tsystemChance: ${4:0.25}",
+				"\tchance: ${5:0.142}",
+				"\tsystemDensity: ${6:4}",
+				"\tnoiseYReduction: ${7|true,false|}",
+				"\tdistance: ${8:0}",
+				"\tseed: ${9:null}",
+				"\treseedBranches: ${10|true,false|}",
+				"\tresizeBranches: ${11|true,false|}",
+				"\tcheckWater: ${12|true,false|}",
+				"\tscale: {}",
+				"\tstretch: {}",
+				"\tyaw: {}",
+				"\tpitch: {}",
+				"\tdYaw: {}",
+				"\tdPitch: {}",
+				"",
+				"\trooms: {}",
+				"\tbranches: {}",
+				"",
+				"\theight: [ ${13:8, 255} ]",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${14|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${15|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"",
+				"\treplaceableBlocks: [ ${16:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+			""
+		]
+	},
+
+	"CG Tunnels": {
+		"prefix": ["@cavegenerator/tunnels/","@cg/tunnels/"],
+		"body": [
+			"{",
+				"\tcount: ${1:15}",
+				"\toriginHeight: [ ${2:8, 128} ]",
+				"\tresolution: ${3:4}",
+				"\tsystemChance: ${4:0.25}",
+				"\tchance: ${5:0.142}",
+				"\tsystemDensity: ${6:4}",
+				"\tnoiseYReduction: ${7|true,false|}",
+				"\tdistance: ${8:0}",
+				"\tseed: ${9:null}",
+				"\treseedBranches: ${10|true,false|}",
+				"\tresizeBranches: ${11|true,false|}",
+				"\tcheckWater: ${12|true,false|}",
+				"\tscale: {}",
+				"\tstretch: {}",
+				"\tyaw: {}",
+				"\tpitch: {}",
+				"\tdYaw: {}",
+				"\tdPitch: {}",
+				"",
+				"\trooms: {}",
+				"\tbranches: {}",
+				"",
+				"\theight: [ ${13:8, 255} ]",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${14|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${15|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"",
+				"\treplaceableBlocks: [ ${16:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+			"}"
+		]
+	},
+
+	"CG Ravines": {
+		"prefix": ["@cavegenerator/ravines/","@cg/ravines/"],
+		"body": [
+			"{",
+				"\tchance: ${1:0.02}",
+				"\toriginHeight: [ ${2:20, 66} ]",
+				"\tresolution: ${3:4}",
+				"\tdistance: ${4:0}",
+				"\tcutoffStrength: ${5:5.0}",
+				"\tcheckWater: ${6|true,false|}",
+				"\tdYaw: {}",
+				"\tdPitch: {}",
+				"\tscale: {}",
+				"\tstretch: {}",
+				"\tyaw: {}",
+				"\tpitch: {}",
+				"\tnoiseYFactor: ${7:0.7}",
+				"\twalls: {}",
+				"",
+				"\theight: [ ${8:8, 128} ]",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: {$9|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: {$10|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"",
+				"\treplaceableBlocks: [ ${11:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+			"}"
+		]
+	},
+
+	"CG Caverns": {
+		"prefix": ["@cavegenerator/caverns/","@cg/caverns/"],
+		"body": [
+			"{",
+				"\theight: [ ${1:10, 50} ]",
+				"\tgenerators: []",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\toffset: {}",
+				"\twalls: {}",
+				"\twallOffset: {}",
+				"\twallCurveRation: ${2:1.0}",
+				"\twallInterpolation: ${3|false,true|}",
+				"",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${4|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${5|false,true|}",
+				"",
+				"\treplaceableBlocks: [ ${6:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+			"}"
+		]
+	},
+
+	"CG Burrows": {
+		"prefix": ["@cavegenerator/burrows/","@cg/burrows/"],
+		"body": [
+			"{",
+				"\tradius: ${1:4.5}",
+				"\ttarget: ${2:0.1}",
+				"\tstretch: ${3:1.0}",
+				"\texponent: ${4:4.0}",
+				"\tshift: ${5:0.0}",
+				"\twallDistance: ${6:18.0}",
+				"\twallExponent: ${7:2.0}",
+				"",
+				"\tmap: {}",
+				"\toffset: {}",
+				"",
+				"\tregion: {}",
+				"\tnoise: {}",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${8|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${9|false,true|}",
+				"",
+				"\treplaceableBlocks: [ ${10:\"stone\", \"dirt\"} ]",
+				"\treplaceDecorators: ${0|true,false|}",
+				"\tcaveBlocks: []",
+				"\twallDecorators: []",
+				"\tponds: []",
+				"\tshell: {}",
+			"}"
+		]
+	},
+
+	"CG Layers": {
+		"prefix": ["@cavegenerator/layers/","@cg/layers/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null**.",
+				"\tstate: ${1:null}",
+				"\t# **This value may not be null**.",
+				"\theight: [ ${2:0, 20} ]",
+				"\tceiling: {}",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${3|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${0|false,true|}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Clusters": {
+		"prefix": ["@cavegenerator/clusters/","@cg/clusters/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null or empty**.",
+				"\tstates: []",
+				"\tchance: ${1:0.15}",
+				"\tintegrity: ${2:1.0}",
+				"\tradiusX: [ ${3:13, 19} ]",
+				"\tradiusY: [ ${4:9, 15} ]",
+				"\tradiusZ: [ ${5:13, 19} ]",
+				"\t# This will override the others if absent",
+				"\tradius: ${6:null}",
+				"\tcenterHeight: [ ${7:24, 40} ]",
+				"\tmatchers: []",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${8|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${9|false,true|}",
+				"\theight: [ ${0:0, 255} ]",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Stalactites": {
+		"prefix": ["@cavegenerator/stalactites/","@cg/stalactites/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null**.",
+				"\tstate: ${1:null}",
+				"\ttype: ${2|stalactite,stalagmite,speleothem|}",
+				"\tsize: ${3|medium,small,large,giant|}",
+				"\tlength: [ ${4:1, 3} ]",
+				"\tchance: ${5:0.167}",
+				"\theight: [ ${6:11, 55} ]",
+				"\tmatchers: []",
+				"\tregion: {}",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${7|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${0|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Pillars": {
+		"prefix": ["@cavegenerator/pillars/","@cg/pillars/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null**",
+				"\tstate: ${1:null}",
+				"\t# This may be absent but not null.",
+				"\tstairBlock: ${2:null}",
+				"\tcount: ${3:15}",
+				"\theight: [ ${4:10, 50} ]",
+				"\tlength: [ ${5:4, 12} ]",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${6|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${0|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Structures": {
+		"prefix": ["@cavegenerator/structures/","@cg/structures/"],
+		"body": [
+			"{",
+				"\t# **This value may not be null**",
+				"\t# This refers to either a resource location or file name.",
+				"\tname: ${1:null}",
+				"\tintegrity: ${2:1.0}",
+				"\toffset: [ ${3:0}, ${4:0}, ${5:0} ]",
+				"\tcount: ${6:1}",
+				"\tchance: ${7:0.05}",
+				"\theight: [ ${8:10, 50} ]",
+				"\tmatchers: []",
+				"\tdirections: []",
+				"\tairChecks: []",
+				"\tsolidChecks: []",
+				"\tnonSolidChecks: []",
+				"\twaterChecks: []",
+				"\tblockChecks: []",
+				"\tdebugSpawns: ${9|false,true|}",
+				"\tcommand: \"\"",
+				"\trotateRandomly: ${10|false,true|}",
+				"\treplacedBlock: ${11:stone}",
+				"\tmirror: ${12:none}",
+				"\tignoreEntities: ${13|false,true|}",
+				"",
+				"\tbiomes: {}",
+				"\tblacklistBiomes: ${14|false,true|}",
+				"\tdimensions: []",
+				"\tblacklistDimensions: ${0|false,true|}",
+				"\tceiling: {}",
+				"\tfloor: {}",
+				"\tregion: {}",
+				"\tnoise: {}",
+			"}"
+		]
+	},
+
+	"CG Ceiling": {
+		"prefix": ["@cavegenerator/ceiling/","@cg/ceiling/"],
+		"body": [
+			"",
+			"\ttype: ${1|SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Simplex,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tfrequency: ${2:1.0}",
+			"\toctaves: ${3:1}",
+			"\tperturb: ${4|false,true|}",
+			"\tperturbAmp: ${5:1.0}",
+			"\tperturbFreq: ${6:0.1}",
+			"\trange: [ ${7:0, 10} ]",
+			"\tseed: ${8:1}",
+			"\tinvert: ${9|false,true|}",
+			"\tdummy: ${10|false,true|}",
+			"\tcache: ${0|false,true|}",
+			""
+		]
+	},
+
+	"CG Floor": {
+		"prefix": ["@cavegenerator/floor/","@cg/floor/"],
+		"body": [
+			"",
+			"\ttype: ${1|SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Simplex,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tfrequency: ${2:1.0}",
+			"\toctaves: ${3:1}",
+			"\tperturb: ${4|false,true|}",
+			"\tperturbAmp: ${5:1.0}",
+			"\tperturbFreq: ${6:0.1}",
+			"\trange: [ ${7:0, 10} ]",
+			"\tseed: ${8:1}",
+			"\tinvert: ${9|false,true|}",
+			"\tdummy: ${10|false,true|}",
+			"\tcache: ${0|false,true|}",
+			""
+		]
+	},
+
+	"CG Wall": {
+		"prefix": ["@cavegenerator/wall/","@cg/wall/"],
+		"body": [
+			"",
+			"\ttype: ${1|SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Simplex,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tfrequency: ${2:1.0}",
+			"\toctaves: ${3:1}",
+			"\tperturb: ${4|false,true|}",
+			"\tperturbAmp: ${5:1.0}",
+			"\tperturbFreq: ${6:0.1}",
+			"\trange: [ ${7:0, 10} ]",
+			"\tseed: ${8:1}",
+			"\tinvert: ${9|false,true|}",
+			"\tdummy: ${10|false,true|}",
+			"\tcache: ${0|false,true|}",
+			""
+		]
+	},
+
+	"CG Region": {
+		"prefix": ["@cavegenerator/region/","@cg/region/"],
+		"body": [
+			"",
+			"\ttype: ${1|SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Simplex,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tscale: ${2:1.0}",
+			"\tfrequency: ${3:1.0}",
+			"\tinvert: ${4|false,true|}",
+			"\tseed: ${5:1}",
+			"\tdummy: ${6|false,true|}",
+			"\tcache: ${0|false,true|}",
+			""
+		]
+	},
+
+	"CG Noise": {
+		"prefix": ["@cavegenerator/noise/","@cg/noise/"],
+		"body": [
+			"",
+			"\tscale: ${1:1.0}",
+			"\tfrequency: ${2:1.0}",
+			"\tstretch: ${3:1.0}",
+			"\tlacunarity: ${4:1.0}",
+			"\tgain: ${5:0.5}",
+			"\tjitter: ${6:0.45}",
+			"\tjitterX: ${7:0.45}",
+			"\tjitterY: ${8:0.45}",
+			"\tjitterZ: ${9:0.45}",
+			"\toctaves: ${10:1}",
+			"\tperturb: ${11|false,true|}",
+			"\tperturbAmp: ${12:1.0}",
+			"\tperturbFreq: ${13:0.1}",
+			"\tinvert: ${14|false,true|}",
+			"\ttype: ${15|SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Simplex,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tinterp: ${16|Hermite,Linear,Quintic|}",
+			"\tfractal: ${17|FBM,Billow,RigidMulti|}",
+			"\tdistFunc: ${18|Euclidian,Manhattan,Natural|}",
+			"\treturnType: ${19|Distance2,CellValue,NoiseLookup,Distance,Distance2Add,Distance2Sub,Distance2Mul,Distance2Div,Distance3,Distance3Add,Distance3Sub,Distance3Mul,Distance3Div|}",
+			"\tcellularLookup: ${20|Simplex,SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Cellular,WhiteNoise,Cubic,CubicFractal|}",
+			"\tseed: ${21:1}",
+			"\tdummy: ${22|false,true|}",
+			"\tcache: ${0|false,true|}",
+			""
+		]
+	},
+
+	"CG Scalable Float": {
+		"prefix": ["@cavegenerator/yaw/","@cg/yaw/","@cavegenerator/dYaw/","@cg/dYaw/","@cavegenerator/pitch/","@cg/pitch/","@cavegenerator/dPitch/","@cg/dPitch/","@cavegenerator/scale/","@cg/scale/","@cavegenerator/stretch/","@cg/stretch/"],
+		"body": [
+			"",
+			"\tstartVal: ${1:1.0}",
+			"\tstartValRandFactor: ${2:1.0}",
+			"\tfactor: ${3:1.0}",
+			"\trandFactor: ${4:1.0}",
+			"\texponent: ${0:1.0}",
+			""
+		]
+	}
+}

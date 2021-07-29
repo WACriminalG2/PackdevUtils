@@ -1,0 +1,20 @@
+{
+    "Potion Ingredient Recipe":{
+        "prefix": "@mysticalchemy/recipe/potion_ingredient/",
+        "body": [
+            "{",
+                "\t\"type\": \"mysticalchemy:potion_ingredient\",",
+                "\t\"item\": \"${1:minecraft:allium}\",",
+                "\t\"lingering_catalyst\": ${2|false,true|},",
+                "\t\"splash_catalyst\": ${3|false,true|},",
+                "\t\"duration_added\": ${4|0},",
+                "\t\"effects\": [",
+                    "\t\t{",
+                        "\t\t\t\"effect\": \"${5:minecraft:absorption}\",",
+                        "\t\t\t\"strength\": ${0:0.5}",
+                    "\t\t}",
+                "\t]",
+            "}"
+        ]
+    }
+}

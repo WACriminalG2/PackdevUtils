@@ -1,0 +1,189 @@
+{
+    "Custom Bee": {
+        "prefix": "@resourcefulbees/custombee/",
+        "body": [
+            "{\r",
+            "    \"flower\":\"${1:ALL}\",\r",
+            "    \"baseLayerTexture\":\"/${2|creeper,coal,diamond,dragon,emerald,ender,gold,icy,iron,lapis,nether_quartz,netherite,pigman,redstone,rgb,skeleton,slimy,wither,zombie|}/${2:creeper}_bee\",\r",
+            "    \"maxTimeInHive\":${3:2400},\r",
+            "    \"sizeModifier\":${4:1.0},\r",
+            "    \"traits\":[${5:\"wither\",}${6:\"blaze\",}${7:\"can_swim\",}${8:\"creeper\",}${9:\"zombie\",}${10:\"pigman\",}${11:\"ender\",}${12:\"nether\",} ${13:\"oreo\",} ${14:\"kitten\",} ${15:\"slimy\",} ${16:\"desert\"}],\r",
+            "    \"hasHoneycomb\":${17|true,false|},\r",
+            "    \"customCombDrop\": \"\",\r",
+            "    \"customCombBlockDrop\": \"\",\r",
+            "    \"apiaryOutputAmounts\" : [1,2,3,4],\r",
+            "    \"ColorData\": {\r",
+            "        \"isBeeColored\": ${18|false,true|},\r",
+            "        \"primaryColor\":\"${19:#005500}\",\r",
+            "        \"secondaryColor\":\"${20:#000000}\",\r",
+            "        \"honeycombColor\":\"${21:#005500}\",\r",
+            "        \"primaryLayerTexture\":\"\",\r",
+            "        \"secondaryLayerTexture\":\"\",\r",
+            "        \"emissiveLayerTexture\":\"\",\r",
+            "        \"isRainbowBee\": false,\r",
+            "        \"isGlowing\" : false,\r",
+            "        \"glowColor\" : \"#55ff55\",\r",
+            "        \"isEnchanted\" : false,\r",
+            "        \"glowingPulse\" : 2,\r",
+            "        \"modelType\": \"${22|DEFAULT,ORE,GELATINOUS,DRAGON,QUEEN,VILLAGER,MUSHROOM,CROP,ARMORED|}\"\r",
+            "    },\r",
+            "    \"CombatData\": {  \r",
+            "        \"isPassive\": ${23|false,true|},  \r",
+            "        \"removeStingerOnAttack\": ${24|true,false|},\r",
+            "        \"inflictsPoison\": ${25|true,false|},\r",
+            "        \"attackDamage\": ${26:1}\r",
+            "    },\r",
+            "    \"MutationData\": {},\r",
+            "    \"CentrifugeData\": {},\r",
+            "    \"SpawnData\": {},\r",
+            "    \"BreedData\": {},\r",
+            "    \"TraitData\": {\r",
+            "        \"hasTraits\": ${0|true,false|}\r",
+            "    }\r",
+            "}"
+        ],
+        "description": "A template for Resourceful Bees."
+    },
+
+    "Custom Bee MutationData":{
+        "prefix": "@resourcefulbees/custombee/mutationdata/",
+        "body": [
+            "",
+                "\t\"hasMutation\": ${1|true,false|}",
+                "\t\"mutationType\": \"${2|NONE,FLUID_TO_FLUID,BLOCK_TO_FLUID,FLUID_TO_BLOCK,BLOCK_TO_BLOCK,BLOCK_TO_ITEM,ENTITY_TO_ENTITY|}\",",
+                "\t\"mutationInput\": \"${3}\",",
+                "\t\"mutationOutput\": \"${4}\",",
+                "\t\"mutationCount\": ${5:5},",
+                "\t\"mutations\": []",
+            ""
+        ]
+    },
+
+    "Custom Bee Mutations":{
+        "prefix": "@resourcefulbees/custombee/mutationdata/mutations/",
+        "body": [
+            "{",
+                "\t\"type\": \"${1|NONE,FLUID_TO_FLUID,BLOCK_TO_FLUID,FLUID_TO_BLOCK,BLOCK_TO_BLOCK,BLOCK_TO_ITEM,ENTITY_TO_ENTITY|}\",",
+                "\t\"outputID\": \"${2}\",",
+                "\t\"defaultChance\": ${3:1},",
+                "\t\"defaultWeight\": ${4:1},",
+                "\t\"outputs\": [",
+                    "\t\t{\"outputID\": \"${5}\", \"chance\": ${6:1}, \"weight\": ${7:1}, \"nbtData\":{${0}}}",
+                "\t]",
+            "}"
+        ]
+    },
+
+    "Custom Bee CentrifugeData":{
+        "prefix": "@resourcefulbees/custombee/centrifugedata/",
+        "body": [
+            "",
+                "\t\"hasCentrifugeOutput\": ${1|true,false|},",
+                "\t\"mainInputCount\": ${2:1},",
+                "\t\"mainOutput\": \"${3}\",",
+                "\t\"mainOutputWeight\": ${4:1.00},",
+                "\t\"mainOutputCount\": ${5:1},",
+                "\t\"mainNBTData\": {},",
+                "\t\"secondaryOutput\": \"${6:resourcefulbees:wax}\",",
+                "\t\"secondaryOutputWeight\": ${7:0.20},",
+                "\t\"secondaryOutputCount\": ${8:1},",
+                "\t\"secondaryNBTData\": {},",
+                "\t\"bottleOutput\": \"${9:minecraft:honey_bottle}\",",
+                "\t\"bottleOutputWeight\": ${10:0.25},",
+                "\t\"bottleOutputCount\": ${11:1},",
+                "\t\"bottleNBTData\": {},",
+                "\t\"recipeTime\": ${12:200},",
+                "\t\"hasFluidOutput\": ${0|false,true|}",
+            ""
+        ]
+    },
+
+    "Custom Bee SpawnData":{
+        "prefix": "@resourcefulbees/custombee/spawndata/",
+        "body": [
+            "",
+                "\t\"canSpawnInWorld\": ${1|true,false|},",
+                "\t\"biomeWhitelist\": \"${2}\",",
+                "\t\"biomeBlacklist\": \"${3}\",",
+                "\t\"spawnWeight\": ${4:2},",
+                "\t\"minYLevel\": ${5:0},",
+                "\t\"maxYLevel\": ${6:255},",
+                "\t\"minGroupSize\": ${7:1},",
+                "\t\"maxGroupSize\": ${8:1},",
+                "\t\"lightLevel\": \"${0|ANY,DAY,NIGHT|}\"",
+            ""
+        ]
+    },
+
+    "Custom Bee BreedData":{
+        "prefix": "@resourcefulbees/custombee/breeddata/",
+        "body": [
+            "",
+                "\t\"isBreedable\": ${1|true,false|},",
+                "\t\"parent1\": \"${2}\",",
+                "\t\"parent2\": \"${3}\",",
+                "\t\"breedWeight\": ${4:10},",
+                "\t\"breedChance\": ${5:1},",
+                "\t\"feedItem\": \"${6:all}\",",
+                "\t\"feedAmount\": ${7:1},",
+                "\t\"childGrowthDelay\": ${8:-24000},",
+                "\t\"breedDelay\": ${0:6000}",
+            ""
+        ]
+    },
+
+    "Custom Honey":{
+        "prefix": "@resourcefulbees/customhoney/",
+        "body": [
+            "{",
+                "\t\"name\": \"${1}\",",
+                "\t\"hunger\": ${2:0},",
+                "\t\"honeyColour\": \"${3:#FFFFFF}\",",
+                "\t\"saturation\": ${4:0},",
+                "\t\"isRainbow\": ${5|false,true|},",
+                "\t\"honeyBlockRecipe\": ${6|true,false|},",
+                "\t\"generateHoneyBlock\": ${7|true,false|},",
+                "\t\"effects\": [",
+                    "\t\t{\"effectID\": \"${8}\", \"duration\": ${9:60}, \"strength\": ${10:0}, \"chance\": ${0:0.5}}",
+                "\t]",
+            "}"
+        ]
+    },
+
+    "Custom BeeTraits":{
+        "prefix": "@resourcefulbees/customtrait/",
+        "body": [
+            "{",
+                "\t\"beepediaItemID\": \"${1:resourcefulbees:wax}\",",
+                "\t\"potionDamageEffects\": [",
+                    "\t\t{",
+                        "\t\t\t\"effectID\": \"${2:minecraft:wither}\",",
+                        "\t\t\t\"strength\": ${3:2}",
+                    "\t\t}",
+                "\t],",
+                "\t\"damageImmunities\": [\"${4|inFire,lightningBolt,onFire,lava,hotFloor,inWall,cramming,drown,starve,cactus,fall,flyIntoWall,generic,magic,wither,anvil,fallingBlock,dragonBreath,dryout|}\"],",
+                "\t\"potionImmunities\": [\"${5:minecraft:poison}\"],",
+                "\t\"damageTypes\": [\"\"${6|inFire,lightningBolt,onFire,lava,hotFloor,inWall,cramming,drown,starve,cactus,fall,flyIntoWall,generic,magic,wither,anvil,fallingBlock,dragonBreath,dryout|}\"],",
+                "\t\"particleName\": \"${0}\"",
+            "}"
+        ]
+    },
+
+    "Resourceful Bees Centrifuge Recipe":{
+        "prefix": "@resourcefulbees/recipe/centrifuge/",
+        "body": [
+            "{",
+                "\t\"type\": \"resourcefulbees:centrifuge\",",
+                "\t\"ingredient\": {",
+                    "\t\t\"item\": \"${1:minecraft:stone}\",",
+                "\t},",
+                "\t\"results\": [",
+                    "\t\t{",
+                        "\t\t\t\"item\": \"${2:minecraft:diamond}\"",
+                    "\t\t}",
+                "\t],",
+                "\t\"time\": ${0:200}",
+            "}"
+        ]
+    }
+}

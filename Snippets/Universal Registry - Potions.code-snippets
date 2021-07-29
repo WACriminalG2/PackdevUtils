@@ -1,0 +1,192 @@
+{
+    "Abundance Potions": {
+        "prefix": "@abundance/potions/",
+        "body": "abundance:${1|succumbing,supportive|}"
+    },
+    "Alex's Mobs Potions": {
+        "body": "alexsmobs:${1|bug_pheromones,clinging,debilitating_sting,ender_flu,exsanguination,fear,knockback_resistance,lava_vision,oiled,orcas_might,poison_resistance,soulsteal,sunbird_blessing,sunbird_curse,tigers_blessing|}",
+        "prefix": "@alexsmobs/potions/"
+    },
+    "Apotheosis Potions": {
+        "prefix": "@apotheosis/potions/",
+        "body": "apotheosis:${1|bleeding,knowledge,sundering|}"
+    },
+    "Astral Sorcery Potions": {
+        "body": "astralsorcery:${1|bleed,cheat_death,drop_modifier|}",
+        "prefix": "@astralsorcery/potions/"
+    },
+    "Atmospheric Potions": {
+        "prefix": "@atmospheric/potions/",
+        "body": "atmospheric:${1|gelled,persistence,relief,spitting,worsening|}"
+    },
+    "Atum 2 Potions": {
+        "body": "atum:${1|marked_for_death|}",
+        "prefix": "@atum/potions/"
+    },
+    "Autumnity Potions": {
+        "prefix": "@autumnity/potions/",
+        "body": "autumnity:${1|extension,foul_taste|}"
+    },
+    "Better End Potions": {
+        "prefix": "@betterendforge/potions/",
+        "body": "betterendforge:${1|end_veil|}"
+    },
+    "Blood Magic Potions": {
+        "body": "bloodmagic:${1|firefuse,plantleech,sacrificiallamb,soulfray,soulsnare|}",
+        "prefix": "@bloodmagic/potions/"
+    },
+    "Botania Potions": {
+        "body": "botania:${1|allure,bloodthirst,clear,emptiness,feather_feet,soul_cross|}",
+        "prefix": "@botania/potions/"
+    },
+    "Bumblezone Potions": {
+        "prefix": ["@the_bumblezone/potions/","@bumblezone/potions/"],
+        "body": "the_bumblezone:${1|protection_of_the_hive,wrath_of_the_hive|}"
+    },
+    "Buzzier Bees Potions": {
+        "prefix": "@buzzier_bees/potions/",
+        "body": "buzzier_bees:${1|sunny|}"
+    },
+    "CoFH Core Potions": {
+        "body": "cofh_core:${1|chilled,clarity,enderference,explosion_resistance,lightning_resistance,love,magic_resistance,panacea,shocked,sundered,wrenched|}",
+        "prefix": "@cofh_core/potions/"
+    },
+    "Cold's Enchants 2.0 Potions":{
+        "prefix": "@coldenchants2/potions/",
+        "body": "coldenchants2:${1|displaced_effect,miners_knowledge_effect,poison_cloud_effect,radiance_effect|}"
+    },
+    "Cyclic Potions": {
+        "body": "cyclic:${1|stun,swimspeed|}",
+        "prefix": "@cyclic/potions/"
+    },
+    "Danny's Expansion Potions": {
+        "body": "dannys_expansion:${1|cursed_flames,spores,venom|}",
+        "prefix": "@dannys_expansion/potions/"
+    },
+    "Eidolon Potions": {
+        "body": "eidolon:${1|anchored,chilled|}",
+        "prefix": "@eidolon/potions/"
+    },
+    "Environmental Potions": {
+        "prefix": "@environmental/potions/",
+        "body": "environmental:${1|panic,serenity|}"
+    },
+    "Farmer's Delight Potions": {
+        "body": "farmersdelight:${1|comfort,nourished|}",
+        "prefix": "@farmersdelight/potions/"
+    },
+    "Flowing Agony Potions":{
+        "prefix": "@flowingagony/potions/",
+        "body": "flowingagony:${1|agony_resonance,back_and_fill_enchantment_active,been_resonated,curse_of_undead,cursed_antipathy,cursed_hatred,envious_being,extreme_hatred,eyesore_enchantment_active,fresh_revenge_enchantment_active,frivolous_step_enchantment_active,hatred_bloodline_enchantment_active,insane_poet_enchantment_active,let_me_savor_it,lightburn_fungal_infection,listen_to_me_singing,miraculous_escape_enchantment_active,miraculous_escape_enchantment_force_escape,paper_brain_enchantment_active,potential_burst_enchantment_active,prototype_chaotic_enchantment_active,shock_therapy_enchantment_active,thorn_in_flesh_active,thorn_in_flesh_active_for_player|}"
+    },
+    "Greek Fantasy Potions": {
+        "body": "greekfantasy:${1|mirror,petrified,stunned,swine|}",
+        "prefix": "@greekfantasy/potions/"
+    },
+    "Immersive Engineering Potions": {
+        "body": "immersiveengineering:${1|concrete_feet,conductive,flammable,flashed,slippery,sticky,stunned|}",
+        "prefix": "@immersiveengineering/potions/"
+    },
+    "Lycanites Mobs Potions": {
+        "body": "lycanitesmobs:${1|aphagia,bleed,cleansed,decay,envenom,fallresist,fear,freezeaura,heataura,immunization,insomnia,instability,leech,lifeleak,paralysis,penetration,plague,rage,recklessness,rejuvenation,repulsion,smited,smouldering,staticaura,swiftswimming,weight|}",
+        "prefix": "@lycanitesmobs/potions/"
+    },
+    "Mana and Artifice Potions":{
+        "prefix": "@mana-and-artifice/potions/",
+        "body": "mana-and-artifice:${1|asphyxiate,briarthorn-barrier,chrono-anchor,chrono-exhaustion,confusion,dispel-exhaustion,divination,entangle,fire-shield,gravity-well,instant-mana,life-tap,lift,mana-boost,mana-burn,mana-regen,mana-shield,mana-stunt,mind-control,pilgrim,repair,silence,true-invisibility,watery-grave,wizard-sight|}            "
+    },
+    "Minecraft Potions": {
+        "body": "minecraft:${1|absorption,bad_omen,blindness,conduit_power,dolphins_grace,fire_resistance,glowing,haste,health_boost,hero_of_the_village,hunger,instant_damage,instant_health,invisibility,jump_boost,levitation,luck,mining_fatigue,nausea,night_vision,poison,regeneration,resistance,saturation,slow_falling,slowness,speed,strength,unluck,water_breathing,weakness,wither|}",
+        "prefix": "@minecraft/potions/"
+    },
+    "Mowzie's Mobs Potions": {
+        "body": "mowziesmobs:${1|frozen,geomancy,poison_resist,sunblock,suns_blessing|}",
+        "prefix": "@mowziesmobs/potions/"
+    },
+    "MrCrayfish's Guns Potions":{
+        "prefix": "@cgm/potions/",
+        "body": "cgm:${1|blinded,deafened|}"
+    },
+    "Mushroom Quest Potions": {
+        "body": "mushroomquest:${1|aromaticeffect|}",
+        "prefix": "@mushroomquest/potions/"
+    },
+    "Mystical World Potions": {
+        "body": "mysticalworld:${1|serendipity,slow_regeneration,wakeful|}",
+        "prefix": "@mysticalworld/potions/"
+    },
+    "Nature's Aura Potions": {
+        "body": "naturesaura:${1|breathless|}",
+        "prefix": "@naturesaura/potions/"
+    },
+    "Neapolitan Potions": {
+        "body": "neapolitan:${1|agility,berserking,harmony,slipping,sugar_rush,vanilla_scent|}",
+        "prefix": "@neapolitan/potions/"
+    },
+    "Paraglider Potions": {
+        "body": "paraglider:${1|exhausted|}",
+        "prefix": "@paraglider/potions/"
+    },
+    "Project Rankine Potions": {
+        "body": "rankine:${1|conductive,mercury_poison,radiation_poison|}",
+        "prefix": [
+            "@rankine/potions/",
+            "@projectrankine/potions/"
+        ]
+    },
+    "Pyromancer Potions":{
+        "prefix": "@pyromancer/potions/",
+        "body": "pyromancer:${1|brimflame,pigmen_legion_cd,volcanic_mark_effect|}"
+    },
+    "Quark Potions": {
+        "body": "quark:${1|danger_sight,resilience|}",
+        "prefix": "@quark/potions/"
+    },
+    "Rats Potions": {
+        "prefix": "@rats/potions/",
+        "body": "rats:${1|plague,synesthesia|}"
+    },
+    "Resourceful Bees Potions": {
+        "prefix": "@resourcefulbees/potions/",
+        "body": "resourcefulbees:${1|calming|}"
+    },
+    "Silent's Gems 3 Potions": {
+        "body": "silentgems:${1|chaos_sickness,freezing,grounded,insulated,shocking|}",
+        "prefix": "@silentgems/potions/"
+    },
+    "Tetra Potions":{
+        "prefix": "@tetra/potions/",
+        "body": "tetra:${1|bleeding,earthbound,exhausted,howling,pried,punctured,severed,small_absorb,small_health,small_strength,steeled,stun,suspended,unwavering|}"
+    },
+    "Tinker's Construct Potions": {
+        "body": "tconstruct:${1|bleeding,carry,insatiable,magnetic,momentum|}",
+        "prefix": [
+            "@tinkersconstruct/potions/",
+            "@tconstruct/potions/"
+        ]
+    },
+    "Twilight Forest Potions": {
+        "body": "twilightforest:${1|frosted|}",
+        "prefix": "@twilightforest/potions/"
+    },
+    "Twist Potions": {
+        "body": "twist:${1|afterburn,charging|}",
+        "prefix": "@twist/potions/"
+    },
+    "Undergarden Potions": {
+        "body": "undergarden:${1|brittleness,featherweight,gooey,virulent_resistance|}",
+        "prefix": "@undergarden/potions/"
+    },
+    "Unique Enchantments (Core) Potions":{
+        "prefix": "@uniquee/potions/",
+        "body": "uniquee:${1|pestilences_odium|}"
+    },
+    "Upgrade Aquatic Potions": {
+        "body": "upgrade_aquatic:${1|insomnia,repellence,restfulness,vibing|}",
+        "prefix": "@upgrade_aquatic/potions/"
+    },
+    "Wonderful Enchantments Potions":{
+        "prefix": "@wonderful_enchantments/potions/",
+        "body": "wonderful_enchantments:${1|mithridatism_protection|}"
+    }
+}

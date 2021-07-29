@@ -1,0 +1,55 @@
+{
+	"Chest-Shaped Recipe": {
+		"prefix": "@kubejs/shaped/chest/",
+		"body": [
+			"event.shaped('1x ${1:minecraft:chest}', [",
+				"\t'XXX',",
+				"\t'X X',",
+				"\t'XXX'",
+			"], {",
+				"\tX: '${0:minecraft:oak_planks}'",
+			"})"
+		]
+	},
+
+	"Compression Recipe": {
+		"prefix": "@kubejs/shaped/compression/",
+		"body": [
+			"event.shaped('1x ${1:minecraft:iron_block}', [",
+				"\t'XXX',",
+				"\t'XXX',",
+				"\t'XXX'",
+			"], {",
+				"\tX: '${0:minecraft:iron_ingot}'",
+			"})"
+		]
+	},
+
+	"Mystic Alchemy Potion Ingredient Helper":{
+		"prefix": "@kubejs/mysticalchemy/potion_ingredient/",
+		"body": [
+			"let alchemize = (input, primaryeffect, primarystrength, secondaryeffect, secondarystrength, lingering, splash, duration) => {",
+				"\tevent.custom(",
+					"\t\t{",
+                		"\t\t\t\"type\": \"mysticalchemy:potion_ingredient\",",
+                		"\t\t\t\"item\": input,",
+                		"\t\t\t\"lingering_catalyst\": lingering,",
+                		"\t\t\t\"splash_catalyst\": splash,",
+                		"\t\t\t\"duration_added\": duration,",
+                		"\t\t\t\"effects\": [",
+                    		"\t\t\t\t{",
+                        		"\t\t\t\t\t\"effect\": primaryeffect,",
+                        		"\t\t\t\t\t\"strength\": primarystrength",
+                    		"\t\t\t\t}",
+							"\t\t\t\t{",
+								"\t\t\t\t\t\"effect\": secondaryeffect,",
+								"\t\t\t\t\t\"strength\": secondarystrength",
+							"\t\t\t\t}",
+                		"\t\t\t]",
+            		"\t\t}",
+				"\t)",
+			"}"
+		]
+	}
+
+}
