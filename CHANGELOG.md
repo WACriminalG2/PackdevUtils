@@ -1,5 +1,8 @@
 # v1.6.0 -- 7/29/21
 
+* Added validation schema for Mystic Alchemy potion ingredients.
+* Updated @minecraft/tag validation schema.
+
 # v1.5.0 -- 7/29/21
 
 * Added test JSON schema validation for tag files.

@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Mystic Alchemy Potion Ingredient",
+    "description": "Validation schema for Mystic Alchemy's potion ingredient recipes.",
+    "type":"object",
+    "required": ["type","item","effects"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "mysticalchemy:potion_ingredient"
+        },
+        "item": {
+            "type": "string",
+            "description": "Registry ID of the item you wish to use as an ingredient."
+        },
+        "effects": {
+            "type": "array",
+            "description": "The potion effects applied by this ingredient.",
+            "items": {
+                "type": "object",
+                "required": ["effect","strength"],
+                "properties": {
+                    "effect": {
+                        "type": "string",
+                        "description": "Registry ID of a potion effect."
+                    },
+                    "strength": {
+                        "type": "number",
+                        "description": "Magnitude of this potion effect added to a potion by this ingredient. Can be a negative number."
+                    }
+                }
+            }
+        },
+        "lingering_catalyst": {
+            "type": "boolean",
+            "description": "Whether this ingredient should produce a lingering potion."
+        },
+        "splash_catalyst": {
+            "type": "boolean",
+            "description": "Whether this ingredient should produce a splash potion."
+        },
+        "duration_added": {
+            "type": "integer",
+            "description": "The amount of time, in ticks, added to the potion's default duration by this ingredient."
+        }
+    }
+}

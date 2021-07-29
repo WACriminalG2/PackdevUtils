@@ -16,5 +16,6 @@
         }
     },
     "title": "Minecraft Tag",
-    "type": "object"
+    "type": "object",
+    "required": ["values"]
 }
