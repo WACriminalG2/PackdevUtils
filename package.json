@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -13,51 +13,56 @@
         "languages": [
             {
                 "id": "openterraingenerator",
-                "extensions":[".ini",".bo3",".bo4",".bc"],
+                "extensions":[".bo3",".bo4",".bc"],
                 "aliases": ["OTG"]
             },
             {
                 "id": "cavegenerator",
-                "extensions": [".cave",".hjson"],
+                "extensions": [".cave"],
                 "aliases": ["Cave"]
             },
             {
-                "id": "packdevutils",
-                "extensions": [".json",".hjson",".jsonc",".js",".ts",".zs",".toml",".nbt",".bo3",".bo4",".ini",".bc",".cave"],
-                "aliases": ["Minecraft Modpacks"]
+                "id": "nbt",
+                "extensions": [".nbt"],
+                "aliases": ["NBTdata"]
+            },
+            {
+                "id": "zenscript",
+                "extensions": [".zs"],
+                "aliases": ["ZenScript"]
             }
         ],
           "snippets": [
               {
-                  "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Blocks.code-snippets"
               },
               {
-                  "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Items.code-snippets"
               },
               {
-                  "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Entities.code-snippets"
               },
               {
-                  "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Potions.code-snippets"
               },
               {
-                "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/Universal Registry - Enchantments.code-snippets"
             },
             {
-                "language": "packdevutils",
+                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/Universal Registry - Biomes.code-snippets"
             },
               {
-                  "language": "json",
+                  "languages": ["json","javascript","typescript","zenscript"],
                   "path": "./Snippets/Masterful Machinery Utilities.code-snippets"
               },
               {
-                  "language": "openterraingenerator",
+                  "languages": ["openterraingenerator","ini"],
                   "path": "./Snippets/OTG Utilities.code-snippets"
               },
               {
@@ -69,14 +74,13 @@
                   "path": "./Snippets/Cave Generator Utilities.code-snippets"
               },
               {
-                "language": "json",
+                "languages": ["json","javascript","typescript","zenscript"],
                 "path": "./Snippets/Mystic Alchemy Utilities.code-snippets"
             },
             {
-                "language": "json",
+                "languages": ["json","javascript","typescript","zenscript"],
                 "path": "./Snippets/Resourceful Bees Utilities.code-snippets"
             }
           ]
       }
-
 }
