@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -34,27 +34,27 @@
         ],
           "snippets": [
               {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Blocks.code-snippets"
               },
               {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Items.code-snippets"
               },
               {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Entities.code-snippets"
               },
               {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                   "path": "./Snippets/Universal Registry - Potions.code-snippets"
               },
               {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/Universal Registry - Enchantments.code-snippets"
             },
             {
-                  "language": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                  "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/Universal Registry - Biomes.code-snippets"
             },
               {
@@ -70,7 +70,7 @@
                   "path": "./Snippets/KubeJS Utilities.code-snippets"
               },
               {
-                  "language": "cavegenerator",
+                  "languages": ["cavegenerator"],
                   "path": "./Snippets/Cave Generator Utilities.code-snippets"
               },
               {

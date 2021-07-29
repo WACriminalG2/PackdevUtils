@@ -1,3 +1,7 @@
+# v1.4.3 -- 7/29/21
+
+* Pluralizing arrays.
+
 # v1.4.2 -- 7/29/21
 
 * Fixed language scopes. Oops.
