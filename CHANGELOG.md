@@ -1,3 +1,7 @@
+# v1.4.1 -- 7/29/21
+
+* Added language scopes for snippets to prevent them from showing up in unnecessary contexts. Unfortunately, the "necessary context" for the universal registry is pretty broad, but the other helper snippets should be cleanly out of the way now.
+
 # v1.4.0 -- 7/28/21
 
 * Added @kubejs/shaped/ helper snippets for common recipe shapes: Chest, Compression. More like these planned.
