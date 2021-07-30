@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -32,7 +32,7 @@
                 "aliases": ["ZenScript"]
             }
         ],
-        
+
           "snippets": [
               {
                   "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -88,6 +88,22 @@
               {
                   "fileMatch": "*/tags/*.json",
                   "url": "./Schema/minecraft/tag.json"
+              },
+              {
+                  "fileMatch": "*/mysticalchemy/recipes/ingredients/*.json",
+                  "url": "./Schema/mysticalchemy/recipes/potion_ingredient.json"
+              },
+              {
+                  "fileMatch": "*/architects_palette/recipes/warping/*.json",
+                  "url": "./Schema/architects_palette/recipes/warping/*.json"
+              },
+              {
+                  "fileMatch": "*/config/incontrol/spawner.json",
+                  "url": "./Schema/incontrol/spawner.json"
+              },
+              {
+                  "fileMatch": "*/config/incontrol/spawn.json",
+                  "url": "./Schema/incontrol/spawn.json"
               }
           ]
       }
