@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -104,6 +104,14 @@
               {
                   "fileMatch": "*/config/incontrol/spawn.json",
                   "url": "./Schema/incontrol/spawn.json"
+              },
+              {
+                  "fileMatch": "*/bounties/pools/*.json",
+                  "url": "./Schema/bountiful/pool.json"
+              },
+              {
+                  "fileMatch": "*/bounties/decrees/*.json",
+                  "url": "./Schema/bountiful/decree.json"
               }
           ]
       }

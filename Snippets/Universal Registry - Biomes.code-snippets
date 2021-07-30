@@ -80,5 +80,29 @@
     "Unnamed Animal Mod Biomes": {
         "body": "unnamedanimalmod:${1|mangrove_forest|}",
         "prefix": "@unnamedanimalmod/biomes/"
+    },
+
+    "Fluffy's Farming Biomes":{
+        "prefix": ["@fluffy_farmer/biomes/","@fluffys_farming/biomes/"],
+        "body": "fluffy_farmer:${1|wolffir_forest|}"
+    },
+
+    "Dimensional Dungeons Biomes":{
+        "prefix": "@dimdungeons/biomes/",
+        "body": "dimdungeons:${1|biome_dungeon|}"
+    },
+
+    "Pokecube Legends Biomes":{
+        "prefix": "@pokecube_legends/biomes/",
+        "body": "pokecube_legends:${1|distorted_biome,ultra_dark_valley,ultra_deep_cave,ultra_deep_hills,ultra_desert,ultra_forgotten_plains,ultra_jungle|}"
+    },
+
+    "Tropicraft Biomes":{
+        "prefix": "@tropicraft/biomes/",
+        "body": "tropicraft:${1|kelp_forest,rainforest_hills,rainforest_island_mountains,rainforest_mountains,rainforest_plains,tropics,tropics_beach,tropics_ocean,tropics_river|}"
+    },
+    "PokeCube Biomes":{
+        "prefix": "@pokecube/biomes/",
+        "body": "pokecube:${1|secret_base|}"
     }
 }

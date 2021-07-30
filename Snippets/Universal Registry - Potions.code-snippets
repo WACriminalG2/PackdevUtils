@@ -54,6 +54,10 @@
         "body": "buzzier_bees:${1|sunny|}",
         "prefix": "@buzzier_bees/potions/"
     },
+    "Carrots Lib Potions": {
+        "body": "carrots:${1|attentiveness,birchsap_bucket,endurance,energized,exquisitely_stuffed,happiness,happiness_donor,honey_bucket,hydration,milk_bucket,muscle_boosted,placebo,placeholder,plenty_satisfied,resilience,resilience_donor,supremely_satisfied,well_fed|}",
+        "prefix": "@carrots/potions/"
+    },
     "CoFH Core Potions": {
         "body": "cofh_core:${1|chilled,clarity,enderference,explosion_resistance,lightning_resistance,love,magic_resistance,panacea,shocked,sundered,wrenched|}",
         "prefix": "@cofh_core/potions/"
@@ -61,6 +65,10 @@
     "Cold's Enchants 2.0 Potions": {
         "body": "coldenchants2:${1|displaced_effect,miners_knowledge_effect,poison_cloud_effect,radiance_effect|}",
         "prefix": "@coldenchants2/potions/"
+    },
+    "Crock Pot Potions": {
+        "body": "crockpot:${1|wither_resistance|}",
+        "prefix": "@crockpot/potions/"
     },
     "Cyclic Potions": {
         "body": "cyclic:${1|stun,swimspeed|}",
@@ -96,6 +104,13 @@
     "Flowing Agony Potions": {
         "body": "flowingagony:${1|agony_resonance,back_and_fill_enchantment_active,been_resonated,curse_of_undead,cursed_antipathy,cursed_hatred,envious_being,extreme_hatred,eyesore_enchantment_active,fresh_revenge_enchantment_active,frivolous_step_enchantment_active,hatred_bloodline_enchantment_active,insane_poet_enchantment_active,let_me_savor_it,lightburn_fungal_infection,listen_to_me_singing,miraculous_escape_enchantment_active,miraculous_escape_enchantment_force_escape,paper_brain_enchantment_active,potential_burst_enchantment_active,prototype_chaotic_enchantment_active,shock_therapy_enchantment_active,thorn_in_flesh_active,thorn_in_flesh_active_for_player|}",
         "prefix": "@flowingagony/potions/"
+    },
+    "Fluffy's Farming Potions": {
+        "body": "fluffy_farmer:${1|cleanness,hot,instability,protein,sweetness|}",
+        "prefix": [
+            "@fluffy_farmer/potions/",
+            "@fluffys_farming/potions/"
+        ]
     },
     "Greek Fantasy Potions": {
         "body": "greekfantasy:${1|mirror,petrified,stunned,swine|}",
@@ -156,6 +171,10 @@
         "body": "neapolitan:${1|agility,berserking,harmony,slipping,sugar_rush,vanilla_scent|}",
         "prefix": "@neapolitan/potions/"
     },
+    "Occultism Potions": {
+        "body": "occultism:${1|double_jump,third_eye|}",
+        "prefix": "@occultism/potions/"
+    },
     "Odd Water Mobs Potions": {
         "body": "oddwatermobs:${1|healing_vigor,potion_of_mudskipping,potion_of_mudskipping_plus,sinking|}",
         "prefix": "@oddwatermobs/potions/"
@@ -191,13 +210,29 @@
         "body": "resourcefulbees:${1|calming|}",
         "prefix": "@resourcefulbees/potions/"
     },
+    "Seasonals Potions": {
+        "body": "seasonals:${1|fall_flavor,puppeteering,thorn_resistance|}",
+        "prefix": "@seasonals/potions/"
+    },
     "Silent's Gems 3 Potions": {
         "body": "silentgems:${1|chaos_sickness,freezing,grounded,insulated,shocking|}",
         "prefix": "@silentgems/potions/"
     },
+    "Simply Tea Potions": {
+        "body": "simplytea:${1|caffeinated,enderfalling,invigorated,relaxed,restful|}",
+        "prefix": "@simplytea/potions/"
+    },
+    "SushiGo Crafting Potions": {
+        "body": "sushigocrafting:${1|acquired_taste,small_bites,steady_hands|}",
+        "prefix": "@sushigocrafting/potions/"
+    },
     "SwitchBow Potions": {
         "body": "switchbow:${1|freeze,love|}",
         "prefix": "@switchbow/potions/"
+    },
+    "Terraqueous Potions": {
+        "body": "terraqueous:${1|deathfruit_crash,deathfruit_withdraw,displacement,firewater|}",
+        "prefix": "@terraqueous/potions/"
     },
     "Tetra Potions": {
         "body": "tetra:${1|bleeding,earthbound,exhausted,howling,pried,punctured,severed,small_absorb,small_health,small_strength,steeled,stun,suspended,unwavering|}",
@@ -209,6 +244,10 @@
             "@tinkersconstruct/potions/",
             "@tconstruct/potions/"
         ]
+    },
+    "Tough As Nails Potions": {
+        "body": "toughasnails:${1|thirst|}",
+        "prefix": "@toughasnails/potions/"
     },
     "Twilight Forest Potions": {
         "body": "twilightforest:${1|frosted|}",
@@ -229,6 +268,10 @@
     "Upgrade Aquatic Potions": {
         "body": "upgrade_aquatic:${1|insomnia,repellence,restfulness,vibing|}",
         "prefix": "@upgrade_aquatic/potions/"
+    },
+    "Vanilla Food Pantry Potions": {
+        "body": "vanillafoodpantry:${1|bat_sighted,carrot_vision,cooled_food,guardians_grace,heated_food,kelped,well_stuffed|}",
+        "prefix": "@vanillafoodpantry/potions/"
     },
     "Wonderful Enchantments Potions": {
         "body": "wonderful_enchantments:${1|mithridatism_protection|}",

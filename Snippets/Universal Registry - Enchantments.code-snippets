@@ -31,6 +31,10 @@
         "body": "cyclic:${1|auto_smelt,beekeeper,beheading,curse,disarm,ender,excavate,experience_boost,growth,launch,life_leech,magnet,multishot,quickshot,reach,step,traveler,venom|}",
         "prefix": "@cyclic/enchant/"
     },
+    "Effect Enchantments": {
+        "body": "effectenchantments:${1|blinding,botening,decay,feathery,floating,gill_breathing,golden_vigor,gradualness,harming,leaping,mining,nocturnality,queasiness,radiance,repletion,shielding,starvation,strengthening,subaquatic,swiftness,tardiness,thermal_shielding,toxin,vigor,waterborne,weakening|}",
+        "prefix": "@effectenchantments/enchant/"
+    },
     "Enchantable Enchantments": {
         "body": "enchantable:${1|cultivator,excavator,iron_skull,ore_eater,replanting,stomping|}",
         "prefix": "@enchantable/enchant/"
@@ -42,6 +46,14 @@
     "EvilCraft Enchantments": {
         "body": "evilcraft:${1|breaking,life_stealing,poison_tip,unusing,vengeance|}",
         "prefix": "@evilcraft/enchant/"
+    },
+    "Farmer's Delight Enchantments": {
+        "body": "farmersdelight:${1|backstabbing|}",
+        "prefix": "@farmersdelight/enchant/"
+    },
+    "Flashfyre's Enchantments": {
+        "body": "ffenchants:${1|anchoring_curse,aquatic_rejuvenation,bloodlust,buoyancy_horse,butchering,inferno,leaping_horse,maelstrom,obsidian_skull,outrush,pillaging,poison_aspect,quickness_horse,searing,sharpshooter,steadfast,torrent,vampiric,weighted,wither_aspect|}",
+        "prefix": "@ffenchants/enchant/"
     },
     "Flowing Agony Enchantments": {
         "body": "flowingagony:${1|agony_screamer,an_enchanted_golden_apple_a_day,armor_up,back_and_fill,burial_object,burning_phobia,carefully_identified,cleansing_before_using,come_back_at_dusk,constrained_heart,corrupted_kindred,covert_knife,cutting_watermelon_dream,deathpunk,destruction_worship,dirty_money,drowning_phobia,encious_kind,exotic_healer,eyesore,fresh_revenge,frivolous_step,guidens_regret,hatred_bloodline,i_see_you_now,infectious_malice,insane_poet,last_sweet_dream,lightburn_fungal_parasitic,malice_outbreak,miraculous_escape,morirs_deathwish,morirs_lifebound,necessary_evil,nimble_finger,original_sin_erosion,outrageous_spirit,paper_brain,perceived_malice,piercing_fever,pilferage_creed,potential_burst,prayer_of_pain,prototype_chaotic,prototype_chaotic_type_beta,regular_customer_program,resentful_soul,savor_the_tasted,scholar_of_original_sin,shadowborn,shock_therapy,source_of_envy,stubborn_step,survival_ruse,survival_shortcut,thorn_in_flesh,too_resentful_to_die,trickster,vengeance|}",
@@ -59,6 +71,10 @@
         "body": "mana-and-artifice:${1|aura-depths,aura-healing,aura-jumping,aura-mining,aura-repair,aura-running,bouncing,cloudstep,transitorystep|}",
         "prefix": "@mana-and-artifice/enchant/"
     },
+    "MineColonies Enchantments": {
+        "body": "minecolonies:${1|raider_damage_enchant|}",
+        "prefix": "@minecolonies/enchant/"
+    },
     "Minecraft Enchantments": {
         "body": "minecraft:${1|aqua_affinity,bane_of_arthropods,binding_curse,blast_protection,channeling,depth_strider,efficiency,feather_falling,fire_aspect,fire_protection,flame,fortune,frost_walker,impaling,infinity,knockback,looting,loyalty,luck_of_the_sea,lure,mending,multishot,piercing,power,projectile_protection,protection,punch,quick_charge,respiration,riptide,sharpness,silk_touch,smite,soul_speed,sweeping,thorns,unbreaking,vanishing_curse|}            ",
         "prefix": "@minecraft/enchant/"
@@ -74,6 +90,10 @@
     "Pyromancer Enchantments": {
         "body": "pyromancer:${1|ashen_pages,blazing_wounds,breakthrough,goliath_slayer,hook,infernal_harvest,legerdemain,lightspeed,resilience,rush,scalding_spikes,sturdiness,tamer,two_handed,undertaker,volcanic_mark,yatagarasu|}",
         "prefix": "@pyromancer/enchant/"
+    },
+    "Silent Gear Enchantments": {
+        "body": "silentgear:${1|star_charged|}",
+        "prefix": "@silentgear/enchant/"
     },
     "Spartan Shields Enchantments": {
         "body": "spartanshields:${1|firebrand,payback,spikes|}",

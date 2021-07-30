@@ -1,0 +1,60 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type":"object",
+    "title": "Bountiful Reward/Objective Pool",
+    "required": ["content"],
+    "properties": {
+        "content": {
+            "type":"array",
+            "description":"Collection of possible rewards/objectives.",
+            "items": {
+                "type": "object",
+                "required": ["type","content","unitWorth","weight","amountRange"],
+                "properties": {
+                    "type": {
+                        "enum": ["item","item-tag","entity","command"],
+                        "description":"The type of objective or reward."
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "Registry ID for the selected objective or reward. Alternatively, if using a command reward, the command as a string. When using command rewards, use %player% to refer to the player, and %amount% to refer to the amount of this reward that was generated, such as when using a /give command to give the player a specific quantity of something."
+                    },
+                    "unitWorth": {
+                        "type": "integer",
+                        "description": "The amount of 'worth' that a single one of this objective will be worth. This value will be used to find suitable objectives that match the combined worth of the rewards.",
+                        "minimum": 0
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description":"This is an arbitrary number that determines how often, relatively, this bounty reward will be picked compared to another. Rewards with higher weights will be picked more often. NOTE: Weight is not considered when picking objectives, just rewards!",
+                        "minimum": 0
+                    },
+                    "amountRange": {
+                        "type": "object",
+                        "required": ["min","max"],
+                        "properties": {
+                            "min": {
+                                "type": "integer",
+                                "description": "Minimum amount of this objective or reward that will be generated in a bounty.",
+                                "minimum": 0
+                            },
+                            "max": {
+                                "type": "integer",
+                                "description": "Maximum amount of this objective or reward that will be generated in a bounty.",
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "timeMult": {
+                        "type": "number",
+                        "description": "Time ,ultiplier, presumably? Unclear what this does."
+                    },
+                    "nbt": {
+                        "type": "object",
+                        "description": "NBT data for item rewards and objective. If you are not using an item reward/objective, or you do not wish for it to require specific NBT data, do not include this key."
+                    }
+                }
+            }
+        }
+    }
+}

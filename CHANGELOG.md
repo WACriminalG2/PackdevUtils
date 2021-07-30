@@ -1,3 +1,127 @@
+# v1.7.0 -- 7/30/21
+
+* Added schema validation for Bountiful's decree and objective/reward pool JSONs.
+* Universal registry added:
+
+## BLOCKS
+
+* Botany Pots
+* Bountiful
+* Carrots Lib
+* CasinoCraft
+* Crock Pot
+* Culinary Construct
+* Dimensional Dungeons
+* Edible Bugs
+* Engineer's Decor
+* Fluffy's Farming
+* Horticulture
+* Husbandry
+* MedievalCraft
+* MineColonies
+* Occultism
+* Piscary
+* PokeCube
+* PokeCube Adventures
+* PokeCube Legends
+* Seasonals
+* Silent Gear
+* Silent's Mechanisms
+* Simply Tea
+* SushiGo Crafting
+* Terraqueous
+* Terraqueous Heads
+* Token Enchanter
+* Tough As Nails
+* Tropicraft
+* Untamed Wilds
+* Vanilla Food Pantry
+* Water Strainer
+* XL Food Mod
+
+## ITEMS
+
+* Additional Banners
+* Botany Pots
+* Bountiful
+* Carrots Lib
+* CasinoCraft
+* Crock Pot
+* Culinary Construct
+* Dimensional Dungeons
+* Edible Bugs
+* Engineer's Decor
+* Fluffy's Farming
+* Horticulture
+* Husbandry
+* MedievalCraft
+* MineColonies
+* NeverEnoughCandy
+* Occultism
+* Penguin Lib
+* Piscary
+* PokeCube
+* PokeCube Adventures
+* PokeCube Legends
+* Seasonals
+* Shopaholic
+* Silent Gear
+* Silent's Mechanisms
+* Simply Tea
+* SushiGo Crafting
+* Terraqueous
+* Terraqueous Heads
+* Token Enchanter
+* Tough As Nails
+* Tropicraft
+* Untamed Wilds
+* Vanilla Food Pantry
+* XL Food Mod
+
+## ENTITIES
+
+* Engineer's Decor
+* MedievalCraft
+* MineColonies
+* Occultism
+* Piscary
+* PokeCube
+* PokeCube Adventures
+* Silent Gear
+* SushiGo Crafting
+* Terraqueous
+* Tropicraft
+* Untamed Wilds
+
+## POTIONS
+
+* Carrots Lib
+* Crock Pot
+* Fluffy's Farming
+* Occultism
+* Seasonals
+* Simply Tea
+* SushiGo Crafting
+* Terraqueous
+* Tough As Nails
+* Vanilla Food Pantry
+
+## ENCHANTMENTS
+
+* Effect Enchantments
+* Farmer's Delight
+* FlashFyre's Enchants
+* MineColonies
+* Silent Gear
+
+## BIOMES
+
+* Dimensional Dungeons
+* Fluffy's Farming
+* PokeCube
+* PokeCube Legends
+* Tropicraft
+
 # v1.6.0 -- 7/29/21
 
 * Added validation schema for Mystic Alchemy potion ingredients.
