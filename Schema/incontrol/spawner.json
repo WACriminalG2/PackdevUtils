@@ -1,0 +1,140 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "InControl! Spawner",
+    "description": "Validation schema for InControl's spawner.json",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": ["mob","attempts","persecond","amount","conditions"],
+        "properties": {
+            "mob": {
+                "type": ["string","array"],
+                "description": "The mob or list of mobs to be spawned by this rule.",
+                "examples": ["minecraft:creeper","minecraft:skeleton","minecraft:pig"],
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "attempts": {
+                "type": "integer",
+                "description": "The number of times In Control will attempt to find a good position to spawn the mob. By default this is 1.",
+                "minimum": 0
+            },
+
+            "persecond": {
+                "type": "number",
+                "description": "A floating point number indicating the chance of this rule firing. If this is 0.5 then there is 50% chance that this rule will spawn a mob (meaning that on average it will fire every 2 seconds). The default of this value is 1 (which means the rules fire onces per second). The maximum is also 1.",
+                "minimum": 0,
+                "maximum": 1
+            },
+            
+            "amount": {
+                "type": "object",
+                "properties": {
+                    "minimum": {
+                        "type": "integer",
+                        "description": "The minimum number of mobs that this rule will attempt to spawn at once. Default is 1.",
+                        "minimum": 0
+                    },
+                    "maximum": {
+                        "type": "integer",
+                        "description": "The maximum number of mobs that this rule will attempt to spawn at once. Default is 1.",
+                        "minimum": 1
+                    }
+                }
+            },
+
+            "conditions": {
+                "type": "object",
+                "required": ["dimension"],
+                "properties": {
+                    "dimension": {
+                        "type": ["string","array"],
+                        "description": "A dimension or list of dimensions for this rule.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+
+                    "mindist": {
+                        "type": "integer",
+                        "description": "Minimum distance to the player for controlling the spawn. By default this is 24.",
+                        "minimum": 0
+                    },
+
+                    "maxdist": {
+                        "type": "integer",
+                        "description": "Maximum distance to the player for controlling the spawn. By default this is 120.",
+                        "minimum": 0
+                    },
+
+                    "minheight": {
+                        "type": "integer",
+                        "description": "Minimum Y level of the spawn. By default this is 1.",
+                        "minimum": 1,
+                        "maximum": 256
+                    },
+
+                    "maxheight": {
+                        "type": "integer",
+                        "description": "Maximum Y level of the spawn. By default this is 256.",
+                        "minimum": 1,
+                        "maximum": 256
+                    },
+
+                    "norestrictions": {
+                        "type": "boolean",
+                        "description": "When true, removes mob-specific restrictions on spawning (usually light-related)."
+                    },
+
+                    "inwater": {
+                        "type": "boolean",
+                        "description": "When true, allows spawning in water."
+                    },
+
+                    "inair": {
+                        "type": "boolean",
+                        "description": "When true, allows spawning in the air."
+                    },
+
+                    "maxthis": {
+                        "type": "integer",
+                        "description": "Maximum amount of mobs of the given type.",
+                        "minimum": 0
+                    },
+
+                    "maxtotal": {
+                        "type": "integer",
+                        "description": "Maximum amount of mobs total.",
+                        "minimum": 0
+                    },
+
+                    "maxpassive": {
+                        "type": "integer",
+                        "description": "Maximum amount of passive mobs.",
+                        "minimum": 0
+                    },
+
+                    "maxhostile": {
+                        "type": "integer",
+                        "description": "Maximum amount of hostile mobs.",
+                        "minimum": 0
+                    },
+
+                    "maxneutral": {
+                        "type": "integer",
+                        "description": "Maximum amount of neutral mobs.",
+                        "minimum": 0
+                    },
+
+                    "maxlocal": {
+                        "type": "integer",
+                        "description": "This will cause counting in the spawn box around the player. This is somewhat more expensive so use with care.",
+                        "minimum": 0
+                    }
+                }
+            }
+        }
+    }
+}

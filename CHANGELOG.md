@@ -1,6 +1,8 @@
 # v1.6.0 -- 7/29/21
 
 * Added validation schema for Mystic Alchemy potion ingredients.
+* Added validation schema for Architect's Palette warping recipes.
+* Added validation schemas for InControl's spawner.json and spawn.json.
 * Updated @minecraft/tag validation schema.
 
 # v1.5.0 -- 7/29/21

@@ -1,0 +1,522 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "InControl! Spawn",
+    "description": "Validation schema for InControl's spawn.json.",
+    "type":"array",
+    "items":{
+        "type": "object",
+        "required": ["result"],
+        "properties": {
+            "result": {
+                "enum": ["allow","deny","default"],
+                "description": "Whether this rule results in a successful spawn."
+            },
+
+            "dimension": {
+                "type": ["string", "array"],
+                "description": "The dimension or list of dimensions to which this rule is applied.",
+                "examples": ["minecraft:overworld","minecraft:the_nether"],
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "dimensionmod": {
+                "type": ["string","array"],
+                "description": "A mod ID or list of mod IDs. This rule will apply to all dimensions from the listed mod(s).",
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "biome": {
+                "type": ["string","array"],
+                "description": "The biome or list of biomes to which this rule is applied.",
+                "examples": ["minecraft:plains","minecraft:jungle"],
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "biometype": {
+                "type": ["string", "array"],
+                "description": "A biome dictionary type, or list of them, where this rule is applied.",
+                "examples": ["WARM","DRY"],
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "minspawndist": {
+                "type": "number",
+                "description": "Minimum distance (in Minecraft units) to the spawn point in the world."
+            },
+
+            "maxspawndist": {
+                "type": "number",
+                "description": "Maximum distance (in Minecraft units) to the spawn point in the world."
+            },
+
+            "mob": {
+                "type": ["string","array"],
+                "description": "The mob or list of mobs to which this rule is applied.",
+                "examples": ["minecraft:creeper","minecraft:horse"],
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "passive": {
+                "type": "boolean",
+                "description": "Whether this rule should apply to all passive mobs."
+            },
+
+            "hostile": {
+                "type": "boolean",
+                "description": "Whether this rule should apply to all hostile mobs."
+            },
+
+            "onjoin": {
+                "type": "boolean",
+                "description": "If this is set to true then this spawn rule will also be fired when entities join the world. This is a much stronger test and will allow you to disable spawns from mob spawners as well as prevent passive mob spawns that don't always go through the regular 'checkspawn' event. Use this with care!"
+            },
+
+            "minlight": {
+                "type": "integer",
+                "description": "Minimum light level where this rule applies.",
+                "minimum": 0,
+                "maximum": 15
+            },
+
+            "maxlight": {
+                "type": "integer",
+                "description": "Maximum light level where this rule applies.",
+                "minimum": 0,
+                "maximum": 15
+            },
+
+            "mintime": {
+                "type": "integer",
+                "description": "Minimum time of day when this rule applies.",
+                "minimum": 0,
+                "maximum": 23999
+            },
+
+            "maxtime": {
+                "type": "integer",
+                "description": "Maximum time of day when this rule applies.",
+                "minimum": 0,
+                "maximum": 23999
+            },
+
+            "difficulty": {
+                "description": "The difficulty level where this rule applies.",
+                "enum": ["easy","normal","hard","peaceful"]
+            },
+
+            "weather": {
+                "description": "The type of weather during which this rule applies.",
+                "enum": ["rain","thunder"]
+            },
+
+            "structure": {
+                "type": ["string","array"],
+                "description": "A structure or list of structures in which this rule applies.",
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "mod": {
+                "type": ["string","array"],
+                "description": "A mod ID or list of them. This rule will apply to entities from the listed mod(s).",
+                "items": {
+                    "type": "string"
+                }
+            },
+
+            "mindifficulty": {
+                "type": "number",
+                "description": "Minimum local difficulty where this rule applies.",
+                "minimum": 0,
+                "maximum": 4
+            },
+
+            "maxdifficulty": {
+                "type": "number",
+                "description": "Maximum local difficulty where this rule applies.",
+                "minimum": 0,
+                "maximum": 4
+            },
+
+            "minheight": {
+                "type": "integer",
+                "description": "Minimum Y level where this rule applies.",
+                "minimum": 1,
+                "maximum": 256
+            },
+
+            "maxheight": {
+                "type": "integer",
+                "description": "Maximum Y level where this rule applies.",
+                "minimum": 1,
+                "maximum": 256
+            },
+
+            "mincount": {
+                "type": ["string","object"],
+                "description": "String value that is either a number in which case it will count how many mobs of the given class are already in the world or else of the form '<amount>,<mob>' to count the number of mobs of that type. That way you can have a rule file based on the number of mobs already present. Note that instead of this syntax you can also use the JSON mob counter syntax.",
+                "properties": {
+                    "mob": {
+                        "type": ["string,array"],
+                        "description": "This is a single mob or a list of mobs. If this is present only those mobs are counted.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "description": "The amount to compare with (can be scaled!)."
+                    },
+                    "perplayer": {
+                        "type": "boolean",
+                        "description": "If this is true the amount will be scaled with the amount of players present."
+                    },
+                    "perchunk": {
+                        "type": "boolean",
+                        "description": "If this is true the amount will be scaled with the amount of loaded chunks divided by 289 (this is how vanilla mobcap works)."
+                    },
+                    "mod": {
+                        "type": "string",
+                        "description": "If this is set all mobs of a given mod are counted (can be used in combination with hostile or passive)."
+                    },
+                    "hostile": {
+                        "type": "boolean",
+                        "description": "If this is set, all hostile mobs are counted."
+                    },
+                    "passive": {
+                        "type": "boolean",
+                        "description": "If this is set, all passive mobs are counted."
+                    }
+                }
+            },
+
+            "maxcount": {
+                "type": ["string","object"],
+                "description": "String value that is either a number in which case it will count how many mobs of the given class are already in the world or else of the form '<amount>,<mob>' to count the number of mobs of that type. That way you can have a rule file based on the number of mobs already present. Note that instead of this syntax you can also use the JSON mob counter syntax.",
+                "properties": {
+                    "mob": {
+                        "type": ["string,array"],
+                        "description": "This is a single mob or a list of mobs. If this is present only those mobs are counted.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "description": "The amount to compare with (can be scaled!)."
+                    },
+                    "perplayer": {
+                        "type": "boolean",
+                        "description": "If this is true the amount will be scaled with the amount of players present."
+                    },
+                    "perchunk": {
+                        "type": "boolean",
+                        "description": "If this is true the amount will be scaled with the amount of loaded chunks divided by 289 (this is how vanilla mobcap works)."
+                    },
+                    "mod": {
+                        "type": "string",
+                        "description": "If this is set all mobs of a given mod are counted (can be used in combination with hostile or passive)."
+                    },
+                    "hostile": {
+                        "type": "boolean",
+                        "description": "If this is set, all hostile mobs are counted."
+                    },
+                    "passive": {
+                        "type": "boolean",
+                        "description": "If this is set, all passive mobs are counted."
+                    }
+                }
+            },
+
+            "block": {
+                "type": ["string","array","object"],
+                "description": "A block or list of blocks. This rule applies to entities attempting to spawn on the listed block(s).",
+                "items": {
+                    "type": ["string","object"],
+                    "properties": {
+                        "block": {
+                            "type": "string",
+                            "description": "A block ID."
+                        },
+                        "properties": {
+                            "type": "object",
+                            "description": "(Only if 'block' is used.) This is a JSon array with properties to match against. As soon as this is present a blockstate will be constructed made out of the block and the properties specified here and the match has to be exact. So properties that are not specified here will be put to their default value."
+                        },
+                        "ore": {
+                            "type": "string",
+                            "description": "An ore dictionary value."
+                        },
+                        "mod": {
+                            "type": "string",
+                            "description": "A mod ID."
+                        },
+                        "energy": {
+                            "type": "string",
+                            "description": "An expression which will be evaluated to the amount of Forge Energy present in the block."
+                        },
+                        "contains": {
+                            "type": ["object","array"],
+                            "description": "An object or list of objects. Rule applies if any of the listed objects are found inside the block's contents."
+                        },
+                        "side": {
+                            "description": "This is a modifier for both energy and contains. If present it will indicate the side from which we want to examine the energy or inventory contents. If not present the 'null' side is used.",
+                            "enum": ["east","west","south","north","up","down"]
+                        }
+                    }
+                },
+                "properties": {
+                    "block": {
+                        "type": "string",
+                        "description": "A block ID."
+                    },
+                    "properties": {
+                        "type": "object",
+                        "description": "(Only if 'block' is used.) This is a JSon array with properties to match against. As soon as this is present a blockstate will be constructed made out of the block and the properties specified here and the match has to be exact. So properties that are not specified here will be put to their default value."
+                    },
+                    "ore": {
+                        "type": "string",
+                        "description": "An ore dictionary value."
+                    },
+                    "mod": {
+                        "type": "string",
+                        "description": "A mod ID."
+                    },
+                    "energy": {
+                        "type": "string",
+                        "description": "An expression which will be evaluated to the amount of Forge Energy present in the block."
+                    },
+                    "contains": {
+                        "type": ["object","array"],
+                        "description": "An object or list of objects. Rule applies if any of the listed objects are found inside the block's contents."
+                    },
+                    "side": {
+                        "description": "This is a modifier for both energy and contains. If present it will indicate the side from which we want to examine the energy or inventory contents. If not present the 'null' side is used.",
+                        "enum": ["east","west","south","north","up","down"]
+                    }
+                }
+            },
+
+            "blockoffset": {
+                "type": "object",
+                "description": "Modifies the position of a rule's 'block' test.",
+                "properties": {
+                    "x": {
+                        "type": "integer",
+                        "description": "X offset applied to the test."
+                    },
+                    "y": {
+                        "type": "integer",
+                        "description": "Y offset applied to the test."
+                    },
+                    "z": {
+                        "type": "integer",
+                        "description": "Z offset applied to the test."
+                    }
+                }
+            },
+
+            "random": {
+                "type": "number",
+                "description": "Random chance that this rule will apply. 0.4 = 40% chance.",
+                "minimum": 0,
+                "maximum": 1
+            },
+
+            "seesky": {
+                "type": "boolean",
+                "description": "If true, this rule will only apply to blocks that can see the sky (not in a cave or underground)."
+            },
+
+            "spawner": {
+                "type": "boolean",
+                "description": "If true, this rule applies to entities spawned by a spawner block."
+            },
+
+            "incontrol": {
+                "type": "boolean",
+                "description": "If true, this rule applies only to creatures spawned by spawner.json."
+            },
+
+            "isnotcolliding": {
+                "type": "boolean",
+                "description": "A check that is specific to the entity implementation. This is called by Minecraft automatically if you return 'default' as the result of this rule. For many mobs this check will do a test if the mob would collide with blocks after spawning."
+            },
+
+            "canspawnhere": {
+                "type": "boolean",
+                "description": "A check that is specific to the entity implementation. This is called by Minecraft automatically if you return 'default' as the result of this rule. For many mobs this check will do the standard light level check."
+            },
+
+            "tempcategory": {
+                "description": "This represents the temperature category of the current biome.",
+                "enum": ["cold","medium","warm","ocean"]
+            },
+
+            "incity": {
+                "type": "boolean",
+                "description": "Only present with Lost Cities. True if the position is in a city."
+            },
+
+            "instreet": {
+                "type": "boolean",
+                "description": "Only present with Lost Cities. True if the position is in a street."
+            },
+
+            "inbuilding": {
+                "type": "boolean",
+                "description": "Only present with Lost Cities. True if the position is in a building."
+            },
+
+            "insphere": {
+                "type": "boolean",
+                "description": "Only present with Lost Cities. True if the position is in a city sphere."
+            },
+
+            "winter": {
+                "type": "boolean",
+                "description": "Only present with Serene Seasons. True if it is currently winter."
+            },
+
+            "summer": {
+                "type": "boolean",
+                "description": "Only present with Serene Seasons. True if it is currently summer."
+            },
+
+            "spring": {
+                "type": "boolean",
+                "description": "Only present with Serene Seasons. True if it is currently spring."
+            },
+
+            "autumn": {
+                "type": "boolean",
+                "description": "Only present with Serene Seasons. True if it is currently autumn."
+            },
+
+            "state": {
+                "type": "string",
+                "description": "Only present with EnigmaScript. Used to test the value of a state.",
+                "examples": ["state=value"]
+            },
+
+            "pstate": {
+                "type": "string",
+                "description": "Only present with EnigmaScript. Used to test the value of a player state.",
+                "examples": ["state=value"]
+            },
+
+            "nbt": {
+                "type": "string",
+                "description": "NBT data to apply to this rule's spawned mobs."
+            },
+
+            "customname": {
+                "type": "string",
+                "description": "Custom name for the spawned mob."
+            },
+
+            "healthmultiply": {
+                "type": "number",
+                "description": "Multiplies the spawned mob's max HP.",
+                "minimum": 0
+            },
+
+            "healthadd": {
+                "type": "number",
+                "description": "Amount added to the spawned mob's max HP."
+            },
+
+            "speedmultiply": {
+                "type": "number",
+                "description": "Multiplies the spawned mob's speed.",
+                "minimum": 0
+            },
+
+            "speedadd": {
+                "type": "number",
+                "description": "Amount added to the spawned mob's speed."
+            },
+
+            "damagemultiply": {
+                "type": "number",
+                "description": "Multiplies the spawned mob's damage dealt.",
+                "minimum": 0
+            },
+
+            "damageadd": {
+                "type": "number",
+                "description": "Amount added to the spawned mob's damage dealt."
+            },
+
+            "angry": {
+                "type": "boolean",
+                "description": "Indicates if the mob will spawn angry at and/or target the nearest player. For zombie pigman this will make them angry at the player immediately. Same for enderman and wolves."
+            },
+
+            "potion": {
+                "type": ["string","array"],
+                "description": "A string or list of strings that applies potion effects to the spawned mob with a given duration and strength.",
+                "examples": ["effect,duration in ticks,strength"],
+                "items": {
+                    "type":"string",
+                    "examples": ["effect,duration in ticks, strength"]
+                }
+            },
+
+            "helditem": {
+                "type": ["string","array"],
+                "description": "A string or list of strings representing possible items the spawned mob will carry in its hand. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_sword', '2=minecraft:iron_sword'.",
+                "items": {
+                    "type": "string",
+                    "description": "A string representing a possible item the spawned mob will carry in its hand. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_sword', '2=minecraft:iron_sword'."
+                }
+            },
+
+            "armorboots": {
+                "type": ["string","array"],
+                "description": "A string or list of strings representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_boots', '2=minecraft:iron_boots'.",
+                "items": {
+                    "type": "string",
+                    "description": "A string representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_boots', '2=minecraft:iron_boots'."
+                }
+            },
+
+            "armorhelmet": {
+                "type": ["string","array"],
+                "description": "A string or list of strings representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_helmet', '2=minecraft:iron_helmet'.",
+                "items": {
+                    "type": "string",
+                    "description": "A string representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_helmet', '2=minecraft:iron_helmet'."
+                }
+            },
+
+            "armorlegs": {
+                "type": ["string","array"],
+                "description": "A string or list of strings representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_leggings', '2=minecraft:iron_leggings'.",
+                "items": {
+                    "type": "string",
+                    "description": "A string representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_leggings', '2=minecraft:iron_leggings'."
+                }
+            },
+
+            "armorchest": {
+                "type": ["string","array"],
+                "description": "A string or list of strings representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_chestplate', '2=minecraft:iron_chestplate'.",
+                "items": {
+                    "type": "string",
+                    "description": "A string representing possible armor the spawned mob will wear. This works only with mobs that allow this like skeletons and zombies. You can also specify a weight with this by adding '<number>=' in front of the string. Like this: '1=minecraft:diamond_chestplate', '2=minecraft:iron_chestplate'."
+                }
+            }
+        }
+    }
+}

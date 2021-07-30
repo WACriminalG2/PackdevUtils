@@ -1,0 +1,48 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Architect's Palette Warping Recipe",
+    "description": "Validation schema for recipes which transform items thrown through dimensional portals into other items.",
+    "properties": {
+        "type": {
+            "const": "architects_palette:warping"
+        },
+        "ingredient": {
+            "type": "array",
+            "description": "List of items that can be thrown. Accepts tags and item registry IDs.",
+            "items": {
+                "type": "object",
+                "oneOf": [
+                {
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "Registry ID for the item to be thrown."
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "tag": {
+                            "type": "string",
+                            "description": "Registry ID for a tag. Any item with this tag will serve as a valid input for this recipe."
+                        }
+                    }
+                }]
+            }
+        },
+        "result": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "Registry ID for the item produced by this recipe."
+                }
+            }
+        },
+        "dimension": {
+            "type": "string",
+            "description": "Registry ID for the destination dimension of the portal required."
+        }
+    },
+    "required": ["type","ingredient","result","dimension"]
+}

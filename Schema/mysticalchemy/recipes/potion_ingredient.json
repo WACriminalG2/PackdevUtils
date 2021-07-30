@@ -6,7 +6,6 @@
     "required": ["type","item","effects"],
     "properties": {
         "type": {
-            "type": "string",
             "const": "mysticalchemy:potion_ingredient"
         },
         "item": {
