@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.8.0",
+    "version": "1.8.1",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -95,7 +95,7 @@
               },
               {
                   "fileMatch": "*/architects_palette/recipes/warping/*.json",
-                  "url": "./Schema/architects_palette/recipes/warping/*.json"
+                  "url": "./Schema/architects_palette/recipes/warping.json"
               },
               {
                   "fileMatch": "*/config/incontrol/spawner.json",

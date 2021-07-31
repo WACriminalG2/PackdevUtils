@@ -1,3 +1,7 @@
+# v1.8.1 -- 7/31/21
+
+* Fixed folder-matching for Architect's Palette warping schema validator.
+
 # v1.8.0 -- 7/31/21
 
 * Added schema validation for Lycanite's Mobs spawner, creature, and element configuration files.
