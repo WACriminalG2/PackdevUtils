@@ -1,0 +1,401 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Lycanite's Mobs Creature",
+    "description": "Configuration file for creatures from Lycanite's Mobs.",
+    "type":"object",
+    "required": ["name","entityClass","modelClass","spawning","eggBackColor","eggForeColor","element"],
+    "additionalProperties": false,
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The creature's name, it is recommended not to change this value as it will break things and is used to associate a Model Class. Required."
+        },
+
+        "entityClass": {
+            "type": "string",
+            "description": "The Java Class to use for this creature, contains all behaviour, it is recommended not to change this as it will break things. Required."
+        },
+
+        "modelClass": {
+            "type": "string",
+            "description": "The Java Class to use for this creature's model. This is currently not implemented but will be soon to go with the new subspecies system. Required."
+        },
+
+        "enable": {
+            "type": "boolean",
+            "description": "Set to false to completely disable this creature, any instances of the creature will be instantly removed and natural spawning will be disabled. Default: true"
+        },
+        
+        "dummy": {
+            "type": "boolean",
+            "description": "Set to true for for dummy entities such as the Fear entity which is used to make mobs and players run around in fear, this stops uneeded extra stats and features from being loaded. Default: false"
+        },
+
+        "spawning": {
+            "$ref": "/schemas/creatureSpawn",
+            "type": "object",
+            "description": "The spawning settings for this creature. Required."
+        },
+
+        "width": {
+            "type": "number",
+            "description": "The base width of the entity hitbox. Default: 0.8"
+        },
+
+        "height": {
+            "type": "number",
+            "description": "The base height of the entity hitbox. Default: 1.8"
+        },
+
+        "experience": {
+            "type": "integer",
+            "description": "How much xp this creature drops on death."
+        },
+
+        "health": {
+            "type": "number",
+            "description": "The base health that this creature should have."
+        },
+
+        "defense": {
+            "type": "number",
+            "description": "How much damage the creature blocks. Default 0"
+        },
+
+        "armor": {
+            "type": "number",
+            "description": "How much armor the creature has, calculated on top of defense and can be pierced. Default 0"
+        },
+
+        "speed": {
+            "type": "number",
+            "description": "The base movement speed of the creature. Default 24 (vanilla zombie speed)"
+        },
+
+        "damage": {
+            "type": "number",
+            "description": "The base amount of damage the creature deals, this also affects projectiles fired by the creature."
+        },
+
+        "attackSpeed": {
+            "type": "number",
+            "description": "The base amount of melee attacks per second the creature can do. Note that this is restricted by the creature's update tick rate. Default 1.0 (1 attack every second)"
+        },
+
+        "rangedSpeed": {
+            "type": "number",
+            "description": "The base amount of ranged attacks per second the creature can do. Note that this is restricted by the creature's update tick rate. Default 0.5 (1 attack every 2 seconds)"
+        },
+
+        "effect": {
+            "type": "number",
+            "description": "The base duration (in seconds) of effects applied by the creature, note that some effects scale this value. Default 1.0 (1 second effect duration)"
+        },
+
+        "amplifier": {
+            "type": "number",
+            "description": "The base amplifier of effects applied by the creature. Use 0 for level 1 effects, 1 for level 2, etc. Default -1 (disable element effect)"
+        },
+
+        "pierce": {
+            "type": "number",
+            "description": "The base amount of damage dealth by the creature that is allowed to ignore the target's armor. Pierce is not additional damage. Default 1.0 (all mobs deal at least 1 damage)"
+        },
+
+        "sight": {
+            "type": "number",
+            "description": "The base range (in blocks) that the creature can see other entities around it. Note that setting this to a really high value on common creatures can cause lag. Default 16"
+        },
+
+        "knockbackResistance": {
+            "type": "number",
+            "description": "The base chance that the creature won't be knocked back from attacks where 0.0 is always and 1.0 is never. Default 0 (always knocked back)",
+            "minimum": 0,
+            "maximum": 1
+        },
+
+        "eggBackColor": {
+            "type": "string",
+            "description": "The hex color value of the creature's spawn egg background color. Ex: '#00ff00' for green. Required."
+        },
+
+        "eggForeColor": {
+            "type": "string",
+            "description": "The hex color value of the creature's spawn egg foreground color. Ex: '#ff00ff' for magenta. Required."
+        },
+
+        "boss": {
+            "type": "boolean",
+            "description": "If true, the creature will be given boss status with extra features such as health loss mitigation and a boss health bar. Default: false"
+        },
+
+        "subspecies": {
+            "type": "array",
+            "description": "An array of Subspecies entries. Usually mobs have 2 uncommon subspecies and sometimes a third rare mini boss subspecies. It is recommended to try and keep the usually subspecies pattern for now. This will soon be changed to 'colorVariations' and accompanies by 'skinVariations' when the new subspecies system is implemented. Default: empty",
+            "items": {
+                "type": "object",
+                "required": ["name","type"],
+                "additionalproperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the subspecies. Should adhere to the available ones as listed on the Lycanites site, but custom ones can be used. Note that textures need to be provided for each subspecies of a creature too. Required."
+                    },
+                    "type": {
+                        "enum": ["uncommon","rare"],
+                        "description": "The type of subspecies, can be 'uncommon' or 'rare'. The first and second subspecies should normally be uncommon and the third rare, changing this may have unpredictable results. Required."
+                    }
+                }
+            }
+        },
+
+        "colorVariations": {
+            "type": "array",
+            "description": "A list of color variation entires to be used by this creature. This will be part of the new subspecies system but is not yet implemented. Default: empty",
+            "items": {
+                "type": "object",
+                "required": ["name","type"],
+                "additionalproperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the color variation. Should adhere to the avaialble ones as listed on this site, but custom ones can be used. Note that textures need to be provided for each color variation of a creature too and for each skin variation. Required."
+                    },
+                    "type": {
+                        "enum": ["uncommon","rare"],
+                        "description": "The type of color variation, can be 'uncommon' or 'rare'. Rare color variations are considered to be mini bosses and may have additional behaviour and increased stats. Required."
+                    }
+                }
+            }
+        },
+
+        "skinVariations": {
+            "type": "array",
+            "description": "A list of skin variation entires to be used by this creature. This will be part of the new subspecies system but is not yet implemented. Default: empty",
+            "items": {
+                "type": "object",
+                "required": ["name","modelClass"],
+                "additionalproperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the skin variation. Can be entirely unique. Required."
+                    },
+                    "modelClass": {
+                        "type": "string",
+                        "description": "The model class to use for this skin variation, the model will then look for its own textures including color variation textures. In theory you could use any model class including models from other mods adn vanilla but results are completely unpredicatable. Required."
+                    }
+                }
+            }
+        },
+
+        "element": {
+            "type": "string",
+            "description": "The Element used by the creature. Elements grant a creature resistances, buffs and debuffs based on their effect stats. See the Elements section for more info. Required. Can cause a crash if not set as this is integral!"
+        },
+
+        "peaceful": {
+            "type": "boolean",
+            "description": "If true, the creature wont be despawned on peaceful difficulty. Default: false"
+        },
+
+        "summonable": {
+            "type": "boolean",
+            "description": "If true and the creature's Java Class has pet AI, the creature will show as a summonable minion. Default: false"
+        },
+
+        "tameable": {
+            "type": "boolean",
+            "description": "If true and the creature's Java Class has pet AI, the creature will show as a summonable pet. Default: false"
+        },
+
+        "mountable": {
+            "type": "boolean",
+            "description": "If true and the creature's Java Class has pet AI, the creature will show as a summonable mount. Default: false"
+        },
+
+        "summonCost": {
+            "type": "integer",
+            "description": "How much Summoning Focus (if a minion) or Spirit (if a soulstoned pet or mount) the creature costs to summon. Default: 1"
+        },
+
+        "dungeonLevel": {
+            "type": "integer",
+            "description": "The Dungeon Level of the creature, for Lycanites Dungeons this affects what floor the mob appears on, but this is also used by other mods such as Doomlike Dungeons to assess difficulty. Default: -1 (All levels)"
+        },
+
+        "drops": {
+            "type": "array",
+            "description": "A list of items the creature will drop. Default: Empty",
+            "items": {
+                "$ref": "/schemas/itemDrop"
+            }
+        }
+    },
+
+    "$defs": {
+        "itemDrop": {
+            "$id": "/schemas/itemDrop",
+            "type": "object",
+            "description": "Item Drops have several properties, some are only used by certain things such as the dungeon properties only being used by Dungeon JSON.",
+            "required": ["item"],
+            "additionalProperties": false,
+
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The id of the item such as minecraft:stone. Modded ids can be used and if nothing matches then this Item Drop is just ignored. Required."
+                },
+
+                "metadata": {
+                    "type": "integer",
+                    "description": "The metadata of the item which is used for items or blocks that have multiple forms. Default 0"
+                },
+
+                "minAmount": {
+                    "type": "integer",
+                    "description": "The minimum random stack size. Default 1"
+                },
+
+                "maxAmount": {
+                    "type": "integer",
+                    "description": "The maximum random stack size. Default 1"
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "The chance of this Item Drop being dropped or placed in a loot chest, etc. Set to 1 for always and 0 to essentially disable this Item Drop without deleting it from json. Default 0 (never)",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "subspecies": {
+                    "type": "integer",
+                    "description": "If set, the subspecies index of the mob such as 0 for normal, 1 or 2 for uncommon and 3 for rare. Note that creature json allows for the subspecies order to be changed. Default -1 (ignore subspecies)"
+                },
+
+                "burningItem": {
+                    "type": "string",
+                    "description": "An alternate item id to use when a burning creature drops this Item Drop. Used to drop cooked meat from burning animals, etc. Default: Empty"
+                },
+
+                "burningMetadata": {
+                    "type": "integer",
+                    "description": "An alternate item metadata to use when a burning creature drops this Item Drop. Default: Empty"
+                }
+            }
+        },
+
+        "creatureSpawn": {
+            "$id": "/schemas/creatureSpawn",
+            "type": "object",
+            "additionalproperties": false,
+
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If false, the creature will not naturally spawn and will be ignored by all json spawners. The creature may still spawn from eggs and dungeons, etc. Default: true"
+                },
+
+                "disableSubspecies": {
+                    "type": "boolean",
+                    "description": "If true, the creature wont randomly choose a subspecies when spawning naturally. Default: false"
+                },
+
+                "spawners": {
+                    "type": "array",
+                    "description": "A list of spawners to use. These are the same as the name value of each json spawner and can also be: creature, monster or ambient to use the vanilla spawners. Note that some Spawners also have a list of creatures defined in their config instead. Default: Empty",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "dimensionIds": {
+                    "type": "array",
+                    "description": "A list of dimension ids to restrict the creature to or from. Default: Empty",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "dimensionListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "How the dimension ID list works. Can be 'whitelist' or 'blacklist'. Default: 'whitelist'"
+                },
+
+                "biomeTags": {
+                    "type": "array",
+                    "description": "A list of Biome Tags to spawn in or avoid spawning in. Modded biomes should also make use of these tags making this very easy to manage. You can add a hyphen in front of a tag to make it negative. Ex: 'cold', '-dense' to spawn in cold biomes but avoid dense biomes (lots of trees). Default: Empty",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "biomes": {
+                    "type": "array",
+                    "description": "A list of specific Biome IDs to spawn in. It is always better to use tags but if you need to target exact biomes you can use this. Default: Empty",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "ignoreBiome": {
+                    "type": "boolean",
+                    "description": "If true, all biome checks are ignored, use this instead of listing all biomes for efficiency. Default: false"
+                },
+
+                "spawnWeight": {
+                    "type": "integer",
+                    "description": "The weight of the creature for when it is randomly selected amongst other viable creatures to spawn. Higher weighted creatures are more likely to be chosen. Default: 8 (vanilla zombie)"
+                },
+
+                "dungeonWeight": {
+                    "type": "integer",
+                    "description": "The weight of the creature for when it is randomly selected amongst other viable creatures to be placed in vanilla dungeon spawners (and possibly modded spawners). Higher weighted creatures are more likely to be chosen. Set to 0 to disable this creature from dungeon spawners. Default: 200 (vanilla zombie)"
+                },
+
+                "spawnAreaLimit": {
+                    "type": "integer",
+                    "description": "How many of the creature are allowed in one area before they will no longer naturally spawn. Default: 5"
+                },
+
+                "spawnGroupMin": {
+                    "type": "integer",
+                    "description": "Used by the vanilla spawners, controls the minimum amount of the creature that are placed in an area in one go. Default: 1"
+                },
+
+                "spawnGroupMax": {
+                    "type": "integer",
+                    "description": "Used by the vanilla spawners, controls the maximum amount of the creature that are placed in an area in one go. Default: 3"
+                },
+
+                "spawnsInLight": {
+                    "type": "boolean",
+                    "description": "If true, the creature will naturally spawn in light areas, remember that many spawners ignore settings like these. Default: false"
+                },
+
+                "spawnsInDark": {
+                    "type": "boolean",
+                    "description": "If true, the creature will naturally spawn in dark areas, remember that many spawners ignore settings like these. Default: true"
+                },
+
+                "worldDayMin": {
+                    "type": "number",
+                    "description": "The minimum total world days that must have passed before the creature can start naturally spawning. Default: -1 (ignore)"
+                },
+
+                "despawnNatural": {
+                    "type": "boolean",
+                    "description": "If true, the creature will naturally despawn over time. Default: true"
+                },
+
+                "despawnForced": {
+                    "type": "boolean",
+                    "description": "If true, the creature will naturally despawn over time regardless of other things stopping it such as name tagged creatures. Default: false"
+                }
+            }
+        }
+    }
+
+}

@@ -112,6 +112,18 @@
               {
                   "fileMatch": "*/bounties/decrees/*.json",
                   "url": "./Schema/bountiful/decree.json"
+              },
+              {
+                  "fileMatch": "*/config/lycanitesmobs/spawners/*.json",
+                  "url": "./Schema/lycanitesmobs/spawner.json"
+              },
+              {
+                  "fileMatch": "*/config/lycanitesmobs/creatures/*.json",
+                  "url": "./Schema/lycanitesmobs/creature.json"
+              },
+              {
+                  "fileMatch": "*/config/lycanitesmobs/elements/*.json",
+                  "url": "./Schema/lycanitesmobs/element.json"
               }
           ]
       }

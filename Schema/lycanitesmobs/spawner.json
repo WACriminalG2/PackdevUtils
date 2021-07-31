@@ -1,0 +1,1716 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Lycanite's Mobs Spawner",
+    "description": "Configuration file for the custom spawning system from Lycanite's Mobs.",
+    "type":"object",
+    "required": ["name"],
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "This is a unique name for your spawner, try to avoid spaces and other special characters, names are not case sensitive so I recommend sticking to all lower case."
+        },
+
+        "sharedName": {
+            "type": "string",
+            "description": "This is a non-unique name used to assign this spawner to creature/group configs. For example the 'water' and 'water chunk' spawners both have a shared name of 'water' so that any creature configs that use the water spawner use both spawners. Optional."
+        },
+
+        "loadDefault": {
+            "type": "boolean",
+            "description": "This is only used by the default spawners and must be false or not present in the JSON to prevent the spawner from being overwritten when the game loads. You can simply leave it out of your custom spawners."
+        },
+
+        "enabled": {
+            "type": "boolean",
+            "description": "Set to true to use these spawner or false to disable it, needed for disabling default spawners and handy for custom spawners that you want to disable but not delete."
+        },
+
+        "conditionsRequired": {
+            "type": "integer",
+            "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+        },
+
+        "triggersRequired": {
+            "type": "integer",
+            "description": "Sets how many times any Spawn Trigger must activate (per player) before a wave is spawned. Please look at the Darkness Spawner to see this in action. Default 1."
+        },
+
+        "triggerCountMessages": {
+            "type": "array",
+            "description": "You can add a chat message for specific Trigger counts, these can be lang file entries. Please look at the Darkness Spawner to see this in action. Default empty.",
+            "items": {
+                "type": "object",
+                "required": ["count","message"],
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "description": "The trigger count for this message."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "The chat message to send to the player, this can be typed out in full here or can be a lang file key (recommended)."
+                    }
+                }
+            }
+        },
+
+        "multipleLocations": {
+            "type": "string",
+            "description": "Determines how a Spawn Location is chosen if there are more than one defined. Can be: 'order' (first location that can find a spawn point), 'random' (picks a random Spawn Loction and just uses that) or 'combine' (gets spawn points from all Spawn Locations). Default 'combine'.",
+            "enum": ["order","random","combine"]
+        },
+
+        "mobCountMin": {
+            "type": "integer",
+            "description": "The minimum amount of mobs to spawn each wave. Default 1."
+        },
+
+        "mobCountMax": {
+            "type": "integer",
+            "description": "The maximum amount of mobs to spawn each wave. If less than or equal to the minimum this is ignored so you don't need to set this for fixed mob counts. Default 1."
+        },
+
+        "ignoreDimensions": {
+            "type": "boolean",
+            "description": "If true, this Spawner will ignore all mob dimension checks (not Spawn Condition checks), this bypasses the checks in Mob Spawn entries as well as Mob Configs. Default false."
+        },
+
+        "ignoreBiomes": {
+            "type": "boolean",
+            "description": "If true, this Spawner will ignore all biome checks, this bypasses the checks in Mob Spawns and Mob Configs. This is recommended if your Spawner should never care about biome as it saves on checks for performance. Default false."
+        },
+
+        "ignoreCollision": {
+            "type": "boolean",
+            "description": "If true, this Spawner will ignore mob collision checks, this may cause mobs to become stuck and suffocate but is useful for smaller mobs, required Spawners that have a Block Break radius set (see blow) and good for noclip mobs (like the Phantom). Default false."
+        },
+
+        "ignoreLightLevel": {
+            "type": "boolean",
+            "description": "If true, this Spawner will ignore light level checks, this bypasses the checks in Mob Spawns and Mob Configs. This is recommended if your Spawner should never care about light levels as it saves on checks for performance. Default false."
+        },
+
+        "ignoreGroupLimit": {
+            "type": "boolean",
+            "description": "If true, this Spawner will ignore group limit checks, this bypasses the checks in Mob Spawns and Mob Configs. This is recommended if your Spawner should never care about group limits as it saves on checks for performance. Default false."
+        },
+
+        "groupLimitRange": {
+            "type": "integer",
+            "description": "The range of how far (in blocks) this Spawner should check for surrounding mobs of the same type for the group spawn limit, don't go too high with this and rapid spawners or you will get lag. Default 32."
+        },
+
+        "ignoreForgeCanSpawnEvent": {
+            "type": "boolean",
+            "description": "If set to true, the Forge Can Spawn Event is fired but its result is ignored, use this to prevent other mods from stopping the spawn via the event. Default false."
+        },
+
+        "forceNoDespawn": {
+            "type": "boolean",
+            "description": "If true, mobs spawned by this Spawner will not naturally despawn. Default false."
+        },
+
+        "chainSpawning": {
+            "type": "boolean",
+            "description": "If true, actions caused by the spawner will attempt trigger additional spawners. Default true."
+        },
+
+        "enableWithoutMobs": {
+            "type": "boolean",
+            "description": "If true, this Spawner will act as enabled even if it can't find any mobs to spawn, useful if you just want to use trigger messages, etc. Default false."
+        },
+
+        "eventName": {
+            "type": "string",
+            "description": "If set, this is the name of the mob event that must be active, otherwise this Spawner is always active. Use this for mob event spawners. Default '' (empty)."
+        },
+
+        "blockBreakRadius": {
+            "type": "integer",
+            "description": "If set, when a mob is spawned, blocks in the radius around the spawned mob will be destroyed (0 would break only the block the mob spawned at). Spawners like the Ore Spawner use this. Default -1 (no block breaking)."
+        },
+
+        "conditions": {
+            "type": "array",
+            "description": "A list of Spawn Conditions that this Spawner will check. Default empty (Spawner will always work).",
+            "items": {
+                "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+            }
+        },
+
+        "triggers": {
+            "type": "array",
+            "description": "A list of Spawn Triggers that will attempt to start this Spawner. Default empty (Spawner will never start, so should have at least 1 Trigger to function).",
+            "items": {
+                "oneOf": [{"$ref": "/schemas/worldSpawnTrigger"},{"$ref": "/schemas/playerSpawnTrigger"},{"$ref": "/schemas/blockSpawnTrigger"},{"$ref": "/schemas/oreSpawnTrigger"},{"$ref": "/schemas/treeSpawnTrigger"},{"$ref": "/schemas/cropSpawnTrigger"},{"$ref": "/schemas/mixSpawnTrigger"},{"$ref": "/schemas/sleepSpawnTrigger"},{"$ref": "/schemas/killSpawnTrigger"},{"$ref": "/schemas/fishingSpawnTrigger"},{"$ref": "/schemas/explosionSpawnTrigger"}]
+            }
+        },
+
+        "locations": {
+            "type": "array",
+            "description": "A list of Spawn Location that this Spawner will use to get spawn positions from. Default empty (Spawner will never be able to Spawn anything so should have at least 1 Spawn Location).",
+            "items": {
+                "oneOf": [{"$ref": "/schemas/baseLocation"},{"$ref": "/schemas/blockLocation"},{"$ref": "/schemas/materialLocation"},{"$ref": "/schemas/randomLocation"}]
+            }
+        },
+
+        "mobSpawns": {
+            "type": "array",
+            "description": "A list of Mob Spawns that this Spawner will pick mobs to spawn from on top of mobs that have this Spawner's name as a Spawn Type in the configs. Default empty (Just use spawns added via the config).",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ignoreForgeCanSpawnEvent": {
+                        "type": "boolean",
+                        "description": "If set to true, the Forge Can Spawn Event is fired but its result is ignored, use this to prevent other mods from stopping the spawn via the event. Default false."
+                    },
+
+                    "ignoreMobInstanceConditions": {
+                        "type": "boolean",
+                        "description": "If set to true, all mob instance spawn checks are ignored. This includes all checks for none Lycanites Mobs, Group Limits and Light Levels. Default false."
+                    },
+
+                    "ignoreDimension": {
+                        "type": "boolean",
+                        "description": "If set to true, this mob will ignore Dimension checks. This will not prevent a World Spawn Condition Dimension check however. Default false."
+                    },
+
+                    "biomeCheck": {
+                        "enum": ["ignored","checked","default"],
+                        "description": "This determines if the biome that the mob is spawning in should be 'ignored', 'checked' or 'default' where it refers to the mob config instead. Default 'default'."
+                    },
+
+                    "ignoreLightLevel": {
+                        "type": "boolean",
+                        "description": "If set to true, this mob will ignore its Light Level checks. Default false."
+                    },
+
+                    "ignoreGroupLimit": {
+                        "type": "boolean",
+                        "description": "If set to true, this mob will ignore its Group Limit checks. Default false."
+                    },
+
+                    "weight": {
+                        "type": "integer",
+                        "description": "The Spawn Weight to use, mobs with higher weights are more likely to spawned than mobs with lower Weights. Zombies have a weight of 8 which is standard. Crusks (large tough desert mobs) have a weight of 2. Default -1 (use mob config weight)."
+                    },
+
+                    "chance": {
+                        "type": "number",
+                        "description": "The Spawn Chance to use, can be 0.0 to 1.0 where 1 = 100%. This is the chance of this mob not being selected for the next spawn wave. It is recommended to just use weights instead and to leave this at 1. Default -1 (use the default chance set via the mob config)",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+
+                    "blockCost": {
+                        "type": "integer",
+                        "description": "This determines how many spawn positions must have been found by the Spawn Locations. Recommended for block-based Spawn Locations. See the Fire Spawner for an example of this in action. Default -1 (use mob config)."
+                    },
+
+                    "mobNameTag": {
+                        "type": "string",
+                        "description": "Sets a custom name tag to a mob spawned with this Mob Spawn."
+                    },
+
+                    "naturalDespawn": {
+                        "enum": ["default","true","false"],
+                        "description": "Whether the spawned mob will be persistent and won't naturally despawn. Can be: 'default' (mob config), 'true' or 'false', this is a string not a boolean so make sure you use quotations here."
+                    },
+
+                    "mobSizeScale": {
+                        "type": "number",
+                        "description": "A custom scale for the physical size of the spawned mob. Only works with Lycanites Mobs."
+                    },
+
+                    "subspecies": {
+                        "type": "integer",
+                        "description": "If set, the spawned mob will have its subspecies changed to this value. Only works with Lycanites Mobs."
+                    },
+
+                    "fixate": {
+                        "type": "boolean",
+                        "description": "If true, the spawned mob will fixate on the player that triggered the spawn, always attacking that player. Only works with Lycanites Mobs."
+                    },
+
+                    "mobLevel": {
+                        "type": "integer",
+                        "description": "The level boost of the mob spawned, higher levels increase the stats by a small amount. This is added to the starting mob level (normally just 1). Default 0 (no level boosts)."
+                    },
+
+                    "mobDrops": {
+                        "type": "array",
+                        "description": "A list of Item Drop entires that this mob may drop. Default: Empty",
+                        "items": {
+                            "$ref": "/schemas/itemDrop"
+                        }
+                    },
+
+                    "dungeonLevelMin": {
+                        "type": "integer",
+                        "description": "For dungeon spawning, the minimum floor level of the dungeon that this mob is allowed to spawn on. This includes both placed as well as set in spawner blocks. Default: -1 (ignore)"
+                    },
+
+                    "dungeonLevelMax": {
+                        "type": "integer",
+                        "description": "For dungeon spawning, the maximum floor level of the dungeon that this mob is allowed to spawn on. This includes both placed as well as set in spawner blocks. Default: -1 (ignore)"
+                    },
+
+                    "dungeonBoss": {
+                        "type": "boolean",
+                        "description": "For dungeon spawning, if true, this mob spawn entry is only to be used for boss sectors, if false it is only to be used for spawners. Default: false"
+                    }
+                }
+            }
+        }
+    },
+
+    "$defs": {
+        "worldSpawnCondition": {
+            "$id": "/schemas/worldSpawnCondition",
+            "additionalProperties": false,
+            "description": "Anything to do with the world that the Spawner is being triggered in.",
+
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "world"
+                },
+
+                "dimensionIds": {
+                    "type": "array",
+                    "description": "The dimension IDs that the world must or must not match depending on the list type. Defult empty.",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "dimensionListType": {
+                    "description": "How the dimension ID list works. Can be 'whitelist' or 'blacklist'. Default 'blacklist'.",
+                    "enum": ["whitelist","blacklist"]
+                },
+
+                "biomes": {
+                    "type": "array",
+                    "description": "The list of biome tags to filter this condition by. Default empty (ignored).",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "biomeTagListType": {
+                    "description": "How the biomes from the biome tags list works. Can be 'whitelist' or 'blacklist'. Default 'whitelist'.",
+                    "enum": ["whitelist","blacklist"]
+                },
+
+                "biomeIds": {
+                    "type": "array",
+                    "description": "The list of specific biome ids to filter this condition by. Defult empty (ignored).",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "biomeIdListType": {
+                    "description": "How the biomes from the specific biome ids list list works. Can be 'whitelist' or 'blacklist'. Default 'whitelist'.",
+                    "enum": ["whitelist","blacklist"]
+                },
+
+                "worldDayMin": {
+                    "type": "number",
+                    "description": "The minimum world days that must have gone by, can accept fractions such as 5.25 for 5 and a quarter days. Default -1 (ignored)."                    
+                },
+
+                "worldDayMax": {
+                    "type": "number",
+                    "description": "The maximum world days that must have gone by, can accept fractions such as 5.25 for 5 and a quarter days. Default -1 (ignored)."                    
+                },
+
+                "worldDayN": {
+                    "type": "number",
+                    "description": "The interval of days this condition is true such as every 7 days. Default -1 (ignored)."
+                },
+
+                "dayTimeMin": {
+                    "type": "integer",
+                    "description": "The minimum time of the current world day. Default -1 (ignored).",
+                    "maximum": 23999
+                },
+
+                "dayTimeMax": {
+                    "type": "integer",
+                    "description": "The maximum time of the current world day. Default -1 (ignored).",
+                    "maximum": 23999
+                },
+
+                "weather": {
+                    "description": "The weather, can be: 'any', 'clear', 'rain', 'storm', 'rainstorm' (raining and thundering) or 'notclear' (raining or thundering). Default 'any'.",
+                    "enum": ["any", "clear", "rain", "storm", "rainstorm", "notclear"]
+                },
+
+                "difficultyMin": {
+                    "type": "integer",
+                    "description": "The minimum difficulty level. Default -1 (ignored)."
+                },
+
+                "difficultyMax": {
+                    "type": "integer",
+                    "description": "The maximum difficulty level. Default -1 (ignored)."
+                },
+
+                "moonPhase": {
+                    "type": "integer",
+                    "description": "The required moon phase. 0 is a full moon. Default -1 (ignored)."
+                }
+            }
+        },
+
+        "playerSpawnCondition": {
+            "$id": "/schemas/playerSpawnCondition",
+            "additionalproperties": false,
+            "description": "Anything to do with the player that is triggering the Spawner or being triggered around. If a Spawn Trigger has no player (currently all Triggers have a player involved somehow) then this condition will always fail.",
+
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "player"
+                },
+
+                "username": {
+                    "type": "string",
+                    "description": "The username of the player. Default '' (empty, ignored)."
+                },
+
+                "difficultyMin": {
+                    "type": "integer",
+                    "description": "The minimum local area difficulty level. Default -1 (ignored)."
+                },
+
+                "difficultyMax": {
+                    "type": "integer",
+                    "description": "The maximum local area difficulty level. Default -1 (ignored)."
+                },
+
+                "levelMin": {
+                    "type": "integer",
+                    "description": "The minimum experience level of the player. Default -1 (ignored)."
+                },
+
+                "levelMax": {
+                    "type": "integer",
+                    "description": "The maximum experience level of the player. Default -1 (ignored)."
+                },
+
+                "timeMin": {
+                    "type": "integer",
+                    "description": "The minimum time that the player has been playing, this is counted by Lycanites Mobs from when a player first ever spawns in. Default -1 (ignored)."
+                },
+
+                "timeMax": {
+                    "type": "integer",
+                    "description": "The maximum time that the player has been playing, this is counted by Lycanites Mobs from when a player first ever spawns in. Default -1 (ignored)."
+                },
+
+                "lightLevelMin": {
+                    "type": "integer",
+                    "description": "The minimum light level that the player must be in. Default -1 (ignored).",
+                    "maximum": 15
+                },
+
+                "lightLevelMax": {
+                    "type": "integer",
+                    "description": "The maximum light level that the player must be in. Default -1 (ignored).",
+                    "maximum": 15
+                },
+
+                "grounded": {
+                    "type": "boolean",
+                    "description": "If true, the player must be on the ground (ignored when false). Default false."
+                },
+
+                "notGrounded": {
+                    "type": "boolean",
+                    "description": "If true, the player must not be on the ground (ignored when false). Default false."
+                },
+
+                "inWater": {
+                    "type": "boolean",
+                    "description": "If true, the player must be in the water (ignored when false). Default false."
+                },
+
+                "notInWater": {
+                    "type": "boolean",
+                    "description": "If true, the player must not be in the water (ignored when false). Default false."
+                },
+
+                "heldItems": {
+                    "type": "array",
+                    "description": "A list of held items held by the player (in either hand) to filter by. You can use this to allow or deny spawners based on what the player is holding such as a specific tool, etc. Use item ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "heldItemsListType": {
+                    "description": "Determines if the items list is a blacklist or whitelist. Default 'whitelist'.",
+                    "enum": ["blacklist","whitelist"]
+                }
+            }
+        },
+
+        "eventSpawnCondition": {
+            "$id": "/schemas/eventSpawnCondition",
+            "additionalproperties": false,
+            "description": "This performs checks on the current Mob Event that is playing, if any.",
+
+            "type": "object",
+            "required": ["type","eventname"],
+            "properties": {
+                "type": {
+                    "const": "event"
+                },
+
+                "eventname": {
+                    "type": "string",
+                    "description": "The name of the Mob Event that must be active, this is all lowercase with no space, the same that is used with the '/lm mobevent start' command. Set to '' (empty) if no Mob Event must be playing instead. Required."
+                },
+
+                "eventTimeMin": {
+                    "type": "integer",
+                    "description": "The minimum time (in ticks) the event must have been running for. Default -1 (ignored)."
+                },
+
+                "eventTimeMax": {
+                    "type": "integer",
+                    "description": "The maximum event time (in ticks), after this the condition will fail. Default -1 (ignored)."
+                }
+            }
+        },
+
+        "dateSpawnCondition": {
+            "$id": "/schemas/dateSpawnCondition",
+            "additionalproperties": false,
+            "description": "This performs checks on the IRL (system) date. See the Halloween and Yuletide Spawners for this in action.",
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "date"
+                },
+
+                "monthMin": {
+                    "type": "integer",
+                    "description": "The minimum month that is must be. Default -1 (ignored)."
+                },
+
+                "monthMax": {
+                    "type": "integer",
+                    "description": "The maximum month that is must be. Default -1 (ignored)."
+                },
+
+                "dayMin": {
+                    "type": "integer",
+                    "description": "The minimum day of the month it must be. Default -1 (ignored)."
+                },
+
+                "dayMax": {
+                    "type": "integer",
+                    "description": "The maximum day of the month it must be. Default -1 (ignored)."
+                },
+
+                "season": {
+                    "enum": ["valentines","easter","midsummer","halloween","yuletide","christmas","newyear"],
+                    "description": "Performs advanced date range checks for seasonal dates such as Easter which varies each years as well as internal dates such as Halloween to be consistent with gift items. Can be 'valentines', 'easter', 'midsummer', 'halloween', 'yuletide'/'christmas' or 'newyear'. Default '' (Empty string, ignored)."
+                }
+            }
+        },
+
+        "groupSpawnCondition": {
+            "$id": "/schemas/groupSpawnCondition",
+            "additionalproperties": false,
+            "description": "This is a special Spawn Condition that allows you to nest more Spawn Conditions in it for more complex patterns such as if x and y or z.",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "const": "group"
+                },
+
+                "conditions": {
+                    "type": "array",
+                    "description": "A list of child Conditions that this Condition will check. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                }
+            }
+        },
+
+        "worldSpawnTrigger": {
+            "$id": "/schemas/worldSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires every world tick and is good for generic random spawners as well as timed spawners that spawn mobs all over the world. 20 ticks = 1 second.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "world"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "tickRate": {
+                    "type": "integer",
+                    "description": "How many ticks between trigger attempts. Default 400 (every 20 seconds).",
+                    "minimum": 1
+                },
+
+                "useWorldTime": {
+                    "type": "boolean",
+                    "description": "If true, rather than every 'tickRate', it is instead when the world time is equal to the 'tickRate' set, good for trigger at an exact time every world day. Default false."
+                }
+            }
+        },
+
+        "playerSpawnTrigger": {
+            "type": "object",
+            "description": "This Trigger fires every player tick and is good for generic random spawners as well as timed spawners that revolve around each player. 20 ticks = 1 second.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "player"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "tickRate": {
+                    "type": "integer",
+                    "description": "How many ticks between trigger attempts. Default 400 (every 20 seconds)."
+                },
+
+                "lastTickDistanceMin": {
+                    "type": "integer",
+                    "description": "The minimum distance the player must be away from the last tick position. Default -1 (ignored)."
+                },
+
+                "lastTickDistanceMax": {
+                    "type": "integer",
+                    "description": "The maximum distance the player must be away from the last tick position. Default -1 (ignored)."
+                },
+
+                "useWorldTime": {
+                    "type": "boolean",
+                    "description": "If true, rather than every 'tickRate', it is instead when the world time is equal to the 'tickRate' set, good for trigger at an exact time every world day. Default false."
+                }
+            }
+        },
+
+        "blockSpawnTrigger": {
+            "$id": "/schemas/blockSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when certain blocks are broken by the player.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "block"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                }
+            }
+        },
+
+        "oreSpawnTrigger": {
+            "$id": "/schemas/oreSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when ore blocks are broken by the player.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "ore"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "ores": {
+                    "type": "boolean",
+                    "description": "If true, ores (ore blocks that drop as blocks as well as coal and monster egg) will trigger, if false they wont. Default: true."
+                },
+
+                "gems": {
+                    "type": "boolean",
+                    "description": "If true, gems (ore blocks that drop as items excluding coal and monster egg) will trigger, if false they wont. Default: true."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                }
+            }
+        },
+
+        "treeSpawnTrigger": {
+            "$id": "/schemas/treeSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when blocks that are part of a tree are broken by the player. This searches for log blocks and then searchs up and to the side for leaves blocks.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "tree"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                }
+            }
+        },
+
+        "cropSpawnTrigger": {
+            "$id": "/schemas/cropSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when crop blocks are broken by the player. This searches for vines, planted farm plants like Wheat as well as Melon and Pumpkin stalks.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "crop"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                }
+            }
+        },
+
+        "mixSpawnTrigger": {
+            "$id": "/schemas/mixSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when water and lava mix to form a solid block. This type uses the same properties as the Block Type where the block to filter by is the block that is formed from mixing the water and lava (stone, cobblestone or obsidian).",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "mix"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                }
+            }
+        },
+
+        "sleepSpawnTrigger": {
+            "$id": "/schemas/sleepSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when the player attempts to use a bed at night. If the Trigger is successful (passes random chance, but does not check if a mob actually spawns), the player is stopped from sleeping. This type uses the same properties as the Block Type where the block to filter by is the bed block that was used, handy for reacting to beds from other mods such as adding in 'safe beds'.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "sleep"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "playerOnly": {
+                    "type": "boolean",
+                    "description": "If true, only players can activate this Trigger, fake players are not counted as players. Default true."
+                },
+
+                "onBreak": {
+                    "type": "boolean",
+                    "description": "If true, the Block Break event will activate this trigger. Default true."
+                },
+
+                "onHarvest": {
+                    "type": "boolean",
+                    "description": "If true, the Block Harvest event will activate this trigger. Default true."
+                },
+
+                "onPlace": {
+                    "type": "boolean",
+                    "description": "If true, this Block Place event will activate this trigger. Default true."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "blocksListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "blockMaterials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Use the material name like 'wood'. Default empty.",
+                    "item": {
+                        "type": "string"
+                    }
+                },
+
+                "blockMaterialsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the block materials list is a blacklist or whitelist. Default 'blacklist'."
+                },
+
+                "silkTouch": {
+                    "enum": ["ignore","require","deny"],
+                    "description": "How to react to blocks broken with or without silk touch. Can be: 'ignore', 'require' or 'deny'. Default: 'ignore'."
+                },
+
+                "fortuneMin": {
+                    "type": "integer",
+                    "description": "The minimum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "fortuneMax": {
+                    "type": "integer",
+                    "description": "The maximum fortune that the harvester must have. Default: -1 (ignore)."
+                },
+
+                "cooldown": {
+                    "type": "integer",
+                    "description": "How long (in ticks) until this trigger can be started again, this is done per player. Default 1200 (10 minutes)."
+                }
+            }
+        },
+
+        "killSpawnTrigger": {
+            "$id": "/schemas/killSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when the player kills another mob.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "kill"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "entityTypes": {
+                    "type": "array",
+                    "description": "A list of entity types to filter by, can be: 'UNDEAD' (zombies, phantoms, etc), 'UNDEFINED' (most mobs), 'ARTHROPOD' (insects, arachnids, etc). Default empty.",
+                    "items": {
+                        "enum": ["UNDEAD","UNDEFINED","ARTHROPOD"]
+                    }
+                },
+
+                "entityTypesListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the entity types list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "entityIds":{
+                    "type": "array",
+                    "description": "A list of entity ids to filter by, you can get a mob's id from the creature page, but it usually follows a pattern like: 'mountainmobs.jabberwock' or 'minecraft.zombie', modded mobs may also work. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "entityIdsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the entity ids list is a blacklist or whitelist. Default 'blacklist'."
+                }
+            }
+        },
+
+        "fishingSpawnTrigger": {
+            "$id": "/schemas/fishingSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when the player fishes up an item.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "fishing"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                }
+            }
+        },
+
+        "explosionSpawnTrigger": {
+            "$id": "/schemas/explosionSpawnTrigger",
+            "type": "object",
+            "description": "This Trigger fires when an explosion occurs. Usually there is no player object involved with this so any player conditions will make the spawner fail.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "explosion"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "How much this influences the Spawner's trigger count by, usually just 1. If 0 this Trigger will instead completely reset the count, if negative it will reduce the count. See the Darkness Spawner for this in action. Default 1."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The Chance of triggering where 1 is 100%. Can be 0.0-1.0. Default 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
+                    "items": {
+                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                    }
+                },
+                "conditionsRequired": {
+                    "type": "integer",
+                    "description": "Determines how many Spawn Conditions must be met. If set to 0 or less then Spawn Conditions all are required. Default 0 (all)."
+                },
+
+                "strength": {
+                    "type": "integer",
+                    "description": "How strong the explosion has to be to trigger this spawner. Default 4 (TNT's strength)."
+                },
+
+                "entityTypes": {
+                    "type": "array",
+                    "description": "A list of entity types to filter by, can be: 'UNDEAD' (zombies, phantoms, etc), 'UNDEFINED' (most mobs), 'ARTHROPOD' (insects, arachnids, etc). Default empty.",
+                    "items": {
+                        "enum": ["UNDEAD","UNDEFINED","ARTHROPOD"]
+                    }
+                },
+
+                "entityTypesListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the entity types list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "entityIds":{
+                    "type": "array",
+                    "description": "A list of entity ids to filter by, you can get a mob's id from the creature page, but it usually follows a pattern like: 'mountainmobs.jabberwock' or 'minecraft.zombie', modded mobs may also work. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "entityIdsListType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the entity ids list is a blacklist or whitelist. Default 'blacklist'."
+                }
+            }
+        },
+
+        "baseLocation": {
+            "$id": "/schemas/baseLocation",
+            "type": "object",
+            "description": "Base can be used as a type for a simple location, be it random near the player or precisely on the trigger position. Block based Spawners such as the Ore Spawner use this with everything at default settings to spawn a mob where the block was destroyed.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "base"
+                },
+                "rangeMin": {
+                    "type": "array",
+                    "description": "The minimum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rangeMax": {
+                    "type": "array",
+                    "description": "The maximum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "sorting": {
+                    "enum": ["random","near","far"],
+                    "description": "When multiple spawn positions are found, this determines how they are sorted before spawning mobs at them. Can be 'random', 'near', 'far'. Default 'random'."
+                }
+            }
+        },
+
+        "blockLocation": {
+            "$id": "/schemas/blockLocation",
+            "type": "object",
+            "description": "The block type finds locations that are a specific block. The Lava and Fire Spawners use this. For larger areas such as those used by the Animal or Water Spawners, the Random Type is much more effcient and has additional features.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "block"
+                },
+                "rangeMin": {
+                    "type": "array",
+                    "description": "The minimum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rangeMax": {
+                    "type": "array",
+                    "description": "The maximum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "sorting": {
+                    "enum": ["random","near","far"],
+                    "description": "When multiple spawn positions are found, this determines how they are sorted before spawning mobs at them. Can be 'random', 'near', 'far'. Default 'random'."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "listType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "surface": {
+                    "type": "boolean",
+                    "description": "If true, positions that can see the sky are allowed. Default true."
+                },
+
+                "underground": {
+                    "type": "boolean",
+                    "description": "If true, positions that can not see the sky are allowed. Default true."
+                },
+
+                "blockCost": {
+                    "type": "integer",
+                    "description": "If set, this many of the spawnable blocks must be found. The fire spawner uses this so that it only spawns when there is a lot of fire blocks near each in one area. Default -1 (no cost)."
+                },
+
+                "requiredBlockTypes": {
+                    "type": "integer",
+                    "description": "If set (above 0), this is the amount of each block in the blocks list must be found. See the mineshaft spawner as an example where by default it requires 4 planks, rails and webs. Default: 0 (disabled)."
+                }
+            }
+        },
+
+        "materialLocation": {
+            "$id": "/schemas/materialLocation",
+            "type": "object",
+            "description": "This works the same as the Block Type but filters by Block Material instead of specific blocks. This uses the properties that the Block Type uses but with the materials property instead of blocks.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "material"
+                },
+                "rangeMin": {
+                    "type": "array",
+                    "description": "The minimum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rangeMax": {
+                    "type": "array",
+                    "description": "The maximum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "sorting": {
+                    "enum": ["random","near","far"],
+                    "description": "When multiple spawn positions are found, this determines how they are sorted before spawning mobs at them. Can be 'random', 'near', 'far'. Default 'random'."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "listType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "surface": {
+                    "type": "boolean",
+                    "description": "If true, positions that can see the sky are allowed. Default true."
+                },
+
+                "underground": {
+                    "type": "boolean",
+                    "description": "If true, positions that can not see the sky are allowed. Default true."
+                },
+
+                "blockCost": {
+                    "type": "integer",
+                    "description": "If set, this many of the spawnable blocks must be found. The fire spawner uses this so that it only spawns when there is a lot of fire blocks near each in one area. Default -1 (no cost)."
+                },
+
+                "requiredBlockTypes": {
+                    "type": "integer",
+                    "description": "If set (above 0), this is the amount of each block in the blocks list must be found. See the mineshaft spawner as an example where by default it requires 4 planks, rails and webs. Default: 0 (disabled)."
+                },
+
+                "materials": {
+                    "type": "array",
+                    "description": "A list of block materials to filter by. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "randomLocation": {
+            "$id": "/schemas/randomLocation",
+            "type": "object",
+            "description": "This is a very effcient and more advanced location that works better for broader areas like on the world surface, in caverns, underwater, etc instead of specific areas like pockets of Lava or Ooze. This uses the properties that the Block Type uses with additional properties.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "random"
+                },
+                "rangeMin": {
+                    "type": "array",
+                    "description": "The minimum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rangeMax": {
+                    "type": "array",
+                    "description": "The maximum xyz range in blocks from the trigger position to spawn mobs from. This must be an array of 3 integers. Default [0, 0, 0].",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "sorting": {
+                    "enum": ["random","near","far"],
+                    "description": "When multiple spawn positions are found, this determines how they are sorted before spawning mobs at them. Can be 'random', 'near', 'far'. Default 'random'."
+                },
+
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to filter by. Use block ids like 'minecraft:air'. Default empty.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "listType": {
+                    "enum": ["whitelist","blacklist"],
+                    "description": "Determines if the blocks list is a blacklist or whitelist. Default 'whitelist'."
+                },
+
+                "surface": {
+                    "type": "boolean",
+                    "description": "If true, positions that can see the sky are allowed. Default true."
+                },
+
+                "underground": {
+                    "type": "boolean",
+                    "description": "If true, positions that can not see the sky are allowed. Default true."
+                },
+
+                "blockCost": {
+                    "type": "integer",
+                    "description": "If set, this many of the spawnable blocks must be found. The fire spawner uses this so that it only spawns when there is a lot of fire blocks near each in one area. Default -1 (no cost)."
+                },
+
+                "requiredBlockTypes": {
+                    "type": "integer",
+                    "description": "If set (above 0), this is the amount of each block in the blocks list must be found. See the mineshaft spawner as an example where by default it requires 4 planks, rails and webs. Default: 0 (disabled)."
+                },
+
+                "limit": {
+                    "type": "integer",
+                    "description": "How many random positions to find. Try not to find more positions than the mob spawn limit of the Spawner as they are just unused it's just a waste of processing. Default 32."
+                },
+
+                "solidGround": {
+                    "type": "boolean",
+                    "description": "If true positions require a solid walkable block underneath rather than being able to float in the air/water. This is ideal for land based spawners as well as for spawning mobs on the bottom of the ocean, etc. For flying mobs you'll want this to be false or they'll all spawn on the ground. Default false."
+                },
+
+                "easyDifficultyRangeScale": {
+                    "type": "number",
+                    "description": "This scales the x and z range values by this amount when on Easy or Peaceful Difficulty. Default 1.5."
+                },
+
+                "normalDifficultyRangeScale": {
+                    "type": "number",
+                    "description": "This scales the x and z range values by this amount when on Normal Difficulty. Default 1."
+                },
+
+                "hardDifficultyRangeScale": {
+                    "type": "number",
+                    "description": "This scales the x and z range values by this amount when on ard and above Difficulty. Default 0.5."
+                }
+            }
+        },
+
+        "itemDrop": {
+            "$id": "/schemas/itemDrop",
+            "type": "object",
+            "description": "Item Drops have several properties, some are only used by certain things such as the dungeon properties only being used by Dungeon JSON.",
+            "required": ["item"],
+            "additionalProperties": false,
+
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The id of the item such as minecraft:stone. Modded ids can be used and if nothing matches then this Item Drop is just ignored. Required."
+                },
+
+                "metadata": {
+                    "type": "integer",
+                    "description": "The metadata of the item which is used for items or blocks that have multiple forms. Default 0"
+                },
+
+                "minAmount": {
+                    "type": "integer",
+                    "description": "The minimum random stack size. Default 1"
+                },
+
+                "maxAmount": {
+                    "type": "integer",
+                    "description": "The maximum random stack size. Default 1"
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "The chance of this Item Drop being dropped or placed in a loot chest, etc. Set to 1 for always and 0 to essentially disable this Item Drop without deleting it from json. Default 0 (never)",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "subspecies": {
+                    "type": "integer",
+                    "description": "If set, the subspecies index of the mob such as 0 for normal, 1 or 2 for uncommon and 3 for rare. Note that creature json allows for the subspecies order to be changed. Default -1 (ignore subspecies)"
+                },
+
+                "burningItem": {
+                    "type": "string",
+                    "description": "An alternate item id to use when a burning creature drops this Item Drop. Used to drop cooked meat from burning animals, etc. Default: Empty"
+                },
+
+                "burningMetadata": {
+                    "type": "integer",
+                    "description": "An alternate item metadata to use when a burning creature drops this Item Drop. Default: Empty"
+                }
+            }
+        }
+    }
+}

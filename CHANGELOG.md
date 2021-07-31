@@ -1,6 +1,7 @@
 # v1.7.0 -- 7/30/21
 
 * Added schema validation for Bountiful's decree and objective/reward pool JSONs.
+* Added schema validation for Lycanite's Mobs spawner, creature, and element configuration files.
 * Universal registry added:
 
 ## BLOCKS

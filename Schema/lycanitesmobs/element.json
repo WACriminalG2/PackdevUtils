@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Lycanite's Mobs Element",
+    "description": "Configuration file for elements from Lycanite's Mobs.",
+    "type":"object",
+    "required": ["name"],
+    "additionalProperties": false,
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the element. Required."
+        },
+
+        "components": {
+            "type": "array",
+            "description": "For Elements that can be created by fusing other elements, a list of the elements that make this element. Creatures will also inherit resistances from these components but not buffs or debuffs. Hence a Lava creature can't burn thanks to the Fire component. Default: Empty",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "type": {
+            "enum": ["primal","compound"],
+            "description": "The type of element this is, can be 'primal' or 'compound' or left out of the json (recommend) to make it automatic. Default: Auto (Set to primal if there are no components and compound if there are)"
+        },
+
+        "buffs": {
+            "type": "array",
+            "description": "A list of buff potion effect ids that creatures of this element may gain or grant to allies in some way. Default: Empty",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "debuffs": {
+            "type": "array",
+            "description": "A list of debuff potion effect ids that creatures of this element are resistant to and may inflict on enemies in some way. Use 'burning' instead of an id to set mobs on fire. Default: Empty",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "buffDurationMultiplier": {
+            "type": "number",
+            "description": "A multiplier applied to any buffs caused by this element. This may be applied to a creture's effect stat. Default: 1.0"
+        },
+
+        "debuffDurationMultiplier": {
+            "type": "number",
+            "description": "A multiplier applied to any debuffs caused by this element. This may be applied to a creture's effect stat. Default: 1.0"
+        },
+
+        "canBurn": {
+            "type": "boolean",
+            "description": "If set to false, this element will grant creatures fire resistance, etc. Can be inherited by compound elements. Default: true"
+        },
+
+        "canFreeze": {
+            "type": "boolean",
+            "description": "If set to false, this element will grant creatures freeze resistance (ooze, frostfire, etc). Can be inherited by compound elements. Default: true"
+        }
+    }
+
+}
