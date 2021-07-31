@@ -33,7 +33,7 @@
         },
 
         "spawning": {
-            "$ref": "/schemas/creatureSpawn",
+            "$ref": "#/$defs/creatureSpawn",
             "type": "object",
             "description": "The spawning settings for this creature. Required."
         },
@@ -229,14 +229,13 @@
             "type": "array",
             "description": "A list of items the creature will drop. Default: Empty",
             "items": {
-                "$ref": "/schemas/itemDrop"
+                "$ref": "#/$defs/itemDrop"
             }
         }
     },
 
     "$defs": {
         "itemDrop": {
-            "$id": "/schemas/itemDrop",
             "type": "object",
             "description": "Item Drops have several properties, some are only used by certain things such as the dungeon properties only being used by Dungeon JSON.",
             "required": ["item"],
@@ -288,7 +287,6 @@
         },
 
         "creatureSpawn": {
-            "$id": "/schemas/creatureSpawn",
             "type": "object",
             "additionalproperties": false,
 

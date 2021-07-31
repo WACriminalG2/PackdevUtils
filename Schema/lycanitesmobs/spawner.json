@@ -135,7 +135,7 @@
             "type": "array",
             "description": "A list of Spawn Conditions that this Spawner will check. Default empty (Spawner will always work).",
             "items": {
-                "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
             }
         },
 
@@ -143,7 +143,7 @@
             "type": "array",
             "description": "A list of Spawn Triggers that will attempt to start this Spawner. Default empty (Spawner will never start, so should have at least 1 Trigger to function).",
             "items": {
-                "oneOf": [{"$ref": "/schemas/worldSpawnTrigger"},{"$ref": "/schemas/playerSpawnTrigger"},{"$ref": "/schemas/blockSpawnTrigger"},{"$ref": "/schemas/oreSpawnTrigger"},{"$ref": "/schemas/treeSpawnTrigger"},{"$ref": "/schemas/cropSpawnTrigger"},{"$ref": "/schemas/mixSpawnTrigger"},{"$ref": "/schemas/sleepSpawnTrigger"},{"$ref": "/schemas/killSpawnTrigger"},{"$ref": "/schemas/fishingSpawnTrigger"},{"$ref": "/schemas/explosionSpawnTrigger"}]
+                "oneOf": [{"$ref":"#/$defs/worldSpawnTrigger"},{"$ref":"#/$defs/playerSpawnTrigger"},{"$ref":"#/$defs/blockSpawnTrigger"},{"$ref":"#/$defs/oreSpawnTrigger"},{"$ref":"#/$defs/treeSpawnTrigger"},{"$ref":"#/$defs/cropSpawnTrigger"},{"$ref":"#/$defs/mixSpawnTrigger"},{"$ref":"#/$defs/sleepSpawnTrigger"},{"$ref":"#/$defs/killSpawnTrigger"},{"$ref":"#/$defs/fishingSpawnTrigger"},{"$ref":"#/$defs/explosionSpawnTrigger"}]
             }
         },
 
@@ -151,7 +151,7 @@
             "type": "array",
             "description": "A list of Spawn Location that this Spawner will use to get spawn positions from. Default empty (Spawner will never be able to Spawn anything so should have at least 1 Spawn Location).",
             "items": {
-                "oneOf": [{"$ref": "/schemas/baseLocation"},{"$ref": "/schemas/blockLocation"},{"$ref": "/schemas/materialLocation"},{"$ref": "/schemas/randomLocation"}]
+                "oneOf": [{"$ref":"#/$defs/baseLocation"},{"$ref":"#/$defs/blockLocation"},{"$ref":"#/$defs/materialLocation"},{"$ref":"#/$defs/randomLocation"}]
             }
         },
 
@@ -242,7 +242,7 @@
                         "type": "array",
                         "description": "A list of Item Drop entires that this mob may drop. Default: Empty",
                         "items": {
-                            "$ref": "/schemas/itemDrop"
+                            "$ref":"#/$defs/itemDrop"
                         }
                     },
 
@@ -267,7 +267,6 @@
 
     "$defs": {
         "worldSpawnCondition": {
-            "$id": "/schemas/worldSpawnCondition",
             "additionalProperties": false,
             "description": "Anything to do with the world that the Spawner is being triggered in.",
 
@@ -367,7 +366,6 @@
         },
 
         "playerSpawnCondition": {
-            "$id": "/schemas/playerSpawnCondition",
             "additionalproperties": false,
             "description": "Anything to do with the player that is triggering the Spawner or being triggered around. If a Spawn Trigger has no player (currently all Triggers have a player involved somehow) then this condition will always fail.",
 
@@ -461,7 +459,6 @@
         },
 
         "eventSpawnCondition": {
-            "$id": "/schemas/eventSpawnCondition",
             "additionalproperties": false,
             "description": "This performs checks on the current Mob Event that is playing, if any.",
 
@@ -490,7 +487,6 @@
         },
 
         "dateSpawnCondition": {
-            "$id": "/schemas/dateSpawnCondition",
             "additionalproperties": false,
             "description": "This performs checks on the IRL (system) date. See the Halloween and Yuletide Spawners for this in action.",
             "type": "object",
@@ -528,7 +524,6 @@
         },
 
         "groupSpawnCondition": {
-            "$id": "/schemas/groupSpawnCondition",
             "additionalproperties": false,
             "description": "This is a special Spawn Condition that allows you to nest more Spawn Conditions in it for more complex patterns such as if x and y or z.",
             "type": "object",
@@ -541,14 +536,13 @@
                     "type": "array",
                     "description": "A list of child Conditions that this Condition will check. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 }
             }
         },
 
         "worldSpawnTrigger": {
-            "$id": "/schemas/worldSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires every world tick and is good for generic random spawners as well as timed spawners that spawn mobs all over the world. 20 ticks = 1 second.",
             "additionalproperties": false,
@@ -571,7 +565,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -615,7 +609,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -646,7 +640,6 @@
         },
 
         "blockSpawnTrigger": {
-            "$id": "/schemas/blockSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when certain blocks are broken by the player.",
             "additionalproperties": false,
@@ -669,7 +662,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -741,7 +734,6 @@
         },
 
         "oreSpawnTrigger": {
-            "$id": "/schemas/oreSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when ore blocks are broken by the player.",
             "additionalproperties": false,
@@ -764,7 +756,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -846,7 +838,6 @@
         },
 
         "treeSpawnTrigger": {
-            "$id": "/schemas/treeSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when blocks that are part of a tree are broken by the player. This searches for log blocks and then searchs up and to the side for leaves blocks.",
             "additionalproperties": false,
@@ -869,7 +860,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -941,7 +932,6 @@
         },
 
         "cropSpawnTrigger": {
-            "$id": "/schemas/cropSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when crop blocks are broken by the player. This searches for vines, planted farm plants like Wheat as well as Melon and Pumpkin stalks.",
             "additionalproperties": false,
@@ -964,7 +954,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1036,7 +1026,6 @@
         },
 
         "mixSpawnTrigger": {
-            "$id": "/schemas/mixSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when water and lava mix to form a solid block. This type uses the same properties as the Block Type where the block to filter by is the block that is formed from mixing the water and lava (stone, cobblestone or obsidian).",
             "additionalproperties": false,
@@ -1059,7 +1048,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1131,7 +1120,6 @@
         },
 
         "sleepSpawnTrigger": {
-            "$id": "/schemas/sleepSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when the player attempts to use a bed at night. If the Trigger is successful (passes random chance, but does not check if a mob actually spawns), the player is stopped from sleeping. This type uses the same properties as the Block Type where the block to filter by is the bed block that was used, handy for reacting to beds from other mods such as adding in 'safe beds'.",
             "additionalproperties": false,
@@ -1154,7 +1142,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1231,7 +1219,6 @@
         },
 
         "killSpawnTrigger": {
-            "$id": "/schemas/killSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when the player kills another mob.",
             "additionalproperties": false,
@@ -1254,7 +1241,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1291,7 +1278,6 @@
         },
 
         "fishingSpawnTrigger": {
-            "$id": "/schemas/fishingSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when the player fishes up an item.",
             "additionalproperties": false,
@@ -1314,7 +1300,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1325,7 +1311,6 @@
         },
 
         "explosionSpawnTrigger": {
-            "$id": "/schemas/explosionSpawnTrigger",
             "type": "object",
             "description": "This Trigger fires when an explosion occurs. Usually there is no player object involved with this so any player conditions will make the spawner fail.",
             "additionalproperties": false,
@@ -1348,7 +1333,7 @@
                     "type": "array",
                     "description": "A Spawn Trigger can also have it's own list of Trigger-specific Spawn Conditions that are only checked for this Trigger. See the Darkness Spawner for this in action. Default empty.",
                     "items": {
-                        "oneOf": [{"$ref": "/schemas/groupSpawnCondition"},{"$ref": "/schemas/dateSpawnCondition"},{"$ref": "/schemas/eventSpawnCondition"},{"$ref": "/schemas/playerSpawnCondition"},{"$ref": "/schemas/worldSpawnCondition"}]
+                        "oneOf": [{"$ref":"#/$defs/groupSpawnCondition"},{"$ref":"#/$defs/dateSpawnCondition"},{"$ref":"#/$defs/eventSpawnCondition"},{"$ref":"#/$defs/playerSpawnCondition"},{"$ref":"#/$defs/worldSpawnCondition"}]
                     }
                 },
                 "conditionsRequired": {
@@ -1390,7 +1375,6 @@
         },
 
         "baseLocation": {
-            "$id": "/schemas/baseLocation",
             "type": "object",
             "description": "Base can be used as a type for a simple location, be it random near the player or precisely on the trigger position. Block based Spawners such as the Ore Spawner use this with everything at default settings to spawn a mob where the block was destroyed.",
             "additionalproperties": false,
@@ -1425,7 +1409,6 @@
         },
 
         "blockLocation": {
-            "$id": "/schemas/blockLocation",
             "type": "object",
             "description": "The block type finds locations that are a specific block. The Lava and Fire Spawners use this. For larger areas such as those used by the Animal or Water Spawners, the Random Type is much more effcient and has additional features.",
             "additionalproperties": false,
@@ -1493,7 +1476,6 @@
         },
 
         "materialLocation": {
-            "$id": "/schemas/materialLocation",
             "type": "object",
             "description": "This works the same as the Block Type but filters by Block Material instead of specific blocks. This uses the properties that the Block Type uses but with the materials property instead of blocks.",
             "additionalproperties": false,
@@ -1569,7 +1551,6 @@
         },
 
         "randomLocation": {
-            "$id": "/schemas/randomLocation",
             "type": "object",
             "description": "This is a very effcient and more advanced location that works better for broader areas like on the world surface, in caverns, underwater, etc instead of specific areas like pockets of Lava or Ooze. This uses the properties that the Block Type uses with additional properties.",
             "additionalproperties": false,
@@ -1662,7 +1643,6 @@
         },
 
         "itemDrop": {
-            "$id": "/schemas/itemDrop",
             "type": "object",
             "description": "Item Drops have several properties, some are only used by certain things such as the dungeon properties only being used by Dungeon JSON.",
             "required": ["item"],

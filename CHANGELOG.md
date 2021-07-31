@@ -1,3 +1,7 @@
+# v1.8.2 -- 7/31/21
+
+* Fixed internal sub-schema references.
+
 # v1.8.1 -- 7/31/21
 
 * Fixed folder-matching for Architect's Palette warping schema validator.
