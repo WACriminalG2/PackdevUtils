@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"

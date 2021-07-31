@@ -281,7 +281,7 @@
                     "type": "array",
                     "description": "The dimension IDs that the world must or must not match depending on the list type. Defult empty.",
                     "items": {
-                        "type": "integer"
+                        "type": "string"
                     }
                 },
 

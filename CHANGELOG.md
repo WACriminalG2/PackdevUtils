@@ -1,3 +1,7 @@
+# v1.8.3 -- 7/31/21
+
+* Updated Lycanite's Mobs schemas -- was previously working from old documentation.
+
 # v1.8.2 -- 7/31/21
 
 * Fixed internal sub-schema references.

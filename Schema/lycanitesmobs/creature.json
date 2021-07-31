@@ -12,6 +12,37 @@
             "description": "The creature's name, it is recommended not to change this value as it will break things and is used to associate a Model Class. Required."
         },
 
+        "creatureType": {
+            "type": "string",
+            "description": "This creature's type."
+        },
+
+        "groups": {
+            "type": "array",
+            "description": "A list of groups to which this creature belongs.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "diets": {
+            "type": "array",
+            "description": "A list of diets this creature can eat.",
+            "items": {
+                "enum": ["carnivore","detritivore","exudativore","frugivore","fungivore","geovore","herbivore","insectivore","piscivore"]
+            }
+        },
+
+        "loadDefault": {
+            "type": "boolean",
+            "description": "This is only used by the default creatures and must be false or not present in the JSON to prevent the creature from being overwritten when the game loads. You can simply leave it out of your custom creatures."
+        },
+
+        "enabled": {
+            "type": "boolean",
+            "description": "Set to false to completely disable this creature, any instances of the creature will be instantly removed and natural spawning will be disabled. Default: true"
+        },
+
         "entityClass": {
             "type": "string",
             "description": "The Java Class to use for this creature, contains all behaviour, it is recommended not to change this as it will break things. Required."
@@ -20,11 +51,6 @@
         "modelClass": {
             "type": "string",
             "description": "The Java Class to use for this creature's model. This is currently not implemented but will be soon to go with the new subspecies system. Required."
-        },
-
-        "enable": {
-            "type": "boolean",
-            "description": "Set to false to completely disable this creature, any instances of the creature will be instantly removed and natural spawning will be disabled. Default: true"
         },
         
         "dummy": {
@@ -88,13 +114,13 @@
             "description": "The base amount of ranged attacks per second the creature can do. Note that this is restricted by the creature's update tick rate. Default 0.5 (1 attack every 2 seconds)"
         },
 
-        "effect": {
+        "effectDuration": {
             "type": "number",
             "description": "The base duration (in seconds) of effects applied by the creature, note that some effects scale this value. Default 1.0 (1 second effect duration)"
         },
 
-        "amplifier": {
-            "type": "number",
+        "effectAmplifier": {
+            "type": "integer",
             "description": "The base amplifier of effects applied by the creature. Use 0 for level 1 effects, 1 for level 2, etc. Default -1 (disable element effect)"
         },
 
@@ -113,6 +139,11 @@
             "description": "The base chance that the creature won't be knocked back from attacks where 0.0 is always and 1.0 is never. Default 0 (always knocked back)",
             "minimum": 0,
             "maximum": 1
+        },
+
+        "bagSize": {
+            "type": "integer",
+            "description": "???"
         },
 
         "eggBackColor": {
@@ -231,6 +262,16 @@
             "items": {
                 "$ref": "#/$defs/itemDrop"
             }
+        },
+
+        "sizeScale": {
+            "type": "number",
+            "description": "Multiplier applied to this creature's size."
+        },
+
+        "hitboxScale": {
+            "type": "number",
+            "description": "Multiplier applied to the size of this creature's hitbox."
         }
     },
 
@@ -267,6 +308,11 @@
                     "description": "The chance of this Item Drop being dropped or placed in a loot chest, etc. Set to 1 for always and 0 to essentially disable this Item Drop without deleting it from json. Default 0 (never)",
                     "minimum": 0,
                     "maximum": 1
+                },
+
+                "variant": {
+                    "type": "integer",
+                    "description": "???"
                 },
 
                 "subspecies": {
@@ -313,7 +359,7 @@
                     "type": "array",
                     "description": "A list of dimension ids to restrict the creature to or from. Default: Empty",
                     "items": {
-                        "type": "integer"
+                        "type": "string"
                     }
                 },
 

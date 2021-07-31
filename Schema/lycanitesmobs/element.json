@@ -12,6 +12,11 @@
             "description": "The name of the element. Required."
         },
 
+        "loadDefault": {
+            "type": "boolean",
+            "description": "This is only used by the default elements and must be false or not present in the JSON to prevent the element from being overwritten when the game loads. You can simply leave it out of your custom elements."
+        },
+
         "components": {
             "type": "array",
             "description": "For Elements that can be created by fusing other elements, a list of the elements that make this element. Creatures will also inherit resistances from these components but not buffs or debuffs. Hence a Lava creature can't burn thanks to the Fire component. Default: Empty",
