@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.8.3",
+    "version": "1.9.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -124,6 +124,22 @@
               {
                   "fileMatch": "*/config/lycanitesmobs/elements/*.json",
                   "url": "./Schema/lycanitesmobs/element.json"
+              },
+              {
+                  "fileMatch": "*/data/*/crock_pot/*.json",
+                  "url": "./Schema/crockpot/recipes/crockpot.json"
+              },
+              {
+                  "fileMatch": "*/data/*/origins/*.json",
+                  "url": "./Schema/origins/origin.json"
+              },
+              {
+                  "fileMatch": "*/data/*/origin_layers/*.json",
+                  "url": "./Schema/origins/layer.json"
+              },
+              {
+                  "fileMatch": "*/data/*/powers/*.json",
+                  "url": "./Schema/origins/power.json"
               }
           ]
       }

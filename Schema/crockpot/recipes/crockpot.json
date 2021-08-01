@@ -1,0 +1,308 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Crock Pot mod's cooking recipe format.",
+    "type": "object",
+    "required": ["result"],
+    "additionalproperties": false,
+
+    "properties": {
+        "result": {
+            "type": "object",
+            "description": "The result item of the recipe.",
+            "required": ["id","Count"],
+            "additionalproperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The namespaced ID of the item."
+                },
+                "Count": {
+                    "type": "integer",
+                    "description": "The quantity of the item produced."
+                }
+            }
+        },
+
+        "requirements": {
+            "type": "array",
+            "description": "A list of requirements for the recipe.",
+            "items": {
+                "oneOf": [{"$ref": "#/$defs/category_max"},{"$ref": "#/$defs/category_max_exclusive"},{"$ref": "#/$defs/category_min"},{"$ref": "#/$defs/category_min_exclusive"},{"$ref": "#/$defs/must_contain_ingredient"},{"$ref": "#/$defs/must_contain_ingredient_less_than"},{"$ref": "#/$defs/combination_and"},{"$ref": "#/$defs/combination_or"}]
+            }
+        },
+
+        "cookTime": {
+            "type": "integer",
+            "description": "The amount of cooking time for this recipe, in ticks."
+        },
+
+        "priority": {
+            "type": "integer",
+            "description": "An integer value used to describe the priority of the recipe. If the input matches two different recipes, the recipe with the higher priority will eventually be matched."
+        },
+
+        "weight": {
+            "type": "integer",
+            "description": "An integer value used to describe the weight of the recipe. The value should be greater than 0. If the input matches two different recipes with the same priority, it will match a random one based on the weight. The higher the weight of the recipe, the higher the probability that the recipe will be randomly matched.",
+            "exclusiveMinimum": 0
+        },
+
+        "potLevel": {
+            "type": "integer",
+            "description": "An integer value used to describe the level of Crock Pot required for the recipe. 0 is the Basic Crock Pot, 1 is the Advanced Crock Pot and 2 is the Ultimate Crock Pot.",
+            "minimum": 0,
+            "maximum": 2
+        }
+    },
+
+    "$defs": {
+        "category_max": {
+            "type": "object",
+            "description": "The maximum value of the corresponding food category of the input. (input <= max )",
+            "required": ["type","category","max"],
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "category_max"
+                },
+
+                "category": {
+                    "enum": ["MEAT","MONSTER","FISH","EGG","FRUIT","VEGGIE","DAIRY","SWEETENER","FROZEN","INEDIBLE"],
+                    "description": "A string value used to describe the food category. It should be MEAT, MONSTER, FISH, EGG, FRUIT, VEGGIE, DAIRY, SWEETENER, FROZEN or INEDIBLE."
+                },
+
+                "max": {
+                    "type": "number",
+                    "description": "A float value used to describe the maximum value of the corresponding food category of the input."
+                },
+
+                "min": {
+                    "type": "number",
+                    "description": "A float value used to describe the minimum value of the corresponding food category of the input."
+                }
+            }
+        },
+
+        "category_max_exclusive": {
+            "type": "object",
+            "description": "The maximum value of the corresponding food category of the input (not including this value itself). (input < max )",
+            "required": ["type","category","max"],
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "category_max_exclusive"
+                },
+
+                "category": {
+                    "enum": ["MEAT","MONSTER","FISH","EGG","FRUIT","VEGGIE","DAIRY","SWEETENER","FROZEN","INEDIBLE"],
+                    "description": "A string value used to describe the food category. It should be MEAT, MONSTER, FISH, EGG, FRUIT, VEGGIE, DAIRY, SWEETENER, FROZEN or INEDIBLE."
+                },
+
+                "max": {
+                    "type": "number",
+                    "description": "A float value used to describe the maximum value of the corresponding food category of the input."
+                },
+
+                "min": {
+                    "type": "number",
+                    "description": "A float value used to describe the minimum value of the corresponding food category of the input."
+                }
+            }
+        },
+
+        "category_min": {
+            "type": "object",
+            "description": "The minimum value of the corresponding food category of the input. (input >= min )",
+            "required": ["type","category","min"],
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "category_min"
+                },
+
+                "category": {
+                    "enum": ["MEAT","MONSTER","FISH","EGG","FRUIT","VEGGIE","DAIRY","SWEETENER","FROZEN","INEDIBLE"],
+                    "description": "A string value used to describe the food category. It should be MEAT, MONSTER, FISH, EGG, FRUIT, VEGGIE, DAIRY, SWEETENER, FROZEN or INEDIBLE."
+                },
+
+                "max": {
+                    "type": "number",
+                    "description": "A float value used to describe the maximum value of the corresponding food category of the input."
+                },
+
+                "min": {
+                    "type": "number",
+                    "description": "A float value used to describe the minimum value of the corresponding food category of the input."
+                }
+            }
+        },
+
+        "category_min_exclusive": {
+            "type": "object",
+            "description": "The minimum value of the corresponding food category of the input (not including this value itself). (input > min )",
+            "required": ["type","category","min"],
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "category_min_exclusive"
+                },
+
+                "category": {
+                    "enum": ["MEAT","MONSTER","FISH","EGG","FRUIT","VEGGIE","DAIRY","SWEETENER","FROZEN","INEDIBLE"],
+                    "description": "A string value used to describe the food category. It should be MEAT, MONSTER, FISH, EGG, FRUIT, VEGGIE, DAIRY, SWEETENER, FROZEN or INEDIBLE."
+                },
+
+                "max": {
+                    "type": "number",
+                    "description": "A float value used to describe the maximum value of the corresponding food category of the input."
+                },
+
+                "min": {
+                    "type": "number",
+                    "description": "A float value used to describe the minimum value of the corresponding food category of the input."
+                }
+            }
+        },
+
+        "must_contain_ingredient": {
+            "type": "object",
+            "description": "The input contains at least a certain number of specific ingredients.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "must_contain_ingredient"
+                },
+
+                "ingredient": {
+                    "type": ["object","array"],
+                    "description": "An object or array used to describe the required ingredients.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "A namespaced item ID for the ingredient."
+                        },
+                        "tag": {
+                            "type": "string",
+                            "description": "A namespaced tag ID. Ignored if the item field is present."
+                        }
+                    },
+
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "A namespaced item ID for the ingredient."
+                            },
+                            "tag": {
+                                "type": "string",
+                                "description": "A namespaced tag ID. Ignored if the item field is present."
+                            }
+                        }
+                    }
+                },
+
+                "quantity": {
+                    "type": "integer",
+                    "description": "An integer value used to describe the count of the ingredient."
+                }
+            }
+        },
+
+        "must_contain_ingredient_less_than": {
+            "type": "object",
+            "description": "The input contains at most a certain number of specific ingredients.",
+            "additionalproperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "must_contain_ingredient_less_than"
+                },
+
+                "ingredient": {
+                    "type": ["object","array"],
+                    "description": "An object or array used to describe the required ingredients.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "A namespaced item ID for the ingredient."
+                        },
+                        "tag": {
+                            "type": "string",
+                            "description": "A namespaced tag ID. Ignored if the item field is present."
+                        }
+                    },
+
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "A namespaced item ID for the ingredient."
+                            },
+                            "tag": {
+                                "type": "string",
+                                "description": "A namespaced tag ID. Ignored if the item field is present."
+                            }
+                        }
+                    }
+                },
+
+                "quantity": {
+                    "type": "integer",
+                    "description": "An integer value used to describe the count of the ingredient."
+                }
+            }
+        },
+
+        "combination_and": {
+            "type": "object",
+            "description": "A combination requirement that requires both requirements to be met.",
+
+            "properties": {
+                "type": {
+                    "const": "combination_and"
+                },
+
+                "first": {
+                    "description": "The first requirement.",
+                    "oneOf": [{"$ref": "#/$defs/category_max"},{"$ref": "#/$defs/category_max_exclusive"},{"$ref": "#/$defs/category_min"},{"$ref": "#/$defs/category_min_exclusive"},{"$ref": "#/$defs/must_contain_ingredient"},{"$ref": "#/$defs/must_contain_ingredient_less_than"},{"$ref": "#/$defs/combination_and"},{"$ref": "#/$defs/combination_or"}]
+                },
+
+                "second": {
+                    "description": "The second requirement.",
+                    "$ref": "#/$defs/combination_and/properties/first"
+                }
+            }
+        },
+
+        "combination_or": {
+            "type": "object",
+            "description": "A combination requirement that requires any one of the requirements to be met.",
+
+            "properties": {
+                "type": {
+                    "const": "combination_or"
+                },
+
+                "first": {
+                    "description": "The first requirement.",
+                    "oneOf": [{"$ref": "#/$defs/category_max"},{"$ref": "#/$defs/category_max_exclusive"},{"$ref": "#/$defs/category_min"},{"$ref": "#/$defs/category_min_exclusive"},{"$ref": "#/$defs/must_contain_ingredient"},{"$ref": "#/$defs/must_contain_ingredient_less_than"},{"$ref": "#/$defs/combination_and"},{"$ref": "#/$defs/combination_or"}]
+                },
+
+                "second": {
+                    "description": "The second requirement.",
+                    "$ref": "#/$defs/combination_and/properties/first"
+                }
+            }
+        }
+
+
+    }
+    
+}

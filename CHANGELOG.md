@@ -1,3 +1,8 @@
+# v1.9.0 -- 8/1/21
+
+* Added schema validation for Crock Pot's cooking recipes.
+* Added schema validation for Origin's layers, powers, and origins. Credit: S_K_Tiger
+
 # v1.8.3 -- 7/31/21
 
 * Updated Lycanite's Mobs schemas -- was previously working from old documentation.

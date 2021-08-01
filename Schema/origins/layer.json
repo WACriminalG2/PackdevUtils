@@ -1,0 +1,160 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Origins layer JSON schema by S_K_Tiger",
+    "type": "object",
+    "properties": {
+        "order": {
+            "type": "integer",
+            "description": "Specifies the order of this layer in the choose and view origin screen among the other layers. Smaller numbers mean it appears before layers with larger numbers."
+        },
+        "origins": {
+            "type": "array",
+            "description": "Defines the origins that should be in this layer. Identifier strings and Conditioned Origin objects can be mixed in the same array.",
+            "items": [
+                {
+                    "type": "string",
+                    "description": "Identifier string",
+                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "condition": { "$ref": "#/definitions/entity_condition" },
+                        "origins": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "description": "Identifier string",
+                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                            },
+                            "description": "IDs of the origins which should become available when the condition is fulfilled."
+                        }
+                    },
+                    "required": [ "condition", "origins" ]
+                }
+            ]
+        },
+        "enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "If set to false, this layer will be unavailable."
+        },
+        "replace": {
+            "type": "boolean",
+            "default": false,
+            "description": "If set to false, the data in this file will be appended to an already existing version of this layer. Useful to add custom origins to the default origin layer for example. If set to true, the layer will be replaced and only the origins specified in this file will appear."
+        },
+        "name": {
+            "type": "string",
+            "description": "The display name of the layer. Will show at the top of the GUI saying \"Choose your [name here]\". Can be a literal string or a translation key."
+        },
+        "missing_name": {
+            "type": "string",
+            "description": "The display name of the origin that will show when viewing the origin if no origin has been assigned to this layer. Can be a literal string or a translation key."
+        },
+        "missing_description": {
+            "type": "string",
+            "description": "The description of the origin that will show when viewing the origin if no origin has been assigned to this layer. Can be a literal string or a translation key."
+        },
+        "allow_random": {
+            "type": "boolean",
+            "default": false,
+            "description": "If set to true, this layer will show an option for choosing a random origin."
+        },
+        "allow_random_unchoosable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether origins which are unchoosable (unchoosable field set to true in the origin file) should be included in the random option. Can for example be used to force players to choose a random origin, by setting this to true and making all origins in the layer unchoosable."
+        },
+        "exclude_random": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "Identifier string",
+                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+            },
+            "description": "If specified, the origins included in this list will not be picked by the random choice."
+        },
+        "default_origin": {
+            "type": "string",
+            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+            "description": "If set, the origin with this ID will automatically be chosen for a new player. If an orb of origin is used later on, the player will be able to choose another origin then and the default_origin will not apply. Could for example be used to make all players start as human, and then use the orb as a progression item to select an origin."
+        },
+        "auto_choose": {
+            "type": "boolean",
+            "default": false,
+            "description": "If set to true, this layer will automatically pick an origin for the player if only one option is available. This also applies when an orb of origin is used."
+        }
+    },
+    "required": [ "origins" ],
+    "definitions": {
+        "entity_condition": {
+            "$comment": "TODO Add conditional atributes",
+            "type": "object",
+            "description": "Entity Conditions operate on a LivingEntity, which also allows access to the world. These are available to be used in most powers in the condition field, which restricts when a power is active.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
+                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                    "examples": [
+                        "origins:advancement", "origins:air", "origins:attribute", "origins:biome", "origins:block_collision",
+                        "origins:block_in_radius", "origins:brightness", "origins:climbing", "origins:collided_horizontally",
+                        "origins:command", "origins:daytime", "origins:dimension", "origins:enchantment", "origins:entity_group",
+                        "origins:entity_type", "origins:equipped_item", "origins:exposed_to_sky", "origins:exposed_to_sun",
+                        "origins:fall_distance", "origins:fall_flying", "origins:fluid_height", "origins:food_level",
+                        "origins:gamemode", "origins:health", "origins:in_block_anywhere", "origins:in_block", "origins:in_rain",
+                        "origins:in_tag", "origins:invisible", "origins:moving", "origins:on_block", "origins:on_fire",
+                        "origins:origin", "origins:power_active","origins:power", "origins:predicate", "origins:relative_health",
+                        "origins:resource", "origins:saturation_level","origins:scoreboard", "origins:sneaking",
+                        "origins:sprinting", "origins:status_effect", "origins:submerged_in","origins:swimming", "origins:tamed",
+                        "origins:using_effective_tool", "origins:using_item", "origins:xp_levels", "origins:xp_points"
+                    ]
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, the condition acts inverted."
+                }
+            },
+            "required": [ "type" ],
+            "allOf": [
+                {
+                    "$comment": "#region meta Is there a better way to do this?",
+                    "if": { "properties": { "type": { "const": "origins:and" } } },
+                    "then": {
+                        "properties": {
+                            "conditions": {
+                                "type": "array",
+                                "items": { "$ref": "#/definitions/entity_condition" }
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": { "properties": { "type": { "const": "origins:or" } } },
+                    "then": {
+                        "properties": {
+                            "conditions": {
+                                "type": "array",
+                                        "items": { "$ref": "#/definitions/entity_condition" }
+                            }
+                        }
+                        }
+                },
+                {
+                    "if": { "properties": { "type": { "const": "origins:constant" } } },
+                    "then": {
+                        "properties": {
+                            "conditions": {
+                                "type": "boolean",
+                                "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+                            }
+                        }
+                    },
+                    "$comment": "#endregion meta"
+                }
+            ]
+        }
+    }
+}

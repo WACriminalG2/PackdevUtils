@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Origins origin JSON schema by S_K_Tiger",
+    "type": "object",
+    "properties": {
+        "powers": {
+            "type": "array",
+            "description": "IDs of the powers this origin should have.",
+            "items": {
+                "type": "string",
+                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                "examples": [
+                    "origins:fall_immunity", "origins:aerial_combatant", "origins:aqua_affinity", "origins:aquatic",
+                    "origins:arthropod", "origins:more_kinetic_damage", "origins:burning_wrath", "origins:carnivore",
+                    "origins:scare_creepers", "origins:claustrophobia", "origins:climbing", "origins:hunger_over_time",
+                    "origins:slow_falling", "origins:swim_speed", "origins:fire_immunity", "origins:fragile", "origins:fresh_air",
+                    "origins:water_breathing", "origins:launch_into_air", "origins:shulker_inventory", "origins:hotblooded",
+                    "origins:water_vulnerability", "origins:invisibility", "origins:more_exhaustion", "origins:like_water",
+                    "origins:master_of_webs", "origins:light_armor", "origins:nether_spawn", "origins:nine_lives",
+                    "origins:cat_vision", "origins:lay_eggs", "origins:phasing", "origins:burn_in_daylight", "origins:pumpkin_hate",
+                    "origins:extra_reach", "origins:sprint_jump", "origins:strong_arms", "origins:natural_armor",
+                    "origins:tailwind", "origins:throw_ender_pearl", "origins:translucent", "origins:no_shield",
+                    "origins:vegetarian", "origins:weak_arms", "origins:webbing", "origins:water_vision", "origins:elytra",
+                    "origins:arcane_skin", "origins:end_spawn", "origins:air_from_potions", "origins:conduit_power_on_land",
+                    "origins:damage_from_potions", "origins:damage_from_snowballs", "origins:ender_particles",
+                    "origins:flame_particles", "origins:no_cobweb_slowdown", "origins:phantomize", "origins:strong_arms_break_speed"
+                ]
+            }
+        },
+        "icon": {
+            "type": "string",
+            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen."
+        },
+        "order": {
+            "type": "integer",
+            "description": "Specifies the position of this origin in the choose origin screen among the other origins with the same impact in the layer. If not specified, will be a really large number - basically adding it in the end."
+        },
+        "impact": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3,
+            "default": 0,
+            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high)."
+        },
+        "name": {
+            "type": "string",
+            "description": "The display name of the origin. Can be a translation key which is localized in a language file, or the literal display name."
+        },
+        "description": {
+            "type": "string",
+            "description": "The description of the origin. Can be a translation key which is localized in a language file, or the literal description."
+        },
+        "unchoosable": {
+            "type": "boolean",
+            "default": false,
+            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade."
+        },
+        "upgrades": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "condition": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                    },
+                    "announcement": {
+                        "type": "string"
+                    }
+                },
+                "required": [ "condition", "origin" ]
+            },
+            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin."
+        },
+        "loading_priority": {
+            "type": "integer",
+            "default": 0,
+            "description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
+        }
+    }
+}
