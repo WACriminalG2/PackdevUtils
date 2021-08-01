@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Spoiled Mod spoiling recipe",
+    "type": "object",
+    "required": ["type","ingredient"],
+    "additionalProperties": false,
+    
+    "properties": {
+        "type": {
+            "const":"spoiled:spoil_recipe"
+        },
+
+        "ingredient": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "Namespaced item ID for this recipe's input.",
+                    "examples": ["minecraft:dirt","minecraft:diamond"]
+                }
+            }
+        },
+
+        "result": {
+            "type": "string",
+            "description": "Namespaced item ID for this recipe's output. If this field is not present, the default spoilage item listed in the mod's config will be used.",
+            "examples": ["minecraft:dirt","minecraft:rotten_flesh"]
+        },
+
+        "spoiltime": {
+            "type": "integer",
+            "description": "The time, in seconds, before the input item spoils. If this field is not present, this recipe will use the default spoilage time listed in the mod's config."
+        }
+    }
+}

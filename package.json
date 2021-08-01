@@ -140,6 +140,10 @@
               {
                   "fileMatch": "*/data/*/powers/*.json",
                   "url": "./Schema/origins/power.json"
+              },
+              {
+                  "fileMatch": "*/data/spoiled/recipes/spoiling/*.json",
+                  "url": "./Schema/spoiled/recipes/spoiling.json"
               }
           ]
       }

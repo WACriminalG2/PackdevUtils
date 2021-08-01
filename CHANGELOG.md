@@ -1,7 +1,9 @@
 # v1.9.0 -- 8/1/21
 
+* Adjusted parent schema URL.
 * Added schema validation for Crock Pot's cooking recipes.
-* Added schema validation for Origin's layers, powers, and origins. Credit: S_K_Tiger
+* Added schema validation for Origins: layers, powers, and origins. Credit: S_K_Tiger
+* Added schema validation for Spoiled's food-spoiling recipes.
 
 # v1.8.3 -- 7/31/21
 

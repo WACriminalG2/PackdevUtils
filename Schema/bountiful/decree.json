@@ -1,5 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "type":"object",
     "title": "Bountiful Decree",
     "description": "Decrees are items that determine which items show up in bounty boards.",

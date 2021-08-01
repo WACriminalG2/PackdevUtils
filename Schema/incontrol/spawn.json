@@ -1,5 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "InControl! Spawn",
     "description": "Validation schema for InControl's spawn.json.",
     "type":"array",
@@ -168,7 +168,7 @@
                 "description": "String value that is either a number in which case it will count how many mobs of the given class are already in the world or else of the form '<amount>,<mob>' to count the number of mobs of that type. That way you can have a rule file based on the number of mobs already present. Note that instead of this syntax you can also use the JSON mob counter syntax.",
                 "properties": {
                     "mob": {
-                        "type": ["string,array"],
+                        "type": ["string","array"],
                         "description": "This is a single mob or a list of mobs. If this is present only those mobs are counted.",
                         "items": {
                             "type": "string"
@@ -206,7 +206,7 @@
                 "description": "String value that is either a number in which case it will count how many mobs of the given class are already in the world or else of the form '<amount>,<mob>' to count the number of mobs of that type. That way you can have a rule file based on the number of mobs already present. Note that instead of this syntax you can also use the JSON mob counter syntax.",
                 "properties": {
                     "mob": {
-                        "type": ["string,array"],
+                        "type": ["string","array"],
                         "description": "This is a single mob or a list of mobs. If this is present only those mobs are counted.",
                         "items": {
                             "type": "string"
