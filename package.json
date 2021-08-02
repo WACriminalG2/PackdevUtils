@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -144,6 +144,14 @@
               {
                   "fileMatch": "*/data/spoiled/recipes/spoiling/*.json",
                   "url": "./Schema/spoiled/recipes/spoiling.json"
+              },
+              {
+                  "fileMatch": "*/data/rankine/recipes/evaporation/*.json",
+                  "url": "./Schema/rankine/recipes/evaporation.json"
+              },
+              {
+                  "fileMatch": "*/resourcefulbees/bees/*.json",
+                  "url": "./Schema/resourcefulbees/bee.json"
               }
           ]
       }

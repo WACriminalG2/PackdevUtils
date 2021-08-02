@@ -1,0 +1,482 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Resourceful Bees custom bee",
+    "type": "object",
+    "required": ["flower","hasHoneycomb"],
+    "additionalProperties": false,
+
+    "properties": {
+        "flower": {
+            "type":"string",
+            "description": "The flower value is used to determine what flower the bee should use for pollen/nectar gathering. We provide a few different options for the flower value and may provide more in the future. Currently, the options available for a flower include the tags 'all', 'tall', 'small', or a block ID. In addition, we've added general block tag support as well.",
+            "examples": ["all","tall","small","minecraft:poppy","tag:minecraft:bee_growables"]
+        },
+
+        "hasHoneycomb": {
+            "type": "boolean",
+            "description": "When set to true the honeycomb and honeycomb block for the bee will be registered as well as the associated crafting recipes. A bee can have honeycombs registered without having centrifuge recipes generated for the comb."
+        },
+
+        "sizeModifier": {
+            "type": "number",
+            "description": "The size modifier is an optional floating point value that scales the size of the bee. This value ranges from 0.5 to 2.0. The default value is 1.0.",
+            "minimum": 0.5,
+            "maximum": 2
+        },
+
+        "traits": {
+            "type": "array",
+            "description": "There are various optional traits available for bees and potentially more to come. Traits affect bees in a variety of ways such as what type of damage it does when it attacks.",
+            "items": {
+                "enum": ["wither","blaze","can_swim","creeper","zombie","pigman","ender","nether","oreo","kitten","slimy","desert"]
+            }
+        },
+
+        "maxTimeInHive": {
+            "type": "integer",
+            "description": "This value is used to determine the amount of time in ticks the bee must spend in the hive before it generates a honeycomb. The minimum value allowed is 600 ticks with no maximum. This value defaults to 2400 ticks, like the vanilla bee, if not set.",
+            "minimum": 600
+        },
+
+        "baseLayerTexture": {
+            "type": "string",
+            "description": "The base layer texture is the texture used when you don't wish to have the bee colored. It also provides the eyes for the bee when using the colored variants. When supplying your own custom texture, the texture file must be located in the config\\resourcefulbees\\resources\\assets\\resourcefulbees\\textures\\entity directory found in the mod pack's directory. In addition, two textures for each texture variant must be present: a normal texture and an angry texture. The angry texture file name must end with _angry. Subdirectories are supported. The file extension is not required."
+        },
+
+        "baseModelType": {
+            "enum": ["DEFAULT","KITTEN"],
+            "description": "If you want to change the base model of the bee, you can use the following value to change it, there are currently only two options DEFAULT, and KITTEN. Default is your default basic bee, and kitten makes them gain little cat ears, a little nose and some soft fluffy feet."
+        },
+
+        "customCombDrop": {
+            "type": "string",
+            "description": "If you wish to have a bee output something other than a honeycomb you can do so by specifying the custombCombDrop and customCombBlockDrop fields. The Oreo bee makes use of this by outputting cookies instead of honeycombs. You must still set hasHoneycomb to true. Internally, we will know if you've supplied custom outputs and adjust accordingly."
+        },
+
+        "customCombBlockDrop": {
+            "type": "string",
+            "description": "If you wish to have a bee output something other than a honeycomb you can do so by specifying the custombCombDrop and customCombBlockDrop fields. The Oreo bee makes use of this by outputting cookies instead of honeycombs. You must still set hasHoneycomb to true. Internally, we will know if you've supplied custom outputs and adjust accordingly."
+        },
+
+        "apiaryOutputAmounts": {
+            "type": "array",
+            "description": "apiaryOutputAmounts is an integer array. The array consists of four values each corresponding to the appropriate tier apiary.",
+            "items": {
+                "type": "integer",
+                "minimum": 0
+            },
+            "minItems": 4,
+            "maxItems": 4
+        },
+
+        "breedData": {
+            "$ref": "#/definitions/breedData",
+            "description": "This is a json object that groups all breed related options."
+        },
+
+        "centrifugeData": {
+            "$ref": "#/definitions/centrifugeData",
+            "description": "This is a json object that groups all centrifuge related options."
+        },
+
+        "colorData": {
+            "$ref": "#/definitions/colorData",
+            "description": "This is a json object that groups all color related options."
+        },
+
+        "combatData": {
+            "$ref": "#/definitions/combatData",
+            "description": "This is a json object that groups all combat related options."
+        },
+
+        "mutationData": {
+            "$ref": "#/definitions/mutationData",
+            "description": "This is a json object that groups all mutation related options."
+        },
+
+        "spawnData": {
+            "$ref": "#/definitions/spawnData",
+            "description": "This is a json object that groups all spawn related options."
+        },
+
+        "traitData": {
+            "type": "object",
+            "description": "This is a json object that groups all trait related options.",
+            "additionalProperties": false,
+            "properties": {
+                "hasTraits": {
+                    "type": "boolean",
+                    "description": "Set this value to true when you want to give a bee special traits."
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "breedData": {
+            "type": "object",
+            "additionalproperties": false,
+            "properties": {
+                "isBreedable": {
+                    "type": "boolean",
+                    "description": "The isBreedable value is a true/false flag to tell the mod that 'this bee is breedable and here are its parents'. The value defaults to false and must be set to true if you want the bee to be breedable. Setting the value to true but not specifying the bees parents means the bee can only be bred by bees of the same type."
+                },
+
+                "parent1": {
+                    "type": "string",
+                    "description": "parent1 and parent2 are two separate values. They are optional. However, when used, they must be used together with isBreedable. Parent 1 and Parent 2 are used for determining what bees must mate to create this child bee. A comma-delimited list may be provided for each parent, and pairs will be selected based on the list's order. For instance, if parent1 is 'coal, redstone, lapis' and parent2 is 'gold, diamond, emerald', then this bee will have 3 sets of possible parents: coal+gold, redstone+diamond, and lapis+emerald."
+                },
+
+                "parent2": {
+                    "$ref": "#/definitions/breedData/properties/parent1"
+                },
+
+                "breedWeight": {
+                    "type": "integer",
+                    "description": "This value is an optional value that is used to determine the weighting that the child bee has versus all other bees the same two parents can make. The value is represented as a double and can be any number greater than zero. This value determines the weighting that the child bee has when breeding. The default for this value is 10.",
+                    "exclusiveMinimum": 0
+                },
+
+                "breedChance": {
+                    "type": "number",
+                    "description": "This value is an optional value that is used to determine the chance that the parents breeding will result in an offspring of this type. The value is represented as a double and must be a percentage value represented by a number between 0 and 1. This value determines the chance that the breed will succeed. The default for this value is 1.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "feedItem": {
+                    "type": "string",
+                    "description": "The feedItem for a bee represents the item that is required to trigger the love state for a bee. The item is a string value in the form of namespace:ID. feedItem has tag support as follows: tag:domain:type/material."
+                },
+
+                "feedAmount": {
+                    "type": "integer",
+                    "description": "feedAmount is an integer value used to determine how many feedItems must be given to the bee in order for it to trigger its love state."
+                },
+
+                "childGrowthDelay": {
+                    "type": "integer",
+                    "description": "childGrowthDelay is a signed integer represented as a negative value which indicates the number of ticks it takes for the bee to become and adult bee. By default, it uses the vanilla value of -24000.",
+                    "maximum": 0
+                },
+
+                "breedDelay": {
+                    "type": "integer",
+                    "description": "breedDelay is a signed integer represented as a positive value which indicates the number of ticks it takes before a bee can mate with another bee after having spawned in a child. By default, it uses the vanilla value of 6000.",
+                    "minimum": 0
+                }
+            }
+        },
+
+        "centrifugeData": {
+            "type": "object",
+            "required": ["hasCentrifugeOutput"],
+            "additionalProperties": false,
+            "properties": {
+                "hasCentrifugeOutput": {
+                    "type": "boolean",
+                    "description": "hasCentrifugeOutput is a true/false value that when set to true allows a recipe to be generated for the honeycomb and honeycomb block. This value is only required if you want the bee's honeycomb to have centrifuge recipes generated, otherwise the entirety of the centrifugeData object can be left out of the bees json."
+                },
+
+                "mainOutput": {
+                    "type": "string",
+                    "description": "mainOutput is a string value in the form of namespace:ID that specifies the primary output of the bees honeycomb when it is put into the centrifuge. This value is required when hasCentrifugeOutput is set to true. This value can be anything you want to give to the player so long as it is an item in game. This includes any item from another mod. This output can also have an optional weighting value provided that determines the chance of getting the item."
+                },
+
+                "hasFluidOutput": {
+                    "type": "boolean",
+                    "description": "Set hasFluidOutput to true when you want the main centrifuge output to be a fluid instead of an item."
+                },
+
+                "secondaryOutput": {
+                    "type": "string",
+                    "description": "The secondary output is an optional value for the bee. You can have a 'waste' item or any other item for the secondary output. This value follows the same rules as shown for the main output. If no value is supplied then the default value of 'Beeswax' is provided instead. This value can also have a custom defined weighting."
+                },
+
+                "bottleOutput": {
+                    "type": "string",
+                    "description": "The bottle output is an optional value for the bee. This output is intended to allow bees to provide a different bottled ingredient such as 'Dragons Breath', however, like the other two outputs this value can be set to anything. This value defaults to 'Honey Bottle' if not used. This value can also have a custom defined weighting. Regardless of the output, if a player chooses not to supply the centrifuge with bottles, then 250mb of honey will be added to an internal honey tank."
+                },
+
+                "mainOutputWeight": {
+                    "type": "number",
+                    "description": "There are three different weight values that can be set for the centrifuge outputs. These correspond with the three different centrifuge outputs available. There is the mainOutputWeight, the secondaryOutputWeight, and the bottleOutputWeight. These values are optional and can be used to determine the chance an item has to be output from the centrifuge recipe. They are two-digit decimal numbers between 0.00 -> 1.00.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "secondaryOutputWeight": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainOutputWeight"
+                },
+
+                "bottleOutputWeight": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainOutputWeight"
+                },
+
+                "mainInputCount": {
+                    "type": "integer",
+                    "description": "mainInputCount is a value used to determine the number of honeycombs required to process the centrifuge recipe.",
+                    "minimum": 1
+                },
+
+                "mainOutputCount": {
+                    "type": "integer",
+                    "description": "Similar to weights, there are three different output count values that can be set for the centrifuge outputs. These correspond with the three different centrifuge outputs available. There is mainOutputCount, secondaryOutputCount, and bottleOutputCount. These values are optional and can be used to determine the amount of the associated output item that is received when the recipe is processed. The value of bottleOutputCount is measured in mB (millibuckets).",
+                    "minimum": 1
+                },
+
+                "secondaryOutputCount": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainOutputCount"
+                },
+
+                "bottleOutputCount": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainOutputCount"
+                },
+
+                "mainNBTData": {
+                    "type": "object",
+                    "description": "You can now add item nbt data to all of the item outputs in centrifuge recipes. There are three separate parameters to edit the nbt data for each of the outputs each pertaining to one of the ouput slots: mainNBTData, secondaryNBTData, bottleNBTData."
+                },
+
+                "secondaryNBTData": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainNBTData"
+                },
+
+                "bottleNBTData": {
+                    "$ref": "#/definitions/centrifugeData/properties/mainNBTData"
+                }
+            }
+        },
+
+        "colorData": {
+            "type": "object",
+            "required": ["isBeeColored"],
+            "additionalProperties": false,
+
+            "properties": {
+                "isBeeColored": {
+                    "type": "boolean",
+                    "description": "This value is used to determine if a bee should have its primary and secondary color layer textures colorized. This value defaults to false and as such it must be set to true if you wish to have colored bees. Leave the value as false when you want to use a custom base layer texture only. The Diamond and Creeper default bees are good examples of this."
+                },
+
+                "honeycombColor": {
+                    "type": "string",
+                    "description": "The color value for the honeycomb is only a required value when the bee has the hasHoneycomb value set to true in the main data. This value can be expressed in multiple ways but is encoded in the .json as a string. It can be expressed as a hexadecimal value with, or without, preceding tags, an integer value, or a named color from the available list found on the Resourceful Bees repo. The color value is used to determine the bee's honeycomb color and honeycomb block color."
+                },
+
+                "primaryColor": {
+                    "type": "string",
+                    "description": "The primary and secondary color values are required only when you want the bee to be colored using the boolean value isBeeColored. These values can be expressed in multiple ways but are encoded in the .json as strings. They can be expressed as a hexadecimal value with, or without, preceding tags, an integer value, or a named color from the available list found on the Resourceful Bees repo. The color values are used to colorize the primary layer and secondary layer textures for the bee. The secondary color is not required if you would like a single color bee with black stripes. The primary and secondary color are also used for coloring the bee in the bee jar and the spawn egg so supplying the primary and secondary colors with values will make those look better."
+                },
+
+                "secondaryColor": {
+                    "$ref": "#/definitions/colorData/properties/primaryColor"
+                },
+
+                "primaryLayerTexture": {
+                    "type": "string",
+                    "description": "Should you wish to provide your own bee layer textures, there are two layer textures that can be customized. These textures are primaryLayerTexture, and secondaryLayerTexture. The textures can only be .png file types. If you want to just use a texture that won't be recolored by our system you're looking for the baseLayerTexture in the main data."
+                },
+
+                "secondaryLayerTexture": {
+                    "$ref": "#/definitions/colorData/properties/primaryLayerTexture"
+                },
+
+                "modelType": {
+                    "enum": ["DEFAULT","ORE","GELATINOUS","DRAGON","QUEEN","VILLAGER","MUSHROOM","CROP","ARMORED"],
+                    "description": "Currently we do not allow for full-fledged model customization, however, we do provide a few model options out of the box: DEFAULT, ORE, GELATINOUS, DRAGON, QUEEN, VILLAGER, MUSHROOM, CROP, ARMORED"
+                },
+
+                "isEnchanted": {
+                    "type": "boolean",
+                    "description": "If true, this bee will have the enchantment glint effect. isGlowing and isEnchanted are incompatible."
+                },
+
+                "isGlowing": {
+                    "type": "boolean",
+                    "description": "If true, this bee will emit a colored glow. isGlowing and isEnchanted are incompatible."
+                },
+
+                "glowColor": {
+                    "type": "string",
+                    "description": "The color value for glowing is only a required value when the bee has the isGlowing value set to true. This value can be expressed in multiple ways but is encoded in the .json as a string. It can be expressed as a hexadecimal value with, or without, preceding tags, an integer value, or a named color from the available list found on the Resourceful Bees repo."
+                },
+
+                "isRainbowBee": {
+                    "type": "boolean",
+                    "description": "Set isRainbowBee to true when you want the bee to cycle through a rainbow of colors. Setting this option removes the need for a primary and secondary color."
+                }
+            }
+        },
+
+        "combatData": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isPassive": {
+                    "type": "boolean",
+                    "description": "By default bees will attack players when they get angry. Setting isPassive to true prevents the attack and anger AI goals from being registered to the bee. This means that the bee won't get angry or attack players at all. If you want the bee to attack the player but not deal any damage then see the attackDamage property."
+                },
+
+                "attackDamage": {
+                    "type": "integer",
+                    "description": "When a bee attacks the player, by default, it deals 1 damage to the player and then inflicts poison damage over a period of time. The amount of poison damage isn't configurable, however the amount of damage on sting is configurable by using attackDamage. This can be any integer zero or greater.",
+                    "minimum": 0
+                },
+
+                "removeStingerOnAttack": {
+                    "type": "boolean",
+                    "description": "Use removeStingerOnAttack when you want only a specific bee to either die or not die after stinging the player. The global config value beeDiesFromSting by default is set to true and overrides this value. Set beeDiesFromSting to false if you would like to modify individual bees."
+                },
+
+                "inflictsPoison": {
+                    "type": "boolean",
+                    "description": "Use inflictsPoison when you want a specific bee to only deal attack damage. The global config value beesInflictPoison by default is set to true and overrides this value. Set beesInflictPoison to false if you would like to modify individual bees."
+                }
+            }
+        },
+
+        "mutationData": {
+            "type": "object",
+            "required": ["hasMutation","mutationType"],
+            "additionalProperties": false,
+
+            "properties": {
+                "hasMutation": {
+                    "type": "boolean",
+                    "description": "Block Mutation is an optional feature for bees. It is the modded version of vanilla pollination effects. Rather than a bee potentially applying a growth tick to a flower it flies over, a bee can instead 'mutate' a block into another block. To give a bee a mutation hasMutation must be set to true and mutationType must be set. Mutation Types are covered below."
+                },
+
+                "mutationType": {
+                    "enum": ["NONE","FLUID_TO_FLUID","BLOCK_TO_FLUID","FLUID_TO_BLOCK","BLOCK_TO_BLOCK","BLOCK_TO_ITEM","ENTITY_TO_ENTITY"],
+                    "description": "mutationType is a REQUIRED field when giving a bee a mutation. Otherwise, set its value to 'NONE'. Other options are 'FLUID_TO_FLUID', 'BLOCK_TO_FLUID', 'FLUID_TO_BLOCK', 'BLOCK_TO_BLOCK', 'BLOCK_TO_ITEM', and 'ENTITY_TO_ENTITY'."
+                },
+
+                "mutationInput": {
+                    "type": "string",
+                    "description": "Namespaced ID of the block, fluid, or entity to transform."
+                },
+
+                "mutationOutput": {
+                    "type": "string",
+                    "description": "Namespaced ID of the block, fluid, entity, or item resulting from mutation."
+                },
+
+                "mutationCount": {
+                    "type": "integer",
+                    "description": "Use mutationCount when you want to specify how many blocks a bee can mutate before it must visit a hive and collect nectar again. By default a bee will mutate ten blocks before the process must be reset."
+                },
+
+                "mutations": {
+                    "type": "array",
+                    "description": "A completely new way to register mutations, this system allows you to register as many mutations for a single bee as you want.",
+                    "items": {
+                        "type":"object",
+                        "required": ["type","inputID","chance","outputs"],
+                        "additionalProperties": false,
+                        "properties": {
+                            "type": {
+                                "enum": ["FLUID_TO_FLUID","BLOCK_TO_FLUID","FLUID_TO_BLOCK","BLOCK_TO_BLOCK","BLOCK_TO_ITEM","ENTITY_TO_ENTITY"]
+                            },
+
+                            "inputID": {
+                                "type": "string",
+                                "description": "This is the id of the thing you want to mutate from. If you want to mutate a tag, you need to prefix with 'tag:'. If you want to mutate an entity you need to prefix with 'entity:'."
+                            },
+
+                            "chance": {
+                                "type": "number",
+                                "description": "This will set the default chance that you will succeed in a mutation if you do not specify a chance in the outputs.",
+                                "minimum": 0,
+                                "maximum": 1
+                            },
+
+                            "outputs": {
+                                "type": "array",
+                                "description": "This is where you specify the outputs for your mutations, you can have as many different outputs as you want.",
+                                "items": {
+                                    "type": "object",
+                                    "required": ["outputID"],
+                                    "properties": {
+                                        "outputID": {
+                                            "type": "string",
+                                            "description": "this is where you specify the output id of your mutation. If your output is an entity, you need to prefix it with 'entity:'."
+                                        },
+
+                                        "weight": {
+                                            "type": "integer",
+                                            "description": "This is where you set the individual weight for your mutation outputs."
+                                        },
+
+                                        "nbtData": {
+                                            "type": "object",
+                                            "description": "This is where you can now set the NBT data for your mutation outputs."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "spawnData": {
+            "type": "object",
+            "required": ["canSpawnInWorld"],
+            "additionalProperties": false,
+            "properties": {
+                "canSpawnInWorld": {
+                    "type": "boolean",
+                    "description": "canSpawnInWorld must be set to true when you want bees to spawn in the world naturally. This means they spawn in the same manner as other passive mobs."
+                },
+
+                "biomeWhitelist": {
+                    "type": "string",
+                    "description": "A comma-separated list of biomes, or of biome tags prefixed with 'tag:'. You cannot use both specific biomes and tags in the same list. Nests will generate in the biomes where bees are set to spawn. During generation a nest may come preloaded with additional bees consisting only of the bees allowed to spawn in the biome where the nest generated. Nest generation can be disabled by setting the global config value generateBeeNests to false."
+                },
+
+                "biomeBlacklist": {
+                    "$ref": "#/definitions/spawnData/properties/biomeWhitelist"
+                },
+
+                "spawnWeight": {
+                    "type": "integer",
+                    "description": "spawnWeight is an integer value which represents the weighting of the bee against all other entities registered to spawn in the biomes where the bee can spawn. The value is not a percent representation meaning any value greater than zero can be used here. By default the value is set as 8 which puts the weighting just below chickens and pigs which are set at 10. Because this value determines the weight of the entity spawn against all other entities, this means the bee will have a 100% chance to spawn when it is the only entity registered to spawn in the biome.",
+                    "minimum": 0
+                },
+
+                "minGroupSize": {
+                    "type": "integer",
+                    "description": "Minimum number of bees which will spawn at once. Default 0.",
+                    "minimum": 0
+                },
+
+                "maxGroupSize": {
+                    "type": "integer",
+                    "description": "Maximum number of bees which will spawn at once. Default 3.",
+                    "minimum": 0
+                },
+
+                "lightLevel": {
+                    "enum": ["DAY","NIGHT","ANY"],
+                    "description": "Sets the light level at which this bee can spawn. 'DAY' = 8 and higher. NIGHT = 7 and lower. ANY = any light level."
+                },
+
+                "minYLevel": {
+                    "type": "integer",
+                    "description": "Lowest Y level where this bee can spawn. Bees can still spawn in hives even when their y level is set below y 60, this may change in a later patch.",
+                    "minimum": 1,
+                    "maximum": 255
+                },
+
+                "maxYLevel": {
+                    "type": "integer",
+                    "description": "Highest Y level where this bee can spawn. Bees can still spawn in hives even when their y level is set below y 60, this may change in a later patch.",
+                    "minimum": 1,
+                    "maximum": 255
+                }
+            }
+        }
+    }
+}

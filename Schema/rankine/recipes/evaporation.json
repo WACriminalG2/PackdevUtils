@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Project Rankine evaporation tower/boiler recipe format.",
+    "type": "object",
+    "required": ["type","cookTime","input","output1","total","biomes"],
+    "additionalproperties": false,
+    "patternProperties": {
+        "^output": {"$ref": "#/properties/output1"}
+    },
+
+    "properties": {
+        "type": {
+            "const": "rankine:evaporation"
+        },
+
+        "large": {
+            "type": "boolean",
+            "description": "Determines whether the Evaporation Tower (true) or Evaporation Boiler (false) structure should be used. Default true."
+        },
+
+        "biomes": {
+            "type": "array",
+            "description": "Each entry in the array is used to determine which biomes this recipe works in. For single biomes, use the string 'B#' before the resource location. (ex. 'B#minecraft:snowy_tundra'). For biome categories, use the string 'C#' before the string used for the category. (ex. 'C#taiga').",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "total": {
+            "type": "integer",
+            "description": "Has to be defined once by the recipe. Set this value equal to the number of outputs used in the recipe."
+        },
+
+        "cookTime": {
+            "type":"integer",
+            "description": "Determines the number of ticks required until recipe completion. Evaporation Towers can increase height to decrease processing time."
+        },
+
+        "input": {
+            "type": "object",
+            "description": "JSON object. Inside this object is the variable 'block' which must be set to the fluid that will be placed in the structure.",
+            "required": ["block"],
+            "additionalProperties": false,
+            "properties": {
+                "block": {
+                    "type": "string",
+                    "description": "Namespaced ID for the fluid block to be used in this recipe."
+                }
+            }
+        },
+
+        "bucket": {
+            "type":"object",
+            "description": "Inside this object is the variable 'item'/'tag' which is set to help with JEI integration. The item/tag provided does not have to be a bucket. This is mainly used to tell the player which liquid they need to place in the structure.",
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        
+        "output1": {
+            "type": "object",
+            "description": "An output for this recipe. Additional outputs may be added with sequential keys, such as output2, output3, up to the number set in 'total'.",
+            "required": ["item"],
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The item to be output."
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "Represents the likelihood of this item to be chosen as the random output from the evaporation process. Higher weights equal a higher likelihood.",
+                    "minimum": 0
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Represents the lowest possible count that can be produced if this item is the result. Set to 1 by default.",
+                    "minimum": 1
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "Represents the highest possible count that can be produced if this item is the result. Set to 1 by default.",
+                    "minimum": 1
+                }
+            }
+        }
+    }
+}

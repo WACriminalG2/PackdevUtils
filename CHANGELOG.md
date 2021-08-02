@@ -1,3 +1,8 @@
+# v1.10.0 -- 8/1/21
+
+* Added schema validation for Project Rankine's evaporation recipes.
+* Added schema validation for custom bees from Resourceful Bees.
+
 # v1.9.0 -- 8/1/21
 
 * Adjusted parent schema URL.
