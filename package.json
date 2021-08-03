@@ -172,6 +172,10 @@
               {
                   "fileMatch": "*/silentgems/recipes/token_enchanting/*.json",
                   "url": "./Schema/silentgems/recipes/tokenenchanting.json"
+              },
+              {
+                  "fileMatch": "*/loot_tables/*.json",
+                  "url": "./Schema/minecraft/loot_table.json"
               }
           ]
       }

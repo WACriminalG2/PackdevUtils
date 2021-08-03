@@ -2,6 +2,7 @@
 
 * Added schema validation for CompactCrafting's miniaturization recipes.
 * Added schema validation for Silent Gems 3's token enchanting recipes.
+* Added schema validation for loot tables, courtesy of Levertion's Minecraft schema project licensed under the CCA 4.0 International License: https://github.com/Levertion/minecraft-json-schemas/blob/master/java/data/loot_table.json
 
 # v1.11.0 -- 8/2/21
 
