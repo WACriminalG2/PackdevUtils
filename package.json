@@ -175,7 +175,7 @@
               },
               {
                   "fileMatch": "*/loot_tables/*.json",
-                  "url": "./Schema/minecraft/loot_table.json"
+                  "url": "./Schema/minecraft/data/loot_table.json"
               }
           ]
       }

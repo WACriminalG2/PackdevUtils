@@ -1,8 +1,8 @@
-# v1.12.0 -- 8/2/21
+# v1.12.0 -- 8/3/21
 
 * Added schema validation for CompactCrafting's miniaturization recipes.
 * Added schema validation for Silent Gems 3's token enchanting recipes.
-* Added schema validation for loot tables, courtesy of Levertion's Minecraft schema project licensed under the CCA 4.0 International License: https://github.com/Levertion/minecraft-json-schemas/blob/master/java/data/loot_table.json
+* Added schema validation for loot tables courtesy of Levertion's schema project under the CCA 4.0 International license: https://github.com/Levertion/minecraft-json-schemas. Slight modifications have been made from the schema provided in that project, to allow non-vanilla registry IDs to be used. This has resulted in some superfluous referenced files that are nonetheless difficult to disentangle from the actual schemas. I hope to complete that task over time, but thought it might be more motivating for me if I were to simply get this one out the door and functional, first.
 
 # v1.11.0 -- 8/2/21
 
