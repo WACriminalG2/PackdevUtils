@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Resourceful Bees custom honey",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The ids of the custom items will be generated using the file name or an optional 'name' field in the file. Such as, name_honey_bottle, name_honey_block, name_honey_fluid_bucket, name_honey."
+        },
+
+        "hunger": {
+            "type": "integer",
+            "description": "This value determines how much hunger you'll get on drinking the honey. Default 1."
+        },
+
+        "saturation": {
+            "type": "number",
+            "description": "This value determines how much saturation you'll gain on drinking the honey. Default 1.0."
+        },
+
+        "honeyColour": {
+            "type": "string",
+            "description": "This value can be expressed in multiple ways but is encoded in the .json as a string. It can be expressed as a hexadecimal value with, or without, preceding tags, an integer value, or a named color from the available list found on the Resourceful Bees site. The color value is used to determine the honey's color."
+        },
+
+        "isRainbow": {
+            "type": "boolean",
+            "description": "This value determines if the color of the honey is rainbow or not."
+        },
+
+        "honeyBlockRecipe": {
+            "type": "boolean",
+            "description": "This value determines if a recipe for a honey block and back to bottles is generated."
+        },
+
+        "generateHoneyBlock": {
+            "type": "boolean",
+            "description": "This value determines if a honey block is generated. Default true."
+        },
+
+        "generateHoneyFluid": {
+            "type": "boolean",
+            "description": "This value determines if honey fluid and a honey bucket are generated. Default true."
+        },
+
+        "effects": {
+            "type": "array",
+            "description": "This value is a list of effects that will be applied when you drink the honey.",
+            "items": {
+                "type": "object",
+                "required": ["effectID","duration"],
+                "additionalProperties": false,
+                "properties": {
+                    "effectID": {
+                        "type": "string",
+                        "description": "The namespaced ID of the potion effect to be applied."
+                    },
+                    "duration": {
+                        "type": "integer",
+                        "description": "The duration, in ticks, of the effect applied."
+                    },
+                    "strength": {
+                        "type": "integer",
+                        "description": "The strength of the potion effect applied. Default 0."
+                    },
+                    "chance": {
+                        "type": "number",
+                        "description": "This value determines how often the potion effect is applied when you consume the honey. This value is a float value that represents a value out of 100, 1 being 100%, 0.5 being 50% 0.01 being 1% and so on.",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                }
+            }
+        }
+    }
+
+}

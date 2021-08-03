@@ -1,3 +1,10 @@
+# v1.11.0 -- 8/2/21
+
+* Added schema validation for custom honey and traits from Resourceful Bees.
+* Added schema validation for custom Tetra materials.
+* Applied existing schema validation for InControl's summonaid.json.
+* Not a change to this extension, but worth noting that Masa has implemented a custom dump format in TellMe that should make it much easier for me to add mods to the universal registry, and maintain existing ones through version updates. Thanks, Masa!
+
 # v1.10.0 -- 8/1/21
 
 * Added schema validation for Project Rankine's evaporation recipes.

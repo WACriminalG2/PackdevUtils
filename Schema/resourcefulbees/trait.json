@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Resourceful Bees custom bee trait",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "beepediaItemID": {
+            "type": "string",
+            "description": "This is the item id for an item, this item will be used to represent the trait within the Beepedia."
+        },
+
+        "potionDamageEffects": {
+            "type": "array",
+            "description": "This is a list of potion effects that a bee can deal when it attacks an entity.",
+            "items": {
+                "type": "object",
+                "required": ["effectID","strength"],
+                "properties": {
+                    "effectID": {
+                        "type": "string",
+                        "description": "This is the effect id of the potion effect you wish to apply."
+                    },
+                    "strength": {
+                        "type": "integer",
+                        "description": "This is the strength of the potion effect you wish to apply."
+                    }
+                }
+            }
+        },
+
+        "damageImmunities": {
+            "type": "array",
+            "description": "This is a list of damage immunities that will be applied to the bee.",
+            "items": {
+                "enum": ["inFire","lightningBolt","onFire","lava","hotFloor","inWall","cramming","drown","starve","cactus","fall","flyIntoWall","generic","magic","wither","anvil","fallingBlock","dragonBreath","dryout"]
+            }
+        },
+
+        "potionImmunities": {
+            "type": "array",
+            "description": "This is a list of potion effect immunities that will be applied to the bee.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "damageTypes": {
+            "type": "array",
+            "description": "This is a list of damageTypes that a bee will inflict on dealing damage to an entity.",
+            "items": {
+                "type": "object",
+                "required": ["damageTypeName","amplifier"],
+                "properties": {
+                    "damageTypeName": {
+                        "enum": ["inFire","lightningBolt","onFire","lava","hotFloor","inWall","cramming","drown","starve","cactus","fall","flyIntoWall","generic","magic","wither","anvil","fallingBlock","dragonBreath","dryout"],
+                        "description": "This is the damageType id used to determine the damage the bee will do."
+                    },
+                    "amplifier": {
+                        "type": "integer",
+                        "description": "This is the amplifier that will be applied to the damage type, not every damage type has a need for an amplifier but it is still required for the list item."
+                    }
+                }
+            }
+        },
+
+        "particleName": {
+            "type": "string",
+            "description": "This is the id of a particle that a bee will emit from itself every 2 seconds."
+        },
+
+        "specialAbilities": {
+            "type": "array",
+            "description": "A field for specially hard-coded abilities.",
+            "items": {
+                "enum": ["teleport","flammable","slimy"]
+            }
+        }
+    }
+}

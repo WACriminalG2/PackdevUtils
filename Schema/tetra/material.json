@@ -1,0 +1,134 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Tetra custom material definition.",
+    "type": "object",
+    "required": ["key","primary","secondary","tertiary","durability","integrityGain","integrityCost","magicCapacity","toolLevel","toolEfficiency","tints","textures","material","requiredTools"],
+    "additionalproperties": false,
+
+    "properties": {
+        "key": {
+            "type": "string",
+            "description": "Identifier for the material, will be used as suffix for module variants from this material"
+        },
+
+        "category": {
+            "type": "string",
+            "description": "Optional. Applied to all module variants from this material, default: 'misc'",
+            "examples": ["misc","fabric","fibre","gem","metal","scale","skin","stone","wood"]
+        },
+
+        "primary": {
+            "type": "number",
+            "description": "Multiplier for primary attributes & effects. Should represent hardness, sharpness or the ability to shape this material into something with a hard/sharp edge."
+        },
+
+        "secondary": {
+            "type": "number",
+            "description": "Multiplier for secondary attributes & effects. Should represent material density, rigidity or weight, how much kinetic energy does this carry as it's swung."
+        },
+
+        "tertiary": {
+            "type": "number",
+            "description": "Multiplier for tertiary attributes & effects. Should represent flexibility or tensile strength(?), how fast does this material spring back when bent."
+        },
+
+        "durability": {
+            "type": "integer",
+            "description": "Durability base, modules use this to determine flat or multiplier durability bonuses."
+        },
+
+        "integrityGain": {
+            "type": "number",
+            "description": "Multiplier for modules that provide integrity."
+        },
+
+        "integrityCost": {
+            "type": "number",
+            "description": "Multiplier for modules that consume integrity."
+        },
+
+        "magicCapacity": {
+            "type": "integer",
+            "description": "The magic capacity of major modules variants made from this material."
+        },
+
+        "toolLevel": {
+            "type": "integer",
+            "description": "Modules that provide tools that vary based on material use this to determine the level of the tools."
+        },
+
+        "toolEfficiency": {
+            "type": "integer",
+            "description": "Modules that provide tools that vary based on material use this to determine the efficiency of the tools."
+        },
+
+        "attributes": {
+            "type": "object",
+            "description": "All modules made from this material will provide these attributes, e.g. mystical world amethyst items always provide luck."
+        },
+
+        "effects": {
+            "type": "array",
+            "description": "All modules made from this material will provide these effects, e.g. mana steel should always provide mana repair."
+        },
+
+        "improvements": {
+            "type": "object",
+            "description": "All major modules made from this material will have these improvements, e.g. major diamond should always have the arrested improvement."
+        },
+
+        "tints": {
+            "type": "object",
+            "properties": {
+                "texture": {
+                    "type": "string",
+                    "description": "Hexadecimal string for tinting of textures, can reference item colors."
+                },
+                "glyph": {
+                    "type": "string",
+                    "description": "Hexadecimal string for tinting glyphs in the workbench UI, can reference item colors."
+                }
+            }
+        },
+
+        "textures": {
+            "type": "array",
+            "description": "An array of texture suffixes that this material would prefer to use, the first one matching a texture provided by the module will be used.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "material": {
+            "type": "object",
+            "description": "Defines which items are required as materials for crafting module variants of this material, either tag or item is required.",
+            "properties": {
+                "tag": {
+                    "type":"string",
+                    "description": "Reference to an item tag."
+                },
+                "item": {
+                    "type": "string",
+                    "description": "Reference to an item."
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Multiplier for the number of items required. Default 1."
+                }
+            }
+        },
+
+        "requiredTools": {
+            "type": "object",
+            "description": "Defines the tools (and which levels) that are required to craft module variants of this material, schematics may add additional tools and multiply/offset the levels provided here.",
+            "properties": {
+                "sword": {"type":"integer"},
+                "hammer": {"type":"integer"},
+                "hoe": {"type":"integer"},
+                "pickaxe": {"type":"integer"},
+                "shovel": {"type":"integer"},
+                "axe": {"type":"integer"}
+            }
+        }
+    }
+}

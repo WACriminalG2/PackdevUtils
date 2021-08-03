@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -102,7 +102,7 @@
                   "url": "./Schema/incontrol/spawner.json"
               },
               {
-                  "fileMatch": "*/config/incontrol/spawn.json",
+                  "fileMatch": ["*/config/incontrol/spawn.json","*/config/incontrol/summonaid.json"],
                   "url": "./Schema/incontrol/spawn.json"
               },
               {
@@ -152,6 +152,18 @@
               {
                   "fileMatch": "*/resourcefulbees/bees/*.json",
                   "url": "./Schema/resourcefulbees/bee.json"
+              },
+              {
+                  "fileMatch": "*/resourcefulbees/honey/*.json",
+                  "url": "./Schema/resourcefulbees/honey.json"
+              },
+              {
+                  "fileMatch": "*/resourcefulbees/traits/*.json",
+                  "url": "./Schema/resourcefulbees/trait.json"
+              },
+              {
+                  "fileMatch": "*/tetra/materials/*.json",
+                  "url": "./Schema/tetra/material.json"
               }
           ]
       }
