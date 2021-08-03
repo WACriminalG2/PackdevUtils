@@ -1,0 +1,147 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "CompactCrafting miniaturization recipe",
+    "type": "object",
+    "required": ["type","layers","catalyst","components","outputs"],
+    "additionalProperties": false,
+
+    "properties": {
+        "type": {
+            "const": "compactcrafting:miniaturization"
+        },
+
+        "recipeSize": {
+            "type": "integer",
+            "description": "If you specify a recipe that has no fixed-size layers (such as a mixed layer), then you need to tell the recipe system how large the recipe is. It's recommended to use an odd number, to match the field sizes (ie 3, 5, 7, etc). If you have a layer with a fixed size, you do not have to specify this property."
+        },
+
+        "layers": {
+            "type": "array",
+            "description": "This property is an array of layer definitions.",
+            "items": {
+                "oneOf": [{"$ref":"#/definitions/filledLayer"},{"$ref": "#/definitions/hollowLayer"},{"$ref": "#/definitions/mixedLayer"}]
+            }
+        },
+
+        "catalyst": {
+            "type": "object",
+            "description": "This property is a JSON representation of the catalyst itemstack. It currently takes an item ID and a count, but the count will be set to 1 if it is anything different. This is planned to change in a future update -- it will eventually become possible to require a player to have, for example, a full stack of redstone to trigger a craft.",
+            "required": ["id","Count"],
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Namespaced ID of the item to use as a catalyst."
+                },
+                "Count": {
+                    "type": "integer",
+                    "description": "Quantity of the catalyst to require."
+                }
+            }
+        },
+
+        "components": {
+            "type": "object",
+            "description": "Components are a means of specifying something inside a recipe. The most common component is the block component, which specifies information on how to match a block in the recipe.",
+
+            "additionalProperties": {
+                    "type": "object", 
+                    "required": ["type","block"],
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "compactcrafting:block"
+                        },
+                        "block": {
+                            "type": "string",
+                            "description": "The block represented by this character in the recipe's layers."
+                        }
+                    }
+            }
+        },
+
+        "outputs": {
+            "type": "array",
+            "description": "Similar to the catalyst definition, this is an array of output item stacks that the recipe will create once the crafting process is completed.",
+    
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id","Count"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Namespaced ID of the item to output."
+                    },
+                    "Count": {
+                        "type": "integer",
+                        "description": "Quantity of the item to output."
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "filledLayer": {
+            "type": "object",
+            "required": ["type","component"],
+            "additionalProperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "compactcrafting:filled",
+                    "description": "The type of layer this is."
+                },
+                "component": {
+                    "type": "string",
+                    "description": "The character representing this layer's material.",
+                    "maxLength": 1
+                }
+            }
+        },
+
+        "hollowLayer": {
+            "type": "object",
+            "required": ["type","component"],
+            "additionalProperties": false,
+            
+            "properties": {
+                "type": {
+                    "const": "compactcrafting:hollow",
+                    "description": "The type of layer this is."
+                },
+                "component": {
+                    "type": "string",
+                    "description": "The character representing this layer's material.",
+                    "maxLength": 1
+                }
+            }
+        },
+
+        "mixedLayer": {
+            "type": "object",
+            "required": ["type","pattern"],
+            "additionalProperties": false,
+
+            "properties": {
+                "type": {
+                    "const": "compactcrafting:mixed",
+                    "description": "The type of layer this is."
+                },
+                "pattern": {
+                    "type": "array",
+                    "description": "An array of characters representing this layer's structure.",
+
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "maxLength": 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Silent Gems token enchanting recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required":["type","chaosGenerated","processTime","ingredients","result"],
+
+    "properties": {
+        "type": {
+            "const": "silentgems:token_enchanting"
+        },
+        
+        "chaosGenerated": {
+            "type": "integer",
+            "description": "The amount of chaos generated per tick."
+        },
+
+        "processTime": {
+            "type": "integer",
+            "description": "The time (in ticks) required to produce one output.",
+            "minimum": 1
+        },
+
+        "ingredients": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "token": {
+                    "type":"object",
+                    "description": "You can change this to any item or tag.",
+                    "properties": {
+                        "item": {
+                            "type":"string"
+                        },
+                        "tag": {
+                            "type":"string"
+                        }
+                    }
+                },
+                "others": {
+                    "type":"array",
+                    "description": "Similar to the ingredients of a shapeless recipe (item or tag), except you can specify a count. This is the number of that item which will be consumed to produce one output.",
+
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["count"],
+                        "properties": {
+                            "item": {
+                                "type": "string"
+                            },
+                            "tag": {
+                                "type": "string"
+                            },
+                            "count": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "description": "The recipe's output.",
+            "additionalProperties": false,
+            "required": ["item","enchantments"],
+
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The namespaced item ID this recipe produces."
+                },
+                "enchantments": {
+                    "type": "array",
+                    "description": "The list of enchantments applied to this output. You can have multiple enchantments and set them to any level!",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["name","level"],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The namespaced enchantment ID to apply."
+                            },
+                            "level": {
+                                "type": "integer",
+                                "description": "The level of enchantment to apply.",
+                                "minimum": 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

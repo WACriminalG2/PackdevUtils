@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.11.0",
+    "version": "1.12.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -164,6 +164,14 @@
               {
                   "fileMatch": "*/tetra/materials/*.json",
                   "url": "./Schema/tetra/material.json"
+              },
+              {
+                  "fileMatch": "*/compactcrafting/recipes/miniaturization/*.json",
+                  "url": "./Schema/compactcrafting/recipes/miniaturization.json"
+              },
+              {
+                  "fileMatch": "*/silentgems/recipes/token_enchanting/*.json",
+                  "url": "./Schema/silentgems/recipes/tokenenchanting.json"
               }
           ]
       }

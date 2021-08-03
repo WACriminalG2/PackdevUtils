@@ -1,3 +1,8 @@
+# v1.12.0 -- 8/2/21
+
+* Added schema validation for CompactCrafting's miniaturization recipes.
+* Added schema validation for Silent Gems 3's token enchanting recipes.
+
 # v1.11.0 -- 8/2/21
 
 * Added schema validation for custom honey and traits from Resourceful Bees.
