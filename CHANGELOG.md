@@ -1,3 +1,8 @@
+# v1.13.0 -- 8/3/21
+
+* Added schema validation for custom portal definition via Immersive Portals.
+* Added schema validation for Botany Pots soils, crops, and fertilizers.
+
 # v1.12.0 -- 8/3/21
 
 * Added schema validation for CompactCrafting's miniaturization recipes.

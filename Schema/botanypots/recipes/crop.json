@@ -1,0 +1,113 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Botany Pots crop definition.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","seed","categories","growthTicks","growthModifier","display","results"],
+
+    "properties": {
+        "type": {
+            "const": "botanypots:crop"
+        },
+
+        "seed": {
+            "type": ["object","array"],
+            "description": "This is the seed item that is used to plant the crop. You can use item tags or any other format that is supported by a vanilla ingredient, although it is recommended to only have one valid seed input.",
+            "additionalProperties": false,
+
+            "items": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "item": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            },
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "categories": {
+            "type": "array",
+            "description": "This is an array of strings which contain all the soil categories that the crop can be planted on.",
+            "items": {
+                "type":"string"
+            }
+        },
+
+        "growthTicks": {
+            "type": "integer",
+            "description": "The number of growth ticks required for the crop to be ready for harvest. The higher the value the longer it will take to grow. This can not be 0 or negative.",
+            "minimum": 1
+        },
+
+        "growthModifier": {
+            "type": "number",
+            "description": "A general modifier added to the growth time for the crop. The higher the value the longer it will take. Lower than 1 will speed it up. This can not be 0 or negative.",
+            "exclusiveMinimum": 0
+        },
+
+        "display": {
+            "type": "object",
+            "description": "This is the block displayed when the crop grows. The sub tag of block is used to define the block to display. The sub tag of properties is an optional tag that can be used to specify block state properties such as the age or rotation.",
+            "additionalProperties": false,
+            "required": ["block"],
+            "properties": {
+                "block": {
+                    "type": "string",
+                    "description": "A block ID."
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "A JSON object representing blockstate properties for the display block."
+                }
+            }
+        },
+
+        "results": {
+            "type": "array",
+            "description": "Results is an array of items that the crop can yield when harvested. Each entry has a percent chance value which is rolled for each entry. If the check succeeds then the yield will contain the result's output which is an ItemStack object. They will also get between minRolls and *maxRolls copies of that item.",
+            "items":{
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "chance": {
+                        "type": "number",
+                        "description": "Chance that this item will be produced by a harvest.",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "output": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "item": {"type": "string"}
+                        }
+                    },
+                    "minRolls": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "maxRolls": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                }
+            }
+        }
+
+    }
+}

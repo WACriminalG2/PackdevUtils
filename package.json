@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.12.0",
+    "version": "1.13.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -176,7 +176,23 @@
               {
                   "fileMatch": "*/loot_tables/*.json",
                   "url": "./Schema/minecraft/data/loot_table.json"
-              }
+              },
+              {
+                  "fileMatch": "*/data/*/custom_portal_generation/*.json",
+                  "url": "./Schema/immersive_portals/custom_portal_generation.json"
+              },
+              {
+                  "fileMatch": "*/botanypots/recipes/soils/*.json",
+                  "url": "./Schema/botanypots/recipes/soil.json"
+              },
+              {
+                "fileMatch": "*/botanypots/recipes/crops/*.json",
+                "url": "./Schema/botanypots/recipes/crop.json"
+            },
+            {
+                "fileMatch": "*/botanypots/recipes/fertilizers/*.json",
+                "url": "./Schema/botanypots/recipes/fertilizer.json"
+            }
           ]
       }
 }

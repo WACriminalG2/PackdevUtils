@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Botany Pots fertilizer definition.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","fertilizer","minTicks","maxTicks"],
+
+    "properties": {
+        "type": {
+            "const": "botanypots:fertilizer"
+        },
+
+        "fertilizer": {
+            "type": ["object","array"],
+            "description": "This is the item to assign the fertilizer properties to. This is an ingredient meaning you can use an item, an item tag, or even a list of items.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            },
+            "items": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 1,
+                "additionalProperties": false,
+                "properties": {
+                    "item": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "minTicks": {
+            "type": "integer",
+            "description": "The lowest amount of ticks to accelerate the growth of the crop by."
+        },
+
+        "maxTicks": {
+            "type": "integer",
+            "description": "The highest amount of ticks to accelerate the growth of the crop by."
+        }
+    }
+}

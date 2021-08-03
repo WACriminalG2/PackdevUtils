@@ -1,0 +1,354 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Immersive Portals custom portal definition",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["schema_version","from","to"],
+
+    "properties": {
+        "schema_version": {
+            "const": "imm_ptl:v1",
+            "description": "Must be 'imm_ptl:v1'."
+        },
+
+        "from": {
+            "type": "array",
+            "description": "List of dimension ids. The dimensions that this generation can perform in. A special case: if it is ['imm_ptl:any_dimension'] then the generation can perform in any dimension.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "to": {
+            "type": "string",
+            "description": "The destination dimension's id. A special case: if it's 'imm_ptl:the_same_dimension', the destination dimension will be the same as the from dimension. If the destination dimension does not exist, this generation will be disabled. The destination dimension can be set to a datapack-added dimension or a mod-added dimension and only enables when that datapack or mod is present."
+        },
+
+        "space_ratio_from": {
+            "type": "integer",
+            "description": "This side dimension's space ratio. Default 1.",
+            "minimum": 1
+        },
+
+        "space_ratio_to": {
+            "type": "integer",
+            "description": "The other side dimension's space ratio. Together with space_ration_from defines the space mapping. For example, 8 blocks' length in overworld corresponds to 1 block's length in the nether. The overworld's space ratio is 8 and the nether's space ratio is 1. Default 1.",
+            "minimum": 1
+        },
+
+        "reversible": {
+            "type": "boolean",
+            "description": "If true, the reverse version of this generation will also be loaded. If you configured a portal from overworld to nether with reversible false, then the portal can only be activated in the overworld. If it's true then the portal can also be activated in the nether. If there are multiple 'from' dimensions, the first one will be selected for the destination of the reverse generation. Default true."
+        },
+
+        "post_invoke_commands": {
+            "type": "array",
+            "description": "The commands that will be invoked after the portals generated. The command invoker will be the portal entities. Every generated portal will invoke these commands. For example if you want the generated portal to be non-teleportable, put '/portal set_portal_nbt {teleportable:false}' into this.",
+            "items": {
+                "type":"string"
+            }
+        },
+
+        "commands_on_generated": {
+            "type": "array",
+            "description": "A list of lists of strings. Optional. Unlike 'post_invoke_commands', can make different portal entities to invoke different commands.",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type":"string"
+                }
+            }
+        },
+
+        "form": {
+            "oneOf": [
+                {"$ref": "#/definitions/classicalForm"},
+                {"$ref": "#/definitions/heterogeneousForm"},
+                {"$ref": "#/definitions/flippingFloorSquareForm"},
+                {"$ref": "#/definitions/scalingSquareForm"},
+                {"$ref": "#/definitions/flippingFloorSquareNewForm"},
+                {"$ref": "#/definitions/tryHardToMatchForm"},
+                {"$ref": "#/definitions/convertConventionalPortalForm"},
+                {"$ref": "#/definitions/oneWayForm"}
+            ]
+        },
+
+        "trigger": {
+            "oneOf": [
+                {"$ref": "#/definitions/useItemTrigger"},
+                {"$ref": "#/definitions/throwItemTrigger"},
+                {"$ref": "#/definitions/conventionalDimensionChangeTrigger"}
+            ]
+        }
+    },
+
+    "definitions": {
+        "classicalForm": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","from_frame_block","area_block","to_frame_block","generate_frame_if_not_found"],
+            "description": "The classical form. Similar to the nether portal, it can be in any shape and can be horizontal. The frame can only be constituted by one type of block. However, this side's frame block can be different from the other side's frame block. Upon activation, it will first check whether the other side's terrain is generated. If the other side's terrain is generated, it will load surrounding chunks and then search for the existing portal frame. If an existing frame is found, the portal will link to it.",
+
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:classical"
+                },
+                "from_frame_block": {
+                    "type": "string",
+                    "description": "Block id. This side's frame block."
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block id. The portal frame content's block. (The activation spot's block will not be checked. If the area block is air and you trigger with flint and steel, the activation spot's block will be fire block. If the area is all air blocks except this fire block the portal still can generate.)"
+                },
+                "to_frame_block": {
+                    "type": "string",
+                    "description": "Block id. The other side's frame block."
+                },
+                "generate_frame_if_not_found": {
+                    "type": "boolean",
+                    "description": "If true, when the existing frame is not found, it will search for new portal placement nearby and generate the new portal frame. The frame block can be duplicated by generating the portal. If false, it will cancel generation if the existing frame is not found and the frame block cannot be duplicated."
+                }
+            }
+        },
+
+        "heterogeneousForm": {
+            "type": "object",
+            "description": "Similar to the classical form, but the frame block can be constituted by several different types of blocks. The block collection is specified by a block tag. When generating a new frame, the block pattern of this side's frame will be cloned.",
+            "additionalProperties": false,
+            "required": ["type","area_block","frame_block","generate_frame_if_not_found"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:heterogeneous"
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Specifies the portal area block."
+                },
+                "frame_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Specifies the portal frame block."
+                },
+                "generate_frame_if_not_found": {
+                    "type": "boolean",
+                    "description": "If true, when the existing frame is not found, it will search for new portal placement nearby and generate the new portal frame. The frame block can be duplicated by generating the portal. If false, it will cancel generation if the existing frame is not found and the frame block cannot be duplicated."
+                }
+            }
+        },
+
+        "flippingFloorSquareForm": {
+            "type": "object",
+            "description": "The portal must be horizontal and the shape must be a square. The generated portal will be one-faced and has a rotating transformation of 180 degrees around the X-axis. The 'world inside portal' is flipped. And the generated portal will have motion affinity 0.1, which means that the player will be accelerated when touching the portal. Unlike the other forms, the blocks above the frame and the blocks below the area can also be specified. Upon activation, it will directly search for new portal placement without loading chunks and searching for the existing frame. The generated portal will occupy ground blocks.",
+            "additionalProperties": false,
+            "required": ["type","length","frame_block","area_block"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:flipping_floor_square"
+                },
+                "length": {
+                    "type": "integer",
+                    "description": "The side length of the square.",
+                    "minimum": 3
+                },
+                "frame_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Specifies the portal frame blocks."
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Specifies the portal area blocks."
+                },
+                "up_frame_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Optional. Specifies the blocks on the top of the frame blocks."
+                },
+                "bottom_block": {
+                    "type": "string",
+                    "description": "Block tag or block id. Optional. Specifies the blocks below the area blocks."
+                }
+            }
+        },
+
+        "scalingSquareForm": {
+            "type": "object",
+            "description": "The portal can be horizontal or vertical. But the shape must be a square. This side shape's side length can be different to the other side shape's. The created portal will have a scaling transformation that adapts to the shape scale difference.",
+            "required": ["type","from_length","to_length","from_frame_block","area_block","to_frame_block","generate_frame_if_not_found"],
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:scaling_square"
+                },
+                "from_length": {
+                    "type": "integer",
+                    "description": "This side frame's side length.",
+                    "minimum": 3
+                },
+                "to_length": {
+                    "type": "integer",
+                    "description": "Other side frame's side length.",
+                    "minimum": 3
+                },
+                "from_frame_block": {
+                    "type": "string",
+                    "description": "Block ID. This side's frame block."
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block ID. The portal frame content's block."
+                },
+                "to_frame_block": {
+                    "type": "string",
+                    "description": "Block ID. The other side's frame block."
+                },
+                "generate_frame_if_not_found": {
+                    "type": "boolean",
+                    "description": "If true, when the existing frame is not found, it will search for new portal placement nearby and generate the new portal frame. The frame block can be duplicated by generating the portal. If false, it will cancel generation if the existing frame is not found and the frame block cannot be duplicated."
+                }
+            }
+        },
+
+        "flippingFloorSquareNewForm": {
+            "type": "object",
+            "description": "Similar to imm_ptl:flipping_floor_square it generates floor portal with a flipping rotation transformation. But this does not require hardcoding the square side length. And this searches for the existing frame on the other side before generating the new frame.",
+            "additionalProperties": false,
+            "required": ["type","area_block","frame_block","generate_frame_if_not_found"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:flipping_floor_square_new"
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block ID. The portal frame content's block."
+                },
+                "frame_block": {
+                    "type": "string",
+                    "description": "Block ID. The portal's frame block."
+                },
+                "generate_frame_if_not_found": {
+                    "type": "boolean",
+                    "description": "If true, when the existing frame is not found, it will search for new portal placement nearby and generate the new portal frame. The frame block can be duplicated by generating the portal. If false, it will cancel generation if the existing frame is not found and the frame block cannot be duplicated."
+                }
+            }
+        },
+
+        "tryHardToMatchForm": {
+            "type": "object",
+            "description": "It diligently tries to match with the scaled and rotated portal frame. The classical nether portal can only link to the frame that has the exact size and orientation. But this portal generation can link to the shape with different scale and rotation as long as the topology shape matches. It can create the portal with rotation transformation and scale transformation. Unlike imm_ptl:flipping_floor_square and imm_ptl:scaling_square, the rotation and scale do not need to be hard-coded and the shape can be not square. The maximum area side length is 20.",
+            "additionalProperties": false,
+            "required": ["type","from_frame_block","area_block","to_frame_block","generate_frame_if_not_found"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:try_hard_to_match"
+                },
+                "from_frame_block": {
+                    "type": "string",
+                    "description": "Block ID. This side's frame block."
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block ID. The portal frame content's block."
+                },
+                "to_frame_block": {
+                    "type": "string",
+                    "description": "Block ID. The other side's frame block."
+                },
+                "generate_frame_if_not_found": {
+                    "type": "boolean",
+                    "description": "If true, when the existing frame is not found, it will search for new portal placement nearby and generate the new portal frame. The frame block can be duplicated by generating the portal. If false, it will cancel generation if the existing frame is not found and the frame block cannot be duplicated."
+                }
+            }
+        },
+
+        "convertConventionalPortalForm": {
+            "type": "object",
+            "description": "This can only be used with trigger imm_ptl:conventional_dimension_change. When a player goes through a conventional portal and experience a dimension travel with loading screen, this can be used to convert that conventional portal into a see-through portal. It converts the portal after the player goes through it once. It does not convert the portal after creation. It can only convert the conventional portal that have the same type of portal block on both sides and the shapes are compatible. If the conventional portal is horizontal, it will generate a one-faced bi-way portal with a flipping rotation transformation. Otherwise, it behaves the same as imm_ptl:try_hard_to_match. For this form, the space ratio does not matter.",
+            "additionalProperties": false,
+            "required": ["type","portal_block"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:convert_conventional_portal"
+                },
+                "portal_block": {
+                    "type": "string",
+                    "description": "Block id or block tag. The conventional portal's block."
+                }
+            }
+        },
+
+        "oneWayForm": {
+            "type": "object",
+            "description": "Creates a one-way portal. The destination can be specified by command /portal set_portal_destination in commands_on_generated.",
+            "additionalProperties": false,
+            "required": ["type","frame_block","area_block","bi_faced"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:one_way"
+                },
+                "frame_block": {
+                    "type": "string",
+                    "description": "Block id or block tag. The frame block."
+                },
+                "area_block": {
+                    "type": "string",
+                    "description": "Block id or block tag. The frame content block."
+                },
+                "bi_faced": {
+                    "type": "boolean",
+                    "description": "If true generates bi-faced portal."
+                },
+                "breakable": {
+                    "type": "boolean",
+                    "description": "Optional. If false, it will not generate the placeholder blocks and the portals will be unbreakable."
+                }
+            }
+        },
+
+        "useItemTrigger": {
+            "type": "object",
+            "description": "Activates when the player right-clicks using an item.",
+            "required": ["type","item"],
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:use_item"
+                },
+                "item": {
+                    "type": "string",
+                    "description": "Item ID."
+                },
+                "consume": {
+                    "type": "boolean",
+                    "description": "If true, the item will be consumed if the generation performed (except in creative mode). Default false."
+                }
+            }
+        },
+
+        "throwItemTrigger": {
+            "type": "object",
+            "description": "Checks every tick for the item entity that cannot be instantly picked up. (When a player throws one item it cannot be instantly picked up because the item entity has pick-up delay.) If an item is not thrown within 2 seconds, it will have no pick-up delay and cannot trigger the generation. The item can survive in lava for 1 tick, so throwing a non-fire-proof item into lava could still trigger the generation.",
+            "additionalProperties": false,
+            "required": ["type","item"],
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:throw_item"
+                },
+                "item": {
+                    "type": "string",
+                    "description": "Item ID."
+                }
+            }
+        },
+
+        "conventionalDimensionChangeTrigger": {
+            "type": "object",
+            "description": "It will be triggered when the player experiences conventional dimension travel (with loading screen), for example going through a vanilla nether portal. This is useful for converting other mod's portal.",
+            "required": ["type"],
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "const": "imm_ptl:conventional_dimension_change"
+                }
+            }
+        }
+    }
+}

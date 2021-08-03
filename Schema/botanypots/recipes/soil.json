@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Botany Pots soil definition.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","input","display","categories","ticks"],
+
+    "properties": {
+        "type": {
+            "const": "botanypots:soil"
+        },
+
+        "input": {
+            "type": ["object","array"],
+            "description": "The item used to get the fertilizer. This uses the vanilla Ingredient format and can be an item, an item tag, or even a list of items. For best results it is recommended that only one item is defined as an input.",
+            "items": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "item": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            },
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "display": {
+            "type": "object",
+            "description": "This is the block displayed in the pot. The sub tag of block is used to define the block to display. The sub tag of properties is an optional tag that can be used to specify block state properties such as the age or rotation.",
+            "additionalProperties": false,
+            "required": ["block"],
+            "properties": {
+                "block": {
+                    "type": "string",
+                    "description": "A block ID."
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "A JSON object representing blockstate properties for the display block."
+                }
+            }
+        },
+
+        "categories": {
+            "type": "array",
+            "description": "This is an array of category strings. These are used to match crops to their valid soils.",
+            "items": {
+                "type": "string"
+            }
+        },
+        
+        "ticks": {
+            "type": "integer",
+            "description": "This is the amount of world ticks it takes for the soil to produce a growth tick for a crop. Higher numbers mean that crops will take longer to grow."
+        }
+    }
+}
