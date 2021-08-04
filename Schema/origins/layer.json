@@ -255,7 +255,10 @@
                                             "examples": [ "minecraft:savanna" ]
                                         }
                                     },
-                                    "condition": { "$ref": "#/definitions/conditions/properties/biome_condition" }
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/biome_condition",
+                                        "description": "If set, this condition needs to be fulfilled (in addition to having the right ID, if provided) by the biome in order for the condition to evaluate to true."
+                                    }
                                 }
                             }
                         },
@@ -289,7 +292,10 @@
                             },
                             "then": {
                                 "properties": {
-                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "block_condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "The block condition which is applied to the block at the player's feet."
+                                    },
                                     "radius": {
                                         "type": "integer",
                                         "description": "The radius to check blocks in."
@@ -459,7 +465,10 @@
                                         "description": "Which equipped item to check. One of: \"mainhand\", \"offhand\", \"head\", \"chest\", \"legs\", \"feet\".",
                                         "enum": [ "mainhand", "offhand", "head", "chest", "legs", "feet" ]
                                     },
-                                    "item_condition": { "$ref": "#/definitions/conditions/properties/item_condition" }
+                                    "item_condition": {
+                                        "$ref": "#/definitions/conditions/properties/item_condition",
+                                        "description": "Which condition will be applied to the item in the specified slot."
+                                    }
                                 }
                             }
                         },
@@ -572,7 +581,10 @@
                             },
                             "then": {
                                 "properties": {
-                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "block_condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "The block condition which blocks need to fulfill in order to count for this power."
+                                    },
                                     "comparison": {
                                         "type": "string",
                                         "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
@@ -595,7 +607,10 @@
                             },
                             "then": {
                                 "properties": {
-                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" }
+                                    "block_condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "The block condition which is applied to the block at the player's lower body half."
+                                    }
                                 },
                                 "required": [ "block_condition" ]
                             }
@@ -624,7 +639,10 @@
                             },
                             "then": {
                                 "properties": {
-                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" }
+                                    "block_condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "If set, a block that satisfies this block condition needs to be right below the player's feet."
+                                    }
                                 }
                             }
                         },
@@ -858,7 +876,10 @@
                             },
                             "then": {
                                 "properties": {
-                                    "item_condition": { "$ref": "#/definitions/conditions/properties/item_condition" }
+                                    "item_condition": {
+                                        "$ref": "#/definitions/conditions/properties/item_condition",
+                                        "description": "If specified, the condition will only pass if the item that is being used fulfills this condition."
+                                    }
                                 }
                             }
                         },
