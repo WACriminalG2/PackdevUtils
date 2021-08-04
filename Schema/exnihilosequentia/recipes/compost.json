@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Composting recipes from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","input","amount"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:compost"
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The item/block being inserted into a barrel to be composted.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "amount": {
+            "type": "integer",
+            "description": "The amount an item/block contributes to the solid amount in a barrel.",
+            "minimum": 0
+        }
+    }
+}

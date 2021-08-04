@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Fluid-and-item transformation recipe from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","fluid","input","result"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:fluid_item"
+        },
+
+        "fluid": {
+            "type": "object",
+            "description": "The fluid in the barrel.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The item or type of item to be consumed by the recipe.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "description": "The resulting item/block.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

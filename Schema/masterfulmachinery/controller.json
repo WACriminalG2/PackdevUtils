@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Masterful Machinery controller definition",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["controllerId","name","ports"],
+
+    "properties": {
+        "controllerId": {
+            "type": "string",
+            "description": "A unique name that is all lower case and there are no special characters."
+        },
+
+        "name": {
+            "type": "string",
+            "description": "A user friendly name that can contain upper and lower case characters."
+        },
+
+        "ports": {
+            "type": "array",
+            "description": "A list of ports to accompany this controller.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type","data","id","name"],
+
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "masterfulmachinery:items",
+                            "masterfulmachinery:energy",
+                            "masterfulmachinery:fluids",
+                            "masterfulmachinery:mekanism_gas",
+                            "masterfulmachinery:mekanism_slurry",
+                            "masterfulmachinery:mekanism_infuse",
+                            "masterfulmachinery:create_rotation",
+                            "masterfulmachinery:pncr_pressure",
+                            "masterfulmachinery:astral_starlight",
+                            "masterfulmachinery:botania_mana"
+                        ]
+                    },
+
+                    "id": {
+                        "type": "string",
+                        "description": "A unique ID given to each individual port, must be lowercase."
+                    },
+
+                    "name": {
+                        "type": "string",
+                        "description": "A user-friendly display name for the port."
+                    },
+
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [],
+
+                        "properties": {
+                            "rows": {
+                                "type": "integer",
+                                "description": "The number of storage rows in this port."
+                            },
+                            "columns": {
+                                "type": "integer",
+                                "description": "The number of storage columns in this port."
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "description": "The total capacity of this port, in millibuckets or energy units. Can be applied to the following port types: energy, fluids, mekanism_gas, mekanism_slurry, mekanism_infuse, astral_starlight, botania_mana."
+                            },
+                            "stress": {
+                                "type": "integer",
+                                "description": "The stress value of the port. Only applies to create_rotation ports."
+                            },
+                            "volume": {
+                                "type": "integer",
+                                "description": "The total air volume capacity for this port. Only applies to pncr_pressure ports."
+                            },
+                            "dangerPressure": {
+                                "type": "integer",
+                                "description": "The amount of pressure at which this port becomes dangerous. Only applies to pncr_pressure ports."
+                            },
+                            "criticalPressure": {
+                                "type": "integer",
+                                "description": "The amount of pressure at which this port becomes critical. Only applies to pncr_pressure ports."
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

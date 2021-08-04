@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Fluid-on-top recipes from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalproperties": false,
+    "required": ["type", "fluidInTank","fluidOnTop","result"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:fluid_on_top"
+        },
+
+        "fluidInTank": {
+            "type": "object",
+            "description": "The fluid in the tank that will be consumed.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "fluidOnTop": {
+            "type": "object",
+            "description": "The fluid that will be placed on top of the barrel. Will not be consumed.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "description": "The resulting block.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

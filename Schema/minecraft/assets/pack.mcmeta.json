@@ -23,10 +23,10 @@
             "description": "Information about the resource pack",
             "properties": {
                 "pack_format": {
-                    "default": 4,
+                    "default": 6,
                     "type": "integer",
                     "title": "Resource pack version",
-                    "description": "This will be 1 for pre-1.9 versions, 2 for 1.9-1.10, 3 for 1.11-1.12 and 4 for 1.13"
+                    "description": "This will be 6 for 1.16.5."
                 },
                 "description": {
                     "type": "string",

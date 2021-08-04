@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Recipe for the Solar Cooker mod.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","ingredient","result","experience","cookingtime"],
+    "properties": {
+        
+        "type": {
+            "const": "solarcooker:solarcooking"
+        },
+
+        "ingredient": {
+            "type": "object",
+            "description": "The input ingredient for the recipe. Can be an item or a tag.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "result": {
+            "type": "string",
+            "description": "Item ID for the recipe's output."
+        },
+        
+        "experience": {
+            "type": "number",
+            "description": "Amount of XP to give the player for this recipe.",
+            "minimum": 0
+        },
+
+        "cookingtime": {
+            "type": "integer",
+            "description": "Amount of time, in ticks, for this recipe to process.",
+            "minimum": 1
+        }
+    }
+}

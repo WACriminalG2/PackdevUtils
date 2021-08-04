@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Hammer recipes from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type", "results", "input"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:hammer"
+        },
+
+        "results": {
+            "type": "array",
+            "description": "A list of possible drops.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["item","chance","count"],
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "description": "The item to be dropped."
+                    },
+                    "chance": {
+                        "type": "number",
+                        "description": "The chance this item will drop.",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "count": {
+                        "type": "integer",
+                        "description": "The quantity of this item to drop.",
+                        "minimum": 1
+                    }
+                }
+            }
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The block to be hammered. May be a tag.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.13.0",
+    "version": "1.14.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -192,6 +192,58 @@
             {
                 "fileMatch": "*/botanypots/recipes/fertilizers/*.json",
                 "url": "./Schema/botanypots/recipes/fertilizer.json"
+            },
+            {
+                "fileMatch": "*/data/*solarcooker/recipes/*.json",
+                "url": "./Schema/solarcooker/recipes/solarcooking.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/compost/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/compost.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/crook/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/crook.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/crucible/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/crucible.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/fluid_item/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/fluiditemtransformation.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/fluid_on_top/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/fluidontop.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/fluid_transform/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/fluidtransformation.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/hammer/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/hammer.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/heat/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/heat.json"
+            },
+            {
+                "fileMatch": "*/exnihilosequentia/recipes/sieve/*.json",
+                "url": "./Schema/exnihilosequentia/recipes/sieve.json"
+            },
+            {
+                "fileMatch": "*/mm/recipes/structures/*.json",
+                "url": "./Schema/masterfulmachinery/structure.json"
+            },
+            {
+                "fileMatch": "*/mm/recipes/*.json",
+                "url": "./Schema/masterfulmachinery/process.json"
+            },
+            {
+                "fileMatch": "*/masterful_machinery/controllers/*.json",
+                "url": "./Schema/masterfulmachinery/controller.json"
             }
           ]
       }

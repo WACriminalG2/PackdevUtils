@@ -8,7 +8,7 @@
             "description": "IDs of the powers this origin should have.",
             "items": {
                 "type": "string",
-                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                 "examples": [
                     "origins:fall_immunity", "origins:aerial_combatant", "origins:aqua_affinity", "origins:aquatic",
                     "origins:arthropod", "origins:more_kinetic_damage", "origins:burning_wrath", "origins:carnivore",
@@ -62,11 +62,11 @@
                 "properties": {
                     "condition": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "origin": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "announcement": {
                         "type": "string"

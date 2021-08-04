@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Crucible recipes from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","input","amount","fluidResult","crucibleType"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:crucible"
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The block/type of block to be placed in a crucible to produce this fluid.",
+            "additionalProperties": false,
+            "maxProperties": 1,
+            "minProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "amount": {
+            "type": "integer",
+            "description": "The amount of fluid that will be produced by the input (represented in millibuckets).",
+            "minimum": 1
+        },
+
+        "fluidResult": {
+            "type": "object",
+            "description": "The fluid that results from this recipe.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "crucibleType": {
+            "enum": ["fired","wood"],
+            "description": "The type of crucible that this recipe will work in. Must be 'fired' or 'wood'. Any recipe that can be created in a wood crucible can also be made in a fired crucible. There is no need to create two recipes for each crucible if this is your desired result."
+        }
+    }
+}

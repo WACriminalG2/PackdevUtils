@@ -1,3 +1,10 @@
+# v1.14.0 -- 8/3/21
+
+* Updated Origins schemas. Credit: S_K_Tiger
+* Added schema validation for Solar Cooker recipes.
+* Added schema validation for recipes from Ex Nihilo Sequentia: Compost, Crook, Crucible, Fluid-Item Transformation, Fluid-On-Top Transformation, Fluid Transformation, Hammer, Heat, Sieve.
+* Added schema validation for Masterful Machinery: Structures, Processes, Controllers.
+
 # v1.13.0 -- 8/3/21
 
 * Added schema validation for custom portal definition via Immersive Portals.

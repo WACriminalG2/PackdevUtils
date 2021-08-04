@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Crucible heating recipes for Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","block","amount"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:heat"
+        },
+
+        "block": {
+            "type": "string",
+            "description": "The block placed below the crucible that will generate heat."
+        },
+
+        "amount": {
+            "type": "integer",
+            "description": "The number of millibuckets that will be melted down per operation.",
+            "minimum": 1
+        }
+    }
+}

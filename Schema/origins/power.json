@@ -30,7 +30,7 @@
             "$comment": "TODO add more conditional attributes",
             "type": "string",
             "description": "ID of the desired Power Type.",
-            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
             "examples": [
                 "origins:attribute", "origins:burn", "origins:climbing", "origins:conditioned_attribute",
                 "origins:conditioned_restrict_armor", "origins:cooldown", "origins:creative_flight", "origins:damage_over_time",
@@ -59,15 +59,15 @@
             "type": "object",
             "properties": {
                 "entity_condition": {
-                    "$comment": "TODO Add conditional atributes",
                     "type": "object",
                     "description": "Entity Conditions operate on a LivingEntity, which also allows access to the world. These are available to be used in most powers in the condition field, which restricts when a power is active.",
                     "properties": {
                         "type": {
                             "type": "string",
                             "description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [
+                                "origins:and", "origins:or", "origins:constant",
                                 "origins:advancement", "origins:air", "origins:attribute", "origins:biome", "origins:block_collision",
                                 "origins:block_in_radius", "origins:brightness", "origins:climbing", "origins:collided_horizontally",
                                 "origins:command", "origins:daytime", "origins:dimension", "origins:enchantment", "origins:entity_group",
@@ -91,51 +91,800 @@
                     "allOf": [
                         {
                             "$comment": "#region meta Is there a better way to do this?",
-                            "if": { "properties": { "type": { "const": "origins:and" } } },
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
                             "then": {
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/entity_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
-                            "if": { "properties": { "type": { "const": "origins:or" } } },
+                            "if": {
+                                "properties": { "type": { "const": "origins:or" } },
+                                "required": [ "type" ]
+                            },
                             "then": {
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/entity_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
-                            "if": { "properties": { "type": { "const": "origins:constant" } } },
+                            "if": {
+                                "properties": { "type": { "const": "origins:constant" } },
+                                "required": [ "type" ]
+                            },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": [ "value" ]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:advancement" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "advancement": {
+                                        "type": "string",
+                                        "description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:story/smelt_iron" ]
+                                    }
+                                },
+                                "required": [ "advancement" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:air" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the breath (in ticks) should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the breath should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:attribute" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "attribute": {
+                                        "type": "string",
+                                        "description": "ID of the attribute of which the value should be checked.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:generic.armor" ]
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How to compare the attribute's value to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value to compare the attribute's value to."
+                                    }
+                                },
+                                "required": [ "attribute", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:biome" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "biome": {
+                                        "type": "string",
+                                        "description": "If set, this is the ID of the biome the player needs to be in for this condition to evaluate to true, e.g. minecraft:savanna.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:savanna" ]
+                                    },
+                                    "biomes": {
+                                        "type": "array",
+                                        "description": "If set, these are the allowed biome IDs the player can be in for this condition to evaluate to true.",
+                                        "items": {
+                                            "type": "string",
+                                            "description": "If set, this is the ID of the biome the player needs to be in for this condition to evaluate to true, e.g. minecraft:savanna.",
+                                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                            "examples": [ "minecraft:savanna" ]
+                                        }
+                                    },
+                                    "condition": { "$ref": "#/definitions/conditions/properties/biome_condition" }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block_collision" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "offset_x": {
+                                        "type": "number",
+                                        "description": "By how much of the bounding box size should the box be offset in the X direction (e.g.: 0 = no offset, 1 = offset of exact width, 2 = offset of twice the width of the bounding box)"
+                                    },
+                                    "offset_y": {
+                                        "type": "number",
+                                        "description": "By how much of the bounding box size should the box be offset in the Y direction (e.g.: 0 = no offset, 1 = offset of exact width, 2 = offset of twice the width of the bounding box)"
+                                    },
+                                    "offset_z": {
+                                        "type": "number",
+                                        "description": "By how much of the bounding box size should the box be offset in the Z direction (e.g.: 0 = no offset, 1 = offset of exact width, 2 = offset of twice the width of the bounding box)"
+                                    }
+                                },
+                                "required": [ "offset_x", "offset_y", "offset_z" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block_in_radius" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "radius": {
+                                        "type": "integer",
+                                        "description": "The radius to check blocks in."
+                                    },
+                                    "shape": {
+                                        "type": "string",
+                                        "description": "Whether to check in a cube- or a star-shaped form. Either \"cube\" or \"star\".",
+                                        "enum": [ "cube", "star" ],
+                                        "default": "cube"
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "default": ">=",
+                                        "description": "How to compare the attribute's value to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "default": 1,
+                                        "description": "Which value to compare the attribute's value to."
+                                    }
+                                },
+                                "required": [ "block_condition", "radius" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:brightness" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How to compare the brightness against the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value to compare the brightness against."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:command" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "command": {
+                                        "type": "string",
+                                        "description": "Command to run."
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How to compare the command's result to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value to compare the command's result to."
+                                    },
+                                    "permission_level": {
+                                        "type": "integer",
+                                        "description": "The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
+                                        "default": 4,
+                                        "minimum": 0,
+                                        "maximum": 4
+                                    }
+                                },
+                                "required": [ "command", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:dimension" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "dimension": {
+                                        "type": "string",
+                                        "description": "ID of the dimension the player needs to be in for this condition to evaluate to true. Vanilla dimensions are minecraft:overworld, minecraft:the_nether and minecraft:the_end, but IDs of custom/modded dimensions should also work.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
+                                    }
+                                },
+                                "required": [ "dimension" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:enchantment" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "enchantment": {
+                                        "type": "string",
+                                        "description": "ID of the enchantment of interest.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:protection" ]
+                                    },
+                                    "calculation": {
+                                        "type": "string",
+                                        "description": "Which number to compare - either the sum of levels of this enchantment on all of the player's equipment, or the max level of this enchantment on any of the player's equipment.",
+                                        "enum": [ "sum", "max" ],
+                                        "default": "sum"
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the enchantment level should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "The value to compare the enchantment level to."
+                                    }
+                                },
+                                "required": [ "enchantment", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:entity_group" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "group": {
+                                        "type": "string",
+                                        "enum": [ "default", "undead", "arthropod", "illager", "aquatic" ],
+                                        "description": "Entity group required for the entity to pass the check. One of default, undead, arthropod, illager and aquatic."
+                                    }
+                                },
+                                "required": [ "group" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:entity_type" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "entity_type": {
+                                        "type": "string",
+                                        "description": "ID of the entity type the entity needs to have to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:creeper" ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:equipped_item" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "equipment_slot": {
+                                        "type": "string",
+                                        "description": "Which equipped item to check. One of: \"mainhand\", \"offhand\", \"head\", \"chest\", \"legs\", \"feet\".",
+                                        "enum": [ "mainhand", "offhand", "head", "chest", "legs", "feet" ]
+                                    },
+                                    "item_condition": { "$ref": "#/definitions/conditions/properties/item_condition" }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:fall_distance" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the fall distance should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the fall distance to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:fluid_height" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "fluid": {
+                                        "type": "string",
+                                        "description": "ID of the fluid tag of which the height should be checked.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:water", "minecraft:lava" ]
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the fluid height should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the fluid height should be compared to."
+                                    }
+                                },
+                                "required": [ "fluid", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:food_level" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the food level should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the food level should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:gamemode" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "gamemode": {
+                                        "type": "string",
+                                        "description": "Name of the gamemode the player should have in order for this condition to evaluate to true.",
+                                        "examples": [ "creative" ]
+                                    }
+                                },
+                                "required": [ "gamemode" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:health" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the health of the player should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the health should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_block_anywhere" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the number of blocks which overlap and fulfill block_condition should be compared to the specified value.",
+                                        "default": ">="
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "The value to compare the number to.",
+                                        "default": 1
+                                    }
+                                },
+                                "required": [ "block_condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_block" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" }
+                                },
+                                "required": [ "block_condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_tag" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "tag": {
+                                        "type": "string",
+                                        "description": "ID of the tag the entity type needs to be in to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:skeletons" ]
+                                    }
+                                },
+                                "required": [ "tag" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:on_block" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:origin" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "origin": {
+                                        "type": "string",
+                                        "description": "ID of the origin the player needs to have to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "origins:human" ]
+                                    },
+                                    "layer": {
+                                        "type": "string",
+                                        "description": "If set, will check only the layer with the provided ID for the origin.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "origins:origin" ]
+                                    }
+                                },
+                                "required": [ "origin" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:power_active" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "power": {
+                                        "type": "string",
+                                        "description": "ID of the power which will be checked for being active.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "origins:phantomize" ]
+                                    }
+                                },
+                                "required": [ "power" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:power" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "power": {
+                                        "type": "string",
+                                        "description": "ID of the power the player needs to have to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "origins:phantomize" ]
+                                    }
+                                },
+                                "required": [ "power" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:predicate" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "predicate": {
+                                        "type": "string",
+                                        "description": "ID of the predicate the entity needs to pass.\nNote: due to the nature of predicates, this condition is only effective on the server-side.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                                    }
+                                },
+                                "required": [ "predicate" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:relative_health" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the relative health of the player should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the relative health should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:resource" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "resource": {
+                                        "type": "string",
+                                        "description": "ID of the power type that defines the resource. Must be a Resource (Power Type) which exists on the player.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the resource should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the resource should be compared to."
+                                    }
+                                },
+                                "required": [ "resource", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:saturation_level" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the saturation level should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the saturation level should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:scoreboard" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "objective": {
+                                        "type": "string",
+                                        "description": "The name of the scoreboard objective to retrieve the value from and compare.\nDue to the nature of scoreboards, this condition is only effective on the server-side.\nIf the entity does not have the scoreboard objective, this condition always returns false."
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How to compare the objective's value to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value to compare the objective's value to."
+                                    }
+                                },
+                                "required": [ "objective", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:status_effect" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "effect": {
+                                        "type": "string",
+                                        "description": "ID of the status effect the player should have.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                                    },
+                                    "min_amplifier": {
+                                        "type": "integer",
+                                        "description": "The minimum amplifier the status effect should have in order to pass the check.",
+                                        "default": 0,
+                                        "minimum": 0,
+                                        "maximum": 2147483647
+                                    },
+                                    "max_amplifier": {
+                                        "type": "integer",
+                                        "description": "The maximum amplifier the status effect should have in order to pass the check.",
+                                        "default": 2147483647,
+                                        "minimum": 0,
+                                        "maximum": 2147483647
+                                    },
+                                    "min_duration": {
+                                        "type": "integer",
+                                        "description": "The minimum duration in ticks the status effect should have left in order to pass the check.",
+                                        "default": 0,
+                                        "minimum": 0,
+                                        "maximum": 2147483647
+                                    },
+                                    "max_duration": {
+                                        "type": "integer",
+                                        "description": "The maximum duration in ticks the status effect should have left in order to pass the check.",
+                                        "default": 2147483647,
+                                        "minimum": 0,
+                                        "maximum": 2147483647
+                                    }
+                                },
+                                "required": [ "effect" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:submerged_in" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "fluid": {
+                                        "type": "string",
+                                        "description": "ID of the fluid tag that should be checked.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:water", "minecraft:lava" ]
+                                    }
+                                },
+                                "required": [ "fluid" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:using_item" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "item_condition": { "$ref": "#/definitions/conditions/properties/item_condition" }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:xp_levels" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the experience level of the player should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the experience level should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:xp_points" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the experience points of the player should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the experience points should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
                         }
                     ]
                 },
                 "block_condition": {
-                    "$comment": "TODO Add conditional atributes",
                     "type": "object",
                     "description": "Block Conditions operate on CachedBlockPosition, essentially a combination of World and BlockPos, which allows retrieving all necessary information about the block.",
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
-                            "examples": [ "origins:adjacent" ],
-                            "$comment": "TODO: Add conditional attributes"
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:adjacent", "origins:attachable", "origins:block", "origins:block_state",
+                                "origins:exposed_to_sky", "origins:fluid", "origins:height", "origins:in_tag", "origins:light_blocking",
+                                "origins:light_level", "origins:movement_blocking", "origins:offset", "origins:replacable",
+                                "origins:water_loggable"
+                            ]
                         },
                         "inverted": {
                             "type": "boolean",
@@ -157,7 +906,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/block_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -171,7 +921,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/block_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -181,13 +932,186 @@
                             },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": [ "value" ]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:adjacent" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "adjacent_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the number of adjacent blocks which fulfill adjacent_condition should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the number to."
+                                    }
+                                },
+                                "required": [ "adjacent_condition", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block": {
+                                        "type": "string",
+                                        "description": "ID of the block that this block needs to be to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
+                                    }
+                                },
+                                "required": [ "block" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block_state" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "property": {
+                                        "type": "string",
+                                        "description": "The name of the property that should be checked. See: https://minecraft.fandom.com/wiki/Block_states#List_of_block_states",
+                                        "examples": [ "facing", "age", "leaves", "stage", "rotation", "open", "occupied", "part", "honey_level", "attachment", "powered" ]
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "If the property contains an integer value, this is the comparison the will be used to compare the property's value to the specified compare_to integer."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "If the property contains an integer value, this is the value the property's value will be compared to."
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If the property contains a boolean value, this is the value the property needs to be to pass the check."
+                                    },
+                                    "enum": {
+                                        "type": "string",
+                                        "description": "If the property contains different string values, this is the string value the property needs to be to pass the check."
+                                    }
+                                },
+                                "required": [ "property" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:fluid" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "fluid_condition": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
+                                },
+                                "required": [ "fluid_condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:height" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the Y position of the block should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the Y position of the block to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_tag" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "tag": {
+                                        "type": "string",
+                                        "description": "ID of the tag which the block should be in to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:base_stone_overworld" ]
+                                    }
+                                },
+                                "required": [ "tag" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:light_level" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "light_type": {
+                                        "type": "string",
+                                        "description": "The type of light level to compare. Either sky or block. If no type is provided, the greater value of the two types will be used, which is the \"resulting\" light level of that position.",
+                                        "enum": [ "sky", "block" ]
+                                    },
+                                    "comparison": {
+                                        "type": "string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the light level should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "The value to compare the light level at the block's position to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:offset" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                    "x": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the x-axis.",
+                                        "default": 0
+                                    },
+                                    "y": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the y-axis.",
+                                        "default": 0
+                                    },
+                                    "z": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the z-axis.",
+                                        "default": 0
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
                         }
                     ]
                 },
@@ -197,8 +1121,9 @@
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [
+                                "origins:and", "origins:or", "origins:constant",
                                 "origins:armor_value", "origins:enchantment", "origins:food",
                                 "origins:harvest_level", "origins:ingredient", "origins:meat"
                             ]
@@ -223,7 +1148,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/item_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -237,7 +1163,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/item_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -247,11 +1174,12 @@
                             },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": ["value"]
                             },
                             "$comment": "#endregion meta"
                         },
@@ -263,6 +1191,7 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
+                                        "type": "string",
                                         "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
                                         "description": "How to compare the item's armor value to the specified value."
                                     },
@@ -283,7 +1212,8 @@
                                 "properties": {
                                     "enchantment": {
                                         "type": "string",
-                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                                        "description": "ID of the enchantment of interest.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                                         "examples": [ "minecraft:fortune" ]
                                     },
                                     "comparison": {
@@ -331,22 +1261,22 @@
                                             "properties": {
                                                 "item": {
                                                     "type": "string",
-                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                                                 },
                                                 "tag": {
                                                     "type": "string",
-                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                                                 }
                                             }
                                         },
                                         "properties": {
                                             "item": {
                                                 "type": "string",
-                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                                             },
                                             "tag": {
                                                 "type": "string",
-                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                                             }
                                         },
                                         "description": "The ingredient this item must match to pass the check."
@@ -358,15 +1288,17 @@
                     ]
                 },
                 "damage_condition": {
-                    "$comment": "TODO Add conditional atributes",
                     "type": "object",
                     "description": "Damage Conditions operate on a combination of DamageSource and Float, allowing to check not only the type of damage dealt, but also how much damage was dealt.",
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
-                            "examples": [ "origins:amount" ],
-                            "$comment": "TODO: Add conditional attributes"
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:amount", "origins:attacker", "origins:fire", "origins:name",
+                                "origins:projectile"
+                            ]
                         },
                         "inverted": {
                             "type": "boolean",
@@ -388,7 +1320,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/damage_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -402,7 +1335,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/damage_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -412,26 +1346,99 @@
                             },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": [ "value" ]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:amount" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type":"string",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "description": "How the amount of damage should be compared to the specified value."
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the amount of damage to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:attacker" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "entity_condition": { "$ref": "#/definitions/conditions/properties/entity_condition"}
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:name" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name the damage source should have to pass the check. See https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/",
+                                        "examples": [
+                                            "anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
+                                            "dragonBreath", "drown", "dryout", "explosion.player",
+                                            "explosion", "fall", "fallingBlock", "fallingStalactite",
+                                            "fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
+                                            "indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
+                                            "magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
+                                            "starve", "sting", "sweetBerryBush", "thorns", "thrown",
+                                            "trident", "wither", "witherSkull"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:projectile" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "projectile": {
+                                        "type": "string",
+                                        "description": "If set, the check will only pass if the projectile was of an entity type with this ID.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:spectral_arrow" ]
+                                    }
+                                }
+                            }
                         }
                     ]
                 },
                 "fluid_condition": {
-                    "$comment": "TODO Add conditional atributes",
                     "type": "object",
                     "description": "Fluid Conditions operate on a FluidState, essentially which fluid (if any) exists, as well as properties of the fluid.",
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
-                            "examples": [ "origins:empty" ],
-                            "$comment": "TODO: Add conditional attributes"
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:empty", "origins:in_tag", "origins:stil"
+                            ]
                         },
                         "inverted": {
                             "type": "boolean",
@@ -453,7 +1460,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -467,7 +1475,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -477,26 +1486,45 @@
                             },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": [ "value" ]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_tag" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "tag": {
+                                        "type": "string",
+                                        "description": "ID of the tag which the fluid should be in to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:water" ]
+                                    }
+                                },
+                                "required": [ "tag" ]
+                            }
                         }
                     ]
                 },
                 "biome_condition": {
-                    "$comment": "TODO Add conditional atributes",
                     "type": "object",
                     "description": "Biome Conditions operate on a Biome.",
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
-                            "examples": [ "origins:category" ],
-                            "$comment": "TODO: Add conditional attributes"
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:category", "origins:high_humidity", "origins:precipitation", "origins:temperature"
+                            ]
                         },
                         "inverted": {
                             "type": "boolean",
@@ -518,7 +1546,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/biome_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -532,7 +1561,8 @@
                                         "type": "array",
                                         "items": { "$ref": "#/definitions/conditions/properties/biome_condition" }
                                     }
-                                }
+                                },
+                                "required": [ "conditions" ]
                             }
                         },
                         {
@@ -542,13 +1572,70 @@
                             },
                             "then": {
                                 "properties": {
-                                    "conditions": {
+                                    "value": {
                                         "type": "boolean",
                                         "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
                                     }
-                                }
+                                },
+                                "required": ["value"]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:category" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "category": {
+                                        "$comment": "Note: Categories may change after 1.17",
+                                        "type": "string",
+                                        "description": "Which category the biome must be in order to succeed the check. See https://origins.readthedocs.io/en/latest/misc/biome_categories/.",
+                                        "examples": [
+                                            "beach", "desert", "extreme_hills", "forest", "icy", "jungle", "mesa", "mushroom",
+                                            "nether", "none", "ocean", "plains", "river", "savanna", "swamp", "taiga", "the_end"
+                                        ]
+                                    }
+                                },
+                                "required": ["category"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:precipitation" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "precipitation": {
+                                        "type": "string",
+                                        "description": "Which precipitation the biome has to have in order to succeed the check. One of none, rain and snow.",
+                                        "enum": [ "none", "rain", "snow" ]
+                                    }
+                                },
+                                "required": [ "precipitation" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:temperature" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "type": "string",
+                                        "description": "How the temperature should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the temperature should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
                         }
                     ]
                 }
@@ -561,8 +1648,16 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the damage source. Controls death message as well as other interactions. Consider https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/ when picking a name.",
-                    "$comment": "TODO add more examples",
-                    "examples": [ "anvil", "arrow", "badRespawnPoint", "cactus", "cramming", "dragonBreath", "drown", "dryout", "explosion.player", "explosion", "generic" ]
+                    "examples": [
+                        "anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
+                        "dragonBreath", "drown", "dryout", "explosion.player",
+                        "explosion", "fall", "fallingBlock", "fallingStalactite",
+                        "fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
+                        "indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
+                        "magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
+                        "starve", "sting", "sweetBerryBush", "thorns", "thrown",
+                        "trident", "wither", "witherSkull"
+                    ]
                 },
                 "bypasses_armor": {
                     "type": "boolean",
@@ -602,7 +1697,7 @@
                 },
                 "sprite_location": {
                     "type": "string",
-                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                     "default": "origins:textures/gui/resource_bar.png",
                     "description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod."
                 },
@@ -638,7 +1733,7 @@
                 "attribute": {
                     "type": "string",
                     "description": "ID of the attribute which will be modified by this modifier.",
-                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                     "examples": [ "minecraft:generic.attack_speed" ]
                 },
                 "name": {
@@ -659,6 +1754,7 @@
             "required": [ "attribute", "operation", "value" ]
         }
     },
+    "additionalProperties": false,
     "allOf": [
         {
             "$comment": "#region \"$ref\": \"#/definitions/type\" Regular types",
@@ -805,7 +1901,7 @@
                     "damage_source": { "$ref": "#/definitions/damage_source" },
                     "protection_enchantment": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "description": "If set, the total amount of levels of this enchantment will be counted on the player's armor to increase the onset_delay."
                     },
                     "protection_effectiveness": {
@@ -827,14 +1923,14 @@
                     "effect": {
                         "type": "string",
                         "description": "If specified, the effect with this ID can not be applied to the player.",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "effects": {
                         "type": "array",
                         "description": "If specified, the effects with these IDs can not be applied to the player.",
                         "items": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$"
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                         }
                     }
                 }
@@ -910,7 +2006,7 @@
                 "properties": {
                     "entity_type": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "description": "The ID of the entity type that will be fired."
                     },
                     "cooldown": {
@@ -935,7 +2031,7 @@
                     },
                     "sound": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.]+$",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "description": "If set, the sound with this ID will be played when the power is used."
                     },
                     "tag": {
@@ -983,8 +2079,183 @@
                     }
                 },
                 "required": [ "render_armor" ]
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:invulnerability" } },
+                "required": [ "type" ]
             },
-            "$comment": "#endregion \"$ref\": \"#/definitions/type\" Regular types"
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition"
+                    }
+                },
+                "required": ["damage_condition"]
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:launch" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "The number of ticks the player has to wait between uses of this power."
+                    },
+                    "speed": {
+                        "type": "number",
+                        "description": "The speed applied to the player in the upwards direction."
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/hud_render"
+                    },
+                    "sound": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "If set, the sound with this ID will be played when the power is used."
+                    },
+                    "key": {
+                        "$ref": "#/definitions/key"
+                    }
+                },
+                "required": ["cooldown", "speed", "hud_render"]
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:lava_vision" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "s": {
+                        "type": "number",
+                        "description": "Near view. Vanilla default is 0.25, or 0.0 if you are under the effect of Fire Resistance."
+                    },
+                    "v": {
+                        "type": "number",
+                        "description": "Far view. Vanilla default is 1.0, or 3.0 if you are under the effect of Fire Resistance."
+                    }
+                },
+                "required": ["s", "v"]
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:model_color" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "red": {
+                        "type": "number",
+                        "description": "Value by which the red component of the texture will be multiplied.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "green": {
+                        "type": "number",
+                        "description": "Value by which the green component of the texture will be multiplied.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "blue": {
+                        "type": "number",
+                        "description": "Value by which the blue component of the texture will be multiplied.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "alpha": {
+                        "type": "number",
+                        "description": "Value by which the alpha (= transparency) component of the texture will be multiplied.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:multiple" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "additionalProperties": { "$ref": "#" }
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:night_vision" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "strength": {
+                        "type": "number",
+                        "description": "How strong the night vision effect is.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:particle" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "particle": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "ID of the particle type to use."
+                    },
+                    "frequency": {
+                        "type": "integer",
+                        "description": "How often the particles should spawn (interval in ticks)."
+                    }
+                },
+                "required": ["particle", "frequency"]
+            }
+        },
+        {
+            "if": {
+                "definitions": { "type": { "const": "origins:phasing" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "blacklist": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "If set to true, the block_condition will define which blocks the player can NOT move through."
+                    },
+                    "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                    "render_type": {
+                        "type": "string",
+                        "enum": ["remove_blocks", "blindness"],
+                        "default": "blindness",
+                        "description": "Defines how the phasing will look when inside a block."
+                    },
+                    "view_distance": {
+                        "type": "number",
+                        "default": 10.0,
+                        "description": "How far the player can look through walls while phasing with the \"blindness\" render_type."
+                    },
+                    "phase_down_condition": { "$ref": "#/definitions/conditions/properties/entity_condition" }
+                }
+            }
         }
-    ]
+    ],
+    "$comment": "#endregion \"$ref\": \"#/definitions/type\" Regular types"
 }

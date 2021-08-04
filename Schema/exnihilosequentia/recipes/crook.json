@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Crook recipe from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","results","input"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:crook"
+        },
+
+        "results": {
+            "type": "array",
+            "description": "List of items that can be dropped, and the chance that they will be.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["chance","item","count"],
+
+                "properties": {
+                    "chance": {
+                        "type": "number",
+                        "description": "Chance that this item will be dropped.",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+
+                    "item": {
+                        "type": "string",
+                        "description": "The item to drop."
+                    },
+
+                    "count": {
+                        "type": "integer",
+                        "description": "The quantity of this item to drop.",
+                        "minimum": 1
+                    }
+                }
+            }
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The block/type of block that must be broken by a crook to produce the results.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

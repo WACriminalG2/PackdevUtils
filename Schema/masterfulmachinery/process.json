@@ -1,0 +1,830 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Masterful Machinery machine process",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+
+    "properties": {
+        "type": {
+            "const": "masterfulmachinery:machine_process"
+        },
+
+        "structureId": {
+            "type": "string",
+            "description": "The unique name for the structure you defined in the structure file, can only contain lower case characters."
+        },
+
+        "controllerId": {
+            "type": "string",
+            "description": "The unique name for the machine you defined in the config file, can only contain lower case characters."
+        },
+
+        "ticks": {
+            "type": "integer",
+            "description": "The amount of ticks you want your recipe to take in order to complete. 20 ticks = 1 second.",
+            "minimum": 1
+        },
+
+        "inputs": {
+            "type": "array",
+            "description": "An array of inputs for this recipe.",
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/itemsInput"},
+                    {"$ref": "#/definitions/energyInput"},
+                    {"$ref": "#/definitions/fluidsInput"},
+                    {"$ref": "#/definitions/mekanism_gasInput"},
+                    {"$ref": "#/definitions/mekanism_slurryInput"},
+                    {"$ref": "#/definitions/mekanism_infuseInput"},
+                    {"$ref": "#/definitions/create_rotationInput"},
+                    {"$ref": "#/definitions/pncr_pressureInput"},
+                    {"$ref": "#/definitions/astral_starlightInput"},
+                    {"$ref": "#/definitions/botania_manaInput"}
+                ]
+            }
+        },
+
+        "outputs": {
+            "type": "array",
+            "description": "An array of outputs for this recipe.",
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/itemsOutput"},
+                    {"$ref": "#/definitions/energyOutput"},
+                    {"$ref": "#/definitions/fluidsOutput"},
+                    {"$ref": "#/definitions/mekanism_gasOutput"},
+                    {"$ref": "#/definitions/mekanism_slurryOutput"},
+                    {"$ref": "#/definitions/mekanism_infuseOutput"},
+                    {"$ref": "#/definitions/create_rotationOutput"},
+                    {"$ref": "#/definitions/pncr_pressureOutput"},
+                    {"$ref": "#/definitions/astral_starlightOutput"},
+                    {"$ref": "#/definitions/botania_manaOutput"}
+                ]
+            }
+        }
+    },
+
+    "definitions": {
+        "itemsInput": {
+            "type": "object",
+            "description": "An item or set of items needed for the recipe.",
+            "additionalProperties": false,
+            "required": ["type","data"],
+
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:items"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required":["item"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "The item to be used as an input."
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The quantity of the item required.",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "itemsOutput": {
+            "type": "object",
+            "description": "An item or set of items produced by the recipe.",
+            "additionalProperties": false,
+            "required": ["type","data"],
+
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:items"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required":["item"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "The item to be used as an input."
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The quantity of the item required.",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "energyInput": {
+            "type": "object",
+            "description": "",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const":"masterfulmachinery:energy"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type":"integer",
+                            "minimum": 1,
+                            "maximum": 2147483647
+                        }
+                    }
+                } 
+            }
+        },
+
+        "energyOutput": {
+            "type": "object",
+            "description": "",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const":"masterfulmachinery:energy"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type":"integer",
+                            "minimum": 1,
+                            "maximum": 2147483647
+                        }
+                    }
+                } 
+            }
+        },
+
+
+        "fluidsInput": {
+            "type": "object",
+            "description": "Fluids required for this recipe.",
+            "additionalProperties": false,
+            "required": ["type","data"],
+
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:fluids"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data":{
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["fluid","amount"],
+                    "properties": {
+                        "fluid": {
+                            "type":"string",
+                            "description": "The fluid required."
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "fluidsOutput": {
+            "type": "object",
+            "description": "Fluids produced by this recipe.",
+            "additionalProperties": false,
+            "required": ["type","data"],
+
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:fluids"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data":{
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["fluid","amount"],
+                    "properties": {
+                        "fluid": {
+                            "type":"string",
+                            "description": "The fluid required."
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "mekanism_gasInput": {
+            "type":"object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "description": "A Mekanism gas needed for this recipe.",
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_gas"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["gas","amount"],
+                    "properties": {
+                        "gas": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "mekanism_gasOutput": {
+            "type":"object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "description": "A Mekanism gas produced by this recipe.",
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_gas"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["gas","amount"],
+                    "properties": {
+                        "gas": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "mekanism_slurryInput": {
+            "type":"object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "description": "An amount of slurry needed for the recipe.",
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_slurry"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["slurry","amount"],
+                    "properties": {
+                        "slurry": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "mekanism_slurryOutput": {
+            "type":"object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "description": "An amount of slurry produced by the recipe.",
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_slurry"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["slurry","amount"],
+                    "properties": {
+                        "slurry": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "mekanism_infuseInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_infuse"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["infuse","amount"],
+                    "properties": {
+                        "infuse": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "mekanism_infuseOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:mekanism_infuse"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["infuse","amount"],
+                    "properties": {
+                        "infuse": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "create_rotationInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:create_rotation"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["speed"],
+                    "properties": {
+                        "speed": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "create_rotationOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:create_rotation"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["speed"],
+                    "properties": {
+                        "speed": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "pncr_pressureInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:pncr_pressure"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type":"object",
+                    "additionalProperties": false,
+                    "required": ["air"],
+                    "properties": {
+                        "air": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "pncr_pressureOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:pncr_pressure"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type":"object",
+                    "additionalProperties": false,
+                    "required": ["air"],
+                    "properties": {
+                        "air": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "astral_starlightInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:astral_starlight"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "astral_starlightOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:astral_starlight"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "botania_manaInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:botania_mana"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+                "consumeInstantly": {
+                    "type": "boolean",
+                    "description": "If true, this specific input will consume the ingredients immediately, then the processing of the machine will begin. Doesn't need to be in the code if you want this to be false."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        },
+
+        "botania_manaOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","data"],
+            "properties": {
+                "type": {
+                    "const": "masterfulmachinery:botania_mana"
+                },
+                "perTick": {
+                    "type": "boolean",
+                    "description": "If true, this specific input or output will happen per Tick. Doesn't need to be in the code if you want this to be false."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "Can be applied to either the input or output, it must range between 0 and 1, think of this as a percentage so for a 12% chance to receive an item you would put 'chance': 0.12, 0 being 0% chance and 1 being 100%, doesn't need to be in your code if you want it to always be 100%.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

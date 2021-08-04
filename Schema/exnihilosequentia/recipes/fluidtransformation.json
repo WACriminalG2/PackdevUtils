@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Recipe for transforming fluid in a barrel by placing a block under that barrel, or inserting an item into the barrel with the fluid.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","fluidInTank","catalyst","result"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:fluid_transform"
+        },
+
+        "fluidInTank": {
+            "type": "object",
+            "description": "The fluid to be transformed.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "catalyst": {
+            "type": "object",
+            "description": "The block/type of block that must be below the barrel to transform the fluid. May also be an item that is inserted into the barrel with the fluid in it.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "description": "The resulting fluid.",
+            "additionalProperties": false,
+            "required": ["fluid"],
+            "properties": {
+                "fluid": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

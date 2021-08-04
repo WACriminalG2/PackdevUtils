@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Masterful Machinery structure definition.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","id","controllerId","name","layout","legend"],
+
+    "properties": {
+        "type": {
+            "const": "masterfulmachinery:machine_structure"
+        },
+
+        "id": {
+            "type": "string",
+            "description": "A unique name given to this structure."
+        },
+
+        "controllerId": {
+            "type": "string",
+            "description": "The unique name for the machine you defined in the config file, can only contain lower case characters."
+        },
+
+        "name": {
+            "type": "string",
+            "description": "A user friendly name that can contain upper and lower case characters."
+        },
+
+        "layout": {
+            "type": "array",
+            "description": "An array of value's, each set of value's need's to be contained in [] followed by a ',' if you're doing multiple entries. Each section can be any length it just depends on what you want your structure to look like. To have an air gap in your structure you just add a space to the layout where you want the air gap to be. For a structure to be valid it NEEDS a capital C some where in the structure.",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "legend": {
+            "type": "object",
+            "description": "A set of values, each set of values needs to be contained in {} followed by a ',' if you're doing multiple entries.",
+            "additionalProperties": {
+                "type": "object",
+                "oneOf": [
+                    {   
+                        "additionalProperties": false,
+                        "required": ["block"],
+                        "properties": {
+                            "block": { "type": "string"},
+                            "props": { "type": "object", "description": "A set of blockstate properties."}
+                        }
+                    },
+                    {
+                        "additionalProperties": false,
+                        "required": ["tag"],
+                        "properties": {
+                            "tag": { "type": "string"},
+                            "props": { "type": "object", "description": "A set of blockstate properties."}
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

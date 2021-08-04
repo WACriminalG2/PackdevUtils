@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Sieve recipe from Ex Nihilo Sequentia.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","rolls","input","result"],
+
+    "properties": {
+        "type": {
+            "const": "exnihilosequentia:sieve"
+        },
+
+        "rolls": {
+            "type": "array",
+            "description": "A list of rolls for this recipe.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["chance","mesh"],
+                "properties": {
+                    "chance": {
+                        "type": "number",
+                        "description": "A value from 0.0 to 1.0.",
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "mesh": {
+                        "enum": ["string","flint","iron","diamond","emerald","netherite"],
+                        "description": "The mesh required to cause this roll to be considered. Must be string, flint, iron, diamond, emerald, or netherite."
+                    }
+                }
+            }
+        },
+
+        "input": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "The block/type of block that will be consumed by the sieve.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["item"],
+            "description": "The resulting item.",
+            "properties": {
+                "item": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "waterlogged": {
+            "type": "boolean",
+            "description": "If true, the sieve must be placed in water to produce this recipe. Optional and entire tag may be omitted. Will default to false."
+        }
+    }
+}
