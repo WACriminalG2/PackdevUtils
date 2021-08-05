@@ -4,7 +4,6 @@
     "type": "object",
     "properties": {
         "type": {
-            "$comment": "TODO add more conditional attributes",
             "type": "string",
             "description": "ID of the desired Power Type.",
             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
@@ -4289,7 +4288,104 @@
             "$comment": "#endregion Modifying types"
         },
         {
-            "$comment": "#region Preventing types"
+            "$comment": "#region Preventing types",
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_block_selection" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "When set, only blocks which meet this condition will be unable to be selected."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_block_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "When set, only blocks which meet this condition will be unable to be used."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_death" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, death will only prevented when damage which matches this condition is dealt. Other damage will still kill the player."
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player when death is prevented."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_entity_render" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, only entities which fulfill this condition will be invisible."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_item_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, only items which satisfy this condition will be blocked from being used."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_sleep" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, sleep will only be prevented if this condition holds for the bed."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "The message that will be shown when sleep is prevented this way. Can be a literal text or a translation key which will be localized using a language file.",
+                        "default": "origins.cant_sleep"
+                    },
+                    "set_spawn_point": {
+                        "type": "boolean",
+                        "description": "If true, right-clicking the bed while sleeping is prevented with this power will still set the spawn point (similar to what happens when you right-click a bed while it's daytime).",
+                        "default": false
+                    }
+                }
+            },
+            "$comment": "#endregion Preventing types"
         }
     ]
 }
