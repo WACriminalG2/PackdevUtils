@@ -99,6 +99,10 @@
         "body": "spartanshields:${1|firebrand,payback,spikes|}",
         "prefix": "@spartanshields/enchant/"
     },
+    "Spartan Weaponry Enchant": {
+        "body": "spartanweaponry:${1|throwing_damage,throwing_fire,throwing_hydrodynamic,throwing_luck,throwing_range|}",
+        "prefix": "@spartanweaponry/enchant/"
+    },
     "SwitchBow Enchantments": {
         "body": "switchbow:${1|activescope,cooldownreduce,pullspeed|}",
         "prefix": "@switchbow/enchant/"

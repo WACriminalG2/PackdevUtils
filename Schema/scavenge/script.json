@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge script",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id","type","targets","loot"],
+
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "A unique identifier for this script."
+        },
+
+        "type": {
+            "type": "object",
+            "description": "The type of script.",
+            "additionalProperties": false,
+            "required": ["type","consume"],
+            "properties": {
+                "type": {
+                    "enum": ["left_click","right_click"]
+                },
+                "consume": {
+                    "type": "boolean",
+                    "description": "If the right click should be consumed."
+                },
+                "show": {
+                    "type": "boolean",
+                    "description": "Whether this recipe/script should appear in JEI."
+                }
+            }
+        },
+
+        "swing": {
+            "type": "boolean",
+            "description": "If true, the player's hand should swing on success."
+        },
+
+        "drop_rule": {
+            "enum": ["block","player","player_inv"],
+            "description": "How the loot should be spawned. 'block' spawns at the block. 'player' drops it at the player's feet. 'player_inv' adds it to the player's inventory."
+        },
+
+        "loot_seed": {
+            "type": "integer",
+            "description": "OPTIONAL. Custom loot table seed. 0 means world seed."
+        },
+
+        "targets": {
+            "type": "array",
+            "description": "Which blocks should be effected by this script.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type"],
+                "oneOf": [
+                    {"properties": {
+                        "type": {
+                            "enum": ["block","tag"]
+                        },
+                        "id": {
+                            "type": "string"
+                        }
+                    }},
+                    {"properties": {
+                        "type": {
+                            "const": "blocks"
+                        },
+                        "id": {
+                            "type": "array",
+                            "items": {
+                                "type":"string"
+                            }
+                        }
+                    }},
+                    {"properties": {
+                        "type": {
+                            "const": "all"
+                        }
+                    }}
+                ]
+            }
+        },
+
+        "loot": {
+            "type": "array",
+            "description": "Loot tables that should be added. Just the ID of the loot tables. These are used to spawn loot at the successful finishing of the script.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "properties": {
+            "type": "array",
+            "description": "The conditions and effects that should be in this script. Execution is from top to bottom."
+        }
+    },
+
+    "definitions": {
+        
+    }
+}

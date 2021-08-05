@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.14.0",
+    "version": "1.15.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -244,6 +244,10 @@
             {
                 "fileMatch": "*/masterful_machinery/controllers/*.json",
                 "url": "./Schema/masterfulmachinery/controller.json"
+            },
+            {
+                "fileMatch": ["*/config/cavegenerator/presets/*.json","*/config/cavegenerator/presets/*.jsonc"],
+                "url": "./Schema/cavegenerator/preset.json"
             }
           ]
       }

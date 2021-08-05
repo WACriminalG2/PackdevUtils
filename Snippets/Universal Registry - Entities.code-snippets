@@ -39,6 +39,10 @@
         "body": "archers_paradox:${1|blaze_arrow,challenge_arrow,diamond_arrow,displacement_arrow,ender_arrow,explosive_arrow,frost_arrow,glowstone_arrow,lightning_arrow,phantasmal_arrow,prismarine_arrow,quartz_arrow,redstone_arrow,shulker_arrow,slime_arrow,spore_arrow,training_arrow,verdant_arrow|}",
         "prefix": "@archers_paradox/entities/"
     },
+    "Artifacts Entities": {
+        "body": "artifacts:${1|mimic|}",
+        "prefix": "@artifacts/entities/"
+    },
     "Astral Sorcery Entities": {
         "body": "astralsorcery:${1|flare,grappling_hook,illumination_spark,item_crystal,item_explosion_resistant,item_highlighted,item_starmetal,nocturnal_spark,observatory_helper,spectral_tool|}",
         "prefix": "@astralsorcery/entities/"
@@ -181,6 +185,10 @@
             "@finsandtails/entities/"
         ]
     },
+    "GeoSmelt Entities": {
+        "body": "geosmelt:${1|armored_skeleton,big_snow_ball,greater_wither_skull,holy_orb,ice_ball,jungle_tarantula,overgrown,scream_tnt,screeper,skeleton_elite,skeleton_scrapper,skeleton_sentinel,small_dragon_fireball,starcilium_bomb,starcilium_golem|}",
+        "prefix": "@geosmelt/entities/"
+    },
     "Goblin Traders Entities": {
         "body": "goblintraders:${1|goblin_trader,vein_goblin_trader|}",
         "prefix": "@goblintraders/entities/"
@@ -258,6 +266,13 @@
     "Minecraft Entities": {
         "body": "minecraft:${1|area_effect_cloud,armor_stand,arrow,bat,bee,blaze,boat,cat,cave_spider,chest_minecart,chicken,cod,command_block_minecart,cow,creeper,dolphin,donkey,dragon_fireball,drowned,egg,elder_guardian,end_crystal,ender_dragon,ender_pearl,enderman,endermite,evoker,evoker_fangs,experience_bottle,experience_orb,eye_of_ender,falling_block,fireball,firework_rocket,fishing_bobber,fox,furnace_minecart,ghast,giant,guardian,hoglin,hopper_minecart,horse,husk,illusioner,iron_golem,item,item_frame,leash_knot,lightning_bolt,llama,llama_spit,magma_cube,minecart,mooshroom,mule,ocelot,painting,panda,parrot,phantom,pig,piglin,piglin_brute,pillager,player,polar_bear,potion,pufferfish,rabbit,ravager,salmon,sheep,shulker,shulker_bullet,silverfish,skeleton,skeleton_horse,slime,small_fireball,snow_golem,snowball,spawner_minecart,spectral_arrow,spider,squid,stray,strider,tnt,tnt_minecart,trader_llama,trident,tropical_fish,turtle,vex,villager,vindicator,wandering_trader,witch,wither,wither_skeleton,wither_skull,wolf,zoglin,zombie,zombie_horse,zombie_villager,zombified_piglin|}",
         "prefix": "@minecraft/entities/"
+    },
+    "Monke Madness Entities": {
+        "body": "primate:${1|baboon,bale_monkey,bonobo,bush_baby,celebes_macaque,gelada,gibbon,gigantopithecus,hamadryas,howler,japanese_macaque,lemur,mandrill,missing_ape,orangutan,poacher,poop,proboscis,rhesus,slow_loris,snub_nosed_monkey,tamarin,tarsier,uakari,zombieape|}",
+        "prefix": [
+            "@primate/entities/",
+            "@monkemadness/entities/"
+        ]
     },
     "Mowzie's Mobs Entities": {
         "body": "mowziesmobs:${1|axe_attack,baby_foliaath,barako,barakoa_sunblocker,barakoa_sunblocker_player,barakoan_barakoana,barakoan_player,barakoana,barakoaya,block_swapper,boulder_huge,boulder_large,boulder_medium,boulder_small,dart,falling_block,ferrous_wroughtnaut,foliaath,frostmaw,frozen_controller,grottol,ice_ball,ice_breath,lantern,naga,poison_ball,solar_beam,sunstrike,super_nova|}",
@@ -369,6 +384,10 @@
     "Sophisticated Backpacks Entities": {
         "body": "sophisticatedbackpacks:${1|everlasting_backpack_item|}",
         "prefix": "@sophisticatedbackpacks/entities/"
+    },
+    "Spartan Weaponry Entities": {
+        "body": "spartanweaponry:${1|arrow,arrow_explosive,bolt,bolt_spectral,boomerang,dynamite,javelin,throwing_weapon,tomahawk|}",
+        "prefix": "@spartanweaponry/entities/"
     },
     "Supplementaries Entities": {
         "body": "supplementaries:${1|supplementaries:bomb,supplementaries:brick_projectile,supplementaries:firefly,supplementaries:label,supplementaries:orange_trader,supplementaries:rope_arrow|}",

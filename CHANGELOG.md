@@ -1,3 +1,52 @@
+# v1.15.0 -- 8/4/21
+
+* Updated Origins schemas. Credit: S_K_Tiger
+* Modified Cave Generator utility snippets.
+* Added schema validation for Cave Generator presets. Heavily WIP. As VScode is unable to apply regular JSON schema validation to HJSON and CAVE files, you'll want to temporarily use a .json or .jsonc extension for your presets while editing them. Do note that schema validation is unable to include some of CG's more advanced features such as variables, functions, and imports. For best results with CG, use its native file format and syntax. This schema validation is intended as a learning tool for new CG preset developers and an in-editor reference tool.
+* Universal Registry added:
+
+## BLOCKS
+
+* Artisan Worktables
+* Custom Machinery
+* Gauges and Switches
+* GeoSmelt
+* Monke Madness
+* Solar Cooker
+* Trophy Manager
+
+## ITEMS
+
+* Artifacts
+* Artisan Tools
+* Artisan Worktables
+* Custom Machinery
+* Gauges and Switches
+* GeoSmelt
+* Monke Madness
+* Solar Cooker
+* Spartan Weaponry
+* Trophy Manager
+
+## ENTITIES
+
+* Artifacts
+* GeoSmelt
+* Monke Madness
+* Spartan Weaponry
+
+## POTIONS
+
+None.
+
+## ENCHANTMENTS
+
+* Spartan Weaponry
+
+## BIOMES
+
+None.
+
 # v1.14.0 -- 8/3/21
 
 * Updated Origins schemas. Credit: S_K_Tiger
