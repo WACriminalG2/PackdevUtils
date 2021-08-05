@@ -2,7 +2,7 @@
 
 * Updated Origins schemas. Credit: S_K_Tiger
 * Modified Cave Generator utility snippets.
-* Added schema validation for Cave Generator presets. Heavily WIP. As VScode is unable to apply regular JSON schema validation to HJSON and CAVE files, you'll want to temporarily use a .jsonc or .json extension for your presets while editing them. Do note that schema validation is unable to include some of CG's more advanced features such as variables, functions, and imports. For best results with CG, use its native file format and syntax. This schema validation is intended as a learning tool for new CG preset developers and an in-editor reference tool.
+* Added schema validation for Cave Generator presets. Heavily WIP. As VScode is unable to apply regular JSON schema validation to HJSON and CAVE files, you'll want to temporarily use a .json or .jsonc extension for your presets while editing them. Do note that schema validation is unable to include some of CG's more advanced features such as variables, functions, and imports. For best results with CG, use its native file format and syntax. This schema validation is intended as a learning tool for new CG preset developers and an in-editor reference tool.
 * Universal Registry added:
 
 ## BLOCKS

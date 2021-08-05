@@ -244,6 +244,10 @@
             {
                 "fileMatch": "*/masterful_machinery/controllers/*.json",
                 "url": "./Schema/masterfulmachinery/controller.json"
+            },
+            {
+                "fileMatch": ["*/config/cavegenerator/presets/*.json","*/config/cavegenerator/presets/*.jsonc"],
+                "url": "./Schema/cavegenerator/preset.json"
             }
           ]
       }
