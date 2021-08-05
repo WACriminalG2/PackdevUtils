@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge math conditions",
+
+    "definitions": {
+
+        "alwaysTrue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["condition"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:always_true"
+                },
+                "operations": {
+                    "type": "array"
+                }
+            }
+        }
+    }
+}

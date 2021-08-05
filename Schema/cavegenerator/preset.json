@@ -1,0 +1,1395 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Cave Generator preset",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["enabled"],
+
+    "properties": {
+        
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this preset is enabled.",
+            "default": true
+        },
+
+        "biomes": {
+            "$ref": "#/definitions/biomesBlock"
+        },
+
+        "blacklistBiomes": {
+            "type": "boolean",
+            "description": "Whether this generator's biome list should be treated as a blacklist, rather than a whitelist.",
+            "default": false
+        },
+
+        "dimensions": {
+            "$ref": "#/definitions/dimensionsBlock"
+        },
+
+        "blacklistDimensions": {
+            "type": "boolean",
+            "description": "Whether this generator's dimension list should be treated as a blacklist, rather than a whitelist.",
+            "default": false
+        },
+
+        "height": {
+            "$ref": "#/definitions/heightBlock"
+        },
+
+        "ceiling": {
+            "$ref": "#/definitions/noiseBlock"
+        },
+
+        "floor": {
+            "$ref": "#/definitions/noiseBlock"
+        },
+
+        "region": {
+            "$ref": "#/definitions/regionBlock"
+        },
+
+        "noise": {
+            "$ref": "#/definitions/noiseGenerator"
+        },
+
+        "replaceableBlocks": {
+            "type": "array",
+            "description": "List of replaceable blocks.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "replaceDecorators": {
+            "type": "boolean",
+            "description": "Put your decorator blocks in this list automatically."
+        },
+
+        "caveBlocks": {
+            "$ref": "#/definitions/caveBlocksBlock"
+        },
+
+        "wallDecorators": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/wallDecoratorsBlock"
+            }
+        },
+
+        "ponds": {
+            "type": "array",
+            "description": "Used to generate pond-like decorations on the floor of carvers.",
+            "items": {
+                "$ref": "#/definitions/pondsBlock"
+            }
+        },
+
+        "shell": {
+            "$ref": "#/definitions/shellBlock"
+        },
+
+        "rooms": {
+            "$ref": "#/definitions/roomsBlock"
+        },
+
+        "branches": {
+            "$ref": "#/definitions/tunnelsBlock"
+        },
+
+        "tunnels": {
+            "type": "array",
+            "description": "A standard tunnels generator.",
+            "items": {
+                "$ref": "#/definitions/tunnelsBlock"
+            }
+        },
+
+        "ravines": {
+            "type": "array",
+            "description": "A standard ravines generator.",
+            "items": {
+                "$ref": "#/definitions/ravinesBlock"
+            }
+        },
+
+        "caverns": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/cavernsBlock"
+            }
+        },
+
+        "burrows": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/burrowsBlock"
+            }
+        },
+
+        "layers": {
+            "type": "array",
+            "description": "Used to generate stone layers or stratification.",
+            "items": {
+                "$ref": "#/definitions/layersBlock"
+            }
+        },
+
+        "clusters": {
+            "type": "array",
+            "description": "Clusters generator.",
+            "items": {
+                "$ref": "#/definitions/clustersBlock"
+            }
+        },
+
+        "stalactites": {
+            "type": "array",
+            "description": "Generator for placing stalactite-type features in your caves.",
+            "items": {
+                "$ref": "#/definitions/stalactitesBlock"
+            }
+        },
+
+        "pillars": {
+            "type": "array",
+            "description": "Generates pillar-shaped structures in your caves.",
+            "items": {
+                "$ref": "#/definitions/pillarsBlock"
+            }
+        },
+
+        "structures": {
+            "type": "array",
+            "description": "Generate structures.",
+            "items": {
+                "$ref": "#/definitions/structuresBlock"
+            }
+        }
+    },
+
+    "definitions": {
+
+        "noiseBlock": {
+            "type": "object",
+            "description": "Noise blocks modulate the minimum or maximum possible height of a block. Ceiling and Floor types can be used in any regular generator.",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "enum": ["Value","ValueFractal","Perlin","PerlinFractal","Simplex","SimplexFractal","Cellular","WhiteNoise","Cubic","CubicFractal"],
+                    "default": "SimplexFractal",
+                    "description": "The type of noise to be used for this generator."
+                },
+
+                "frequency": {
+                    "type": "number",
+                    "description": "Alters the distance between peaks of values."
+                },
+
+                "octaves": {
+                    "type": "integer",
+                    "description": "The number of generation passes. This effectively increases the resolution of clusters (makes them less smooth) at the cost of performance.",
+                    "default": 1
+                },
+
+                "perturb": {
+                    "type": "boolean",
+                    "description": "Whether to apply a gradient perturb all values input to the noise generator, warping the output.",
+                    "default": false
+                },
+
+                "perturbAmp": {
+                    "type": "number",
+                    "description": "Sets the maximum amount to warp coordinates when perturb is enabled.",
+                    "default": 1.0
+                },
+
+                "perturbFreq": {
+                    "type": "number",
+                    "description": "The frequency used in warping input coordinates.",
+                    "default": 0.1
+                },
+
+                "range": {
+                    "type": "array",
+                    "description": "The minimum and maximum possible values produced by this generator.",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "seed": {
+                    "type": "integer",
+                    "description": "Used to produce a common output between multiple noise generators."
+                },
+
+                "invert": {
+                    "type": "boolean",
+                    "description": "Inverts the noise generator's output.",
+                    "default": false
+                },
+
+                "dummy": {
+                    "type": "boolean",
+                    "description": "Will transform this generator into a dummy which always produces the same value. This is good for performance."
+                },
+
+                "cache": {
+                    "type": "boolean",
+                    "description": "Whether to cache and reuse the values output by this generator every chunk. Use any time you have multiple, very similar settings being reused every chunk. Threshold and range values are ignored when caching, and so two generators with different ranges and thresholds can still be cached."
+                }
+            }
+        },
+
+        "regionBlock": {
+            "type": "object",
+            "description": "Region generators produce values at each (x,z) coordinate. They are responsible for determining the 2-dimensional space inside of which any feature can spawn. They can be used in any regular generator.",
+            "additionalProperties": false,
+            "required": [],
+
+            "properties": {
+                "type": {
+                    "enum": ["Value","ValueFractal","Perlin","PerlinFractal","Simplex","SimplexFractal","Cellular","WhiteNoise","Cubic","CubicFractal"],
+                    "default": "SimplexFractal",
+                    "description": "The type of noise to be used for this generator."
+                },
+
+                "scale": {
+                    "type": "number",
+                    "description": "Limits the range of acceptable values. In a sense, this effectively increases or decreases the width of each peak of values generated. In most cases throughout this mod, changing the scale in a noise block alters the size of each area that gets decorated. This parameter is only used whenever the noise generator is used to produce a boolean. It works by scaling the threshold of acceptable values."
+                },
+
+                "frequency": {
+                    "type": "number",
+                    "description": "Alters the distance between peaks of values."
+                },
+
+                "invert": {
+                    "type": "boolean",
+                    "description": "Inverts the output of the generator."
+                },
+                
+                "seed": {
+                    "type": "integer",
+                    "description": "Used to produce a common output between multiple noise generators."
+                },
+
+                "dummy": {
+                    "type": "boolean",
+                    "description": "Will transform this generator into a dummy which always produces the same value. This is good for performance."
+                },
+
+                "cache": {
+                    "type": "boolean",
+                    "description": "Whether to cache and reuse the values output by this generator every chunk. Use any time you have multiple, very similar settings being reused every chunk. Threshold and range values are ignored when caching, and so two generators with different ranges and thresholds can still be cached."
+                },
+
+                "threshold": {
+                    "type": "number",
+                    "description": "?????",
+                    "minimum": -1.0,
+                    "maximum": 1.0
+                }
+            }
+        },
+
+        "noiseGenerator": {
+            "type": "object",
+            "description": "Noise generators produce values in full 3-dimensional space. This type is capable of producing blobs of noise which can be used to restrict the valid 3-dimensional space for any feature.",
+            "additionalProperties": false,
+            "required": [],
+
+            "properties": {
+                "scale": {
+                    "type": "number",
+                    "description": "Limits the range of acceptable values. In a sense, this effectively increases or decreases the width of each peak of values generated. In most cases throughout this mod, changing the scale in a noise block alters the size of each area that gets decorated. This parameter is only used whenever the noise generator is used to produce a boolean. It works by scaling the threshold of acceptable values."
+                },
+
+                "frequency": {
+                    "type": "number",
+                    "description": "Alters the distance between peaks of values."
+                },
+
+                "stretch": {
+                    "type": "number",
+                    "description": "Stretches and skews the scale on the vertical axis. Literally means that clusters generated will either be shorter or taller."
+                },
+
+                "lacunarity": {
+                    "type": "number",
+                    "description": "The octave lacunarity of fractal noise types. Higher values produce deeper and more precise fractals.",
+                    "default": 1.0
+                },
+
+                "gain": {
+                    "type": "number",
+                    "description": "The octave gain for fractal noise types.",
+                    "default": 0.5
+                },
+
+                "jitter": {
+                    "type": "number",
+                    "description": "The maximum distance a cellular point can move from its grid position when using cellular types.",
+                    "default": 0.45
+                },
+
+                "jitterX": {
+                    "type": "number",
+                    "description": "Overrides jitter on the x-axis."
+                },
+
+                "jitterY": {
+                    "type": "number",
+                    "description": "Overrides jitter on the y-axis."
+                },
+
+                "jitterZ": {
+                    "type": "number",
+                    "description": "Overrides jitter on the z-axis."
+                },
+
+                "octaves": {
+                    "type": "integer",
+                    "description": "The number of generation passes. This effectively increases the resolution of clusters (makes them less smooth) at the cost of performance.",
+                    "default": 1
+                },
+
+                "perturb": {
+                    "type": "boolean",
+                    "description": "Whether to apply a gradient perturb all values input to the noise generator, warping the output.",
+                    "default": false
+                },
+
+                "perturbAmp": {
+                    "type": "number",
+                    "description": "Sets the maximum amount to warp coordinates when perturb is enabled.",
+                    "default": 1.0
+                },
+
+                "perturbFreq": {
+                    "type": "number",
+                    "description": "The frequency used in warping input coordinates.",
+                    "default": 0.1
+                },
+
+                "invert": {
+                    "type": "boolean",
+                    "description": "Inverts the noise generator's output."
+                },
+
+                "type": {
+                    "enum": ["Value","ValueFractal","Perlin","PerlinFractal","Simplex","SimplexFractal","Cellular","WhiteNoise","Cubic","CubicFractal"],
+                    "default": "SimplexFractal",
+                    "description": "The type of noise to be used for this generator."
+                },
+
+                "interp": {
+                    "enum": ["Linear","Hermite","Quintic"],
+                    "description": "The type of interpolation to use.",
+                    "default": "Hermite"
+                },
+
+                "fractal": {
+                    "enum": ["FBM","Billow","RigidMulti"],
+                    "description": "Determines how this noise will be fractalized, when applicable.",
+                    "default": "FBM"
+                },
+
+                "distFunc": {
+                    "enum": ["Euclidian","Manhattan","Natural"],
+                    "description": "The type of distance function in cellular noise calculations.",
+                    "default": "Euclidian"
+                },
+
+                "returnType": {
+                    "enum": ["CellValue","NoiseLookup","Distance","Distance2","Distance2Add","Distance2Sub","Distance2Mul","Distance2Div","Distance3","Distance3Add","Distance3Sub","Distance3Mul","Distance3Div"],
+                    "description": "The return type from cellular noise calculations.",
+                    "default": "Distance2"
+                },
+
+                "cellularLookup": {
+                    "enum": ["Value","ValueFractal","Perlin","PerlinFractal","Simplex","SimplexFractal","Cellular","WhiteNoise","Cubic","CubicFractal"],
+                    "description": "Sets the noise type used when returnType is set to NoiseLookup.",
+                    "default": "Simplex"
+                },
+
+                "seed": {
+                    "type": "integer",
+                    "description": "Used to produce a common output between multiple noise generators."
+                },
+
+                "dummy": {
+                    "type": "boolean",
+                    "description": "Will transform this generator into a dummy which always produces the same value. This is good for performance."
+                },
+
+                "cache": {
+                    "type": "boolean",
+                    "description": "Whether to cache and reuse the values output by this generator every chunk. Use any time you have multiple, very similar settings being reused every chunk. Threshold and range values are ignored when caching, and so two generators with different ranges and thresholds can still be cached."
+                },
+
+                "threshold": {
+                    "type": "number",
+                    "description": "?????",
+                    "minimum": -1.0,
+                    "maximum": 1.0
+                }
+            }
+        },
+
+        "scalableFloat": {
+            "type": ["object","array"],
+            "description": "Scalable floats essentially serve to update a floating-point value each time it gets used. So, their parameters are a reflection of that process. Can be an object with labeled keys, or a 5-number array in the order [startVal, startValRandFactor, factor, randFactor, exponent].",
+            "additionalProperties": false,
+            "minItems": 5,
+            "maxItems": 5,
+            "items": {
+                "type": "number"
+            },
+            "properties": {
+                "startVal": {
+                    "type": "number",
+                    "description": "Initial value."
+                },
+
+                "startValRandFactor": {
+                    "type": "number",
+                    "description": "A random value from 0 to input which multiplies startVal.",
+                    "exclusiveMinimum": 0
+                },
+
+                "factor": {
+                    "type": "number",
+                    "description": "A constant value which multiplies the current value after each use."
+                },
+
+                "randFactor": {
+                    "type": "number",
+                    "description": "A random value from 0 to input which multiplies the current value after each use.",
+                    "exclusiveMinimum": 0
+                },
+
+                "exponent": {
+                    "type": "number",
+                    "description": "A constant value. The current value is raised to this power after each use."
+                }
+            }
+        },
+
+        "biomesBlock": {
+            "type": "object",
+            "description": "Biome conditions for this generator.",
+            "additionalProperties": false,
+            "properties": {
+                "names": {
+                    "type": "array",
+                    "description": "List of specific biomes for this filter.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+
+                "types": {
+                    "type": "array",
+                    "description": "List of biome categories for this filter.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "dimensionsBlock": {
+            "type": "array",
+            "description": "A list of dimensions for this generator.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "heightBlock": {
+            "type": "array",
+            "description": "The minimum and maximum height where this generator applies.",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "integer"
+            }
+        },
+
+        "wallDecoratorsBlock": {
+            "type": "object",
+            "description": "Used for placing blocks inside of or on top of your carver walls.",
+            "additionalProperties": false,
+            "properties": {
+                "states": {
+                    "$ref": "#/definitions/statesBlock"
+                },
+
+                "integrity": {
+                    "type": "number",
+                    "default": 1.0
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "matchers": {
+                    "$ref": "#/definitions/matchersBlock"
+                },
+
+                "placement": {
+                    "enum": ["embed","overlay"],
+                    "description": "Defines the placement of these decorators. Can be either 'embed' or 'overlay'."
+                },
+
+                "noise": {
+                    "$ref": "#/definitions/noiseGenerator"
+                }
+            }
+        },
+
+        "caveBlocksBlock": {
+            "type": "array",
+            "description": "Used to change what gets placed instead of air when applying this generator.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "states": {
+                        "$ref": "#/definitions/statesBlock"
+                    },
+
+                    "integrity": {
+                        "type": "number",
+                        "description": "?????"
+                    },
+
+                    "height": {
+                        "$ref": "#/definitions/heightBlock"
+                    },
+
+                    "noise": {
+                        "$ref": "#/definitions/noiseGenerator"
+                    }
+                }
+            }
+        },
+
+        "statesBlock": {
+            "type": "array",
+            "description": "A list of block states to place.",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "matchersBlock": {
+            "type": "array",
+            "description": "A list of block states to place on or in. (In other words, the types of blocks this generator should replace or decorate.)",
+
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "pondsBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Variant of wall decorators which can place blocks multiple layers deep on the floor only. It will ignore edge blocks, creating a terrace.",
+            "properties": {
+                "states": {
+                    "$ref": "#/definitions/statesBlock"
+                },
+
+                "integrity": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "matchers": {
+                    "$ref": "#/definitions/matchersBlock"
+                },
+
+                "depth": {
+                    "type": "integer",
+                    "description": "The depth of the ponds generated."
+                },
+
+                "noise": {
+                    "$ref": "#/definitions/noiseGenerator"
+                }
+            }
+        },
+
+        "shellBlock": {
+            "type": "object",
+            "description": "Variant of wall decorators which can place blocks multiple layers deep. The caveat is that all your shell decorators must be the same thickness and cannot be directional.",
+            "additionalProperties": false,
+
+            "properties": {
+                "radius": {
+                    "type": "number",
+                    "description": "Affects all sphere and cavern floors, ceilings, and biome walls.",
+                    "default": 0.0
+                },
+
+                "sphereResolution": {
+                    "type": "integer",
+                    "description": "The 1/X chance that a sphere will have a shell. Larger shells may not need the same resolution to get roughly full coverage.",
+                    "default": 2
+                },
+
+                "noiseThreshold": {
+                    "type": "number",
+                    "description": "The distance above and below a generator threshold which will be considered the shell. The dfault is radius/10, but this value should be balanced manually and carefully.",
+                    "default": 0.0
+                },
+
+                "decorators": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["states","matchers"],
+                        "properties": {
+                            "states": {
+                                "$ref": "#/definitions/statesBlock"
+                            },
+                            "matchers": {
+                                "$ref": "#/definitions/matchersBlock"
+                            },
+                            "height": {
+                                "$ref": "#/definitions/heightBlock"
+                            },
+                            "integrity": {
+                                "type": "number",
+                                "description": "?????",
+                                "default": 1.0
+                            },
+                            "noise": {
+                                "$ref": "#/definitions/noiseGenerator"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "tunnelsBlock": {
+            "type": "object",
+            "description": "This is the main generator used to produce caves in vanilla Minecraft. 'rooms' and 'ravines' are both just modified versions of this generator.",
+            "additionalProperties": false,
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "?????"
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "systemChance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "systemDensity": {
+                    "type": "integer",
+                    "description": "?????"
+                },
+
+                "noiseYReduction": {
+                    "type": "boolean",
+                    "description": "?????"
+                },
+
+                "originHeight": {
+                    "type": "array",
+                    "description": "The height at which these tunnels can start. If this value is not set, it will default to the vaule of height.",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "resolution": {
+                    "type": "integer",
+                    "description": "One in this many spheres will be skipped for performance."
+                },
+
+                "distance": {
+                    "type": "integer",
+                    "description": "The length in blocks of this tunnel. 0 is a wildcard (132-176)."
+                },
+
+                "seed": {
+                    "type": ["integer","null"],
+                    "description": "Constant seed to use for this tunnel or branch."
+                },
+
+                "reseedBranches": {
+                    "type": "boolean",
+                    "description": "Whether to generate a new seed for each branch. Leaving this false means that branches will be symmetrical.",
+                    "default": true
+                },
+
+                "resizeBranches": {
+                    "type": "boolean",
+                    "description": "When branches are created in vanilla, they shrink. You can disable that here.",
+                    "default": true
+                },
+
+                "checkWater": {
+                    "type": "boolean",
+                    "description": "Whether to test for water before generating to avoid water walls."
+                },
+
+                "scale": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "Radius in blocks."
+                },
+
+                "stretch": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "Vertical ratio of 'scale'."
+                },
+
+                "yaw": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "The horizontal angle in radians. These parameters only control the initial yaw."
+                },
+
+                "pitch": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "The vertical angle in radians. These parameters only control the initial pitch."
+                },
+
+                "dYaw": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "The change in yaw over distance."
+                },
+
+                "dPitch": {
+                    "$ref": "#/definitions/scalableFloat",
+                    "description": "The change in pitch over distance."
+                },
+
+                "rooms": {
+                    "$ref": "#/definitions/roomsBlock"
+                },
+
+                "branches": {
+                    "$ref": "#/definitions/tunnelsBlock"
+                }
+            }
+        },
+
+        "ravinesBlock": {
+            "type": "object",
+            "description": "This is a modified 'tunnels' generator. There are two important differences: 'stretch.startVal' is three times as high, and 'scale' is affected by noise. You can change this noise by adding a noise2D block, but be aware that you should not add one if you are not going to use it.",
+            "additionalProperties": false,
+            "properties": {
+                "chance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+                
+                "distance": {
+                    "type": "integer",
+                    "description": "?????"
+                },
+
+                "resolution": {
+                    "type": "integer",
+                    "description": "?????"
+                },
+
+                "checkWater": {
+                    "type": "boolean",
+                    "description": "Whether to test for water before generating to avoid water walls."
+                },
+
+                "yaw": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "dYaw": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "pitch": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "dPitch": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "scale": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "stretch": {
+                    "$ref": "#/definitions/scalableFloat"
+                },
+
+                "originHeight": {
+                    "type": "array",
+                    "description": "The height at which these ravines can start. If this value is not set, it will default to the value of height.",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "cutoffStrength": {
+                    "type": "number",
+                    "description": "A ratio of how much to flatten the top and bottom of this feature.",
+                    "default": 5.0
+                },
+
+                "noiseYFactor": {
+                    "type": "number",
+                    "description": "Similar to noiseYReduction, but not as random.",
+                    "default": 0.7
+                },
+
+                "walls": {
+                    "$ref": "#/definitions/noiseBlock"
+                }
+            }
+        },
+
+        "cavernsBlock": {
+            "type": "object",
+            "description": "This generator is essentially a wrapper for FastNoise. Ther is an array of noise3D blocks to create the main caverns, and then two noise2D blocks which close the caverns off with a ceiling and floor. Whatever value is yielded from the ceiling and floor generators gets added to minHeight or maxHeight.",
+            "additionalProperties": false,
+            "properties": {
+                
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "resolution": {
+                    "enum": [1,2,4,8,16],
+                    "description": "The number of blocks between noise checks. Must be a power of 2 and <=16."
+                },
+
+                "generators": {
+                    "type": "array",
+                    "description": "Complete noise generator.",
+                    "items": {
+                        "type": "object",
+                        "description": "?????"
+                    }
+                },
+
+                "ceiling": {
+                    "description": "Defaults that apply to caverns only.",
+                    "$ref": "#/definitions/noiseBlock"
+                },
+
+                "floor": {
+                    "description": "Defaults that apply to caverns only.",
+                    "$ref": "#/definitions/noiseBlock"
+                },
+
+                "offset": {
+                    "description": "How much to offset the y-coordinate when given (x,z).",
+                    "$ref": "#/definitions/noiseBlock"
+                },
+
+                "walls": {
+                    "$ref": "#/definitions/noiseBlock",
+                    "description": "Wall noise that gets mixed in with biome borders."
+                },
+
+                "wallOffset": {
+                    "description": "Determines how much to shift the walls up and down at any location. Makes the walls a bit more unique.",
+                    "$ref": "#/definitions/noiseBlock"
+                },
+
+                "wallCurveRatio": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "wallInterpolation": {
+                    "type": "boolean",
+                    "description": "Experimental feature to increase wall resolution.",
+                    "default": false
+                },
+
+                "deferred": {
+                    "type": "boolean",
+                    "description": "Sets this generator to run after map generation occurs. You can use this for example to generate a shelled body of water (or an aquifer) which cannot get replace by other features in the same preset. This feature is deprecated, as it will eventually be replaced by ordered generation.",
+                    "default": false
+                },
+
+                "region": {
+                    "$ref": "#/definitions/regionBlock"
+                },
+
+                "noise": {
+                    "$ref": "#/definitions/noiseGenerator"
+                }
+            }
+        },
+
+        "burrowsBlock": {
+            "type": "object",
+            "description": "This generator works by tracing the output of a 2-dimensional noise function where threshold = 1, drawing a sphere around it, and then shifting it vertically based on the output of a second 2-dimensional noise function. It is similar to the official spaghetti cave generator featured in 1.17.",
+            "additionalProperties": false,
+            "properties": {
+                "radius": {
+                    "type": "number",
+                    "description": "The height and width of this generator in blocks.",
+                    "default": 4.5
+                },
+
+                "target": {
+                    "type": "number",
+                    "description": "The target threshold being traced by the generator. Use a higher value to generate wider tunnels. Values closer to zero will generate narrow tunnels.",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "default": 0.1
+                },
+
+                "stretch": {
+                    "type": "number",
+                    "description": "Vertical multiple of radius.",
+                    "default": 1.0
+                },
+
+                "exponent": {
+                    "type": "number",
+                    "description": "Determines the shape of the curve that makes up the tunnels produced by this generator.",
+                    "default": 4.0
+                },
+
+                "shift": {
+                    "type": "number",
+                    "description": "Shifts the range of values accepted by the generator. By default, the accepted value is 0.1 ( + 0.0 = 0.1 ).",
+                    "default": 0.0
+                },
+
+                "wallDistance": {
+                    "type": "number",
+                    "description": "The minimum distance from invalid chunk origins.",
+                    "default": 18.0
+                },
+
+                "wallExponent": {
+                    "type": "number",
+                    "description": "The exponent used to produce biome walls.",
+                    "default": 2.0
+                },
+
+                "map": {
+                    "$ref": "#/definitions/noiseBlock",
+                    "description": "The map used to produce the position of the tunnels."
+                },
+
+                "offset": {
+                    "$ref": "#/definitions/noiseBlock",
+                    "description": "How much to offset the y-coordinate when given (x,z)."
+                }
+            }
+        },
+
+        "layersBlock": {
+            "type": "object",
+            "description": "Stone layers generator.",
+            "additionalProperties": false,
+            "required": ["state"],
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "description": "A block state to place for this layer. May not be null."
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "ceiling": {
+                    "$ref": "#/definitions/noiseBlock"
+                }
+            }
+        },
+
+        "clustersBlock": {
+            "type": "object",
+            "description": "Cluster generator.",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "states": {
+                    "$ref": "#/definitions/statesBlock"
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "integrity": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "radiusX": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "radiusY": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "radiusZ": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "centerHeight": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "radius": {
+                    "type": ["array","null"],
+                    "description": "Can be used instead of radiusX, radiusY, and radiusZ to provide defaults for each of those fields.",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "matchers": {
+                    "$ref": "#/definitions/matchersBlock"
+                }
+            }
+        },
+
+        "stalactitesBlock": {
+            "type": "object",
+            "description": "Stalactites generator.",
+            "additionalProperties": false,
+            "required": ["state"],
+            "properties": {
+
+                "state": {
+                    "type": "string",
+                    "description": "An ID for a block state to place. May not be null."
+                },
+
+                "type": {
+                    "enum": ["stalactite","stalagmite","speleothem"],
+                    "description": "The type of feature to place.",
+                    "default": "stalactite"
+                },
+
+                "size": {
+                    "enum": ["small","medium","large","giant"],
+                    "description": "The width of this feature.",
+                    "default": "medium"
+                },
+                
+                "length": {
+                    "type": "array",
+                    "description": "?????",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "matchers": {
+                    "$ref": "#/definitions/matchersBlock"
+                },
+
+                "region": {
+                    "$ref": "#/definitions/regionBlock"
+                }
+            }
+        },
+
+        "pillarsBlock": {
+            "type": "object",
+            "description": "Generates pillar-type structures in your caves.",
+            "additionalProperties": false,
+            "required": ["state"],
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "description": "This block makes up the body of the pillar. This value may not be null."
+                },
+
+                "stairBlock": {
+                    "type": "string",
+                    "description": "This may be absent but not null."
+                },
+
+                "frequency": {
+                    "type": "integer",
+                    "description": "Number of spawn tries per chunk.",
+                    "minimum": 0
+                },
+
+                "length": {
+                    "type": "array",
+                    "description": "?????",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+
+        "structuresBlock": {
+            "type": "object",
+            "description": "Structures are ideal for small decorations. Larger decorations (16x16)+ may cause cascading generation lag and should be handled by another mod, such as Recurrent Complex or OTG. Structures will be generated around X and Z, but not Y. Most of this information can be left out.",
+            "additionalProperties": false,
+            "required": ["name"],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "This refers to either a resource location or file name. May not be null."
+                },
+
+                "height": {
+                    "$ref": "#/definitions/heightBlock"
+                },
+
+                "integrity": {
+                    "type": "number",
+                    "description": "The 0-1 ratio of blocks to be retained when spawning.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "offset": {
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "description": "X, Y, Z spawn offset.",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+
+                "count": {
+                    "type": "integer",
+                    "description": "Number of tries per chunk. Should be low."
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "The 0-1 chance any try will succeed.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+
+                "matchers": {
+                    "$ref": "#/definitions/matchersBlock"
+                },
+
+                "directions": {
+                    "type": "array",
+                    "description": "A list of directions for this structure to spawn.",
+                    "items": {
+                        "enum": ["up","down","side","north","south","east","west","all"]
+                    }
+                },
+
+                "airChecks": {
+                    "type": "array",
+                    "description": "Any relative coordinates that must be air.",
+                    "items": {
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+
+                "solidChecks": {
+                    "type": "array",
+                    "description": "Any relative coordinates that must be solid.",
+                    "items": {
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+
+                "nonSolidChecks": {
+                    "type": "array",
+                    "description": "Any relative coordinates that must be non-solid.",
+                    "items": {
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+
+                "waterChecks": {
+                    "type": "array",
+                    "description": "Any relative coordinates that must be water.",
+                    "items": {
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+
+                "blockChecks": {
+                    "type": "array",
+                    "description": "A list of blocks and relative locations where those blocks should exist. This feature is expensive. Be careful not to check every single position and try to optimize by using the fewest checks possible.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["positions","matchers"],
+                        "properties": {
+                            "positions": {
+                                "type": "array",
+                                "description": "Any relative coordinates that must be water.",
+                                "items": {
+                                    "type": "array",
+                                    "minItems": 3,
+                                    "maxItems": 3,
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+
+                            "matchers": {
+                                "$ref": "#/definitions/matchersBlock"
+                            }
+                        }
+                    }
+                },
+
+                "debugSpawns": {
+                    "type": "boolean",
+                    "description": "Whether to log the coordinates every time this structure spawns.",
+                    "default": false
+                },
+
+                "command": {
+                    "type": "string",
+                    "description": "A command to run whenever this structure spawns. Coordinates can be interpolated using {x}, {y}, and {z}."
+                },
+
+                "rotateRandomly": {
+                    "type": "boolean",
+                    "description": "Whether to reorient this structure every time it spawns.",
+                    "default": false
+                },
+
+                "replacedBlock": {
+                    "type": "string",
+                    "description": "Which block (other than air) can be replaced by this structure."
+                },
+
+                "mirror": {
+                    "enum": ["none","left_right","front_back"],
+                    "description": "How to mirror this structure. Options are 'none', 'left_right', and 'front_back'.",
+                    "default": "none"
+                },
+
+                "ignoreEntities": {
+                    "type": "boolean",
+                    "description": "Whether to omit entity spawns from this structure.",
+                    "default": false
+                }
+            }
+        },
+
+        "roomsBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "scale": {
+                    "type": "integer",
+                    "description": "Radius in blocks.",
+                    "default": 6
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "?????"
+                },
+
+                "stretch": {
+                    "type": "number",
+                    "description": "Vertical ratio of 'scale'."
+                }
+            }
+        }
+
+    }
+}

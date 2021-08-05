@@ -14,7 +14,7 @@
 				"\tregion: {}",
 				"\tnoise: {}",
 				"\treplaceableBlocks: [ ${5:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${6|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -40,7 +40,7 @@
 			" ",
 			"\tnames: [$1]",
 			"\tIDs: [$2]",
-			"\ttypes: [$0]",
+			"\ttypes: [$3]",
 			""
 		]
 	},
@@ -51,7 +51,7 @@
 			"{",
 				"\tstates: []",
 				"\tintegrity: ${1:1.0}",
-				"\theight: [ ${0:0, 50} ]",
+				"\theight: [ ${2:0, 50} ]",
 				"\tnoise: {}",
 			"}"
 		]
@@ -66,7 +66,7 @@
 				"\theight: [ ${2:0, 50} ]",
 				"\tdirections: []",
 				"\tmatchers: []",
-				"\tplacement: ${0:embed}",
+				"\tplacement: ${3:embed}",
 				"\tnoise: {}",
 			"}"
 		]
@@ -79,7 +79,7 @@
 				"\tstates: [$1]",
 				"\tintegrity: ${2:1.0}",
 				"\theight: [ ${3:0, 50} ]",
-				"\tdepth: ${0:2}",
+				"\tdepth: ${4:2}",
 				"\tmatchers: []",
 				"\tnoise: {}",
 			"}"
@@ -92,7 +92,7 @@
 			"",
 			"\tradius: ${1:0.0}",
 			"\tsphereResolution: ${2:2}",
-			"\tnoiseThreshold: ${0:0.0}",
+			"\tnoiseThreshold: ${3:0.0}",
 			"\tdecorators: []",
 			""
 		]
@@ -107,7 +107,7 @@
 				"\t# **This value may not be null or empty**.",
 				"\tmatchers: []",
 				"\theight: [ ${1:0, 63} ]",
-				"\tintegrity: ${0:1.0}",
+				"\tintegrity: ${2:1.0}",
 				"\tnoise: {}",
 			"}"
 		]
@@ -122,7 +122,7 @@
 				"\tstretch: ${3:0.5}",
 			"",
 				"\treplaceableBlocks: [ ${4:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${5|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 			""
@@ -166,7 +166,7 @@
 				"\tnoise: {}",
 				"",
 				"\treplaceableBlocks: [ ${16:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${17|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -212,7 +212,7 @@
 				"\tnoise: {}",
 				"",
 				"\treplaceableBlocks: [ ${16:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${17|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -251,7 +251,7 @@
 				"\tnoise: {}",
 				"",
 				"\treplaceableBlocks: [ ${11:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${12|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -283,7 +283,7 @@
 				"\tblacklistDimensions: ${5|false,true|}",
 				"",
 				"\treplaceableBlocks: [ ${6:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${7|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -316,7 +316,7 @@
 				"\tblacklistDimensions: ${9|false,true|}",
 				"",
 				"\treplaceableBlocks: [ ${10:\"stone\", \"dirt\"} ]",
-				"\treplaceDecorators: ${0|true,false|}",
+				"\treplaceDecorators: ${11|true,false|}",
 				"\tcaveBlocks: []",
 				"\twallDecorators: []",
 				"\tponds: []",
@@ -338,7 +338,7 @@
 				"\tbiomes: {}",
 				"\tblacklistBiomes: ${3|false,true|}",
 				"\tdimensions: []",
-				"\tblacklistDimensions: ${0|false,true|}",
+				"\tblacklistDimensions: ${4|false,true|}",
 				"\tfloor: {}",
 				"\tregion: {}",
 				"\tnoise: {}",
@@ -366,7 +366,7 @@
 				"\tblacklistBiomes: ${8|false,true|}",
 				"\tdimensions: []",
 				"\tblacklistDimensions: ${9|false,true|}",
-				"\theight: [ ${0:0, 255} ]",
+				"\theight: [ ${10:0, 255} ]",
 				"\tceiling: {}",
 				"\tfloor: {}",
 				"\tregion: {}",
@@ -392,7 +392,7 @@
 				"\tbiomes: {}",
 				"\tblacklistBiomes: ${7|false,true|}",
 				"\tdimensions: []",
-				"\tblacklistDimensions: ${0|false,true|}",
+				"\tblacklistDimensions: ${8|false,true|}",
 				"\tceiling: {}",
 				"\tfloor: {}",
 				"\tnoise: {}",
@@ -415,7 +415,7 @@
 				"\tbiomes: {}",
 				"\tblacklistBiomes: ${6|false,true|}",
 				"\tdimensions: []",
-				"\tblacklistDimensions: ${0|false,true|}",
+				"\tblacklistDimensions: ${7|false,true|}",
 				"\tceiling: {}",
 				"\tfloor: {}",
 				"\tregion: {}",
@@ -453,7 +453,7 @@
 				"\tbiomes: {}",
 				"\tblacklistBiomes: ${14|false,true|}",
 				"\tdimensions: []",
-				"\tblacklistDimensions: ${0|false,true|}",
+				"\tblacklistDimensions: ${15|false,true|}",
 				"\tceiling: {}",
 				"\tfloor: {}",
 				"\tregion: {}",
@@ -476,7 +476,7 @@
 			"\tseed: ${8:1}",
 			"\tinvert: ${9|false,true|}",
 			"\tdummy: ${10|false,true|}",
-			"\tcache: ${0|false,true|}",
+			"\tcache: ${11|false,true|}",
 			""
 		]
 	},
@@ -495,7 +495,7 @@
 			"\tseed: ${8:1}",
 			"\tinvert: ${9|false,true|}",
 			"\tdummy: ${10|false,true|}",
-			"\tcache: ${0|false,true|}",
+			"\tcache: ${11|false,true|}",
 			""
 		]
 	},
@@ -514,7 +514,7 @@
 			"\tseed: ${8:1}",
 			"\tinvert: ${9|false,true|}",
 			"\tdummy: ${10|false,true|}",
-			"\tcache: ${0|false,true|}",
+			"\tcache: ${11|false,true|}",
 			""
 		]
 	},
@@ -529,7 +529,7 @@
 			"\tinvert: ${4|false,true|}",
 			"\tseed: ${5:1}",
 			"\tdummy: ${6|false,true|}",
-			"\tcache: ${0|false,true|}",
+			"\tcache: ${7|false,true|}",
 			""
 		]
 	},
@@ -560,7 +560,7 @@
 			"\tcellularLookup: ${20|Simplex,SimplexFractal,Value,ValueFractal,Perlin,PerlinFractal,Cellular,WhiteNoise,Cubic,CubicFractal|}",
 			"\tseed: ${21:1}",
 			"\tdummy: ${22|false,true|}",
-			"\tcache: ${0|false,true|}",
+			"\tcache: ${23|false,true|}",
 			""
 		]
 	},
@@ -573,7 +573,7 @@
 			"\tstartValRandFactor: ${2:1.0}",
 			"\tfactor: ${3:1.0}",
 			"\trandFactor: ${4:1.0}",
-			"\texponent: ${0:1.0}",
+			"\texponent: ${5:1.0}",
 			""
 		]
 	}
