@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Origins origin JSON schema by S_K_Tiger",
+    "description": "See: https://origins.readthedocs.io/en/latest/origin_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues or https://github.com/WACriminalG2/PackdevUtils/issues",
     "type": "object",
     "properties": {
         "powers": {
@@ -28,8 +29,14 @@
             }
         },
         "icon": {
-            "type": "string",
-            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen."
+            "$ref": "#/definitions/origins_data_types/properties/item_stack",
+            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen.",
+            "examples": [{"item": "minecraft:golden_helmet"}]
+        },
+        "unchoosable": {
+            "type": "boolean",
+            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade.",
+            "default": false
         },
         "order": {
             "type": "integer",
@@ -37,10 +44,10 @@
         },
         "impact": {
             "type": "integer",
+            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high).",
             "minimum": 0,
             "maximum": 3,
-            "default": 0,
-            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high)."
+            "default": 0
         },
         "name": {
             "type": "string",
@@ -50,36 +57,397 @@
             "type": "string",
             "description": "The description of the origin. Can be a translation key which is localized in a language file, or the literal description."
         },
-        "unchoosable": {
-            "type": "boolean",
-            "default": false,
-            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade."
-        },
         "upgrades": {
             "type": "array",
+            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.",
             "items": {
                 "type": "object",
                 "properties": {
                     "condition": {
                         "type": "string",
+                        "description": "ID of an advancement which should trigger this upgrade.",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "origin": {
                         "type": "string",
+                        "description": "ID of an origin the origin with this upgrade should upgrade to.",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "announcement": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "A text which will show up in the local chat of the player in a pretty color. If none is specified, there won't be a message."
                     }
                 },
                 "required": [ "condition", "origin" ]
-            },
-            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin."
+            }
         },
         "loading_priority": {
             "type": "integer",
             "default": 0,
             "description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
+        }
+    },
+    "definitions": {
+        "origins_data_types": {
+            "type": "object",
+            "description": "Group for https://origins.readthedocs.io/en/latest/data_types/",
+            "$comment": "As Comparison and Modifier Operation are basicaly just enum's they are not included in this list.",
+            "properties": {
+                "modifier": {
+                    "type": "object",
+                    "description": "An Object used to specify how a value should be modified.",
+                    "properties": {
+                        "operation": {
+                            "type": "string",
+                            "description": "The operation which will be performed by this modifier.",
+                            "enum": [ "addition", "multiply_base", "multiply_total" ]
+                        },
+                        "value": {
+                            "type": "number",
+                            "description": "The value with which to apply the operation to the value."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "A descriptive name for the modifier, describing where it comes from."
+                        }
+                    },
+                    "required": [ "operation", "value" ]
+                },
+                "attributed_modifier": {
+                    "type": "object",
+                    "description": "An Object used to specify how a specific attribute should be modified. Basically an Attribute Modifier with an additional attribute field.",
+                    "properties": {
+                        "attribute": {
+                            "type": "string",
+                            "description": "ID of the attribute which will be modified by this modifier.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [ "minecraft:generic.attack_speed" ]
+                        },
+                        "operation": {
+                            "type": "string",
+                            "description": "The operation which will be performed by this modifier.",
+                            "enum": [ "addition", "multiply_base", "multiply_total" ]
+                        },
+                        "value": {
+                            "type": "number",
+                            "description": "The value with which to apply the operation to the value."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "A descriptive name for the modifier, describing where it comes from."
+                        }
+                    },
+                    "required": [ "attribute", "operation", "value" ]
+                },
+                "crafting_recipe": {
+                    "type": "object",
+                    "description": "An Object specifying a shapeless or shaped crafting recipe. For some more information, see: https://minecraft.gamepedia.com/Recipe",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "The type of recipe. Either minecraft:crafting_shaped or minecraft:crafting_shapeless. Other recipe types are not supported.",
+                            "enum": ["minecraft:crafting_shaped", "minecraft:crafting_shapeless"]
+                        },
+                        "id": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "An ID for this recipe. Has to be unique among all recipes, otherwise there will be a conflict."
+                        },
+                        "result": {
+                            "type": "object",
+                            "description": "The result of the crafting. Note that vanilla does not support NBT tags in the result.",
+                            "properties": {
+                                "item": {
+                                    "type": "string",
+                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                                },
+                                "count": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": ["item", "count"]
+                        }
+                    },
+                    "required": ["type", "id", "result" ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "minecraft:crafting_shapeless" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "ingredients": {
+                                        "type": "array",
+                                        "description": "These items need to be put in the crafting grid for the recipe.",
+                                        "items": {"$ref": "#/definitions/origins_data_types/properties/ingredient"},
+                                        "uniqueItems": false
+                                    }
+                                },
+                                "required": ["ingredients"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "minecraft:crafting_shaped" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "pattern": {
+                                        "$comment": "As some mods add crafting tables with larger than 3 by 3 grids I've not added a maxItems restiction",
+                                        "type": "array",
+                                        "description": "Specifies the pattern, with each element representing one row. Use a single character to describe one item. A space means that position is empty.",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 1
+                                    },
+                                    "key": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                            "^[^\\ ]$": {"$ref": "#/definitions/origins_data_types/properties/ingredient"}
+                                        }
+                                    }
+                                },
+                                "required": ["pattern", "key"]
+                            }
+                        }
+                    ]
+                },
+                "damage_source": {
+                    "type": "object",
+                    "description": "An Object used to specify how to deal damage to an entity.",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the damage source. Controls death message as well as other interactions. Consider https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/ when picking a name.",
+                            "examples": [
+                                "anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
+                                "dragonBreath", "drown", "dryout", "explosion.player",
+                                "explosion", "fall", "fallingBlock", "fallingStalactite",
+                                "fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
+                                "indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
+                                "magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
+                                "starve", "sting", "sweetBerryBush", "thorns", "thrown",
+                                "trident", "wither", "witherSkull"
+                            ]
+                        },
+                        "bypasses_armor": {
+                            "type": "boolean",
+                            "description": "When true, armor values are not taken into account when calculating the actual damage amount taken.",
+                            "defaut": false
+                        },
+                        "fire": {
+                            "type": "boolean",
+                            "defaut": false,
+                            "description": "When true, the damage will be considered fire damage."
+                        },
+                        "unblockable": {
+                            "type": "boolean",
+                            "defaut": false,
+                            "description": "When true, the damage will be unblockable (not reduced by resistance effects or protection enchantments)."
+                        },
+                        "magic": {
+                            "type": "boolean",
+                            "defaut": false,
+                            "description": "When true, the damage will be considered magic damage."
+                        },
+                        "out_of_world": {
+                            "type": "boolean",
+                            "defaut": false,
+                            "description": "When true, the damage will be considered \"out of world\" damage, i.e. damage from falling into the void."
+                        }
+                    },
+                    "required": [ "name" ]
+                },
+                "hud_render": {
+                    "type": "object",
+                    "description": "An Object used to define how a resource or cooldown bar should be rendered.",
+                    "properties": {
+                        "should_render": {
+                            "type": "boolean",
+                            "description": "Whether the bar should be visible or not.",
+                            "default": true
+                        },
+                        "sprite_location": {
+                            "type": "string",
+                            "description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "default": "origins:textures/gui/resource_bar.png",
+                            "examples": [
+                                "origins:textures/gui/resource_bar.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
+                                "origins:textures/gui/community/huang/resource_bar_01.png",
+                                "origins:textures/gui/community/huang/resource_bar_02.png"
+                            ]
+                        },
+                        "bar_index": {
+                            "type": "integer",
+                            "description": "The indexed position of the bar on the sprite to use. Please note that indexes start at 0.",
+                            "default": 0,
+                            "minimum": 0
+                        },
+                        "condition": {
+                            "$ref": "#/definitions/conditions/properties/entity_condition",
+                            "description": "If set (and should_render is true), the bar will only display when the entity with the power fulfills this condition."
+                        }
+                    }
+                },
+                "ingredient": {
+                    "type": ["object", "array"],
+                    "description": "Either: an Object specifying a registered item or item tag. Or: an Array of Objects specifying a registered item or item tag.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                "description": "ID of a registered item."
+                            },
+                            "tag": {
+                                "type": "string",
+                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                "description": "ID of an item tag. Will be ignored if item is set."
+                            }
+                        },
+                        "anyOf": [
+                            {"required": ["item"]},
+                            {"required": ["tag"]}
+                        ]
+                    },
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "ID of a registered item."
+                        },
+                        "tag": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "ID of an item tag. Will be ignored if item is set."
+                        }
+                    },
+                    "anyOf": [
+                        {"required": ["item"]},
+                        {"required": ["tag"]}
+                    ]
+                },
+                "item_stack": {
+                    "type": "object",
+                    "description": "An Object which defines a new item stack.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "ID of a registered item.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "description": "Size of the stack.",
+                            "default": 1,
+                            "minimum": 1
+                        },
+                        "tag": {
+                            "$comment": "Is there a better pattern for NBT data?",
+                            "type": "string",
+                            "description": "NBT data of the item.",
+                            "pattern": "\\{.*\\:.*\\}"
+                        }
+                    },
+                    "required": ["item"]
+                },
+                "key": {
+                    "type": "object",
+                    "description": "An Object which defines a keybinding, used in active powers to define which key they react to.",
+                    "properties": {
+                        "key": {
+                            "type": "string",
+                            "description": "A string specifying the keybinding. See https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
+                            "pattern": "^[a-z0-9\\-\\_\\.]+$",
+                            "examples": [ "key.origins.primary_active", "key.origins.secondary_active" ]
+                        },
+                        "continuous": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether the keybinding should only trigger the power on the first tick the key is held down, or, if set to true, continuously on each tick while the key is held."
+                        }
+                    },
+                    "required": [ "key" ]
+                },
+                "positioned_item_stack": {
+                    "type": "object",
+                    "description": "An Object which defines a new item stack alongside a position in an inventory. Basically an Item Stack with a slot field.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "ID of a registered item."
+                        },
+                        "amount": {
+                            "type":"integer",
+                            "default": 1,
+                            "minimum": 1,
+                            "description": "Size of the stack."
+                        },
+                        "tag": {
+                            "$comment": "Is there a better pattern for NBT data?",
+                            "type": "string",
+                            "description": "NBT data of the item.",
+                            "pattern": "\\{.*\\:.*\\}"
+                        },
+                        "slot": {
+                            "$comment": "Because certian mods add inventory slots I've not specified a maximum",
+                            "type": "integer",
+                            "description": "Inventory slot position of the stack. If not specified, will be the first free slot in the inventory. See https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["item"]
+                },
+                "status_effect_instance": {
+                    "type": "object",
+                    "properties": {
+                        "effect": {
+                            "type": "string",
+                            "description": "ID of the status effect.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": ["minecraft:slowness"]
+                        },
+                        "duration": {
+                            "type": "integer",
+                            "description": "Duration of the status effect in ticks.",
+                            "default": 100,
+                            "minimum": 1
+                        },
+                        "amplifier": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "Amplifier of the status effect."
+                        },
+                        "is_ambient": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether the effect counts as an ambient effect."
+                        },
+                        "show_particles": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether the status effect will spawn particles on the player."
+                        },
+                        "show_icon": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether the status effect will show an icon on the HUD."
+                        }
+                    },
+                    "required": ["effect"]
+                }
+            }
         }
     }
 }
