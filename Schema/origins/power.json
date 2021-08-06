@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Origins power JSON schema by S_K_Tiger",
+    "description": "See: https://origins.readthedocs.io/en/latest/power_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues or https://github.com/WACriminalG2/PackdevUtils/issues",
     "type": "object",
     "properties": {
         "type": {
@@ -42,8 +43,8 @@
         },
         "hidden": {
             "type": "boolean",
-            "default": false,
-            "description": "If set to true, this power will not be displayed in the power list of the origin."
+            "description": "If set to true, this power will not be displayed in the power list of the origin.",
+            "default": false
         },
         "condition": {
             "$ref": "#/definitions/conditions/properties/entity_condition",
@@ -51,15 +52,542 @@
         },
         "loading_priority": {
             "type": "integer",
-            "default": 0,
-            "description": "Specifies when this power is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
+            "description": "Specifies when this power is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID.",
+            "default": 0
         }
     },
     "required": [ "type" ],
     "definitions": {
         "conditions": {
             "type": "object",
+            "description": "Group for conditions",
             "properties": {
+                "biome_condition": {
+                    "type": "object",
+                    "description": "Biome Conditions operate on a Biome.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:category", "origins:high_humidity", "origins:precipitation", "origins:temperature"
+                            ]
+                        },
+                        "inverted": {
+                            "type": "boolean",
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
+                        }
+                    },
+                    "required": [ "type" ],
+                    "allOf": [
+                        {
+                            "$comment": "#region meta",
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/biome_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:or" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/biome_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:constant" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+                                    }
+                                },
+                                "required": ["value"]
+                            },
+                            "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:category" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "category": {
+                                        "$comment": "Note: Categories may change after 1.17",
+                                        "type": "string",
+                                        "description": "Which category the biome must be in order to succeed the check. See https://origins.readthedocs.io/en/latest/misc/biome_categories/.",
+                                        "examples": [
+                                            "beach", "desert", "extreme_hills", "forest", "icy", "jungle", "mesa", "mushroom",
+                                            "nether", "none", "ocean", "plains", "river", "savanna", "swamp", "taiga", "the_end"
+                                        ]
+                                    }
+                                },
+                                "required": ["category"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:precipitation" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "precipitation": {
+                                        "description": "Which precipitation the biome has to have in order to succeed the check. One of none, rain and snow.",
+                                        "enum": [ "none", "rain", "snow" ]
+                                    }
+                                },
+                                "required": [ "precipitation" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:temperature" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "How the temperature should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "Which value the temperature should be compared to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        }
+                    ]
+                },
+                "block_condition": {
+                    "type": "object",
+                    "description": "Block Conditions operate on CachedBlockPosition, essentially a combination of World and BlockPos, which allows retrieving all necessary information about the block.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:adjacent", "origins:attachable", "origins:block", "origins:block_state",
+                                "origins:exposed_to_sky", "origins:fluid", "origins:height", "origins:in_tag", "origins:light_blocking",
+                                "origins:light_level", "origins:movement_blocking", "origins:offset", "origins:replacable",
+                                "origins:water_loggable"
+                            ]
+                        },
+                        "inverted": {
+                            "type": "boolean",
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
+                        }
+                    },
+                    "required": [ "type" ],
+                    "allOf": [
+                        {
+                            "$comment": "#region meta",
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:or" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/block_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:constant" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+                                    }
+                                },
+                                "required": [ "value" ]
+                            },
+                            "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:adjacent" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "adjacent_condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "The block condition that needs to be fulfilled by adjacent blocks to count towards this condition."
+                                    },
+                                    "comparison": {
+                                        "description": "How the number of adjacent blocks which fulfill adjacent_condition should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the number to."
+                                    }
+                                },
+                                "required": [ "adjacent_condition", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "block": {
+                                        "type": "string",
+                                        "description": "ID of the block that this block needs to be to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
+                                    }
+                                },
+                                "required": [ "block" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:block_state" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "property": {
+                                        "type": "string",
+                                        "description": "The name of the property that should be checked. See: https://minecraft.fandom.com/wiki/Block_states#List_of_block_states",
+                                        "examples": [ "facing", "age", "leaves", "stage", "rotation", "open", "occupied", "part", "honey_level", "attachment", "powered" ]
+                                    },
+                                    "comparison": {
+                                        "description": "If the property contains an integer value, this is the comparison the will be used to compare the property's value to the specified compare_to integer.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "If the property contains an integer value, this is the value the property's value will be compared to."
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If the property contains a boolean value, this is the value the property needs to be to pass the check."
+                                    },
+                                    "enum": {
+                                        "type": "string",
+                                        "description": "If the property contains different string values, this is the string value the property needs to be to pass the check."
+                                    }
+                                },
+                                "required": [ "property" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:fluid" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "fluid_condition": {
+                                        "$ref": "#/definitions/conditions/properties/fluid_condition",
+                                        "description": "The fluid condition to check the fluid state at the position."
+                                    }
+                                },
+                                "required": [ "fluid_condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:height" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "How the Y position of the block should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the Y position of the block to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:in_tag" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "tag": {
+                                        "type": "string",
+                                        "description": "ID of the tag which the block should be in to pass the check.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:base_stone_overworld" ]
+                                    }
+                                },
+                                "required": [ "tag" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:light_level" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "light_type": {
+                                        "description": "The type of light level to compare. Either sky or block. If no type is provided, the greater value of the two types will be used, which is the \"resulting\" light level of that position.",
+                                        "enum": [ "sky", "block" ]
+                                    },
+                                    "comparison": {
+                                        "description": "How the light level should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "The value to compare the light level at the block's position to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:offset" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "The condition to check with the given offset."
+                                    },
+                                    "x": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the x-axis.",
+                                        "default": 0
+                                    },
+                                    "y": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the y-axis.",
+                                        "default": 0
+                                    },
+                                    "z": {
+                                        "type": "integer",
+                                        "description": "How much to offset the position on the z-axis.",
+                                        "default": 0
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
+                        }
+                    ]
+                },
+                "damage_condition": {
+                    "type": "object",
+                    "description": "Damage Conditions operate on a combination of DamageSource and Float, allowing to check not only the type of damage dealt, but also how much damage was dealt.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:amount", "origins:attacker", "origins:fire", "origins:name",
+                                "origins:projectile"
+                            ]
+                        },
+                        "inverted": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "If true, the condition acts inverted."
+                        }
+                    },
+                    "required": [ "type" ],
+                    "allOf": [
+                        {
+                            "$comment": "#region meta",
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/damage_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:or" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/damage_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:constant" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+                                    }
+                                },
+                                "required": [ "value" ]
+                            },
+                            "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:amount" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "How the amount of damage should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The value to compare the amount of damage to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:attacker" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "entity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                                        "description": "If set, the attacking entity must fulfill the provided entity condition in order for this condition to evaluate to true."
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:name" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name the damage source should have to pass the check. See https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/",
+                                        "examples": [
+                                            "anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
+                                            "dragonBreath", "drown", "dryout", "explosion.player",
+                                            "explosion", "fall", "fallingBlock", "fallingStalactite",
+                                            "fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
+                                            "indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
+                                            "magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
+                                            "starve", "sting", "sweetBerryBush", "thorns", "thrown",
+                                            "trident", "wither", "witherSkull"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:projectile" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "projectile": {
+                                        "type": "string",
+                                        "description": "If set, the check will only pass if the projectile was of an entity type with this ID.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:spectral_arrow" ]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
                 "entity_condition": {
                     "type": "object",
                     "description": "Entity Conditions operate on a LivingEntity, which also allows access to the world. These are available to be used in most powers in the condition field, which restricts when a power is active.",
@@ -85,14 +613,14 @@
                         },
                         "inverted": {
                             "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
                         }
                     },
                     "required": [ "type" ],
                     "allOf": [
                         {
-                            "$comment": "#region meta Is there a better way to do this?",
+                            "$comment": "#region meta",
                             "if": {
                                 "properties": { "type": { "const": "origins:and" } },
                                 "required": [ "type" ]
@@ -101,7 +629,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/entity_condition" }
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/entity_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -116,7 +646,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/entity_condition" }
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/entity_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -163,9 +695,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the breath (in ticks) should be compared to the specified value."
+                                        "description": "How the breath (in ticks) should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -189,9 +720,8 @@
                                         "examples": [ "minecraft:generic.armor" ]
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the attribute's value to the specified value."
+                                        "description": "How to compare the attribute's value to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -270,21 +800,19 @@
                                         "description": "The radius to check blocks in."
                                     },
                                     "shape": {
-                                        "type": "string",
                                         "description": "Whether to check in a cube- or a star-shaped form. Either \"cube\" or \"star\".",
                                         "enum": [ "cube", "star" ],
                                         "default": "cube"
                                     },
                                     "comparison": {
-                                        "type": "string",
+                                        "description": "How to compare the attribute's value to the specified value.",
                                         "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "default": ">=",
-                                        "description": "How to compare the attribute's value to the specified value."
+                                        "default": ">="
                                     },
                                     "compare_to": {
                                         "type": "integer",
-                                        "default": 1,
-                                        "description": "Which value to compare the attribute's value to."
+                                        "description": "Which value to compare the attribute's value to.",
+                                        "default": 1
                                     }
                                 },
                                 "required": [ "block_condition", "radius" ]
@@ -298,9 +826,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the brightness against the specified value."
+                                        "description": "How to compare the brightness against the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -322,9 +849,8 @@
                                         "description": "Command to run."
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the command's result to the specified value."
+                                        "description": "How to compare the command's result to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -350,7 +876,7 @@
                                 "properties": {
                                     "dimension": {
                                         "type": "string",
-                                        "description": "ID of the dimension the player needs to be in for this condition to evaluate to true.",
+                                        "description": "ID of the dimension the player needs to be in for this condition to evaluate to true. Vanilla dimensions are minecraft:overworld, minecraft:the_nether and minecraft:the_end, but IDs of custom/modded dimensions should also work.",
                                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                                         "examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
                                     }
@@ -372,15 +898,13 @@
                                         "examples": [ "minecraft:protection" ]
                                     },
                                     "calculation": {
-                                        "type": "string",
                                         "description": "Which number to compare - either the sum of levels of this enchantment on all of the player's equipment, or the max level of this enchantment on any of the player's equipment.",
                                         "enum": [ "sum", "max" ],
                                         "default": "sum"
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the enchantment level should be compared to the specified value."
+                                        "description": "How the enchantment level should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -398,9 +922,8 @@
                             "then": {
                                 "properties": {
                                     "group": {
-                                        "type": "string",
-                                        "enum": [ "default", "undead", "arthropod", "illager", "aquatic" ],
-                                        "description": "Entity group required for the entity to pass the check. One of default, undead, arthropod, illager and aquatic."
+                                        "description": "Entity group required for the entity to pass the check. One of default, undead, arthropod, illager and aquatic.",
+                                        "enum": [ "default", "undead", "arthropod", "illager", "aquatic" ]
                                     }
                                 },
                                 "required": [ "group" ]
@@ -419,7 +942,8 @@
                                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                                         "examples": [ "minecraft:creeper" ]
                                     }
-                                }
+                                },
+                                "required": ["entity_type"]
                             }
                         },
                         {
@@ -430,7 +954,6 @@
                             "then": {
                                 "properties": {
                                     "equipment_slot": {
-                                        "type": "string",
                                         "description": "Which equipped item to check. One of: \"mainhand\", \"offhand\", \"head\", \"chest\", \"legs\", \"feet\".",
                                         "enum": [ "mainhand", "offhand", "head", "chest", "legs", "feet" ]
                                     },
@@ -438,7 +961,8 @@
                                         "$ref": "#/definitions/conditions/properties/item_condition",
                                         "description": "Which condition will be applied to the item in the specified slot."
                                     }
-                                }
+                                },
+                                "required": ["equipment_slot", "item_condition"]
                             }
                         },
                         {
@@ -449,9 +973,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the fall distance should be compared to the specified value."
+                                        "description": "How the fall distance should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -475,9 +998,8 @@
                                         "examples": [ "minecraft:water", "minecraft:lava" ]
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the fluid height should be compared to the specified value."
+                                        "description": "How the fluid height should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -495,9 +1017,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the food level should be compared to the specified value."
+                                        "description": "How the food level should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -515,9 +1036,8 @@
                             "then": {
                                 "properties": {
                                     "gamemode": {
-                                        "type": "string",
                                         "description": "Name of the gamemode the player should have in order for this condition to evaluate to true.",
-                                        "examples": [ "creative" ]
+                                        "enum": [ "adventure", "creative", "spectator", "survival" ]
                                     }
                                 },
                                 "required": [ "gamemode" ]
@@ -531,9 +1051,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the health of the player should be compared to the specified value."
+                                        "description": "How the health of the player should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -555,9 +1074,8 @@
                                         "description": "The block condition which blocks need to fulfill in order to count for this power."
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
                                         "description": "How the number of blocks which overlap and fulfill block_condition should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
                                         "default": ">="
                                     },
                                     "compare_to": {
@@ -696,9 +1214,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the relative health of the player should be compared to the specified value."
+                                        "description": "How the relative health of the player should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -721,9 +1238,8 @@
                                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the resource should be compared to the specified value."
+                                        "description": "How the resource should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -741,9 +1257,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the saturation level should be compared to the specified value."
+                                        "description": "How the saturation level should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "number",
@@ -765,9 +1280,8 @@
                                         "description": "The name of the scoreboard objective to retrieve the value from and compare.\nDue to the nature of scoreboards, this condition is only effective on the server-side.\nIf the entity does not have the scoreboard objective, this condition always returns false."
                                     },
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the objective's value to the specified value."
+                                        "description": "How to compare the objective's value to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -793,14 +1307,12 @@
                                         "type": "integer",
                                         "description": "The minimum amplifier the status effect should have in order to pass the check.",
                                         "default": 0,
-                                        "minimum": 0,
                                         "maximum": 2147483647
                                     },
                                     "max_amplifier": {
                                         "type": "integer",
                                         "description": "The maximum amplifier the status effect should have in order to pass the check.",
                                         "default": 2147483647,
-                                        "minimum": 0,
                                         "maximum": 2147483647
                                     },
                                     "min_duration": {
@@ -860,9 +1372,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the experience level of the player should be compared to the specified value."
+                                        "description": "How the experience level of the player should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -880,9 +1391,8 @@
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the experience points of the player should be compared to the specified value."
+                                        "description": "How the experience points of the player should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
                                         "type": "integer",
@@ -890,563 +1400,6 @@
                                     }
                                 },
                                 "required": [ "comparison", "compare_to" ]
-                            }
-                        }
-                    ]
-                },
-                "block_condition": {
-                    "type": "object",
-                    "description": "Block Conditions operate on CachedBlockPosition, essentially a combination of World and BlockPos, which allows retrieving all necessary information about the block.",
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "examples": [
-                                "origins:and", "origins:or", "origins:constant",
-                                "origins:adjacent", "origins:attachable", "origins:block", "origins:block_state",
-                                "origins:exposed_to_sky", "origins:fluid", "origins:height", "origins:in_tag", "origins:light_blocking",
-                                "origins:light_level", "origins:movement_blocking", "origins:offset", "origins:replacable",
-                                "origins:water_loggable"
-                            ]
-                        },
-                        "inverted": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
-                        }
-                    },
-                    "required": [ "type" ],
-                    "allOf": [
-                        {
-                            "$comment": "#region meta Is there a better way to do this?",
-                            "if": {
-                                "properties": { "type": { "const": "origins:and" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/block_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:or" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/block_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:constant" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "value": {
-                                        "type": "boolean",
-                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
-                                    }
-                                },
-                                "required": [ "value" ]
-                            },
-                            "$comment": "#endregion meta"
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:adjacent" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "adjacent_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
-                                    "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the number of adjacent blocks which fulfill adjacent_condition should be compared to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "number",
-                                        "description": "The value to compare the number to."
-                                    }
-                                },
-                                "required": [ "adjacent_condition", "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:block" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "block": {
-                                        "type": "string",
-                                        "description": "ID of the block that this block needs to be to pass the check.",
-                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                                        "examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
-                                    }
-                                },
-                                "required": [ "block" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:block_state" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "property": {
-                                        "type": "string",
-                                        "description": "The name of the property that should be checked. See: https://minecraft.fandom.com/wiki/Block_states#List_of_block_states",
-                                        "examples": [ "facing", "age", "leaves", "stage", "rotation", "open", "occupied", "part", "honey_level", "attachment", "powered" ]
-                                    },
-                                    "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "If the property contains an integer value, this is the comparison the will be used to compare the property's value to the specified compare_to integer."
-                                    },
-                                    "compare_to": {
-                                        "type": "integer",
-                                        "description": "If the property contains an integer value, this is the value the property's value will be compared to."
-                                    },
-                                    "value": {
-                                        "type": "boolean",
-                                        "description": "If the property contains a boolean value, this is the value the property needs to be to pass the check."
-                                    },
-                                    "enum": {
-                                        "type": "string",
-                                        "description": "If the property contains different string values, this is the string value the property needs to be to pass the check."
-                                    }
-                                },
-                                "required": [ "property" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:fluid" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "fluid_condition": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
-                                },
-                                "required": [ "fluid_condition" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:height" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the Y position of the block should be compared to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "number",
-                                        "description": "The value to compare the Y position of the block to."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:in_tag" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "tag": {
-                                        "type": "string",
-                                        "description": "ID of the tag which the block should be in to pass the check.",
-                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                                        "examples": [ "minecraft:base_stone_overworld" ]
-                                    }
-                                },
-                                "required": [ "tag" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:light_level" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "light_type": {
-                                        "type": "string",
-                                        "description": "The type of light level to compare. Either sky or block. If no type is provided, the greater value of the two types will be used, which is the \"resulting\" light level of that position.",
-                                        "enum": [ "sky", "block" ]
-                                    },
-                                    "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the light level should be compared to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "integer",
-                                        "description": "The value to compare the light level at the block's position to."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:offset" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
-                                    "x": {
-                                        "type": "integer",
-                                        "description": "How much to offset the position on the x-axis.",
-                                        "default": 0
-                                    },
-                                    "y": {
-                                        "type": "integer",
-                                        "description": "How much to offset the position on the y-axis.",
-                                        "default": 0
-                                    },
-                                    "z": {
-                                        "type": "integer",
-                                        "description": "How much to offset the position on the z-axis.",
-                                        "default": 0
-                                    }
-                                },
-                                "required": [ "condition" ]
-                            }
-                        }
-                    ]
-                },
-                "item_condition": {
-                    "type": "object",
-                    "description": "Item Conditions operate on an ItemStack.",
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "examples": [
-                                "origins:and", "origins:or", "origins:constant",
-                                "origins:armor_value", "origins:enchantment", "origins:food",
-                                "origins:harvest_level", "origins:ingredient", "origins:meat"
-                            ]
-                        },
-                        "inverted": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
-                        }
-                    },
-                    "required": [ "type" ],
-                    "allOf": [
-                        {
-                            "$comment": "#region meta Is there a better way to do this?",
-                            "if": {
-                                "properties": { "type": { "const": "origins:and" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/item_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:or" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/item_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:constant" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "value": {
-                                        "type": "boolean",
-                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
-                                    }
-                                },
-                                "required": ["value"]
-                            },
-                            "$comment": "#endregion meta"
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:armor_value" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "comparison": {
-                                        "type": "string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the item's armor value to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "integer",
-                                        "description": "Which value to compare the item's armor value to."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:enchantment" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "enchantment": {
-                                        "type": "string",
-                                        "description": "ID of the enchantment of interest.",
-                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                                        "examples": [ "minecraft:fortune" ]
-                                    },
-                                    "comparison": {
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the enchantment level the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "integer",
-                                        "description": "Which value to compare the enchantment level against."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:harvest_level" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "comparison": {
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How to compare the item's harvest level to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "integer",
-                                        "description": "Which value to compare the item's harvest level to."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:ingredient" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "ingredient": {
-                                        "type": [ "array", "object" ],
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "item": {
-                                                    "type": "string",
-                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                                                },
-                                                "tag": {
-                                                    "type": "string",
-                                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                                                }
-                                            }
-                                        },
-                                        "properties": {
-                                            "item": {
-                                                "type": "string",
-                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                                            },
-                                            "tag": {
-                                                "type": "string",
-                                                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                                            }
-                                        },
-                                        "description": "The ingredient this item must match to pass the check."
-                                    }
-                                },
-                                "required": [ "ingredient" ]
-                            }
-                        }
-                    ]
-                },
-                "damage_condition": {
-                    "type": "object",
-                    "description": "Damage Conditions operate on a combination of DamageSource and Float, allowing to check not only the type of damage dealt, but also how much damage was dealt.",
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "examples": [
-                                "origins:and", "origins:or", "origins:constant",
-                                "origins:amount", "origins:attacker", "origins:fire", "origins:name",
-                                "origins:projectile"
-                            ]
-                        },
-                        "inverted": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
-                        }
-                    },
-                    "required": [ "type" ],
-                    "allOf": [
-                        {
-                            "$comment": "#region meta Is there a better way to do this?",
-                            "if": {
-                                "properties": { "type": { "const": "origins:and" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/damage_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:or" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "conditions": {
-                                        "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/damage_condition" }
-                                    }
-                                },
-                                "required": [ "conditions" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:constant" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "value": {
-                                        "type": "boolean",
-                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
-                                    }
-                                },
-                                "required": [ "value" ]
-                            },
-                            "$comment": "#endregion meta"
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:amount" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "comparison": {
-                                        "type":"string",
-                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
-                                        "description": "How the amount of damage should be compared to the specified value."
-                                    },
-                                    "compare_to": {
-                                        "type": "number",
-                                        "description": "The value to compare the amount of damage to."
-                                    }
-                                },
-                                "required": [ "comparison", "compare_to" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:attacker" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "entity_condition": { "$ref": "#/definitions/conditions/properties/entity_condition"}
-                                }
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:name" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "description": "Name the damage source should have to pass the check. See https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/",
-                                        "examples": [
-                                            "anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
-                                            "dragonBreath", "drown", "dryout", "explosion.player",
-                                            "explosion", "fall", "fallingBlock", "fallingStalactite",
-                                            "fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
-                                            "indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
-                                            "magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
-                                            "starve", "sting", "sweetBerryBush", "thorns", "thrown",
-                                            "trident", "wither", "witherSkull"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:projectile" } },
-                                "require": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "projectile": {
-                                        "type": "string",
-                                        "description": "If set, the check will only pass if the projectile was of an entity type with this ID.",
-                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                                        "examples": [ "minecraft:spectral_arrow" ]
-                                    }
-                                }
                             }
                         }
                     ]
@@ -1465,14 +1418,14 @@
                         },
                         "inverted": {
                             "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
                         }
                     },
                     "required": [ "type" ],
                     "allOf": [
                         {
-                            "$comment": "#region meta Is there a better way to do this?",
+                            "$comment": "#region meta",
                             "if": {
                                 "properties": { "type": { "const": "origins:and" } },
                                 "required": [ "type" ]
@@ -1481,7 +1434,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -1496,7 +1451,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" }
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/fluid_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -1537,28 +1494,29 @@
                         }
                     ]
                 },
-                "biome_condition": {
+                "item_condition": {
                     "type": "object",
-                    "description": "Biome Conditions operate on a Biome.",
+                    "description": "Item Conditions operate on an ItemStack.",
                     "properties": {
                         "type": {
                             "type": "string",
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [
                                 "origins:and", "origins:or", "origins:constant",
-                                "origins:category", "origins:high_humidity", "origins:precipitation", "origins:temperature"
+                                "origins:armor_value", "origins:enchantment", "origins:food",
+                                "origins:harvest_level", "origins:ingredient", "origins:meat"
                             ]
                         },
                         "inverted": {
                             "type": "boolean",
-                            "default": false,
-                            "description": "If true, the condition acts inverted."
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
                         }
                     },
                     "required": [ "type" ],
                     "allOf": [
                         {
-                            "$comment": "#region meta Is there a better way to do this?",
+                            "$comment": "#region meta",
                             "if": {
                                 "properties": { "type": { "const": "origins:and" } },
                                 "required": [ "type" ]
@@ -1567,7 +1525,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/biome_condition" }
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/item_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -1582,7 +1542,9 @@
                                 "properties": {
                                     "conditions": {
                                         "type": "array",
-                                        "items": { "$ref": "#/definitions/conditions/properties/biome_condition" }
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/item_condition" },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": [ "conditions" ]
@@ -1606,140 +1568,91 @@
                         },
                         {
                             "if": {
-                                "properties": { "type": { "const": "origins:category" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "category": {
-                                        "$comment": "Note: Categories may change after 1.17",
-                                        "type": "string",
-                                        "description": "Which category the biome must be in order to succeed the check. See https://origins.readthedocs.io/en/latest/misc/biome_categories/.",
-                                        "examples": [
-                                            "beach", "desert", "extreme_hills", "forest", "icy", "jungle", "mesa", "mushroom",
-                                            "nether", "none", "ocean", "plains", "river", "savanna", "swamp", "taiga", "the_end"
-                                        ]
-                                    }
-                                },
-                                "required": ["category"]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:precipitation" } },
-                                "required": [ "type" ]
-                            },
-                            "then": {
-                                "properties": {
-                                    "precipitation": {
-                                        "type": "string",
-                                        "description": "Which precipitation the biome has to have in order to succeed the check. One of none, rain and snow.",
-                                        "enum": [ "none", "rain", "snow" ]
-                                    }
-                                },
-                                "required": [ "precipitation" ]
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": { "type": { "const": "origins:temperature" } },
-                                "required": [ "type" ]
+                                "properties": { "type": { "const": "origins:armor_value" } },
+                                "require": [ "type" ]
                             },
                             "then": {
                                 "properties": {
                                     "comparison": {
-                                        "type": "string",
-                                        "description": "How the temperature should be compared to the specified value.",
+                                        "description": "How to compare the item's armor value to the specified value.",
                                         "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
                                     },
                                     "compare_to": {
-                                        "type": "number",
-                                        "description": "Which value the temperature should be compared to."
+                                        "type": "integer",
+                                        "description": "Which value to compare the item's armor value to."
                                     }
                                 },
                                 "required": [ "comparison", "compare_to" ]
                             }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:enchantment" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "enchantment": {
+                                        "type": "string",
+                                        "description": "ID of the enchantment of interest.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": [ "minecraft:fortune" ]
+                                    },
+                                    "comparison": {
+                                        "description": "How to compare the enchantment level the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                        
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value to compare the enchantment level against."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:harvest_level" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "How to compare the item's harvest level to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                        
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value to compare the item's harvest level to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:ingredient" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "ingredient": {
+                                        "$ref": "#/definitions/origins_data_types/properties/ingredient",
+                                        "description": "The ingredient this item must match to pass the check."
+                                    }
+                                },
+                                "required": [ "ingredient" ]
+                            }
                         }
                     ]
                 }
-            },
-            "description": "Group for conditions"
-        },
-        "recipe": {
-            "type": "object",
-            "description": "An Object specifying a shapeless or shaped crafting recipe. For some more information, see: https://minecraft.gamepedia.com/Recipe",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                    "description": "The type of recipe. Either minecraft:crafting_shaped or minecraft:crafting_shapeless. Other recipe types are not supported.",
-                    "enum": ["minecraft:crafting_shaped", "minecraft:crafting_shapeless"]
-                },
-                "id": {
-                    "type": "string",
-                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                    "description": "An ID for this recipe. Has to be unique among all recipes, otherwise there will be a conflict."
-                },
-                "result": {
-                    "type": "object",
-                    "description": "The result of the crafting. Note that vanilla does not support NBT tags in the result.",
-                    "properties": {
-                        "item": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                        },
-                        "count": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": ["item", "count"]
-                }
-            },
-            "required": ["type", "id", "result" ],
-            "allOf": [
-                {
-                    "if": {
-                        "properties": { "type": { "const": "minecraft:crafting_shapeless" } },
-                        "required": [ "type" ]
-                    },
-                    "then": {
-                        "properties": {
-                            "ingredients": {
-                                "type": "array",
-                                "items": {"$ref": "#/definitions/origins_data_types/properties/ingredient"}
-                            }
-                        },
-                        "required": ["ingredients"]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": { "type": { "const": "minecraft:crafting_shaped" } },
-                        "required": [ "type" ]
-                    },
-                    "then": {
-                        "properties": {
-                            "pattern": {
-                                "type": "array",
-                                "description": "Specifies the pattern, with each element representing one row. Use a single character to describe one item. A space means that position is empty.",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "minItems": 1
-                            },
-                            "key": {
-                                "type": "object",
-                                "additionalProperties": {"$ref": "#/definitions/origins_data_types/properties/ingredient"}
-                            }
-                        },
-                        "required": ["pattern", "key"]
-                    }
-                }
-            ]
+            }
         },
         "actions": {
-            "$comment": "TODO add rest of action types and conditional attributes",
             "type": "object",
+            "description": "Group for actions",
             "properties": {
                 "entity_action": {
                     "type": "object",
@@ -1771,7 +1684,8 @@
                                     "actions": {
                                         "type": "array",
                                         "description": "These actions will be executed one after the other (but in the same tick).",
-                                        "items": {"$ref": "#/definitions/actions/properties/entity_action"}
+                                        "items": {"$ref": "#/definitions/actions/properties/entity_action"},
+                                        "minItems": 2
                                     }
                                 },
                                 "required": ["actions"]
@@ -1816,7 +1730,8 @@
                                                 }
                                             },
                                             "required": ["action", "weight"]
-                                        }
+                                        },
+                                        "minItems": 2
                                     }
                                 },
                                 "required": [ "actions" ]
@@ -1830,8 +1745,14 @@
                             "then": {
                                 "properties": {
                                     "condition": { "$ref": "#/definitions/conditions/properties/entity_condition"},
-                                    "if_action": { "$ref": "#/definitions/actions/properties/entity_action" },
-                                    "else_action": { "$ref": "#/definitions/actions/properties/entity_action" }
+                                    "if_action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "The action which is executed when the condition evaluates to true."
+                                    },
+                                    "else_action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "If present, this action will be executed when the condition evaluates to false."
+                                    }
                                 },
                                 "required": ["condition", "if_action"]
                             }
@@ -1853,8 +1774,10 @@
                                                 "action": {"$ref": "#/definitions/actions/properties/entity_action"},
                                                 "condition": { "$ref": "#/definitions/conditions/properties/entity_condition"}
                                             },
-                                            "required": ["action", "condition"]
-                                        }
+                                            "required": ["action", "condition"],
+                                            "additionalProperties": false
+                                        },
+                                        "minItems": 1
                                     }
                                 },
                                 "required": ["actions"]
@@ -1870,7 +1793,8 @@
                                     "action": { "$ref": "#/definitions/actions/properties/entity_action" },
                                     "ticks": {
                                         "type": "integer",
-                                        "description": "The amount of ticks until the action is executed."
+                                        "description": "The amount of ticks until the action is executed.",
+                                        "minimum": 1
                                     }
                                 },
                                 "required": ["action", "ticks"]
@@ -1900,7 +1824,6 @@
                                         "default": 0
                                     },
                                     "space": {
-                                        "type": "string",
                                         "description": "The Space to perform the velocity addition in. See: https://origins.readthedocs.io/en/latest/misc/space/",
                                         "default": "world",
                                         "enum": ["world", "local", "velocity", "velocity_normalized", "velocity_horizontal", "velocity_horizontal_normalized"]
@@ -1955,7 +1878,8 @@
                                     "effects": {
                                         "type": "array",
                                         "description": "If set, these status effects will be applied by this action.",
-                                        "items": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" }
+                                        "items": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" },
+                                        "minItems": 1
                                     }
                                 },
                                 "oneOf": [
@@ -2038,7 +1962,6 @@
                             "then": {
                                 "properties": {
                                     "equipment_slot": {
-                                        "type": "string",
                                         "description": "Which equipped item to execute the action on. One of: \"mainhand\", \"offhand\", \"head\", \"chest\", \"legs\", \"feet\".",
                                         "enum": [ "mainhand", "offhand", "head", "chest", "legs", "feet" ]
                                     },
@@ -2058,8 +1981,7 @@
                                 "properties": {
                                     "command": {
                                         "type": "string",
-                                        "description": "The command to execute with the entity as the source (i.e. @s will select the entity itself).",
-                                        "$comment": "TODO find pattern of commands."
+                                        "description": "The command to execute with the entity as the source (i.e. @s will select the entity itself)."
                                     },
                                     "permission_level": {
                                         "type": "integer",
@@ -2132,7 +2054,8 @@
                                         "$ref": "#/definitions/origins_data_types/properties/item_stack",
                                         "description": "The item stack to give to the entity."
                                     }
-                                }
+                                },
+                                "required": ["stack"]
                             }
                         },
                         {
@@ -2202,7 +2125,8 @@
                                 "properties": {
                                     "duration": {
                                         "type": "integer",
-                                        "description": "The amount of seconds the entity should burn."
+                                        "description": "The amount of seconds the entity should burn.",
+                                        "minimum": 0
                                     }
                                 },
                                 "required": ["duration"]
@@ -2230,7 +2154,8 @@
                                     "wait_time": {
                                         "type": "integer",
                                         "description": "How many ticks to wait until the cloud takes effect.",
-                                        "default": 10
+                                        "default": 10,
+                                        "minimum": 0
                                     },
                                     "effect": {
                                         "$ref": "#/definitions/origins_data_types/properties/status_effect_instance",
@@ -2239,7 +2164,8 @@
                                     "effects": {
                                         "type": "array",
                                         "description": "If set, these status effects will be applied by the cloud to entities inside of it.",
-                                        "items": {"$ref": "#/definitions/origins_data_types/properties/status_effect_instance"}
+                                        "items": {"$ref": "#/definitions/origins_data_types/properties/status_effect_instance"},
+                                        "minItems": 1
                                     }
                                 }
                             }
@@ -2315,7 +2241,8 @@
                                     "actions": {
                                         "type": "array",
                                         "description": "These actions will be executed one after the other (but in the same tick).",
-                                        "items": {"$ref": "#/definitions/actions/properties/block_action"}
+                                        "items": {"$ref": "#/definitions/actions/properties/block_action"},
+                                        "minItems": 2
                                     }
                                 },
                                 "required": ["actions"]
@@ -2360,7 +2287,8 @@
                                                 }
                                             },
                                             "required": ["action", "weight"]
-                                        }
+                                        },
+                                        "minItems": 2
                                     }
                                 },
                                 "required": [ "actions" ]
@@ -2407,8 +2335,7 @@
                                 "properties": {
                                     "command": {
                                         "type": "string",
-                                        "description": "The command to execute.",
-                                        "$comment": "TODO find pattern of commands."
+                                        "description": "The command to execute."
                                     },
                                     "permission_level": {
                                         "type": "integer",
@@ -2450,9 +2377,9 @@
                                 },
                                 "required": ["action"],
                                 "anyOf": [
-                                    {"required": ["x"]},
-                                    {"required": ["y"]},
-                                    {"required": ["z"]}
+                                    {"not": {"properties": {"x":  {"const": 0 } } } },
+                                    {"not": {"properties": {"y":  {"const": 0 } } } },
+                                    {"not": {"properties": {"z":  {"const": 0 } } } }
                                 ]
                             }
                         }
@@ -2484,7 +2411,8 @@
                                     "actions": {
                                         "type": "array",
                                         "description": "These actions will be executed one after the other (but in the same tick).",
-                                        "items": {"$ref": "#/definitions/actions/properties/item_action"}
+                                        "items": {"$ref": "#/definitions/actions/properties/item_action"},
+                                        "minItems": 2
                                     }
                                 },
                                 "required": ["actions"]
@@ -2529,7 +2457,8 @@
                                                 }
                                             },
                                             "required": ["action", "weight"]
-                                        }
+                                        },
+                                        "minItems": 2
                                     }
                                 },
                                 "required": [ "actions" ]
@@ -2567,13 +2496,32 @@
                         }
                     ]
                 }
-            },
-            "description": "Group for actions"
+            }
         },
         "origins_data_types": {
-            "$comment": "TODO add rest of types",
             "type": "object",
+            "description": "Group for https://origins.readthedocs.io/en/latest/data_types/",
+            "$comment": "As Comparison and Modifier Operation are basicaly just enum's they are not included in this list.",
             "properties": {
+                "modifier": {
+                    "type": "object",
+                    "description": "An Object used to specify how a value should be modified.",
+                    "properties": {
+                        "operation": {
+                            "description": "The operation which will be performed by this modifier.",
+                            "enum": [ "addition", "multiply_base", "multiply_total" ]
+                        },
+                        "value": {
+                            "type": "number",
+                            "description": "The value with which to apply the operation to the value."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "A descriptive name for the modifier, describing where it comes from."
+                        }
+                    },
+                    "required": [ "operation", "value" ]
+                },
                 "attributed_modifier": {
                     "type": "object",
                     "description": "An Object used to specify how a specific attribute should be modified. Basically an Attribute Modifier with an additional attribute field.",
@@ -2584,44 +2532,103 @@
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [ "minecraft:generic.attack_speed" ]
                         },
-                        "name": {
-                            "type": "string",
-                            "description": "A descriptive name for the modifier, describing where it comes from."
-                        },
                         "operation": {
-                            "type": "string",
                             "description": "The operation which will be performed by this modifier.",
                             "enum": [ "addition", "multiply_base", "multiply_total" ]
                         },
                         "value": {
                             "type": "number",
                             "description": "The value with which to apply the operation to the value."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "A descriptive name for the modifier, describing where it comes from."
                         }
                     },
                     "required": [ "attribute", "operation", "value" ]
                 },
-                "modifier": {
+                "crafting_recipe": {
                     "type": "object",
-                    "description": "An Object used to specify how a value should be modified.",
+                    "description": "An Object specifying a shapeless or shaped crafting recipe. For some more information, see: https://minecraft.gamepedia.com/Recipe",
                     "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "A descriptive name for the modifier, describing where it comes from."
+                        "type": {
+                            "description": "The type of recipe. Either minecraft:crafting_shaped or minecraft:crafting_shapeless. Other recipe types are not supported.",
+                            "enum": ["minecraft:crafting_shaped", "minecraft:crafting_shapeless"]
                         },
-                        "operation": {
+                        "id": {
                             "type": "string",
-                            "description": "The operation which will be performed by this modifier.",
-                            "enum": [ "addition", "multiply_base", "multiply_total" ]
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "description": "An ID for this recipe. Has to be unique among all recipes, otherwise there will be a conflict."
                         },
-                        "value": {
-                            "type": "number",
-                            "description": "The value with which to apply the operation to the value."
+                        "result": {
+                            "type": "object",
+                            "description": "The result of the crafting. Note that vanilla does not support NBT tags in the result.",
+                            "properties": {
+                                "item": {
+                                    "type": "string",
+                                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                                },
+                                "count": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": ["item", "count"],
+                            "additionalProperties": false
                         }
                     },
-                    "required": [ "operation", "value" ]
+                    "required": ["type", "id", "result" ],
+                    "additionalProperties": false,
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "minecraft:crafting_shapeless" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "ingredients": {
+                                        "type": "array",
+                                        "description": "These items need to be put in the crafting grid for the recipe.",
+                                        "items": {"$ref": "#/definitions/origins_data_types/properties/ingredient"},
+                                        "uniqueItems": false,
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": ["ingredients"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "minecraft:crafting_shaped" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "pattern": {
+                                        "$comment": "As some mods add crafting tables with larger than 3 by 3 grids I've not added a maxItems restiction",
+                                        "type": "array",
+                                        "description": "Specifies the pattern, with each element representing one row. Use a single character to describe one item. A space means that position is empty.",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 1
+                                    },
+                                    "key": {
+                                        "type": "object",
+                                        "patternProperties": {
+                                            "^[^\\ ]$": {"$ref": "#/definitions/origins_data_types/properties/ingredient"}
+                                        },
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": ["pattern", "key"]
+                            }
+                        }
+                    ]
                 },
                 "damage_source": {
                     "type": "object",
+                    "description": "An Object used to specify how to deal damage to an entity.",
                     "properties": {
                         "name": {
                             "type": "string",
@@ -2639,31 +2646,32 @@
                         },
                         "bypasses_armor": {
                             "type": "boolean",
-                            "defaut": false,
-                            "description": "When true, armor values are not taken into account when calculating the actual damage amount taken."
+                            "description": "When true, armor values are not taken into account when calculating the actual damage amount taken.",
+                            "default": false
                         },
                         "fire": {
                             "type": "boolean",
-                            "defaut": false,
-                            "description": "When true, the damage will be considered fire damage."
+                            "description": "When true, the damage will be considered fire damage.",
+                            "default": false
                         },
                         "unblockable": {
                             "type": "boolean",
-                            "defaut": false,
-                            "description": "When true, the damage will be unblockable (not reduced by resistance effects or protection enchantments)."
+                            "description": "When true, the damage will be unblockable (not reduced by resistance effects or protection enchantments).",
+                            "default": false
                         },
                         "magic": {
                             "type": "boolean",
-                            "defaut": false,
-                            "description": "When true, the damage will be considered magic damage."
+                            "description": "When true, the damage will be considered magic damage.",
+                            "default": false
                         },
                         "out_of_world": {
                             "type": "boolean",
-                            "defaut": false,
-                            "description": "When true, the damage will be considered \"out of world\" damage, i.e. damage from falling into the void."
+                            "description": "When true, the damage will be considered \"out of world\" damage, i.e. damage from falling into the void.",
+                            "default": false
                         }
                     },
-                    "required": [ "name", "bypasses_armor", "fire", "unblockable", "magic", "out_of_world" ]
+                    "required": [ "name" ],
+                    "additionalProperties": false
                 },
                 "hud_render": {
                     "type": "object",
@@ -2671,40 +2679,36 @@
                     "properties": {
                         "should_render": {
                             "type": "boolean",
-                            "default": true,
-                            "description": "Whether the bar should be visible or not."
+                            "description": "Whether the bar should be visible or not.",
+                            "default": true
                         },
                         "sprite_location": {
                             "type": "string",
+                            "description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod.",
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "default": "origins:textures/gui/resource_bar.png",
-                            "description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod."
+                            "examples": [
+                                "origins:textures/gui/resource_bar.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+                                "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
+                                "origins:textures/gui/community/huang/resource_bar_01.png",
+                                "origins:textures/gui/community/huang/resource_bar_02.png"
+                            ]
                         },
                         "bar_index": {
                             "type": "integer",
+                            "description": "The indexed position of the bar on the sprite to use. Please note that indexes start at 0.",
                             "default": 0,
-                            "description": "The indexed position of the bar on the sprite to use. Please note that indexes start at 0."
+                            "minimum": 0
                         },
-                        "condition": { "$ref": "#/definitions/conditions/properties/entity_condition" }
-                    }
-                },
-                "key": {
-                    "type": "object",
-                    "properties": {
-                        "key": {
-                            "type": "string",
-                            "description": "A string specifying the keybinding. See https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
-                            "pattern": "^[a-z0-9\\-\\_\\.]+$",
-                            "examples": [ "key.origins.primary_active", "key.origins.secondary_active" ]
-                        },
-                        "continuous": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "Whether the keybinding should only trigger the power on the first tick the key is held down, or, if set to true, continuously on each tick while the key is held."
+                        "condition": {
+                            "$ref": "#/definitions/conditions/properties/entity_condition",
+                            "description": "If set (and should_render is true), the bar will only display when the entity with the power fulfills this condition."
                         }
                     },
-                    "description": "An Object which defines a keybinding, used in active powers to define which key they react to.",
-                    "required": [ "key" ]
+                    "additionalProperties": false
                 },
                 "ingredient": {
                     "type": ["object", "array"],
@@ -2722,7 +2726,11 @@
                                 "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                                 "description": "ID of an item tag. Will be ignored if item is set."
                             }
-                        }
+                        },
+                        "anyOf": [
+                            {"required": ["item"]},
+                            {"required": ["tag"]}
+                        ]
                     },
                     "properties": {
                         "item": {
@@ -2735,97 +2743,132 @@
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "description": "ID of an item tag. Will be ignored if item is set."
                         }
-                    }
+                    },
+                    "additionalProperties": false,
+                    "anyOf": [
+                        {"required": ["item"]},
+                        {"required": ["tag"]},
+                        {"minItems": 2}
+                    ]
+                },
+                "item_stack": {
+                    "type": "object",
+                    "description": "An Object which defines a new item stack.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "ID of a registered item.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "description": "Size of the stack.",
+                            "default": 1,
+                            "minimum": 1
+                        },
+                        "tag": {
+                            "$comment": "Is there a better pattern for NBT data?",
+                            "type": "string",
+                            "description": "NBT data of the item.",
+                            "pattern": "\\{.*\\:.*\\}"
+                        }
+                    },
+                    "required": ["item"],
+                    "additionalProperties": false
+                },
+                "key": {
+                    "type": "object",
+                    "description": "An Object which defines a keybinding, used in active powers to define which key they react to.",
+                    "properties": {
+                        "key": {
+                            "type": "string",
+                            "description": "A string specifying the keybinding. See https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
+                            "pattern": "^[a-z0-9\\-\\_\\.]+$",
+                            "examples": [ "key.origins.primary_active", "key.origins.secondary_active" ]
+                        },
+                        "continuous": {
+                            "type": "boolean",
+                            "description": "Whether the keybinding should only trigger the power on the first tick the key is held down, or, if set to true, continuously on each tick while the key is held.",
+                            "default": false
+                        }
+                    },
+                    "required": [ "key" ],
+                    "additionalProperties": false
+                },
+                "positioned_item_stack": {
+                    "type": "object",
+                    "description": "An Object which defines a new item stack alongside a position in an inventory. Basically an Item Stack with a slot field.",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "ID of a registered item.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                        },
+                        "amount": {
+                            "type":"integer",
+                            "description": "Size of the stack.",
+                            "default": 1,
+                            "minimum": 1
+                        },
+                        "tag": {
+                            "$comment": "Is there a better pattern for NBT data?",
+                            "type": "string",
+                            "description": "NBT data of the item.",
+                            "pattern": "\\{.*\\:.*\\}"
+                        },
+                        "slot": {
+                            "$comment": "Because certian mods add inventory slots I've not specified a maximum",
+                            "type": "integer",
+                            "description": "Inventory slot position of the stack. If not specified, will be the first free slot in the inventory. See https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["item"],
+                    "additionalProperties": false
                 },
                 "status_effect_instance": {
                     "type": "object",
                     "properties": {
                         "effect": {
                             "type": "string",
+                            "description": "ID of the status effect.",
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "description": "ID of the status effect."
+                            "examples": ["minecraft:slowness"]
                         },
                         "duration": {
                             "type": "integer",
+                            "description": "Duration of the status effect in ticks.",
                             "default": 100,
-                            "description": "Duration of the status effect in ticks."
+                            "minimum": 1
                         },
                         "amplifier": {
                             "type": "integer",
-                            "default": 0,
-                            "description": "Amplifier of the status effect."
+                            "description": "Amplifier of the status effect.",
+                            "default": 0
                         },
                         "is_ambient": {
                             "type": "boolean",
-                            "default": false,
-                            "description": "Whether the effect counts as an ambient effect."
+                            "description": "Whether the effect counts as an ambient effect.",
+                            "default": false
                         },
                         "show_particles": {
                             "type": "boolean",
-                            "default": true,
-                            "description": "Whether the status effect will spawn particles on the player."
+                            "description": "Whether the status effect will spawn particles on the player.",
+                            "default": true
                         },
                         "show_icon": {
                             "type": "boolean",
-                            "default": true,
-                            "description": "Whether the status effect will show an icon on the HUD."
+                            "description": "Whether the status effect will show an icon on the HUD.",
+                            "default": true
                         }
                     },
-                    "required": ["effect"]
-                },
-                "positioned_item_stack": {
-                    "type": "object",
-                    "properties": {
-                        "item": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "description": "ID of a registered item."
-                        },
-                        "amount": {
-                            "type":"integer",
-                            "default": 1,
-                            "minimum": 1,
-                            "description": "Size of the stack."
-                        },
-                        "tag": {
-                            "$comment": "TODO: Find pattern for NBT data",
-                            "type":"string",
-                            "description": "NBT data of the item."
-                        },
-                        "slot": {
-                            "type":"integer",
-                            "description": "Inventory slot position of the stack. If not specified, will be the first free slot in the inventory. See https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
-                            "minimum": 0
-                        }
-                    },
-                    "required": ["item"]
-                },
-                "item_stack": {
-                    "type": "object",
-                    "properties": {
-                        "item": {
-                            "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                            "description": "ID of a registered item."
-                        },
-                        "amount": {
-                            "type": "integer",
-                            "default": 1,
-                            "minimum": 1,
-                            "description": "Size of the stack."
-                        },
-                        "tag": {
-                            "$comment": "TODO: Find pattern for NBT data",
-                            "type": "string",
-                            "description": "NBT data of the item."
-                        }
-                    },
-                    "required": ["item"]
+                    "required": ["effect"],
+                    "additionalProperties": false
                 }
-            },
-            "description": "Group for https://origins.readthedocs.io/en/latest/data_types/"
+            }
         }
     },
+    "additionalProperties": false,
     "allOf": [
         {
             "$comment": "#region Regular types",
@@ -2835,16 +2878,19 @@
             },
             "then": {
                 "properties": {
-                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/attributed_modifier",
+                        "description": "If specified, this modifier will be applied to their corresponding attribute."
+                    },
                     "modifiers": {
                         "type": "array",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
-                        "description": "If specified, these modifiers will be applied to their corresponding attributes."
+                        "description": "If specified, these modifiers will be applied to their corresponding attributes.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" }
                     },
                     "update_health": {
                         "type": "boolean",
-                        "default": true,
-                        "description": "When true, the player's health percentage will update to match their new maximum health."
+                        "description": "When true, the player's health percentage will update to match their new maximum health.",
+                        "default": true
                     }
                 },
                 "oneOf": [
@@ -2862,15 +2908,16 @@
                 "properties": {
                     "interval": {
                         "type": "integer",
-                        "minimum": 1,
-                        "description": "Interval between being set on fire, in ticks."
+                        "description": "Interval between being set on fire, in ticks.",
+                        "minimum": 1
                     },
                     "burn_duration": {
                         "type": "integer",
-                        "minimum": 0,
-                        "description": "Time the fire should last on the player each time it is set, in seconds."
+                        "description": "Time the fire should last on the player each time it is set, in seconds.",
+                        "minimum": 0
                     }
-                }
+                },
+                "required": ["interval", "burn_duration"]
             }
         },
         {
@@ -2882,11 +2929,11 @@
                 "properties": {
                     "allow_holding": {
                         "type": "boolean",
-                        "default": true,
-                        "description": "If true, the player is able to hold onto blocks."
+                        "description": "If true, the player is able to hold onto blocks.",
+                        "default": true
                     },
                     "hold_condition": {
-                        "entity_condition": { "$ref": "#/definitions/conditions/properties/entity_condition" },
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
                         "description": "If set and allow_holding is true, players with the power who are sneaking and meet this condition are \"holding onto the block\", meaning they won't be affected by gravity."
                     }
                 }
@@ -2899,16 +2946,19 @@
             },
             "then": {
                 "properties": {
-                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/attributed_modifier",
+                        "description": "If specified, this modifier will be applied to their corresponding attribute."
+                    },
                     "modifiers": {
                         "type": "array",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
-                        "description": "If specified, these modifiers will be applied to their corresponding attributes."
+                        "description": "If specified, these modifiers will be applied to their corresponding attributes.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" }
                     },
                     "tick_rate": {
                         "type": "integer",
-                        "default": 20,
-                        "description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost."
+                        "description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost.",
+                        "default": 20
                     }
                 },
                 "oneOf": [
@@ -2931,10 +2981,16 @@
                     "feet": { "$ref": "#/definitions/conditions/properties/item_condition" },
                     "tick_rate": {
                         "type": "integer",
-                        "default": 80,
-                        "description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost."
+                        "description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost.",
+                        "default": 80
                     }
-                }
+                },
+                "anyOf": [
+                    {"required": ["head"]},
+                    {"required": ["chest"]},
+                    {"required": ["legs"]},
+                    {"required": ["feet"]}
+                ]
             }
         },
         {
@@ -2946,7 +3002,8 @@
                 "properties": {
                     "cooldown": {
                         "type": "integer",
-                        "description": "Cooldown duration in ticks."
+                        "description": "Cooldown duration in ticks.",
+                        "minimum": 0
                     },
                     "hud_render": { "$ref": "#/definitions/origins_data_types/properties/hud_render" }
                 },
@@ -2962,11 +3019,13 @@
                 "properties": {
                     "interval": {
                         "type": "integer",
-                        "description": "Duration of ticks to wait between the damage."
+                        "description": "Duration of ticks to wait between the damage.",
+                        "minimum": 0
                     },
                     "onset_delay": {
                         "type": "integer",
-                        "description": "How many ticks the power has to be active in order to apply the first damage. If not set, this will be equal to interval."
+                        "description": "How many ticks the power has to be active in order to apply the first damage. If not set, this will be equal to interval.",
+                        "minimum": 0
                     },
                     "damage": {
                         "type": "number",
@@ -2980,7 +3039,8 @@
                     "protection_enchantment": {
                         "type": "string",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                        "description": "If set, the total amount of levels of this enchantment will be counted on the player's armor to increase the onset_delay."
+                        "description": "If set, the total amount of levels of this enchantment will be counted on the player's armor to increase the onset_delay.",
+                        "minimum": 0
                     },
                     "protection_effectiveness": {
                         "type": "number",
@@ -3001,17 +3061,24 @@
                     "effect": {
                         "type": "string",
                         "description": "If specified, the effect with this ID can not be applied to the player.",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "examples": ["minecraft:weakness", "minecraft:strength"]
                     },
                     "effects": {
                         "type": "array",
                         "description": "If specified, the effects with these IDs can not be applied to the player.",
                         "items": {
                             "type": "string",
-                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                        }
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": ["minecraft:weakness", "minecraft:strength"]
+                        },
+                        "minItems": 2
                     }
-                }
+                },
+                "oneOf": [
+                    {"required": ["effect"]},
+                    {"required": ["effects"]}
+                ]
             }
         },
         {
@@ -3036,7 +3103,10 @@
             },
             "then": {
                 "properties": {
-                    "entity_condition": { "$ref": "#/definitions/conditions/properties/entity_condition" }
+                    "entity_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, only entities which fulfill this condition will glow for the player with this power."
+                    }
                 }
             }
         },
@@ -3048,7 +3118,6 @@
             "then": {
                 "properties": {
                     "group": {
-                        "type": "string",
                         "description": "The group to associate with the player. One of default, undead, arthropod, illager, or aquatic. See https://minecraft.fandom.com/wiki/Mob#Classification for more information about the entity groups",
                         "enum": [ "default", "undead", "arthropod", "illager", "aquatic" ]
                     }
@@ -3065,7 +3134,8 @@
                 "properties": {
                     "interval": {
                         "type": "integer",
-                        "description": "Duration of ticks to wait between applying exhaustion."
+                        "description": "Duration of ticks to wait between applying exhaustion.",
+                        "minimum": 1
                     },
                     "exhaustion": {
                         "type": "number",
@@ -3089,13 +3159,15 @@
                     },
                     "cooldown": {
                         "type": "integer",
-                        "description": "The number of ticks the player has to wait between uses of this power."
+                        "description": "The number of ticks the player has to wait between uses of this power.",
+                        "minimum": 1
                     },
                     "hud_render": { "$ref": "#/definitions/origins_data_types/properties/hud_render" },
                     "count": {
                         "type": "integer",
+                        "description": "The amount of projectiles to fire each use.",
                         "default": 1,
-                        "description": "The amount of projectiles to fire each use."
+                        "minimum": 0
                     },
                     "speed": {
                         "type": "number",
@@ -3115,7 +3187,7 @@
                     "tag": {
                         "type": "string",
                         "description": "NBT data of the entity.",
-                        "$comment": "TODO: search for a patern for NBT data"
+                        "pattern": "\\{.*\\:.*\\}"
                     },
                     "key": { "$ref": "#/definitions/origins_data_types/properties/key" }
                 },
@@ -3131,15 +3203,18 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "default": "container.inventory",
-                        "description": "The translation key or literal text to use as the display name for the inventory."
+                        "description": "The translation key or literal text to use as the display name for the inventory.",
+                        "default": "container.inventory"
                     },
                     "drop_on_death": {
                         "type": "boolean",
                         "default": false,
                         "description": "When this is set to true, the player will drop the items in the inventory on death (vanishing items will vanish!)."
                     },
-                    "drop_on_death_filter": { "$ref": "#/definitions/conditions/properties/item_condition" },
+                    "drop_on_death_filter": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If this is set, only item stacks matching this condition will be dropped on death."
+                    },
                     "key": { "$ref": "#/definitions/origins_data_types/properties/key" }
                 }
             }
@@ -3166,7 +3241,10 @@
             },
             "then": {
                 "properties": {
-                    "damage_condition": { "$ref": "#/definitions/conditions/properties/damage_condition" }
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "Specifies which damage the player will be immune to."
+                    }
                 },
                 "required": ["damage_condition"]
             }
@@ -3180,7 +3258,8 @@
                 "properties": {
                     "cooldown": {
                         "type": "integer",
-                        "description": "The number of ticks the player has to wait between uses of this power."
+                        "description": "The number of ticks the player has to wait between uses of this power.",
+                        "minimum": 1
                     },
                     "speed": {
                         "type": "number",
@@ -3253,7 +3332,13 @@
                         "minimum": 0,
                         "maximum": 1
                     }
-                }
+                },
+                "anyOf": [
+                    {"required": ["red"]},
+                    {"required": ["green"]},
+                    {"required": ["blue"]},
+                    {"required": ["alpha"]}
+                ]
             }
         },
         {
@@ -3296,7 +3381,8 @@
                     },
                     "frequency": {
                         "type": "integer",
-                        "description": "How often the particles should spawn (interval in ticks)."
+                        "description": "How often the particles should spawn (interval in ticks).",
+                        "minimum": 1
                     }
                 },
                 "required": ["particle", "frequency"]
@@ -3311,22 +3397,25 @@
                 "properties": {
                     "blacklist": {
                         "type": "boolean",
-                        "default": false,
-                        "description": "If set to true, the block_condition will define which blocks the player can NOT move through."
+                        "description": "If set to true, the block_condition will define which blocks the player can NOT move through.",
+                        "default": false
                     },
                     "block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
                     "render_type": {
-                        "type": "string",
+                        "description": "Defines how the phasing will look when inside a block.",
                         "enum": ["remove_blocks", "blindness"],
-                        "default": "blindness",
-                        "description": "Defines how the phasing will look when inside a block."
+                        "default": "blindness"
                     },
                     "view_distance": {
                         "type": "number",
                         "default": 10.0,
                         "description": "How far the player can look through walls while phasing with the \"blindness\" render_type."
                     },
-                    "phase_down_condition": { "$ref": "#/definitions/conditions/properties/entity_condition" }
+                    "phase_down_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "When specified, this condition needs to be fulfilled in order for blocks below the player to become phasable. Defaults to a condition which checks for sneaking.",
+                        "default": {"type": "origins:and", "conditions": [{"type": "origins:sneaking"}, {"type": "origins:on_block"}]}
+                    }
                 }
             }
         },
@@ -3337,7 +3426,10 @@
             },
             "then": {
                 "properties": {
-                    "recipe": { "$ref": "#/definitions/recipe" }
+                    "recipe": {
+                        "$ref": "#/definitions/origins_data_types/properties/crafting_recipe",
+                        "description": "The recipe to craft, including an id field which can be any arbitrary (but unique) identifier."
+                    }
                 },
                 "required": ["recipe"]
             }
@@ -3362,8 +3454,14 @@
                         "type": "integer",
                         "description": "The value of the resource when the player first chooses an origin with this power. If not set, this will be the same as min."
                     },
-                    "min_action": { "$ref": "#/definitions/actions/properties/entity_action" },
-                    "max_action": { "$ref": "#/definitions/actions/properties/entity_action" }
+                    "min_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player whenever the minimum value is reached."
+                    },
+                    "max_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player whenever the maximum value is reached."
+                    }
                 },
                 "required": ["min", "max", "hud_render"]
             }
@@ -3380,7 +3478,12 @@
                     "legs": { "$ref": "#/definitions/conditions/properties/item_condition" },
                     "feet": { "$ref": "#/definitions/conditions/properties/item_condition" }
                 },
-                "minProperties": 1
+                "anyOf": [
+                    {"required": ["head"]},
+                    {"required": ["chest"]},
+                    {"required": ["legs"]},
+                    {"required": ["feet"]}
+                ]
             }
         },
         {
@@ -3422,11 +3525,15 @@
                     "effects": {
                         "type": "array",
                         "description": "If set, these status effects will be applied by this power.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" },
+                        "minItems": 2
                     }
                 },
                 "required": ["min_stacks", "max_stacks", "duration_per_stack"],
-                "minProperties": 4
+                "oneOf": [
+                    {"required": ["effect"]},
+                    {"required": ["effects"]}
+                ]
             }
         },
         {
@@ -3437,14 +3544,13 @@
             "then": {
                 "properties": {
                     "stack": {
-                        "$ref": "#/definitions/origins_data_types/properties/positioned_item_stack"
+                        "$ref": "#/definitions/origins_data_types/properties/positioned_item_stack",
+                        "description": "If set, this item stack will be given to the player, optionally into the specified inventory slot."
                     },
                     "stacks": {
                         "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/origins_data_types/properties/positioned_item_stack"
-                        },
-                        "minItems": 1,
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/positioned_item_stack" },
+                        "minItems": 2,
                         "description": "If set, these item stacks will be given to the player, optionally into the specified inventory slots."
                     },
                     "recurrent": {
@@ -3467,18 +3573,18 @@
             "then": {
                 "properties": {
                     "active_by_default": {
-                        "type":"boolean",
-                        "default":true,
-                        "description": "Whether this power starts in the on or off state."
+                        "type": "boolean",
+                        "description": "Whether this power starts in the on or off state.",
+                        "default": true
                     },
                     "strength": {
-                        "type":"number",
+                        "type": "number",
                         "description": "How strong the night vision effect is.",
                         "default": 1.0,
                         "minimum": 0,
                         "maximum": 1
                     },
-                    "key": {"$ref": "#/definitions/origins_data_types/properties/key"}
+                    "key": { "$ref": "#/definitions/origins_data_types/properties/key" }
                 }
             }
         },
@@ -3491,8 +3597,8 @@
                 "properties": {
                     "active_by_default": {
                         "type":"boolean",
-                        "default":true,
-                        "description": "Whether this power starts in the on or off state."
+                        "description": "Whether this power starts in the on or off state.",
+                        "default":true
                     },
                     "key": {
                         "$ref": "#/definitions/origins_data_types/properties/key",
@@ -3511,8 +3617,8 @@
                 "properties": {
                     "fluid": {
                         "type": "string",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "description": "ID of the fluid tag on which the player should be able to walk.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "examples": ["minecraft:water", "minecraft:lava"]
                     }
                 },
@@ -3541,7 +3647,7 @@
                         "description": "If set, the actions will only trigger when this block condition is met by the broken block."
                     },
                     "only_when_harvested": {
-                        "type":"boolean",
+                        "type": "boolean",
                         "description": "If this is true, the actions will only execute when the player succeeds in harvesting the block (e.g. they will not trigger when stone is broken by hand).",
                         "default": true
                     }
@@ -3686,6 +3792,7 @@
                         "description": "The action to execute on the first interval tick in which the condition became false."
                     }
                 },
+                "required": ["interval"],
                 "anyOf": [
                     {"required": ["entity_action"]},
                     {"required": ["rising_action"]},
@@ -3898,7 +4005,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the break speed.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     }
                 },
                 "oneOf": [
@@ -3925,7 +4033,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the damage amount.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "target_condition": {
                         "$ref": "#/definitions/conditions/properties/entity_condition",
@@ -3964,7 +4073,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the damage amount.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "target_condition": {
                         "$ref": "#/definitions/conditions/properties/entity_condition",
@@ -3999,7 +4109,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the exhaustion amount.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     }
                 },
                 "oneOf": [
@@ -4046,7 +4157,8 @@
                     "food_modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the food amount gained by eating.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "saturation_modifier": {
                         "$ref": "#/definitions/origins_data_types/properties/modifier",
@@ -4055,7 +4167,8 @@
                     "saturation_modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the saturation gained by eating.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "entity_action": {
                         "$ref": "#/definitions/actions/properties/entity_action",
@@ -4091,7 +4204,11 @@
                         "type": "boolean",
                         "description": "When true, the player will be able to harvest the blocks. When false, the player will not be able to harvest the blocks."
                     }
-                }
+                },
+                "anyOf": [
+                    {"required": ["block_condition"]},
+                    {"required": ["allow"]}
+                ]
             }
         },
         {
@@ -4103,12 +4220,13 @@
                 "properties": {
                     "modifier": {
                         "$ref": "#/definitions/origins_data_types/properties/modifier",
-                        "description": "If set, this modifier will apply to the exhaustion amount."
+                        "description": "If set, this modifier will apply to the upwards jump velocity."
                     },
                     "modifiers": {
                         "type": "array",
-                        "description": "If set, these modifiers will apply to the exhaustion amount.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "description": "If set, these modifiers will apply to the upwards jump velocity.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "entity_action": {
                         "$ref": "#/definitions/actions/properties/entity_action",
@@ -4141,7 +4259,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the speed in lava.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     }
                 },
                 "oneOf": [
@@ -4171,7 +4290,7 @@
                     },
                     "structure": {
                         "type": "string",
-                        "description": "",
+                        "description": "ID of the structure the player should spawn in. Keep in mind that the structure needs to generate in the specified dimension!",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                         "examples": [ "minecraft:endcity" ]
                     },
@@ -4187,17 +4306,13 @@
                     }
                 },
                 "required": ["dimension"],
-                "allOf": [
-                    {
-                        "if": {
-                            "properties": { "spawn_strategy": { "const": "default" } },
-                            "required": [ "spawn_strategy" ]
-                        },
-                        "then": {
-                            "required": ["dimension_distance_multiplier"]
-                        }
-                    }
-                ]
+                "if": {
+                    "properties": { "spawn_strategy": { "const": "default" } },
+                    "required": [ "spawn_strategy" ]
+                },
+                "then": {
+                    "required": ["dimension_distance_multiplier"]
+                }
             }
         },
         {
@@ -4219,7 +4334,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the damage amount.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     },
                     "target_condition": {
                         "$ref": "#/definitions/conditions/properties/entity_condition",
@@ -4254,7 +4370,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the swim speed.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     }
                 },
                 "oneOf": [
@@ -4277,7 +4394,8 @@
                     "modifiers": {
                         "type": "array",
                         "description": "If set, these modifiers will apply to the experience gained.",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
                     }
                 },
                 "oneOf": [

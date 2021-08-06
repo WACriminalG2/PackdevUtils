@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Origins origin JSON schema by S_K_Tiger",
+    "description": "See: https://origins.readthedocs.io/en/latest/origin_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues or https://github.com/WACriminalG2/PackdevUtils/issues",
     "type": "object",
     "properties": {
         "powers": {
@@ -28,8 +29,14 @@
             }
         },
         "icon": {
-            "type": "string",
-            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen."
+            "$ref": "#/definitions/item_stack",
+            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen.",
+            "examples": [{"item": "minecraft:golden_helmet"}]
+        },
+        "unchoosable": {
+            "type": "boolean",
+            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade.",
+            "default": false
         },
         "order": {
             "type": "integer",
@@ -37,10 +44,10 @@
         },
         "impact": {
             "type": "integer",
+            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high).",
             "minimum": 0,
             "maximum": 3,
-            "default": 0,
-            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high)."
+            "default": 0
         },
         "name": {
             "type": "string",
@@ -50,36 +57,60 @@
             "type": "string",
             "description": "The description of the origin. Can be a translation key which is localized in a language file, or the literal description."
         },
-        "unchoosable": {
-            "type": "boolean",
-            "default": false,
-            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade."
-        },
         "upgrades": {
             "type": "array",
+            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.",
             "items": {
                 "type": "object",
                 "properties": {
                     "condition": {
                         "type": "string",
+                        "description": "ID of an advancement which should trigger this upgrade.",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "origin": {
                         "type": "string",
+                        "description": "ID of an origin the origin with this upgrade should upgrade to.",
                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
                     },
                     "announcement": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "A text which will show up in the local chat of the player in a pretty color. If none is specified, there won't be a message."
                     }
                 },
                 "required": [ "condition", "origin" ]
-            },
-            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin."
+            }
         },
         "loading_priority": {
             "type": "integer",
             "default": 0,
             "description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
+        }
+    },
+    "definitions": {
+        "item_stack": {
+            "type": "object",
+            "description": "An Object which defines a new item stack.",
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "ID of a registered item.",
+                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "Size of the stack.",
+                    "default": 1,
+                    "minimum": 1
+                },
+                "tag": {
+                    "$comment": "Is there a better pattern for NBT data?",
+                    "type": "string",
+                    "description": "NBT data of the item.",
+                    "pattern": "\\{.*\\:.*\\}"
+                }
+            },
+            "required": ["item"]
         }
     }
 }
