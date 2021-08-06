@@ -4,7 +4,6 @@
     "type": "object",
     "properties": {
         "type": {
-            "$comment": "TODO add more conditional attributes",
             "type": "string",
             "description": "ID of the desired Power Type.",
             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
@@ -26,7 +25,8 @@
 
                 "origins:modify_break_speed", "origins:modify_damage_dealt", "origins:modify_damage_taken", "origins:modify_exhaustion",
                 "origins:modify_falling", "origins:modify_food", "origins:modify_harvest", "origins:modify_jump",
-                "origins:modify_lava_speed", "origins:modify_projectile_damage", "origins:modify_swim_speed", "origins:modify_xp_gain",
+                "origins:modify_lava_speed", "origins:modify_player_spawn", "origins:modify_projectile_damage", "origins:modify_swim_speed",
+                "origins:modify_xp_gain",
 
                 "origins:prevent_block_selection", "origins:prevent_block_use", "origins:prevent_death", "origins:prevent_entity_render",
                 "origins:prevent_item_use", "origins:prevent_sleep"
@@ -350,7 +350,7 @@
                                 "properties": {
                                     "dimension": {
                                         "type": "string",
-                                        "description": "ID of the dimension the player needs to be in for this condition to evaluate to true. Vanilla dimensions are minecraft:overworld, minecraft:the_nether and minecraft:the_end, but IDs of custom/modded dimensions should also work.",
+                                        "description": "ID of the dimension the player needs to be in for this condition to evaluate to true.",
                                         "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                                         "examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
                                     }
@@ -2574,8 +2574,9 @@
             "$comment": "TODO add rest of types",
             "type": "object",
             "properties": {
-                "modifier": {
+                "attributed_modifier": {
                     "type": "object",
+                    "description": "An Object used to specify how a specific attribute should be modified. Basically an Attribute Modifier with an additional attribute field.",
                     "properties": {
                         "attribute": {
                             "type": "string",
@@ -2597,8 +2598,27 @@
                             "description": "The value with which to apply the operation to the value."
                         }
                     },
-                    "description": "If specified, this modifier will be applied to its corresponding attribute.",
                     "required": [ "attribute", "operation", "value" ]
+                },
+                "modifier": {
+                    "type": "object",
+                    "description": "An Object used to specify how a value should be modified.",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "A descriptive name for the modifier, describing where it comes from."
+                        },
+                        "operation": {
+                            "type": "string",
+                            "description": "The operation which will be performed by this modifier.",
+                            "enum": [ "addition", "multiply_base", "multiply_total" ]
+                        },
+                        "value": {
+                            "type": "number",
+                            "description": "The value with which to apply the operation to the value."
+                        }
+                    },
+                    "required": [ "operation", "value" ]
                 },
                 "damage_source": {
                     "type": "object",
@@ -2647,6 +2667,7 @@
                 },
                 "hud_render": {
                     "type": "object",
+                    "description": "An Object used to define how a resource or cooldown bar should be rendered.",
                     "properties": {
                         "should_render": {
                             "type": "boolean",
@@ -2807,17 +2828,17 @@
     },
     "allOf": [
         {
-            "$comment": "#region \"$ref\": \"#/definitions/type\" Regular types",
+            "$comment": "#region Regular types",
             "if": {
                 "properties": { "type": { "const": "origins:attribute" } },
                 "required": [ "type" ]
             },
             "then": {
                 "properties": {
-                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
                     "modifiers": {
                         "type": "array",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
                         "description": "If specified, these modifiers will be applied to their corresponding attributes."
                     },
                     "update_health": {
@@ -2825,7 +2846,11 @@
                         "default": true,
                         "description": "When true, the player's health percentage will update to match their new maximum health."
                     }
-                }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
             }
         },
         {
@@ -2874,10 +2899,10 @@
             },
             "then": {
                 "properties": {
-                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                    "modifier": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
                     "modifiers": {
                         "type": "array",
-                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" },
                         "description": "If specified, these modifiers will be applied to their corresponding attributes."
                     },
                     "tick_rate": {
@@ -2885,7 +2910,11 @@
                         "default": 20,
                         "description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost."
                     }
-                }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
             }
         },
         {
@@ -3489,7 +3518,874 @@
                 },
                 "required": ["fluid"]
             },
-            "$comment": "#endregion \"$ref\": \"#/definitions/type\" Regular types"
+            "$comment": "#endregion Regular types"
+        },
+        {
+            "$comment": "#region Action-related",
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_block_break" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when a block is broken."
+                    },
+                    "block_action": {
+                        "$ref": "#/definitions/actions/properties/block_action",
+                        "description": "If set, this action will be executed on the block that is broken."
+                    },
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the actions will only trigger when this block condition is met by the broken block."
+                    },
+                    "only_when_harvested": {
+                        "type":"boolean",
+                        "description": "If this is true, the actions will only execute when the player succeeds in harvesting the block (e.g. they will not trigger when stone is broken by hand).",
+                        "default": true
+                    }
+                },
+                "anyOf": [
+                    {"required": ["entity_action"]},
+                    {"required": ["block_action"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_callback" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action_chosen": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when the player chooses their origin on the last layer through the menu - by using the Orb of Origin or missing an origin or joining for the first time - if the power was gained from any of the layers."
+                    },
+                    "execute_chosen_when_orb": {
+                        "type": "boolean",
+                        "description": "When this is false, the entity_action_chosen will not be executed when the player changes their origin with an orb, but only when the player chooses an origin for the first time or their origin was reset to origins:empty via a command.",
+                        "default": true
+                    },
+                    "entity_action_lost": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when the power is lost."
+                    },
+                    "entity_action_added": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when the power is added. Joining a world adds each power back."
+                    },
+                    "entity_action_removed": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when the power is removed and right after the player respawns. Leaving a world removes each power."
+                    },
+                    "entity_action_respawned": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player right after the player respawns, after the entity_action_removed."
+                    }
+                },
+                "anyOf": [
+                    {"required": ["entity_action_chosen"]},
+                    {"required": ["entity_action_lost"]},
+                    {"required": ["entity_action_added"]},
+                    {"required": ["entity_action_removed"]},
+                    {"required": ["entity_action_respawned"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_item_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player after they use the item."
+                    },
+                    "item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, this action will be executed on the remaining item stack."
+                    },
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, the actions will only trigger when this item condition is met by the item stack before use."
+                    }
+                },
+                "anyOf": [
+                    {"required": ["entity_action"]},
+                    {"required": ["item_action"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_land" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player."
+                    }
+                },
+                "required": ["entity_action"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_wake_up" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player when they wake up."
+                    },
+                    "block_action": {
+                        "$ref": "#/definitions/actions/properties/block_action",
+                        "description": "If set, this action will be executed on the bed block."
+                    },
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the actions will only trigger when this block condition is met by the bed block."
+                    }
+                },
+                "anyOf": [
+                    {"required": ["entity_action"]},
+                    {"required": ["block_action"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_over_time" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "interval": {
+                        "type": "integer",
+                        "description": "Interval of ticks between subsequent executions of the action.",
+                        "minimum": 1
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player each interval."
+                    },
+                    "rising_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the first interval tick in which the condition became true."
+                    },
+                    "falling_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the first interval tick in which the condition became false."
+                    }
+                },
+                "anyOf": [
+                    {"required": ["entity_action"]},
+                    {"required": ["rising_action"]},
+                    {"required": ["falling_action"]}
+                ],
+                "dependencies": {
+                    "rising_action": ["condition"],
+                    "falling_action": ["condition"]
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:active_self" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 1
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "Determines how the cooldown of this power is visualized on the HUD."
+                    },
+                    "key": {
+                        "$ref": "#/definitions/origins_data_types/properties/key",
+                        "description": "Which active key this power should respond to.",
+                        "default": {"key": "key.origins.primary_active"}
+                    }
+                },
+                "required": ["entity_action", "cooldown", "hud_render"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:attacker_action_when_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the attacker."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 0
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the attacker."
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+                    }
+                },
+                "required": ["entity_action", "cooldown"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:self_action_on_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 0
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is hit."
+                    }
+                },
+                "required": ["entity_action", "cooldown"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:self_action_on_kill" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 0
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is killed."
+                    }
+                },
+                "required": ["entity_action", "cooldown"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:self_action_when_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 0
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the specified type of damage."
+                    }
+                },
+                "required": ["entity_action", "cooldown"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:target_action_on_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the target."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again.",
+                        "minimum": 0
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is hit."
+                    }
+                },
+                "required": ["entity_action", "cooldown"]
+            },
+            "$comment": "#endregion Action-related"
+        },
+        {
+            "$comment": "#region Modifying types",
+            "if": {
+                "properties": { "type": { "const": "origins:modify_break_speed" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the modifiers will only apply to blocks which satisfy this condition."
+                    },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the break speed."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the break speed.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_damage_dealt" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the modifiers will only apply to damage which satisfies this condition."
+                    },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the damage amount."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the damage amount.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is hit."
+                    },
+                    "self_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player whenever this power applies a modification."
+                    },
+                    "target_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the target whenever this power applies a modification."
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_damage_taken" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the modifiers will only apply to damage which satisfies this condition."
+                    },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the damage amount."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the damage amount.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is hit."
+                    },
+                    "self_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player whenever this power applies a modification."
+                    },
+                    "attacker_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the attacker whenever this power applies a modification."
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_exhaustion" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the exhaustion amount."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the exhaustion amount.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_falling" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "velocity": {
+                        "type": "number",
+                        "description": "How slow/fast the falling velocity should be. By default, the player falls at a speed of 0.08, or 0.01 if a slow falling potion is active."
+                    },
+                    "take_fall_damage": {
+                        "type": "boolean",
+                        "description": "Whether the player should take fall damage or not.",
+                        "default": true
+                    }
+                },
+                "required": ["velocity"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_food" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, the modifiers will only apply to food items which satisfy this condition."
+                    },
+                    "food_modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the food amount gained by eating."
+                    },
+                    "food_modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the food amount gained by eating.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "saturation_modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the saturation gained by eating."
+                    },
+                    "saturation_modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the saturation gained by eating.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the entity eating this item."
+                    }
+                },
+                "allOf": [
+                    { "not": {"required": ["food_modifier", "food_modifiers"]} },
+                    { "not": {"required": ["saturation_modifier", "saturation_modifiers"]} },
+                    {
+                        "anyOf": [
+                            {"required": ["food_modifier"]},
+                            {"required": ["food_modifiers"]},
+                            {"required": ["saturation_modifier"]},
+                            {"required": ["saturation_modifiers"]}
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_harvest" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the modification will only apply to blocks which satisfy this condition."
+                    },
+                    "allow": {
+                        "type": "boolean",
+                        "description": "When true, the player will be able to harvest the blocks. When false, the player will not be able to harvest the blocks."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_jump" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the exhaustion amount."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the exhaustion amount.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will execute when the player jumps."
+                    }
+                },
+                "allOf": [
+                    { "not": {"required": ["modifier", "modifiers"]} },
+                    {
+                        "anyOf": [
+                            {"required": ["modifier"]},
+                            {"required": ["modifiers"]},
+                            {"required": ["entity_action"]}
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_lava_speed" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the speed in lava."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the speed in lava.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_player_spawn" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "dimension": {
+                        "type": "string",
+                        "description": "ID of the dimension the player should spawn in.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
+                    },
+                    "biome": {
+                        "type": "string",
+                        "description": "If set, the player will spawn in the biome with this ID.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "examples": [ "minecraft:savanna" ]
+                    },
+                    "structure": {
+                        "type": "string",
+                        "description": "",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "examples": [ "minecraft:endcity" ]
+                    },
+                    "spawn_strategy": {
+                        "type": "string",
+                        "description": "Either default or center. default tries to find a spawn close to the coordinates of the overworld spawn (while considering the dimension_distance_multiplier). center tries to spawn the player close to 0, 0 of the dimension.",
+                        "enum": ["default", "center"],
+                        "default": "default"
+                    },
+                    "dimension_distance_multiplier": {
+                        "type": "number",
+                        "description": "Needs to be set when spawn_strategy is default. Defines the ratio of overworld blocks to blocks in this dimension, e.g. for the Nether this would be 0.125."
+                    }
+                },
+                "required": ["dimension"],
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": { "spawn_strategy": { "const": "default" } },
+                            "required": [ "spawn_strategy" ]
+                        },
+                        "then": {
+                            "required": ["dimension_distance_multiplier"]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_projectile_damage" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, the modifiers will only apply to damage which satisfies this condition.",
+                        "examples": [{"type": "origins:projectile", "projectile": "minecraft:spectral_arrow"}]
+                    },
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the damage amount."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the damage amount.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    },
+                    "target_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, the action will only be triggered when a target matching this condition is hit."
+                    },
+                    "self_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player whenever this power applies a modification."
+                    },
+                    "target_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the target whenever this power applies a modification."
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_swim_speed" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the swim speed."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the swim speed.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_xp_gain" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If set, this modifier will apply to the experience gained."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If set, these modifiers will apply to the experience gained.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" }
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            },
+            "$comment": "#endregion Modifying types"
+        },
+        {
+            "$comment": "#region Preventing types",
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_block_selection" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "When set, only blocks which meet this condition will be unable to be selected."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_block_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "When set, only blocks which meet this condition will be unable to be used."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_death" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, death will only prevented when damage which matches this condition is dealt. Other damage will still kill the player."
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player when death is prevented."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_entity_render" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, only entities which fulfill this condition will be invisible."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_item_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, only items which satisfy this condition will be blocked from being used."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_sleep" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, sleep will only be prevented if this condition holds for the bed."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "The message that will be shown when sleep is prevented this way. Can be a literal text or a translation key which will be localized using a language file.",
+                        "default": "origins.cant_sleep"
+                    },
+                    "set_spawn_point": {
+                        "type": "boolean",
+                        "description": "If true, right-clicking the bed while sleeping is prevented with this power will still set the spawn point (similar to what happens when you right-click a bed while it's daytime).",
+                        "default": false
+                    }
+                }
+            },
+            "$comment": "#endregion Preventing types"
         }
     ]
 }
