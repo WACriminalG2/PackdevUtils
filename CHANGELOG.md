@@ -1,4 +1,8 @@
-# v1.16.0 -- 8/4/21
+# v1.17.0 -- 8/5/21
+
+* Added validation schema for AgriCraft: plant.
+
+# v1.16.0 -- 8/5/21
 
 * Added validation schema for Scavenge scripts.
 
