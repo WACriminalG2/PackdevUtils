@@ -1,3 +1,7 @@
+# v1.16.0 -- 8/4/21
+
+* Added validation schema for Scavenge scripts.
+
 # v1.15.0 -- 8/4/21
 
 * Updated Origins schemas. Credit: S_K_Tiger

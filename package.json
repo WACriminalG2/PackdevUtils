@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.15.0",
+    "version": "1.16.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -248,6 +248,10 @@
             {
                 "fileMatch": ["*/config/cavegenerator/presets/*.json","*/config/cavegenerator/presets/*.jsonc"],
                 "url": "./Schema/cavegenerator/preset.json"
+            },
+            {
+                "fileMatch": "*/scavenge_scripts/*.json",
+                "url": "./Schema/scavenge/scriptFile.json"
             }
           ]
       }

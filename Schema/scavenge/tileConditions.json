@@ -1,0 +1,192 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge tile conditions",
+    "oneOf": [
+        {"$ref": "#/definitions/has_energy"},
+        {"$ref": "#/definitions/has_fluid"},
+        {"$ref": "#/definitions/has_items"}
+    ],
+
+    "definitions": {
+        "has_energy": {
+            "type": "object",
+            "description": "Tests if a block has an amount of Forge energy.",
+            "additionalProperties": false,
+            "required": ["property","override","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:has_energy"
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure the desired effect was happening.",
+                    "default": "Default"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the FE into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.has_energy.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_fluid": {
+            "type": "object",
+            "description": "Tests if a block has a desired amount of fluid.",
+            "additionalProperties": false,
+            "required": ["property","fluid","override","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:has_fluid"
+                },
+                "fluid": {
+                    "type": "string",
+                    "description": "The fluid to test for."
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure that the desired effect was happening.",
+                    "default": "Default"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the fluid amount into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.has_fluid.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_items": {
+            "type": "object",
+            "description": "Tests if a block contains the desired items.",
+            "additionalProperties": false,
+            "required": ["property","items","override"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:has_items"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "List of items to search for.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "Item ID to search for."
+                            },
+                            "nbt": {
+                                "type": ["string","null"],
+                                "description": "NBT data in the item.",
+                                "default": null
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "Amount of items.",
+                                "default": 1
+                            }
+                        }
+                    }
+                },
+
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure that the desired effect was happening.",
+                    "default": "Default"
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.has_items.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}
