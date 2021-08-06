@@ -1,0 +1,202 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AgriCraft custom fertilizer",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["path","version","enabled","mods","id","lang_key","variants","trigger_mutation","trigger_weeds","potency","effect"],
+
+    "properties": {
+        "path": {
+            "type": "string",
+            "description": "An internal field used for the transmission of JSON definitions.",
+            "examples": ["vanilla/fertilizers/bone_meal_fertilizer.json"]
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the AgriCraft Fertilizer JSON.",
+            "examples": ["1.16.4"]
+        },
+        "json_documentation": {
+            "const": "https://agridocs.readthedocs.io/en/master/agri_fertilizer/",
+            "description": "Documentation for the AgriFertilizer file type."
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this fertilizer should be loaded or not.",
+            "default": true
+        },
+        "mods": {
+            "type": "array",
+            "description": "An array of mod IDs. This fertilizer will only be loaded if all mods listed are present.",
+            "default": ["minecraft","agricraft"],
+            "items": {
+                "type": "string"
+            }
+        },
+        "id": {
+            "type": "string",
+            "description": "The unique string ID for this fertilizer.",
+            "examples": ["vanilla:bone_meal_fertilizer"]
+        },
+        "lang_key": {
+            "type": "string",
+            "description": "Lang key for the name of this fertilizer.",
+            "examples": ["item.minecraft.bone_meal"]
+        },
+        "variants": {
+            "type": "array",
+            "description": "An array of objects representing all the items that this fertilizer represents.",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type","object"],
+                "properties": {
+                    "type": {
+                        "const": "item"
+                    },
+                    "object": {
+                        "type": "string",
+                        "description": "Resource ID for the desired item.",
+                        "examples": ["minecraft:bone_meal"]
+                    },
+                    "useTag": {
+                        "type": "boolean",
+                        "description": "Whether 'object' should be treated as a tag, rather than a specific item ID.",
+                        "default": false
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "NBT data for the fertilizer item.",
+                        "default": ""
+                    },
+                    "ignoredData": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "default": ["*"]
+                    }
+                }
+            }
+        },
+        "trigger_mutation": {
+            "type": "boolean",
+            "description": "Determines if the fertilizer triggers mutations in the crop.",
+            "default": true
+        },
+        "trigger_weeds": {
+            "type": "boolean",
+            "description": "Determines if the fertilizer triggers weed growth in the crop.",
+            "default": true
+        },
+        "potency": {
+            "type": "integer",
+            "description": "Determines the potency of the fertilizer. Bigger values equal faster growth.",
+            "default": 1,
+            "minimum": 0
+        },
+        "effect": {
+            "type": "object",
+            "description": "Effects of the fertilizer on plants.",
+            "additionalProperties": false,
+            "required": ["reduce_growth","kill_plant","negatively_affected","positively_affected","particles"],
+            "properties": {
+                "reduce_growth": {
+                    "type": "boolean",
+                    "description": "If the fertilizer can reduce the growth of negatively affected plants.",
+                    "default": true
+                },
+                "kill_plant": {
+                    "type": "boolean",
+                    "description": "If the fertilizer can kill negatively affected plants.",
+                    "default": true
+                },
+                "negatively_affected": {
+                    "type": "object",
+                    "description": "The list of plants negatively affected by this fertilizer.",
+                    "additionalProperties": false,
+                    "required": ["blacklist","plant_list"],
+                    "properties": {
+                        "blacklist": {
+                            "type": "boolean",
+                            "description": "If the list should be considered as a blacklist instead of a whitelist.",
+                            "default": false
+                        },
+                        "plant_list": {
+                            "type": "array",
+                            "description": "List of AgriPlant IDs.",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "positively_affected": {
+                    "type": "object",
+                    "description": "The list of plants positively affected by this fertilizer.",
+                    "additionalProperties": false,
+                    "required": ["blacklist","plant_list"],
+                    "properties": {
+                        "blacklist": {
+                            "type": "boolean",
+                            "description": "If the list should be considered as a blacklist instead of a whitelist.",
+                            "default": false
+                        },
+                        "plant_list": {
+                            "type": "array",
+                            "description": "List of AgriPlant IDs.",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "particles": {
+                    "type": "array",
+                    "description": "An array of particles that are spawned in the world when the fertilizer is used.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["amount","when","id","delta_x","delta_y","delta_z"],
+                        "properties": {
+                            "amount": {
+                                "type": "integer",
+                                "description": "The amount of particles to spawn.",
+                                "default": 2
+                            },
+                            "when": {
+                                "type": "array",
+                                "description": "Determines on which plants the particles should spawn.",
+                                "items": {
+                                    "enum": ["positive","neutral","negative"]
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The ID of the particle.",
+                                "examples": ["minecraft:smoke"]
+                            },
+                            "delta_x": {
+                                "type": "number",
+                                "description": "How far from the center of the block the particles can spawn. (X axis)",
+                                "default": 0.3,
+                                "minimum": 0
+                            },
+                            "delta_y": {
+                                "type": "number",
+                                "description": "How far from the center of the block the particles can spawn. (Y axis)",
+                                "default": 0.4,
+                                "minimum": 0
+                            },
+                            "delta_z": {
+                                "type": "number",
+                                "description": "How far from the center of the block the particles can spawn. (Z axis)",
+                                "default": 0.3,
+                                "minimum": 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
