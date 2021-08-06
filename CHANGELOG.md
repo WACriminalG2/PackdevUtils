@@ -1,3 +1,12 @@
+# v1.17.0 -- 8/6/21
+
+* Added validation schemas for AgriCraft: fertilizer, mutation, plant, soil, weed.
+* Updated Origins conditional power schemas. Credit: S_K_Tiger
+
+# v1.16.0 -- 8/5/21
+
+* Added validation schema for Scavenge scripts.
+
 # v1.15.0 -- 8/4/21
 
 * Updated Origins schemas. Credit: S_K_Tiger

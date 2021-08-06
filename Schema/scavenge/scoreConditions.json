@@ -1,0 +1,153 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge score conditions",
+    "oneOf": [
+        {"$ref":"#/definitions/has_advancement"},
+        {"$ref": "#/definitions/has_score"},
+        {"$ref": "#/definitions/has_stat"}
+    ],
+
+    "definitions": {
+        "has_advancement": {
+            "type": "object",
+            "description": "Tests for an advancement.",
+            "additionalProperties": false,
+            "required": ["property","value"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:has_advancement"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "ID of the advancement to test for."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.has_advancement.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_score": {
+            "type": "object",
+            "description": "Tests for a desired player score.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:has_score"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the player score into a result. Can be an array, object, or inlined."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.has_score.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_stat": {
+            "type": "object",
+            "description": "Tests if a stat has the desired amount.",
+            "additionalProperties": false,
+            "required": ["property","stat","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:has_stat"
+                },
+                "stat": {
+                    "type": "string",
+                    "description": "The stat to test against."
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the stat into a result. Can be an array, object, or inlined."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.has_stat.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}

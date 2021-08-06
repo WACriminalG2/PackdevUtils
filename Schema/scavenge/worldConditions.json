@@ -1,0 +1,936 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge world conditions",
+    "oneOf": [
+        {"$ref": "#/definitions/difficulty"},
+        {"$ref": "#/definitions/has_biome"},
+        {"$ref": "#/definitions/has_dimension"},
+        {"$ref": "#/definitions/has_distance"},
+        {"$ref": "#/definitions/has_entities"},
+        {"$ref": "#/definitions/has_game_time"},
+        {"$ref": "#/definitions/has_light_level"},
+        {"$ref": "#/definitions/has_property"},
+        {"$ref": "#/definitions/has_spawn"},
+        {"$ref": "#/definitions/has_structure"},
+        {"$ref": "#/definitions/has_weather"},
+        {"$ref": "#/definitions/has_world_time"},
+        {"$ref": "#/definitions/has_y_level"},
+        {"$ref": "#/definitions/is_side"},
+        {"$ref": "#/definitions/local_difficulty"},
+        {"$ref": "#/definitions/moon_phase"},
+        {"$ref": "#/definitions/per_chunk_effect"}
+    ],
+
+    "definitions": {
+        "difficulty": {
+            "type": "object",
+            "description": "Tests if the game is set to a certain difficulty.",
+            "additionalProperties": false,
+            "required": ["property","difficulty"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:difficulty"
+                },
+                "difficulty": {
+                    "enum": ["peaceful","easy","normal","hard"],
+                    "description": "The target difficulty.",
+                    "default": "normal"
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.difficulty.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_biome": {
+            "type": "object",
+            "description": "Tests if the clicked position is at a specific biome.",
+            "additionalProperties": false,
+            "required": ["property","biomes"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_biome"
+                },
+                "biomes": {
+                    "type": "array",
+                    "description": "The lists of biomes to test for.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_biome.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_dimension": {
+            "type": "object",
+            "description": "Tests if the clicked position is at a specific world.",
+            "additionalProperties": false,
+            "required": ["property","dimensions"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_dimension"
+                },
+                "dimensions": {
+                    "type": "array",
+                    "description": "The list of dimensions to test against.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_dimension.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_distance": {
+            "type": "object",
+            "description": "Tests if the clicked position is within the range of the target position.",
+            "additionalProperties": false,
+            "required": ["property","condition","x","y","z"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_distance"
+                },
+                "horizontal": {
+                    "type": "boolean",
+                    "description": "If the distance calculation should be horizontal only, or include height too.",
+                    "default": true
+                },
+                "x": {
+                    "type": "integer",
+                    "description": "The X position of the target distance.",
+                    "default": 0
+                },
+                "y": {
+                    "type": "integer",
+                    "description": "The Y position of the target distance.",
+                    "default": 0
+                },
+                "z": {
+                    "type": "integer",
+                    "description": "The Z position of the target distance.",
+                    "default": 0
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the block distance to a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_distance.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_entities": {
+            "type": "object",
+            "description": "Tests if a desired amount of entities are in range.",
+            "additionalProperties": false,
+            "required": ["property","entity","distance","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_entities"
+                },
+                "entity": {
+                    "type": "string",
+                    "description": "The entity to test for.",
+                    "default": "minecraft:player"
+                },
+                "distance": {
+                    "type": "number",
+                    "description": "The distance to test for the desired entities.",
+                    "minimum": 0
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the block distance into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_entities.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_game_time": {
+            "type": "object",
+            "description": "Tests for the in-game time.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_game_time"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the game time into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_game_time.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_light_level": {
+            "type": "object",
+            "description": "Tests the light level at the clicked location.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_light_level"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the light level into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_light_level.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_property": {
+            "type": "object",
+            "description": "Tests if the block has a certain blockstate property.",
+            "additionalProperties": false,
+            "required": ["property","properties"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_property"
+                },
+                "properties": {
+                    "type": "array",
+                    "description": "A list of the blockstate properties and values to test for.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["key","value"],
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "Name of the blockstate property to test."
+                            },
+                            "value": {
+                                "type": ["string","number","boolean"],
+                                "description": "Expected value of the blockstate property."
+                            }
+                        }
+                    }
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_property.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_spawn": {
+            "type": "object",
+            "description": "Tests if the action is nearby spawn.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_spawn"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the block's distance from spawn into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_spawn.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_structure": {
+            "type": "object",
+            "description": "Tests if blocks around the position match the build structure.",
+            "additionalProperties": false,
+            "required": ["property","blocks"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_structure"
+                },
+                "blocks": {
+                    "type": "array",
+                    "description": "An array of blocks to test for.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["block","positions"],
+                        "properties": {
+                            "block": {
+                                "type": "string",
+                                "description": "The block to test for."
+                            },
+                            "positions": {
+                                "type": "array",
+                                "description": "A list of positions to test.",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["x","y","z"],
+                                    "properties": {
+                                        "x": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "y": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "z": {
+                                            "type": "integer",
+                                            "default": 0
+                                        }
+                                    }
+                                }
+                            },
+                            "properties": {
+                                "type": "array",
+                                "description": "A list of blockstate properties the tested blocks must have.",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["property","value"],
+                                    "properties": {
+                                        "property": {
+                                            "type": "string",
+                                            "description": "The blockstate property to test."
+                                        },
+                                        "value": {
+                                            "type": ["string","number","boolean"],
+                                            "description": "The value to test for."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_structure.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_weather": {
+            "type": "object",
+            "description": "Tests if the weather is the desired type.",
+            "additionalProperties": false,
+            "required": ["property","weather"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_weather"
+                },
+                "weather": {
+                    "type": "string",
+                    "description": "The type of weather to test for.",
+                    "default": "none"
+                },
+                "check_position": {
+                    "type": "boolean",
+                    "description": "If the weather should be tested at the actual position.",
+                    "default": true
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_weather.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_world_time": {
+            "type": "object",
+            "description": "Tests for the world time.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_world_time"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json"
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_world_time.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "has_y_level": {
+            "type": "object",
+            "description": "Tests if the Y level is in the desired location.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:has_y_level"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the Y level into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.has_y_level.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "is_side": {
+            "type": "object",
+            "description": "Tests if the clicked side is the desired one.",
+            "additionalProperties": false,
+            "required": ["property","side"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:is_side"
+                },
+                "side": {
+                    "enum": ["up","down","north","south","east","west"],
+                    "description": "The side that should be clicked on."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.is_side.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "local_difficulty": {
+            "type": "object",
+            "description": "Tests for the local difficulty.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:local_difficulty"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the local difficulty (input is multiplied by 100) into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.local_difficulty.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "moon_phase": {
+            "type": "object",
+            "description": "Tests for a specific moon phase.",
+            "additionalProperties": false,
+            "required": ["property","condition"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:moon_phase"
+                },
+                "condition": {
+                    "$ref": "./Conditions.json",
+                    "description": "Converts the moon phase into a result."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.moon_phase.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "per_chunk_effect": {
+            "type": "object",
+            "description": "Limits actions to a certain amount per chunk.",
+            "additionalProperties": false,
+            "required": ["property","id","min","max","change"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:per_chunk_effect"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID the action limit is stored in."
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum range of the action limit.",
+                    "default": 0
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum range of the action limit."
+                },
+                "change": {
+                    "$ref": "./Operations.json",
+                    "description": "Incrementer of the actions."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.per_chunk_effect.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}

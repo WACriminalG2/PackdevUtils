@@ -1,0 +1,224 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge tile operations",
+    "oneOf": [
+        {"$ref": "#/definitions/add_items"},
+        {"$ref": "#/definitions/consume_items"},
+        {"$ref": "#/definitions/modify_energy"},
+        {"$ref": "#/definitions/modify_fluids"}
+    ],
+
+    "definitions": {
+        "add_items": {
+            "type": "object",
+            "description": "Adds items to a tile entity/container block.",
+            "additionalProperties": false,
+            "required": ["property","override","items"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:add_items"
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure the desired effect was happening.",
+                    "default": "Default"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "Items to add.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "The item ID to be added."
+                            },
+                            "nbt": {
+                                "type": ["string","null"],
+                                "description": "NBT data that should be applied to the added items.",
+                                "default": null
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "Quantity of the item to add.",
+                                "minimum": 1
+                            }
+                        }
+                    }
+                },
+
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.add_items.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "consume_items": {
+            "type": "object",
+            "description": "Consumes items from a tile entity/container block.",
+            "additionalProperties": false,
+            "required": ["property","override","items"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:consume_items"
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure the desired effect was happening.",
+                    "default": "Default"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "Items to consume.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "Item ID to consume."
+                            },
+                            "nbt": {
+                                "type": ["string","null"],
+                                "description": "NBT data that should be present on the consumed items.",
+                                "default": null
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "Number of items to consume.",
+                                "minimum": 1
+                            }
+                        }
+                    }
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.consume_items.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "modify_energy": {
+            "type": "object",
+            "description": "Modifies the Forge Energy of a tile entity.",
+            "additionalProperties": false,
+            "required": ["property","override","operation"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:modify_energy"
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure the desired effect was happening.",
+                    "default": "Default"
+                },
+                "operation": {
+                    "$ref": "./Operations.json",
+                    "description": "The operation to apply."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.modify_energy.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "modify_fluids": {
+            "type": "object",
+            "description": "Modifies the fluid inventory of a tile entity.",
+            "additionalProperties": false,
+            "required": ["property","override","fluid"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_tile:modify_fluids"
+                },
+                "override": {
+                    "enum": ["Default","Up","Down","North","South","East","West"],
+                    "description": "Overrides the side the block was clicked on to make sure the desired effect was happening.",
+                    "default": "Default"
+                },
+                "consume": {
+                    "type": "boolean",
+                    "description": "Whether the fluid should be consumed or added.",
+                    "default": true
+                },
+                "fluid": {
+                    "type": "object",
+                    "description": "The fluid that should be inserted or extracted.",
+                    "additionalProperties": false,
+                    "required": ["fluid","amount"],
+                    "properties": {
+                        "fluid": {
+                            "type": "string",
+                            "description": "ID for the fluid to be inserted or extracted."
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "description": "Amount of the fluid to be inserted/extracted.",
+                            "minimum": 1
+                        },
+                        "nbt": {
+                            "type": ["string","null"],
+                            "description": "NBT data for the fluid.",
+                            "default": null
+                        }
+                    }
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_tile.modify_fluids.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}

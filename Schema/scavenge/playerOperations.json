@@ -1,0 +1,637 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge player effects",
+    "oneOf": [
+        {"$ref": "#/definitions/add_exhaustion"},
+        {"$ref": "#/definitions/add_food"},
+        {"$ref": "#/definitions/add_health"},
+        {"$ref": "#/definitions/add_luck"},
+        {"$ref": "#/definitions/add_potion"},
+        {"$ref": "#/definitions/add_xp"},
+        {"$ref": "#/definitions/consume_inv_items"},
+        {"$ref": "#/definitions/consume_item"},
+        {"$ref": "#/definitions/damage_item"},
+        {"$ref": "#/definitions/remove_potion"},
+        {"$ref": "#/definitions/send_command"},
+        {"$ref": "#/definitions/send_message"},
+        {"$ref": "#/definitions/set_air"},
+        {"$ref": "#/definitions/set_nbt"},
+        {"$ref": "#/definitions/set_xp"}
+    ],
+
+    "definitions": {
+        "add_exhaustion": {
+            "type": "object",
+            "description": "Adds exhaustion to the player.",
+            "additionalProperties": false,
+            "required": ["property","exhaustion"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_exhaustion"
+                },
+
+                "exhaustion": {
+                    "type": "number",
+                    "description": "The amount of exhaustion to add."
+                },
+
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_exhaustion.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "add_food": {
+            "type": "object",
+            "description": "Adds food to the player.",
+            "additionalProperties": false,
+            "required": ["property","food","saturation"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_food"
+                },
+                "food": {
+                    "type": "integer",
+                    "description": "Food to be added."
+                },
+                "saturation": {
+                    "type": "number",
+                    "description": "Saturation to be added."
+                },
+
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_food.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "add_health": {
+            "type": "object",
+            "description": "Adds or removes health to/from the player.",
+            "additionalProperties": false,
+            "required": ["property","health"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_health"
+                },
+                "health": {
+                    "type": "number",
+                    "description": "The amount of health to add."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_health.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "add_luck": {
+            "type": "object",
+            "description": "Adds luck to the loot drops.",
+            "additionalProperties": false,
+            "required": ["property","luck"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_luck"
+                },
+                "luck": {
+                    "type": "number",
+                    "description": "The amount of luck to be added."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_luck.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "add_potion": {
+            "type": "object",
+            "description": "Applies potion effects to the player.",
+            "additionalProperties": false,
+            "required": ["property","effects"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_potion"
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "Chance of applying the effect(s).",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 100
+                },
+                "effects": {
+                    "type": "array",
+                    "description": "The effects to apply.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["effect","duration"],
+                        "properties": {
+                            "effect": {
+                                "type": "string",
+                                "description": "ID of the potion effect to add."
+                            },
+                            "duration": {
+                                "type": "integer",
+                                "description": "Duration of the effect, in ticks.",
+                                "default": 200
+                            },
+                            "amplifier": {
+                                "type": "integer",
+                                "description": "Amplifier/strength of the effect.",
+                                "default": 0
+                            },
+                            "particles": {
+                                "type": "boolean",
+                                "description": "Whether the effect's particles should be visible.",
+                                "default": true
+                            }
+                        }
+                    }
+                },
+
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_potion.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "add_xp": {
+            "type": "object",
+            "description": "Adds a desire amount of XP to the player. Can also remove XP with negative values.",
+            "additionalProperties": false,
+            "required": ["property","xp"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:add_xp"
+                },
+                "xp": {
+                    "type": "integer",
+                    "description": "XP that should be added."
+                },
+                "level": {
+                    "type": "boolean",
+                    "description": "Whether the XP should be measured in levels or raw XP.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.add_xp.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "consume_inv_items": {
+            "type": "object",
+            "description": "Clears the desired amount of items out of the inventory.",
+            "additionalProperties": false,
+            "required": ["property","items"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:consume_inv_items"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "The list of items to consume.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "The item ID to consume."
+                            },
+                            "nbt": {
+                                "type": "string",
+                                "description": "The NBT data the consumed items should have."
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "The amount of items to consume.",
+                                "default": 1
+                            }
+                        }
+                    }
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.consume_inv_items.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "consume_item": {
+            "type": "object",
+            "description": "Consumes the held item by the desired amount.",
+            "additionalProperties": false,
+            "required": ["property","amount"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:consume_item"
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount that should be consumed.",
+                    "default": 1
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the item is consumed.",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 100
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.consume_item.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "damage_item": {
+            "type": "object",
+            "description": "Damages the held item by the desired amount.",
+            "additionalProperties": false,
+            "required": ["property","amount"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:damage_item"
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of damage."
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the damage will be applied.",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 100
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.damage_item.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "remove_potion": {
+            "type": "object",
+            "description": "Removes the desired potion effect.",
+            "additionalProperties": false,
+            "required": ["property","effects"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:remove_potion"
+                },
+                "effects": {
+                    "type": "array",
+                    "description": "The effects to remove.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["effect"],
+                        "properties": {
+                            "effect": {
+                                "type": "string",
+                                "description": "The effect to remove."
+                            }
+                        }
+                    }
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the effects will be removed.",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 100
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.remove_potion.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "send_command": {
+            "type": "object",
+            "description": "Executes a command.",
+            "additionalProperties": false,
+            "required": ["property","command"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:send_command"
+                },
+                "command": {
+                    "type": "string",
+                    "description": "Command that should be executed."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.send_command.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "send_message": {
+            "type": "object",
+            "description": "Sends a message to the player.",
+            "additionalProperties": false,
+            "required": ["property","message"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:send_message"
+                },
+                "chat": {
+                    "type": "boolean",
+                    "description": "If the message should be added to the chat or the toolbar.",
+                    "default": false
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message that should be displayed."
+                },
+                "simple": {
+                    "type": "boolean",
+                    "description": "If the message should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.send_message.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_air": {
+            "type": "object",
+            "description": "Sets the player's air level to the desired amount.",
+            "additionalProperties": false,
+            "required": ["property","air"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:set_air"
+                },
+                "air": {
+                    "type": "integer",
+                    "description": "What the air should be set to."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.set_air.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_nbt": {
+            "type": "object",
+            "description": "Adds/removes NBT data from the player's persistent data.",
+            "additionalProperties": false,
+            "required": ["property","nbt","remove"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:set_nbt"
+                },
+                "nbt": {
+                    "type": "string",
+                    "description": "The NBT data to add or remove."
+                },
+                "remove": {
+                    "type": "boolean",
+                    "description": "If NBT data should be removed instead of added."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.set_nbt.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_xp": {
+            "type": "object",
+            "description": "Sets the XP to the desired amount.",
+            "additionalProperties": false,
+            "required": ["property","xp","level"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_player:set_xp"
+                },
+                "xp": {
+                    "type": "integer",
+                    "description": "The amount of XP to set."
+                },
+                "level": {
+                    "type": "boolean",
+                    "description": "Whether the XP should be measured in levels or raw XP.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to display.",
+                    "default": "scavenge_player.set_xp.desc"
+                },
+
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,469 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge world operations",
+    "oneOf": [
+        {"$ref": "#/definitions/consume_block"},
+        {"$ref": "#/definitions/per_block_effect"},
+        {"$ref": "#/definitions/play_sound"},
+        {"$ref": "#/definitions/set_property"},
+        {"$ref": "#/definitions/set_structure"},
+        {"$ref": "#/definitions/spawn_explosion"},
+        {"$ref": "#/definitions/spawn_particles"}
+    ],
+
+    "definitions": {
+
+        "consume_block": {
+            "type": "object",
+            "description": "Replaces the clicked block with another one.",
+            "additionalProperties": false,
+            "required": ["property"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:consume_block"
+                },
+                "replacement": {
+                    "type": "object",
+                    "description": "The block it should be replaced with.",
+                    "additionalProperties": false,
+                    "required": ["block"],
+                    "properties": {
+                        "block": {
+                            "type": "string",
+                            "description": "The block ID for the replacement."
+                        },
+                        "properties": {
+                            "type": "array",
+                            "description": "A list of blockstate properties for the replacement.",
+                            "minItems": 1,
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": ["property","value"],
+                                "properties": {
+                                    "property": {
+                                        "type": "string",
+                                        "description": "The blockstate property to set."
+                                    },
+                                    "value": {
+                                        "type": ["string","number","boolean"],
+                                        "description": "The value for this property."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "drops": {
+                    "type": "boolean",
+                    "description": "If the original block should spawn its drops.",
+                    "default": false
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "How likely it is that the block breaks.",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 100
+                },
+                "sound": {
+                    "type": "boolean",
+                    "description": "If the breaking sound should be played.",
+                    "default": false
+                },
+
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.consume_block.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "per_block_effect": {
+            "type": "object",
+            "description": "Allows to limit actions to a certain amount per block.",
+            "additionalProperties": false,
+            "required": ["property","id","min","max"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:per_block_effect"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID the action limit is stored in."
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum range of the action limit.",
+                    "default": 0
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum range of the action limit."
+                },
+                "replacement": {
+                    "type": "object",
+                    "description": "The replacement block.",
+                    "additionalProperties": false,
+                    "required": ["block"],
+                    "properties": {
+                        "block": {
+                            "type": "string",
+                            "description": "ID for the replacement block."
+                        },
+                        "properties": {
+                            "type": "array",
+                            "description": "A list of blockstate properties for the replacement block.",
+                            "minItems": 1,
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": ["property","value"],
+                                "properties": {
+                                    "property": {
+                                        "type": "string",
+                                        "description": "The blockstate property to set."
+                                    },
+                                    "value": {
+                                        "type": ["string","number","boolean"],
+                                        "description": "The value to set for this property."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "change": {
+                    "$ref": "./Operations.json",
+                    "description": "Incrementer of the actions."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.per_block_effect.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "play_sound": {
+            "type": "object",
+            "description": "Plays a sound.",
+            "additionalProperties": false,
+            "required": ["property","sound"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:play_sound"
+                },
+                "category": {
+                    "$comment": "Could use an enum.",
+                    "type": "string",
+                    "description": "The audio category that should be played in.",
+                    "default": "block"
+                },
+                "sound": {
+                    "type": "string",
+                    "description": "The sound to play."
+                },
+                "volume": {
+                    "type": "number",
+                    "description": "The volume of the sound.",
+                    "default": 1.0
+                },
+                "pitch": {
+                    "$ref": "./Operations.json",
+                    "description": "The pitch of the sound."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.play_sound.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+
+            }
+        },
+
+        "set_property": {
+            "type": "object",
+            "description": "Changes the desired block's blockstate properties.",
+            "additionalProperties": false,
+            "required": ["property","properties"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:set_property"
+                },
+                "properties": {
+                    "type": "array",
+                    "description": "A list of blockstate properties to set.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["key","value"],
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "The property to set."
+                            },
+                            "value": {
+                                "type": ["string","number","boolean"],
+                                "description": "The value to apply to this property."
+                            }
+                        }
+                    }
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.set_property.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_structure": {
+            "type": "object",
+            "description": "Replaces blocks at the desired positions.",
+            "additionalProperties": false,
+            "required": ["property","blocks"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:set_structure"
+                },
+                "blocks": {
+                    "type": "array",
+                    "description": "A list of blocks to place.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["block","positions"],
+                        "properties": {
+                            "block": {
+                                "type": "string",
+                                "description": "The block to place."
+                            },
+                            "positions": {
+                                "type": "array",
+                                "description": "A list of positions to place this block.",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["x","y","z"],
+                                    "properties": {
+                                        "x": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "y": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "z": {
+                                            "type": "integer",
+                                            "default": 0
+                                        }
+                                    }
+                                }
+                            },
+                            "properties": {
+                                "type": "array",
+                                "description": "A list of blockstate properties to set for the placed blocks.",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["property","value"],
+                                    "properties": {
+                                        "property": {
+                                            "type": "string",
+                                            "description": "The blockstate property to set."
+                                        },
+                                        "value": {
+                                            "type": ["string","number","boolean"],
+                                            "description": "The value for this property."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.set_structure.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "spawn_explosion": {
+            "type": "object",
+            "description": "Spawns an explosion.",
+            "additionalProperties": false,
+            "required": ["property"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:spawn_explosion"
+                },
+                "mode": {
+                    "$comment": "Could use an enum.",
+                    "type": "string",
+                    "description": "The type of explosion.",
+                    "default": "break"
+                },
+                "flame": {
+                    "type": "boolean",
+                    "description": "If the explosion should spawn fire.",
+                    "default": false
+                },
+                "power": {
+                    "type": "number",
+                    "description": "The power of the explosion.",
+                    "default": 4.0
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.spawn_explosion.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "spawn_particles": {
+            "type": "object",
+            "description": "Spawns particles.",
+            "additionalProperties": false,
+            "required": ["property","particle"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_world:spawn_particles"
+                },
+                "particle": {
+                    "type": "string",
+                    "description": "The particle ID to spawn.",
+                    "examples": ["minecraft:enchant"]
+                },
+                "data": {
+                    "type": "string",
+                    "description": "The particle-specific data that can be given through a command."
+                },
+                "posX": {
+                    "type": "number",
+                    "description": "The X offset for the particle.",
+                    "default": 0.0
+                },
+                "posY": {
+                    "type": "number",
+                    "description": "The Y offset for the particle.",
+                    "default": 0.0
+                },
+                "posZ": {
+                    "type": "number",
+                    "description": "The Z offset for the particle.",
+                    "default": 0.0
+                },
+                "deltaX": {
+                    "type": "number",
+                    "description": "The Delta X for the particle.",
+                    "default": 0.0
+                },
+                "deltaY": {
+                    "type": "number",
+                    "description": "The Delta Y for the particle.",
+                    "default": 0.0
+                },
+                "deltaZ": {
+                    "type": "number",
+                    "description": "The Delta Z for the particle.",
+                    "default": 0.0
+                },
+                "speed": {
+                    "type": "number",
+                    "description": "The speed of the particle.",
+                    "default": 1.0
+                },
+                "count": {
+                    "$ref": "./Operations.json",
+                    "description": "The amount of particles being spawned."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_world.spawn_particles.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+
+    }
+}

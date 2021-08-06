@@ -1,0 +1,113 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge score operations",
+    "oneOf": [
+        {"$ref": "#/definitions/set_advancement"},
+        {"$ref": "#/definitions/set_score"},
+        {"$ref": "#/definitions/set_stat"}
+    ],
+
+    "definitions": {
+        "set_advancement": {
+            "type": "object",
+            "description": "Grants or revokes an advancement.",
+            "additionalProperties": false,
+            "required": ["property","advancement"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:set_advancement"
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "ID of the advancement to be granted."
+                },
+                "grant": {
+                    "type": "boolean",
+                    "description": "Whether the advancement should be granted. If false, it is revoked instead.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.set_advancement.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_score": {
+            "type": "object",
+            "description": "Transforms the player's score.",
+            "additionalProperties": false,
+            "required": ["property","operation"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:set_score"
+                },
+                "operation": {
+                    "$ref": "./Operations",
+                    "description": "Converts the score to the desired value."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.set_score.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "set_stat": {
+            "type": "object",
+            "description": "Transforms a player stat.",
+            "additionalProperties": false,
+            "required": ["property","stat","operation"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_score:set_stat"
+                },
+                "stat": {
+                    "type": "string",
+                    "description": "The stat to be transformed."
+                },
+                "operation": {
+                    "$ref": "./Operations.json",
+                    "description": "Converts the stat to the desired value."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_score.set_stat.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}

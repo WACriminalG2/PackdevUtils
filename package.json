@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.15.0",
+    "version": "1.17.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -248,6 +248,30 @@
             {
                 "fileMatch": ["*/config/cavegenerator/presets/*.json","*/config/cavegenerator/presets/*.jsonc"],
                 "url": "./Schema/cavegenerator/preset.json"
+            },
+            {
+                "fileMatch": "*/scavenge_scripts/*.json",
+                "url": "./Schema/scavenge/scriptFile.json"
+            },
+            {
+                "fileMatch": "*/agricraft/json/default/*_plant.json",
+                "url": "./Schema/agricraft/plant.json"
+            },
+            {
+                "fileMatch": "*/agricraft/json/default/*_soil.json",
+                "url": "./Schema/agricraft/soil.json"
+            },
+            {
+                "fileMatch": "*/agricraft/json/default/*_weed.json",
+                "url": "./Schema/agricraft/weed.json"
+            },
+            {
+                "fileMatch": "*/agricraft/json/default/*_fertilizer.json",
+                "url": "./Schema/agricraft/fertilizer.json"
+            },
+            {
+                "fileMatch": "*/agricraft/json/default/*_mutation.json",
+                "url": "./Schema/agricraft/mutation.json"
             }
           ]
       }

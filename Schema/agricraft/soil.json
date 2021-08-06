@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AgriCraft custom soil",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["path","version","enabled","mods","id","lang_key","variants","humidity","acidity","nutrients","growth_modifier"],
+
+    "properties": {
+        "path": {
+            "type": "string",
+            "description": "An internal field used for the transmission of JSON definitions.",
+            "examples": ["vanilla/soils/farmland_soil.json"]
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the AgriCraft Soil JSON.",
+            "examples": ["1.16.4"]
+        },
+        "json_documentation": {
+            "const": "https://agridocs.readthedocs.io/en/master/agri_soil/",
+            "description": "Documentation for the AgriSoil format."
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this soil should be loaded or not.",
+            "default": true
+        },
+        "mods": {
+            "type": "array",
+            "description": "An array of mod IDs. This soil will only be loaded if all the listed mods are present.",
+            "default": ["agricraft","minecraft"]
+        },
+        "id": {
+            "type": "string",
+            "description": "A unique string ID for this soil.",
+            "examples": ["farmland_soil"]
+        },
+        "lang_key": {
+            "type": "string",
+            "description": "Lang key for the user-readable name of this soil.",
+            "examples": ["agricraft.soil.farmland.name"]
+        },
+        "variants": {
+            "type": "array",
+            "description": "An array of AgriStacks representing all the blocks that this soil represents.",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type","object"],
+                "properties": {
+                    "type": {
+                        "const": "block"
+                    },
+                    "object": {
+                        "type": "string",
+                        "description": "A resource ID.",
+                        "examples": ["minecraft:farmland","minecraft:gravel"]
+                    },
+                    "useTag": {
+                        "type": "boolean",
+                        "description": "Whether the 'object' property should be treated as a tag, rather than a specific block ID.",
+                        "default": false
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "NBT data for the soil block.",
+                        "default": ""
+                    },
+                    "ignoredData": {
+                        "type": "array",
+                        "default": ["*"],
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "humidity": {
+            "enum": ["arid","dry","damp","wet","watery","flooded","moist","standard","default"],
+            "description": "This soil's humidity rating.",
+            "default": "wet"
+        },
+        "acidity": {
+            "enum": ["highly_acidic","acidic","slightly_acidic","neutral","slightly_alkaline","alkaline","highly_alkaline","very_acidic","standard","default","very_alkaline","0","1","2","3","4","5","6","7","8","9","10","11","12","13","14"],
+            "description": "This soil's acidity rating.",
+            "default": "slightly_acidic"
+        },
+        "nutrients": {
+            "enum": ["none","very_low","low","medium","high","very_high","zero","empty","scarce","poor","normal","average","standard","default","rich"],
+            "description": "This soil's nutrients rating.",
+            "default": "high"
+        },
+        "growth_modifier": {
+            "type": "number",
+            "description": "?????",
+            "default": 1.0,
+            "minimum": 0,
+            "maximum": 1
+        }
+    }
+}

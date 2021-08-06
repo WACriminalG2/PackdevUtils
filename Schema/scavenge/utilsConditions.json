@@ -1,0 +1,348 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge utils conditions",
+    "oneOf": [
+        {"$ref": "#/definitions/array_condition"},
+        {"$ref": "#/definitions/default_condition"},
+        {"$ref": "#/definitions/ifelse_condition"},
+        {"$ref": "#/definitions/logger"},
+        {"$ref": "#/definitions/offset_condition"},
+        {"$ref": "#/definitions/random"}
+    ],
+
+    "definitions": {
+        
+        "array_condition": {
+            "type": "object",
+            "description": "Tests multiple conditions to achieve the desired result.",
+            "additionalProperties": false,
+            "required": ["property","conditions","or"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:array_condition"
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "The conditions to be tested.",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                },
+                "or": {
+                    "type": "boolean",
+                    "description": "Whether the test should be an and/or test.",
+                    "default": false
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.array_condition.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "default_condition": {
+            "type": "object",
+            "description": "Default resulting condition.",
+            "additionalProperties": false,
+            "required": ["property","value"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:default_condition"
+                },
+                "value": {
+                    "type": "boolean",
+                    "description": "The value that should be returned.",
+                    "default": false
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.default_condition.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "ifelse_condition": {
+            "type": "object",
+            "description": "Allows to decide which condition is tested.",
+            "additionalProperties": false,
+            "required": ["property","test","true","false"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:ifelse_condition"
+                },
+                "test": {
+                    "$ref": "./Conditions.json",
+                    "description": "The deciding condition."
+                },
+                "true": {
+                    "$ref": "./Operations.json",
+                    "description": "The operation to perform if the test is passed."
+                },
+                "false": {
+                    "$ref": "./Operations.json",
+                    "description": "The operation to perform if the test is failed."
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.ifelse_condition.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "logger": {
+            "type": "object",
+            "description": "Logs a name and default resulting condition.",
+            "additionalProperties": false,
+            "required": ["property","name"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:logger"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The logger text that should be printed."
+                },
+                "value": {
+                    "type": "boolean",
+                    "description": "The value that should be returned.",
+                    "default": false
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.logger.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "offset_condition": {
+            "type": "object",
+            "description": "Tests if conditions around the source block match.",
+            "additionalProperties": false,
+            "required": ["property","conditions"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:offset_condition"
+                },
+                "conditions": {
+                    "type": "array",
+                    "description": "The conditions to test.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["positions"],
+                        "properties": {
+                            "positions": {
+                                "type": "array",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["x","y","z"],
+                                    "properties": {
+                                        "x": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "y": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "z": {
+                                            "type": "integer",
+                                            "default": 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.offset_condition.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "random": {
+            "type": "object",
+            "description": "Tests if a random chance has happened.",
+            "additionalProperties": false,
+            "required": ["property"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:random"
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "How likely it is that this condition will be true, 0-100%.",
+                    "default": 100,
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "Whether the test result should be inverted.",
+                    "default": false
+                },
+                "error_message": {
+                    "type": ["string","null"],
+                    "description": "Error message that should be displayed.",
+                    "default": null
+                },
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.random.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        }
+    }
+}

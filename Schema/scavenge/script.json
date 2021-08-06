@@ -92,11 +92,13 @@
 
         "properties": {
             "type": "array",
-            "description": "The conditions and effects that should be in this script. Execution is from top to bottom."
+            "description": "The conditions and effects that should be in this script. Execution is from top to bottom.",
+            "items": {
+                "oneOf": [
+                    {"$ref": "./Operations.json"},
+                    {"$ref": "./Conditions.json"}
+                ]
+            }
         }
-    },
-
-    "definitions": {
-        
     }
 }

@@ -1,0 +1,188 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge utils operations",
+    "oneOf": [
+        {"$ref": "#/definitions/add_data"},
+        {"$ref": "#/definitions/array_effect"},
+        {"$ref": "#/definitions/conditional_effect"},
+        {"$ref": "#/definitions/default_effect"},
+        {"$ref": "#/definitions/offset_effect"}
+    ],
+
+    "definitions": {
+
+        "add_data":{
+            "type": "object",
+            "description": "Adds data to the script executor. By default no use, but add-ons might use it for special action control.",
+            "additionalProperties": false,
+            "required": ["property","id","data"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:add_data"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the data that should be added."
+                },
+                "data": {
+                    "type": "object",
+                    "description": "A JSON object of the data that should be injected."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.add_data.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "array_effect": {
+            "$comment": "Is this right? This is identical to array_conditions, and I'm not sure having the 'or' field on this one makes sense.",
+            "type": "object",
+            "description": "Tests multiple conditions to achieve the desired result.",
+            "additionalProperties": false,
+            "required": ["property","effects"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:array_effect"
+                },
+                "effects": {
+                    "type": "array",
+                    "description": "The effects that should be executed.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                },
+                "or": {
+                    "type": "boolean",
+                    "description": "Whether the condition should be treated like an and/or.",
+                    "default": false
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.array_effect.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "conditional_effect": {
+            "type": "object",
+            "description": "Allows to decide which condition is tested.",
+            "additionalProperties": false,
+            "required": ["property","test","true","false"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:conditional_effect"
+                },
+                "test": {
+                    "$ref": "./Conditions.json",
+                    "description": "The deciding condition."
+                },
+                "true": {
+                    "$ref": "./Operations.json",
+                    "description": "The operation/effect to perform if the test is passed."
+                },
+                "false": {
+                    "$ref": "./Operations.json",
+                    "description": "The operation/effect to perform if the test is failed."
+                },
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+                "jei_description": {
+                    "type": "string",
+                    "description": "The JEI description to be displayed.",
+                    "default": "scavenge_utils.conditional_effect.desc"
+                },
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'jei_description' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                }
+            }
+        },
+
+        "default_effect": {
+            "type": "object",
+            "description": "Does nothing. Useful for failed test conditions.",
+            "additionalProperties": false,
+            "required": ["property"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:default_effect"
+                }
+            }
+        },
+
+        "offset_effect": {
+            "$comment": "Description on this one also seems to describe a condition rather than an effect. Take another look at this one?",
+            "type": "object",
+            "description": "Tests if conditions around the source block match.",
+            "additionalProperties": false,
+            "required": ["property","effects"],
+            "properties": {
+                "property": {
+                    "const": "scavenge_utils:offset_effect"
+                },
+                "effects": {
+                    "type": "array",
+                    "description": "Effects that should be applied.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["positions"],
+                        "properties": {
+                            "positions": {
+                                "type": "array",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["x","y","z"],
+                                    "properties": {
+                                        "x": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "y": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "z": {
+                                            "type": "integer",
+                                            "default": 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
