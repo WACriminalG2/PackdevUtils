@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AgriCraft Mutation Definition",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["path","version","enabled","mods","chance","child","parent1","parent2"],
+    "properties": {
+        "path": {
+            "type": "string",
+            "description": "Internal field used for the transmission of JSON definitions.",
+            "examples": ["vanilla/mutations/cactus_mutation.json"]
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the AgriCraft Mutation JSON.",
+            "examples": ["1.16.4"]
+        },
+        "json_documentation": {
+            "const": "https://agridocs.readthedocs.io/en/master/agri_mutation/",
+            "description": "Documentation for the AgriMutation file type."
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this mutation should be loaded or not.",
+            "default": true
+        },
+        "mods": {
+            "type": "array",
+            "description": "An array of mod IDs. This mutation will be loaded only if all listed mods are present.",
+            "default": ["minecraft","agricraft"],
+            "items": {
+                "type": "string"
+            }
+        },
+        "chance": {
+            "type": "number",
+            "description": "The chance of this mutation occurring on a given random tick.",
+            "format": "Range: 0.0 - 1.0",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.5
+        },
+        "child": {
+            "type": "string",
+            "description": "The unique ID of the child AgriPlant.",
+            "examples": ["vanilla:cactus_plant"]
+        },
+        "parent1": {
+            "type": "string",
+            "description": "The unique ID of the first parent AgriPlant.",
+            "examples": ["vanilla:sugarcane_plant"]
+        },
+        "parent2": {
+            "type": "string",
+            "description": "The unique ID of the second parent AgriPlant.",
+            "examples": ["vanilla:potato_plant"]
+        }
+    }
+}

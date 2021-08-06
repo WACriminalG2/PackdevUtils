@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "InControl! Spawn",
-    "description": "Validation schema for InControl's spawn.json.",
+    "description": "Validation schema for InControl's spawn.json and summonaid.json.",
     "type":"array",
     "items":{
         "type": "object",

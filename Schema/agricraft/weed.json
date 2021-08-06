@@ -1,0 +1,409 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AgriCraft custom weed",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["path","version","enabled","mods","id","weed_lang_key","desc_lang_key","stages","spawn_chance","growth_chance","aggressive","lethal","rake_drops","requirement","texture"],
+
+    "properties": {
+        "path": {
+            "type": "string",
+            "description": "An internal field used for the transmission of JSON definitions.",
+            "examples": ["vanilla/weeds/weed_weed.json"]
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the AgriCraft Weed JSON.",
+            "examples": ["1.16.4"]
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this weed should be loaded or not.",
+            "default": true
+        },
+        "mods": {
+            "type": "array",
+            "description": "An array of mod IDs. This weed will only be loaded if all mods listed are present.",
+            "default": ["minecraft","agricraft"],
+            "items": {
+                "type": "string"
+            }
+        },
+        "id": {
+            "type": "string",
+            "description": "The unique string ID for this weed.",
+            "examples": ["agricraft:weed_weed"]
+        },
+        "weed_lang_key": {
+            "type": "string",
+            "description": "Lang key for the name of the weed.",
+            "examples": ["agricraft.weed.weed.name"]
+        },
+        "desc_lang_key": {
+            "type": "string",
+            "description": "Lang key for the description of the weed.",
+            "examples": ["agricraft.weed.weed.desc"]
+        },
+        "stages": {
+            "type": "array",
+            "description": "An array containing the height of the weed for each growth stage.",
+            "minItems": 1,
+            "default": [2,4,6,8,10,12,14,16],
+            "items": {
+                "type": "integer"
+            }
+        },
+        "spawn_chance": {
+            "type": "number",
+            "description": "The chance the weed has of spawning on a random tick.",
+            "format": "Range: 0.0 - 1.0",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.25
+        },
+        "growth_chance": {
+            "type": "number",
+            "description": "The chance this weed has of growing on a random tick.",
+            "format": "Range: 0.0 - 1.0",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.9
+        },
+        "aggressive": {
+            "type": "boolean",
+            "description": "Defines if a weed is aggressive. Aggressive weeds will try to spread to adjacent crops when they mature.",
+            "default": true
+        },
+        "lethal": {
+            "type": "boolean",
+            "description": "Defines if a weed is lethal. Lethal weeds will try to kill the host plant when they mature.",
+            "default": true
+        },
+        "rake_drops": {
+            "type": "object",
+            "description": "A list containing the possible raking products of the weed.",
+            "additionalProperties": false,
+            "required": ["products"],
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "description": "A list containing the possible raking products of the weed.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["min","max","chance","required","type","object"],
+                        "properties": {
+                            "min": {
+                                "type": "integer",
+                                "description": "The minimum amount of this product harvested.",
+                                "default": 1,
+                                "minimum": 0
+                            },
+                            "max": {
+                                "type": "integer",
+                                "description": "The maximum amount of this product harvested.",
+                                "default": 1,
+                                "minimum": 0
+                            },
+                            "chance": {
+                                "type": "number",
+                                "description": "The chance that this product will be harvested. [Range: 0.0 - 1.0]",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "default": 1.0
+                            },
+                            "required": {
+                                "type": "boolean",
+                                "description": "?????",
+                                "default": true
+                            },
+                            "type": {
+                                "const": "item"
+                            },
+                            "object": {
+                                "type": "string",
+                                "description": "The ID for this product.",
+                                "examples": ["minecraft:wheat"]
+                            },
+                            "useTag": {
+                                "type": "boolean",
+                                "description": "Whether the object should be treated as a tag rather than a specific item.",
+                                "default": false
+                            },
+                            "data": {
+                                "type": "string",
+                                "description": "NBT data for this product.",
+                                "default": ""
+                            },
+                            "ignoredData": {
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "requirement": {
+            "type": "object",
+            "description": "Determines the growth requirements of the weed. Uses the same format as AgriPlant.",
+            "additionalProperties": false,
+            "required": ["soil_humidity","soil_acidity","soil_nutrients","min_light","max_light","light_tolerance_factor","seasons","conditions","fluid"],
+            "properties": {
+                "soil_humidity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["arid","dry","damp","wet","watery","flooded","moist","standard","default"],
+                            "description": "Determines the required humidity condition of the weed."
+                        },
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "Determines the type of humidity range needed for this weed to grow.",
+                            "default": "equal"
+                        },
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "Determines the tolerance factor of the humidity condition. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.15
+                        }
+                    }
+                },
+
+                "soil_acidity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["highly_acidic","acidic","slightly_acidic","neutral","slightly_alkaline","alkaline","highly_alkaline","very_acidic","standard","default","very_alkaline"],
+                            "description": "Determines the acidity requirement of this weed.",
+                            "default": "slightly_acidic"
+                        },
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "Determines the type of range for this weed's acidity requirement.",
+                            "default": "equal"
+                        },
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "This weed's acidity tolerance factor. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.2
+                        }
+                    }
+
+                },
+
+                "soil_nutrients": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["none","very_low","low","medium","high","very_high","zero","empty","scare","poor",
+                            "normal","average","standard","default","rich"],
+                            "description": "This weed's soil nutrient requirement.",
+                            "default": "medium"
+                        },
+
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "The type of range for this weed's nutrient requirement.",
+                            "default": "equal"
+                        },
+
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "The tolerance factor for this weed's nutrient requirement. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.1
+                        }
+                    }
+                },
+
+                "min_light": {
+                    "type": "integer",
+                    "description": "The minimum light value that this weed can grow in.",
+                    "minimum": 0,
+                    "maximum": 16,
+                    "default": 10
+                },
+
+                "max_light": {
+                    "type": "integer",
+                    "description": "The maximum light value that this weed can grow in.",
+                    "minimum": 0,
+                    "maximum": 16,
+                    "default": 16
+                },
+
+                "light_tolerance_factor": {
+                    "type": "number",
+                    "description": "This weed's light value tolerance factor. [Range: 0.0 - 1.0]",
+                    "default": 0.5,
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                
+                "seasons": {
+                    "type": "array",
+                    "description": "An array containing the seasons this weed can grow in. It is used only if a season mod is present, such as Serene Seasons or Simply Seasons.",
+                    "items": {
+                        "enum": ["spring","summer","autumn","winter"]
+                    }
+                },
+
+                "conditions": {
+                    "type": "array",
+                    "description": "An array containing all the growth conditions to be met.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [],
+                        "properties": {
+                            "strength": {
+                                "type": "integer",
+                                "description": "The required strength for the weed to grow.",
+                                "default": 11
+                            },
+                            "amount": {
+                                "type": "integer",
+                                "description": "When using a block growth condition, the amount of the given block that must be found in the provided range. All bounding box coordinates are relative to the crop's block at [0,0,0].",
+                                "default": 1
+                            },
+                            "min_x": {
+                                "type": "integer",
+                                "description": "The minimum X value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_x": {
+                                "type": "integer",
+                                "description": "The maximum X value of the bounding box.",
+                                "default": 0
+                            },
+                            "min_y": {
+                                "type": "integer",
+                                "description": "The minimum Y value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_y": {
+                                "type": "integer",
+                                "description": "The maximum Y value of the bounding box.",
+                                "default": 0
+                            },
+                            "min_z": {
+                                "type": "integer",
+                                "description": "The minimum Z value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_z": {
+                                "type": "integer",
+                                "description": "The maximum Z value of the bounding box.",
+                                "default": 0
+                            },
+                            "type": {
+                                "const": "block"
+                            },
+                            "object": {
+                                "type": "string",
+                                "description": "The ID of the required resource.",
+                                "examples": ["forge:ores/gold"]
+                            },
+                            "useTag": {
+                                "type": "boolean",
+                                "description": "Whether the 'object' field should be treated as a tag instead of a specific block ID.",
+                                "default": false
+                            },
+                            "data": {
+                                "type": "string",
+                                "description": "NBT data for the required blocks.",
+                                "default": ""
+                            },
+                            "ignoredData": {
+                                "type": "array",
+                                "description": "?????",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "fluid": {
+                    "type": "object",
+                    "description": "The fluid this weed requires in order to grow.",
+                    "additionalProperties": false,
+                    "required": ["type","object"],
+                    "properties": {
+                        "type": {
+                            "const": "fluid"
+                        },
+                        "object": {
+                            "type": "string",
+                            "description": "ID for the required fluid.",
+                            "default": "minecraft:empty"
+                        },
+                        "useTag": {
+                            "type": "boolean",
+                            "description": "Whether the given ID should be treated as a tag rather than a specific fluid.",
+                            "default": false
+                        },
+                        "data": {
+                            "type": "string",
+                            "description": "NBT data for the fluid required.",
+                            "default": ""
+                        },
+                        "ignoredData": {
+                            "type": "array",
+                            "description": "?????",
+                            "default": [],
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+        "texture": {
+            "type": "object",
+            "description": "This determines the method used to render the weed. Uses the same format as AgriPlants.",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "render_type": {
+                    "enum": ["cross","hash","plus","gourd","rhombus"],
+                    "description": "This determines the method used to render this weed.",
+                    "default": "hash"
+                },
+                "plant_models": {
+                    "type": "array",
+                    "description": "An array of strings representing the weed models. The elements are ordered -- that means the first element is for the first growth stage, the second element is for the second growth stage, and so on. If an element is empty, agricraft bakes the model with the stage texture. This array overrides the texture array for the in-world weed.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "plant_textures": {
+                    "type": "array",
+                    "description": "An array of strings representing the weed textures. The elements are ordered, meaning that the first element is for the first growth stage, the second element is for the second growth stage, and so on. Amount of textures needed = floor(stage_height/16) + 1.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Scavenge math conditions",
+    "oneOf": [
+        {"$ref": "#/definitions/always_true"},
+        {"$ref": "#/definitions/bigger"},
+        {"$ref": "#/definitions/equals_not"},
+        {"$ref": "#/definitions/equals"},
+        {"$ref": "#/definitions/in_range"},
+        {"$ref": "#/definitions/is_bit_not_set"},
+        {"$ref": "#/definitions/is_bit_set"},
+        {"$ref": "#/definitions/outside_range"},
+        {"$ref": "#/definitions/smaller"}
+    ],
 
     "definitions": {
 
-        "alwaysTrue": {
+        "always_true": {
             "type": "object",
             "additionalProperties": false,
             "required": ["condition"],
@@ -13,7 +24,229 @@
                     "const": "scavenge:always_true"
                 },
                 "operations": {
-                    "type": "array"
+                    "type": "array",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "bigger": {
+            "type": "object",
+            "description": "Tests if the value is bigger (or optionally equals) the desired value.",
+            "additionalProperties": false,
+            "required": ["condition","value"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:bigger"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value to compare against."
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Whether the check should be inclusive (equal or greater than).",
+                    "default": true
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "equals_not": {
+            "type": "object",
+            "description": "Tests if the value does not equal the desired number.",
+            "additionalProperties": false,
+            "required": ["condition","value"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:equals_not"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to compare against."
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "equals": {
+            "type": "object",
+            "description": "Tests if the value equals a desired number.",
+            "additionalProperties": false,
+            "required": ["condition","value"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:equals"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to compare against."
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "in_range": {
+            "type": "object",
+            "description": "Tests if the value is in the desired range.",
+            "additionalProperties": false,
+            "required": ["condition","minValue","maxValue"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:in_range"
+                },
+                "minValue": {
+                    "type": "number",
+                    "description": "Minimum value that should be compared against."
+                },
+                "maxValue": {
+                    "type": "number",
+                    "description": "Maximum value that should be compared against."
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "If the check should be inclusive or exclusive of the min and max values.",
+                    "default": true
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "is_bit_not_set": {
+            "type": "object",
+            "description": "Tests if bits in the number are not set.",
+            "additionalProperties": false,
+            "required": ["condition","value","any"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:is_bit_not_set"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "Bits that should be compared against."
+                },
+                "any": {
+                    "type": "boolean",
+                    "description": "If all bits or any bit has to match."
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "is_bit_set": {
+            "type": "object",
+            "description": "Tests if bits in the number are set.",
+            "additionalProperties": false,
+            "required": ["condition","value","any"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:is_bit_set"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "The bits to test."
+                },
+                "any": {
+                    "type": "boolean",
+                    "description": "If all bits or any bit has to match."
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "outside_range": {
+            "type": "object",
+            "description": "Tests if the value is outside the desired range.",
+            "additionalProperties": false,
+            "required": ["condition","minValue","maxValue"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:outside_range"
+                },
+                "minValue": {
+                    "type": "number",
+                    "description": "Minimum value to to compare against."
+                },
+                "maxValue": {
+                    "type": "number",
+                    "description": "Maximum value to compare against."
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Whether the test should be inclusive or exclusive of the min and max values.",
+                    "default": true
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+        
+        "smaller": {
+            "type": "object",
+            "description": "Tests if the value is smaller (or optionally equal to) the desired number.",
+            "additionalProperties": false,
+            "required": ["condition","value"],
+            "properties": {
+                "condition": {
+                    "const": "scavenge:smaller"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to compare against."
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Whether the test should be inclusive of the given number (less than or equal to)."
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "Operations that should be applied BEFORE the test.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
                 }
             }
         }

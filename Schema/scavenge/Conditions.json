@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Main conditions definition",
+    "oneOf": [
+        {"$ref":"./mathConditions.json"},
+        {"$ref": "./playerConditions.json"},
+        {"$ref": "./scoreConditions.json"},
+        {"$ref": "./tileConditions.json"},
+        {"$ref": "./utilsConditions.json"},
+        {"$ref": "./worldConditions.json"}
+    ]
+}

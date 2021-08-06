@@ -1,8 +1,350 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Scavenge math operations",
+    "oneOf": [
+        {"$ref": "#/definitions/add"},
+        {"$ref": "#/definitions/array"},
+        {"$ref": "#/definitions/clamp"},
+        {"$ref": "#/definitions/const"},
+        {"$ref": "#/definitions/divide"},
+        {"$ref": "#/definitions/left_shift"},
+        {"$ref": "#/definitions/logger"},
+        {"$ref": "#/definitions/mod"},
+        {"$ref": "#/definitions/multiply"},
+        {"$ref": "#/definitions/pow"},
+        {"$ref": "#/definitions/random_input"},
+        {"$ref": "#/definitions/random"},
+        {"$ref": "#/definitions/right_shift"},
+        {"$ref": "#/definitions/set_bit"}
+    ],
 
     "definitions": {
 
+        "set_bit": {
+            "type": "object",
+            "description": "Removes the desired bits from the value.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:set_bit"
+                },
+
+                "value": {
+                    "type": "integer",
+                    "description": "Bits that should be removed."
+                },
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "right_shift": {
+            "type": "object",
+            "description": "Bit-shifts the value to the right. Keeps negative values.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:right_shift"
+                },
+
+                "value": {
+                    "type": "integer",
+                    "description": "How many bits the value should be shifted."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "random": {
+            "type": "object",
+            "description": "Returns a randomized result based on the defined ranges.",
+            "additionalProperties": false,
+            "required": ["operation","high","low"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:random"
+                },
+                "high": {
+                    "type": "integer",
+                    "description": "The high value of the randomization."
+                },
+                "low": {
+                    "type": "integer",
+                    "description": "The low value of the randomization."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "random_input": {
+            "type": "object",
+            "description": "Randomizes the input between the input value and 0.",
+            "additionalProperties": false,
+            "required": ["operation"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:random_input"
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "pow": {
+            "type": "object",
+            "description": "Exponentializes the input by the given value.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:pow"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The exponent to be used."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "multiply": {
+            "type": "object",
+            "description": "Multiply the value by a desired number.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:multiply"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to multiply by."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "mod": {
+            "type": "object",
+            "description": "Applies the modulo operator to the value.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:mod"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "The modulo value."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "logger": {
+            "type": "object",
+            "description": "Prints the number and returns it. Ideal for value logging in the game console.",
+            "additionalProperties": false,
+            "required": ["operation","id"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:logger"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "String that should be logged as console message prefix."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "left_shift": {
+            "type": "object",
+            "description": "Bit-shifts the value to the left.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:left_shift"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "How many bits the value should be shifted."
+                }
+            }
+        },
+
+        "divide": {
+            "type": "object",
+            "description": "Divides the input number by a desired value.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:divide"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to divide by."
+                },
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "const": {
+            "type": "object",
+            "description": "Sets the comparing value to a desired number.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:const"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The number to output."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "clamp": {
+            "type": "object",
+            "description": "Clamps the value in a desired range.",
+            "additionalProperties": false,
+            "required": ["operation","minValue","maxValue"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:clamp"
+                },
+                "minValue": {
+                    "type": "number",
+                    "description": "Value that should be the minimum threshold."
+                },
+                "maxValue": {
+                    "type": "number",
+                    "description": "Value that should be the maximum threshold."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        },
+
+        "array": {
+            "type": "object",
+            "description": "Applies an array of operations.",
+            "additionalProperties": false,
+            "required": ["operation","operations"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:array"
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "The operations to be applied.",
+                    "items": {
+                        "$ref": "./Operations.json"
+                    }
+                }
+            }
+        },
+
+        "add": {
+            "type": "object",
+            "description": "Adds a value to the comparable value.",
+            "additionalProperties": false,
+            "required": ["operation","value"],
+            "properties": {
+                "operation": {
+                    "const": "scavenge:add"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value to add."
+                },
+
+                "condition": {
+                    "type": "array",
+                    "description": "A condition or set of conditions which must be true in order to execute the operation.",
+                    "items": {
+                        "$ref": "./Conditions.json"
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,1263 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Definitions for player properties for scavenge scripts.",
+    "oneOf": [
+        {"$ref": "#/definitions/has_air"},
+        {"$ref": "#/definitions/has_effect"},
+        {"$ref": "#/definitions/has_health"},
+        {"$ref": "#/definitions/has_hunger"},
+        {"$ref": "#/definitions/has_inv_items"},
+        {"$ref": "#/definitions/has_item_count"},
+        {"$ref": "#/definitions/has_item_durability"},
+        {"$ref": "#/definitions/has_item_nbt"},
+        {"$ref": "#/definitions/has_item_tag"},
+        {"$ref": "#/definitions/has_item"},
+        {"$ref": "#/definitions/has_max_health"},
+        {"$ref": "#/definitions/has_nbt"},
+        {"$ref": "#/definitions/has_tag"},
+        {"$ref": "#/definitions/has_tool"},
+        {"$ref": "#/definitions/has_xp"},
+        {"$ref": "#/definitions/is_burning"},
+        {"$ref": "#/definitions/is_hand_empty"},
+        {"$ref": "#/definitions/is_hand"},
+        {"$ref": "#/definitions/is_sneaking"},
+        {"$ref": "#/definitions/is_wet"},
+        {"$ref": "#/definitions/limit_action"},
+        {"$ref": "#/definitions/per_player"},
+        {"$ref": "#/definitions/real_player"}    
+    ],
+
+    "definitions": {
+      "has_air": {
+          "type": "object",
+          "description": "Tests if the player has the desired amount of air.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+
+              "property": {
+                  "const": "scavenge_player:has_air"
+              },
+
+              "condition": {
+                  "oneOf": [
+                      {"$ref": "./Conditions.json"},
+                      {"type":"array","items": {"$ref":"./Conditions.json"}}
+                  ],
+                  "description": "Converts the value into a result. Can be array or object or be inlined."
+              },
+
+              "inverted": {
+                  "type": "boolean",
+                  "description": "If the result should be inverted.",
+                  "default": false
+              },
+
+              "error_message": {
+                  "type": "string",
+                  "description": "Error message that should be displayed if test fails."
+              },
+
+              "error_simple": {
+                  "type": "boolean",
+                  "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                  "default": true
+              },
+
+              "jei_visible": {
+                  "type": "boolean",
+                  "description": "If the JEI description should be shown.",
+                  "default": false
+              },
+
+              "jei_description": {
+                  "type": "string",
+                  "description": "JEI description that should be displayed.",
+                  "default": "scavenge_player.has_air.desc"
+              },
+
+              "jei_simple": {
+                  "type": "boolean",
+                  "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+              }
+          }
+      },
+
+      "has_effect": {
+          "type": "object",
+          "description": "Test if the player has a potion effect.",
+          "additionalProperties": false,
+          "required": ["property","effect"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_effect"
+              },
+
+              "effect": {
+                  "type": "string",
+                  "description": "The potion effect to test for.",
+                  "examples": ["minecraft:luck","minecraft:poison"]
+              },
+
+              "inverted": {
+                "type": "boolean",
+                "description": "If the result should be inverted.",
+                "default": false
+            },
+
+            "error_message": {
+                "type": "string",
+                "description": "Error message that should be displayed if test fails."
+            },
+
+            "error_simple": {
+                "type": "boolean",
+                "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            },
+
+            "jei_visible": {
+                "type": "boolean",
+                "description": "If the JEI description should be shown.",
+                "default": false
+            },
+
+            "jei_description": {
+                "type": "string",
+                "description": "JEI description that should be displayed.",
+                "default": "scavenge_player.has_effect.desc"
+            },
+
+            "jei_simple": {
+                "type": "boolean",
+                "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+            }
+          }
+      },
+
+      "has_health": {
+          "type": "object",
+          "description": "Tests if the player has the desired health.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_health"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_health.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+        }
+      },
+
+      "has_hunger": {
+          "type": "object",
+          "description": "Tests if the player is at the desired hunger level.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_hunger"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_hunger.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+          }
+      },
+
+      "has_inv_items": {
+          "type": "object",
+          "description": "Tests if the player has the desired items and amount in the inventory.",
+          "additionalProperties": false,
+          "required": ["property","items"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_inv_items"
+              },
+              "items": {
+                  "type": "array",
+                  "description": "Items to test for.",
+                  "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["item"],
+                      "properties": {
+                          "item": {
+                              "type": "string",
+                              "description": "ID of the item to test for."
+                          },
+                          "nbt": {
+                              "type": "string",
+                              "description": "NBT data in the item."
+                          },
+                          "count": {
+                              "type": "integer",
+                              "description": "Amount of items."
+                          }
+                      }
+                  }
+              },
+              "inverted": {
+                "type": "boolean",
+                "description": "If the result should be inverted.",
+                "default": false
+            },
+
+            "error_message": {
+                "type": "string",
+                "description": "Error message that should be displayed if test fails."
+            },
+
+            "error_simple": {
+                "type": "boolean",
+                "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            },
+
+            "jei_visible": {
+                "type": "boolean",
+                "description": "If the JEI description should be shown.",
+                "default": false
+            },
+
+            "jei_description": {
+                "type": "string",
+                "description": "JEI description that should be displayed.",
+                "default": "scavenge_player.has_inv_items.desc"
+            },
+
+            "jei_simple": {
+                "type": "boolean",
+                "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+            }
+          }
+      },
+
+      "has_item_count": {
+          "type": "object",
+          "description": "Tests if the player has the desired amount of items in hand.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const":"scavenge_player:has_item_count"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_item_count.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+          }
+      },
+
+      "has_item_durability": {
+          "type": "object",
+          "description": "Tests if the item durability matches the desired amount.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_item_durability"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_item_durability.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+          }
+      },
+
+      "has_item_nbt": {
+          "type": "object",
+          "description": "Tests if the held item has the desired NBT data.",
+          "additionalProperties": false,
+          "required": ["property","nbt"],
+          "properties": {
+              "property": {
+                  "const":"scavenge_player:has_item_nbt"
+              },
+              "nbt": {
+                  "type": "string",
+                  "description": "The NBT data to test for."
+              },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_item_nbt.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+          }
+      },
+
+      "has_item_tag": {
+          "type": "object",
+          "description": "Tests if the player is holding an item that has a specific tag.",
+          "additionalProperties": false,
+          "required": ["property","tag"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_item_tag"
+              },
+              "tag": {
+                  "type": "string",
+                  "description": "Tag that should be tested for."
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_item_tag.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "has_item": {
+          "type": "object",
+          "description": "Test if the player has the desired item in hand.",
+          "additionalProperties": false,
+          "required": ["property","item"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_item"
+              },
+              "item": {
+                  "type": "string",
+                  "description": "Item to test for."
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_item.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "has_max_health": {
+          "type": "object",
+          "description": "Tests if the player has the desired maximum health.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const":"scavenge_player:has_max_health"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_max_health.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "has_nbt": {
+          "type": "object",
+          "description": "Tests if the player has the desired NBT data.",
+          "additionalProperties": false,
+          "required": ["property","nbt"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_nbt"
+              },
+              "nbt": {
+                  "type": "string",
+                  "description": "The NBT data to test for."
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_nbt.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "has_tag": {
+          "type": "object",
+          "description": "Test if the player has a specific tag.",
+          "additionalProperties": false,
+          "required": ["property","tag"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_tag"
+              },
+              "tag": {
+                  "type":"string",
+                  "description": "The tag to test for."
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_tag.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "has_tool": {
+          "type": "object",
+          "description": "Test if the player has the desired tool and level.",
+          "additionalProperties": false,
+          "required": ["property","tool","condition"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_tool"
+              },
+              "tool": {
+                  "enum": ["pickaxe","shovel","axe","hoe","sword"],
+                  "description": "The tool type to test for."
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the tool level into a result. Can be array or object or be inlined."
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_tool.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+          }
+      },
+
+      "has_xp": {
+          "type": "object",
+          "description": "Tests if the player has the desired amount of XP.",
+          "additionalProperties": false,
+          "required": ["property","condition"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:has_xp"
+              },
+              "condition": {
+                "oneOf": [
+                    {"$ref": "./Conditions.json"},
+                    {"type":"array","items": {"$ref":"./Conditions.json"}}
+                ],
+                "description": "Converts the value into a result. Can be array or object or be inlined."
+                },
+
+                "level": {
+                    "type": "boolean",
+                    "description": "Whether the value compared against should be XP levels or raw XP.",
+                    "default": true
+                },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.has_xp.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "is_burning": {
+          "type": "object",
+          "description": "Tests if the player is on fire.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:is_burning"
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.is_burning.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "is_hand_empty": {
+          "type": "object",
+          "description": "Tests if the player's hand is empty.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:is_hand_empty"
+              },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.is_hand_empty.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "is_hand": {
+          "type": "object",
+          "description": "Tests the current hand that is being used.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:is_hand"
+              },
+              "main_hand": {
+                  "type": "boolean",
+                  "description": "Whether the hand should be the main or offhand.",
+                  "default": true
+              },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.is_hand.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "is_sneaking": {
+          "type": "object",
+          "description": "Tests if the player is sneaking.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:is_sneaking"
+              },
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.is_sneaking.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "is_wet": {
+          "type": "object",
+          "description": "Tests if the player is wet by rain or in water.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:is_wet"
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.is_wet.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "real_player": {
+          "type": "object",
+          "description": "Tests if the player is not a 'fake player'.",
+          "additionalProperties": false,
+          "required": ["property"],
+          "properties": {
+              "property": {
+                  "const": "scavenge_player:real_player"
+              },
+
+                "inverted": {
+                    "type": "boolean",
+                    "description": "If the result should be inverted.",
+                    "default": false
+                },
+  
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message that should be displayed if test fails."
+                },
+  
+                "error_simple": {
+                    "type": "boolean",
+                    "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                    "default": true
+                },
+  
+                "jei_visible": {
+                    "type": "boolean",
+                    "description": "If the JEI description should be shown.",
+                    "default": false
+                },
+  
+                "jei_description": {
+                    "type": "string",
+                    "description": "JEI description that should be displayed.",
+                    "default": "scavenge_player.real_player.desc"
+                },
+  
+                "jei_simple": {
+                    "type": "boolean",
+                    "description": "If the 'jei_description' should be treated as a simple string or a full ITextComponent object."
+                }
+
+          }
+      },
+
+      "limit_action": {
+        "type": "object",
+        "description": "Allows you to limit actions within a given timeframe.",
+        "additionalProperties": false,
+        "required": ["property","id","delay","limit","change"],
+        "properties": {
+
+            "property": {
+                "const": "scavenge_player:limit_action"
+            },
+
+            "id": {
+                "type": "string",
+                "description": "ID that the delay counter is stored in."
+            },
+
+            "delay": {
+                "type": "integer",
+                "description": "The length of the delay, in ticks."
+            },
+
+            "limit": {
+                "type": "array",
+                "description": "Decides how many actions can be done within the delay.",
+                "items": {
+                    "$ref": "./Conditions.json"
+                }
+            },
+
+            "change": {
+                "$ref": "./mathOperations.json",
+                "description": "Incrementer of the actions. Not used for reset."
+            },
+
+            "inverted": {
+                "type": "boolean",
+                "description": "Whether the test should be inverted.",
+                "default": false
+            },
+
+            "error_message": {
+                "type": "string",
+                "description": "Error message that should be displayed if test fails."
+            },
+
+            "error_simple": {
+                "type": "boolean",
+                "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            },
+
+            "jei_visible": {
+                "type": "boolean",
+                "description": "If the JEI description should be shown.",
+                "default": false
+            },
+
+            "jei_description": {
+                "type": "string",
+                "description": "The JEI description to display.",
+                "default": "scavenge_player.limit_action.desc"
+            },
+
+            "jei_simple": {
+                "type": "boolean",
+                "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            }
+        }
+    },
+
+    "per_player": {
+        "type": "object",
+        "description": "Allows to limit actions of a player to a certain amount.",
+        "additionalProperties": false,
+        "required": ["property","id","min","max","change"],
+        "properties": {
+            "property": {
+                "const": "scavenge_player:per_player"
+            },
+            "id": {
+                "type": "string",
+                "description": "ID the action limit is stored in."
+            },
+            "min": {
+                "type": "integer",
+                "description": "Minimum range of the action limit."
+            },
+            "max": {
+                "type": "integer",
+                "description": "Maximum range of the action limit."
+            },
+            "change": {
+                "$ref": "./mathOperations.json",
+                "description": "Incrementer of the actions."
+            },
+            "inverted": {
+                "type": "boolean",
+                "description": "Whether the test should be inverted.",
+                "default": false
+            },
+
+            "error_message": {
+                "type": "string",
+                "description": "Error message that should be displayed if test fails."
+            },
+
+            "error_simple": {
+                "type": "boolean",
+                "description": "Whether 'error_message' should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            },
+
+            "jei_visible": {
+                "type": "boolean",
+                "description": "If the JEI description should be shown.",
+                "default": false
+            },
+
+            "jei_description": {
+                "type": "string",
+                "description": "The JEI description to display.",
+                "default": "scavenge_player.per_player.desc"
+            },
+
+            "jei_simple": {
+                "type": "boolean",
+                "description": "If the jei_description should be treated as a simple string or a full ITextComponent object.",
+                "default": true
+            }
+
+            
+        }
+    }
+        
+
+    }
+}

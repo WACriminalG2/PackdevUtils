@@ -1,0 +1,598 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AgriCraft Custom Plant",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["path","version","enabled","id"],
+
+    "properties": {
+        "path": {
+            "type": "string",
+            "description": "An internal field used for the transmission of JSON definitions.",
+            "examples": ["/vanilla/plants/wheat_plant.json"]
+        },
+
+        "version": {
+            "type": "string",
+            "description": "The version of the AgriCraft plant JSON.",
+            "default": "1.16.4"
+        },
+
+        "json_documentation": {
+            "const": "https://agridocs.readthedocs.io/en/master/agri_plant/",
+            "description": "Documentation for this file's structure."
+        },
+
+        "enabled": {
+            "type": "boolean",
+            "description": "Determines if this plant should be loaded or not.",
+            "default": true
+        },
+
+        "mods": {
+            "type": "array",
+            "description": "An array of mod IDs. The plant will be loaded only if all mods listed are present.",
+            "default": ["minecraft","agricraft"],
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "id": {
+            "type": "string",
+            "description": "The unique string ID for this plant.",
+            "examples": ["vanilla:wheat_plant"]
+        },
+
+        "plant_lang_key": {
+            "type": "string",
+            "description": "Lang key for the name of the plant.",
+            "examples": ["block.minecraft.wheat"]
+        },
+
+        "seed_lang_key": {
+            "type": "string",
+            "description": "Lang key for the name of the seed.",
+            "examples": ["item.minecraft.wheat_seeds"]
+        },
+
+        "desc_lang_key": {
+            "type": "string",
+            "description": "Lang key for the description of this plant.",
+            "examples": ["agricraft.plant.wheat.desc"]
+        },
+
+        "seed_items": {
+            "type": "array",
+            "description": "A list of seed items that map to this plant.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["overridePlanting","type","object","useTag","data","ignoredData"],
+                "properties": {
+                    "overridePlanting": {
+                        "type": "boolean",
+                        "description": "Determines if AgriCraft should override the object right click action. If true, using the object will place the agricraft crop instead of the original action.",
+                        "default": true
+                    },
+
+                    "type": {
+                        "const": "item"
+                    },
+
+                    "object": {
+                        "type": "string",
+                        "description": "The resource location of the object.",
+                        "examples": ["minecraft:wheat_seeds"]
+                    },
+
+                    "useTag": {
+                        "type": "boolean",
+                        "description": "Whether the object field should be considered a tag ID, rather than a specific item.",
+                        "default": false
+                    },
+
+                    "data": {
+                        "type": "string",
+                        "description": "NBT data for the seed item."
+                    },
+
+                    "ignoredData": {
+                        "type": "array",
+                        "default": ["*"],
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+
+        "stages": {
+            "type": "array",
+            "description": "An array containing the height of the plant for each growth stage.",
+            "minItems": 1,
+            "items": {
+                "type": "integer"
+            },
+            "default": [2,4,6,8,10,12,14,16]
+        },
+
+        "harvestStage": {
+            "type": "integer",
+            "description": "After harvest, the growth stage is set to be this one.",
+            "default": 4
+        },
+
+        "growth_chance": {
+            "type": "number",
+            "description": "The chance the plant has of growing on a random tick. [Range: 0.0-1.0]",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.65
+        },
+
+        "growth_bonus": {
+            "type": "number",
+            "description": "The chance the plant has of bonus growth on a random tick. [Range: 0.0-1.0]",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.025
+        },
+
+        "tier": {
+            "type": "integer",
+            "description": "The tier of the plant. A legacy value.",
+            "default": 2
+        },
+
+        "cloneable": {
+            "type": "boolean",
+            "description": "?????",
+            "default": true
+        },
+
+        "spread_chance": {
+            "type": "number",
+            "description": "The chance the plant has of attempting to move to a neighboring crop. [Range: 0.0-1.0]",
+            "default": 0.1,
+            "minimum": 0,
+            "maximum": 1
+        },
+
+        "grass_drop_chance": {
+            "type": "number",
+            "description": "The chance the seed for this plant drops when breaking a grass block. [Range: 0.0-1.0]",
+            "maximum": 1,
+            "minimum": 0,
+            "default": 0.0
+        },
+
+        "seed_drop_chance": {
+            "type": "number",
+            "description": "The chance the seed for this plant drops when breaking the crop. [Range: 0.0-1.0]",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 1.0
+        },
+
+        "seed_drop_bonus": {
+            "type": "number",
+            "description": "?????",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.0
+        },
+
+        "products": {
+            "type": "object",
+            "description": "Defines types of crop products.",
+            "additionalProperties": false,
+            "required": ["products","clip_products"],
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "description": "Products obtained from harvesting the crop normally.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [],
+                        "properties": {
+                            "min": {
+                                "type": "integer",
+                                "description": "The minimum amount of this product harvested.",
+                                "default": 1,
+                                "minimum": 0
+                            },
+                            "max": {
+                                "type": "integer",
+                                "description": "The maximum amount of this product harvested.",
+                                "default": 1,
+                                "minimum": 0
+                            },
+                            "chance": {
+                                "type": "number",
+                                "description": "The chance that this product will be harvested. [Range: 0.0 - 1.0]",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "default": 1.0
+                            },
+                            "required": {
+                                "type": "boolean",
+                                "description": "?????",
+                                "default": true
+                            },
+                            "type": {
+                                "const": "item"
+                            },
+                            "object": {
+                                "type": "string",
+                                "description": "The ID for this product.",
+                                "examples": ["minecraft:wheat"]
+                            },
+                            "useTag": {
+                                "type": "boolean",
+                                "description": "Whether the object should be treated as a tag rather than a specific item.",
+                                "default": false
+                            },
+                            "data": {
+                                "type": "string",
+                                "description": "NBT data for this product.",
+                                "default": ""
+                            },
+                            "ignoredData": {
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "clip_products": {
+                    "type": "array",
+                    "description": "A list of possible products gained by clipping the plant.",
+                    "items": {
+                        "$ref": "#/properties/products/properties/products/items"
+                    }
+                }
+            }
+        },
+
+        "requirement": {
+            "type": "object",
+            "description": "Determines the growth requirements of the plant.",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "soil_humidity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["arid","dry","damp","wet","watery","flooded","moist","standard","default"],
+                            "description": "Determines the required humidity condition of the plant."
+                        },
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "Determines the type of humidity range needed for this plant to grow.",
+                            "default": "equal"
+                        },
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "Determines the tolerance factor of the humidity condition. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.15
+                        }
+                    }
+                },
+
+                "soil_acidity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["highly_acidic","acidic","slightly_acidic","neutral","slightly_alkaline","alkaline","highly_alkaline","very_acidic","standard","default","very_alkaline"],
+                            "description": "Determines the acidity requirement of this plant.",
+                            "default": "slightly_acidic"
+                        },
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "Determines the type of range for this plant's acidity requirement.",
+                            "default": "equal"
+                        },
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "This plant's acidity tolerance factor. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.2
+                        }
+                    }
+
+                },
+
+                "soil_nutrients": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "condition": {
+                            "enum": ["none","very_low","low","medium","high","very_high","zero","empty","scare","poor",
+                            "normal","average","standard","default","rich"],
+                            "description": "This plant's soil nutrient requirement.",
+                            "default": "medium"
+                        },
+
+                        "type": {
+                            "enum": ["equal","equal_or_higher","equal_or_lower"],
+                            "description": "The type of range for this plant's nutrient requirement.",
+                            "default": "equal"
+                        },
+
+                        "tolerance_factor": {
+                            "type": "number",
+                            "description": "The tolerance factor for this plant's nutrient requirement. [Range: 0.0 - 1.0]",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "default": 0.1
+                        }
+                    }
+                },
+
+                "min_light": {
+                    "type": "integer",
+                    "description": "The minimum light value that this plant can grow in.",
+                    "minimum": 0,
+                    "maximum": 16,
+                    "default": 10
+                },
+
+                "max_light": {
+                    "type": "integer",
+                    "description": "The maximum light value that this plant can grow in.",
+                    "minimum": 0,
+                    "maximum": 16,
+                    "default": 16
+                },
+
+                "light_tolerance_factor": {
+                    "type": "number",
+                    "description": "This plant's light value tolerance factor. [Range: 0.0 - 1.0]",
+                    "default": 0.5,
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                
+                "seasons": {
+                    "type": "array",
+                    "description": "An array containing the seasons this plant can grow in. It is used only if a season mod is present, such as Serene Seasons or Simply Seasons.",
+                    "items": {
+                        "enum": ["spring","summer","autumn","winter"]
+                    }
+                },
+
+                "conditions": {
+                    "type": "array",
+                    "description": "An array containing all the growth conditions to be met.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [],
+                        "properties": {
+                            "strength": {
+                                "type": "integer",
+                                "description": "The required strength for the plant to grow.",
+                                "default": 11
+                            },
+                            "amount": {
+                                "type": "integer",
+                                "description": "When using a block growth condition, the amount of the given block that must be found in the provided range. All bounding box coordinates are relative to the crop's block at [0,0,0].",
+                                "default": 1
+                            },
+                            "min_x": {
+                                "type": "integer",
+                                "description": "The minimum X value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_x": {
+                                "type": "integer",
+                                "description": "The maximum X value of the bounding box.",
+                                "default": 0
+                            },
+                            "min_y": {
+                                "type": "integer",
+                                "description": "The minimum Y value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_y": {
+                                "type": "integer",
+                                "description": "The maximum Y value of the bounding box.",
+                                "default": 0
+                            },
+                            "min_z": {
+                                "type": "integer",
+                                "description": "The minimum Z value of the bounding box.",
+                                "default": 0
+                            },
+                            "max_z": {
+                                "type": "integer",
+                                "description": "The maximum Z value of the bounding box.",
+                                "default": 0
+                            },
+                            "type": {
+                                "const": "block"
+                            },
+                            "object": {
+                                "type": "string",
+                                "description": "The ID of the required resource.",
+                                "examples": ["forge:ores/gold"]
+                            },
+                            "useTag": {
+                                "type": "boolean",
+                                "description": "Whether the 'object' field should be treated as a tag instead of a specific block ID.",
+                                "default": false
+                            },
+                            "data": {
+                                "type": "string",
+                                "description": "NBT data for the required blocks.",
+                                "default": ""
+                            },
+                            "ignoredData": {
+                                "type": "array",
+                                "description": "?????",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "fluid": {
+                    "type": "object",
+                    "description": "The fluid this plant requires in order to grow.",
+                    "additionalProperties": false,
+                    "required": ["type","object"],
+                    "properties": {
+                        "type": {
+                            "const": "fluid"
+                        },
+                        "object": {
+                            "type": "string",
+                            "description": "ID for the required fluid.",
+                            "default": "minecraft:water"
+                        },
+                        "useTag": {
+                            "type": "boolean",
+                            "description": "Whether the given ID should be treated as a tag rather than a specific fluid.",
+                            "default": false
+                        },
+                        "data": {
+                            "type": "string",
+                            "description": "NBT data for the fluid required.",
+                            "default": ""
+                        },
+                        "ignoredData": {
+                            "type": "array",
+                            "description": "?????",
+                            "default": [],
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "callbacks": {
+            "type": "array",
+            "description": "An array of callbacks the crop will use.",
+            "items": {
+                "enum": [
+                    "agricraft:brightness",
+                    "agricraft:burn",
+                    "agricraft:bushy",
+                    "agricraft:experience",
+                    "agricraft:poisoning",
+                    "agricraft:redstone",
+                    "agricraft:thorns",
+                    "agricraft:withering"
+                ]
+            }
+        },
+
+        "texture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "render_type": {
+                    "enum": ["cross","hash","plus","gourd","rhombus"],
+                    "description": "This determines the method used to render this crop.",
+                    "default": "hash"
+                },
+                "plant_models": {
+                    "type": "array",
+                    "description": "An array of strings representing the plant models. The elements are ordered -- that means the first element is for the first growth stage, the second element is for the second growth stage, and so on. If an element is empty, agricraft bakes the model with the stage texture. This array overrides the texture array for the in-world crop.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "plant_textures": {
+                    "type": "array",
+                    "description": "An array of strings representing the plant textures. The elements are ordered, meaning that the first element is for the first growth stage, the second element is for the second growth stage, and so on. Amount of textures needed = floor(stage_height/16) + 1.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "seed_texture": {
+            "type": "string",
+            "description": "A string representing the seed texture. this is used for the autogenerated seed items.",
+            "examples": ["agricraft:seed/wither_rose"]
+        },
+
+        "seed_model": {
+            "type": "string",
+            "description": "A string representing the seed model. This is used for the autogenerated seed items.",
+            "examples": ["agricraft:seed/wither_rose"]
+        },
+        
+        "particle_effects": {
+            "type": "array",
+            "description": "An array describing the particles this plant produces.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+
+                "properties": {
+                    "probability": {
+                        "type": "number",
+                        "description": "The probability the particle will spawn. [Range: 0.0 - 1.0]",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "default": 0.5
+                    },
+                    "stages": {
+                        "type": "array",
+                        "description": "An array containing the indexes of the stages the plant can produce particles.",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "particle": {
+                        "type": "string",
+                        "description": "The ID of the particle.",
+                        "examples": ["minecraft:smoke"]
+                    },
+                    "delta_x": {
+                        "type": "number",
+                        "description": "How far from the center of the block the particle can spawn (X axis).",
+                        "default": 0.3
+                    },
+                    "delta_y": {
+                        "type": "number",
+                        "description": "How far from the center of the block the particle can spawn (Y axis).",
+                        "default": 0.4
+                    },
+                    "delta_z": {
+                        "type": "number",
+                        "description": "How far from the center of the block the particle can spawn (Z axis).",
+                        "default": 0.3
+                    }
+                }
+            }
+        }
+    }
+}

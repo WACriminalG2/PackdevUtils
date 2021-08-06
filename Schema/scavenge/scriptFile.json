@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scavenge script file",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["scripts"],
+    "properties": {
+        "scripts": {
+            "description": "A script or array of scripts. While including multiple scripts in a single file can help condense folder contents, it can make it more difficult to edit or troubleshoot individual scripts. Best practice is to use a separate file for each script.",
+            "oneOf": [
+                {"$ref": "./script.json"},
+                {"type": "array", "items": {"$ref": "./script.json"}}
+            ]
+        }
+    }
+}
