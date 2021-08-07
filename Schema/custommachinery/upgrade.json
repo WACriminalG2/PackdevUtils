@@ -1,0 +1,118 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Custom Machinery Upgrade",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["item","machines","modifiers"],
+    "properties": {
+        "item": {
+            "type": "string",
+            "description": "The item you want to use as an upgrade. You can define only one item per upgrade JSON file, but you can make as many files as you want.",
+            "examples": ["minecraft:diamond","minecraft:potato"]
+        },
+
+        "machines": {
+            "type": "array",
+            "description": "A list of machines where this upgrade is allowed.",
+            "minItems": 1,
+            "items": {
+                "type": "string",
+                "examples": ["custommachinery:magic_spawner","custommachinery:power_crusher"]
+            }
+        },
+
+        "modifiers": {
+            "type": "array",
+            "description": "A list of requirements modifiers. These are used to define how the upgrade will influence the recipe processing.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["requirement","mode","operation","modifier"],
+                "properties": {
+                    "requirement": {
+                        "enum": ["custommachinery:item","custommachinery:durability","custommachinery:fluid","custommachinery:fluid_per_tick","custommachinery:energy","custommachinery:energy_per_tick","custommachinery:time","custommachinery:position","custommachinery:command","custommachinery:fuel","custommachinery:effect","custommachinery:weather","custommachinery:redstone","custommachinery:entity","custommachinery:light","custommachinery:block","custommachinery:structure","custommachinery:speed"],
+                        "description": "The type of requirement you want to apply the modifier to. You may choose from any requirement ID, or use 'custommachinery:speed' to modify the machine's recipe processing time.",
+                        "examples": ["custommachinery:energy","custommachinery:speed"]
+                    },
+                    "mode": {
+                        "enum": ["input","output"],
+                        "description": "The mode of the requirement you want to apply this modifier to. It can be either input or output, but not both. You'll need to make another modifier if you wish to apply the same upgrade to both modes."
+                    },
+                    "operation": {
+                        "enum": ["addition","multiplication"],
+                        "description": "The mathematical operation that will be applied to the targeted requirement property.",
+                        "default": "multiplication"
+                    },
+                    "modifier": {
+                        "type": "number",
+                        "description": "The value to add or multiply to the base requirement value. It can be positive or negative, and supports decimal numbers.",
+                        "default": 0.5
+                    },
+                    "target": {
+                        "type": "string",
+                        "description": "Some requirements have more than one value that can be modified. In that case, the 'target' property can be used to define which one you wish to modify. For example, some requirements have a 'chance' property. Setting 'target' to 'chance' targets the 'chance' property."
+                    },
+                    "chance": {
+                        "type": "number",
+                        "description": "The chance the modifier will be applied to the requirement.",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "default": 1
+                    }
+                }
+            }
+        },
+
+        "max": {
+            "description": "Not implemented yet."
+        },
+        
+        "tooltip": {
+            "type": "object",
+            "description": "The tooltip that will render when a player hovers any machine upgrade item in a GUI.",
+            "additionalProperties": false,
+            "required": ["text"],
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The tooltip text. Can be a lang key."
+                },
+                "color": {
+                    "type": "string",
+                    "description": "The text color.",
+                    "examples": ["aqua","red","#164561"]
+                },
+                "bold": {
+                    "type": "boolean",
+                    "description": "Whether the text should be bold.",
+                    "default": false
+                },
+                "italic": {
+                    "type": "boolean",
+                    "description": "Whether the text should be italicized.",
+                    "default": false
+                },
+                "underlined": {
+                    "type": "boolean",
+                    "description": "Whether the text should be underlined.",
+                    "default": false
+                },
+                "strikethrough": {
+                    "type": "boolean",
+                    "description": "Whether the text should be struck through.",
+                    "default": false
+                },
+                "obfuscated": {
+                    "type": "boolean",
+                    "description": "Whether the text should be obfuscated.",
+                    "default": false
+                },
+                "font": {
+                    "type": "string",
+                    "description": "The font for the tooltip.",
+                    "default": "minecraft:default"
+                }
+            }
+        }
+    }
+}

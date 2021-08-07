@@ -1,3 +1,12 @@
+# v1.18.0 -- 8/6/21
+
+* Added schema validation for Custom Machinery machines, recipes, and upgrades.
+* General improvements to Origins schemas. Credit: S_K_Tiger
+
+# v1.17.1 -- 8/6/21
+
+* Hotfix: Corrected AgriCraft schema folder path typo: from 'default' to 'defaults'.
+
 # v1.17.0 -- 8/6/21
 
 * Added validation schemas for AgriCraft: fertilizer, mutation, plant, soil, weed.

@@ -1,0 +1,742 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Custom Machinery Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type", "machine", "time","requirements"],
+
+    "properties": {
+        "type": {
+            "const": "custommachinery:custom_machine"
+        },
+
+        "machine": {
+            "type": "string",
+            "description": "The machine this recipe is for. You can set only one machine here so if you want the same recipe to work for different machines, you must write the recipe for each machine and change this property. You must use the machine's ID, not its display name. If the machine ID is wrong or the machine doesn't exist, the recipe will still load but it will be unusable in-game.",
+            "examples": ["namespace:my_machine"]
+        },
+
+        "time": {
+            "type": "integer",
+            "description": "The duration of the recipe in ticks. Note that increasing the recipe time will increase any per-tick input costs and outputs.",
+            "minimum": 1,
+            "default": 200
+        },
+
+        "requirements": {
+            "type": "array",
+            "description": "An array of requirements. Requirements are basically the inputs and outputs of a recipe.",
+            "items": {
+                "$ref": "#/definitions/requirement"
+            }
+        },
+
+        "jei": {
+            "type": "array",
+            "description": "An array of requirements, exactly as in the 'requirements' field. Requirements specified here will not be processed by the machine, they will only display in JEI.",
+            "default": []
+        },
+
+        "priority": {
+            "type": "integer",
+            "description": "An integer that defines which recipe will be used by the machine if several recipes pass all requirement checks. The recipe with the highest priority will be used. If several recipes pass the requirement checks and have the same priority the first loaded recipe will be used, this depends of the datapack order and can be a bit random so if you want to be sure of which recipe will be used first you must use the priority property.",
+            "minimum": -2147483648,
+            "maximum": 2147483647,
+            "default": 1000
+        }
+    },
+
+    "definitions": {
+
+        "requirement": {
+            "oneOf": [
+                {"$ref": "#/definitions/itemRequirement"},
+                {"$ref": "#/definitions/durabilityRequirement"},
+                {"$ref": "#/definitions/fluidRequirement"},
+                {"$ref": "#/definitions/fluid_per_tickRequirement"},
+                {"$ref": "#/definitions/energyRequirement"},
+                {"$ref": "#/definitions/energy_per_tickRequirement"},
+                {"$ref": "#/definitions/timeRequirement"},
+                {"$ref": "#/definitions/positionRequirement"},
+                {"$ref": "#/definitions/commandRequirement"},
+                {"$ref": "#/definitions/fuelRequirement"},
+                {"$ref": "#/definitions/effectRequirement"},
+                {"$ref": "#/definitions/weatherRequirement"},
+                {"$ref": "#/definitions/redstoneRequirement"},
+                {"$ref": "#/definitions/entityRequirement"},
+                {"$ref": "#/definitions/lightRequirement"},
+                {"$ref": "#/definitions/blockRequirement"},
+                {"$ref": "#/definitions/structureRequirement"}
+            ]
+        },
+
+        "itemRequirement": {
+            "type": "object",
+            "description": "Used to define item inputs and outputs for a recipe.",
+            "additionalProperties": false,
+            "required": ["type", "mode", "item", "amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:item"
+                },
+
+                "mode": {
+                    "enum": ["input", "output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+
+                "item": {
+                    "type": "string",
+                    "description": "Namespaced resource ID. If this requirement is an input, you may also use tags by prefixing the ID with '#'.",
+                    "examples": ["minecraft:diamond", "minecraft:iron_ingot", "#minecraft:logs"]
+                },
+
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of the item to consume/produce.",
+                    "default": 1
+                },
+
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the item will be consumed/produced.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+
+                "nbt": {
+                    "type": "string",
+                    "description": "NBT for the items to be consumed/produced.",
+                    "examples": ["{'test1': true, 'Amount': 10}"]
+                },
+
+                "slot": {
+                    "type": "string",
+                    "description": "The ID of a slot you want to force the player to put the item in. The slot ID must be exactly the same as the one specified in the Item Component's ID property or it will not work. If this requirement is an output, the produced item will be put in the specified slot.",
+                    "examples": ["input1", "storage", "assembly"]
+                }
+            }
+        },
+
+        "durabilityRequirement": {
+            "type": "object",
+            "description": "Used to damage or repair items in input slots.",
+            "additionalProperties": false,
+            "required": ["type", "mode", "item", "amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:durability"
+                },
+                "mode": {
+                    "enum": ["input", "output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+                "item": {
+                    "type": "string",
+                    "description": "Namespaced resource ID. You may not use tags for durability requirements.",
+                    "examples": ["minecraft:stone_pickaxe", "minecraft:iron_chestplate"]
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of durability you want to remove/add to the item.",
+                    "default": 16
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the item will be damaged/repaired.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+
+                "nbt": {
+                    "type": "string",
+                    "description": "NBT for the items to be damaged/repaired.",
+                    "examples": ["{'test1': true, 'Amount': 10}"]
+                },
+
+                "slot": {
+                    "type": "string",
+                    "description": "The ID of a slot you want to force the player to put the item in. The slot ID must be exactly the same as the one specified in the Item Component's ID property or it will not work. If this requirement is an output, the produced item will be put in the specified slot.",
+                    "examples": ["input1", "storage", "assembly"]
+                }
+
+            }
+        },
+
+        "fluidRequirement": {
+            "type": "object",
+            "description": "Used to define fluid inputs and outputs.",
+            "additionalProperties": false,
+            "required": ["type", "mode", "fluid", "amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:fluid"
+                },
+                "mode": {
+                    "enum": ["input", "output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+                "fluid": {
+                    "type": "string",
+                    "description": "The registry name of the fluid you want to be consumed/produced by this recipe. If this requirement is an input, you may also use tags by prefixing the ID with '#'.",
+                    "examples": ["minecraft:water", "minecraft:lava", "#minecraft:water"]
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of fluid to consume/produce, measured in millibuckets.",
+                    "default": 1000
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the fluid will be consumed/produced.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+
+                "tank": {
+                    "type": "string",
+                    "description": "The ID of a tank you want to force the player to put the fluid in. The tank ID must be exactly the same as the one specified in the Fluid Component's ID property or it will not work. If this requirement is an output, the produced fluid will be put in the specified tank.",
+                    "examples": ["tank1", "lavatank", "coolant"]
+                }
+
+            }
+        },
+
+        "fluid_per_tickRequirement": {
+            "type": "object",
+            "description": "Used to define per-tick fluid inputs and outputs.",
+            "additionalProperties": false,
+            "required": ["type", "mode", "fluid", "amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:fluid_per_tick"
+                },
+                "mode": {
+                    "enum": ["input", "output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+                "fluid": {
+                    "type": "string",
+                    "description": "The registry name of the fluid you want to be consumed/produced by this recipe.",
+                    "examples": ["minecraft:lava", "minecraft:water"]
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of fluid in millibuckets to consume/produce each tick.",
+                    "default": 10
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "A fluid tag ID. This recipe will accept any fluids that match this tag. Only works for input requirements.",
+                    "examples": ["minecraft:water"]
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the fluid will be consumed/produced.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+
+                "tank": {
+                    "type": "string",
+                    "description": "The ID of a tank you want to force the player to put the fluid in. The tank ID must be exactly the same as the one specified in the Fluid Component's ID property or it will not work. If this requirement is an output, the produced fluid will be put in the specified tank.",
+                    "examples": ["tank1", "lavatank", "coolant"]
+                }
+
+            }
+        },
+
+        "energyRequirement": {
+            "type": "object",
+            "description": "Used to define energy inputs and outputs.",
+            "additionalProperties": false,
+            "required": ["type", "mode", "amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:energy"
+                },
+                "mode": {
+                    "enum": ["input", "output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of energy to consume/produce.",
+                    "default": 1000
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the energy will be consumed/produced.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                }
+            }
+
+        },
+
+        "energy_per_tickRequirement": {
+            "type": "object",
+            "description": "Used to define per-tick energy inputs and outputs.",
+            "additionalProperties": false,
+            "required": ["type","mode","amount"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:energy_per_tick"
+                },
+                "mode": {
+                    "enum": ["input","output"],
+                    "description": "Whether this requirement is an input or an output."
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of energy to consume/produce per tick.",
+                    "default": 1000
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the energy will be consumed/produced.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                }
+            }
+        },
+
+        "timeRequirement": {
+            "type": "object",
+            "description": "Used to make the recipe work only in some times of the in-game day/night cycle. This is an input-only requirement, which means you don't need to define the 'mode' property.",
+            "additionalProperties": false,
+            "required": ["type","times"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:time"
+                },
+                "times": {
+                    "type": "array",
+                    "description": "An array of time comparators. Each comparator will be compared to the actual dimension's daytime and if ALL are matched, the recipe will start.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "format": ">> means Strictly Higher. >= means Higher And Equals. == means Equals. <= means Lower And Equals. << means Strictly Lower. Therefore, a statement of '>>12000' would mean the recipe will run if the dimension daytime is higher than 12000 ticks, so between 12001 and 23999 inclusive.",
+                        "examples": [">>12000","<=6000","==1","<=12000","<<18000"]
+                    }
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not display in JEI.",
+                    "default": true
+                }
+            }
+        },
+        
+        "positionRequirement": {
+            "type": "object",
+            "description": "Used to make the recipe work only in some positions/biomes/dimensions. This is an input-only requirement, which means you don't need to define the 'mode' property.",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:position"
+                },
+                "dimensions": {
+                    "type": "array",
+                    "description": "A list of dimension IDs. This recipe will work in any of the listed dimensions.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:overworld","minecraft:the_nether","minecraft:the_end"]
+                    }
+                },
+                "dimensionsBlacklist": {
+                    "type": "boolean",
+                    "description": "If true, the list of dimensions will be treated as a blacklist rather than a whitelist.",
+                    "default": false
+                },
+                "biomes": {
+                    "type": "array",
+                    "description": "A list of biome IDs. This recipe will work in any of the listed biomes.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:plains"]
+                    }
+                },
+                "biomesBlacklist": {
+                    "type": "boolean",
+                    "description": "If true, the list of biomes will be treated as a blacklist rather than a whitelist.",
+                    "default": false
+                },
+                "positions": {
+                    "type": "array",
+                    "description": "A list of position comparators used to check if the machine is in certain positions of the world. A position comparator is defined by the axis you want to check (X/Y/Z), the mode of the comparator and the actual position you want to compare.",
+                    "items": {
+                        "type": "string",
+                        "format": ">> means Strictly Higher. >= means Higher And Equals. == means Equals. <= means Lower And Equals. << means Strictly Lower. Therefore, a statement of 'x>>100' would mean the recipe will run if the machine's position is at an X coordinate of 101 or higher.",
+                        "examples": ["x<<0","y>>60","z==0"]
+                    }
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not display in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "commandRequirement": {
+            "type": "object",
+            "description": "Used to make the custom machine execute commands while crafting. This requirement doesn't have an input/output mode, and will not stop the processing of a recipe even if the command fails.",
+            "additionalProperties": false,
+            "required": ["type","command","phase"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:command"
+                },
+                "command": {
+                    "type": "string",
+                    "description": "A string which represents the command to run. It must have the same syntax as when you run a command in the chat.",
+                    "examples": ["/time set 0"]
+                },
+                "phase": {
+                    "enum": ["starting","crafting","ending"],
+                    "description": "Determines whether the command should be executed at the start of the crafting process, at the end, or at each tick during the process.",
+                    "default": "ending"
+                },
+                "permissionLevel": {
+                    "type": "integer",
+                    "description": "The permission level the machine can run the command. In vanilla, a player has a permission level of 1 and an Op player has a permission level of 4.",
+                    "default": 2,
+                    "minimum": 1,
+                    "maximum": 4
+                },
+                "log": {
+                    "type": "boolean",
+                    "description": "If true, the machine will log the command in chat, console, and logs when executed. Used mainly for debug.",
+                    "default": false
+                },
+                "chance": {
+                    "type": "number",
+                    "description": "The chance that the command will be executed.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not display in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "fuelRequirement": {
+            "type": "object",
+            "description": "Used to make the recipe require fuel to be processed, like a vanilla furnace. The fuel must be provided via an Item Component with the 'variant' property set to 'custommachinery:fuel'. The requirement will only check if the machine is burning fuel. This check occurs every tick, so if the machine runs out of fuel during a process, it will stop and wait for the player to add more fuel.",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:fuel"
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not display in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "effectRequirement": {
+            "type": "object",
+            "description": "Used to make the machine give status effects to nearby entities. This requirement doesn't have an input/output mode, and will never stop the processing of a recipe.",
+            "additionalProperties": false,
+            "required": ["type","effect","time","radius"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:effect"
+                },
+                "effect": {
+                    "type": "string",
+                    "description": "An effect ID to apply.",
+                    "examples": ["minecraft:levitation","minecraft:poison"]
+                },
+                "time": {
+                    "type": "integer",
+                    "description": "The duration in ticks of the applied effect.",
+                    "minimum": 1,
+                    "default": 100
+                },
+                "radius": {
+                    "type": "integer",
+                    "description": "The radius in blocks around the machine where the effect will be applied.",
+                    "minimum": 1,
+                    "default": 10
+                },
+                "level": {
+                    "type": "integer",
+                    "description": "The level of the effect.",
+                    "minimum": 1,
+                    "maximum": 255,
+                    "default": 1
+                },
+                "filter": {
+                    "type": "array",
+                    "description": "A list of entity IDs that can have the effect applied. Any registered entity ID can be used here. If left empty, the effect can be applied to any entity.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:player","minecraft:zombie","minecraft:cow"]
+                    }
+                },
+                "finish": {
+                    "type": "boolean",
+                    "description": "If true, the effect will only be applied at the end of the crafting process. If false, the effect will be applied each tick while the machine is running.",
+                    "default": false
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "weatherRequirement": {
+            "type": "object",
+            "description": "Used to define a recipe that only works during certain types of weather. This is an input-only requirement, meaning that you don't have to define the 'mode' property.",
+            "additionalProperties": false,
+            "required": ["type","weather"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:weather"
+                },
+                "weather": {
+                    "enum": ["clear","rain","snow","thunder"],
+                    "description": "The type of weather to require. Note that if you define the type as 'rain' and it's actually thundering, the recipe will still process because it's raining during a thunderstorm. This is also true for snow, but only in cold biomes/high altitudes."
+                },
+                "onmachine": {
+                    "type": "boolean",
+                    "description": "If true, the weather must 'touch' the machine. The machine must be able to see the sky and be at a place where the required weather is actually happening. If false, the machine can be anywhere in the world, as long as the world weather is the same as the requirement weather it will succeed.",
+                    "default": true
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "redstoneRequirement": {
+            "type": "object",
+            "description": "Used to make the recipe work only when the machine receives a specific redstone signal. This is an input-only requirement, so you don't need to define the 'mode' property.",
+            "additionalProperties": false,
+            "required": ["type","power"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:redstone"
+                },
+                "power": {
+                    "type": "integer",
+                    "description": "The redstone signal power needed for the machine to work. This will be compared to the received signal level using the 'comparator' property.",
+                    "minimum": 0,
+                    "maximum": 15,
+                    "default": 1
+                },
+                "comparator": {
+                    "enum": [">=",">>","==","<=","<<"],
+                    "description": "A comparator that defines how the specified value in the 'power' property will be compared to the received redstone signal.",
+                    "default": ">="
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "entityRequirement": {
+            "type": "object",
+            "description": "Used to check, consume health, or kill some entities in a specified radius of the machine.",
+            "additionalProperties": false,
+            "required": ["type","mode","action","amount","radius"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:entity"
+                },
+                "mode": {
+                    "enum": ["input","output"],
+                    "description": "Whether this requirement is an input/output."
+                },
+                "action": {
+                    "enum": ["check_amount","check_health","consume_health","kill"],
+                    "description": "Define what this requirement should do. 'check_amount' will check the number of entities in the specified radius. 'check_health' will check the total health of all nearby entities. 'consume_health' will consume an amount of HP on start if mode = input, on finish if mode = output. 'kill' will kill the amount of entities on start if input, on finish if output.",
+                    "default": "check_amount"
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of entities/health to check/consume/kill. The recipe will start/end only if the found amount of entities/health in the specified radius is greater than or equal to this amount.",
+                    "default": 10
+                },
+                "radius": {
+                    "type": "integer",
+                    "description": "The distance in blocks to search around the machine.",
+                    "default": 10
+                },
+                "filter": {
+                    "type": "array",
+                    "description": "A blacklist of entities to ignore when checking. By default, all entities are allowed for 'check_amount' and 'kill' actions, even non-living ones like item frames and armor stands. For 'check_health' and 'consume_health' actions, only living entities are allowed.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:player","minecraft:zombie","minecraft:cow"]
+                    }
+                },
+                "whitelist": {
+                    "type": "boolean",
+                    "description": "If true, the 'filter' list is treated as a whitelist instead of a blacklist.",
+                    "default": false
+                }
+            }
+        },
+
+        "lightRequirement": {
+            "type": "object",
+            "description": "Used to check the sky or block light level at the machine's position. This is an input-only requirement, so you don't need to specify the 'mode' property.",
+            "additionalProperties": false,
+            "required": ["type","light"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:light"
+                },
+                "light": {
+                    "type": "integer",
+                    "description": "The light level needed to start the recipe processing.",
+                    "minimum": 0,
+                    "maximum": 15,
+                    "default": 8
+                },
+                "comparator": {
+                    "enum": [">>",">=","==","<=","<<"],
+                    "description": "Defines the comparison relationship to test the machine's light level.",
+                    "default": ">="
+                },
+                "sky": {
+                    "type": "boolean",
+                    "description": "If true, the requirement will check the sky light level instead of the block light level.",
+                    "default": false
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "blockRequirement": {
+            "type": "object",
+            "description": "Used to check/place/replace/break/destroy block nearby the machine.",
+            "additionalProperties": false,
+            "required": ["type","mode","action","pos","block"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:block"
+                },
+                "mode": {
+                    "enum": ["input","output"],
+                    "description": "Whether this requirement is an input/output."
+                },
+                "action": {
+                    "enum": ["check","place","replace_break","replace_destroy","break","destroy"],
+                    "description": "The type of action to perform. 'check' will check for the required block each tick of the recipe and stop the processing if it can't find the block(s). 'place' will place the block at the specified position. 'replace_break' will break any block and replace it with the block specified. 'replace_destroy' will destroy any block and replace it with the block specified. 'break' will break the block specified. 'destroy' will destroy the block specified. The difference between 'break' and 'destroy' is that break drops loot, while destroy does not.",
+                    "default": "place"
+                },
+                "pos": {
+                    "type": "array",
+                    "description": "A bounding box where the requirement is allowed to check/place/replace/break/destroy blocks. An array of 6 integers in the form [left, bottom, front, right, up, back] where all coordinates are relative to the machine at [0,0,0,0,0,0]. For example, [-1,-1,-1,1,1,1] represents a 3x3 cube centered on the machine.",
+                    "minItems": 6,
+                    "maxItems": 6,
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "block": {
+                    "type": "string",
+                    "description": "A block ID in the format 'namespace:id'. Blockstate properties may be specified in the format 'namespace:id[property1=value,property2=value]'. That way, the requirement can distinguish between a lit furnace and an unlit one, and other similar tests. In addition, some NBT tag data may be specified within the format '{tag1:value,tag2:value}'. If you're not sure about the syntax, check the vanilla '/setblock' command. It uses the same syntax and has autocompletion.",
+                    "examples": ["minecraft:furnace[lit=true,facing=north]"]
+                },
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of blocks to check/place/replace/break/destroy. All blocks must be in the box defined in the 'pos' property and match the block defined in the 'block' property.",
+                    "default": 1,
+                    "minimum": 1
+                },
+                "comparator": {
+                    "enum": [">>",">=","==","<=","<<"],
+                    "description": "A comparator used only for the 'check' action.",
+                    "default": ">="
+                },
+                "delay": {
+                    "type": "number",
+                    "description": "Specifies at which time of the recipe the requirement action must be executed. 0.5 is halfway through, 0.25 is a quarter of the way through, etc.",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 0
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        },
+
+        "structureRequirement": {
+            "type": "object",
+            "description": "Structure requirement is used to make a recipe need a structure around the machine to be processed. The structure can be any size, but blocks in unloaded chunks will not be found and the recipe will not start.",
+            "additionalProperties": false,
+            "required": ["type","pattern","keys"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:structure"
+                },
+                "pattern": {
+                    "type": "array",
+                    "description": "A list of lists of strings. Each character of each string represents a block, starting from the left and going to the right. Each string in the list represents a row, starting from the back and going to the front. Each list of strings represents a floor or level of the machine, starting from the bottom and going to the top. All strings must have the same number of characters, and each floor/level must have the same number of strings. The pattern must have exactly one 'm' character, representing the machine's position.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "string",
+                            "minLength": 2
+                        }
+                    },
+                    "examples": [[["aaa"],["ama"],["aaa"]]]
+                },
+                "keys": {
+                    "type": "object",
+                    "description": "A map of characters to block IDs. Each character (except 'm') must be defined in the format {'a': 'minecraft:stone'}. The block is described the same way as in the '/setblock' command, allowing blockstates to be included.",
+                    "propertyNames": {
+                        "type": "string",
+                        "maxLength": 1,
+                        "minLength": 1
+                    },
+                    "additionalProperties": {
+                        "type": "string",
+                        "description": "The block ID to associate with this character in 'pattern'."
+                    }
+                },
+                "jei": {
+                    "type": "boolean",
+                    "description": "If false, this requirement will not be visible in JEI.",
+                    "default": true
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,601 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Custom Machinery Machine",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","appearance","components"],
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Display name or lang key for this machine."
+        },
+
+        "appearance": {
+            "type": "object",
+            "description": "Defines the appearance of this machine.",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "block": {
+                    "type": "string",
+                    "description": "A block ID. This machine will have the appearance of the listed block.",
+                    "examples": ["minecraft:tnt","minecraft:sand","minecraft:stone"]
+                },
+
+                "blockstate": {
+                    "type": "string",
+                    "description": "A block ID, plus a list of blockstate properties. This machine will have the appearance of the provided blockstate.",
+                    "examples": ["minecraft:grass_block#snowy=false,facing=north"]
+                },
+
+                "model": {
+                    "type": "string",
+                    "description": "The name of a model file located in assets/<namespace>/models/machine. This model will provide the machine's appearance."
+                },
+
+                "sound": {
+                    "type": "string",
+                    "description": "The sound this machine will play when running. If no sound is provided, the machine will simply be silent.",
+                    "examples": ["minecraft:block.anvil.place"]
+                },
+                
+                "lightmode": {
+                    "enum": ["running","always","never","idle","errored"],
+                    "description": "When this machine should emit light.",
+                    "default": "never"
+                },
+
+                "lightlevel": {
+                    "type": "integer",
+                    "description": "The level of light this machine should emit.",
+                    "minimum": 0,
+                    "maximum": 15,
+                    "default": 0
+                },
+
+                "type": {
+                    "enum": ["blockstate","block","model"],
+                    "description": "Sets whether this machine should use the blockstate, block, or model property for its appearance.",
+                    "default": "blockstate"
+                }
+            }
+        },
+
+        "components": {
+            "type": "array",
+            "description": "An array of components that make up this machine.",
+            "items": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["type","capacity"],
+                        "properties": {
+                            "type": {
+                                "const": "custommachinery:energy"
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "description": "The amount of energy this machine can store.",
+                                "default": 10000
+                            },
+                            "maxInput": {
+                                "type": "integer",
+                                "description": "The maximum amount of energy that can be input to the machine per tick.",
+                                "default": 10000
+                            },
+                            "maxOutput": {
+                                "type": "integer",
+                                "description": "The maximum amount of energy this machine can output per tick.",
+                                "default": 10000
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["type","capacity","id"],
+                        "properties": {
+                            "type": {
+                                "const": "custommachinery:fluid"
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "description": "The amount of fluid that can be stored in this tank, measured in millibuckets.",
+                                "default": 10000
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The ID for this tank, used in GUI rendering. Must be all lowercase with letters and numbers only. No spaces or special characters.",
+                                "examples": ["tank1","lavatank","coolant"]
+                            },
+                            "maxInput": {
+                                "type": "integer",
+                                "description": "The amount of fluid that can be input to this tank per tick, measured in millibuckets.",
+                                "default": 10000
+                            },
+                            "maxOutput": {
+                                "type": "integer",
+                                "description": "The amount of fluid this tank can output per tick, measured in millibuckets.",
+                                "default": 10000
+                            },
+                            "filter": {
+                                "type": "array",
+                                "description": "A blacklist of fluids that this tank can't accept. You may use tags here by prefixing the tag ID with a '#'.",
+                                "items": {
+                                    "type": "string",
+                                    "examples": ["minecraft:water","minecraft:lava","#minecraft:water"]
+                                },
+                                "default": []
+                            },
+                            "whitelist": {
+                                "type": "boolean",
+                                "description": "If true, the 'filter' proeprty will act as a whitelist instead of a blacklist.",
+                                "default": false
+                            },
+                            "mode": {
+                                "enum": ["input","output","both","none"],
+                                "description": "The IO mode of the tank. Pipes can only insert in an input tank and extract from an output tank. With a bucket you can both insert and extract fluids in an input tank but only extract fluids from an output tank. While crafting the machine will search for fluids to consume in input tanks and put the recipe results in the output tanks. Note: An input tank will have a maxOutput value of 0 even if you set it to another value. The same goes for output tanks and the maxInput property."
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["type","id"],
+                        "properties": {
+                            "type": {
+                                "const": "custommachinery:item"
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "A string that defines the ID of this slot, used in GUI rendering. Must be all lowercase with letters and numbers only. No spaces or special characters.",
+                                "examples": ["slot1","storage","assembly"]
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "description": "The maximum number of items you can put in this slot. This does not override the item stack size. This is used to decrease the available stack size, not increase it.",
+                                "default": 64
+                            },
+                            "filter": {
+                                "type": "array",
+                                "description": "A blacklist of items this slot can't accept. The items must be referenced by their registry name. You can also use a tag here by using the '#' prefix in front of a tag's registry name.",
+                                "items": {
+                                    "type": "string",
+                                    "examples": ["minecraft:diamond","minecraft:potato","#minecraft:logs"]
+                                }
+                            },
+                            "whitelist": {
+                                "type": "boolean",
+                                "description": "If true, the 'filter' property will be treated as a whitelist instead of a blacklist.",
+                                "default": false
+                            },
+                            "mode": {
+                                "enum": ["input","output","both","none"],
+                                "description": "The IO mode of the slot. Available modes are (input/output/both/none). Hoppers and pipes can only insert in an input slot and extract from an output slot. In GUI you can both insert and extract items in an input slot but only extract items from an output slot. While crafting the machine will search for items to consume in input slots and put the recipe results in the output slots.",
+                                "default": "both"
+                            },
+                            "variant": {
+                                "enum": ["custommachinery:fuel","custommachinery:default","custommachinery:upgrade"],
+                                "description": "Item components can have differents behaviours, a basic item slot, a furnace fuel slot, an upgrade slot. 'Default' is a basic item slot. 'Fuel' allows only items with a burn time, and will consume them to power the machine. 'Upgrade' only allows items defined as a custom machine upgrade. A fuel/upgrade slot can be input or output mode, but if set to output the only way to put an item in the slot will be through a recipe output. It's advised to leave it as an input slot.",
+                                "default": "custommachinery:default"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["type"],
+                        "properties": {
+                            "type": {
+                                "const": "custommachinery:redstone",
+                                "description": "This component let you interact with the vanilla redstone logic system. It doesn't store anything on the machine, instead it can be used to define the redstone behaviour of the machine. This component is fully optional, if not added the machine default redstone behaviour is to pause processing when any redstone signal is received, and to never emit a redstone signal. A machine can only have one of these components."
+                            },
+                            "powertopause": {
+                                "type": "integer",
+                                "description": "Define the redstone signal power needed to pause the machine. Put a number greater than 15 if you want the machine to never pause on redstone signal.",
+                                "default": 1,
+                                "minimum": 0
+                            },
+                            "craftingpoweroutput": {
+                                "type": "integer",
+                                "description": "Define the redstone signal power emitted when the machine is processing a recipe.",
+                                "default": 0,
+                                "minimum": 0,
+                                "maximum": 15
+                            },
+                            "idlepoweroutput": {
+                                "type": "integer",
+                                "description": "Define the redstone signal power emitted when the machine is idle.",
+                                "default": 0,
+                                "minimum": 0,
+                                "maximum": 15
+                            },
+                            "erroredpoweroutput": {
+                                "type": "integer",
+                                "description": "Define the redstone signal power emitted when the machine is errored.",
+                                "default": 0,
+                                "minimum": 0,
+                                "maximum": 15
+                            },
+                            "comparatorinputtype": {
+                                "enum": ["custommachinery:item","custommachinery:fluid","custommachinery:energy"],
+                                "description": "A component type that will be used to determine the redstone signal emitted by a vanilla comparator.",
+                                "default": "custommachinery:energy"
+                            },
+                            "comparatorinputid": {
+                                "type": "string",
+                                "description": "Define which specific component ID will be used in 'comparatorinputtype'."
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+
+        "gui": {
+            "type": "array",
+            "description": "A GUI composed of various elements. The main tool for players to interact with the machine in-world.",
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/textureGUI"},
+                    {"$ref": "#/definitions/textGUI"},
+                    {"$ref": "#/definitions/player_inventoryGUI"},
+                    {"$ref": "#/definitions/progressGUI"},
+                    {"$ref": "#/definitions/statusGUI"},
+                    {"$ref": "#/definitions/energyGUI"},
+                    {"$ref": "#/definitions/fluidGUI"},
+                    {"$ref": "#/definitions/slotGUI"}
+                ]
+            }
+        },
+
+        "jei": {
+            "description": "Optionally define a different GUI to display recipes in JEI.",
+            "$ref": "#/properties/gui"
+        }
+    },
+
+    "definitions": {
+        "textureGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y","texture"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:texture"
+                },
+                "texture": {
+                    "type": "string",
+                    "description": "The location of the texture that will be rendered into the GUI.",
+                    "examples": ["namespace:path/file.png"]
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "textGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y","text"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:text"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to be rendered on the GUI."
+                },
+                "alignment": {
+                    "enum": ["left","center","right"],
+                    "description": "The horizontal alignment of the text."
+                },
+                "color": {
+                    "type": "integer",
+                    "description": "An integer value that defines the color of the text.",
+                    "examples": [16711680]
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "player_inventoryGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:player_inventory"
+                },
+                "texture": {
+                    "type": "string",
+                    "description": "An optional texture for the player inventory GUI element.",
+                    "examples": ["namespace:textures/player_inventory.png"]  
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "progressGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:progress"
+                },
+                "emptyTexture": {
+                    "type": "string",
+                    "description": "An optional texture that will be rendered for the empty part of the progress bar. If specified, empty and filled texture MUST have the same size!",
+                    "examples": ["namespace:textures/empty_texture.png"]
+                },
+                "filledTexture": {
+                    "type": "string",
+                    "description": "An optional texture that will be rendered for the filled part of the progress bar. If specified, empty and filled texture MUST have the same size!",
+                    "examples": ["namespace:textures/filled_texture.png"]
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "statusGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:status"
+                },
+                "idleTexture": {
+                    "type": "string",
+                    "description": "The location of the texture file the status element will display when the machine is idle. If specified, the idle, running, and errored textures must be the same height and width.",
+                    "examples": ["namespace:textures/status_idle_texture.png"]
+                },
+                "runningTexture": {
+                    "type": "string",
+                    "description": "The location of the texture file the status element will display when the machine is running. If specified, the idle, running, and errored textures must be the same height and width.",
+                    "examples": ["namespace:textures/status_running_texture.png"]
+                },
+                "erroredTexture": {
+                    "type": "string",
+                    "description": "The location of the texture file the status element will display when the machine is errored. If specified, the idle, running, and errored textures must be the same height and width.",
+                    "examples": ["namespace:textures/status_errored_texture.png"]
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "energyGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:energy"
+                },
+                "emptytexture": {
+                    "type": "string",
+                    "description": "Points to a texture to use as the empty element texture.",
+                    "default": "custommachinery:textures/gui/base_energy_storage_empty.png"
+                },
+                "filledtexture": {
+                    "type": "string",
+                    "description": "Points to a texture to use as the filled element texture.",
+                    "default": "custommachinery:textures/gui/base_energy_storage_filled.png"
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "fluidGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y","id"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:fluid"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "A string value identifying a specific fluid component of this machine.",
+                    "examples": ["tank1","lavatank","coolant"]
+                },
+                "texture": {
+                    "type": "string",
+                    "description": "Points to a texture to use for this fluid GUI element.",
+                    "default": "custommachinery:textures/gui/base_fluid_storage.png"
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        },
+
+        "slotGUI": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","x","y","id"],
+            "properties": {
+                "type": {
+                    "const": "custommachinery:slot"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "String used to identify a specific item component in this machine.",
+                    "examples": ["slot1","storage","assembly"]
+                },
+                "texture": {
+                    "type": "string",
+                    "description": "Optional texture file used to render this slot GUI element.",
+                    "default": "custommachinery:textures/gui/base_slot.png"
+                },
+                "item": {
+                    "type": "string",
+                    "description": "If specified, this slot will render a 'ghost item' (slightly transparent). This item will not be physically present (AKA the player can't take it out). This can be used, for example, to show a filter.",
+                    "default": "minecraft:air",
+                    "examples": ["minecraft:coal"]
+                },
+                "x": {
+                    "type": "number",
+                    "description": "The X coordinate of this GUI element."
+                },
+                "y": {
+                    "type": "number",
+                    "description": "The Y coordinate of this GUI element."
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "The width of this GUI element."
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "The height of this GUI element."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of this GUI element. Elements with higher priority will be rendered first.",
+                    "default": 0
+                }
+            }
+        }
+    }
+}
