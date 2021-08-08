@@ -1,0 +1,147 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Farming for Blockheads - Market Registry",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+
+        "groupOverrides": {
+            "type": "object",
+            "description": "Allows you to override characteristics of entire groups. In this way, you can disable a group or modify the payment required for all its entries. To override a group, use its name as a key within this object, then describe the characteristics you wish to set universally within that group.",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to false to disable this category.",
+                        "default": true
+                    },
+                    "payment": {
+                        "type": "object",
+                        "description": "Set a specific payment for all items in this category.",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "The item required as payment.",
+                                "examples": ["minecraft:emerald","minecraft:diamond","minecraft:gold_ingot"]
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "The amount required as payment.",
+                                "default": 1
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "entryOverrides": {
+            "type": "object",
+            "description": "Override the characteristics of any entries which provide specific items. In this way, you can completely remove an item from the market, or modify the amount of that item provided. To modify an item's entry, use its Registry ID as the key, then describe the chances you wish to make as an object.",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to false to completely remove this item from the market."
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "description": "Set the amount of this item provided by the market."
+                    }
+                }
+            }
+        },
+
+        "customCategories": {
+            "type": "object",
+            "description": "Use this section to add new categories to the market. Use the ID of the category you wish to add as a key, with no spaces and all lowercase letters.",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name","icon"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "A user-friendly display name for this category to display in the market.",
+                        "examples": ["Wooden Stuff"]
+                    },
+                    "icon": {
+                        "type": "object",
+                        "description": "The icon to display next to this category in the market GUI.",
+                        "additionalProperties": false,
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "An item ID to provide the icon.",
+                                "examples": ["minecraft:stick","minecraft:coal","minecraft:potato","minecraft:oak_planks"]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "customEntries": {
+            "type": "array",
+            "description": "A list of trade offers to add to the market.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["output","payment","category"],
+                "properties": {
+
+                    "output": {
+                        "type": "object",
+                        "description": "The item to offer.",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "The ID of the item to offer.",
+                                "examples": ["minecraft:potato","minecraft:diamond","minecraft:coal"]
+                            },
+                            "amount": {
+                                "type": "integer",
+                                "description": "The amount of the item available. If omitted, defaults to 1.",
+                                "default": 1
+                            }
+                        }
+                    },
+
+                    "payment": {
+                        "type": "object",
+                        "description": "The item(s) to require in payment.",
+                        "additionalProperties": false,
+                        "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "description": "ID of the item to require in payment.",
+                                "examples": ["minecraft:diamond","minecraft:emerald","minecraft:gold_ingot"]
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "The amount of the item to require. If omitted, defaults to 1.",
+                                "default": 1
+                            }
+                        }
+                    },
+
+                    "category": {
+                        "type": "string",
+                        "description": "ID for this entry's desired category.",
+                        "examples": ["wooden_stuff","vanilla_saplings","vanilla_seeds"]
+                    }
+                }
+            }
+        }
+    }
+}

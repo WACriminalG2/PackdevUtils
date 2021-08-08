@@ -1,3 +1,8 @@
+# v1.20.0 -- 8/8/21
+
+* Added schema validation for Farming for Blockheads: market registry.
+* Added schema validation for Tips: tooltip.
+
 # v1.19.0 -- 8/7/21
 
 * Added schema validation for Extended Crafting: combination, compression, Ender crafting, singularity.

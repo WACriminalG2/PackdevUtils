@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Tips - Tip",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tip"],
+    "properties": {
+
+        "tip": {
+            "type": "object",
+            "description": "A tooltip. Make sure to include either the text property, or a translate property pointing to a lang key.",
+            "additionalProperties": false,
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The text to display.",
+                    "examples": ["This is text!"]
+                },
+                "translate": {
+                    "type": "string",
+                    "description": "A lang key for the text to display.",
+                    "examples": ["your_id.tip.the_tip_id"]
+                },
+                "color": {
+                    "type": "string",
+                    "description": "The color to display the text in. Can be one of Minecraft's enumerated colors, a 6-digit hex value, or the word 'reset' to clear a previous color tag.",
+                    "examples": ["black","dark_blue","dark_green","dark_aqua","dark_red","dark_purple","gold","gray","dark_gray","blue","green","aqua","red","light_purple","yellow","white","reset","#770088"]
+                },
+                "font": {
+                    "type": "string",
+                    "description": "The resource location of the font for this component.",
+                    "default": "minecraft:default"
+                },
+                "bold": {
+                    "type": "boolean",
+                    "description": "If true, the text will be bold.",
+                    "default": true
+                },
+                "italic": {
+                    "type": "boolean",
+                    "description": "If true, the text will be italicized.",
+                    "default": true
+                },
+                "underlined": {
+                    "type": "boolean",
+                    "description": "If true, the text will be underlined.",
+                    "default": true
+                },
+                "strikethrough": {
+                    "type": "boolean",
+                    "description": "If true, the text will be struck through.",
+                    "default": true
+                },
+                "obfuscated": {
+                    "type": "boolean",
+                    "description": "If true, the text will be obfuscated.",
+                    "default": true
+                },
+                "extra": {
+                    "type": "array",
+                    "description": "A list of text components to display after the first one.",
+                    "items": {
+                        "$ref": "#/properties/tip"
+                    }
+                }
+            }
+        },
+
+        "title": {
+            "description": "You may include an optional title for your tooltip. If omitted, your tip will have a bold yellow title which says 'TIP' by default.",
+            "$ref": "#/properties/tip"
+        },
+
+        "conditions": {
+            "type": "array",
+            "description": "You may optionally make your tooltip conditional on certain mods being loaded.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type","modid"],
+                "properties": {
+                    "type": {
+                        "const": "forge:mod_loaded"
+                    },
+                    "modid": {
+                        "type": "string",
+                        "description": "The ID of a mod. Your tooltip will only be loaded if this mod is present.",
+                        "examples": ["botania","create","origins","tetra","resourcefulbees"]
+                    }
+                }
+            }
+        }
+    }
+}

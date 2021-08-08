@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.19.0",
+    "version": "1.20.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -332,6 +332,14 @@
             {
                 "fileMatch": "*/recipes/mysticalagriculture/soul_extraction/*.json",
                 "url": "./Schema/mysticalagriculture/soul_extraction.json"
+            },
+            {
+                "fileMatch": ["*/data/*/farmingforblockheads_compat/*.json","config/farmingforblockheads/MarketRegistry.json"],
+                "url": "./Schema/farmingforblockheads/market_registry.json"
+            },
+            {
+                "fileMatch": "*/assets/*/tips/*.json",
+                "url": "./Schema/tips/tip.json"
             }
           ]
       }
