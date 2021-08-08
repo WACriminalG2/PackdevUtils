@@ -1,0 +1,152 @@
+{
+    "$comment": "TODO: Macros sub-schema, extension keys.",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Patchouli - Book",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","landing_text"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the book that will be displayed in the book item and the GUI."
+        },
+        "landing_text": {
+            "type": "string",
+            "description": "The text that will be displayed in the landing page of your book. This text can be formatted."
+        },
+        "advancement_namespaces": {
+            "type": "array",
+            "description": "A legacy field.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "book_texture": {
+            "type": "string",
+            "description": "The texture for the background of the book GUI. You can use any resource location for this, but it is highly recommended you use one of the built in ones so that if new elements get added, you have them right away.",
+            "examples": ["patchouli:textures/gui/book_blue.png","patchouli:textures/gui/book_brown.png","patchouli:textures/gui/book_cyan.png","patchouli:textures/gui/book_gray.png","patchouli:textures/gui/book_green.png","patchouli:textures/gui/book_purple.png","patchouli:textures/gui/book_red.png"],
+            "default": "patchouli:textures/gui/book_brown.png"
+        },
+        "filler_texture": {
+            "type": "string",
+            "description": "The texture for the page filler (the cube thing that shows up on entries with an odd number of pages). Define if you want something else than the cube to fill your empty pages."
+        },
+        "crafting_texture": {
+            "type": "string",
+            "description": "The texture for the crafting entry elements. Define if you want custom backdrops for these. Not really worth defining in most cases but if you want to be cool and stylish, you can."
+        },
+        "model": {
+            "type": "string",
+            "description": "The model for the book's item. This can be any standard item model you define. Patchouli provides a few you can use.",
+            "examples": ["patchouli:book_blue","patchouli:book_brown","patchouli:book_cyan","patchouli:book_gray","patchouli:book_green","patchouli:book_purple","patchouli:book_red"],
+            "default": "patchouli:book_brown"
+        },
+        "text_color": {
+            "type": "string",
+            "description": "The color of regular text in this book, in hex (# not necessary). Defaults to '000000', or black.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "000000"
+        },
+        "header_color": {
+            "type": "string",
+            "description": "The color of header text in this book, in hex (# not necessary). Defaults to '333333'.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "333333"
+        },
+        "link_color": {
+            "type": "string",
+            "description": "The color of link text in this book, in hex (# not necessary). Defaults to '0000EE'.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "0000EE"
+        },
+        "link_hover_color": {
+            "type": "string",
+            "description": "The color of hovered link text in this book, in hex (# not necessary). Defaults to '8800EE'.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "8800EE"
+        },
+        "progress_bar_color": {
+            "type": "string",
+            "description": "The color of the advancement progress bar in this book, in hex (# not necessary). Defaults to 'FFFF55'.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "FFFF55"
+        },
+        "progress_bar_background": {
+            "type": "string",
+            "description": "The color of the advancement progress bar's background in this book, in hex (# not necessary). Defaults to 'DDDDDD'.",
+            "examples": ["880077","000000","FF0000"],
+            "default": "DDDDDD"
+        },
+        "open_sound": {
+            "type": "string",
+            "description": "The sound effect played when opening this book. This is a resource location pointing to the sound."
+        },
+        "flip_sound": {
+            "type": "string",
+            "description": "The sound effect played when flipping through pages in this book. This is a resource location pointing to the sound."
+        },
+        "index_icon": {
+            "type": "string",
+            "description": "The icon to display for the Book Index. This can either be an ItemStack string, if you want an item to be the icon, or a resource location pointing to a square texture. If you want to use a resource location, make sure to end it with .png. This is optional, and if you don't include it, it'll default to the book's icon (which is the recommended value).",
+            "examples": ["minecraft:sword","minecraft:potato"]
+        },
+        "show_progress": {
+            "type": "boolean",
+            "description": "Set to false to disable the advancement progress bar, even if advancements are enabled.",
+            "default": true
+        },
+        "version": {
+            "type": "string",
+            "description": "The 'edition' of the book. This defaults to '0', and setting this to any other numerical value (let's call it X) will display 'X Edition' in the book's tooltip and landing page (e.g. X being 3 would display '3rd Edition'). Setting this to '0' or not modifying it will instead display whatever you set the 'subtitle' key as. If the value is non-numerical, it'll display 'Writer's Edition'.",
+            "default": "0"
+        },
+        "subtitle": {
+            "type": "string",
+            "description": "A subtitle for your book, which will display in the tooltip and below the book name in the landing page if 'version' is set to '0' or not set."
+        },
+        "creative_tab": {
+            "type": "string",
+            "description": "The creative tab to display your book in. This defaults to Miscellaneous, but you can move it to any tab you wish.",
+            "default": "misc",
+            "examples": ["buildingBlocks","decorations","redstone","transportation","misc","food","tools","combat","brewing"]
+        },
+        "advancements_tab": {
+            "type": "string",
+            "description": "The name of the advancements tab you want this book to be associated to. If defined, an Advancements button will show up in the landing page that will open that tab."
+        },
+        "dont_generate_book": {
+            "type": "boolean",
+            "description": "Set this to true if you don't want Patchouli to make a book item for your book. Us only if you're a modder and you really need a custom Item class for whatever reason.",
+            "default": false
+        },
+        "custom_book_item": {
+            "type": "string",
+            "description": "See 'dont_generate_book'. If you do have a custom book item, set it here. This is an ItemStack string."
+        },
+        "show_toasts": {
+            "type": "boolean",
+            "description": "Set to false if you don't want your book to show toast notifications when new entries are available.",
+            "default": true
+        },
+        "use_blocky_font": {
+            "type": "boolean",
+            "description": "Set to true to use the vanilla blocky font rather than the slim font. If you have a font mod, it'll use whichever font that mod is providing instead.",
+            "default": false
+        },
+        "i18n": {
+            "type": "boolean",
+            "description": "If set to true, attempts to look up category, entry, and page titles as well as any page text in the lang files before rendering.",
+            "default": false
+        },
+        "macros": {
+            "$comment": "Need to come back and do a whole sub-schema for this, I think.",
+            "type": "object",
+            "description": "Formatting macros this book should use."
+        },
+        "pause_game": {
+            "type": "boolean",
+            "description": "When set true, opening any GUI from this book will pause the game in singleplayer.",
+            "default": true
+        }
+    }
+}

@@ -340,6 +340,18 @@
             {
                 "fileMatch": "*/assets/*/tips/*.json",
                 "url": "./Schema/tips/tip.json"
+            },
+            {
+                "fileMatch": "*/recipes/farmersdelight/cooking/*.json",
+                "url": "./Schema/farmersdelight/cooking.json"
+            },
+            {
+                "fileMatch": "*/recipes/farmersdelight/cutting/*.json",
+                "url": "./Schema/farmersdelight/cutting.json"
+            },
+            {
+                "fileMatch": "*/recipes/immersiveengineering/cloche/*.json",
+                "url": "./Schema/immersiveengineering/cloche.json"
             }
           ]
       }

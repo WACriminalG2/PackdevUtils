@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Immersive Engineering - Cloche",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","results","input","soil","time","render"],
+    "properties": {
+        "type": {
+            "const": "immersiveengineering:cloche"
+        },
+        "results": {
+            "type": "array",
+            "description": "A list of outputs for this recipe.",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["item"],
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "description": "An item ID.",
+                        "examples": ["minecraft:bamboo","minecraft:apple","minecraft:potato"]
+                    },
+                    "count": {
+                        "type": "integer",
+                        "description": "The quantity of this item to yield per harvest.",
+                        "default": 1
+                    }
+                }
+            }
+        },
+        "input": {
+            "type": "object",
+            "description": "The item to put in the cloche.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "An item ID.",
+                    "examples": ["minecraft:bamboo","minecraft:oak_sapling","minecraft:wheat_seeds"]
+                }
+            }
+        },
+        "soil": {
+            "type": ["object","array"],
+            "description": "The soil item to be placed in the cloche.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "An item ID.",
+                    "examples": ["minecraft:dirt","minecraft:sand","minecraft:mycelium"],
+                    "default": "minecraft:dirt"
+                }
+            },
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["item"],
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "description": "An item ID.",
+                        "examples": ["minecraft:dirt","minecraft:sand","minecraft:mycelium"],
+                        "default": "minecraft:dirt"
+                    }
+                }
+            }
+        },
+        "time": {
+            "type": "integer",
+            "description": "The time, in ticks, between outputs. 1 second = 20 ticks.",
+            "default": 600
+        },
+        "render": {
+            "type": "object",
+            "description": "How this resource should appear while growing in the cloche.",
+            "additionalProperties": false,
+            "required": ["type","block"],
+            "properties": {
+                "type": {
+                    "enum": ["stacking","generic","crop","stem","chorus","hemp"],
+                    "description": "The general appearance of the crop while growing.",
+                    "default": "generic"
+                },
+                "block": {
+                    "type": "string",
+                    "description": "A block ID for this crop's specific appearance.",
+                    "examples": ["minecraft:bamboo","minecraft:oak_sapling","minecraft:brown_mushroom","minecraft:wheat"]
+                }
+            }
+        }
+    }
+}

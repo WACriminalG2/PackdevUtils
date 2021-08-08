@@ -1,0 +1,42 @@
+{
+    "$comment": "TODO: Sub-schema for flag.",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Patchouli - Category",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","description","icon"],
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of this category."
+        },
+        "description": {
+            "type": "string",
+            "description": "The description for this category. This displays in the category's main page, and can be formatted."
+        },
+        "icon": {
+            "type": "string",
+            "description": "The icon for this category. Can either be an ItemStack string, if you want an item to be the icon, or a resource location pointing to a square texture. If you want to use a resource location, make sure to end it with .png."
+        },
+        "parent": {
+            "type": "string",
+            "description": "The parent category to this one. If this is a sub-category, simply put the name of the category this is a child to here. If not, don't define it. This should be fully-qualified and of the form 'domain:name' where 'domain' is the same as the domain of your book ID."
+        },
+        "flag": {
+            "$comment": "Gotta do a sub-schema for this, I think.",
+            "type": "string",
+            "description": "A config flag expression that determines whether this category should exist or not."
+        },
+        "sortnum": {
+            "type": "integer",
+            "description": "The sorting number for this category. Defaults to 0. Categories are sorted in the main page from lowest sorting number to highest, so if you define this in every category you make, you can set what order they display in.",
+            "default": 0
+        },
+        "secret": {
+            "type": "boolean",
+            "description": "Set this to true to make this category a secret category. Secret categories don't display a locked icon when locked, and instead will not display at all until unlocked.",
+            "default": false
+        }
+    }
+}

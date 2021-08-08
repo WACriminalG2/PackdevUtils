@@ -1,6 +1,8 @@
 # v1.20.0 -- 8/8/21
 
+* Added schema validation for Farmer's Delight: cooking pot and cutting board recipes.
 * Added schema validation for Farming for Blockheads: market registry.
+* Added schema validation for Immersive Engineering: cloche recipe.
 * Added schema validation for Tips: tooltip.
 
 # v1.19.0 -- 8/7/21

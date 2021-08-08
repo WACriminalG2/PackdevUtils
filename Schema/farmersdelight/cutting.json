@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Farmer's Delight - Cutting Board Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","ingredients","tool","result"],
+    "properties": {
+        "type": {
+            "const": "farmersdelight:cutting"
+        },
+        "ingredients": {
+            "type": "array",
+            "description": "A single ingredient to be placed on the Cutting Board and processed with the specified tool.",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "examples": ["minecraft:potato","minecraft:carrot","minecraft:oak_log"]
+                    },
+                    "tag": {
+                        "type": "string",
+                        "examples": ["forge:crop/potato","minecraft:logs"]
+                    }
+                }
+            }
+        },
+        "tool": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "The tool used to process the item. Can be an item tag, or a tool type.",
+            "oneOf": [
+                {
+                    "properties": {
+                        "tag": {
+                            "type": "string",
+                            "examples": ["forge:tools/knives"]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "type": {
+                            "const": "farmersdelight:tool"
+                        },
+                        "tool": {
+                            "enum": ["pickaxe","axe","shovel","hoe"]
+                        }
+                    }
+                }
+            ]
+        },
+        "result": {
+            "type": "array",
+            "description": "A list of items produced by this recipe.",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["item"],
+                "properties": {
+                    "item": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "sound": {
+            "type": "string",
+            "description": "An override for the sound event played when processing the item. Sometimes you may want an item to sound different than the default tool/block sounds when cutting. This is currently employed by all log-stripping recipes, to play the corresponding sound instead of wood-breaking.",
+            "examples": ["namespace:sound.to.play"]
+        }
+    }
+}

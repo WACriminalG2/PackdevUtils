@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Farmer's Delight - Cooking Pot Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","ingredients","result"],
+    "properties": {
+        "type": {
+            "const": "farmersdelight:cooking"
+        },
+        "ingredients": {
+            "type": "array",
+            "description": "The ingredients for this recipe. Can include specific items, tag IDs, or a sub-list of specific items which do not share a tag.",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+                "type": "object",
+                "oneOf": [
+                    {
+                        "additionalProperties": false, "required": ["item"],
+                        "properties": {
+                            "item": {
+                                "type": "string",
+                                "examples": ["minecraft:potato","minecraft:carrot"]
+                            }
+                        }
+                    },
+                    {
+                        "additionalProperties": false, "required": ["tag"],
+                        "properties": {
+                            "tag": {
+                                "type": "string",
+                                "examples": ["forge:crops/carrot","forge:crops/potato"]
+                            }
+                        }
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "minItems": 1,
+                            "required": ["item"],
+                            "properties": {
+                                "item": {
+                                    "type": "string",
+                                    "examples": ["minecraft:potato","minecraft:carrot"]
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "result": {
+            "type": "object",
+            "description": "This recipe's output.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "examples": ["minecraft:baked_potato"]
+                }
+            }
+        },
+        "container": {
+            "type": "object",
+            "description": "An override for the item's container. If specified, the cooking pot will hold the result, serving it only in the item specified here.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "examples": ["namespace:your_custom_container","minecraft:bowl"]
+                }
+            }
+        },
+        "cookingtime": {
+            "type": "integer",
+            "description": "The amount of time, in ticks, this recipe should take to process. 1 second = 20 ticks.",
+            "minimum": 1,
+            "default": 200
+        }
+    }
+}
