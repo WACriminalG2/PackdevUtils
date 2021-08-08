@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Customization - Crop Type",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["textures","craftingSeed"],
+    "properties": {
+        "textures": {
+            "type": "object",
+            "description": "You must assign a stem texture for this crop type. This location is used for every crop growth stage (0-7), which are differentiated by an '_#' suffix.",
+            "additionalProperties": false,
+            "required": ["stem"],
+            "properties": {
+                "stem": {
+                    "type": "string",
+                    "examples": ["mysticalagriculture:block/mystical_resource_crop","mysticalagriculture:block/mystical_mob_crop"]
+                }
+            }
+        },
+        "craftingSeed": {
+            "type": "string",
+            "description": "You must set an item to use as the crafting seed for all crops of this type.",
+            "examples": ["mysticalagriculture:soulium_seed_base"]
+        }
+    }
+}

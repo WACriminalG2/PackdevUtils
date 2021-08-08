@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Agriculture - Infusion Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","input","ingredients","result"],
+    "properties": {
+        "type": {
+            "const": "mysticalagriculture:infusion"
+        },
+        "input": {
+            "type": "object",
+            "description": "The item that will be placed on the Infusion Altar.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "ingredients": {
+            "type": "array",
+            "description": "A list of 1-8 items that will be placed on the Infusion Pedestals.",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+                "$ref": "#/properties/input"
+            }
+        },
+        "result": {
+            "type": "object",
+            "description": "This recipe's output item.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

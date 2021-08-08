@@ -1,0 +1,120 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Extended Crafting - Ender Crafting Recipe",
+    "type": "object",
+    "oneOf": [
+        {"$ref": "#/definitions/shaped"},
+        {"$ref": "#/definitions/shapeless"}
+    ],
+
+    "definitions": {
+        "shaped": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","pattern","key","result"],
+            "properties": {
+                "type": {
+                    "const": "extendedcrafting:shaped_ender_crafter"
+                },
+                "craftingTime": {
+                    "type": "integer",
+                    "description": "The amount of time (in seconds) this recipe should take to complete."
+                },
+                "pattern": {
+                    "type": "array",
+                    "description": "The pattern of the crafting recipe.",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "default": ["XXX","X X","XXX"],
+                    "items": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 3,
+                        "examples": ["XXX","X X","XOX","OXO","ABC"]
+                    }
+                },
+                "key": {
+                    "type": "object",
+                    "description": "The recipe key, for specifying which item each character in 'pattern' represents.",
+                    "propertyNames": {
+                        "type": "string",
+                        "maxLength": 1
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "properties": {
+                            "item": {
+                                "type": "string"
+                            },
+                            "tag": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "result": {
+                    "type": "object",
+                    "description": "This recipe's output item.",
+                    "additionalProperties": false,
+                    "required": ["item"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "examples": ["minecraft:apple"]
+                        }
+                    }
+                }
+            }
+
+        },
+
+        "shapeless": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","ingredients","result"],
+            "properties": {
+                "type": {
+                    "const": "extendedcrafting:shapeless_ender_crafter"
+                },
+                "craftingTime": {
+                    "type": "integer",
+                    "description": "The amount of time (in seconds) this recipe should take."
+                },
+                "ingredients": {
+                    "type": "array",
+                    "description": "A list of 1-9 input items for this recipe.",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "properties": {
+                            "item": {
+                                "type": "string"
+                            },
+                            "tag": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "result": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["item"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "examples": ["minecraft:apple"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

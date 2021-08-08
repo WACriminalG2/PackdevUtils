@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Extended Crafting - Compression Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","powerCost","ingredient","inputCount","catalyst","result"],
+    "properties": {
+        "type": {
+            "const": "extendedcrafting:compressor"
+        },
+        "powerCost": {
+            "type": "integer",
+            "description": "The amount of power required to create the result.",
+            "examples": [500000]
+        },
+        "powerRate": {
+            "type": "integer",
+            "description": "The amount of power consumed per tick while crafting. If omitted, will default to the config value.",
+            "examples": [10000]
+        },
+        "ingredient": {
+            "type": "object",
+            "description": "The input item. Can be an item ID or a tag ID.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "inputCount": {
+            "type": "integer",
+            "description": "The amount of the input item required.",
+            "default": 1
+        },
+        "catalyst": {
+            "type": "object",
+            "description": "The catalyst item. This item does not get consumed. Can be an item ID or a tag ID.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "result": {
+            "type": "object",
+            "description": "The item that this recipe will output once finished.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

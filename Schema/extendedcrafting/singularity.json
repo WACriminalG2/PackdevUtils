@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Extended Crafting - Singularity",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","colors","ingredient","materialCount"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of this singularity. You can either put the name you want to see here, or a translation key.",
+            "examples": ["Diamond","Emerald"]
+        },
+        "colors": {
+            "type": "array",
+            "description": "The overlay and underlay colors (in that order). Define colors by their hex values.",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "examples": ["4AEDD9","20C5B5"]
+            }
+        },
+        "ingredient": {
+            "type": "object",
+            "description": "The item used to create this singularity.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "materialCount": {
+            "type": "integer",
+            "description": "The amount of materials required to create this singularity."
+        },
+        "inUltimateSingularity": {
+            "type": "boolean",
+            "description": "Whether this singularity should be a part of the Ultimate Singularity recipe. If omitted, will default to true.",
+            "default": true
+        }
+    }
+}

@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.18.0",
+    "version": "1.19.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -284,6 +284,54 @@
             {
                 "fileMatch": "*/data/*/upgrades/*_upgrade.json",
                 "url": "./Schema/custommachinery/upgrade.json"
+            },
+            {
+                "fileMatch": "*/config/mysticalcustomization/crops/*.json",
+                "url": "./Schema/mysticalcustomization/crop.json"
+            },
+            {
+                "fileMatch": "*/config/mysticalcustomization/mobsoultypes/*.json",
+                "url": "./Schema/mysticalcustomization/soul_type.json"
+            },
+            {
+                "fileMatch": "*/config/mysticalcustomization/tiers/*.json",
+                "url": "./Schema/mysticalcustomization/crop_tier.json"
+            },
+            {
+                "fileMatch": "*/config/mysticalcustomization/types/*.json",
+                "url": "./Schema/mysticalcustomization/crop_type.json"
+            },
+            {
+                "fileMatch": "*/recipes/extendedcrafting/combination/*.json",
+                "url": "./Schema/extendedcrafting/combination.json"
+            },
+            {
+                "fileMatch": "*/recipes/extendedcrafting/compression/*.json",
+                "url": "./Schema/extendedcrafting/compression.json"
+            },
+            {
+                "fileMatch": "*/recipes/extendedcrafting/ender_crafting/*.json",
+                "url": "./Schema/extendedcrafting/ender_crafting.json"
+            },
+            {
+                "fileMatch": "*/config/extendedcrafting/singularities/*.json",
+                "url": "./Schema/extendedcrafting/singularity.json"
+            },
+            {
+                "fileMatch": "*/config/ironjetpacks/jetpacks/*.json",
+                "url": "./Schema/ironjetpacks/jetpack.json"
+            },
+            {
+                "fileMatch": "*/recipes/mysticalagriculture/infusion/*.json",
+                "url": "./Schema/mysticalagriculture/infusion.json"
+            },
+            {
+                "fileMatch": "*/recipes/mysticalagriculture/reprocessing/*.json",
+                "url": "./Schema/mysticalagriculture/reprocessing.json"
+            },
+            {
+                "fileMatch": "*/recipes/mysticalagriculture/soul_extraction/*.json",
+                "url": "./Schema/mysticalagriculture/soul_extraction.json"
             }
           ]
       }

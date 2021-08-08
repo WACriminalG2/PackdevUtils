@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Extended Crafting - Combination Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","powerCost","input","ingredients","result"],
+    "properties": {
+        "type": {
+            "const": "extendedcrafting:combination"
+        },
+        "powerCost": {
+            "type": "integer",
+            "description": "The amount of power required to craft this recipe.",
+            "examples": [400000]
+        },
+        "powerRate": {
+            "type": "integer",
+            "description": "The amount of power consumed per tick. If omitted, will default to the config value. The amount of time (in ticks) a combination recipe takes to complete = powerCost/powerRate.",
+            "examples": [400]
+        },
+        "input": {
+            "type": "object",
+            "description": "The item that will be placed on the Crafting Core. You may use an item ID or a tag ID.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "ingredients": {
+            "type": "array",
+            "description": "A list of 1-48 items that will be placed on the Pedestals.",
+            "minItems": 1,
+            "maxItems": 48,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "item": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "result": {
+            "type": "object",
+            "description": "This recipe's output item.",
+            "additionalProperties": false,
+            "required": ["item"],
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "examples": ["minecraft:diamond","minecraft:potato"]
+                }
+            }
+        }
+    }
+}

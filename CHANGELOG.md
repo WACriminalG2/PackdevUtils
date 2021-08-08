@@ -1,3 +1,10 @@
+# v1.19.0 -- 8/7/21
+
+* Added schema validation for Extended Crafting: combination, compression, Ender crafting, singularity.
+* Added schema validation for Iron Jetpacks: jetpacks.
+* Added schema validation for Mystical Agriculture recipes: infusion, reprocessing, soul extraction.
+* Added schema validation for Mystical Customization: crops, crop tiers, crop types, mob soul types.
+
 # v1.18.0 -- 8/6/21
 
 * Added schema validation for Custom Machinery machines, recipes, and upgrades.

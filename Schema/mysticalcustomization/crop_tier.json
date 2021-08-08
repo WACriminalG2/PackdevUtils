@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Customization - Crop Tier",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["value","essence"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "You can manually define the display name for this crop tier. Omitting this field will auto generate a translation key with the format 'cropTier.mysticalcustomization.{id}'."
+        },
+        "value": {
+            "type": "integer",
+            "description": "You must assign an integer value to this tier. This is used internally to sort tiers. Higher value = higher tier. For example, 'mysticalagriculture:elemental' has a tier value of 1.",
+            "examples": [7]
+        },
+        "essence": {
+            "type": "string",
+            "description": "You must set an essence item to be used in the crafting recipes for this tier's seeds.",
+            "examples": ["mysticalagriculture:tertium_essence"]
+        },
+        "farmland": {
+            "type": "string",
+            "description": "You can add an effective farmland block for this tier. This block will be the farmland block that grants additional secondary seed drop chance.",
+            "examples": ["mysticalagriculture:inferium_farmland"]
+        },
+        "fertilizable": {
+            "type": "boolean",
+            "description": "You can disable the ability for crops of this tier to be fertilizable with Mystical Fertilizer or Fertilized Essence.",
+            "default": false
+        },
+        "secondarySeedDrop": {
+            "type": "boolean",
+            "description": "You can disable the ability for crops of this tier to have a chance of dropping a second seed.",
+            "default": false
+        }
+    }
+}

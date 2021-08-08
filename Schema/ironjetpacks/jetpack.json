@@ -1,0 +1,128 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Iron Jetpacks - Jetpack",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","disable","tier","color","armorPoints","enchantability","craftingMaterial","capacity","usage","speedVertical","accelVertical","speedSideways","speedHoverDescend","speedHover","sprintSpeedMulti","sprintFuelMulti"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the jetpack. This name must be all lower case and have underscores for spaces. This will be used for registry names as well as localized names. The name will be formatted automatically for localized names, including spaces and capitalization.",
+            "examples": ["emerald"]
+        },
+        "disable": {
+            "type": "boolean",
+            "description": "You can set the disabled field to true disable a jetpack. Alternatively, you could just delete the JSON file.",
+            "default": false
+        },
+        "tier": {
+            "type": "integer",
+            "description": "The crafting tier of the jetpack. Make sure there is at least 1 jetpack per tier, in succession (ex 1, 2, 3 all have at least one jetpack). Tier -1 is creative.",
+            "default": 5
+        },
+        "color": {
+            "type": "string",
+            "description": "The color of the jetpack and related items, as a hex value.",
+            "minLength": 6,
+            "maxLength": 6,
+            "examples": ["41f384"]
+        },
+        "armorPoints": {
+            "type": "integer",
+            "description": "The amount of armor the jetpack should give when worn.",
+            "default": 4
+        },
+        "enchantability": {
+            "type": "integer",
+            "description": "How enchantable the armor should be.",
+            "default": 15
+        },
+        "craftingMaterial": {
+            "type": "string",
+            "description": "The material used to craft the jetpack and its components. To use a tag, prefix the tag ID with 'tag'.",
+            "examples": ["minecraft:potato","tag:forge:gems/emerald"]
+        },
+        "creative": {
+            "type": "boolean",
+            "description": "Is the jetpack a creative-tier jetpack? Omitting this field will default to false.",
+            "default": false
+        },
+        "rarity": {
+            "type": "integer",
+            "description": "The item rarity of this jetpack. This is basically just used to change the color of the tooltip. Valid values are 0-3. Omitting this field will default to 0.",
+            "minimum": 0,
+            "maximum": 3,
+            "default": 0
+        },
+        "toughness": {
+            "type": "integer",
+            "description": "The amount of armor toughness this jetpack should give when worn.",
+            "default": 0
+        },
+        "knockbackResistance": {
+            "type": "integer",
+            "description": "The amount of knockback resistance this jetpack should give when worn.",
+            "default": 0
+        },
+        "capacity": {
+            "type": "integer",
+            "description": "How much FE (energy) this jetpack can hold.",
+            "default": 48000000,
+            "minimum": 1
+        },
+        "usage": {
+            "type": "integer",
+            "description": "How much FE this jetpack should use when flying/hovering.",
+            "default": 880,
+            "minimum": 0
+        },
+        "speedVertical": {
+            "type": "number",
+            "description": "How fast the jetpack should fly upwards.",
+            "default": 1.03,
+            "exclusiveMinimum": 0
+        },
+        "accelVertical": {
+            "type": "number",
+            "description": "How fast the initial takeoff is.",
+            "default": 0.17,
+            "exclusiveMinimum": 0
+        },
+        "speedSideways": {
+            "type": "number",
+            "description": "How fast the jetpack should make you move forwards (when holding forwards).",
+            "default": 0.21,
+            "exclusiveMinimum": 0
+        },
+        "speedHoverDescend": {
+            "type": "number",
+            "description": "How fast the jetpack should descend when hover mode is on and you're sneaking.",
+            "default": 0.45,
+            "exclusiveMinimum": 0
+        },
+        "speedHover": {
+            "type": "number",
+            "description": "How fast the jetpack should descend when hovering.",
+            "default": 0.0,
+            "minimum": 0
+        },
+        "sprintSpeedMulti": {
+            "type": "number",
+            "description": "How much faster the player should fly when sprinting while flying forwards.",
+            "default": 2.0,
+            "minimum": 0
+        },
+        "sprintSpeedMultiVertical": {
+            "type": "number",
+            "description": "How much faster the player should fly when sprinting while flying upwards.",
+            "default": 1.0,
+            "minimum": 0
+        },
+        "sprintFuelMulti": {
+            "type": "number",
+            "description": "How much more fuel should the jetpack use while sprinting.",
+            "default": 4.0,
+            "minimum": 0
+        }
+    }
+}

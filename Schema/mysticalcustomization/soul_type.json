@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Customization - Mob Soul Type",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["souls","entities"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "You can manually set a name for this mob soul type. If you plan to use more than one entity you should probably use this. Omitting this field will use the default display name for the provided entity.",
+            "examples": ["Animals"]
+        },
+        "souls": {
+            "type": "number",
+            "description": "You must assign this mob soul type a required amount of souls.",
+            "exclusiveMinimum": 0
+        },
+        "entities": {
+            "type": "array",
+            "description": "You must assign entities to this mob soul type.",
+            "items": {
+                "type": "string",
+                "examples": ["minecraft:panda","minecraft:polar_bear"]
+            }
+        },
+        "color": {
+            "type": "string",
+            "description": "You should set the color of the Soul Jar for this mob soul type. Colors are set using hex values.",
+            "minLength": 6,
+            "maxLength": 6,
+            "examples": ["aaaaaa"]
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "If false, this mob soul type will not be enabled.",
+            "default": true
+        }
+    }
+}

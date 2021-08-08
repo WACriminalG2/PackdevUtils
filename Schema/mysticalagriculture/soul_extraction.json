@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Agriculture - Soul Extraction Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","input","output"],
+    "properties": {
+        "type": {
+            "const": "mysticalagriculture:soul_extraction"
+        },
+        "input": {
+            "type": "object",
+            "description": "The item that will be placed in the input slot.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "output": {
+            "type": "object",
+            "description": "The souls granted from this item.",
+            "additionalProperties": false,
+            "required": ["type","souls"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of soul granted.",
+                    "examples": ["mysticalagriculture:blaze"]
+                },
+                "souls": {
+                    "type": "number",
+                    "description": "The number of souls granted.",
+                    "default": 0.5,
+                    "exclusiveMinimum": 0
+                }
+            }
+        }
+    }
+}

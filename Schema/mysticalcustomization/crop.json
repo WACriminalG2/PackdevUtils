@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mystical Customization - Crop",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","tier","ingredient"],
+    "properties": {
+
+        "name": {
+            "type": "string",
+            "description": "The display name for this crop. Omitting this field will auto-generate a translation key with the format 'crop.mysticalcustomization.{id}'."
+        },
+        "type": {
+            "type": "string",
+            "description": "You must assign this crop to a type, using that type's name. You can see all registered types with the command '/mysticalcustomization types'.",
+            "examples": ["resource","mob"]
+        },
+        "tier": {
+            "type": "string",
+            "description": "Assigns this crop to a tier. You can see all of the registered tiers in-game with the command '/mysticalcustomization tiers'.",
+            "examples": ["mysticalagriculture:1","mysticalagriculture:2","mysticalagriculture:3","mysticalagriculture:4","mysticalagriculture:5"]
+        },
+        "ingredient": {
+            "type": "object",
+            "description": "The crafting ingredient used to craft this crop's seed. This can be either an item or a tag.",
+            "additionalProperties": false,
+            "maxProperties": 1,
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "examples": ["minecraft:iron_ingot"]
+                },
+                "tag": {
+                    "type": "string",
+                    "examples": ["minecraft:logs"]
+                }
+            }
+        },
+        "colors": {
+            "type": "object",
+            "description": "You should set a color for the crop, essence, and seeds. Colors are set using hex values. If you want to use the same color for all 3, you can use the 'color' property instead.",
+            "additionalProperties": false,
+            "properties": {
+                "flower": {
+                    "type": "string",
+                    "examples": ["aaaaaa"],
+                    "minLength": 6,
+                    "maxLength": 6
+                },
+                "essence": {
+                    "type": "string",
+                    "examples": ["bbbbbb"],
+                    "minLength": 6,
+                    "maxLength": 6
+                },
+                "seeds": {
+                    "type": "string",
+                    "examples": ["cccccc"],
+                    "minLength": 6,
+                    "maxLength": 6
+                }
+            }
+        },
+        "color": {
+            "type": "string",
+            "description": "Sets a color for this crop's flower, essence, and seeds using a hex value.",
+            "examples": ["ffff00"],
+            "minLength": 6,
+            "maxLength": 6
+        },
+        "textures": {
+            "type": "object",
+            "description": "Here you can set the textures you want to use for your crop, essence, and seeds.",
+            "additionalProperties": false,
+            "properties": {
+                "flower": {
+                    "type": "string",
+                    "examples": ["mysticalagriculture:block/flower_ingot","mysticalagriculture:block/flower_rock","mysticalagriculture:block/flower_dust","mysticalagriculture:block/flower_face"]
+                },
+                "essence": {
+                    "type": "string",
+                    "examples": ["mysticalagriculture:item/essence_ingot","mysticalagriculture:item/essence_rock","mysticalagriculture:item/essence_dust","mysticalagriculture:item/essence_gem","mysticalagriculture:item/essence_tall_gem","mysticalagriculture:item/essence_diamond","mysticalagriculture:item/essence_quartz","mysticalagriculture:item/essence_flame"]
+                },
+                "seeds": {
+                    "type": "string",
+                    "examples": ["mysticalagriculture:item/mystical_seeds"]
+                }
+            }
+        },
+        "crux": {
+            "type": "string",
+            "description": "You can add a required crux block to this crop. A crux is a block that must be placed underneath the farmland for this crop to grow.",
+            "examples": ["minecraft:cobblestone","minecraft:diamond_block","minecraft:netherrack"]
+        },
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether this crop should be enabled.",
+            "default": true
+        },
+        "glint": {
+            "type": "boolean",
+            "description": "Whether this crop's items should have the enchantment glint.",
+            "default": false
+        },
+        "biomes": {
+            "type": "array",
+            "description": "You can specify a list of required biomes for this crop to be able to grow in.",
+            "items": {
+                "type": "string",
+                "examples": ["minecraft:plains","minecraft:desert"]
+            }
+        }
+    }
+}
