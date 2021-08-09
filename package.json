@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.20.0",
+    "version": "1.21.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -334,7 +334,7 @@
                 "url": "./Schema/mysticalagriculture/soul_extraction.json"
             },
             {
-                "fileMatch": ["*/data/*/farmingforblockheads_compat/*.json","config/farmingforblockheads/MarketRegistry.json"],
+                "fileMatch": ["*/data/*/farmingforblockheads_compat/*.json","*/config/farmingforblockheads/MarketRegistry.json"],
                 "url": "./Schema/farmingforblockheads/market_registry.json"
             },
             {
@@ -352,6 +352,14 @@
             {
                 "fileMatch": "*/recipes/immersiveengineering/cloche/*.json",
                 "url": "./Schema/immersiveengineering/cloche.json"
+            },
+            {
+                "fileMatch": "*/config/mobpropertiesrandomness/json/groups/*.json",
+                "url": "./Schema/mobpropertiesrandomness/group.json"
+            },
+            {
+                "fileMatch": ["*/config/mobpropertiesrandomness/json/*.json","!*/config/mobpropertiesrandomness/json/groups/*.json"],
+                "url": "./Schema/mobpropertiesrandomness/rule.json"
             }
           ]
       }

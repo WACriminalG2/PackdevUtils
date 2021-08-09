@@ -1,0 +1,560 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Mob Properties Randomness - Custom Rule",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+    "properties": {
+        "mob_id": {
+            "type": "string",
+            "description": "ID for a specific mob, or you can use an asterisk to target all the mobs from a certain mod. For instance, 'minecraft:*' would target all vanilla Minecraft mobs. You must use either this field or 'group' for the rule to be valid.",
+            "examples": ["minecraft:creeper","minecraft:*"]
+        },
+        "group": {
+            "type": "string",
+            "description": "Use this field to target a group/category of mobs, rather than a specific ID or mod. Groups may be defined in the groups folder. You must use either this field or 'mob_id' for the rule to be valid.",
+            "examples": ["hostile","passive","neutral"]
+        },
+        "potion_effects": {
+            "type": "array",
+            "description": "A list of potion effects to be applied to the targeted mobs.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id","chance","amplifier"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A potion effect that may be applied to the targeted mobs.",
+                        "examples": ["minecraft:resistance","minecraft:poison"]
+                    },
+                    "chance": {
+                        "type": "object",
+                        "description": "Percentage chance to apply this effect.",
+                        "additionalProperties": false,
+                        "required": ["amount"],
+                        "properties": {
+                            "amount": {
+                                "type": "number",
+                                "description": "Base chance to apply the effect.",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 10
+                            },
+                            "affected_by_difficulty": {
+                                "type": "boolean",
+                                "description": "If the chance should be affected by difficulty or local difficulty. If 'is_local_difficulty' is true and this is omitted, this will default to true.",
+                                "default": false
+                            },
+                            "is_local_difficulty": {
+                                "type": "boolean",
+                                "description": "If the chance should be multiplied by the local difficulty, instead of Easy (x0.5), Normal (x1.0), or Hard (x2.0). These values can be changed globally in the config.",
+                                "default": false
+                            },
+                            "multiplier": {
+                                "type": "number",
+                                "description": "Multiplier for the difficulty or local difficulty.",
+                                "default": 1.0,
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "amplifier": {
+                        "type": "object",
+                        "description": "Min and max values for the potion effect level. Remember that levels start from 0, so amplifier 0 is potion effect level 1, amplifier 1 = potion level 2, etc.",
+                        "additionalProperties": false,
+                        "required": ["min","max"],
+                        "properties": {
+                            "min": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "max": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "ambient": {
+                        "type": "boolean",
+                        "description": "If true, particles should be barely visible, like the ones you get from the beacon effects.",
+                        "default": false
+                    },
+                    "hide_particles": {
+                        "type": "boolean",
+                        "description": "If true, particles will be completely hidden.",
+                        "default": false
+                    },
+                    "dimensions": {
+                        "type": "array",
+                        "description": "A list of dimension IDs where this potion effect should be applied. If omitted, the potion effect will be applied in all dimensions.",
+                        "items": {
+                            "type": "string",
+                            "examples": ["minecraft:overworld","minecraft:the_nether","minecraft:the_end"]
+                        }
+                    },
+                    "biomes": {
+                        "type": "array",
+                        "description": "A list of biome IDs where this potion effect should be applied. If omitted, the potion effect will be applied in all biomes.",
+                        "items": {
+                            "type": "string",
+                            "examples": ["minecraft:plains","minecraft:desert","minecraft:jungle"]
+                        }
+                    }
+                }
+            }
+        },
+        "attributes": {
+            "type": "array",
+            "description": "Used to change the base attributes of mobs, such as their HP, speed, etc. Note that multiple modifiers of the same attribute on the same mob will be additive. E.g. a zombie with 50% bonus health and another 100% bonus health will have 150% bonus health.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id","modifier"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the attribute to modify. Make sure to check whether the attribute you're modifying exists on the mob you're targeting.",
+                        "examples": ["generic.max_health","generic.follow_range","generic.knockback_resistance","generic.movement_speed","generic.attack_damage","generic.armor","generic.armor_toughness","generic.attack_knockback","horse.jump_strength","generic.flying_speed","zombie.spawn_reinforcements"]
+                    },
+                    "modifier": {
+                        "type": "object",
+                        "description": "Min and max values for the increase/decrease of the attribute.",
+                        "additionalProperties": false,
+                        "required": ["min"],
+                        "properties": {
+                            "min": {
+                                "type": "number",
+                                "description": "Minimum percentage of increase/decrease of the attribute value."
+                            },
+                            "max": {
+                                "type": "number",
+                                "description": "Maximum percentage of increase/decrease of the attribute value. If omitted, will be equal to min."
+                            }
+                        }
+                    },
+                    "is_flat": {
+                        "type": "boolean",
+                        "description": "If true, min and max values will be treated as flat values to set as new attribute, not percentages.",
+                        "default": false
+                    },
+                    "affected_by_difficulty": {
+                        "type": "boolean",
+                        "description": "If true, min and max values should be multiplied by difficulty (0.5 in easy, 1.0 in normal, and 2.0 in hard) or local difficulty.",
+                        "default": false
+                    },
+                    "difficulty": {
+                        "type": "object",
+                        "description": "Tags to change how the difficulty behaves on the values.",
+                        "additionalProperties": false,
+                        "properties": {
+                            "affects_max_only": {
+                                "type": "boolean",
+                                "description": "If true, only the max value will be affected by the difficulty.",
+                                "default": false
+                            },
+                            "is_local_difficulty": {
+                                "type": "boolean",
+                                "description": "If the chance should be multiplied by the local difficulty, instead of Easy (x0.5), Normal (x1.0), or Hard (x2.0). These values can be changed globaly in the config.",
+                                "default": false
+                            },
+                            "multiplier": {
+                                "type": "number",
+                                "description": "Multiplier for the difficulty or local difficulty.",
+                                "default": 1.0
+                            }
+                        }
+                    },
+                    "dimensions": {
+                        "type": "array",
+                        "description": "A list of dimension IDs where this attribute modifier should be applied. If omitted, it will apply in all dimensions.",
+                        "items": {
+                            "type": "string",
+                            "examples": ["minecraft:overworld","minecraft:the_nether","minecraft:the_end"]
+                        }
+                    },
+                    "biomes": {
+                        "type": "array",
+                        "description": "A list of biome IDs where this attribute modifier should be applied. If omitted, it will apply in all biomes.",
+                        "items": {
+                            "type": "string",
+                            "examples": ["minecraft:plains","minecraft:desert","minecraft:jungle"]
+                        }
+                    }
+                }
+            }
+        },
+        "equipment": {
+            "type": "object",
+            "description": "Defines extra equipment the mob may spawn with.",
+            "additionalProperties": false,
+            "required": ["head","chest","legs","feet","main_hand","off_hand"],
+            "properties": {
+                "head": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["chance","items"],
+                    "properties": {
+                        "override_vanilla": {
+                            "type": "boolean",
+                            "description": "If true, the equipment in this slot should be replaced (or removed) by one of the following items. E.g. zombies can naturally spawn with armor, with this set to true, if a zombie spawns with armor or items in hand, those equipment can be replaced by the one in 'items' or removed if 'chance' doesn't match. Be aware that this may replace even equipment changes from other mods.",
+                            "default": false
+                        },
+                        "replace_only": {
+                            "type": "boolean",
+                            "description": "If true, the equipment will be applied to the slot ONLY if the mob spawned with something else in that slot.",
+                            "default": false
+                        },
+                        "chance": {
+                            "type": "object",
+                            "description": "Percentage chance to set an item in this slot.",
+                            "additionalProperties": false,
+                            "required": ["amount"],
+                            "properties": {
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Base chance to set an item.",
+                                    "minimum": 0,
+                                    "maximum": 100,
+                                    "default": 10
+                                },
+                                "affected_by_difficulty": {
+                                    "type": "boolean",
+                                    "description": "If the chance should be affected by difficulty or local difficulty. If 'is_local_difficulty' is true and this is omitted, this will default to true.",
+                                    "default": false
+                                },
+                                "is_local_difficulty": {
+                                    "type": "boolean",
+                                    "description": "If the chance should be multiplied by the local difficulty, instead of Easy (x0.5), Normal (x1.0), or Hard (x2.0). These values can be changed globally in the config.",
+                                    "default": false
+                                },
+                                "multiplier": {
+                                    "type": "number",
+                                    "description": "Multiplier for the difficulty or local difficulty.",
+                                    "default": 1.0,
+                                    "minimum": 0
+                                }
+                            }
+                        },
+                        "items": {
+                            "type": "array",
+                            "description": "A list of items that can appear in this slot.",
+                            "items": {
+                                "$ref": "#/definitions/equipmentItem"
+                            }
+                        }
+                    }
+                },
+                "chest": {
+                    "$ref": "#/properties/equipment/properties/head"
+                },
+                "legs": {
+                    "$ref": "#/properties/equipment/properties/head"
+                },
+                "feet": {
+                    "$ref": "#/properties/equipment/properties/head"
+                },
+                "main_hand": {
+                    "$ref": "#/properties/equipment/properties/head"
+                },
+                "off_hand": {
+                    "$ref": "#/properties/equipment/properties/head"
+                }
+            }
+        },
+        "creeper": {
+            "type": "object",
+            "description": "Keys/modifiers specific to creepers. These should work for creeper variants from other mobs, if they inherited by the vanilla creeper.",
+            "additionalProperties": false,
+            "properties": {
+                "fuse": {
+                    "type": "object",
+                    "description": "The time, in ticks, for a creeper to explode. 1 second = 20 ticks. Vanilla is 30 ticks.",
+                    "additionalProperties": false,
+                    "required": ["min"],
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "description": "Minimum fuse time.",
+                            "default": 30,
+                            "minimum": 1
+                        },
+                        "max": {
+                            "type": "integer",
+                            "description": "Maximum fuse time.",
+                            "default": 30,
+                            "minimum": 1
+                        }
+                    }
+                },
+                "explosion_radius": {
+                    "type": "object",
+                    "description": "Min and max values for the creeper's explosion power. Vanilla is 3.",
+                    "additionalProperties": false,
+                    "required": ["min"],
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "description": "Minimum explosion power.",
+                            "default": 3,
+                            "minimum": 0
+                        },
+                        "max": {
+                            "type": "integer",
+                            "description": "Maximum explosion power.",
+                            "default": 3,
+                            "minimum": 0
+                        }
+                    }
+                },
+                "powered_chance": {
+                    "type": "object",
+                    "description": "Percentage chance for the creeper to spawn already powered.",
+                    "additionalProperties": false,
+                    "required": ["amount"],
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "description": "Base chance to apply this effect.",
+                            "minimum": 0,
+                            "maximum": 100,
+                            "default": 10
+                        },
+                        "affected_by_difficulty": {
+                            "type": "boolean",
+                            "description": "If the chance should be affected by difficulty or local difficulty. If 'is_local_difficulty' is true and this is omitted, this will default to true.",
+                            "default": false
+                        },
+                        "is_local_difficulty": {
+                            "type": "boolean",
+                            "description": "If the chance should be multiplied by the local difficulty, instead of Easy (x0.5), Normal (x1.0), or Hard (x2.0). These values can be changed globally in the config.",
+                            "default": false
+                        },
+                        "multiplier": {
+                            "type": "number",
+                            "description": "Multiplier for the difficulty or local difficulty.",
+                            "default": 1.0,
+                            "minimum": 0
+                        }
+                    }
+                }
+            }
+        },
+        "ghast": {
+            "type": "object",
+            "description": "Keys/modifiers specific to ghasts. These should work for ghast variants from other mods too, if they inherited by the vanilla ghast.",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+                "explosion_power": {
+                    "type": "object",
+                    "description": "Min and max values for the ghast fireball power. Vanilla is 1.",
+                    "additionalProperties": false,
+                    "required": ["min"],
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "description": "Minimum explosion power.",
+                            "minimum": 0,
+                            "default": 1
+                        },
+                        "max": {
+                            "type": "integer",
+                            "description": "Maximum explosion power.",
+                            "minimum": 0,
+                            "default": 1
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "equipmentItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id","weight"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The item ID."
+                },
+                "data": {
+                    "type": "integer",
+                    "description": "The meta of the item."
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "Determines how often this item will be chosen out of all the items in the array. Items with higher weights will be used more often.",
+                    "minimum": 1
+                },
+                "weight_difficulty": {
+                    "type": "object",
+                    "description": "Applies multipliers for weight based on difficulty. Want more change to get a diamond sword in hard? This is the tag for you!",
+                    "additionalProperties": false,
+                    "required": ["easy","normal","hard"],
+                    "properties": {
+                        "easy": {
+                            "type": "number",
+                            "minimum": 0,
+                            "default": 0.5
+                        },
+                        "normal": {
+                            "type": "number",
+                            "minimum": 0,
+                            "default": 1
+                        },
+                        "hard": {
+                            "type": "number",
+                            "minimum": 0,
+                            "default": 2
+                        }
+                    }
+                },
+                "drop_chance": {
+                    "type": "number",
+                    "description": "Percentage chance for a mob to drop this item on death. This is affected by Looting, as a 1% increase per Looting level."
+                },
+                "dimensions": {
+                    "type": "array",
+                    "description": "A list of dimension IDs where this item will appear. If omitted, the item will appear in all dimensions.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:overworld","minecraft:the_nether","minecraft:the_end"]
+                    }
+                },
+                "biomes": {
+                    "type": "array",
+                    "description": "A list of biome IDs where this item will appear. If omitted, the item will appear in all biomes.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:plains","minecraft:desert","minecraft:jungle"]
+                    }
+                },
+                "enchantments": {
+                    "type": "array",
+                    "description": "A list of the enchantments that will apply to the item.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["chance","id"],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "ID of the enchantment to apply."
+                            },
+                            "chance": {
+                                "type": "object",
+                                "description": "Percentage chance to apply this enchantment.",
+                                "additionalProperties": false,
+                                "required": ["amount"],
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "description": "Base chance to apply the enchantment.",
+                                        "minimum": 0,
+                                        "maximum": 100,
+                                        "default": 10
+                                    },
+                                    "affected_by_difficulty": {
+                                        "type": "boolean",
+                                        "description": "If the chance should be affected by difficulty or local difficulty. If 'is_local_difficulty' is true and this is omitted, this will default to true.",
+                                        "default": false
+                                    },
+                                    "is_local_difficulty": {
+                                        "type": "boolean",
+                                        "description": "If the chance should be multiplied by the local difficulty, instead of Easy (x0.5), Normal (x1.0), or Hard (x2.0). These values can be changed globally in the config.",
+                                        "default": false
+                                    },
+                                    "multiplier": {
+                                        "type": "number",
+                                        "description": "Multiplier for the difficulty or local difficulty.",
+                                        "default": 1.0,
+                                        "minimum": 0
+                                    }
+                                }
+                            },
+                            "level": {
+                                "type": "object",
+                                "description": "Enchantment min and max level.",
+                                "additionalProperties": false,
+                                "required": ["min"],
+                                "properties": {
+                                    "min": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "default": 1
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "default": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "attributes": {
+                    "type": "array",
+                    "description": "A list of item attributes, similar to loot table attributes.",
+                    "items": {
+                        "$ref": "#/definitions/itemAttribute"
+                    }
+                },
+                "nbt": {
+                    "type": "string",
+                    "description": "A string representing custom NBT data given to the item (E.g. custom names, lore, etc.)."
+                }
+            }
+        },
+
+        "itemAttribute": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["modifier","attribute_name","operation","amount"],
+            "properties": {
+                "modifier": {
+                    "type": "string",
+                    "description": "The modifier name. Modifiers with the same name do not stack. For example, if I have a chestplate with the modifier 'moreHealth' that gives 10 more health, and leggings with the modifier 'moreHealth' that give 15 more health, I'll not have 25 more health since the name is the same. I'll only have one of the two, so either 10 or 15 more health. Don't remember the order on which they're applied, so who has the priority."
+                },
+                "attribute_name": {
+                    "type": "string",
+                    "description": "The attribute to modify.",
+                    "examples": ["generic.max_health","generic.follow_range","generic.knockback_resistance","generic.movement_speed","generic.attack_damage","generic.armor","generic.armor_toughness","generic.attack_knockback","horse.jump_strength","generic.flying_speed","zombie.spawn_reinforcements","generic.attack_speed","generic.luck"]
+                },
+                "operation": {
+                    "enum": ["addition","multiply_base","multiply_total"],
+                    "description": "How the modifier will affect the attribute. Valid values are addition, multiply_base, and multiply_total.",
+                    "default": "addition"
+                },
+                "amount": {
+                    "type": "object",
+                    "description": "Min and max value possible for the modifier.",
+                    "additionalProperties": false,
+                    "required": ["min"],
+                    "properties": {
+                        "min": {
+                            "type": "number",
+                            "description": "Minimum modifier value."
+                        },
+                        "max": {
+                            "type": "number",
+                            "description": "Maximum modifier value. If omitted, will be equal to min."
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "UUID of the modifier. If omitted, a new random one will be generated."
+                },
+                "slot": {
+                    "enum": ["MAINHAND","OFFHAND","HEAD","CHEST","LEGS","FEET"],
+                    "description": "Slot to apply the modifier. Valid values are MAINHAND, OFFHAND, HEAD, CHEST, LEGS, FEET. If omitted, will be set to the current equipment slot."
+                }
+
+            }
+        }
+    }
+}

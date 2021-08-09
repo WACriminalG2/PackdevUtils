@@ -1,9 +1,16 @@
+# v1.21.0 -- 8/8/21
+
+* Adjusted file path match for Farming for Blockheads schema - forgot an asterisk.
+* Added schemas for Mob Properties Randomness: mob groups and spawn rules.
+* Current schema count: 70. Just tracking this for my own amusement.
+
 # v1.20.0 -- 8/8/21
 
 * Added schema validation for Farmer's Delight: cooking pot and cutting board recipes.
 * Added schema validation for Farming for Blockheads: market registry.
 * Added schema validation for Immersive Engineering: cloche recipe.
 * Added schema validation for Tips: tooltip.
+* Current schema count: 68.
 
 # v1.19.0 -- 8/7/21
 

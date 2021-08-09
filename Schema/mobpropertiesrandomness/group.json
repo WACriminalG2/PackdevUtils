@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Mob Properties Randomness - Mob Group",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["mobs"],
+    "properties": {
+        "mobs": {
+            "type": "array",
+            "description": "A list of mob IDs that will be considered a group. The name of this file is the group's name, which can be used to reference the entire group in your custom spawn rules.",
+            "minItems": 1,
+            "items": {
+                "type": "string",
+                "examples": ["minecraft:zombie","minecraft:skeleton","minecraft:spider","minecraft:creeper","minecraft:cow","minecraft:sheep","minecraft:horse","minecraft:pig"]
+            }
+        }
+    }
+}
