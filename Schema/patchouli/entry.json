@@ -1,0 +1,580 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Patchouli - Entry",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name","category","icon","pages"],
+
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of this entry."
+        },
+
+        "category": {
+            "type": "string",
+            "description": "The category this entry belongs to. This must be set to one of your categories' ID. Use a fully-qualified ID that includes your book namespace, such as 'yourbooknamespace:categoryname'.",
+            "examples": ["yourbooknamespace:categoryname"]
+        },
+
+        "icon": {
+            "type": "string",
+            "description": "The icon for this entry. This can either bit an ItemStack string, if you want an item to be the icon, or a resource location pointing to a square texture. If you want to use a resource location, make sure to end it with .png."
+        },
+
+        "pages": {
+            "type": "array",
+            "description": "The array of pages for this entry.",
+            "minItems": 1,
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/textPage"},
+                    {"$ref": "#/definitions/imagePage"},
+                    {"$ref": "#/definitions/craftingPage"},
+                    {"$ref": "#/definitions/smeltingPage"},
+                    {"$ref": "#/definitions/multiblockPage"},
+                    {"$ref": "#/definitions/entityPage"},
+                    {"$ref": "#/definitions/spotlightPage"},
+                    {"$ref": "#/definitions/linkPage"},
+                    {"$ref": "#/definitions/relationsPage"},
+                    {"$ref": "#/definitions/questPage"},
+                    {"$ref": "#/definitions/emptyPage"}
+                ]
+            }
+        },
+
+        "advancement": {
+            "type": "string",
+            "description": "The name of an advancement you want this entry to be locked behind."
+        },
+
+        "flag": {
+            "type": "string",
+            "description": "A config flag expression that determines whether this entry should exist or not."
+        },
+
+        "priority": {
+            "type": "boolean",
+            "description": "If set to true, the entry will show up with an italicized name, and will always show up at the top of the category. Use for really important entries you want to show up at the top.",
+            "default": false
+        },
+
+        "secret": {
+            "type": "boolean",
+            "description": "Set this to true to make this entry a secret entry. Secret entries don't display as 'Locked' when locked, and instead will not display at all until unlocked. Secret entries do not count for % completion of the book, and when unlocked will instead show as an additional line in the tooltip.",
+            "default": false
+        },
+
+        "read_by_default": {
+            "type": "boolean",
+            "description": "Set this to true if you want to entry to not show the unread '(!!)' indicator if it hasn't been opened yet.",
+            "default": false
+        },
+
+        "sortnum": {
+            "type": "integer",
+            "description": "The sorting number for this entry. Entries with the same sorting number are sorted alphabetically, whereas entries with different sorting numbers are sorted from lowest to highest. Priority entries always show up first. It's recommended you do NOT use this, as breaking the alphabetical sorting order can make things confusing, but it's left as an option.",
+            "default": 0
+        },
+
+        "turnin": {
+            "type": "string",
+            "description": "The ID of an advancement the player needs to do to 'complete' this entry. The entry will show up at the top of the list with a (?) icon next to it until this advancement is complete. This can be used as a quest system or simply to help guide players along a starting path."
+        },
+
+        "extra_recipe_mappings": {
+            "type": "object",
+            "description": "Additional list of items this page teaches the crafting process for, for use with the in-world right click and quick lookup feature. Keys are ItemStack strings, values are 0-indexed page numbers. For instance, if you wanted to have page 11 teach the recipe for 'minecraft:iron_ingot', you would make a key in this object titled 'minecraft:iron_ingot' and set the value to 10.",
+            "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+            }
+        }
+    },
+
+    "definitions": {
+
+        "textPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","text"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:text"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page. This text can be formatted."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "An optional title to display at the top of the page. If you set this, the rest of the text will be shifted down a bit. You can't use this in the first page of an entry."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "imagePage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","images"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:image"
+                },
+                "images": {
+                    "type": "array",
+                    "description": "A list of images to display. Images should be in resource location format. For example, the value 'botania:textures/gui/entries/banners.png' will point to '/assets/botania/textures/gui/entries/banners.png' in the resource pack.For modpack creators, this means that any images you want to use must be loaded with an external resource pack (or a mod such as Resource Loader, Open Loader, KubeJS, etc.). For best results, make your image file 256x256, but only place content in the upper left 200x200 area. This area is then rendered at 0.5x scale compared to the rest of the book in pixel size. If there's more than one image in this array, arrow buttons are shown, allowing the viewer to switch between images. If there's only one image, the arrows will not appear.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the page, shown above the image."
+                },
+                "border": {
+                    "type": "boolean",
+                    "description": "Set to true if you want the image to be bordered. It's suggested that border is set to true for images that use the entire canvas, whereas images that don't touch the corners shouldn't have it.",
+                    "default": false
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the image. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "craftingPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","recipe"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:crafting"
+                },
+                "recipe": {
+                    "type": "string",
+                    "description": "The ID of the first recipe you want to show on this page."
+                },
+                "recipe2": {
+                    "type": "string",
+                    "description": "The ID of the second recipe you want to show. Displaying two recipes is optional."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the page, to be displayed above both recipes. This is optional, but if you include it, only this title will be displayed, rather than the names of both recipe output items."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the recipes. This text can be formatted. The text will not display if there are two recipes with two different outputs, and 'title' is not set."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "smeltingPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","recipe"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:smelting"
+                },
+                "recipe": {
+                    "type": "string",
+                    "description": "An ItemStack string that corresponds to the item being smelted in the recipe you desire to display. So if you wanted to show the recipe for smelting sand to glass, you'd put 'minecraft:sand' here."
+                },
+                "recipe2": {
+                    "type": "string",
+                    "description": "The second recipe you want to show. See 'recipe' for format. Displaying two recipes is optional."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the page, to be displayed above both recipes. This is optional, but if you include it, only this title will be displayed, rather than the names of both recipe output items."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the recipe(s). This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "multiblockPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","name","multiblock"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:multiblock"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the multiblock you're displaying. Shows as a header above the multiblock display.",
+                    "examples": ["Nether Portal"]
+                },
+                "multiblock_id": {
+                    "type": "string",
+                    "description": "For modders only. See wiki for information on how to create and register multiblocks in code."
+                },
+                "multiblock": {
+                    "type": "object",
+                    "description": "The multiblock object to display.",
+                    "$ref": "#/definitions/multiblock"
+                },
+                "enable_visualize": {
+                    "type": "boolean",
+                    "description": "If true, displays the 'Visualize' button beside the multiblock. This allows players to see a ghost image of the multiblock in-world.",
+                    "default": true
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the multiblock. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "entityPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","entity"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:entity"
+                },
+                "entity": {
+                    "type": "string",
+                    "description": "The ID of the entity you want to display. You can also add NBT data to the entity, in the same way you would in an ItemStack string.",
+                    "examples": ["minecraft:chicken","minecraft:zombie"]
+                },
+                "scale": {
+                    "type": "number",
+                    "description": "The scale to display the entity at. Values lower than 1.0 will have the entity be smaller than usual, while higher than 1.0 will have it be larger. Negative values will flip it upside down.",
+                    "default": 1.0
+                },
+                "offset": {
+                    "type": "number",
+                    "description": "An amount to offset the entity display. Some mod entities have weird renders and won't fit in the box properly, you can change this to move them up and down.",
+                    "default": 0.0
+                },
+                "rotate": {
+                    "type": "boolean",
+                    "description": "If true, the displayed entity will rotate.",
+                    "default": true
+                },
+                "default_rotation": {
+                    "type": "number",
+                    "description": "The rotation at which this entity should be rendered. This value is only used if 'rotate' is false.",
+                    "default": -45
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name to display on top of the frame. If this is empty or not defined, it'll grab the name of the entity and use that instead."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the entity. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "spotlightPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","item"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:spotlight"
+                },
+                "item": {
+                    "type": "string",
+                    "description": "An ItemStack string representing the item to be spotlighted.",
+                    "examples": ["minecraft:diamond_sword","minecraft:potato"]
+                },
+                "title": {
+                    "type": "string",
+                    "description": "A custom title to show instead on top of the item. If this is empty or not defined, it'll use the item's name instead."
+                },
+                "link_recipe": {
+                    "type": "boolean",
+                    "description": "If true, this page is marked as the 'recipe page' for the item being spotlighted. If you do so, when looking at pages that display the item, you can shift-click the item to be taken to this page. Highly recommended if the spotlight page has instructions on how to create an item by non-conventional means.",
+                    "default": false
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the item. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "linkPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","url","link_text"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:link"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to open when clicking the button. In theory everything is supported, but please stick to HTTP/HTTPS addresses."
+                },
+                "link_text": {
+                    "type": "string",
+                    "description": "The text to display on the link button."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page. This text can be formatted."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "An optional title to display at the top of the page. If you set this, the rest of the text will be shifted down a bit. You can't use this in the first page of an entry."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+        
+        "relationsPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type","entries"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:relations"
+                },
+                "entries": {
+                    "type": "array",
+                    "description": "A list of entries that should be linked in this page. These are the IDs of the entries you want to link to in the same way you'd link an entry to a category's ID.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of this page, to display above the links. If this is missing or empty, it'll show 'Related Chapters' instead."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the links. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "questPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:quest"
+                },
+                "trigger": {
+                    "type": "string",
+                    "description": "The advancement that should be completed to clear this quest. You may leave this empty should you want the quest to be completed manually."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of this page, to display above the links. If this is missing or empty, it'll show 'Objective' instead."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The text to display on this page, under the links. This text can be formatted."
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "emptyPage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "const": "patchouli:empty"
+                },
+                "draw_filler": {
+                    "type": "boolean",
+                    "description": "Set to false to draw a completely empty page, without the page filler...for whatever reason.",
+                    "default": true
+                },
+                "advancement": {
+                    "type": "string",
+                    "description": "An advancement ID. When this advancement is completed, this page will appear. Excluding this attribute or leaving it empty will leave the page unlocked from the start. Providing a nonexistent advancement will permanently lock this entry unless the advancement starts existing."
+                },
+                "flag": {
+                    "type": "string",
+                    "description": "A config flag expression that determines whether this page should exist or not."
+                },
+                "anchor": {
+                    "type": "string",
+                    "description": "An anchor that can be used elsewhere to refer to this specific page in an internal link."
+                }
+            }
+        },
+
+        "multiblock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mapping","pattern"],
+            "properties": {
+                "mapping": {
+                    "type": "object",
+                    "description": "An object mapping single characters to block IDs. Blockstate information may optionally be included with the syntax '[key1=value,key2=value]'. Tags may be referenced by prefixing a '#', such as '#minecraft:wool'.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "propertyNames": {
+                        "type": "string",
+                        "maxLength": 1
+                    }
+                },
+                "pattern": {
+                    "type": "array",
+                    "description": "The pattern for this multiblock. As this is quite complex to explain, it is recommended to see the wiki for more information. However, a few reminders: empty spaces represent air blocks, underscores represent ANY block, and 0 represents the center of the structure.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "symmetrical": {
+                    "type": "boolean",
+                    "description": "Set this to true if the multiblock is symmetrical around the vertical axis of its center (that is, if rotating it around in 90º increments doesn't change its look in the world). It's not obligatory, but if you do it, Patchouli won't check all rotations, so it's better for performance.",
+                    "default": false
+                },
+                "offset": {
+                    "type": "array",
+                    "description": "A 3-integer value ([X,Y,Z]) to offset the multiblock relative to its center.",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer"
+                    },
+                    "default": [0,0,0]
+                }
+            }
+        }
+    }
+}

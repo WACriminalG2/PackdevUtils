@@ -1,5 +1,4 @@
 {
-    "$comment": "TODO: Macros sub-schema, extension keys.",
     "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Patchouli - Book",
     "type": "object",
@@ -146,6 +145,15 @@
         "pause_game": {
             "type": "boolean",
             "description": "When set true, opening any GUI from this book will pause the game in singleplayer.",
+            "default": true
+        },
+        "extend": {
+            "type": "string",
+            "description": "Define this to set this book as an extension of another. Extension books do not create a book item of their own, and don't really 'exist'. All they serve to do is add more content to another book that already exists. This is mainly here for addon mods that want to add stuff to the book they're extending. The value you put here is simply the ID of the book you want to extend, in the form of 'modid:path'. If this value is set, every single other value in this file is ignored -- this book will inherit any entries, categories, templates, and macros from the original one, so feel free to use them at will."
+        },
+        "allow_extensions": {
+            "type": "boolean",
+            "description": "If false, other mods will not be able to extend your book.",
             "default": true
         }
     }

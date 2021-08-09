@@ -1,5 +1,4 @@
 {
-    "$comment": "TODO: Sub-schema for flag.",
     "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Patchouli - Category",
     "type": "object",

@@ -1,3 +1,7 @@
+# v1.22.0 -- 8/9/21
+
+* Added schema validation for Patchouli: books, categories, and entries. Does not support some of the more advanced features like templates and variables currently, but should be good as a basic tool for now.
+
 # v1.21.0 -- 8/8/21
 
 * Adjusted file path match for Farming for Blockheads schema - forgot an asterisk.

@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.21.0",
+    "version": "1.22.0",
     "publisher": "PackDevUtils",
     "engines": {
         "vscode": "^1.8.0"
@@ -360,6 +360,18 @@
             {
                 "fileMatch": ["*/config/mobpropertiesrandomness/json/*.json","!*/config/mobpropertiesrandomness/json/groups/*.json"],
                 "url": "./Schema/mobpropertiesrandomness/rule.json"
+            },
+            {
+                "fileMatch": "*/patchouli_books/*/book.json",
+                "url": "./Schema/patchouli/book.json"
+            },
+            {
+                "fileMatch": "*/patchouli_books/*/entries/*.json",
+                "url": "./Schema/patchouli/entry.json"
+            },
+            {
+                "fileMatch": "*/patchouli_books/*/categories/*.json",
+                "url": "./Schema/patchouli/category.json"
             }
           ]
       }
