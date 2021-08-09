@@ -1,8 +1,9 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.22.0",
+    "version": "1.23.0",
     "publisher": "PackDevUtils",
+    "icon": "./Images/icon.png",
     "engines": {
         "vscode": "^1.8.0"
       },
@@ -372,6 +373,10 @@
             {
                 "fileMatch": "*/patchouli_books/*/categories/*.json",
                 "url": "./Schema/patchouli/category.json"
+            },
+            {
+                "fileMatch": "*/config/custom trades/*.json",
+                "url": "./Schema/custom_villager_trades/trades.json"
             }
           ]
       }

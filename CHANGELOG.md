@@ -1,6 +1,12 @@
+# v1.23.0 -- 8/9/21
+
+* Added icon for marketplace page.
+* Added schema validation for Custom Villager Trades: trade definitions.
+
 # v1.22.0 -- 8/9/21
 
 * Added schema validation for Patchouli: books, categories, and entries. Does not support some of the more advanced features like templates and variables currently, but should be good as a basic tool for now.
+* Schema count: 73.
 
 # v1.21.0 -- 8/8/21
 

@@ -1,0 +1,255 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Custom Villager Trades - Trade File",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["profession","removeOtherTrades","trades"],
+
+    "properties": {
+        "profession": {
+            "type": "string",
+            "description": "The villager profession that should use these trades.",
+            "examples": ["armorer","butcher","cartographer","cleric","farmer","fisherman","fletcher","leatherworker","librarian","mason","shepherd","toolsmith","weaponsmith"]
+        },
+        "removeOtherTrades": {
+            "type": "boolean",
+            "description": "If true, these trades will replace any other trades this villager profession has. If false, these trades will be added to the existing list of trades.",
+            "default": false
+        },
+        "trades": {
+            "type": "array",
+            "description": "A list of trades for this profession.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/trade"
+            }
+        },
+        "isRare": {
+            "type": "boolean",
+            "description": "This is only for the wanderer, and will have no effect on other trades. Note that this field is required for the wanderer, and that the wanderer must have at least 5 common trades and 1 rare trade in order to be valid.",
+            "default": false
+        }
+    },
+
+    "definitions": {
+        "trade": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["offer","request","tradeExp","maxUses","priceMultiplier","demand","tradeLevel"],
+            "properties": {
+                "offer": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["itemKey","amount"],
+                    "properties": {
+
+                        "itemKey": {
+                            "type": "string",
+                            "description": "The item to offer.",
+                            "examples": ["minecraft:diamond","minecraft:potato","minecraft:coal"]
+                        },
+
+                        "amount": {
+                            "type": "integer",
+                            "description": "The amount of this item to offer.",
+                            "minimum": 1
+                        },
+
+                        "enchantments": {
+                            "type": "array",
+                            "description": "Enchantments to apply to the offered item.",
+                            "items": {
+                                "$ref": "#/definitions/enchantment"
+                            }
+                        },
+
+                        "effects": {
+                            "type": "array",
+                            "description": "Potion effects that can be applied to the offered item. They can only be applied to potions, splash potions, lingering potions, suspicious stew, and anything else that normally applies potion effects in vanilla Minecraft.",
+                            "items": {
+                                "$ref": "#/definitions/potionEffect"
+                            }
+                        },
+
+                        "blacklistedEffects": {
+                            "type": "array",
+                            "description": "Potion effects that can NOT be applied to the offered item, if a 'random' value was entered under 'effects'.",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+
+                        "metadata": {
+                            "type": "string",
+                            "description": "This item's metadata."
+                        },
+
+                        "customName": {
+                            "type": "string",
+                            "description": "Sets a custom name for the offered item."
+                        },
+
+                        "mapStructure": {
+                            "type": "string",
+                            "description": "Only applies if the itemKey for this offer is 'minecraft:filled_map'. Can be used to offer a treasure map which leads to a specific structure. The value for this field should be the ID of the structure desired. Works with modded structures too, as long as you know their registry key.",
+                            "examples": ["minecraft:village","minecraft:buried_treasure"]
+                        }
+
+                    }
+                },
+
+                "multiOffer": {
+                    "type": "array",
+                    "description": "Allows you to set a list of offers that will be randomly selected from when generating this trade. This allows for several variants of the same trade without adding to the weight (how common the trade is). If set, this will override the 'offer' property.",
+                    "items": {
+                        "$ref": "#/definitions/trade/properties/offer"
+                    }
+                },
+
+                "request": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {                      
+                        "itemKey": {
+                            "type": "string",
+                            "description": "The item to request.",
+                            "examples": ["minecraft:diamond","minecraft:potato","minecraft:coal"]
+                        },
+                        "amount": {
+                            "type": "integer",
+                            "description": "The amount of this item to request.",
+                            "minimum": 1
+                        },
+                        "enchantments": {
+                            "type": "array",
+                            "description": "Enchantments to require on the requested item.",
+                            "items": {
+                                "$ref": "#/definitions/enchantment"
+                            }
+                        },
+                        "effects": {
+                            "type": "array",
+                            "description": "Potion effects to require on the requested item.",
+                            "items": {
+                                "$ref": "#/definitions/potionEffect"
+                            }
+                        },
+                        "blacklistedEffects": {
+                            "type": "array",
+                            "description": "Potion effects that can NOT be on the requested item.",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "metadata": {
+                            "type": "string",
+                            "description": "This item's metadata."
+                        }
+                    }
+                },
+                
+                "additionalRequest": {
+                    "description": "An additional requested item for this trade.",
+                    "$ref": "#/definitions/trade/properties/request"
+                },
+
+                "tradeExp": {
+                    "type": "integer",
+                    "description": "How much experience the villager gets for this trade. This experience advances the villager towards the next trade level.",
+                    "minimum": 1
+                },
+
+                "maxUses": {
+                    "type": "integer",
+                    "description": "The maximum number of uses for this trade before it must be restocked.",
+                    "minimum": 1
+                },
+
+                "priceMultiplier": {
+                    "type": "number",
+                    "description": "Will add this number to the price of the request."
+                },
+
+                "demand": {
+                    "type": "integer",
+                    "description": "A value to add to the trade's price when it is restocked after being sold out."
+                },
+
+                "tradeLevel": {
+                    "type": "integer",
+                    "description": "The trade level at which this trade becomes available. Range is 1-5.",
+                    "minimum": 1,
+                    "maximum": 5,
+                    "default": 1
+                }
+            }
+        },
+
+        "enchantment": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["enchantmentKey","enchantmentLevel"],
+            "properties": {
+                "enchantmentKey": {
+                    "type": "string",
+                    "description": "The registry ID of an enchantment, or 'random' to select a random one. Alternatively, you may enter multiple enchantment IDs separated by '#' to construct a limited semi-random list.",
+                    "examples": ["minecraft:sharpness","minecraft:swiftness","minecraft:sharpness#minecraft:swiftness#minecraft:fire_aspect"]
+                },
+                "enchantmentLevel": {
+                    "type": "integer",
+                    "description": "The level of the enchantment. If set to -1, this will be random.",
+                    "default": 1
+                },
+                "maxEnchantmentLevel": {
+                    "type": "integer",
+                    "description": "This is used to set the maximum level when using the random level function. If not set, this defaults to 3.",
+                    "default": 3
+                }
+            }
+        },
+
+        "potionEffect": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["effectKey","duration","level","isVisible"],
+            "properties": {
+                "effectKey": {
+                    "type": "string",
+                    "description": "The registry ID of the potion effect. May also be 'random' to select a random effect. Alternatively, you may join multiple effects with '#' to construct a limited semi-random list of effects to choose from.",
+                    "examples": ["random","minecraft:slow_falling","minecraft:speed","minecraft:slow_falling#minecraft:speed"]
+                },
+                "duration": {
+                    "type": "integer",
+                    "description": "The duration, in ticks, of this potion effect. 1 second = 20 ticks.",
+                    "default": 100,
+                    "minimum": 1
+                },
+                "level": {
+                    "type": "integer",
+                    "description": "The level of this potion effect. Must be greater than 0.",
+                    "minimum": 1,
+                    "default": 1
+                },
+                "isVisible": {
+                    "type": "boolean",
+                    "description": "If false, the effect will be invisible to the player. This is not recommended.",
+                    "default": true
+                },
+                "potionKey": {
+                    "type": "string",
+                    "description": "Only required if the item is 'minecraft:tipped_arrow'. The ID of a potion effect, or 'random' to select a random effect. You may also join multiple effects together with '#' to construct a limited semi-random list of effects to choose from.",
+                    "examples": ["random","minecraft:slow_falling","minecraft:speed","minecraft:slow_falling#minecraft:speed#minecraft:poison"]
+                },
+                "blacklistedPotionKeys": {
+                    "type": "array",
+                    "description": "A list of potion keys which may not be applied to a tipped arrow by this trade, if the potionKey is 'random'.",
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:slow_falling","minecraft:speed"]
+                    }
+                }
+            }
+        }
+    }
+}
