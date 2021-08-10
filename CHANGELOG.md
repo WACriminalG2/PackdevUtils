@@ -1,7 +1,7 @@
 # v1.24.0 -- 8/9/21
 
 * Added Wastelands of Baedoor (Blocks, Items, Entities, Potions, Enchantments) to Universal Registry.
-* Began migration of Universal Registry to distributed folders/files, to facilitate better version tracking and documentation. Unfortunately, since I didn't mark down what version I was using when I originally added things to the registry, the vast majority just have '?????' as their version until someone the IDs get re-dumped.
+* Began migration of Universal Registry to distributed folders/files, to facilitate better version tracking and documentation. Unfortunately, since I didn't mark down what version I was using when I originally added things to the registry, the vast majority just have '?????' as their version until the IDs get re-dumped.
 
 # v1.23.0 -- 8/9/21
 
