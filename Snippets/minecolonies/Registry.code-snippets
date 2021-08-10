@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "MineColonies Blocks": {
+        "body": "minecolonies:${1|barrel_block,blockconstructiontape,blockhutarchery,blockhutbaker,blockhutbarracks,blockhutbarrackstower,blockhutbeekeeper,blockhutblacksmith,blockhutbuilder,blockhutchickenherder,blockhutcitizen,blockhutcombatacademy,blockhutcomposter,blockhutconcretemixer,blockhutcook,blockhutcowboy,blockhutcrusher,blockhutdeliveryman,blockhutdyer,blockhutenchanter,blockhutfarmer,blockhutfield,blockhutfisherman,blockhutfletcher,blockhutflorist,blockhutglassblower,blockhutgraveyard,blockhutguardtower,blockhuthospital,blockhutlibrary,blockhutlumberjack,blockhutmechanic,blockhutminer,blockhutmysticalsite,blockhutplantation,blockhutrabbithutch,blockhutsawmill,blockhutschool,blockhutshepherd,blockhutsifter,blockhutsmeltery,blockhutstonemason,blockhutstonesmeltery,blockhutswineherder,blockhuttavern,blockhuttownhall,blockhutuniversity,blockhutwarehouse,blockminecoloniesgrave,blockminecoloniesnamedgrave,blockminecoloniesrack,blockpostbox,blockstash,blockwaypoint,colony_banner,colony_wall_banner,composted_dirt,decorationcontroller,gate_iron,gate_wood|}",
+        "prefix": "@minecolonies/blocks/"
+    },
+
+    "MineColonies Items": {
+        "body": "minecolonies:${1|amazonchiefegg,amazonegg,ancienttome,banner_rally_guards,barbarcheregg,barbarianegg,barbchiefegg,barrel_block,blockconstructiontape,blockhutarchery,blockhutbaker,blockhutbarracks,blockhutbarrackstower,blockhutbeekeeper,blockhutblacksmith,blockhutbuilder,blockhutchickenherder,blockhutcitizen,blockhutcombatacademy,blockhutcomposter,blockhutconcretemixer,blockhutcook,blockhutcowboy,blockhutcrusher,blockhutdeliveryman,blockhutdyer,blockhutenchanter,blockhutfarmer,blockhutfield,blockhutfisherman,blockhutfletcher,blockhutflorist,blockhutglassblower,blockhutgraveyard,blockhutguardtower,blockhuthospital,blockhutlibrary,blockhutlumberjack,blockhutmechanic,blockhutminer,blockhutmysticalsite,blockhutplantation,blockhutrabbithutch,blockhutsawmill,blockhutschool,blockhutshepherd,blockhutsifter,blockhutsmeltery,blockhutstonemason,blockhutstonesmeltery,blockhutswineherder,blockhuttavern,blockhuttownhall,blockhutuniversity,blockhutwarehouse,blockminecoloniesgrave,blockminecoloniesnamedgrave,blockminecoloniesrack,blockpostbox,blockstash,blockwaypoint,bread_dough,cake_batter,chiefsword,chorus_bread,clipboard,colony_banner,compost,composted_dirt,cookie_dough,decorationcontroller,firearrow,gate_iron,gate_wood,golden_bread,iron_scimitar,mercegg,milky_bread,mummyarcheregg,mummyegg,norsemenarcheregg,norsemenchiefegg,pharaoegg,pharaoscepter,pirate_boots,pirate_cap,pirate_chest,pirate_hat,pirate_leggins,pirate_legs,pirate_shoes,pirate_top,piratearcheregg,piratecaptainegg,pirateegg,plate_armor_boots,plate_armor_chest,plate_armor_helmet,plate_armor_legs,raw_pumpkin_pie,resourcescroll,santa_hat,scepterbeekeeper,scepterguard,scepterlumberjack,scepterpermission,scroll_area_tp,scroll_buff,scroll_guard_help,scroll_highlight,scroll_tp,shieldmaidenegg,sifter_mesh_diamond,sifter_mesh_flint,sifter_mesh_iron,sifter_mesh_string,sugary_bread,supplycampdeployer,supplychestdeployer|}",
+        "prefix": "@minecolonies/items/"
+    },
+
+    "MineColonies Entities": {
+        "body": "minecolonies:${1|amazon,amazonchief,archerbarbarian,archermummy,archerpirate,barbarian,chiefbarbarian,chiefpirate,citizen,firearrow,fishhook,mcminecart,mcnormalarrow,mercenary,mummy,norsemenarcher,norsemenchief,pharao,pirate,shieldmaiden,sittingentity,visitor|}",
+        "prefix": "@minecolonies/entities/"
+    },
+
+    // No potions
+
+    "MineColonies Enchantments": {
+        "body": "minecolonies:${1|raider_damage_enchant|}",
+        "prefix": "@minecolonies/enchant/"
+    }
+
+    // No biomes
+}

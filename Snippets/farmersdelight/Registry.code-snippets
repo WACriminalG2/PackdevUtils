@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Farmer's Delight Blocks": {
+        "body": "farmersdelight:${1|acacia_pantry,apple_pie,basket,beetroot_crate,birch_pantry,brown_mushroom_colony,cabbage_crate,cabbages,carrot_crate,chocolate_pie,cooking_pot,crimson_pantry,cutting_board,dark_oak_pantry,full_tatami_mat,half_tatami_mat,honey_glazed_ham_block,jungle_pantry,oak_pantry,onion_crate,onions,organic_compost,potato_crate,red_mushroom_colony,rice_bag,rice_bale,rice_crop,rice_upper_crop,rich_soil,rich_soil_farmland,roast_chicken_block,rope,safety_net,shepherds_pie_block,spruce_pantry,stove,straw_bale,stuffed_pumpkin_block,sweet_berry_cheesecake,tall_rice_crop,tatami,tomato_crate,tomatoes,warped_pantry,wild_beetroots,wild_cabbages,wild_carrots,wild_onions,wild_potatoes,wild_rice,wild_tomatoes|}",
+        "prefix": "@farmersdelight/blocks/"
+    },
+
+    "Farmer's Delight Items": {
+        "body": "farmersdelight:${1|acacia_pantry,apple_pie,apple_pie_slice,bacon,bacon_sandwich,baked_cod_stew,barbecue_stick,basket,beef_patty,beef_stew,beetroot_crate,birch_pantry,brown_mushroom_colony,cabbage,cabbage_crate,cabbage_leaf,cabbage_rolls,cabbage_seeds,cake_slice,canvas,carrot_crate,chicken_cuts,chicken_sandwich,chicken_soup,chocolate_pie,chocolate_pie_slice,cod_slice,cooked_bacon,cooked_chicken_cuts,cooked_cod_slice,cooked_mutton_chops,cooked_rice,cooked_salmon_slice,cooking_pot,crimson_pantry,cutting_board,dark_oak_pantry,diamond_knife,dog_food,dumplings,egg_sandwich,fish_stew,flint_knife,fried_egg,fried_rice,fruit_salad,full_tatami_mat,golden_knife,grilled_salmon,half_tatami_mat,ham,hamburger,honey_cookie,honey_glazed_ham,honey_glazed_ham_block,horse_feed,hot_cocoa,iron_knife,jungle_pantry,melon_popsicle,milk_bottle,minced_beef,mixed_salad,mutton_chops,mutton_wrap,nether_salad,netherite_knife,noodle_soup,oak_pantry,onion,onion_crate,organic_compost,pasta_with_meatballs,pasta_with_mutton_chop,pie_crust,potato_crate,pumpkin_slice,pumpkin_soup,ratatouille,raw_pasta,red_mushroom_colony,rice,rice_bag,rice_bale,rice_panicle,rich_soil,rich_soil_farmland,roast_chicken,roast_chicken_block,roasted_mutton_chops,rope,safety_net,salmon_slice,shepherds_pie,shepherds_pie_block,smoked_ham,spruce_pantry,squid_ink_pasta,steak_and_potatoes,stove,straw,straw_bale,stuffed_potato,stuffed_pumpkin,stuffed_pumpkin_block,sweet_berry_cheesecake,sweet_berry_cheesecake_slice,sweet_berry_cookie,tatami,tomato,tomato_crate,tomato_sauce,tomato_seeds,tree_bark,vegetable_noodles,vegetable_soup,warped_pantry,wheat_dough,wild_beetroots,wild_cabbages,wild_carrots,wild_onions,wild_potatoes,wild_rice,wild_tomatoes|}",
+        "prefix": "@farmersdelight/items/"
+    },
+
+    // No entities
+
+    "Farmer's Delight Potions": {
+        "body": "farmersdelight:${1|comfort,nourished|}",
+        "prefix": "@farmersdelight/potions/"
+    },
+
+    "Farmer's Delight Enchantments": {
+        "body": "farmersdelight:${1|backstabbing|}",
+        "prefix": "@farmersdelight/enchant/"
+    }
+
+    // No biomes
+}

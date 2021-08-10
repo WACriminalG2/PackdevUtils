@@ -1,16 +1,28 @@
 {
     // Version: ?????
 
-    // No blocks
+    "Jellyfishing Blocks": {
+        "body": "jellyfishing:${1|algae_block,algae_grass,bamboo_wall,black_carpeted_tiles,blue_bamboo_wall,blue_carpeted_tiles,blue_jelly_block,brown_carpeted_tiles,bubble_block,chiseled_pineapple_block,chrome_brick_slab,chrome_brick_stairs,chrome_bricks,chrome_door,chrome_metal,chrome_metal_slab,chrome_metal_stairs,chrome_vent,coral_plant,coralstone,coralstone_slab,coralstone_stairs,coralstone_wall,cyan_carpeted_tiles,gray_carpeted_tiles,green_carpeted_tiles,grill,jelly_block,light_blue_carpeted_tiles,light_gray_carpeted_tiles,lime_carpeted_tiles,magenta_carpeted_tiles,orange_carpeted_tiles,patty_tiles,pineapple_block,pineapple_pillar,pineapple_plant,pink_bamboo_wall,pink_carpeted_tiles,polished_coralstone,polished_coralstone_slab,polished_coralstone_stairs,potted_pineapple,purple_carpeted_tiles,red_carpeted_tiles,scrap_metal,scrap_metal_slab,scrap_metal_stairs,scrap_metal_window,seanut_brittle_block,seanut_bush,tube_plant,vault_door,vault_trapdoor,white_carpeted_tiles,yellow_bamboo_wall,yellow_carpeted_tiles|}",
+        "prefix": "@jellyfishing/blocks/"
+    },
 
-    // No items
+    "Jellyfishing Items": {
+        "body": "jellyfishing:${1|air_suit_boots,air_suit_chestplate,air_suit_helmet,air_suit_leggings,algae_block,algae_grass,bamboo_wall,black_carpeted_tiles,blue_bamboo_wall,blue_carpeted_tiles,blue_jelly_block,blue_jellyfish,blue_jellyfish_jelly,blue_jellyfish_jelly_sandwich,blue_jellyfish_spawn_egg,brown_carpeted_tiles,bubble_wand,chiseled_pineapple_block,chrome_brick_slab,chrome_brick_stairs,chrome_bricks,chrome_door,chrome_metal,chrome_metal_slab,chrome_metal_stairs,chrome_vent,coral_plant,coralstone,coralstone_slab,coralstone_stairs,coralstone_wall,cyan_carpeted_tiles,golden_spatula,gray_carpeted_tiles,grease_ball,green_carpeted_tiles,grill,jelly_block,jellyfish,jellyfish_jelly,jellyfish_jelly_sandwich,jellyfish_net,jellyfish_spawn_egg,karate_glove,kelp_mustache,kelp_shake,krabby_patty,light_blue_carpeted_tiles,light_gray_carpeted_tiles,lime_carpeted_tiles,magenta_carpeted_tiles,master_karate_glove,music_disc_jellyfish_fields,orange_carpeted_tiles,patty_tiles,pineapple,pineapple_block,pineapple_pillar,pineapple_seeds,pink_bamboo_wall,pink_carpeted_tiles,polished_coralstone,polished_coralstone_slab,polished_coralstone_stairs,power_karate_glove,purple_carpeted_tiles,red_carpeted_tiles,roasted_seanut,scrap_metal,scrap_metal_slab,scrap_metal_stairs,scrap_metal_window,seanut,seanut_brittle,seanut_brittle_block,seanut_butter,seanut_butter_blue_jellyfish_jelly_sandwich,seanut_butter_jellyfish_jelly_sandwich,spatula,triple_gooberberry_sunrise,tube_plant,vault_door,vault_trapdoor,white_carpeted_tiles,yellow_bamboo_wall,yellow_carpeted_tiles|}",
+        "prefix": "@jellyfishing/items/"
+    },
 
-    // No entities
+    "Jellyfishing Entities": {
+        "body": "jellyfishing:${1|blue_jellyfish,jellyfish,patty_wagon|}",
+        "prefix": "@jellyfishing/entities/"
+    },
 
     // No potions
 
-    // No enchantments
-
+    "Jellyfishing Enchantments": {
+        "body": "jellyfishing:${1|agility,plundering|}",
+        "prefix": "@jellyfishing/enchant/"
+    },
+    
     "Jellyfishing Biomes": {
         "body": "jellyfishing:${1|jellyfish_fields|}",
         "prefix": "@jellyfishing/biomes/"

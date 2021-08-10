@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Macaw's Lights Blocks": {
+        "body": "mcwlights:${1|acacia_tiki_torch,birch_tiki_torch,black_ceiling_light,black_lamp,blue_ceiling_light,blue_lamp,brown_ceiling_light,brown_lamp,classic_street_lamp,crimson_tiki_torch,cyan_ceiling_light,cyan_lamp,dark_oak_tiki_torch,double_street_lamp,garden_light,gray_ceiling_light,gray_lamp,green_ceiling_light,green_lamp,jungle_tiki_torch,lava_lamp,light_blue_ceiling_light,light_blue_lamp,light_gray_ceiling_light,light_gray_lamp,lime_ceiling_light,lime_lamp,magenta_ceiling_light,magenta_lamp,oak_tiki_torch,orange_ceiling_light,orange_lamp,pink_ceiling_light,pink_lamp,purple_ceiling_light,purple_lamp,red_ceiling_light,red_lamp,soul_acacia_tiki_torch,soul_birch_tiki_torch,soul_classic_street_lamp,soul_crimson_tiki_torch,soul_dark_oak_tiki_torch,soul_double_street_lamp,soul_jungle_tiki_torch,soul_oak_tiki_torch,soul_spruce_tiki_torch,soul_warped_tiki_torch,spruce_tiki_torch,warped_tiki_torch,white_ceiling_light,white_lamp,yellow_ceiling_light,yellow_lamp|}",
+        "prefix": "@mcwlights/blocks/"
+    },
+
+    "Macaw's Lights": {
+        "body": "mcwlights:${1|acacia_tiki_torch,birch_tiki_torch,black_ceiling_light,black_lamp,blue_ceiling_light,blue_lamp,brown_ceiling_light,brown_lamp,classic_street_lamp,crimson_tiki_torch,cyan_ceiling_light,cyan_lamp,dark_oak_tiki_torch,double_street_lamp,garden_light,gray_ceiling_light,gray_lamp,green_ceiling_light,green_lamp,jungle_tiki_torch,lava_lamp,light_blue_ceiling_light,light_blue_lamp,light_gray_ceiling_light,light_gray_lamp,lime_ceiling_light,lime_lamp,magenta_ceiling_light,magenta_lamp,oak_tiki_torch,orange_ceiling_light,orange_lamp,pink_ceiling_light,pink_lamp,purple_ceiling_light,purple_lamp,red_ceiling_light,red_lamp,soul_acacia_tiki_torch,soul_birch_tiki_torch,soul_classic_street_lamp,soul_crimson_tiki_torch,soul_dark_oak_tiki_torch,soul_double_street_lamp,soul_jungle_tiki_torch,soul_oak_tiki_torch,soul_spruce_tiki_torch,soul_warped_tiki_torch,spruce_tiki_torch,warped_tiki_torch,white_ceiling_light,white_lamp,yellow_ceiling_light,yellow_lamp|}",
+        "prefix": "@mcwlights/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

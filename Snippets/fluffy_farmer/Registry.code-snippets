@@ -1,13 +1,31 @@
 {
     // Version: ?????
 
-    // No blocks
+    "Fluffy's Farming Blocks": {
+        "body": "fluffy_farmer:${1|blueberry_bush_stage_0,blueberry_stage_1,blueberry_stage_2,blueberry_stage_3,blueberry_stage_4,cabbage,cabbage_block,cabbage_plant,cabbage_small,cabbage_smaller,caramel_block,caramel_bricks,caramel_cut_bricks,carry_the_lantern,carved_cabbage,cinnamon_leaves,cinnamon_log,cinnamon_planks,cinnamon_planks_door,cinnamon_planks_fence,cinnamon_planks_fencegate,cinnamon_planks_slab,cinnamon_planks_stairs,cinnamon_planks_trapdoor,cinnamon_sapling,cinnamon_wood,corn_bottom_stage_1,corn_bottom_stage_2,corn_bottom_stage_3,corn_bottom_stage_4to_6,corn_middle_stage_3,corn_middle_stage_4,corn_middle_stage_5,corn_middle_stage_6,corn_top_stage_4,cracked_caramel_bricks,cucumber_stage_1,cucumber_stage_2,cucumber_stage_3,cucumber_stage_4,cucumber_stage_5,cucumber_stage_6,dry_mud,dry_mud_bricks,dry_mud_bricks_slab,dry_mud_bricks_stairs,dry_mud_bricks_wall,dry_mud_cut_bricks,half_stripped_cinnamon_log,half_stripped_cinnamon_wood,hot_pepper_bush_stage_1,hot_pepper_bush_stage_2,hot_pepper_bush_stage_3,hot_pepper_bush_stage_4,hot_pepper_bush_stage_5,hot_pepper_bush_stage_6,nettle,onion_stage_1,onion_stage_2,onion_stage_3,onion_stage_4,peccatum_zizania,rice_block,rice_bottom_1,rice_bottom_2,rice_bottom_3,rice_bottom_4,rice_bottom_5,rice_bottom_6,rice_top_4,rice_top_5,rice_top_6,salt_ore,saponaria,scratched_wolffir_log,sinful_thistle,soap_layer,soul_wheat_haybale,soulsand_farmland,stripped_cinnamon_log,stripped_cinnamon_wood,stripped_wolffir,stripped_wolffir_wood,sugar_caramel_block,sugar_caramel_bricks,sunful_thistle_stage_0,sunful_thistle_stage_1,sunful_thistle_stage_2,sunful_thistle_stage_3,sunful_thistle_stage_4,teddy_bear,thin_ice,tomato_stage_1,tomato_stage_2,tomato_stage_3,tomato_stage_4,tomato_stage_5_bottom,tomato_stage_5_top,tomato_stage_6_bottom,tomato_stage_6_top,tub,wild_carrot,wild_chilly,wild_onion,wild_rice,wolffir_door,wolffir_fence,wolffir_fencegate,wolffir_leaves,wolffir_log,wolffir_planks,wolffir_sapling,wolffir_slab,wolffir_stairs,wolffir_trapdoor,wolfir_wood|}",
+        "prefix": [
+            "@fluffy_farmer/blocks/",
+            "@fluffysfarming/blocks/"
+        ]
+    },
 
-    // No items
+    "Fluffy's Farming Items": {
+        "body": "fluffy_farmer:${1|aphroditespride,apple_on_a_stick,apple_pie,berry_cookie,blueberry_bush_stage_0,blueberry_stage_1,blueberry_stage_2,blueberry_stage_3,blueberry_stage_4,borsch,bottle_of_milk,bottle_of_tears,bottle_with_soap_bubbles,burger_of_traveller,burnt_caramel,cabbage,cabbage_block,cabbage_leaf,cabbage_plant,cabbage_seeds,cabbage_small,cabbage_smaller,caramel_apple,caramel_block,caramel_bricks,caramel_cut_bricks,carmel,carry_the_lantern,carved_cabbage,chocolate_bar,chocolate_cookie,chocolate_pudding,cinnamon,cinnamon_bark,cinnamon_cookie,cinnamon_leaves,cinnamon_log,cinnamon_planks,cinnamon_planks_door,cinnamon_planks_fence,cinnamon_planks_fencegate,cinnamon_planks_slab,cinnamon_planks_stairs,cinnamon_planks_trapdoor,cinnamon_sapling,cinnamon_wood,cold_cuts,cooked_corn,cooked_corn_in_honey,cooked_egg,cooked_onion_ring,cooked_rice_pie,corn,corn_and_potato_soup,corn_bottom_stage_1,corn_bottom_stage_2,corn_bottom_stage_3,corn_bottom_stage_4to_6,corn_middle_stage_3,corn_middle_stage_4,corn_middle_stage_5,corn_middle_stage_6,corn_seeds,corn_top_stage_4,cracked_caramel_bricks,cracker,cracker_with_hot_sause,cucumber,cucumber_seeds,cucumber_stage_1,cucumber_stage_2,cucumber_stage_3,cucumber_stage_4,cucumber_stage_5,cucumber_stage_6,dry_mud,dry_mud_bricks,dry_mud_bricks_slab,dry_mud_bricks_stairs,dry_mud_bricks_wall,dry_mud_cut_bricks,fertilizer,fruit_salad,fungus_stew,glass_cup,golden_corn,half_stripped_cinnamon_log,half_stripped_cinnamon_wood,honey_pudding,hot_pepper,hot_pepper_bush_stage_1,hot_pepper_bush_stage_2,hot_pepper_bush_stage_3,hot_pepper_bush_stage_4,hot_pepper_bush_stage_5,hot_pepper_bush_stage_6,hot_pepper_seeds,hot_sauce_bottle,juicy_berries,ketchup,knife,mayonnaise,melted_carmel,mortar,mustard,nettle,nettle_leaf,onion,onion_ring,onion_stage_1,onion_stage_2,onion_stage_3,onion_stage_4,orange_tomato,pan,peccatum_zizania,peccatum_zizania_seed,pickle,pickled_cabbage,pickled_tomato,pickled_watermelon,pilaf,plant_fiber,plate,poisonous_corn,popcorn,pot,pumpkin_slice,raider_roasted_bread,raw_rice_pie,red_tomato,rice,rice_block,rice_bottom_1,rice_bottom_2,rice_bottom_3,rice_bottom_4,rice_bottom_5,rice_bottom_6,rice_top_4,rice_top_5,rice_top_6,rotten_apple,salt_crystal,salt_ore,salty_cracker,saponaria,saponaria_root,scratched_wolffir_log,shroombake,sinful_thistle,slimy_slime_jelly,soaked_rice,soap,soap_bubbles,soap_layer,soul_bread,soul_wheat,soul_wheat_haybale,soulsand_farmland,spicy_sause_bottle,stripped_cinnamon_log,stripped_cinnamon_wood,stripped_wolffir,stripped_wolffir_wood,sugar_caramel_block,sugar_caramel_bricks,sunful_thistle_stage_0,sunful_thistle_stage_1,sunful_thistle_stage_2,sunful_thistle_stage_3,sunful_thistle_stage_4,sushi_with_cod,sushi_with_pufferfish,sushi_with_salmon,sushi_with_tropical_fish,sweet_pie,teddy_bear,thin_ice,tomato_seeds,tomato_soup,tomato_stage_1,tomato_stage_2,tomato_stage_3,tomato_stage_4,tomato_stage_5_bottom,tomato_stage_5_top,tomato_stage_6_bottom,tomato_stage_6_top,tub,vegetable_salad,wild_carrot,wild_chilly,wild_onion,wild_rice,wolffir_door,wolffir_fence,wolffir_fencegate,wolffir_leaves,wolffir_log,wolffir_planks,wolffir_sapling,wolffir_slab,wolffir_stairs,wolffir_trapdoor,wolfir_wood,yellow_tomato|}",
+        "prefix": [
+            "@fluffy_farmer/items/",
+            "@fluffys_farming/items/"
+        ]
+    },
 
     // No entities
 
-    // No potions
+    "Fluffy's Farming Potions": {
+        "body": "fluffy_farmer:${1|cleanness,hot,instability,protein,sweetness|}",
+        "prefix": [
+            "@fluffy_farmer/potions/",
+            "@fluffys_farming/potions/"
+        ]
+    },
 
     // No enchantments
 

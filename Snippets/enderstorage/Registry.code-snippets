@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Ender Storage Blocks": {
+        "body": "enderstorage:${1|ender_chest,ender_tank|}",
+        "prefix": "@enderstorage/blocks/"
+    },
+
+    "Ender Storage Items": {
+        "body": "enderstorage:${1|ender_chest,ender_pouch,ender_tank|}",
+        "prefix": "@enderstorage/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

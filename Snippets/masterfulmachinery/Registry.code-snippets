@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Masterful Machinery Blocks": {
+        "body": "masterfulmachinery:${1|projector,structure_generator|}",
+        "prefix": "@masterfulmachinery/blocks/"
+    },
+
+    "Masterful Machinery Items": {
+        "body": "masterfulmachinery:${1|blueprint,projector,structure_gen_device,structure_generator|}",
+        "prefix": "@masterfulmachinery/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Macaw's Bridges Blocks": {
+        "body": "mcwbridges:${1|acacia_bridge_pier,acacia_log_bridge_middle,acacia_rail_bridge,bamboo_bridge,bamboo_bridge_pier,birch_bridge_pier,birch_log_bridge_middle,birch_rail_bridge,blackstone_bridge,blackstone_bridge_pier,brick_bridge,brick_bridge_pier,crimson_bridge_pier,crimson_log_bridge_middle,crimson_rail_bridge,dark_oak_bridge_pier,dark_oak_log_bridge_middle,dark_oak_rail_bridge,dry_bamboo_bridge,dry_bamboo_bridge_pier,iron_bridge_pier,jungle_bridge_pier,jungle_log_bridge_middle,jungle_rail_bridge,mossy_stone_brick_bridge,mossy_stone_bridge_pier,most1,oak_bridge_pier,oak_log_bridge_middle,oak_rail_bridge,orange_sandstone_bridge,red_sandstone_bridge_pier,rope_acacia_bridge,rope_birch_bridge,rope_crimson_bridge,rope_dark_oak_bridge,rope_jungle_bridge,rope_oak_bridge,rope_spruce_bridge,rope_warped_bridge,sandstone_bridge,sandstone_bridge_pier,spruce_bridge_pier,spruce_log_bridge_middle,spruce_rail_bridge,stone_brick_bridge,stone_bridge_pier,warped_bridge_pier,warped_log_bridge_middle,warped_rail_bridge|}",
+        "prefix": "@mcwbridges/blocks/"
+    },
+
+    "Macaw's Bridges Items": {
+        "body": "mcwbridges:${1|acacia_bridge_pier,acacia_log_bridge_middle,acacia_rail_bridge,bamboo_bridge,bamboo_bridge_pier,birch_bridge_pier,birch_log_bridge_middle,birch_rail_bridge,blackstone_bridge,blackstone_bridge_pier,brick_bridge,brick_bridge_pier,crimson_bridge_pier,crimson_log_bridge_middle,crimson_rail_bridge,dark_oak_bridge_pier,dark_oak_log_bridge_middle,dark_oak_rail_bridge,dry_bamboo_bridge,dry_bamboo_bridge_pier,iron_bridge_pier,jungle_bridge_pier,jungle_log_bridge_middle,jungle_rail_bridge,mossy_stone_brick_bridge,mossy_stone_bridge_pier,most1,oak_bridge_pier,oak_log_bridge_middle,oak_rail_bridge,orange_sandstone_bridge,red_sandstone_bridge_pier,rope_acacia_bridge,rope_birch_bridge,rope_crimson_bridge,rope_dark_oak_bridge,rope_jungle_bridge,rope_oak_bridge,rope_spruce_bridge,rope_warped_bridge,sandstone_bridge,sandstone_bridge_pier,spruce_bridge_pier,spruce_log_bridge_middle,spruce_rail_bridge,stone_brick_bridge,stone_bridge_pier,warped_bridge_pier,warped_log_bridge_middle,warped_rail_bridge|}",
+        "prefix": "@mcwbridges/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

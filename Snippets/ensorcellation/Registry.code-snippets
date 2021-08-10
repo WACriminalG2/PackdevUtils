@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    "Ensorcellation Enchantments": {
+        "body": "ensorcellation:${1|air_affinity,angler,bulwark,cavalier,curse_fool,curse_mercy,damage_ender,damage_illager,damage_villager,displacement,excavating,exp_boost,fire_rebuke,frost_aspect,frost_rebuke,furrowing,gourmand,hunter,instigating,leech,magic_edge,magic_protection,phalanx,pilfering,quick_draw,reach,soulbound,tilling,trueshot,vitality,volley,vorpal,weeding|}",
+        "prefix": "@ensorcellation/enchant/"
+    }
+
+    // No biomes
+}

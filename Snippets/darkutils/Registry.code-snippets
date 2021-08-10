@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Dark Utilities Blocks": {
+        "body": "darkutils:${1|anchor_plate,blank_plate,dark_glass,ender_hopper,export_plate,export_plate_extreme,export_plate_fast,filter_animal,filter_arthropod,filter_boss,filter_child,filter_explosion_immune,filter_fire_immune,filter_golem,filter_hostile,filter_illager,filter_named,filter_pet,filter_player,filter_raid,filter_slime,filter_undead,filter_villager,filter_water,import_plate,import_plate_extreme,import_plate_fast,item_grate,redstone_randomizer,rune_blindness,rune_damage,rune_damage_player,rune_fatigue,rune_fire,rune_glowing,rune_hunger,rune_nausea,rune_poison,rune_slowness,rune_weakness,rune_wither,shielded_redstone,vector_plate,vector_plate_extreme,vector_plate_fast|}",
+        "prefix": "@darkutils/blocks/"
+    },
+
+    "Dark Utilities Items": {
+        "body": "darkutils:${1|anchor_plate,blank_plate,book_galactic,book_restore,book_runelic,charm_experience,charm_gluttony,charm_portal,charm_sleep,dark_glass,ender_hopper,export_plate,export_plate_extreme,export_plate_fast,filter_animal,filter_arthropod,filter_boss,filter_child,filter_explosion_immune,filter_fire_immune,filter_golem,filter_hostile,filter_illager,filter_named,filter_pet,filter_player,filter_raid,filter_slime,filter_undead,filter_villager,filter_water,import_plate,import_plate_extreme,import_plate_fast,item_grate,redstone_randomizer,rune_blindness,rune_damage,rune_damage_player,rune_fatigue,rune_fire,rune_glowing,rune_hunger,rune_nausea,rune_poison,rune_slowness,rune_weakness,rune_wither,shielded_redstone,vector_plate,vector_plate_banner_pattern,vector_plate_extreme,vector_plate_fast|}",
+        "prefix": "@darkutils/items/"
+    },
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

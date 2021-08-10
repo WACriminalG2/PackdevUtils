@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Greek Fantasy Blocks": {
+        "body": "greekfantasy:${1|altar_aphrodite,altar_apollo,altar_ares,altar_artemis,altar_athena,altar_demeter,altar_dionysus,altar_hades,altar_hecate,altar_hephaestus,altar_hera,altar_hermes,altar_hestia,altar_persephone,altar_poseidon,altar_zeus,black_terracotta_vase,blue_terracotta_vase,brown_terracotta_vase,cerberus_head,chiseled_cretan_stone,chiseled_cretan_stone_brick,cracked_cretan_stone_brick,cracked_polished_cretan_stone,cretan_stone,cretan_stone_brick,cyan_terracotta_vase,gigante_head,golden_apple_leaves,golden_apple_sapling,golden_string,gray_terracotta_vase,green_terracotta_vase,ichor_infused_block,light_blue_terracotta_vase,light_gray_terracotta_vase,lime_terracotta_vase,limestone,limestone_pillar,limestone_slab,limestone_stairs,limestone_statue,magenta_terracotta_vase,marble,marble_pillar,marble_slab,marble_stairs,marble_statue,mysterious_box,nest,olive_leaves,olive_log,olive_planks,olive_sapling,olive_slab,olive_stairs,olive_wood,orange_terracotta_vase,orthus_head,palladium,pink_terracotta_vase,polished_cretan_stone,polished_limestone,polished_limestone_slab,polished_limestone_stairs,polished_marble,polished_marble_slab,polished_marble_stairs,purple_terracotta_vase,red_terracotta_vase,reeds,stripped_olive_log,stripped_olive_wood,terracotta_vase,white_terracotta_vase,wild_rose,yellow_terracotta_vase|}",
+        "prefix": "@greekfantasy/blocks/"
+    },
+
+    "Greek Fantasy Items": {
+        "body": "greekfantasy:${1|achilles_boots,achilles_chestplate,achilles_helmet,achilles_leggings,altar_aphrodite,altar_apollo,altar_ares,altar_artemis,altar_athena,altar_demeter,altar_dionysus,altar_hades,altar_hecate,altar_hephaestus,altar_hera,altar_hermes,altar_hestia,altar_persephone,altar_poseidon,altar_zeus,ambrosia,apollo_bow,ara_spawn_egg,arachne_spawn_egg,arion_spawn_egg,artemis_bow,bag_of_wind,bident,black_terracotta_vase,blue_terracotta_vase,boar_ear,boar_tusk,brown_terracotta_vase,centaur_spawn_egg,cerastes_spawn_egg,cerberus_head,charybdis_spawn_egg,chiseled_cretan_stone,chiseled_cretan_stone_brick,circe_spawn_egg,conch,cracked_cretan_stone_brick,cracked_polished_cretan_stone,cretan_minotaur_spawn_egg,cretan_stone,cretan_stone_brick,cursed_bow,cursed_hair,cyan_terracotta_vase,cyclopes_spawn_egg,cyprian_spawn_egg,discus,dog_claw,dragon_tooth,drakaina_spawn_egg,dryad_spawn_egg,elpis_spawn_egg,empusa_spawn_egg,fiery_bat_wing,fiery_gear,fiery_hide,flint_knife,fury_spawn_egg,giant_boar_spawn_egg,gigante_head,gigante_spawn_egg,gold_lyre,golden_apple_leaves,golden_apple_of_discord,golden_apple_sapling,golden_ball,golden_bridle,golden_fleece,golden_ram_spawn_egg,golden_string,gorgon_blood,gorgon_spawn_egg,gray_terracotta_vase,green_terracotta_vase,harpy_spawn_egg,healing_rod,helm_of_darkness,horn,horn_of_plenty,hydra_spawn_egg,ichor,ichor_infused_block,iron_club,iron_spear,ivory_sword,light_blue_terracotta_vase,light_gray_terracotta_vase,lime_terracotta_vase,limestone,limestone_pillar,limestone_slab,limestone_stairs,limestone_statue,mad_cow_spawn_egg,magenta_terracotta_vase,magic_feather,makhai_spawn_egg,marble,marble_pillar,marble_slab,marble_stairs,marble_statue,minotaur_spawn_egg,mirror,mysterious_box,naiad_spawn_egg,nemean_lion_hide,nemean_lion_spawn_egg,nest,olive_leaves,olive_log,olive_planks,olive_sapling,olive_slab,olive_stairs,olive_wood,orange_terracotta_vase,orthus_head,orthus_spawn_egg,palladium,panflute,pegasus_spawn_egg,pink_terracotta_vase,polished_cretan_stone,polished_limestone,polished_limestone_slab,polished_limestone_stairs,polished_marble,polished_marble_slab,polished_marble_stairs,purified_snakeskin,purple_terracotta_vase,python_spawn_egg,red_terracotta_vase,reeds,satyr_spawn_egg,shade_spawn_egg,siren_spawn_egg,snake_fang,snakeskin,snakeskin_boots,snakeskin_chestplate,snakeskin_helmet,snakeskin_leggings,spider_banner_pattern,stone_club,stone_spear,stripped_olive_log,stripped_olive_wood,styxian_shard,swine_wand,talos_heart,terracotta_vase,thunderbolt,tough_snakeskin,unicorn_horn,unicorn_spawn_egg,web_ball,whirl_spawn_egg,white_terracotta_vase,wild_rose,winged_sandals,wooden_club,wooden_lyre,wooden_spear,yellow_terracotta_vase|}",
+        "prefix": "@greekfantasy/items/"
+    },
+
+    "Greek Fantasy Entities": {
+        "body": "greekfantasy:${1|ara,arachne,arion,baby_spider,bronze_bull,centaur,cerastes,cerberus,charybdis,circe,cretan_minotaur,curse,cyclopes,cyprian,discus,dragon_tooth,drakaina,dryad,elpis,empusa,fury,geryon,giant_boar,gigante,golden_ram,gorgon,harpy,healing_spell,hydra,hydra_head,mad_cow,makhai,minotaur,naiad,nemean_lion,orthus,orthus_head_item,pegasus,poison_spit,python,satyr,shade,siren,sparti,spear,swine_spell,talos,unicorn,web_ball,whirl|}",
+        "prefix": "@greekfantasy/entities/"
+    },
+
+    "Greek Fantasy Potions": {
+        "body": "greekfantasy:${1|mirror,petrified,stunned,swine|}",
+        "prefix": "@greekfantasy/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

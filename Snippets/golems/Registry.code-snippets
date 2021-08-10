@@ -1,0 +1,33 @@
+{
+    // Version: ?????
+
+    "Extra Golems Blocks": {
+        "body": "golems:${1|golem_head,light_provider,power_provider|}",
+        "prefix": [
+            "@extragolems/blocks/",
+            "@golems/blocks/"
+        ]
+    },
+
+    "Extra Golems Items": {
+        "body": "golems:${1|golem_head,golem_paper,info_book,spawn_bedrock_golem|}",
+        "prefix": [
+            "@golems/items/",
+            "@extragolems/items/"
+        ]
+    },
+
+    "Extra Golems Entities": {
+        "body": "golems:${1|golem_andesite,golem_basalt,golem_bedrock,golem_blackstone,golem_bone,golem_bookshelf,golem_clay,golem_coal,golem_colored_terracotta,golem_concrete,golem_coral,golem_crafting,golem_crimson_stem,golem_crying_obsidian,golem_diamond,golem_diorite,golem_dispenser,golem_emerald,golem_end_stone,golem_furnace,golem_glass,golem_glowstone,golem_gold,golem_granite,golem_honey,golem_honeycomb,golem_ice,golem_kelp,golem_lapis,golem_leaves,golem_magma,golem_melon,golem_mushroom,golem_nether_brick,golem_nether_wart,golem_netherite,golem_obsidian,golem_prismarine,golem_purpur,golem_quartz,golem_red_sandstone,golem_redstone,golem_redstone_lamp,golem_sandstone,golem_sea_lantern,golem_shroomlight,golem_slime,golem_smooth_stone,golem_sponge,golem_stained_glass,golem_straw,golem_terracotta,golem_textured,golem_tnt,golem_warped_stem,golem_wooden,golem_wool|}",
+        "prefix": [
+            "@golems/entities/",
+            "@extragolems/entities/"
+        ]
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

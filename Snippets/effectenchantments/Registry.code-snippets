@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    "Effect Enchantments": {
+        "body": "effectenchantments:${1|blinding,botening,decay,feathery,floating,gill_breathing,golden_vigor,gradualness,harming,leaping,mining,nocturnality,queasiness,radiance,repletion,shielding,starvation,strengthening,subaquatic,swiftness,tardiness,thermal_shielding,toxin,vigor,waterborne,weakening|}",
+        "prefix": "@effectenchantments/enchant/"
+    }
+
+    // No biomes
+}

@@ -1,15 +1,4 @@
 {
-    "Lord of the Rings Biomes": {
-        "body": "lotr:${1|shire,mordor,anorien,rohan,misty_mountains,shire_woodlands,river,trollshaws,blue_mountains,eriador,lone_lands,ithilien,brown_lands,lothlorien,iron_hills,dunland,emyn_muil,lindon,southron_coasts,nan_curunir,forodwaith,eregion,mirkwood,grey_mountains,white_mountains,fangorn,woodland_realm,dale,angmar,harondor,enedwaith,vales_of_anduin,anduin_hills,wilderland,old_forest,breeland,chetwood,misty_mountains_foothills,blue_mountains_foothills,grey_mountains_foothills,white_mountains_foothills,mordor_mountains,forodwaith_mountains,angmar_mountains,nurn,umbar,harad_desert,lindon_woodlands,eriador_downs,lone_lands_hills,northlands,northlands_forest,sea,island,beach,tolfalas,lake,nurnen,dor_en_ernil,emyn_en_ernil,western_isles,coldfells,ettenmoors,harnennor,dagorlad,white_beach,dorwinion,emyn_winion,wold,minhiriath,eryn_vorn,druwaith_iaur,andrast,lossarnach,lebennin,pelargir,lamedon,lamedon_hills,blackroot_vale,pinnath_gelin,anfalas,northern_wilderland,northern_dale,rivendell,rivendell_hills,western_gondor,shire_moors,white_downs,midgewater,swanfleet,gladden_fields,long_marshes,nindalf,dead_marshes,mouths_of_entwash,ethir_anduin,shire_marshes,nurn_marshes,gorgoroth,forochel,lothlorien_eaves,harad_half_desert,harad_desert_hills,lostladen,eastern_desolation,northern_mirkwood,mirkwood_mountains,morgul_vale,dense_northlands_forest,snowy_northlands,snowy_northlands_forest,dense_snowy_northlands_forest,tower_hills,southron_coasts_forest,umbar_forest,umbar_hills|}",
-        "prefix": [
-            "@lotr/biomes/",
-            "@lordoftherings/biomes/"
-        ]
-    },
-    "Minecraft Biomes": {
-        "body": "minecraft:${1|ocean,plains,desert,mountains,forest,taiga,swamp,river,nether_wastes,the_end,frozen_ocean,frozen_river,snowy_tundra,snowy_mountains,mushroom_fields,mushroom_field_shore,beach,desert_hills,wooded_hills,taiga_hills,mountain_edge,jungle,jungle_hills,jungle_edge,deep_ocean,stone_shore,snowy_beach,birch_forest,birch_forest_hills,dark_forest,snowy_taiga,snowy_taiga_hills,giant_tree_taiga,giant_tree_taiga_hills,wooded_mountains,savanna,savanna_plateau,badlands,wooded_badlands_plateau,badlands_plateau,small_end_islands,end_midlands,end_highlands,end_barrens,warm_ocean,lukewarm_ocean,cold_ocean,deep_warm_ocean,deep_lukewarm_ocean,deep_cold_ocean,deep_frozen_ocean,the_void,sunflower_plains,desert_lakes,gravelly_mountains,flower_forest,taiga_mountains,swamp_hills,ice_spikes,modified_jungle,modified_jungle_edge,tall_birch_forest,tall_birch_hills,dark_forest_hills,snowy_taiga_mountains,giant_spruce_taiga,giant_spruce_taiga_hills,modified_gravelly_mountains,shattered_savanna,shattered_savanna_plateau,eroded_badlands,modified_wooded_badlands_plateau,modified_badlands_plateau,bamboo_jungle,bamboo_jungle_hills,soul_sand_valley,crimson_forest,warped_forest,basalt_deltas|}            ",
-        "prefix": "@minecraft/biomes/"
-    },
     "Odd Water Mobs Biomes": {
         "body": "oddwatermobs:${1|deep_ocean_dunes|}",
         "prefix": "@oddwatermobs/biomes/"

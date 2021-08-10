@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Fairy Lights Blocks": {
+        "body": "fairylights:${1|candle_lantern,candle_lantern_light,fairy_light,fastener,flower_light,ghost_light,heart_light,icicle_lights,incandescent_light,jack_o_lantern,meteor_light,moon_light,oil_lantern,oil_lantern_light,orb_lantern,paper_lantern,skull_light,snowflake_light,spider_light,star_light,witch_light|}",
+        "prefix": "@fairylights/blocks/"
+    },
+
+    "Fairy Lights Items": {
+        "body": "fairylights:${1|candle_lantern,candle_lantern_light,fairy_light,flower_light,garland,ghost_light,hanging_lights,heart_light,icicle_lights,incandescent_light,jack_o_lantern,letter_bunting,meteor_light,moon_light,oil_lantern,oil_lantern_light,orb_lantern,paper_lantern,pennant_bunting,skull_light,snowflake_light,spearhead_pennant,spider_light,square_pennant,star_light,swallowtail_pennant,tinsel,triangle_pennant,witch_light|}",
+        "prefix": "@fairylights/items/"
+    },
+
+    "Fairy Lights Entities": {
+        "body": "fairylights:${1|fastener|}",
+        "prefix": "@fairylights/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

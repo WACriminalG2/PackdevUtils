@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Fins & Tails Blocks": {
+        "body": "fins:${1|chained_tentacle,chiseled_flatback_shell_bricks,chiseled_pebble_shell_bricks,chiseled_siderol_shell_bricks,crab_cruncher,flatback_shell_block,flatback_shell_brick_slab,flatback_shell_brick_stairs,flatback_shell_bricks,flatback_shell_slab,flatback_shell_stairs,mixed_flatback_shell_brick_slab,mixed_flatback_shell_brick_stairs,mixed_flatback_shell_bricks,mixed_pebble_shell_brick_slab,mixed_pebble_shell_brick_stairs,mixed_pebble_shell_bricks,pebble_shell_brick_slab,pebble_shell_brick_stairs,pebble_shell_bricks,pebble_shell_pillar,siderol_shell_brick_slab,siderol_shell_brick_stairs,siderol_shell_bricks,spindly_amber_block,spindly_emerald_block,spindly_gem_crab_gem_block,spindly_pearl_block,spindly_ruby_block,spindly_sapphire_block|}",
+        "prefix": [
+            "@fins/blocks/",
+            "@finsandtails/blocks/"
+        ]
+    },
+
+    "Fins & Tails Items": {
+        "body": "fins:${1|amber_spindly_gem_crab,baby_wherble_pot,banded_redback_shrimp,banded_redback_shrimp_bucket,banded_redback_shrimp_spawn_egg,banner_pattern_mandibles,banner_pattern_shell,blu_wee,blu_wee_bucket,blu_wee_spawn_egg,bugfish_mandibles,bugmeat,chained_tentacle,chiseled_flatback_shell_bricks,chiseled_pebble_shell_bricks,chiseled_siderol_shell_bricks,cooked_banded_redback_shrimp,cooked_bugmeat,cooked_bull_crab_claw,cooked_luminous_calamari,cooked_papa_wee,cooked_wherble_fin,crab_cruncher,crab_sandwich,emerald_spindly_gem_crab,empty_charm,flatback_leaf_snail_pot,flatback_leaf_snail_shell,flatback_leaf_snail_spawn_egg,flatback_shell_block,flatback_shell_brick_slab,flatback_shell_brick_stairs,flatback_shell_bricks,flatback_shell_slab,flatback_shell_stairs,flatback_sucker,flatback_sucker_bucket,flatback_sucker_spawn_egg,fwin,fwinged_boots,gem_crab_amulet,golden_river_ray_bucket,golden_river_ray_spawn_egg,golden_river_ray_wing_fillet,gopjet_bucket,gopjet_jet,gopjet_jetpack,gopjet_spawn_egg,high_finned_blue,high_finned_blue_bucket,high_finned_blue_spawn_egg,luminous_calamari,mixed_flatback_shell_brick_slab,mixed_flatback_shell_brick_stairs,mixed_flatback_shell_bricks,mixed_pebble_shell_brick_slab,mixed_pebble_shell_brick_stairs,mixed_pebble_shell_bricks,mudhorse_leather,mudhorse_pouch,mudhorse_spawn_egg,music_disc_crashing_tides,night_light_squid,night_light_squid_bucket,night_light_squid_spawn_egg,night_light_squid_tentacle,ornate_bugfish,ornate_bugfish_bucket,ornate_bugfish_spawn_egg,papa_wee,papa_wee_bucket,papa_wee_spawn_egg,pea_wee,pea_wee_bucket,pea_wee_spawn_egg,pearl_spindly_gem_crab,pebble_shell_brick_slab,pebble_shell_brick_stairs,pebble_shell_bricks,pebble_shell_pillar,penglil_bucket,penglil_spawn_egg,phantom_nudibranch_bucket,phantom_nudibranch_spawn_egg,raw_golden_river_ray_wing,red_bull_crab_bucket,red_bull_crab_claw,red_bull_crab_spawn_egg,red_claw_gauntlet,reef_cocktail,river_pebble_snail_pot,river_pebble_snail_shell,river_pebble_snail_spawn_egg,rubber_belly_glider_spawn_egg,ruby_spindly_gem_crab,sapphire_spindly_gem_crab,seafood_soup,siderol_shell_brick_slab,siderol_shell_brick_stairs,siderol_shell_bricks,siderol_whiskered_snail_pot,siderol_whiskered_snail_shell,siderol_whiskered_snail_spawn_egg,spindly_amber,spindly_amber_block,spindly_amber_charm,spindly_emerald,spindly_emerald_block,spindly_emerald_charm,spindly_gem_crab_bucket,spindly_gem_crab_gem,spindly_gem_crab_gem_block,spindly_gem_crab_spawn_egg,spindly_pearl,spindly_pearl_block,spindly_pearl_charm,spindly_ruby,spindly_ruby_block,spindly_ruby_charm,spindly_sapphire,spindly_sapphire_block,spindly_sapphire_charm,stuffed_wherble_fin,swamp_didgeridoo,swamp_mucker,swamp_mucker_bucket,swamp_mucker_spawn_egg,teal_arrowfish,teal_arrowfish_bucket,teal_arrowfish_spawn_egg,vibra_wee,vibra_wee_bucket,vibra_wee_spawn_egg,wee_delight,wee_wee,wee_wee_bucket,wee_wee_spawn_egg,wherble_fin,wherble_spawn_egg,white_bull_crab_bucket,white_bull_crab_claw,white_bull_crab_spawn_egg,white_claw_gauntlet|}",
+        "prefix": ["@fins/items/","@finsandtails/items/"]
+    },
+
+    "Fins & Tails Entities": {
+        "body": "fins:${1|banded_redback_shrimp,blu_wee,flatback_leaf_snail,flatback_sucker,golden_river_ray,gopjet,high_finned_blue,mudhorse,night_light_squid,ornate_bugfish,papa_wee,pea_wee,penglil,phantom_nudibranch,red_bull_crab,river_pebble_snail,rubber_belly_glider,siderol_whiskered_snail,spindly_gem_crab,swamp_mucker,teal_arrowfish,teal_arrowfish_arrow,vibra_wee,wee_wee,wherble,white_bull_crab|}",
+        "prefix": [
+            "@fins/entities/",
+            "@finsandtails/entities/"
+        ]
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

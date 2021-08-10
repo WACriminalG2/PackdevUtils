@@ -1,0 +1,39 @@
+{
+    // Version: ?????
+
+    "Habitat Blocks": {
+        "body": "bloom_and_gloom:${1|kabloom_bush,potted_slime_fern,rafflesia,slime_fern,wall_slime_fern|}",
+        "prefix": [
+            "@bloom_and_gloom/blocks/",
+            "@habitat/blocks/"
+        ]
+    },
+
+    "Habitat (Bloom and Gloom) Items": {
+        "body": "bloom_and_gloom:${1|kabloom_fruit,kabloom_seeds,rafflesia_seed,slime_fern,sugared_kabloom_fruit|}",
+        "prefix": [
+            "@bloom_and_gloom/items/",
+            "@habitat/items/"
+        ]
+    },
+
+    "Habitat (Bloom and Gloom) Entities": {
+        "body": "bloom_and_gloom:${1|kabloom_fruit|}",
+        "prefix": [
+            "@bloom_and_gloom/entities/",
+            "@habitat/entities/"
+        ]
+    },
+
+    "Habitat (Bloom and Gloom) Potions": {
+        "body": "bloom_and_gloom:${1|blast_endurance|}",
+        "prefix": [
+            "@bloom_and_gloom/potions/",
+            "@habitat/potions/"
+        ]
+    }
+
+    // No enchantments
+
+    // No biomes
+}

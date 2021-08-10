@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Farming for Blockheads Blocks": {
+        "body": "farmingforblockheads:${1|chicken_nest,feeding_trough,fertilized_farmland_healthy,fertilized_farmland_healthy_stable,fertilized_farmland_rich,fertilized_farmland_rich_stable,fertilized_farmland_stable,market|}",
+        "prefix": "@farmingforblockheads/blocks/"
+    },
+
+    "Farming for Blockheads Items": {
+        "body": "farmingforblockheads:${1|chicken_nest,feeding_trough,fertilized_farmland_healthy,fertilized_farmland_healthy_stable,fertilized_farmland_rich,fertilized_farmland_rich_stable,fertilized_farmland_stable,green_fertilizer,market,red_fertilizer,yellow_fertilizer|}",
+        "prefix": "@farmingforblockheads/items/"
+    },
+
+    "Farming for Blockheads Entities": {
+        "body": "farmingforblockheads:${1|merchant|}",
+        "prefix": "@farmingforblockheads/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

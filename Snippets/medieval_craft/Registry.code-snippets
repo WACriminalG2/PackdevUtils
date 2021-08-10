@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "MedievalCraft Blocks": {
+        "body": "medieval_craft:${1|excalibur|}",
+        "prefix": "@medieval_craft/blocks/"
+    },
+
+    "MedievalCraft Items": {
+        "body": "medieval_craft:${1|archer_spawn_egg,archerarmor_chestplate,archerarmor_helmet,basicwand,battleaxe,beer,blue_archer_spawn_egg,blue_soldier_spawn_egg,blueknight_spawn_egg,bluetankknight_spawn_egg,brass_sword,brigandine_chestplate,bullet,centurionarmor_boots,centurionarmor_chestplate,centurionarmor_helmet,centurionarmor_leggings,chain,corinthian_helmet,creativesword,excalibur,excalibur_sword,firespeel,gambeson_chestplate,gladio,gladiohandle,great_helmet_helmet,greatsword,green_archer_spawn_egg,green_soldier_spawn_egg,green_spawn_egg,greentankknight_spawn_egg,heavyplatearmor_boots,heavyplatearmor_chestplate,heavyplatearmor_helmet,heavyplatearmor_leggings,hiden_blade,ingotbrass,ingotsteel,katana,katanahandle,kettle_hat_helmet,knife,knight_spawn_egg,knightarmor_chestplate,knightarmor_helmet,lance,legionaryarmor_boots,legionaryarmor_chestplate,legionaryarmor_helmet,legionaryarmor_leggings,longsword,mace,magicenergyorb,minigun,musket,musket_with_bayonet,nunchaku,plateiron,poleaxe,rapier,red_archer_spawn_egg,red_soldier_spawn_egg,redknight_spawn_egg,redtankknight_spawn_egg,roman_centurion_spawn_egg,romanlegionary_spawn_egg,scimitar,soldier_spawn_egg,soldierarmor_boots,soldierarmor_chestplate,soldierarmor_helmet,soldierarmor_leggings,spawnarcher,spawnknight,spawnsoldier,spear,staffsinfo,steelsword,thief_spawn_egg,thunder_staff,thunderspeel,viking1_spawn_egg,viking2_spawn_egg,viking_helmet_helmet,viking_sword,woodenclub,yelow_archers_spawn_egg,yelow_soldier_spawn_egg,yelowknight_spawn_egg,yelowtankknight_spawn_egg|}",
+        "prefix": "@medieval_craft/items/"
+    },
+
+    "MedievalCraft Entities": {
+        "body": "medieval_craft:${1|archer,blue_archer,blue_soldier,blueknight,bluetankknight,entitybulletbasicwand,entitybulletminigun,entitybulletmusket,entitybulletmusket_with_bayonet,entitybulletthunder_staff,green,green_archer,green_soldier,greentankknight,knight,red_archer,red_soldier,redknight,redtankknight,roman_centurion,romanlegionary,soldier,thief,viking1,viking2,yelow_archers,yelow_soldier,yelowknight,yelowtankknight|}",
+        "prefix": "@medieval_craft/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

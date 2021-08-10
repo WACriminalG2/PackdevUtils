@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Industrial Foregoing Blocks": {
+        "body": "industrialforegoing:${1|advanced_black_hole_tank,advanced_black_hole_unit,animal_baby_separator,animal_feeder,animal_rancher,biofuel_block,biofuel_generator,bioreactor,black_hole_controller,block_breaker,block_placer,common_black_hole_tank,common_black_hole_unit,conveyor,dark_glass,dissolution_chamber,dye_mixer,enchantment_applicator,enchantment_extractor,enchantment_factory,enchantment_sorter,essence_block,ether_gas_block,fermentation_station,fermented_ore_meat_block,fluid_collector,fluid_extractor,fluid_laser_base,fluid_placer,fluid_sieving_machine,hydroponic_bed,infinity_charger,laser_drill,latex_block,latex_processing_unit,machine_frame_advanced,machine_frame_pity,machine_frame_simple,machine_frame_supreme,marine_fisher,material_stonework_factory,meat_block,mechanical_dirt,mob_crusher,mob_detector,mob_duplicator,mob_slaughter_factory,mycelial_crimed,mycelial_culinary,mycelial_death,mycelial_disenchantment,mycelial_ender,mycelial_explosive,mycelial_frosty,mycelial_furnace,mycelial_halitosis,mycelial_magma,mycelial_meatallurgic,mycelial_netherstar,mycelial_pink,mycelial_potion,mycelial_reactor,mycelial_rocket,mycelial_slimey,ore_laser_base,pink_slime_block,pitiful_generator,pity_black_hole_tank,pity_black_hole_unit,plant_fertilizer,plant_gatherer,plant_sower,potion_brewer,raw_ore_meat_block,resourceful_furnace,sewage_block,sewage_composter,sewer,simple_black_hole_tank,simple_black_hole_unit,sludge_block,sludge_refiner,spores_recreator,stasis_chamber,supreme_black_hole_tank,supreme_black_hole_unit,transporter,washing_factory,water_condensator,wither_builder|}",
+        "prefix": "@industrialforegoing/blocks/"
+    },
+
+    "Industrial Foregoing Items": {
+        "body": "industrialforegoing:${1|advanced_black_hole_tank,advanced_black_hole_unit,animal_baby_separator,animal_feeder,animal_rancher,biofuel_bucket,biofuel_generator,bioreactor,black_hole_controller,block_breaker,block_placer,common_black_hole_tank,common_black_hole_unit,conveyor,conveyor_blinking_upgrade,conveyor_bouncing_upgrade,conveyor_detection_upgrade,conveyor_dropping_upgrade,conveyor_extraction_upgrade,conveyor_insertion_upgrade,conveyor_splitting_upgrade,dark_glass,dissolution_chamber,dryrubber,dye_mixer,efficiency_addon_1,efficiency_addon_2,enchantment_applicator,enchantment_extractor,enchantment_factory,enchantment_sorter,essence_bucket,ether_gas_bucket,fermentation_station,fermented_ore_meat_bucket,fertilizer,fluid_collector,fluid_extractor,fluid_laser_base,fluid_placer,fluid_sieving_machine,fluid_transporter_type,hydroponic_bed,infinity_backpack,infinity_charger,infinity_drill,infinity_hammer,infinity_launcher,infinity_nuke,infinity_saw,infinity_trident,item_transporter_type,laser_drill,laser_lens0,laser_lens1,laser_lens10,laser_lens11,laser_lens12,laser_lens13,laser_lens14,laser_lens15,laser_lens2,laser_lens3,laser_lens4,laser_lens5,laser_lens6,laser_lens7,laser_lens8,laser_lens9,latex_bucket,latex_processing_unit,machine_frame_advanced,machine_frame_pity,machine_frame_simple,machine_frame_supreme,marine_fisher,material_stonework_factory,meat_bucket,meat_feeder,mechanical_dirt,mob_crusher,mob_detector,mob_duplicator,mob_imprisonment_tool,mob_slaughter_factory,mycelial_crimed,mycelial_culinary,mycelial_death,mycelial_disenchantment,mycelial_ender,mycelial_explosive,mycelial_frosty,mycelial_furnace,mycelial_halitosis,mycelial_magma,mycelial_meatallurgic,mycelial_netherstar,mycelial_pink,mycelial_potion,mycelial_reactor,mycelial_rocket,mycelial_slimey,ore_laser_base,pink_slime,pink_slime_bucket,pink_slime_ingot,pitiful_generator,pity_black_hole_tank,pity_black_hole_unit,plant_fertilizer,plant_gatherer,plant_sower,plastic,potion_brewer,range_addon0,range_addon1,range_addon10,range_addon11,range_addon2,range_addon3,range_addon4,range_addon5,range_addon6,range_addon7,range_addon8,range_addon9,raw_ore_meat_bucket,resourceful_furnace,sewage_bucket,sewage_composter,sewer,simple_black_hole_tank,simple_black_hole_unit,sludge_bucket,sludge_refiner,speed_addon_1,speed_addon_2,spores_recreator,stasis_chamber,straw,supreme_black_hole_tank,supreme_black_hole_unit,tinydryrubber,transporter,washing_factory,water_condensator,wither_builder,world_transporter_type|}",
+        "prefix": "@industrialforegoing/items/"
+    },
+
+    "Industrial Foregoing Entities": {
+        "body": "industrialforegoing:${1|infinity_nuke,launcher_projectile_entity,trident_entity|}",
+        "prefix": "@industrialforegoing/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

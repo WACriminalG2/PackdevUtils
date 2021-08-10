@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Endergetic Expansion Blocks": {
+        "body": "endergetic:${1|acidian_lantern,activated_mystical_obsidian_activation_rune,bolloom_bud,bolloom_crate,bolloom_particle,boof_block,chiseled_end_stone_bricks,chiseled_eumus_bricks,cracked_end_stone_bricks,cracked_eumus_bricks,cracked_purpur_block,crystal_holder,dispensed_boof_block,end_corrock,end_corrock_block,end_corrock_crown,end_wall_corrock_crown,ender_campfire,ender_fire,ender_lantern,ender_torch,ender_wall_torch,eumus,eumus_brick_slab,eumus_brick_stairs,eumus_brick_vertical_slab,eumus_brick_wall,eumus_bricks,eumus_poismoss,glowing_poise_stem,glowing_poise_wood,hive_hanger,mystical_obsidian,mystical_obsidian_activation_rune,mystical_obsidian_rune,mystical_obsidian_wall,nether_corrock,nether_corrock_block,nether_corrock_crown,nether_wall_corrock_crown,overworld_corrock,overworld_corrock_block,overworld_corrock_crown,overworld_wall_corrock_crown,petrified_end_corrock,petrified_end_corrock_block,petrified_end_corrock_crown,petrified_end_wall_corrock_crown,petrified_nether_corrock,petrified_nether_corrock_block,petrified_nether_corrock_crown,petrified_nether_wall_corrock_crown,petrified_overworld_corrock,petrified_overworld_corrock_block,petrified_overworld_corrock_crown,petrified_overworld_wall_corrock_crown,poise_beehive,poise_bookshelf,poise_bush,poise_button,poise_chest,poise_cluster,poise_door,poise_fence,poise_fence_gate,poise_ladder,poise_planks,poise_pressure_plate,poise_sign,poise_slab,poise_stairs,poise_stem,poise_trapdoor,poise_trapped_chest,poise_vertical_slab,poise_wall_sign,poise_wood,poismoss,potted_poise_bush,potted_tall_poise_bush,puffbug_hive,stripped_poise_stem,stripped_poise_wood,tall_poise_bush,vertical_poise_planks|}",
+        "prefix": "@endergetic/blocks/"
+    },
+
+    "Endergetic Expansion Items": {
+        "body": "endergetic:${1|acidian_lantern,activated_mystical_obsidian_activation_rune,black_bolloom_balloon,blue_bolloom_balloon,bolloom_balloon,bolloom_bud,bolloom_crate,bolloom_fruit,boof_block,booflo_hide,booflo_spawn_egg,booflo_vest,brown_bolloom_balloon,chiseled_end_stone_bricks,chiseled_eumus_bricks,cracked_end_stone_bricks,cracked_eumus_bricks,cracked_purpur_block,crystal_holder,cyan_bolloom_balloon,end_corrock,end_corrock_block,end_corrock_crown,ender_campfire,ender_lantern,ender_torch,eumus,eumus_brick,eumus_brick_slab,eumus_brick_stairs,eumus_brick_vertical_slab,eumus_brick_wall,eumus_bricks,eumus_poismoss,glowing_poise_stem,glowing_poise_wood,gray_bolloom_balloon,green_bolloom_balloon,light_blue_bolloom_balloon,light_gray_bolloom_balloon,lime_bolloom_balloon,magenta_bolloom_balloon,music_disc_kilobyte,mystical_obsidian,mystical_obsidian_activation_rune,mystical_obsidian_rune,mystical_obsidian_wall,nether_corrock,nether_corrock_block,nether_corrock_crown,orange_bolloom_balloon,overworld_corrock,overworld_corrock_block,overworld_corrock_crown,petrified_end_corrock,petrified_end_corrock_block,petrified_end_corrock_crown,petrified_nether_corrock,petrified_nether_corrock_block,petrified_nether_corrock_crown,petrified_overworld_corrock,petrified_overworld_corrock_block,petrified_overworld_corrock_crown,pink_bolloom_balloon,poise_beehive,poise_boat,poise_bookshelf,poise_bush,poise_button,poise_chest,poise_cluster,poise_door,poise_fence,poise_fence_gate,poise_ladder,poise_planks,poise_pressure_plate,poise_sign,poise_slab,poise_stairs,poise_stem,poise_trapdoor,poise_trapped_chest,poise_vertical_slab,poise_wood,poismoss,puff_bug_spawn_egg,puffbug_bottle,puffbug_hive,purple_bolloom_balloon,red_bolloom_balloon,stripped_poise_stem,stripped_poise_wood,tall_poise_bush,vertical_poise_planks,white_bolloom_balloon,yellow_bolloom_balloon|}",
+        "prefix": "@endergetic/items/"
+    },
+
+    "Endergetic Expansion Entities": {
+        "body": "endergetic:${1|bolloom_balloon,bolloom_fruit,bolloom_knot,boof_block,booflo,booflo_adolescent,booflo_baby,poise_cluster,puff_bug|}",
+        "prefix": "@endergetic/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

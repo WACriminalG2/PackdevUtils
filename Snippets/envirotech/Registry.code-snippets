@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Environmental Tech Blocks": {
+        "body": "envirotech:${1|aethium_void_miner_ccu,erodium_void_miner_ccu,ionite_void_miner_ccu,kyronite_void_miner_ccu,litherite_void_miner_ccu,nanorite_void_miner_ccu,pladium_void_miner_ccu,xerothium_void_miner_ccu|}",
+        "prefix": "@envirotech/blocks/"
+    },
+
+    "Environmental Tech Items": {
+        "body": "envirotech:${1|aethium_void_miner_ccu,erodium_void_miner_ccu,ionite_void_miner_ccu,kyronite_void_miner_ccu,litherite_void_miner_ccu,nanorite_void_miner_ccu,pladium_void_miner_ccu,xerothium_void_miner_ccu|}",
+        "prefix": "@envirotech/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

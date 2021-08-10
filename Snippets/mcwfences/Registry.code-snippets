@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Macaw's Fences Blocks": {
+        "body": "mcwfences:${1|acacia_highley_gate,acacia_horse_fence,acacia_picket_fence,acacia_stockade_fence,acacia_wired_fence,birch_highley_gate,birch_horse_fence,birch_picket_fence,birch_stockade_fence,birch_wired_fence,crimson_highley_gate,crimson_horse_fence,crimson_picket_fence,crimson_stockade_fence,crimson_wired_fence,dark_oak_highley_gate,dark_oak_horse_fence,dark_oak_picket_fence,dark_oak_stockade_fence,dark_oak_wired_fence,jungle_highley_gate,jungle_horse_fence,jungle_picket_fence,jungle_stockade_fence,jungle_wired_fence,modern_andesite_wall,modern_blackstone_wall,modern_diorite_wall,modern_end_brick_wall,modern_granite_wall,modern_nether_brick_wall,modern_red_sandstone_wall,modern_sandstone_wall,modern_stone_brick_wall,oak_highley_gate,oak_horse_fence,oak_picket_fence,oak_stockade_fence,oak_wired_fence,railing_andesite_wall,railing_blackstone_wall,railing_diorite_wall,railing_end_brick_wall,railing_granite_wall,railing_nether_brick_wall,railing_red_sandstone_wall,railing_sandstone_wall,railing_stone_brick_wall,spruce_highley_gate,spruce_horse_fence,spruce_picket_fence,spruce_stockade_fence,spruce_wired_fence,warped_highley_gate,warped_horse_fence,warped_picket_fence,warped_stockade_fence,warped_wired_fence|}",
+        "prefix": "@mcwfences/blocks/"
+    },
+
+    "Macaw's Fences Items": {
+        "body": "mcwfences:${1|acacia_highley_gate,acacia_horse_fence,acacia_picket_fence,acacia_stockade_fence,acacia_wired_fence,birch_highley_gate,birch_horse_fence,birch_picket_fence,birch_stockade_fence,birch_wired_fence,crimson_highley_gate,crimson_horse_fence,crimson_picket_fence,crimson_stockade_fence,crimson_wired_fence,dark_oak_highley_gate,dark_oak_horse_fence,dark_oak_picket_fence,dark_oak_stockade_fence,dark_oak_wired_fence,jungle_highley_gate,jungle_horse_fence,jungle_picket_fence,jungle_stockade_fence,jungle_wired_fence,modern_andesite_wall,modern_blackstone_wall,modern_diorite_wall,modern_end_brick_wall,modern_granite_wall,modern_nether_brick_wall,modern_red_sandstone_wall,modern_sandstone_wall,modern_stone_brick_wall,oak_highley_gate,oak_horse_fence,oak_picket_fence,oak_stockade_fence,oak_wired_fence,railing_andesite_wall,railing_blackstone_wall,railing_diorite_wall,railing_end_brick_wall,railing_granite_wall,railing_nether_brick_wall,railing_red_sandstone_wall,railing_sandstone_wall,railing_stone_brick_wall,spruce_highley_gate,spruce_horse_fence,spruce_picket_fence,spruce_stockade_fence,spruce_wired_fence,warped_highley_gate,warped_horse_fence,warped_picket_fence,warped_stockade_fence,warped_wired_fence|}",
+        "prefix": "@mcwfences/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

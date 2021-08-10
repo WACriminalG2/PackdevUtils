@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Ma Enchants Blocks": {
+        "body": "ma-enchants:${1|melted_cobblestone|}",
+        "prefix": "@ma-enchants/blocks/"
+    },
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    "Ma Enchants Enchantments": {
+        "body": "ma-enchants:${1|blazing_walker,butchering,combo,curse_aquaphobia,curse_breaking,curse_butterfingers,curse_death,detonation,faster_attack,floating,ice_aspect,lifesteal,lumberjack,momentum,multi_jump,night_vision,paralysis,quick_draw,reinforced_tip,soft_fall,step_assist,stone_mending,timeless,true_shot,wisdom|}",
+        "prefix": "@ma-enchants/enchant/"
+    }
+
+    // No biomes
+}

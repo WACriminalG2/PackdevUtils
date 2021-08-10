@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Exotic Birds Blocks": {
+        "body": "exoticbirds:${1|acacia_birdcage,birch_birdcage,crimson_birdcage,dark_oak_birdcage,egg_identifier,egg_incubator,gold_birdcage,iron_birdcage,jungle_birdcage,nest,oak_birdcage,spruce_birdcage,warped_birdcage|}",
+        "prefix": "@exoticbirds/blocks/"
+    },
+
+    "Exotic Birds Items": {
+        "body": "exoticbirds:${1|acacia_birdcage,birch_birdcage,bird_book,bluejay_egg,bluejay_spawn_egg,booby_egg,booby_spawn_egg,budgerigar_egg,budgerigar_spawn_egg,cardinal_egg,cardinal_spawn_egg,cassowary_egg,cassowary_spawn_egg,cockatoo_egg,cockatoo_spawn_egg,cooked_birdmeat,crane_egg,crane_spawn_egg,crimson_birdcage,dark_oak_birdcage,duck_egg,duck_spawn_egg,egg_identifier,egg_incubator,eggshell,flamingo_egg,flamingo_spawn_egg,gold_birdcage,gouldianfinch_egg,gouldianfinch_spawn_egg,gull_egg,gull_spawn_egg,heron_egg,heron_spawn_egg,hummingbird_egg,hummingbird_spawn_egg,iron_birdcage,jungle_birdcage,kingfisher_egg,kingfisher_spawn_egg,kiwi_egg,kiwi_spawn_egg,kookaburra_egg,kookaburra_spawn_egg,lyrebird_egg,lyrebird_spawn_egg,macaw_egg,macaw_spawn_egg,magpie_egg,magpie_spawn_egg,mystery_egg,nest,oak_birdcage,ostrich_egg,ostrich_spawn_egg,owl_egg,owl_spawn_egg,peafowl_egg,peafowl_spawn_egg,pelican_egg,pelican_spawn_egg,penguin_egg,penguin_spawn_egg,pigeon_egg,pigeon_spawn_egg,raw_birdmeat,roadrunner_egg,roadrunner_spawn_egg,robin_egg,robin_spawn_egg,spruce_birdcage,swan_egg,swan_spawn_egg,toucan_egg,toucan_spawn_egg,warped_birdcage,woodpecker_egg,woodpecker_spawn_egg|}",
+        "prefix": "@exoticbirds/items/"
+    },
+
+    "Exotic Birds Entities": {
+        "body": "exoticbirds:${1|bird_egg,bluejay,booby,budgerigar,cardinal,cassowary,cockatoo,crane,duck,flamingo,gouldianfinch,gull,heron,hummingbird,kingfisher,kiwi,kookaburra,lyrebird,macaw,magpie,ostrich,owl,peafowl,pelican,penguin,pigeon,roadrunner,robin,swan,toucan,woodpecker|}",
+        "prefix": "@exoticbirds/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

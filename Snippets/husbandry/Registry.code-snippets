@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Husbandry Blocks": {
+        "body": "husbandry:${1|bowl,feeding_tray,incubator,nest,trough,truffle_block|}",
+        "prefix": "@husbandry/blocks/"
+    },
+
+    "Husbandry Items": {
+        "body": "husbandry:${1|bird_feed,boiled_egg,bowl,brush,butter,cat_treat,chicken_treat,cow_treat,dinner_roll,dog_treat,feeding_tray,fodder,generic_treat,horse_treat,hot_milk,ice_cream,incubator,llama_treat,miracle_potion,mob_tracker,mug_of_milk,nest,parrot_treat,pig_treat,rabbit_treat,sheep_treat,sickle,slop,trough,truffle,truffle_block|}",
+        "prefix": "@husbandry/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

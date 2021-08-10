@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    "Enchantable Enchantments": {
+        "body": "enchantable:${1|cultivator,excavator,iron_skull,ore_eater,replanting,stomping|}",
+        "prefix": "@enchantable/enchant/"
+    }
+
+    // No biomes
+}

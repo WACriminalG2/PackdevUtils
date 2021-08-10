@@ -1,15 +1,30 @@
 {
     // Version: ?????
 
-    // No blocks
+    "EvilCraft Blocks": {
+        "body": "evilcraft:${1|blood,blood_chest,blood_infuser,blood_stain,blood_waxed_coal_block,bloody_cobblestone,box_of_eternal_closure,colossal_blood_chest,dark_block,dark_blood_brick,dark_blood_brick_stairs,dark_brick,dark_brick_stairs,dark_ore,dark_power_gem_block,dark_tank,display_stand,entangled_chalice,environmental_accumulator,eternal_water,gem_stone_torch,gem_stone_torch_wall,hardened_blood,infested_nether_nether_bricks,infested_nether_netherrack,infested_nether_soul_sand,invisible_redstone,lightning_bomb,obscured_glass,poison,purifier,reinforced_undead_planks,reinforced_undead_planks_stairs,sanguinary_environmental_accumulator,sanguinary_pedestal_0,sanguinary_pedestal_1,spiked_plate,spirit_furnace,spirit_portal,spirit_reanimator,undead_fence,undead_fence_gate,undead_leaves,undead_log,undead_log_stripped,undead_planks,undead_planks_stairs,undead_sapling,undead_slab,undead_wood,undead_wood_stripped|}",
+        "prefix": "@evilcraft/blocks/"
+    },
 
-    // No items
+    "EvilCraft Items": {
+        "body": "evilcraft:${1|biome_extract,blood,blood_chest,blood_extractor,blood_infuser,blood_infusion_core,blood_orb_empty,blood_orb_filled,blood_pearl_of_teleportation,blood_potash,blood_stain,blood_waxed_coal,blood_waxed_coal_block,bloody_cobblestone,blook,bowl_of_promises_dusted,bowl_of_promises_empty,bowl_of_promises_tier0,bowl_of_promises_tier1,bowl_of_promises_tier2,bowl_of_promises_tier3,box_of_eternal_closure,broom,broom_part,bucket_blood,bucket_eternal_water,bucket_poison,burning_gem_stone,colossal_blood_chest,condensed_blood,controlled_zombie_spawn_egg,corrupted_tear,creative_blood_drop,dark_block,dark_blood_brick,dark_blood_brick_stairs,dark_brick,dark_brick_stairs,dark_gem,dark_gem_crushed,dark_ore,dark_power_gem,dark_power_gem_block,dark_spike,dark_stick,dark_tank,darkened_apple,display_stand,dull_dust,effortless_ring,ender_tear,entangled_chalice,environmental_accumulation_core,environmental_accumulator,eternal_water,exalted_crafter,exalted_crafter_empowered,exalted_crafter_wooden,exalted_crafter_wooden_empowered,flesh_humanoid,flesh_rejuvenated,flesh_werewolf,garmonbozia,gem_stone_torch,golden_string,hardened_blood,hardened_blood_shard,infested_nether_nether_bricks,infested_nether_netherrack,infested_nether_soul_sand,inverted_potentia,inverted_potentia_empowered,invigorating_pendant,invisible_redstone,kineticator,kineticator_repelling,lightning_bomb,lightning_grenade,mace_of_destruction,mace_of_distortion,necromancer_staff,netherfish_spawn_egg,obscured_glass,origins_of_darkness,piercing_vengeance_focus,poison,poison_bottle,poison_sac,poisonous_libelle_spawn_egg,potentia_sphere,primed_pendant,promise_acceptor_diamond,promise_acceptor_gold,promise_acceptor_iron,promise_efficiency_0,promise_speed_0,promise_tier_1,promise_tier_2,promise_tier_3,purifier,redstone_grenade,reinforced_undead_planks,reinforced_undead_planks_stairs,sanguinary_environmental_accumulator,sanguinary_pedestal_0,sanguinary_pedestal_1,sceptre_of_thunder,spectral_glasses,spiked_plate,spikey_claws,spirit_furnace,spirit_portal,spirit_reanimator,undead_fence,undead_fence_gate,undead_leaves,undead_log,undead_log_stripped,undead_planks,undead_planks_stairs,undead_sapling,undead_slab,undead_wood,undead_wood_stripped,vein_sword,vengeance_essence,vengeance_essence_materialized,vengeance_focus,vengeance_pickaxe,vengeance_ring,vengeance_spirit_spawn_egg,weather_container,werewolf_bone,werewolf_fur,werewolf_spawn_egg|}",
+        "prefix": "@evilcraft/items/"
+    },
 
-    // No entities
+    "EvilCraft Entities": {
+        "body": "evilcraft:${1|anti_vengeance_beam,attack_vengeance_beam,biome_extract,blood_pearl,broom,controlled_zombie,item_dark_stick,item_empowerable,item_undespawnable,lightning_bomb_primed,lightning_grenade,necromancers_head,netherfish,poisonous_libelle,redstone_grenade,vengeance_spirit,weather_container,werewolf|}",
+        "prefix": "@evilcraft/entities/"
+    },
 
-    // No potions
+    "EvilCraft Potions": {
+        "body": "evilcraft:${1|paling|}",
+        "prefix": "@evilcraft/potions/"
+    },
 
-    // No enchantments
+    "EvilCraft Enchantments": {
+        "body": "evilcraft:${1|breaking,life_stealing,poison_tip,unusing,vengeance|}",
+        "prefix": "@evilcraft/enchant/"
+    },
 
     "EvilCraft Biomes": {
         "body": "evilcraft:${1|degraded|}",

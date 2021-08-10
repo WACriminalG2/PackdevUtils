@@ -169,6 +169,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/bloom_and_gloom/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/botania/Registry.code-snippets"
             },
             {
@@ -285,11 +289,67 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/dannys_expansion/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/darkutils/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/dimdungeons/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/druidcraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ediblebugs/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/effectenchantments/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/eidolon/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/enchantable/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/endergetic/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/enderstorage/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/engineersdecor/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/enhanced_mushrooms/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ensorcellation/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/envirocore/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/enviromats/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/envirotech/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -301,7 +361,27 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/exoticbirds/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/experimental_m/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/fairylights/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/farmersdelight/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/farmingforblockheads/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/fins/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -309,11 +389,127 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/geosmelt/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/golems/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/greekfantasy/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/horticulture/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/husbandry/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/iceandfire/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/immersiveengineering/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/immersivepetroleum/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/industrialforegoing/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/infernalexp/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ironchest/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/jellyfishing/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/libvulpes/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/lotr/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/lycanitesmobs/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ma-enchants/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mana-and-artifice/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/masterfulmachinery/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwbridges/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwdoors/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwfences/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwfurnitures/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwlights/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwroofs/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwtrpdoors/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mcwwindows/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/medieval_craft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/mekanism/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/minecolonies/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/minecraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/rsgauges/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],

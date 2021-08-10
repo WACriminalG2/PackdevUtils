@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Eidolon Blocks": {
+        "body": "eidolon:${1|arcane_gold_block,brazier,candle,candlestick,crucible,enchanted_ash,goblet,lead_block,lead_ore,necrotic_focus,pewter_block,plinth,polished_planks,polished_planks_fence,polished_planks_fence_gate,polished_planks_slab,polished_planks_stairs,polished_wood_pillar,smooth_stone_bricks,smooth_stone_bricks_slab,smooth_stone_bricks_stairs,smooth_stone_bricks_wall,smooth_stone_tiles,smooth_stone_tiles_slab,smooth_stone_tiles_stairs,soul_enchanter,stone_altar,stone_hand,straw_effigy,unholy_effigy,wooden_altar,wooden_brewing_stand,worktable|}",
+        "prefix": "@eidolon/blocks/"
+    },
+
+    "Eidolon Items": {
+        "body": "eidolon:${1|arcane_gold_block,arcane_gold_ingot,arcane_gold_nugget,basic_amulet,basic_belt,basic_ring,bonechill_wand,brazier,candle,candlestick,cleaving_axe,codex,crimson_essence,crucible,death_essence,enchanted_ash,ender_calx,fungus_sprouts,glass_hand,goblet,gold_inlay,gravity_belt,lead_block,lead_ingot,lead_nugget,lead_ore,lesser_soul_gem,mind_shielding_plate,music_disc_parousia,necrotic_focus,pewter_blend,pewter_block,pewter_ingot,pewter_inlay,pewter_nugget,plinth,polished_planks,polished_planks_fence,polished_planks_fence_gate,polished_planks_slab,polished_planks_stairs,polished_wood_pillar,prestigious_palm,reaper_scythe,resolute_belt,reversal_pick,sanguine_amulet,sapping_sword,shadow_gem,smooth_stone_bricks,smooth_stone_bricks_slab,smooth_stone_bricks_stairs,smooth_stone_bricks_wall,smooth_stone_tiles,smooth_stone_tiles_slab,smooth_stone_tiles_stairs,soul_enchanter,soul_shard,soulfire_wand,spawn_necromancer,spawn_wraith,spawn_zombie_brute,stone_altar,stone_hand,straw_effigy,sulfur,tallow,tattered_cloth,top_hat,unholy_effigy,unholy_symbol,void_amulet,warded_mail,warlock_boots,warlock_cloak,warlock_hat,warped_sprouts,wicked_weave,wooden_altar,wooden_brewing_stand,worktable,wraith_heart,zombie_heart|}",
+        "prefix": "@eidolon/items/"
+    },
+
+    "Eidolon Entities": {
+        "body": "eidolon:${1|bonechill_projectile,chant_caster,necromancer,necromancer_spell,soulfire_projectile,wraith,zombie_brute|}",
+        "prefix": "@eidolon/entities/"
+    },
+
+    "Eidolon Potions": {
+        "body": "eidolon:${1|anchored,chilled|}",
+        "prefix": "@eidolon/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

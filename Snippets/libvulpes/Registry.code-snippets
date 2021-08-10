@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    "Lib Vulpes Blocks": {
+        "body": "libvulpes:${1|adv_structure_machine,advanced_motor,block_phantom,blockaluminum,blockcopper,blockiridium,blocksteel,blocktin,blocktitanium,coal_generator,coilaluminum,coilcopper,coilgold,coiliridium,coiltitanium,creative_power_battery,elite_motor,enhanced_motor,fluidihatch,fluidohatch,forge_power_input,forge_power_output,itemihatch,itemohatch,motor,orealuminum,orecopper,oredilithium,oreiridium,orerutile,oretin,place_holder,structure_machine|}",
+        "prefix": "@libvulpes/blocks/"
+    }
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

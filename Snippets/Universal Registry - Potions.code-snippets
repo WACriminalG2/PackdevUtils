@@ -1,76 +1,7 @@
 { 
-    "Danny's Expansion Potions": {
-        "body": "dannys_expansion:${1|cursed_flames,spores,venom|}",
-        "prefix": "@dannys_expansion/potions/"
-    },
-    "Eidolon Potions": {
-        "body": "eidolon:${1|anchored,chilled|}",
-        "prefix": "@eidolon/potions/"
-    },
-    "Environmental Potions": {
-        "body": "environmental:${1|panic,serenity|}",
-        "prefix": "@environmental/potions/"
-    },
-    "EvilCraft Potions": {
-        "body": "evilcraft:${1|paling|}",
-        "prefix": "@evilcraft/potions/"
-    },
-    "Exotic Critters Potions": {
-        "body": "experimental_m:${1|bad_smellpotion,bleeding,curse_of_craziness,ggggg,hoho_pickp,infinite_venon,instand_explotion,peso,potion_of_impulse|}",
-        "prefix": [
-            "@experimental_m/potions/",
-            "@exoticcritters/potions/"
-        ]
-    },
-    "Farmer's Delight Potions": {
-        "body": "farmersdelight:${1|comfort,nourished|}",
-        "prefix": "@farmersdelight/potions/"
-    },
     "Flowing Agony Potions": {
         "body": "flowingagony:${1|agony_resonance,back_and_fill_enchantment_active,been_resonated,curse_of_undead,cursed_antipathy,cursed_hatred,envious_being,extreme_hatred,eyesore_enchantment_active,fresh_revenge_enchantment_active,frivolous_step_enchantment_active,hatred_bloodline_enchantment_active,insane_poet_enchantment_active,let_me_savor_it,lightburn_fungal_infection,listen_to_me_singing,miraculous_escape_enchantment_active,miraculous_escape_enchantment_force_escape,paper_brain_enchantment_active,potential_burst_enchantment_active,prototype_chaotic_enchantment_active,shock_therapy_enchantment_active,thorn_in_flesh_active,thorn_in_flesh_active_for_player|}",
         "prefix": "@flowingagony/potions/"
-    },
-    "Fluffy's Farming Potions": {
-        "body": "fluffy_farmer:${1|cleanness,hot,instability,protein,sweetness|}",
-        "prefix": [
-            "@fluffy_farmer/potions/",
-            "@fluffys_farming/potions/"
-        ]
-    },
-    "Greek Fantasy Potions": {
-        "body": "greekfantasy:${1|mirror,petrified,stunned,swine|}",
-        "prefix": "@greekfantasy/potions/"
-    },
-    "Habitat (Bloom and Gloom) Potions": {
-        "body": "bloom_and_gloom:${1|blast_endurance|}",
-        "prefix": [
-            "@bloom_and_gloom/potions/",
-            "@habitat/potions/"
-        ]
-    },
-    "Immersive Engineering Potions": {
-        "body": "immersiveengineering:${1|concrete_feet,conductive,flammable,flashed,slippery,sticky,stunned|}",
-        "prefix": "@immersiveengineering/potions/"
-    },
-    "Immersive Petroleum Potions": {
-        "body": "immersivepetroleum:${1|anti_fire|}",
-        "prefix": "@immersivepetroleum/potions/"
-    },
-    "Infernal Expansion Potions": {
-        "body": "infernalexp:${1|infection,luminous|}",
-        "prefix": "@infernalexp/potions/"
-    },
-    "Lycanites Mobs Potions": {
-        "body": "lycanitesmobs:${1|aphagia,bleed,cleansed,decay,envenom,fallresist,fear,freezeaura,heataura,immunization,insomnia,instability,leech,lifeleak,paralysis,penetration,plague,rage,recklessness,rejuvenation,repulsion,smited,smouldering,staticaura,swiftswimming,weight|}",
-        "prefix": "@lycanitesmobs/potions/"
-    },
-    "Mana and Artifice Potions": {
-        "body": "mana-and-artifice:${1|asphyxiate,briarthorn-barrier,chrono-anchor,chrono-exhaustion,confusion,dispel-exhaustion,divination,entangle,fire-shield,gravity-well,instant-mana,life-tap,lift,mana-boost,mana-burn,mana-regen,mana-shield,mana-stunt,mind-control,pilgrim,repair,silence,true-invisibility,watery-grave,wizard-sight|}            ",
-        "prefix": "@mana-and-artifice/potions/"
-    },
-    "Minecraft Potions": {
-        "body": "minecraft:${1|absorption,bad_omen,blindness,conduit_power,dolphins_grace,fire_resistance,glowing,haste,health_boost,hero_of_the_village,hunger,instant_damage,instant_health,invisibility,jump_boost,levitation,luck,mining_fatigue,nausea,night_vision,poison,regeneration,resistance,saturation,slow_falling,slowness,speed,strength,unluck,water_breathing,weakness,wither|}",
-        "prefix": "@minecraft/potions/"
     },
     "Mowzie's Mobs Potions": {
         "body": "mowziesmobs:${1|frozen,geomancy,poison_resist,sunblock,suns_blessing|}",

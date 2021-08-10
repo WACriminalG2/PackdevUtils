@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Immersive Petroleum Blocks": {
+        "body": "immersivepetroleum:${1|asphalt,asphalt_slab,asphalt_stairs,auto_lubricator,cokerunit,diesel_fluid_block,diesel_sulfur_fluid_block,distillationtower,dummy_conveyor,dummy_oil_ore,dummy_pipe,flarestack,gas_generator,gasoline_fluid_block,hydrotreater,lubricant_fluid_block,napalm_fluid_block,oil_fluid_block,petcoke_block,pumpjack|}",
+        "prefix": "@immersivepetroleum/blocks/"
+    },
+
+    "Immersive Petroleum Items": {
+        "body": "immersivepetroleum:${1|asphalt,asphalt_slab,asphalt_stairs,auto_lubricator,bitumen,cokerunit,debug,diesel_bucket,diesel_sulfur_bucket,distillationtower,dummy_conveyor,dummy_oil_ore,dummy_pipe,flarestack,gas_generator,gasoline_bucket,hydrotreater,lubricant_bucket,napalm_bucket,oil_bucket,oil_can,petcoke,petcoke_block,petcoke_dust,projector,pumpjack,speedboat,upgrade_icebreaker,upgrade_paddles,upgrade_reinforced_hull,upgrade_rudders,upgrade_tank|}",
+        "prefix": "@immersivepetroleum/items/"
+    },
+
+    "Immersive Petroleum Entities": {
+        "body": "immersivepetroleum:${1|speedboat|}",
+        "prefix": "@immersivepetroleum/entities/"
+    },
+
+    "Immersive Petroleum Potions": {
+        "body": "immersivepetroleum:${1|anti_fire|}",
+        "prefix": "@immersivepetroleum/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

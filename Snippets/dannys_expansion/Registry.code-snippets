@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Danny's Expansion Blocks": {
+        "body": "dannys_expansion:${1|arid_bricks,chiseled_deserted_bricks,desert_spikes,deserted_bricks,deserted_bricks_pillar,deserted_bricks_slab,deserted_bricks_stairs,jold,liftone,plant_matter,sea_chest,workbench|}",
+        "prefix": "@dannys_expansion/blocks/"
+    },
+
+    "Danny's Expansion Items": {
+        "body": "dannys_expansion:${1|antique_boots,antique_chestplate,antique_helmet,antique_leggings,aquatic_large_bullet,aquatic_short_bullet,aquatic_shotgun_shell,arid_wrapping,ayerstone,black_kite,black_scorpion_kite,black_scorpion_spawn_egg,blaze_kite,blue_kite,blue_slime,bone_serpent_kite,brown_kite,cave_centipede_kite,cave_spider_kite,cooked_rammer_meat,creeper_kite,crimson_mosquito_kite,cursed_skull_kite,cursed_skull_spawn_egg,cyan_kite,dropbear_kite,drowned_kite,ebbewel,elder_guardian_kite,ender_beast_archer_spawn_egg,ender_beast_lancer_spawn_egg,ender_beast_spear_tip,endergrade_kite,enderman_kite,endermite_kite,evoker_kite,fly_kite,frozen_bow,frozen_ghoul_kite,frozen_ghoul_spawn_egg,frozen_slime_kite,frozen_slime_spawn_egg,gel,ghast_kite,ghoul_kite,ghoul_spawn_egg,golem_scrap,grand_rammer_kite,grand_rammer_spawn_egg,gray_kite,green_kite,guardian_kite,handgun,heavy_handgun,high_velocity_large_bullet,high_velocity_short_bullet,high_velocity_shotgun_shell,husk_kite,ice_arrow,ice_elemental_kite,ice_elemental_spawn_egg,ice_shard,icon,illusioner_kite,impulsor,jungle_golem_kite,jungle_golem_spawn_egg,jungle_slime_kite,jungle_slime_spawn_egg,klifour_kite,klifour_spawn_egg,klifour_talisman,large_bullet,life_essence,light_blue_kite,light_gray_kite,lime_kite,magenta_kite,magma_cube_kite,magma_gulper_kite,magma_gulper_spawn_egg,magma_slime_kite,magma_slime_spawn_egg,mummy_kite,mummy_spawn_egg,mundane_slime_kite,mundane_slime_spawn_egg,nyctoid_spawn_egg,orange_kite,phantom_kite,piglin_brute_kite,piglin_kite,pillager_kite,pink_kite,plant_matter,possessed_armor_blade,possessed_armor_kite,possessed_armor_spawn_egg,purple_kite,rammer_kite,rammer_meat,rammer_spawn_egg,ravager_kite,red_kite,sand_necklace,scorpion_gland,scorpion_sword,sea_chest,short_bullet,shotgun,shotgun_shell,shulker_kite,silverfish_kite,skeleton_kite,slime,slime_kite,spider_kite,spore_bomb,sporer_kite,sporer_spawn_egg,spores,strange_alloy,stray_kite,strider_kite,sunbird_kite,test_dummy,vex_kite,vindicator_kite,visceral_essence,warped_toad_kite,white_kite,witch_kite,wither_kite,wither_skeleton_kite,workbench,yellow_kite,zoglin_kite,zombie_kite,zombie_villager_kite,zombified_piglin_kite|}",
+        "prefix": "@dannys_expansion/items/"
+    },
+
+    "Danny's Expansion Entities": {
+        "body": "dannys_expansion:${1|aquatic_bullet,arid_abomination,barren_orb,black_scorpion,blue_slime,bullet,child_rammer,cursed_fire,cursed_skull,desertic_fang,desolated,ender_arrow,ender_beast_archer,ender_beast_lancer,frozen_ghoul,frozen_slime,ghoul,golem_drone,grand_rammer,ice_arrow,ice_bullet,ice_elemental,jungle_golem,jungle_slime,kite,kite_knot,klifour,klifour_spit,magma_gulper,magma_slime,mummy,mummy_soul,mundane_slime,nyctoid,plasma_projectile,possessed_armor,rammer,sand_scarab,sand_scarab_egg,snaith,special_kite,spore,spore_bomb,spore_cloud,spore_slime,sporer,test_dummy,venom,vomit|}",
+        "prefix": "@dannys_expansion/entities/"
+    },
+
+    "Danny's Expansion Potions": {
+        "body": "dannys_expansion:${1|cursed_flames,spores,venom|}",
+        "prefix": "@dannys_expansion/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

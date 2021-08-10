@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Iron Chests Blocks": {
+        "body": "ironchest:${1|copper_chest,crystal_chest,diamond_chest,dirt_chest,gold_chest,iron_chest,obsidian_chest,silver_chest|}",
+        "prefix": "@ironchest/blocks/"
+    },
+
+    "Iron Chests Items": {
+        "body": "ironchest:${1|copper_chest,copper_to_iron_chest_upgrade,copper_to_silver_chest_upgrade,crystal_chest,diamond_chest,diamond_to_crystal_chest_upgrade,diamond_to_obsidian_chest_upgrade,dirt_chest,gold_chest,gold_to_diamond_chest_upgrade,iron_chest,iron_to_gold_chest_upgrade,obsidian_chest,silver_chest,silver_to_gold_chest_upgrade,wood_to_copper_chest_upgrade,wood_to_iron_chest_upgrade|}",
+        "prefix": "@ironchest/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

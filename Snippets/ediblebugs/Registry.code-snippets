@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Edible Bugs Blocks": {
+        "body": "ediblebugs:${1|bugzapper,fryer,termiteblock,termiteblocka,termitebricks,termiteslabs,termitestairs|}",
+        "prefix": "@ediblebugs/blocks/"
+    },
+
+    "Edible Bugs Items": {
+        "body": "ediblebugs:${1|aphid,bugzapper,camelspider,caphid,carpenterant,ccamelspider,ccarpenterant,ccentipede,ccricket,cdungbeetle,centipede,cfireant,cgrasshopper,cjumilbug,clocust,cricket,cscarab,cscorpion,cslug,csowbug,ctermite,cwitchettygrub,cwoodtermite,dungbeetle,fireant,fryer,grasshopper,jumilbug,locust,scarab,scorpion,slug,sowbug,termite,termiteblock,termiteblocka,termitebrick,termitebricks,termiteclay,termitelarva,termiteslabs,termitestairs,vegetableoil,witchettygrub,woodtermite|}",
+        "prefix": "@ediblebugs/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

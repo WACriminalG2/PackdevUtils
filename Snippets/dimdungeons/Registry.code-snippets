@@ -1,9 +1,15 @@
 {
     // Version: ?????
 
-    // No blocks
+    "Dimensional Dungeons Blocks": {
+        "body": "dimdungeons:${1|block_gilded_portal,block_gold_portal,block_key_charger,block_key_charger_damaged,block_key_charger_used,block_local_teleporter,block_portal_crown,block_portal_keyhole|}",
+        "prefix": "@dimdungeons/blocks/"
+    },
 
-    // No items
+    "Dimensional Dungeons Items": {
+        "body": "dimdungeons:${1|block_gilded_portal,block_gold_portal,block_key_charger,block_key_charger_damaged,block_key_charger_used,block_local_teleporter,block_portal_crown,block_portal_keyhole,item_homeward_pearl,item_portal_key,item_secret_bell,item_trophy_1,item_trophy_2,item_trophy_3,item_trophy_4,item_trophy_5,item_trophy_6,item_trophy_7,item_trophy_8|}",
+        "prefix": "@dimdungeons/items/"
+    },
 
     // No entities
 

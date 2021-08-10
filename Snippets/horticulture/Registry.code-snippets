@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Horticulture Blocks": {
+        "body": "horticulture:${1|acacia_stump,apple_fruit,apple_leaves,apple_sapling,banana_fruit,banana_leaves,banana_sapling,birch_stump,cabbages,corn,crimson_stump,cucumbers,dark_oak_stump,eggplants,green_peppers,iron_sprinkler,jungle_stump,oak_stump,old_sprinkler,onions,orange_fruit,orange_leaves,orange_sapling,peach_fruit,peach_leaves,peach_sapling,pineapples,seed_maker,spinach,spruce_stump,strawberries,sweet_potatoes,tomatoes,turnips,warped_stump|}",
+        "prefix": "@horticulture/blocks/"
+    },
+
+    "Horticulture Items": {
+        "body": "horticulture:${1|acacia_stump,apple_fruit,apple_juice,apple_leaves,apple_sapling,baked_corn,banana,banana_fruit,banana_juice,banana_leaves,banana_sapling,birch_stump,boiled_spinach,brown_mushroom_spores,cabbage,cabbage_seeds,candied_potato,corn,corn_seeds,cornflakes,crimson_fungus_spores,crimson_stump,cucumber,cucumber_seeds,dark_oak_stump,eggplant,eggplant_seeds,green_pepper,green_pepper_seeds,happy_eggplant,iron_sprinkler,jungle_stump,oak_stump,old_sprinkler,onion,onion_seeds,orange,orange_fruit,orange_juice,orange_leaves,orange_sapling,peach,peach_fruit,peach_juice,peach_leaves,peach_sapling,pickled_cucumber,pickled_turnip,pineapple,pineapple_juice,pineapple_seeds,pumpkin_stew,red_mushroom_spores,salad,seed_maker,spinach,spinach_seeds,spruce_stump,stir_fry,strawberry,strawberry_milk,strawberry_seeds,sweet_potato,sweet_potato_seeds,tomato,tomato_juice,tomato_seeds,turnip,turnip_seeds,warped_fungus_spores,warped_stump,watering_can|}",
+        "prefix": "@horticulture/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}
