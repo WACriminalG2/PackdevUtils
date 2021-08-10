@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Archer's Paradox Items": {
+        "body": "archers_paradox:${1|blaze_arrow,challenge_arrow,diamond_arrow,displacement_arrow,ender_arrow,explosive_arrow,frost_arrow,glowstone_arrow,lightning_arrow,phantasmal_arrow,prismarine_arrow,quartz_arrow,redstone_arrow,shulker_arrow,slime_arrow,spore_arrow,training_arrow,verdant_arrow|}",
+        "prefix": "@archers_paradox/items/"
+    },
+
+    "Archer's Paradox Entities": {
+        "body": "archers_paradox:${1|blaze_arrow,challenge_arrow,diamond_arrow,displacement_arrow,ender_arrow,explosive_arrow,frost_arrow,glowstone_arrow,lightning_arrow,phantasmal_arrow,prismarine_arrow,quartz_arrow,redstone_arrow,shulker_arrow,slime_arrow,spore_arrow,training_arrow,verdant_arrow|}",
+        "prefix": "@archers_paradox/entities/"
+    },
+
+    "Archer's Paradox Potions": {
+        "body": "archers_paradox:${1|challenge_complete,challenge_miss,challenge_streak,training_miss,training_streak|}",
+        "prefix": "@archers_paradox/potions/"
+    },
+
+    // No enchantments present.
+
+    // No biomes present.
+}

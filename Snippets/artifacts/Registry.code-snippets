@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Artifacts Items": {
+        "body": "artifacts:${1|antidote_vessel,aqua_dashers,bunny_hoppers,charm_of_sinking,cloud_in_a_bottle,cross_necklace,crystal_heart,digging_claws,eternal_steak,everlasting_beef,feral_claws,fire_gauntlet,flame_pendant,flippers,golden_hook,helium_flamingo,kitty_slippers,lucky_scarf,mimic_spawn_egg,night_vision_goggles,novelty_drinking_hat,obsidian_skull,panic_necklace,plastic_drinking_hat,pocket_piston,power_glove,running_shoes,scarf_of_invisibility,shock_pendant,snorkel,steadfast_spikes,superstitious_hat,thorn_pendant,umbrella,universal_attractor,vampiric_glove,villager_hat,whoopee_cushion|}",
+        "prefix": "@artifacts/items/"
+    },
+
+    "Artifacts Entities": {
+        "body": "artifacts:${1|mimic|}",
+        "prefix": "@artifacts/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

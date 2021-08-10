@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "BlockLayering Blocks": {
+        "body": "blocklayering:${1|layer_clay,layer_coarse_dirt,layer_concrete_powder_black,layer_concrete_powder_blue,layer_concrete_powder_brown,layer_concrete_powder_cyan,layer_concrete_powder_gray,layer_concrete_powder_green,layer_concrete_powder_light_blue,layer_concrete_powder_lime,layer_concrete_powder_magenta,layer_concrete_powder_orange,layer_concrete_powder_pink,layer_concrete_powder_purple,layer_concrete_powder_red,layer_concrete_powder_silver,layer_concrete_powder_white,layer_concrete_powder_yellow,layer_dirt,layer_grass,layer_gravel,layer_hay,layer_leaves_acacia,layer_leaves_big_oak,layer_leaves_birch,layer_leaves_jungle,layer_leaves_oak,layer_leaves_spruce,layer_mycelium,layer_path,layer_podzol,layer_red_sand,layer_sand,layer_soulsand|}",
+        "prefix": "@blocklayering/blocks/"
+    },
+
+    "BlockLayering Items": {
+        "body": "blocklayering:${1|layer_clay,layer_coarse_dirt,layer_concrete_powder_black,layer_concrete_powder_blue,layer_concrete_powder_brown,layer_concrete_powder_cyan,layer_concrete_powder_gray,layer_concrete_powder_green,layer_concrete_powder_light_blue,layer_concrete_powder_lime,layer_concrete_powder_magenta,layer_concrete_powder_orange,layer_concrete_powder_pink,layer_concrete_powder_purple,layer_concrete_powder_red,layer_concrete_powder_silver,layer_concrete_powder_white,layer_concrete_powder_yellow,layer_dirt,layer_grass,layer_gravel,layer_hay,layer_leaves_acacia,layer_leaves_big_oak,layer_leaves_birch,layer_leaves_jungle,layer_leaves_oak,layer_leaves_spruce,layer_mycelium,layer_path,layer_podzol,layer_red_sand,layer_sand,layer_soulsand|}",
+        "prefix": "@blocklayering/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

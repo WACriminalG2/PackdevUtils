@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Building Gadgets Blocks": {
+        "body": "buildinggadgets:${1|construction_block,construction_block_dense,construction_block_powder,effect_block,template_manager|}",
+        "prefix": "@buildinggadgets/blocks/"
+    },
+
+    "Building Gadgets Items": {
+        "body": "buildinggadgets:${1|construction_block,construction_block_dense,construction_block_powder,construction_chunk_dense,construction_paste,construction_paste_container_creative,construction_paste_container_t1,construction_paste_container_t2,construction_paste_container_t3,gadget_building,gadget_copy_paste,gadget_destruction,gadget_exchanging,template,template_manager|}",
+        "prefix": "@buildinggadgets/items/"
+    },
+
+    "Building Gadgets Entities": {
+        "body": "buildinggadgets:${1|construction_block_entity|}",
+        "prefix": "@buildinggadgets/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

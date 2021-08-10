@@ -1,102 +1,4 @@
-{
-    "Abnormals Core Entities": {
-        "body": "abnormals_core:${1|boat|}",
-        "prefix": "@abnormals_core/entities/"
-    },
-    "Advanced Rocketry Entities": {
-        "body": "advancedrocketry:${1|dummy,hovercraft,itemabducted,lasernode,rocket,spaceelevator,uibutton,uiplanet,uistar|}",
-        "prefix": "@advancedrocketry/entities/"
-    },
-    "Advent of Ascension (Nevermine) Entities": {
-        "body": "aoa3:${1|abyssal_lottoman,agility_tablet,airhead,alarmo,alluricorn,ambient_pixon,amphibior,amphibiyte,ancient_golem,anemia,anemia_bomb,angelica,angler,anima_master,anima_stone,apparition,aquaball,aquatic_shot,arc_flower,arc_wizard,arcbeast,archvine,arcworm,arcworm_shot,ariel,arkback,arkzyne,arocknid,arrow,assassin,atomizer_bounce,atomizer_shot,augury_master,awareness_tablet,axiolight,balloon_bomb,bane,bane_clone,banshee,baron_bomb,baron_lottoman,baron_shot,baroness,baroness_shot,basilisk,baumba,beamer_shot,big_bane_clone,blissard,blood_drainer,bloodball,bloodlust,bloodsucker,blooming_pixon,blue_bullet,blue_flower,blue_guardian,blue_guardian_shot,blue_rune_templar,blue_runic_lifeform,bobo,bomb_carrier,bone_bullet,bone_creeper,bone_pellet,boneback,boreic_lottoman,boss_item,bouncer,bozo_ball,breeding_tablet,broccohead,bubble_shot,bugeye,bullet,bullet_shot,bush_baby,butchery_master,candied_lottoman,candy_corny,cane_bug,cannonball,carrot_ball,carrotop,case_construct,cave_creep,cave_creepoid,celestial_fall,celevian_lottoman,centinel,chakram,charger,cherry_blaster,cherry_shot,chilli_shot,chimera,chocko,chomper,cleansing_tablet,clown_ball,clown_shot,clunkhead,compeer,confetti_cluster,confetti_shot,construct_of_flight,construct_of_mind,construct_of_range,construct_of_resistance,construct_of_servility,construct_of_speed,construct_of_strength,construct_of_terror,construct_shot,corallus,corallus_shot,coratee,corby,corny,corrupted_traveller,cotton_candor,cotton_candor_shot,craexxeus,craexxeus_nuke,craexxeus_shot,craggy,creation_master,creep,creep_banker,creep_bomb,creep_cow,creep_tube,creeper_shot,creeperlock,creepird,creeponia_lottoman,creepuple,crusilisk,cryptid,crystal_lottoman,crystal_trader,crystocore,cyan_shot,cyclops,dawnlight,daysee,dead_tree,death_ray,deinotherium,desert_charger,destroyer_shot,destruction_shot,destructor,devourer,diocus,discharge_shot,discharge_slug,distorter,distortion_tablet,doom_shot,doubler,dracyon,draggy,dungeon_keeper,dust_strider,dusteiva,duston,dustopian_lottoman,dweller,dyrehorn,echodar,eeo,elite_skele_hopper,elite_skele_pig,elite_skeleman,elkanyne,elusive,elusive_clone,embrake,emperor_beast,ender_carrier,energy_shot,energy_tablet,enforcer,eradicator_shot,erebon_stickler_shot,erebon_stickler_stuck,everbeast,exohead,expedition_master,explodot,explosives_expert,extraction_master,faceless_floater,fake_tnt,fake_zorp,fenix,fiend,fire_bullet,firefly_shot,firestorm_fall,fischer,fishix,flamewalker,flash,flesh_eater,floro_lottoman,floro_rpg,flower_ball,flower_shot,flowerface,flye,foraging_master,fragment_shot,friendly_creeper,fungal_ball,fungal_rock_fragment,fungat,fungback,fungik,fungock,fungung,furlion,gadgetoid,ghastus,ghost,ghoul_ball,ghoul_shot,giant_snail,giga_green_ball,gingerbird,gingerbread_man,glaring_pixon,gleaming_pixon,glistening_pixon,glowing_pixon,gnawer,goalby,goblin,gold_shot,golden_cannonball,golden_lottoman,goldum,goldus,goo_ball,goofer,gorb_arms_dealer,gorb_citizen,gorb_engineer,gravity_tablet,graw,graw_shot,green_bullet,green_flower,green_guardian,green_guardian_shot,green_rune_templar,green_runic_lifeform,grenade,grillface,grobbler,gyro,gyrocopter,hag,hag_shot,halycon,happy,harkos,hauling_master,haunted_lottoman,haunter_shot,healing_golem,heart_stone,heavy_blue_cannonball,heavy_bone_cannonball,heavy_cannonball,heavy_grenade,heavy_red_bullet,heavy_red_cannonball,heavy_runic_guardian_shot,heavy_shadowball,heavy_shower_shot,heavy_tri_discharge_shot,heavy_wither_ball,hell_bubble,hellfire,hellfire_tail,hellquin,hiding_fungi,hill_charger,hive_ball,hive_king,hive_soldier,hive_worker,horndron,horntail,host,hot_shot,hunter,hunter_master,ice_giant,ice_shot,illusion_shot,infernal,infusion_master,inmate_x,inmate_y,innervation_master,ion_shot,iosaur,iro_miner_shot,jawe,jumbo,kaiyu,kajaros,keeler,king_bambambam,king_charger,king_creeper,king_shroomus,klobber,koko,kranky,kror,laser_shot,leafy_giant,lelyetian_banker,lelyetian_caster,lelyetian_lottoman,lelyetian_shot,lelyetian_trader,lelyetian_warrior,light_blaster_shot,light_iron_shot,light_runic_guardian_shot,light_spark,lightwalker,little_bam,living_fungi,logging_master,lollypopper,lost_soul,lotto_totem,lottoman,luna_shot,lunar_fall,lunar_lottoman,lunarcher,lurker,luxocron,luxon_stickler_shot,luxon_stickler_stuck,lyonic_shot,magic_ball,magical_creeper,mech_fall,mech_shot,mecha_cyclops,mecha_skellox,mechachron,mechamaton,mechbot,mechyon,meganeuropsis,merkyre,mermage,metal_slug,metalloid,meteor_fall,mind_blaster_shot,mini_green_ball,mirage,miskel,modulo,modulo_shot,moon_destroyer_shot,moon_maker,moon_shiner_shot,moon_shot,moonlight_fall,mother_void_walker,muckopede,multiplying_grenade,muncher,mushroom_spider,mystic_lottoman,naturalist,neptuno,nethengeic_beast,nethengeic_wither,nethengeic_wither_shot,night_reaper,night_watcher,nightfly,nightmare_fall,nightmare_spider,nightwing,nipper,nospike,noxious_shot,occulent,occult_block,odious_shot,okazor,omnilight,omnilight_shot,opteryx,orange_cannonball,orange_flower,orbling,orbocron_shot,oxygen_tablet,paladin,paralyzer_shot,parasect,paravite,party_popper_shot,penguin,peppermint_snail,phantom_shot,pincher,plateosaur,pluton_stickler_shot,pluton_stickler_stuck,pod_plant,poison_plunger_shot,poison_shot,polymorph_shot,polytom,polytom_shot,pop_shot,power_ray,power_shot,precasian_lottoman,pressure_tablet,primitive_carrotop,primordial_banker,primordial_guide,primordial_merchant,primordial_shot,primordial_spellbinder,primordial_wizard,professor,proficiency_tablet,proshield,proton_shot,purple_flower,radiant_pixon,rainbow_shot,rainicorn,rammerhorn,ramradon,rawbone,raxxan,realmshifter,reaver,red_bullet,red_guardian,red_guardian_shot,red_rune_templar,red_runic_lifeform,reefer_shot,refluct,resistance_tablet,revolution_shot,rock_crawler,rock_critter,rock_fragment,rock_rider,rockbiter,rocky_lottoman,rosid,rosidian_shot,rpg,runation_master,runic_bomb,runic_golem,runic_guardian,runic_guardian_shot,runic_lottoman,runicorn,runicorn_rider,sabretooth,sanctity_tablet,sand_giant,sand_golem,sasquatch,satiation_tablet,scrubby,sea_charger,sea_troll,sea_viper,seaocron_shot,seed_dart,selyan_stickler_shot,selyan_stickler_stuck,shaddy,shade,shadow,shadow_stalker,shadowlord,shadowlord_shot,shavo,shifter,shik,shining_pixon,shoe_shot,shower_shot,shroom_bullet,shyre_archer,shyre_banker,shyre_beam,shyre_knight,shyre_shot,shyrelands_lottoman,sight_tablet,silencer,skele_elder,skele_hopper,skele_pig,skeledon,skelekyte,skeleman,skeletal_cowman,skeletron,skull_creature,skullo_shot,sky_shot,slice_star,slimer,smash,smile_blaster,smiley_cannonball,snappy,sniper_slug,snow_charger,soul_drainer_shot,soul_spark,soul_storm_shot,soulscorne,soulvyre,spearmint_snail,spectral_shot,spectral_wizard,sphinx,spikeback,spinoledon,spirit_guardian,spirit_protector,spiritual_shot,spraggy,squasher,squiggler,stalker,sticky,sticky_cool_bomb,sticky_red_bomb,stimulo,stimulosus,stitches,stone_giant,store_keeper,strength_tablet,strong_skele_hopper,strong_skele_pig,strong_skeleman,sugarface,sun_shot,sunny,sunset_bullet,super_green_ball,swamp_charger,swarm_shot,sysker,tangle_fall,terradon,terrestrial,terror_construct_shot,tharafly,tidal_wave,tipsy,token_collector,tortione,toxic_bullet,toxic_lottoman,toxic_shot,toxxulous,toy_merchant,tracker,tree_spirit,tri_discharge_shot,trickster,trickster_clone,troll_trader,trotter,twinkling_lottoman,tyrosaur,ultimatum_shot,ultra_green_ball,undead_herald,undead_troll,untiring_tablet,urioh,urka,urv,valkyrie,valkyrie_shot,vine_wizard,vine_wizard_shot,vinocorne,visage,visualent,visular,visulon,vitality_tablet,void_charger,void_walker,volatile_cannonball,voliant,voltron,vortex_blast,vox_cannon,voxxulon,voxxulon_meteor,vulkram,waggy,wart_dart,water_balloon_bomb,water_shot,web_reaper,weighted_shower_shot,white_ball,winder_shot,winged_creeper,wither_ball,wither_shot,withering_lottoman,wood_giant,wrath_shot,xxeus,yellow_bullet,yellow_flower,yellow_guardian,yellow_guardian_shot,yellow_rune_templar,yellow_runic_lifeform,yeti,zal_banker,zal_child,zal_citizen,zal_grocer,zal_herbalist,zal_spellbinder,zal_vendor,zarg,zhinx,zorp|}",
-        "prefix": [
-            "@aoa3/entities/",
-            "@nevermine/entities/",
-            "@adventofascension/entities/"
-        ]
-    },
-    "Alex's Mobs Entities": {
-        "body": "alexsmobs:${1|alligator_snapping_turtle,bald_eagle,blobfish,bone_serpent,bone_serpent_part,cachalot_echo,cachalot_whale,capuchin_monkey,centipede_body,centipede_head,centipede_tail,cockroach,cockroach_egg,crimson_mosquito,crocodile,crow,dropbear,elephant,emu,emu_egg,endergrade,enderiophage,enderiophage_rocket,fly,frilled_shark,gazelle,gorilla,grizzly_bear,gust,guster,hammerhead_shark,hemolymph,hummingbird,kangaroo,komodo_dragon,leafcutter_ant,lobster,mantis_shrimp,mimic_octopus,mimicube,moose,mosquito_spit,mungus,orca,platypus,raccoon,rattlesnake,roadrunner,sand_shot,seal,shark_tooth_arrow,shoebill,snow_leopard,soul_vulture,spectre,straddleboard,straddler,stradpole,sunbird,tarantula_hawk,tasmanian_devil,tiger,tossed_item,void_portal,void_worm,void_worm_part,void_worm_shot,warped_mosco,warped_toad|}",
-        "prefix": "@alexsmobs/entities/"
-    },
-    "Animalium Entities": {
-        "body": "animalium:${1|bear,bear_tamed,piranha,rat,wild_dog|}",
-        "prefix": "@animalium/entities/"
-    },
-    "Apotheosis Entities": {
-        "body": "apotheosis:${1|bh_arrow_entity,ex_arrow_entity,mn_arrow_entity,ob_arrow_entity|}",
-        "prefix": "@apotheosis/entities/"
-    },
-    "Applied Energistics 2 Entities": {
-        "body": "appliedenergistics2:${1|charged_quartz,growing_crystal,singularity,tiny_tnt_primed|}",
-        "prefix": "@appliedenergistics2/entities/"
-    },
-    "Aquaculture 2 Entities": {
-        "body": "aquaculture:${1|acacia_fish_mount,arapaima,arrau_turtle,atlantic_cod,atlantic_halibut,atlantic_herring,bayad,birch_fish_mount,blackfish,bluegill,bobber,boulti,box_turtle,brown_shrooma,brown_trout,capitaine,carp,catfish,dark_oak_fish_mount,gar,jellyfish,jungle_fish_mount,minnow,muskellunge,oak_fish_mount,pacific_halibut,perch,pink_salmon,piranha,pollock,rainbow_trout,red_grouper,red_shrooma,smallmouth_bass,spectral_water_arrow,spruce_fish_mount,starshell_turtle,synodontis,tambaqui,tuna,water_arrow|}",
-        "prefix": "@aquaculture/entities/"
-    },
-    "Archer's Paradox Entities": {
-        "body": "archers_paradox:${1|blaze_arrow,challenge_arrow,diamond_arrow,displacement_arrow,ender_arrow,explosive_arrow,frost_arrow,glowstone_arrow,lightning_arrow,phantasmal_arrow,prismarine_arrow,quartz_arrow,redstone_arrow,shulker_arrow,slime_arrow,spore_arrow,training_arrow,verdant_arrow|}",
-        "prefix": "@archers_paradox/entities/"
-    },
-    "Artifacts Entities": {
-        "body": "artifacts:${1|mimic|}",
-        "prefix": "@artifacts/entities/"
-    },
-    "Astral Sorcery Entities": {
-        "body": "astralsorcery:${1|flare,grappling_hook,illumination_spark,item_crystal,item_explosion_resistant,item_highlighted,item_starmetal,nocturnal_spark,observatory_helper,spectral_tool|}",
-        "prefix": "@astralsorcery/entities/"
-    },
-    "Atmospheric Entities": {
-        "body": "atmospheric:${1|passionfruit_seed|}",
-        "prefix": "@atmospheric/entities/"
-    },
-    "Atum 2 Entities": {
-        "body": "atum:${1|arrow_double,arrow_explosive,arrow_fire,arrow_poison,arrow_quickdraw,arrow_rain,arrow_slowness,arrow_straight,assassin,bandit_warlord,barbarian,bonestorm,brigand,camel,camel_spit,desert_rabbit,desert_wolf,forsaken,mummy,nomad,pharaoh,pharaoh_orb,quail,quail_egg,scarab,sergeant,serval,small_bone,stoneguard,stoneguard_friendly,stonewarden,stonewarden_friendly,tarantula,tefnuts_call,villager_female,villager_male,wraith|}",
-        "prefix": "@atum/entities/"
-    },
-    "Autumnity Entities": {
-        "body": "autumnity:${1|falling_head_block,snail,turkey,turkey_egg|}",
-        "prefix": "@autumnity/entities/"
-    },
-    "Better Animals Plus Entities": {
-        "body": "betteranimalsplus:${1|badger,badgerdirt,barracuda,blackbear,boar,bobbit_worm,brownbear,butterfly,coyote,crab,deer,dragonfly,eel_freshwater,eel_saltwater,feralwolf,flying_fish,goat,golden_goose_egg,goose,goose_egg,horseshoecrab,jellyfish,lammergeier,lamprey,moose,nautilus,octopus,pheasant,pheasant_egg,piranha,reindeer,shark,songbird,squid_colossal,squid_giant,squirrel,tarantula,tarantulahair,turkey,turkey_egg,walrus,whale|}",
-        "prefix": "@betteranimalsplus/entities/"
-    },
-    "Better End Forge Entities": {
-        "body": "betterendforge:${1|cubozoa,dragonfly,end_fish,end_slime,shadow_walker,silk_moth|}",
-        "prefix": "@betterendforge/entities/"
-    },
-    "Biomes O' Plenty Entities": {
-        "body": "biomesoplenty:${1|boat|}",
-        "prefix": [
-            "@biomesoplenty/entities/",
-            "@bop/entities/"
-        ]
-    },
-    "Blood Magic Entities": {
-        "body": "bloodmagic:${1|bloodlight,shapedcharge,soulsnare,throwing_dagger|}",
-        "prefix": "@bloodmagic/entities/"
-    },
-    "Botania Entities": {
-        "body": "botania:${1|babylon_weapon,corporea_spark,doppleganger,ender_air_bottle,falling_star,flame_ring,magic_landmine,magic_missile,mana_burst,mana_storm,pink_wither,pixie,player_mover,pool_minecart,spark,thorn_chakram,thrown_item,vine_ball|}",
-        "prefix": "@botania/entities/"
-    },
-    "Building Gadgets Entities": {
-        "body": "buildinggadgets:${1|construction_block_entity|}",
-        "prefix": "@buildinggadgets/entities/"
-    },
-    "Bumblezone Entities": {
-        "body": "the_bumblezone:${1|honey_slime|}",
-        "prefix": [
-            "@the_bumblezone/entities/",
-            "@bumblezone/entities/"
-        ]
-    },
-    "Buzzier Bees Entities": {
-        "body": "buzzier_bees:${1|black_bear,bumblebee,grizzly_bear,moobloom|}",
-        "prefix": "@buzzier_bees/entities/"
-    },
+{  
     "Charm Entities": {
         "body": "charm:${1|coral_squid,endermite_powder,glowball,moobloom|}",
         "prefix": "@charm/entities/"
@@ -314,13 +216,7 @@
         "body": "oddwatermobs:${1|anglerfish,anglerfish_puff,baby_spider_crab,coelacanth,dark_ghost_shark,faefa,ghost_shark,horseshoe_crab,isopod,long_nosed_ghost_shark,mudskipper,pink_ghost_shark,spider_crab|}",
         "prefix": "@oddwatermobs/entities/"
     },
-    "Oh the Biomes You'll Go Entities": {
-        "body": "byg:${1|boat|}",
-        "prefix": [
-            "@byg/entities/",
-            "@ohthebiomesyoullgo/entities/"
-        ]
-    },
+
     "Pandora's Creatures Entities": {
         "body": "pandoras_creatures:${1|acidic_archvine,arachnon,bufflon,crab,end_troll,end_troll_bullet_damage,end_troll_bullet_poison,end_troll_bullet_wither,hellhound,seahorse|}",
         "prefix": "@pandoras_creatures/entities/"

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Blood Magic Blocks": {
+        "body": "bloodmagic:${1|accelerationrune,airritualstone,alchemicalreactionchamber,alchemyarray,alchemytable,altar,altarcapacityrune,bettercapacityrune,blankrune,bloodlight,bloodstonebrick,chargingrune,corrosivedemoncrystal,creeping_doubt,deforester_charge,demoncrucible,demoncrystallizer,destructivedemoncrystal,dislocationrune,doubt_block,dungeon_brick1,dungeon_brick2,dungeon_brick3,dungeon_brick_assorted,dungeon_brick_gate,dungeon_brick_stairs,dungeon_brick_wall,dungeon_eye,dungeon_metal,dungeon_ore,dungeon_pillar_cap,dungeon_pillar_center,dungeon_pillar_special,dungeon_polished,dungeon_polished_gate,dungeon_polished_stairs,dungeon_polished_wall,dungeon_smallbrick,dungeon_stone,dungeon_tile,dungeon_tilespecial,duskritualstone,earthritualstone,ethereal_mimic,fireritualstone,fungal_charge,incensealtar,largebloodstonebrick,life_essence_block,lightritualstone,masterritualstone,mimic,nether_soil,obsidianbrickpath,obsidiantilepath,orbcapacityrune,rawdemoncrystal,ritualstone,sacrificerune,selfsacrificerune,shaped_charge,soulforge,speedrune,steadfastdemoncrystal,stonebrickpath,stonetilepath,veinmine_charge,vengefuldemoncrystal,waterritualstone,woodbrickpath,woodtilepath,wornstonebrickpath,wornstonetilepath|}",
+        "prefix": "@bloodmagic/blocks/"
+    },
+
+    "Blood Magic Items": {
+        "body": "bloodmagic:${1|accelerationrune,activationcrystalawakened,activationcrystalcreative,activationcrystalweak,airritualstone,airscribetool,airsigil,alchemicalreactionchamber,alchemytable,altar,altarcapacityrune,apprenticebloodorb,arcaneashes,basemonstersoul,basemonstersoul_corrosive,basemonstersoul_destructive,basemonstersoul_steadfast,basemonstersoul_vengeful,basiccuttingfluid,bettercapacityrune,blankrune,blankslate,bloodlightsigil,bloodstonebrick,bow_power_anointment,chargingrune,coalsand,corrosivecrystal,corrosivedemoncrystal,corrupted_dust,corrupted_tinydust,crystalline_resonator,daggerofsacrifice,defaultcrystal,deforester_charge,demoncrucible,demoncrystallizer,demonslate,demonwillgauge,destructivecrystal,destructivedemoncrystal,dislocationrune,divinationsigil,doubt_bucket,dungeon_brick1,dungeon_brick2,dungeon_brick3,dungeon_brick_assorted,dungeon_brick_gate,dungeon_brick_stairs,dungeon_brick_wall,dungeon_eye,dungeon_metal,dungeon_ore,dungeon_pillar_cap,dungeon_pillar_center,dungeon_pillar_special,dungeon_polished,dungeon_polished_gate,dungeon_polished_stairs,dungeon_polished_wall,dungeon_smallbrick,dungeon_stone,dungeon_tester,dungeon_tile,dungeon_tilespecial,duskritualstone,duskscribetool,earthritualstone,earthscribetool,ethereal_mimic,etherealslate,experiencebook,explosivepowder,fireritualstone,firescribetool,fortune_anointment,fragment_netherite_scrap,fungal_charge,furnacecell_primitive,goldfragment,goldgravel,goldsand,gravel_netherite_scrap,growing_doubt,growthsigil,hidden_knowledge_anointment,holy_water_anointment,icesigil,incensealtar,infusedslate,ingot_hellforged,ironfragment,irongravel,ironsand,largebloodstonebrick,lavacrystal,lavasigil,life_essence_bucket,lightritualstone,livingboots,livinghelmet,livingleggings,livingplate,looting_anointment,magicianbloodorb,masterbloodorb,masterritualstone,melee_anointment,mimic,miningsigil,nether_soil,obsidianbrickpath,obsidiantilepath,orbcapacityrune,plantoil,primitive_crystalline_resonator,primitive_explosive_cell,primitive_hydration_cell,quick_draw_anointment,rawdemoncrystal,reagentair,reagentbinding,reagentbloodlight,reagentfastminer,reagentgrowth,reagentholding,reagentlava,reagentmagnetism,reagentsight,reagentvoid,reagentwater,reinforcedslate,ritualdiviner,ritualdivinerdusk,ritualstone,ritualtinkerer,sacrificerune,sacrificialdagger,saltpeter,sand_hellforged,sand_netherite,sanguinereverter,seersigil,selfsacrificerune,shaped_charge,sigilofholding,sigilofmagnetism,silk_touch_anointment,slate_ampoule,slate_vial,smelting_anointment,soulaxe,soulforge,soulgemcommon,soulgemgreater,soulgemlesser,soulgempetty,soulpickaxe,soulscythe,soulshovel,soulsnare,soulsword,speedrune,steadfastcrystal,steadfastdemoncrystal,stonebrickpath,stonetilepath,sulfur,throwing_dagger,throwing_dagger_syringe,upgradetome,veinmine_charge,vengefulcrystal,vengefuldemoncrystal,voidsigil,waterritualstone,waterscribetool,watersigil,weakbloodorb,weakbloodshard,will_power_anointment,woodbrickpath,woodtilepath,wornstonebrickpath,wornstonetilepath|}",
+        "prefix": "@bloodmagic/items/"
+    },
+
+    "Blood Magic Entities": {
+        "body": "bloodmagic:${1|bloodlight,shapedcharge,soulsnare,throwing_dagger|}",
+        "prefix": "@bloodmagic/entities/"
+    },
+
+    "Blood Magic Potions": {
+        "body": "bloodmagic:${1|firefuse,plantleech,sacrificiallamb,soulfray,soulsnare|}",
+        "prefix": "@bloodmagic/potions/"
+    }
+
+    // No enchantments present.
+
+    // No biomes present.
+}

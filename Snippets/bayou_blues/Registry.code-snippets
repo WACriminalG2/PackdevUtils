@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Bayou Blues Blocks": {
+        "body": "bayou_blues:${1|algae,algae_thatch,algae_thatch_slab,algae_thatch_stairs,algae_thatch_vertical_slab,beard_moss,beard_moss_block,blue_lily,cyan_lily,cypress_beehive,cypress_bookshelf,cypress_branch,cypress_button,cypress_chest,cypress_door,cypress_fence,cypress_fence_gate,cypress_hedge,cypress_knee,cypress_ladder,cypress_leaf_carpet,cypress_leaves,cypress_log,cypress_planks,cypress_post,cypress_pressure_plate,cypress_sapling,cypress_sign,cypress_slab,cypress_stairs,cypress_trapdoor,cypress_trapped_chest,cypress_vertical_slab,cypress_wall_sign,cypress_wood,giant_fern,gooseberry_sack,hanging_cypress_leaves,large_cypress_knee,light_blue_lily,light_gray_lily,magenta_lily,pink_lily,potted_blue_lily,potted_cyan_lily,potted_cypress_sapling,potted_light_blue_lily,potted_light_gray_lily,potted_magenta_lily,potted_pink_lily,potted_purple_lily,potted_white_lily,purple_lily,stripped_cypress_log,stripped_cypress_post,stripped_cypress_wood,vertical_cypress_planks,white_lily|}",
+        "prefix": "@bayou_blues/blocks/"
+    },
+
+    "Bayou Blues Items": {
+        "body": "bayou_blues:${1|algae,algae_thatch,algae_thatch_slab,algae_thatch_stairs,algae_thatch_vertical_slab,beard_moss,beard_moss_block,blue_lily,cyan_lily,cypress_beehive,cypress_boat,cypress_bookshelf,cypress_branch,cypress_button,cypress_chest,cypress_door,cypress_fence,cypress_fence_gate,cypress_hedge,cypress_knee,cypress_ladder,cypress_leaf_carpet,cypress_leaves,cypress_log,cypress_planks,cypress_post,cypress_pressure_plate,cypress_sapling,cypress_sign,cypress_slab,cypress_stairs,cypress_trapdoor,cypress_trapped_chest,cypress_vertical_slab,cypress_wood,giant_fern,gooseberries,gooseberry_jam,gooseberry_jam_cookie,gooseberry_juice,gooseberry_pie,gooseberry_sack,hanging_cypress_leaves,honey_glazed_gooseberries,large_cypress_knee,light_blue_lily,light_gray_lily,magenta_lily,pink_lily,purple_lily,stripped_cypress_log,stripped_cypress_post,stripped_cypress_wood,vertical_cypress_planks,white_lily|}",
+        "prefix": "@bayou_blues/items/"
+    },
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    "Bayou Blues Biomes": {
+        "body": "bayou_blues:${1|bayou,bayou_hills|}",
+        "prefix": "@bayou_blues/biomes/"
+    }
+}

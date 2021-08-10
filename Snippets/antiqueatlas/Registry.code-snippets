@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Antique Atlas Items": {
+        "body": "antiqueatlas:${1|antique_atlas,empty_antique_atlas|}",
+        "prefix": "@antiqueatlas/items/"
+    },
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Autumnity Blocks": {
+        "body": "autumnity:${1|autumn_crocus,carved_large_pumpkin_slice,chiseled_snail_shell_bricks,cooked_turkey,cursed_jack_o_lantern,ender_jack_o_lantern,foul_berry_bush,foul_berry_bush_pips,foul_berry_sack,large_cursed_jack_o_lantern_slice,large_ender_jack_o_lantern_slice,large_jack_o_lantern_slice,large_pumpkin_slice,large_redstone_jack_o_lantern_slice,large_soul_jack_o_lantern_slice,maple_beehive,maple_bookshelf,maple_button,maple_chest,maple_door,maple_fence,maple_fence_gate,maple_hedge,maple_ladder,maple_leaf_carpet,maple_leaves,maple_log,maple_planks,maple_post,maple_pressure_plate,maple_sapling,maple_sign,maple_slab,maple_stairs,maple_trapdoor,maple_trapped_chest,maple_vertical_slab,maple_wall_sign,maple_wood,orange_maple_hedge,orange_maple_leaf_carpet,orange_maple_leaves,orange_maple_sapling,pancake,potted_autumn_crocus,potted_foul_berries,potted_maple_sapling,potted_orange_maple_sapling,potted_red_maple_sapling,potted_yellow_maple_sapling,red_maple_hedge,red_maple_leaf_carpet,red_maple_leaves,red_maple_sapling,redstone_jack_o_lantern,sappy_maple_log,sappy_maple_wood,snail_shell_block,snail_shell_brick_slab,snail_shell_brick_stairs,snail_shell_brick_vertical_slab,snail_shell_brick_wall,snail_shell_bricks,snail_shell_tile_slab,snail_shell_tile_stairs,snail_shell_tile_vertical_slab,snail_shell_tile_wall,snail_shell_tiles,snail_slime,snail_slime_block,soul_jack_o_lantern,stripped_maple_log,stripped_maple_post,stripped_maple_wood,tall_foul_berry_bush,turkey,turkey_egg_crate,vertical_maple_planks,yellow_maple_hedge,yellow_maple_leaf_carpet,yellow_maple_leaves,yellow_maple_sapling|}",
+        "prefix": "@autumnity/blocks/"
+    },
+
+    "Autumnity Items": {
+        "body": "autumnity:${1|autumn_crocus,carved_large_pumpkin_slice,chiseled_snail_shell_bricks,cooked_turkey,cooked_turkey_piece,cursed_jack_o_lantern,ender_jack_o_lantern,foul_berries,foul_berry_pips,foul_berry_sack,foul_soup,large_cursed_jack_o_lantern_slice,large_ender_jack_o_lantern_slice,large_jack_o_lantern_slice,large_pumpkin_slice,large_redstone_jack_o_lantern_slice,large_soul_jack_o_lantern_slice,maple_beehive,maple_boat,maple_bookshelf,maple_button,maple_chest,maple_door,maple_fence,maple_fence_gate,maple_hedge,maple_ladder,maple_leaf_banner_pattern,maple_leaf_carpet,maple_leaves,maple_log,maple_planks,maple_post,maple_pressure_plate,maple_sapling,maple_sign,maple_slab,maple_stairs,maple_trapdoor,maple_trapped_chest,maple_vertical_slab,maple_wood,orange_maple_hedge,orange_maple_leaf_carpet,orange_maple_leaves,orange_maple_sapling,pancake,pumpkin_bread,red_maple_hedge,red_maple_leaf_carpet,red_maple_leaves,red_maple_sapling,redstone_jack_o_lantern,sap_bottle,sappy_maple_log,sappy_maple_wood,snail_shell_block,snail_shell_brick_slab,snail_shell_brick_stairs,snail_shell_brick_vertical_slab,snail_shell_brick_wall,snail_shell_bricks,snail_shell_chestplate,snail_shell_piece,snail_shell_tile_slab,snail_shell_tile_stairs,snail_shell_tile_vertical_slab,snail_shell_tile_wall,snail_shell_tiles,snail_slime,snail_slime_block,snail_spawn_egg,soul_jack_o_lantern,stripped_maple_log,stripped_maple_post,stripped_maple_wood,swirl_banner_pattern,syrup_bottle,turkey,turkey_egg,turkey_egg_crate,turkey_piece,turkey_spawn_egg,vertical_maple_planks,yellow_maple_hedge,yellow_maple_leaf_carpet,yellow_maple_leaves,yellow_maple_sapling|}",
+        "prefix": "@autumnity/items/"
+    },
+
+    "Autumnity Entities": {
+        "body": "autumnity:${1|falling_head_block,snail,turkey,turkey_egg|}",
+        "prefix": "@autumnity/entities/"
+    },
+
+    "Autumnity Potions": {
+        "body": "autumnity:${1|extension,foul_taste|}",
+        "prefix": "@autumnity/potions/"
+    },
+
+    // No enchantments present.
+
+    // No biomes present.
+}

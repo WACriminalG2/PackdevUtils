@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Animalium Items": {
+        "body": "animalium:${1|bear_claw,bear_claw_paxel,bear_meat,bear_meat_cooked,bear_spawn_egg,bear_tamed_spawn_egg,piranha_spawn_egg,piranha_steak,piranha_steak_cooked,rat_meat,rat_meat_cooked,rat_spawn_egg,wild_dog_pelt,wild_dog_pelt_boots,wild_dog_spawn_egg|}",
+        "prefix": "@animalium/items/"
+    },
+
+    "Animalium Entities": {
+        "body": "animalium:${1|bear,bear_tamed,piranha,rat,wild_dog|}",
+        "prefix": "@animalium/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

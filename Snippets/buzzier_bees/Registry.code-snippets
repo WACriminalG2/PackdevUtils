@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Buzzier Bees Blocks": {
+        "body": "buzzier_bees:${1|acacia_beehive,allium_scented_candle,autumn_crocus_scented_candle,azure_bluet_scented_candle,birch_beehive,black_candle,blue_candle,blue_orchid_scented_candle,bluebell_scented_candle,brown_candle,buttercup,buttercup_scented_candle,candle,cartwheel_scented_candle,chiseled_honeycomb_bricks,cornflower_scented_candle,crimson_beehive,crystallized_honey_block,cursed_candle,cyan_candle,dandelion_scented_candle,dark_oak_beehive,dianthus_scented_candle,ender_candle,gilia_scented_candle,gray_candle,green_candle,honey_lamp,honey_pot,honeycomb_brick_slab,honeycomb_brick_stairs,honeycomb_brick_vertical_slab,honeycomb_brick_wall,honeycomb_bricks,honeycomb_door,honeycomb_tile_slab,honeycomb_tile_stairs,honeycomb_tile_vertical_slab,honeycomb_tile_wall,honeycomb_tiles,honeycomb_trapdoor,hot_monkey_brush_scented_candle,jungle_beehive,light_blue_candle,light_gray_candle,lily_of_the_valley_scented_candle,lime_candle,magenta_candle,magenta_hibiscus_scented_candle,orange_candle,orange_hibiscus_scented_candle,orange_tulip_scented_candle,oxeye_daisy_scented_candle,pink_candle,pink_clover,pink_clover_scented_candle,pink_hibiscus_scented_candle,pink_searocket_scented_candle,pink_tulip_scented_candle,poppy_scented_candle,potted_buttercup,potted_pink_clover,potted_white_clover,purple_candle,purple_hibiscus_scented_candle,red_candle,red_hibiscus_scented_candle,red_lotus_flower_scented_candle,red_tulip_scented_candle,scalding_monkey_brush_scented_candle,soul_candle,spruce_beehive,violet_scented_candle,warm_monkey_brush_scented_candle,warped_beehive,water_hyacinth_scented_candle,white_candle,white_clover,white_clover_scented_candle,white_lotus_flower_scented_candle,white_searocket_scented_candle,white_tulip_scented_candle,wither_rose_scented_candle,yellow_candle,yellow_hibiscus_scented_candle,yucca_flower_scented_candle|}",
+        "prefix": "@buzzier_bees/blocks/"
+    },
+
+    "Buzzier Bees Items": {
+        "body": "buzzier_bees:${1|acacia_beehive,allium_scented_candle,autumn_crocus_scented_candle,azure_bluet_scented_candle,bee_bottle,birch_beehive,black_candle,blue_candle,blue_orchid_scented_candle,bluebell_scented_candle,brown_candle,buttercup,buttercup_scented_candle,candle,cartwheel_scented_candle,chiseled_honeycomb_bricks,cornflower_scented_candle,crimson_beehive,crystallized_honey_block,cursed_candle,cyan_candle,dandelion_scented_candle,dark_oak_beehive,dianthus_scented_candle,ender_candle,endermite_bottle,four_leaf_clover,gilia_scented_candle,glazed_porkchop,gray_candle,green_candle,honey_apple,honey_bread,honey_lamp,honey_pot,honey_wand,honeycomb_banner_pattern,honeycomb_brick_slab,honeycomb_brick_stairs,honeycomb_brick_vertical_slab,honeycomb_brick_wall,honeycomb_bricks,honeycomb_door,honeycomb_tile_slab,honeycomb_tile_stairs,honeycomb_tile_vertical_slab,honeycomb_tile_wall,honeycomb_tiles,honeycomb_trapdoor,hot_monkey_brush_scented_candle,jungle_beehive,light_blue_candle,light_gray_candle,lily_of_the_valley_scented_candle,lime_candle,magenta_candle,magenta_hibiscus_scented_candle,moobloom_spawn_egg,orange_candle,orange_hibiscus_scented_candle,orange_tulip_scented_candle,oxeye_daisy_scented_candle,pink_candle,pink_clover,pink_clover_scented_candle,pink_hibiscus_scented_candle,pink_searocket_scented_candle,pink_tulip_scented_candle,poppy_scented_candle,purple_candle,purple_hibiscus_scented_candle,red_candle,red_hibiscus_scented_candle,red_lotus_flower_scented_candle,red_tulip_scented_candle,scalding_monkey_brush_scented_candle,silverfish_bottle,soul_candle,spruce_beehive,sticky_honey_wand,violet_scented_candle,warm_monkey_brush_scented_candle,warped_beehive,water_hyacinth_scented_candle,white_candle,white_clover,white_clover_scented_candle,white_lotus_flower_scented_candle,white_searocket_scented_candle,white_tulip_scented_candle,wither_rose_scented_candle,yellow_candle,yellow_hibiscus_scented_candle,yucca_flower_scented_candle|}",
+        "prefix": "@buzzier_bees/items/"
+    },
+
+    "Buzzier Bees Entities": {
+        "body": "buzzier_bees:${1|black_bear,bumblebee,grizzly_bear,moobloom|}",
+        "prefix": "@buzzier_bees/entities/"
+    },
+
+    "Buzzier Bees Potions": {
+        "body": "buzzier_bees:${1|sunny|}",
+        "prefix": "@buzzier_bees/potions/"
+    }
+
+    // No enchantments present.
+
+    // No biomes present.
+}

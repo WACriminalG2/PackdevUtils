@@ -1,0 +1,27 @@
+{
+    /* Version: ????? */
+
+    "Alex's Mobs Blocks": {
+        "body": "alexsmobs:${1|banana_peel,capsid,crocodile_egg,gustmaker,leafcutter_ant_chamber,leafcutter_anthill,void_worm_beak|}",
+        "prefix": "@alexsmobs/blocks/"
+    },
+
+    "Alex's Mobs Items": {
+        "body": "alexsmobs:${1|acacia_blossom,ambergris,animal_dictionary,banana,banana_peel,banner_pattern_australia_0,banner_pattern_australia_1,banner_pattern_bear,banner_pattern_new_mexico,bear_fur,blobfish,blobfish_bucket,blood_sac,blood_sprayer,boiled_emu_egg,bone_serpent_tooth,cachalot_whale_tooth,capsid,centipede_leg,centipede_leggings,chorus_on_a_stick,cockroach_ootheca,cockroach_wing,cockroach_wing_fragment,cooked_kangaroo_meat,cooked_lobster_tail,cooked_moose_ribs,crocodile_chestplate,crocodile_egg,crocodile_scute,dimensional_carver,dropbear_claw,echolocator,emu_egg,emu_feather,emu_leggings,enderiophage_rocket,endolocator,falconry_glove,falconry_glove_hand,falconry_glove_inventory,falconry_hood,fedora,fish_oil,frilled_shark_bucket,frontier_cap,gazelle_horn,gongylidia,guster_eye,gustmaker,halo,hemolymph_blaster,hemolymph_sac,kangaroo_burger,kangaroo_hide,kangaroo_meat,komodo_spit,komodo_spit_bottle,lava_bottle,leafcutter_ant_chamber,leafcutter_ant_pupa,leafcutter_anthill,lobster_bucket,lobster_tail,maggot,maraca,mimic_octopus_bucket,mimicream,moose_antler,moose_headgear,moose_ribs,mosquito_larva,mosquito_proboscis,music_disc_daze,music_disc_thime,mysterious_worm,platypus_bucket,pocket_sand,poison_bottle,raccoon_tail,rattlesnake_rattle,roadrunner_boots,roadrunner_feather,serrated_shark_tooth,shark_tooth,shark_tooth_arrow,shield_of_the_deep,shrimp_fried_rice,sombrero,sopa_de_macaco,soul_heart,spawn_egg_alligator_snapping_turtle,spawn_egg_bald_eagle,spawn_egg_blobfish,spawn_egg_bone_serpent,spawn_egg_cachalot_whale,spawn_egg_capuchin_monkey,spawn_egg_centipede,spawn_egg_cockroach,spawn_egg_crimson_mosquito,spawn_egg_crocodile,spawn_egg_crow,spawn_egg_dropbear,spawn_egg_elephant,spawn_egg_emu,spawn_egg_endergrade,spawn_egg_enderiophage,spawn_egg_fly,spawn_egg_frilled_shark,spawn_egg_gazelle,spawn_egg_gorilla,spawn_egg_grizzly_bear,spawn_egg_guster,spawn_egg_hammerhead_shark,spawn_egg_hummingbird,spawn_egg_kangaroo,spawn_egg_komodo_dragon,spawn_egg_leafcutter_ant,spawn_egg_lobster,spawn_egg_mantis_shrimp,spawn_egg_mimic_octopus,spawn_egg_mimicube,spawn_egg_moose,spawn_egg_mungus,spawn_egg_orca,spawn_egg_platypus,spawn_egg_raccoon,spawn_egg_rattlesnake,spawn_egg_roadrunner,spawn_egg_seal,spawn_egg_shoebill,spawn_egg_snow_leopard,spawn_egg_soul_vulture,spawn_egg_spectre,spawn_egg_straddler,spawn_egg_stradpole,spawn_egg_sunbird,spawn_egg_tarantula_hawk,spawn_egg_tasmanian_devil,spawn_egg_tiger,spawn_egg_void_worm,spawn_egg_warped_mosco,spawn_egg_warped_toad,spiked_scute,spiked_turtle_shell,straddleboard,straddlite,stradpole_bucket,tab_icon,tarantula_hawk_elytra,tarantula_hawk_wing,tarantula_hawk_wing_fragment,void_worm_beak,void_worm_eye,void_worm_mandible,warped_mixture,warped_muscle|}",
+        "prefix": "@alexsmobs/items/"
+    },
+
+    "Alex's Mobs Entities": {
+        "body": "alexsmobs:${1|alligator_snapping_turtle,bald_eagle,blobfish,bone_serpent,bone_serpent_part,cachalot_echo,cachalot_whale,capuchin_monkey,centipede_body,centipede_head,centipede_tail,cockroach,cockroach_egg,crimson_mosquito,crocodile,crow,dropbear,elephant,emu,emu_egg,endergrade,enderiophage,enderiophage_rocket,fly,frilled_shark,gazelle,gorilla,grizzly_bear,gust,guster,hammerhead_shark,hemolymph,hummingbird,kangaroo,komodo_dragon,leafcutter_ant,lobster,mantis_shrimp,mimic_octopus,mimicube,moose,mosquito_spit,mungus,orca,platypus,raccoon,rattlesnake,roadrunner,sand_shot,seal,shark_tooth_arrow,shoebill,snow_leopard,soul_vulture,spectre,straddleboard,straddler,stradpole,sunbird,tarantula_hawk,tasmanian_devil,tiger,tossed_item,void_portal,void_worm,void_worm_part,void_worm_shot,warped_mosco,warped_toad|}",
+        "prefix": "@alexsmobs/entities/"
+    },
+
+    "Alex's Mobs Potions": {
+        "body": "alexsmobs:${1|bug_pheromones,clinging,debilitating_sting,ender_flu,exsanguination,fear,knockback_resistance,lava_vision,oiled,orcas_might,poison_resistance,soulsteal,sunbird_blessing,sunbird_curse,tigers_blessing|}",
+        "prefix": "@alexsmobs/potions/"
+    }
+
+    /* No enchantments present. */
+
+    /* No biomes present. */
+}

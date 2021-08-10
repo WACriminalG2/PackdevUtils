@@ -1,16 +1,4 @@
 {
-    "AgriCraft Enchantments": {
-        "body": "agricraft:${1|agri_seed_bag|}",
-        "prefix": "@agricraft/enchant/"
-    },
-    "Apotheosis Enchantments": {
-        "body": "apotheosis:${1|bane_of_illagers,berserk,capturing,crescendo,depth_miner,hell_infusion,icy_thorns,knowledge,life_mending,magic_protection,natures_blessing,obliteration,rebounding,reflective,scavenger,sea_infusion,shield_bash,splitting,stable_footing,tempting,true_infinity|}",
-        "prefix": "@apotheosis/enchant/"
-    },
-    "Astral Sorcery Enchantments": {
-        "body": "astralsorcery:${1|night_vision,scorching_heat|}",
-        "prefix": "@astralsorcery/enchant/"
-    },
     "CoFH Core Enchantments": {
         "body": "cofh_core:${1|holding|}",
         "prefix": "@cofh_core/enchant/"

@@ -1,0 +1,24 @@
+{
+    /* Version: ????? */
+
+    "Aquaculture 2 Blocks": {
+        "body": "aquaculture:${1|farmland,neptunes_bounty,neptunium_block,tackle_box,worm_farm|}",
+        "prefix": "@aquaculture/blocks/"
+    },
+
+    "Aquaculture 2 Items": {
+        "body": "aquaculture:${1|acacia_fish_mount,algae,arapaima,arapaima_bucket,arrau_turtle,arrau_turtle_spawn_egg,atlantic_cod,atlantic_cod_bucket,atlantic_halibut,atlantic_halibut_bucket,atlantic_herring,atlantic_herring_bucket,bayad,bayad_bucket,birch_fish_mount,blackfish,blackfish_bucket,bluegill,bluegill_bucket,bobber,boulti,boulti_bucket,box,box_turtle,box_turtle_spawn_egg,brown_shrooma,brown_shrooma_bucket,brown_trout,brown_trout_bucket,capitaine,capitaine_bucket,carp,carp_bucket,catfish,catfish_bucket,dark_oak_fish_mount,diamond_fillet_knife,diamond_fishing_rod,diamond_hook,double_hook,driftwood,farmland,fish_bones,fish_fillet_cooked,fish_fillet_raw,fishing_line,frog,frog_legs_cooked,frog_legs_raw,gar,gar_bucket,gold_fillet_knife,gold_fishing_rod,gold_hook,goldfish,heavy_hook,iron_fillet_knife,iron_fishing_rod,iron_hook,jellyfish,jellyfish_bucket,jungle_fish_mount,leech,light_hook,lockbox,message_in_a_bottle,minnow,minnow_bucket,muskellunge,muskellunge_bucket,neptunes_bounty,neptunium_axe,neptunium_block,neptunium_boots,neptunium_bow,neptunium_chestplate,neptunium_fillet_knife,neptunium_fishing_rod,neptunium_helmet,neptunium_hoe,neptunium_ingot,neptunium_leggings,neptunium_nugget,neptunium_pickaxe,neptunium_shovel,neptunium_sword,nether_star_hook,note_hook,oak_fish_mount,pacific_halibut,pacific_halibut_bucket,perch,perch_bucket,pink_salmon,pink_salmon_bucket,piranha,piranha_bucket,pollock,pollock_bucket,rainbow_trout,rainbow_trout_bucket,red_grouper,red_grouper_bucket,red_shrooma,red_shrooma_bucket,redstone_hook,smallmouth_bass,smallmouth_bass_bucket,spruce_fish_mount,starshell_turtle,starshell_turtle_spawn_egg,stone_fillet_knife,sushi,synodontis,synodontis_bucket,tackle_box,tambaqui,tambaqui_bucket,tin_can,treasure_chest,tuna,tuna_bucket,turtle_soup,wooden_fillet_knife,worm,worm_farm|}",
+        "prefix": "@aquaculture/items/"
+    },
+
+    "Aquaculture 2 Entities": {
+        "body": "aquaculture:${1|acacia_fish_mount,arapaima,arrau_turtle,atlantic_cod,atlantic_halibut,atlantic_herring,bayad,birch_fish_mount,blackfish,bluegill,bobber,boulti,box_turtle,brown_shrooma,brown_trout,capitaine,carp,catfish,dark_oak_fish_mount,gar,jellyfish,jungle_fish_mount,minnow,muskellunge,oak_fish_mount,pacific_halibut,perch,pink_salmon,piranha,pollock,rainbow_trout,red_grouper,red_shrooma,smallmouth_bass,spectral_water_arrow,spruce_fish_mount,starshell_turtle,synodontis,tambaqui,tuna,water_arrow|}",
+        "prefix": "@aquaculture/entities/"
+    }
+
+    /* No potions present. */
+
+    /* No enchantments present. */
+
+    /* No biomes present. */
+}

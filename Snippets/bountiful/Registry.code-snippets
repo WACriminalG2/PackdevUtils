@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Bountiful Blocks": {
+        "body": "bountiful:${1|bountyboard|}",
+        "prefix": "@bountiful/blocks/"
+    },
+
+    "Bountiful Items": {
+        "body": "bountiful:${1|bounty,bountyboard,decree|}",
+        "prefix": "@bountiful/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

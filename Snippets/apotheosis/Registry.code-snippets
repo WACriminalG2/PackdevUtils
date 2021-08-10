@@ -1,0 +1,30 @@
+{
+    /* Version: ????? */
+
+    "Apotheosis Blocks": {
+        "body": "apotheosis:${1|beeshelf,blazing_hellshelf,boss_spawner,crystal_seashelf,draconic_endshelf,endshelf,glowing_hellshelf,heart_seashelf,hellshelf,melonshelf,pearl_endshelf,prismatic_altar,seashelf|}",
+        "prefix": "@apotheosis/blocks/"
+    },
+
+    "Apotheosis Items": {
+        "body": "apotheosis:${1|ancient_shard,ancient_tome,armor_chest_book,armor_feet_book,armor_head_book,armor_legs_book,beeshelf,blazing_hellshelf,boss_summoner,bow_book,broadhead_arrow,common_shard,common_tome,crystal_seashelf,diamond_mining_arrow,digger_book,draconic_endshelf,endshelf,epic_shard,epic_tome,explosive_arrow,farmers_leash,fishing_rod_book,glowing_hellshelf,heart_seashelf,hellshelf,iron_mining_arrow,lucky_foot,melonshelf,mythic_shard,mythic_tome,null_book,obsidian_arrow,pearl_endshelf,potion_charm,prismatic_altar,prismatic_web,rare_shard,rare_tome,scrap_tome,seashelf,uncommon_shard,uncommon_tome,weapon_book|}",
+        "prefix": "@apotheosis/items/"
+    },
+
+    "Apotheosis Entities": {
+        "body": "apotheosis:${1|bh_arrow_entity,ex_arrow_entity,mn_arrow_entity,ob_arrow_entity|}",
+        "prefix": "@apotheosis/entities/"
+    },
+
+    "Apotheosis Potions": {
+        "body": "apotheosis:${1|bleeding,knowledge,sundering|}",
+        "prefix": "@apotheosis/potions/"
+    },
+
+    "Apotheosis Enchantments": {
+        "body": "apotheosis:${1|bane_of_illagers,berserk,capturing,crescendo,depth_miner,hell_infusion,icy_thorns,knowledge,life_mending,magic_protection,natures_blessing,obliteration,rebounding,reflective,scavenger,sea_infusion,shield_bash,splitting,stable_footing,tempting,true_infinity|}",
+        "prefix": "@apotheosis/enchant/"
+    }
+
+    /* No biomes present. */
+}

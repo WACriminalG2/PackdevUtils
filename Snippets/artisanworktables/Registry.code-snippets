@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Artisan Worktables Blocks": {
+        "body": "artisanworktables:${1|mechanical_toolbox,toolbox,workshop_basic,workshop_blacksmith,workshop_carpenter,workshop_chef,workshop_chemist,workshop_designer,workshop_engineer,workshop_farmer,workshop_jeweler,workshop_mage,workshop_mason,workshop_potter,workshop_scribe,workshop_tailor,workshop_tanner,workstation_basic,workstation_blacksmith,workstation_carpenter,workstation_chef,workstation_chemist,workstation_designer,workstation_engineer,workstation_farmer,workstation_jeweler,workstation_mage,workstation_mason,workstation_potter,workstation_scribe,workstation_tailor,workstation_tanner,worktable_basic,worktable_blacksmith,worktable_carpenter,worktable_chef,worktable_chemist,worktable_designer,worktable_engineer,worktable_farmer,worktable_jeweler,worktable_mage,worktable_mason,worktable_potter,worktable_scribe,worktable_tailor,worktable_tanner|}",
+        "prefix": "@artisanworktables/blocks/"
+    },
+
+    "Artisan Worktables Items": {
+        "body": "artisanworktables:${1|mechanical_toolbox,toolbox,workshop_basic,workshop_blacksmith,workshop_carpenter,workshop_chef,workshop_chemist,workshop_designer,workshop_engineer,workshop_farmer,workshop_jeweler,workshop_mage,workshop_mason,workshop_potter,workshop_scribe,workshop_tailor,workshop_tanner,workstation_basic,workstation_blacksmith,workstation_carpenter,workstation_chef,workstation_chemist,workstation_designer,workstation_engineer,workstation_farmer,workstation_jeweler,workstation_mage,workstation_mason,workstation_potter,workstation_scribe,workstation_tailor,workstation_tanner,worktable_basic,worktable_blacksmith,worktable_carpenter,worktable_chef,worktable_chemist,worktable_designer,worktable_engineer,worktable_farmer,worktable_jeweler,worktable_mage,worktable_mason,worktable_potter,worktable_scribe,worktable_tailor,worktable_tanner|}",
+        "prefix": "@artisanworktables/items/"
+    },
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present. 
+}

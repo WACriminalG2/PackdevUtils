@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    // No items present.
+
+    "Abnormals Core Entities": {
+        "body": "abnormals_core:${1|boat|}",
+        "prefix": "@abnormals_core/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

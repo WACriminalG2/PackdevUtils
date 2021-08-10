@@ -1,0 +1,29 @@
+{
+    /* Version: ???? */
+
+    "Abundance Blocks": {
+        "body": "abundance:${1|amaranthus,budding_jacaranda_hedge,budding_jacaranda_leaf_carpet,budding_jacaranda_leaves,budding_redbud_hedge,budding_redbud_leaf_carpet,budding_redbud_leaves,chicory,flowering_jacaranda_hedge,flowering_jacaranda_leaf_carpet,flowering_jacaranda_leaves,flowering_redbud_hedge,flowering_redbud_leaf_carpet,flowering_redbud_leaves,flowering_redbud_log,flowering_redbud_sapling,flowering_redbud_wood,jacaranda_beehive,jacaranda_bookshelf,jacaranda_button,jacaranda_chest,jacaranda_door,jacaranda_fence,jacaranda_fence_gate,jacaranda_hedge,jacaranda_ladder,jacaranda_leaf_carpet,jacaranda_leaves,jacaranda_log,jacaranda_planks,jacaranda_post,jacaranda_pressure_plate,jacaranda_sapling,jacaranda_sign,jacaranda_slab,jacaranda_stairs,jacaranda_trapdoor,jacaranda_trapped_chest,jacaranda_vertical_slab,jacaranda_wall_sign,jacaranda_wood,lavender,lavender_basket,lavender_blossom_carpet,nemophila,potted_amaranthus,potted_chicory,potted_flowering_redbud_sapling,potted_jacaranda_sapling,potted_nemophila,potted_purple_african_daisy,potted_redbud_sapling,potted_saguaro_sprout,potted_shady_marigold,potted_sunny_marigold,potted_yellow_african_daisy,purple_african_daisy,redbud_beehive,redbud_bookshelf,redbud_button,redbud_chest,redbud_door,redbud_fence,redbud_fence_gate,redbud_hedge,redbud_ladder,redbud_leaf_carpet,redbud_leaves,redbud_log,redbud_planks,redbud_post,redbud_pressure_plate,redbud_sapling,redbud_sign,redbud_slab,redbud_stairs,redbud_trapdoor,redbud_trapped_chest,redbud_vertical_slab,redbud_wall_sign,redbud_wood,saguaro_cactus,saguaro_flower,saguaro_sprout,shady_marigold,small_saguaro_cactus,stripped_jacaranda_log,stripped_jacaranda_post,stripped_jacaranda_wood,stripped_redbud_log,stripped_redbud_post,stripped_redbud_wood,sunflower_seed_sack,sunny_marigold,tall_lavender,tall_marigold,vertical_jacaranda_planks,vertical_redbud_planks,yellow_african_daisy|}",
+        "prefix": "@abundance/blocks/"
+    },
+
+    "Abundance Items": {
+        "body": "abundance:${1|amaranthus,budding_jacaranda_hedge,budding_jacaranda_leaf_carpet,budding_jacaranda_leaves,budding_redbud_hedge,budding_redbud_leaf_carpet,budding_redbud_leaves,chicory,flowering_jacaranda_hedge,flowering_jacaranda_leaf_carpet,flowering_jacaranda_leaves,flowering_redbud_hedge,flowering_redbud_leaf_carpet,flowering_redbud_leaves,flowering_redbud_log,flowering_redbud_sapling,flowering_redbud_wood,jacaranda_beehive,jacaranda_boat,jacaranda_bookshelf,jacaranda_button,jacaranda_chest,jacaranda_door,jacaranda_fence,jacaranda_fence_gate,jacaranda_hedge,jacaranda_ladder,jacaranda_leaf_carpet,jacaranda_leaves,jacaranda_log,jacaranda_planks,jacaranda_post,jacaranda_pressure_plate,jacaranda_sapling,jacaranda_sign,jacaranda_slab,jacaranda_stairs,jacaranda_trapdoor,jacaranda_trapped_chest,jacaranda_vertical_slab,jacaranda_wood,lavender,lavender_basket,lavender_blossom_carpet,lavender_blossoms,lavender_salad,lavender_tea,nemophila,purple_african_daisy,redbud_beehive,redbud_boat,redbud_bookshelf,redbud_button,redbud_chest,redbud_door,redbud_fence,redbud_fence_gate,redbud_hedge,redbud_ladder,redbud_leaf_carpet,redbud_leaves,redbud_log,redbud_planks,redbud_post,redbud_pressure_plate,redbud_sapling,redbud_sign,redbud_slab,redbud_stairs,redbud_trapdoor,redbud_trapped_chest,redbud_vertical_slab,redbud_wood,saguaro_cactus,saguaro_flower,shady_marigold,small_saguaro_cactus,stripped_jacaranda_log,stripped_jacaranda_post,stripped_jacaranda_wood,stripped_redbud_log,stripped_redbud_post,stripped_redbud_wood,sunflower_seed_sack,sunflower_seeds,sunny_marigold,tall_marigold,vertical_jacaranda_planks,vertical_redbud_planks,yellow_african_daisy|}",
+        "prefix": "@abundance/items/"
+    },
+
+    /* No entities present. */
+
+    "Abundance Potions": {
+        "body": "abundance:${1|succumbing,supportive|}",
+        "prefix": "@abundance/potions/"
+    },
+
+    /* No enchantments present. */
+
+    "Abundance Biomes": {
+        "body": "abundance:${1|lavender_fields,lavender_forest,nemophila_fields|}",
+        "prefix": "@abundance/biomes/"
+    }
+
+
+}

@@ -1,0 +1,24 @@
+{
+    /* Version: ????? */
+
+    "Advanced Rocketry Blocks": {
+        "body": "advancedrocketry:${1|advrocketmotor,airlock_door,alienleaves,aliensapling,alienwood,altitudecontroller,arcfurnace,atmospheredetector,basalt,beacon,biomescanner,bipropellantfueltank,bipropellantrocketmotor,blackholegenerator,blastbrick,blocklens,blockpump,blocktitaniumaluminide,blocktitaniumiridium,centrifuge,charcoallog,chemicalreactor,circlelight,compaccesshatch,concrete,crystal,crystal_blue,crystal_cyan,crystal_green,crystal_orange,crystal_purple,crystal_red,crystal_yellow,crystallizer,cuttingmachine,databus,deployablerocketbuilder,drill,electricmushroom,electrolyser,enrichedlavablock,floader,forcefield,forcefieldprojector,fuelingstation,fueltank,funloader,geode,gravitycontroller,gravitymachine,guidancecomputer,hotturf,hydrogenfluidblock,intake,landingfloat,landingpad,lathe,launchpad,lightsource,liquidtank,microwavereciever,monitoringstation,moonturf,moonturf_dark,nitrogenfluidblock,observatory,orientationcontroller,oxygencharger,oxygenfluidblock,oxygenscrubber,oxygenvent,pipesealer,planetanalyser,planetholoselector,planetselector,planks,platepress,precisionassemblingmachine,precisionlaseretcher,qcrucible,railgun,rloader,rocketassembler,rocketfuelblock,rocketmotor,rollingmachine,runloader,satbay,satellitebuilder,satellitecontrolcenter,sawbladeassbly,seat,solararray,solararraypanel,solargenerator,solarpanel,spaceelevatorcontroller,spacelaser,stationbuilder,stationmarker,stationmonitor,structuretower,suitworkstation,terraformer,thermitetorch,thermitetorch_wall,unlittorch,unlittorch_wall,vacuumlaser,vitrifiedsand,warpcore,wirelesstransciever|}",
+        "prefix": "@advancedrocketry/blocks/"
+    },
+
+    "Advanced Rocketry Items": {
+        "body": "advancedrocketry:${1|advcircuitplate,advrocketmotor,airlock_door,alienleaves,aliensapling,alienwood,altitudecontroller,arcfurnace,atm_analyser,atmospheredetector,basalt,basic_laser_gun,basiccircuitplate,basiclens,beacon,beacon_finder,biome_changer,biomescanner,bipropellantfueltank,bipropellantrocketmotor,blackholegenerator,blastbrick,blocklens,blockpump,blocktitaniumaluminide,blocktitaniumiridium,bucketenrichedlava,buckethydrogen,bucketnitrogen,bucketoxygen,bucketrocketfuel,carbon_brick,carbon_scrubber_cartridge,centrifuge,charcoallog,chemicalreactor,chip_asteroid,chip_elevator,chip_station,circlelight,circuit_ic_adv,circuit_ic_basic,circuit_ic_control,circuit_ic_fluid_io,circuit_ic_item_io,circuit_ic_tracking,compaccesshatch,concrete,crystal,crystal_blue,crystal_cyan,crystal_green,crystal_orange,crystal_purple,crystal_red,crystal_yellow,crystallizer,cuttingmachine,databus,dataunit,deployablerocketbuilder,drill,dusttitaniumaluminide,dusttitaniumiridium,electricmushroom,electrolyser,floader,forcefield,forcefieldprojector,fuelingstation,fueltank,funloader,geartitaniumaluminide,geartitaniumiridium,geode,gravitycontroller,gravitymachine,guidancecomputer,hotturf,hovercraft,ingottitaniumaluminide,ingottitaniumiridium,intake,item_ui,jackhammer,jetpack,landingfloat,landingpad,lathe,launchpad,lightsource,liquidtank,microwavereciever,monitoringstation,moonturf,moonturf_dark,nuggettitaniumaluminide,nuggettitaniumiridium,observatory,ore_scanner,orientationcontroller,oxygencharger,oxygenscrubber,oxygenvent,pipesealer,planet_id_chip,planetanalyser,planetholoselector,planetselector,planks,platepress,platetitaniumaluminide,platetitaniumiridium,precisionassemblingmachine,precisionlaseretcher,pressure_tank_high,pressure_tank_low,pressure_tank_med,pressure_tank_superhigh,qcrucible,railgun,rloader,rocketassembler,rocketmotor,rollingmachine,runloader,satbay,satellite,satellite_id_chip,satellite_power_source_adv,satellite_power_source_basic,satellitebuilder,satellitecontrolcenter,sawbladeassbly,sawbladeiron,sealdetector,seat,sensor_biomechanger,sensor_composition,sensor_mass,sensor_microwave,sensor_optical,sensor_oremapper,sheettitaniumaluminide,sheettitaniumiridium,smallairlock,solargenerator,solarpanel,spaceboots,spacechest,spaceelevatorcontroller,spacehelmet,spacelaser,spaceleggings,spacestationcontainer,stationbuilder,stationmarker,stationmonitor,sticktitaniumaluminide,sticktitaniumiridium,structuretower,suitworkstation,terraformer,thermite,thermitetorch,unlittorch,upgrade_boots,upgrade_flight_speed,upgrade_foggles,upgrade_hover,upgrade_legs,vacuumlaser,vitrifiedsand,wafer,warpcore,wirelesstransciever|}",
+        "prefix": "@advancedrocketry/items/"
+    },
+
+    "Advanced Rocketry Entities": {
+        "body": "advancedrocketry:${1|dummy,hovercraft,itemabducted,lasernode,rocket,spaceelevator,uibutton,uiplanet,uistar|}",
+        "prefix": "@advancedrocketry/entities/"
+    },
+
+    /* No potions present. */
+
+    /* No enchantments present. */
+
+    /* No biomes present. */
+}

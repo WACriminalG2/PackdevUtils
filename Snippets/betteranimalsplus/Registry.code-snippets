@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Better Animals Plus Blocks": {
+        "body": "betteranimalsplus:${1|blackbearhead_black,blackbearhead_kermode,boarhead_1,boarhead_2,boarhead_3,boarhead_4,brownbearhead_1,coyotehead_1,deerhead_1,deerhead_2,deerhead_3,deerhead_4,feralwolfhead_arctic,feralwolfhead_black,feralwolfhead_brown,feralwolfhead_red,feralwolfhead_snowy,feralwolfhead_timber,moosehead_1,moosehead_2,moosehead_3,moosehead_4,reindeerhead_1,reindeerhead_2,reindeerhead_3,reindeerhead_4,trillium,turkey_cooked,turkey_raw|}",
+        "prefix": "@betteranimalsplus/blocks/"
+    },
+
+    "Better Animals Plus Items": {
+        "body": "betteranimalsplus:${1|advancement_icon_badger,advancement_icon_goat,advancement_icon_jellyfish,advancement_icon_jellyfish_cross,advancement_icon_lamprey,advancement_icon_octopus,advancement_icon_shark,advancement_icon_squirrel,advancement_icon_succening,antler,badger_spawn_egg,barracuda_bucket,barracuda_spawn_egg,bear_cape_black,bear_cape_brown,bear_cape_kermode,bear_skin_black,bear_skin_brown,bear_skin_kermode,blackbear_spawn_egg,blackbearhead_black,blackbearhead_kermode,blubber,boar_spawn_egg,boarhead_1,boarhead_2,boarhead_3,boarhead_4,bobbit_worm_spawn_egg,bottled_butterfly,bottled_dragonfly,brownbear_spawn_egg,brownbearhead_1,butterfly_spawn_egg,calamari_cooked,calamari_raw,coyote_spawn_egg,coyotehead_1,crab_meat_cooked,crab_meat_raw,crab_spawn_egg,deer_spawn_egg,deerhead_1,deerhead_2,deerhead_3,deerhead_4,dragonfly_spawn_egg,eel_freshwater_bucket,eel_freshwater_spawn_egg,eel_meat_cooked,eel_meat_raw,eel_saltwater_bucket,eel_saltwater_spawn_egg,feralwolf_spawn_egg,feralwolfhead_arctic,feralwolfhead_black,feralwolfhead_brown,feralwolfhead_red,feralwolfhead_snowy,feralwolfhead_timber,flying_fish_bucket,flying_fish_spawn_egg,fried_egg,goat_spawn_egg,goatcheese,goatmilk,golden_goose_egg,goose_egg,goose_spawn_egg,horseshoe_crab_blood,horseshoecrab_spawn_egg,jellyfish_bucket,jellyfish_spawn_egg,lammergeier_spawn_egg,lamprey_bucket,lamprey_spawn_egg,moose_spawn_egg,moosehead_1,moosehead_2,moosehead_3,moosehead_4,nautilus_bucket,nautilus_spawn_egg,octopus_spawn_egg,pheasant_egg,pheasant_spawn_egg,pheasantcooked,pheasantraw,piranha_bucket,piranha_spawn_egg,record_crab_rave,record_walrus,reindeer_spawn_egg,reindeerhead_1,reindeerhead_2,reindeerhead_3,reindeerhead_4,shark_spawn_egg,songbird_spawn_egg,squid_colossal_spawn_egg,squid_giant_spawn_egg,squirrel_spawn_egg,tarantula_spawn_egg,trillium,turkey_cooked,turkey_egg,turkey_leg_cooked,turkey_leg_raw,turkey_raw,turkey_spawn_egg,venisoncooked,venisonraw,walrus_spawn_egg,whale_spawn_egg,wolf_cape_arctic,wolf_cape_black,wolf_cape_brown,wolf_cape_classic,wolf_cape_red,wolf_cape_timber,wolf_pelt_arctic,wolf_pelt_black,wolf_pelt_brown,wolf_pelt_red,wolf_pelt_snowy,wolf_pelt_timber|}",
+        "prefix": "@betteranimalsplus/items/"
+    },
+
+    "Better Animals Plus Entities": {
+        "body": "betteranimalsplus:${1|badger,badgerdirt,barracuda,blackbear,boar,bobbit_worm,brownbear,butterfly,coyote,crab,deer,dragonfly,eel_freshwater,eel_saltwater,feralwolf,flying_fish,goat,golden_goose_egg,goose,goose_egg,horseshoecrab,jellyfish,lammergeier,lamprey,moose,nautilus,octopus,pheasant,pheasant_egg,piranha,reindeer,shark,songbird,squid_colossal,squid_giant,squirrel,tarantula,tarantulahair,turkey,turkey_egg,walrus,whale|}",
+        "prefix": "@betteranimalsplus/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

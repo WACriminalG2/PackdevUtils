@@ -1,0 +1,24 @@
+{
+    /* Version: ????? */
+
+    "AgriCraft Blocks": {
+        "body": "agricraft:${1|crop_plant,crop_sticks_iron,crop_sticks_obsidian,crop_sticks_wood,grate,greenhouse_air,irrigation_channel,irrigation_channel_hollow,irrigation_tank,seed_analyzer,sprinkler|}",
+        "prefix": "@agricraft/blocks/"
+    },
+
+    "AgriCraft Items": {
+        "body": "agricraft:${1|agri_channel_valve,agri_clipper,agri_journal,agri_magnifying_glass,agri_nugget_coal,agri_nugget_diamond,agri_nugget_emerald,agri_nugget_quartz,agri_rake_iron,agri_rake_wood,agri_seed,agri_seed_bag,agri_trowel,crop_sticks_iron,crop_sticks_obsidian,crop_sticks_wood,debugger,grate,irrigation_channel,irrigation_channel_hollow,irrigation_tank,seed_analyzer,sprinkler|}",
+        "prefix": "@agricraft/items/"
+    },
+
+    /* No entities present. */
+
+    /* No potions present. */
+
+    "AgriCraft Enchantments": {
+        "body": "agricraft:${1|agri_seed_bag|}",
+        "prefix": "@agricraft/enchant/"
+    }
+
+    /* No biomes present. */
+}

@@ -1,0 +1,31 @@
+{
+    // Version: ?????
+
+    "Astral Sorcery Blocks": {
+        "body": "astralsorcery:${1|altar_attunement,altar_constellation,altar_discovery,altar_radiance,aquamarine_sand_ore,attunement_altar,black_marble_arch,black_marble_bricks,black_marble_chiseled,black_marble_engraved,black_marble_pillar,black_marble_raw,black_marble_runed,black_marble_slab,black_marble_stairs,celestial_collector_crystal,celestial_crystal_cluster,celestial_gateway,chalice,flare_light,fountain,fountain_prime_liquid,fountain_prime_ore,fountain_prime_vortex,gem_crystal_cluster,glow_flower,illuminator,infused_wood,infused_wood_arch,infused_wood_column,infused_wood_engraved,infused_wood_enriched,infused_wood_infused,infused_wood_planks,infused_wood_slab,infused_wood_stairs,infuser,lens,liquid_starlight,marble_arch,marble_bricks,marble_chiseled,marble_engraved,marble_pillar,marble_raw,marble_runed,marble_slab,marble_stairs,observatory,prism,refraction_table,ritual_link,ritual_pedestal,rock_collector_crystal,rock_crystal_ore,spectral_relay,starmetal,starmetal_ore,structural,telescope,translucent_block,tree_beacon,tree_beacon_component,vanishing,well|}",
+        "prefix": "@astralsorcery/blocks/"
+    },
+
+    "Astral Sorcery Items": {
+        "body": "astralsorcery:${1|altar_attunement,altar_constellation,altar_discovery,altar_radiance,aquamarine,aquamarine_sand_ore,architect_wand,attuned_celestial_crystal,attuned_rock_crystal,attunement_altar,black_marble_arch,black_marble_bricks,black_marble_chiseled,black_marble_engraved,black_marble_pillar,black_marble_raw,black_marble_runed,black_marble_slab,black_marble_stairs,blink_wand,celestial_collector_crystal,celestial_crystal,celestial_crystal_cluster,celestial_gateway,chalice,chisel,colored_lens_break,colored_lens_damage,colored_lens_fire,colored_lens_growth,colored_lens_push,colored_lens_regeneration,colored_lens_spectral,constellation_paper,crystal_axe,crystal_pickaxe,crystal_shovel,crystal_sword,enchantment_amulet,exchange_wand,fountain,fountain_prime_liquid,fountain_prime_ore,fountain_prime_vortex,gem_crystal_cluster,glass_lens,glow_flower,grapple_wand,hand_telescope,illumination_powder,illumination_wand,illuminator,infused_crystal_axe,infused_crystal_pickaxe,infused_crystal_shovel,infused_crystal_sword,infused_glass,infused_wood,infused_wood_arch,infused_wood_column,infused_wood_engraved,infused_wood_enriched,infused_wood_infused,infused_wood_planks,infused_wood_slab,infused_wood_stairs,infuser,knowledge_share,lens,linking_tool,liquid_starlight_bucket,mantle,marble_arch,marble_bricks,marble_chiseled,marble_engraved,marble_pillar,marble_raw,marble_runed,marble_slab,marble_stairs,nocturnal_powder,observatory,parchment,perk_gem_day,perk_gem_night,perk_gem_sky,perk_seal,prism,refraction_table,resonating_gem,resonator,ritual_link,ritual_pedestal,rock_collector_crystal,rock_crystal,rock_crystal_ore,shifting_star,shifting_star_aevitas,shifting_star_armara,shifting_star_discidia,shifting_star_evorsio,shifting_star_vicio,spectral_relay,stardust,starmetal,starmetal_ingot,starmetal_ore,telescope,tome,tree_beacon,wand,well|}",
+        "prefix": "@astralsorcery/items/"
+    },
+
+    "Astral Sorcery Entities": {
+        "body": "astralsorcery:${1|flare,grappling_hook,illumination_spark,item_crystal,item_explosion_resistant,item_highlighted,item_starmetal,nocturnal_spark,observatory_helper,spectral_tool|}",
+        "prefix": "@astralsorcery/entities/"
+    },
+
+    "Astral Sorcery Potions": {
+        "body": "astralsorcery:${1|bleed,cheat_death,drop_modifier|}",
+        "prefix": "@astralsorcery/potions/"
+    },
+
+    "Astral Sorcery Enchantments": {
+        "body": "astralsorcery:${1|night_vision,scorching_heat|}",
+        "prefix": "@astralsorcery/enchant/"
+    }
+
+    // No biomes present.
+
+}

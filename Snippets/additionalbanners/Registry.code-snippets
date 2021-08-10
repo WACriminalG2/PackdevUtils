@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Additional Banners Items": {
+        "body": "additionalbanners:${1|anchor,balance,clubs,diamond,dragon,frame,grass,heart,kelp,moon,mushroom,phantom,pumpkin,shield,snowflake,spades,squares,squid,sword,trident|}",
+        "prefix": "@additionalbanners/items/"
+    },
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

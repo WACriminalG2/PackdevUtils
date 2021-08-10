@@ -1,0 +1,36 @@
+{
+    // Version: ?????
+
+    "Bumblezone Blocks": {
+        "body": "the_bumblezone:${1|beeswax_planks,empty_honeycomb_brood_block,filled_porous_honeycomb_block,honey_crystal,honeycomb_brood_block,porous_honeycomb_block,sticky_honey_redstone,sticky_honey_residue,sugar_infused_cobblestone,sugar_infused_stone,sugar_water_block|}",
+        "prefix": [
+            "@the_bumblezone/blocks/",
+            "@bumblezone/blocks/"
+        ]
+    },
+
+    "Bumblezone Items": {
+        "body": "the_bumblezone:${1|beeswax_planks,empty_honeycomb_brood_block,filled_porous_honeycomb_block,honey_crystal,honey_crystal_shards,honey_crystal_shield,honey_slime_spawn_egg,honeycomb_brood_block,music_disc_flight_of_the_bumblebee_rimsky_korsakov,music_disc_honey_bee_rat_faced_boy,porous_honeycomb_block,sticky_honey_redstone,sticky_honey_residue,sugar_infused_cobblestone,sugar_infused_stone,sugar_water_bottle,sugar_water_bucket|}",
+        "prefix": ["@the_bumblezone/items/","@bumblezone/items"]
+    },
+
+    "Bumblezone Entities": {
+        "body": "the_bumblezone:${1|honey_slime|}",
+        "prefix": [
+            "@the_bumblezone/entities/",
+            "@bumblezone/entities/"
+        ]
+    },
+
+    "Bumblezone Potions": {
+        "body": "the_bumblezone:${1|protection_of_the_hive,wrath_of_the_hive|}",
+        "prefix": [
+            "@the_bumblezone/potions/",
+            "@bumblezone/potions/"
+        ]
+    }
+
+    // No enchantments present.
+
+    // No biomes present.
+}
