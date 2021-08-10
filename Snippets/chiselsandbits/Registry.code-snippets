@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Chisels & Bits Blocks": {
+        "body": "chiselsandbits:${1|bit_storage,chisel_printer,chiseledclay,chiseledcloth,chiseledfluid,chiseledglass,chiseledgrass,chiseledground,chiseledice,chiselediron,chiseledleaves,chiseledpacked_ice,chiseledrock,chiseledsand,chiseledsnow,chiseledwood|}",
+        "prefix": "@chiselsandbits/blocks/"
+    },
+
+    "Chisels & Bits Items": {
+        "body": "chiselsandbits:${1|bit_bag,bit_bag_dyed,bit_storage,bitsaw_diamond,bitsaw_gold,bitsaw_iron,bitsaw_netherite,bitsaw_stone,block_bit,chisel_diamond,chisel_gold,chisel_iron,chisel_netherite,chisel_printer,chisel_stone,chiseledclay,chiseledcloth,chiseledfluid,chiseledglass,chiseledgrass,chiseledground,chiseledice,chiselediron,chiseledleaves,chiseledpacked_ice,chiseledrock,chiseledsand,chiseledsnow,chiseledwood,magnifying_glass,mirrorprint,mirrorprint_written,negativeprint,negativeprint_written,positiveprint,positiveprint_written,tape_measure,wrench_wood|}",
+        "prefix": "@chiselsandbits/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

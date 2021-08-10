@@ -1,42 +1,4 @@
 {
-    "Dimensional Dungeons Biomes": {
-        "body": "dimdungeons:${1|biome_dungeon|}",
-        "prefix": "@dimdungeons/biomes/"
-    },
-    "Druidcraft Biomes": {
-        "body": "druidcraft:${1|darkwood_forest|}",
-        "prefix": "@druidcraft/biomes/"
-    },
-    "Environmental Biomes": {
-        "body": "environmental:${1|marsh,mushroom_marsh,blossom_woods,blossom_hills,blossom_highlands,blossom_valleys|}",
-        "prefix": "@environmental/biomes/"
-    },
-    "EvilCraft Biomes": {
-        "body": "evilcraft:${1|degraded|}",
-        "prefix": "@evilcraft/biomes/"
-    },
-    "Exotic Critters Biomes": {
-        "body": "experimental_m:${1|tallgrasses,endongobosque,deadforest|}",
-        "prefix": [
-            "@experimental_m/biomes/",
-            "@exoticcritters/biomes/"
-        ]
-    },
-    "Fluffy's Farming Biomes": {
-        "body": "fluffy_farmer:${1|wolffir_forest|}",
-        "prefix": [
-            "@fluffy_farmer/biomes/",
-            "@fluffys_farming/biomes/"
-        ]
-    },
-    "Infernal Expansion Biomes": {
-        "body": "infernalexp:${1|glowstone_canyon|}",
-        "prefix": "@infernalexp/biomes/"
-    },
-    "Jellyfishing Biomes": {
-        "body": "jellyfishing:${1|jellyfish_fields|}",
-        "prefix": "@jellyfishing/biomes/"
-    },
     "Lord of the Rings Biomes": {
         "body": "lotr:${1|shire,mordor,anorien,rohan,misty_mountains,shire_woodlands,river,trollshaws,blue_mountains,eriador,lone_lands,ithilien,brown_lands,lothlorien,iron_hills,dunland,emyn_muil,lindon,southron_coasts,nan_curunir,forodwaith,eregion,mirkwood,grey_mountains,white_mountains,fangorn,woodland_realm,dale,angmar,harondor,enedwaith,vales_of_anduin,anduin_hills,wilderland,old_forest,breeland,chetwood,misty_mountains_foothills,blue_mountains_foothills,grey_mountains_foothills,white_mountains_foothills,mordor_mountains,forodwaith_mountains,angmar_mountains,nurn,umbar,harad_desert,lindon_woodlands,eriador_downs,lone_lands_hills,northlands,northlands_forest,sea,island,beach,tolfalas,lake,nurnen,dor_en_ernil,emyn_en_ernil,western_isles,coldfells,ettenmoors,harnennor,dagorlad,white_beach,dorwinion,emyn_winion,wold,minhiriath,eryn_vorn,druwaith_iaur,andrast,lossarnach,lebennin,pelargir,lamedon,lamedon_hills,blackroot_vale,pinnath_gelin,anfalas,northern_wilderland,northern_dale,rivendell,rivendell_hills,western_gondor,shire_moors,white_downs,midgewater,swanfleet,gladden_fields,long_marshes,nindalf,dead_marshes,mouths_of_entwash,ethir_anduin,shire_marshes,nurn_marshes,gorgoroth,forochel,lothlorien_eaves,harad_half_desert,harad_desert_hills,lostladen,eastern_desolation,northern_mirkwood,mirkwood_mountains,morgul_vale,dense_northlands_forest,snowy_northlands,snowy_northlands_forest,dense_snowy_northlands_forest,tower_hills,southron_coasts_forest,umbar_forest,umbar_hills|}",
         "prefix": [

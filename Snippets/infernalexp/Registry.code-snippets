@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Infernal Expansion Biomes": {
+        "body": "infernalexp:${1|glowstone_canyon|}",
+        "prefix": "@infernalexp/biomes/"
+    }
+}

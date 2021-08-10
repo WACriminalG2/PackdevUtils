@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Comforts Blocks": {
+        "body": "comforts:${1|hammock_black,hammock_blue,hammock_brown,hammock_cyan,hammock_gray,hammock_green,hammock_light_blue,hammock_light_gray,hammock_lime,hammock_magenta,hammock_orange,hammock_pink,hammock_purple,hammock_red,hammock_white,hammock_yellow,rope_and_nail,sleeping_bag_black,sleeping_bag_blue,sleeping_bag_brown,sleeping_bag_cyan,sleeping_bag_gray,sleeping_bag_green,sleeping_bag_light_blue,sleeping_bag_light_gray,sleeping_bag_lime,sleeping_bag_magenta,sleeping_bag_orange,sleeping_bag_pink,sleeping_bag_purple,sleeping_bag_red,sleeping_bag_white,sleeping_bag_yellow|}",
+        "prefix": "@comforts/blocks/"
+    },
+
+    "Comforts Items": {
+        "body": "comforts:${1|hammock_black,hammock_blue,hammock_brown,hammock_cyan,hammock_gray,hammock_green,hammock_light_blue,hammock_light_gray,hammock_lime,hammock_magenta,hammock_orange,hammock_pink,hammock_purple,hammock_red,hammock_white,hammock_yellow,rope_and_nail,sleeping_bag_black,sleeping_bag_blue,sleeping_bag_brown,sleeping_bag_cyan,sleeping_bag_gray,sleeping_bag_green,sleeping_bag_light_blue,sleeping_bag_light_gray,sleeping_bag_lime,sleeping_bag_magenta,sleeping_bag_orange,sleeping_bag_pink,sleeping_bag_purple,sleeping_bag_red,sleeping_bag_white,sleeping_bag_yellow|}",
+        "prefix": "@comforts/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

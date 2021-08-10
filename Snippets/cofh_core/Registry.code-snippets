@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "CoFH Core Blocks": {
+        "body": "cofh_core:${1|ender_air,glossed_magma,glow_air,lightning_air,signal_air|}",
+        "prefix": "@cofh_core/blocks/"
+    },
+
+    "CoFH Core Items": {
+        "body": "cofh_core:${1|ectoplasm|}",
+        "prefix": "@cofh_core/items/"
+    },
+
+    // No entities present.
+
+    "CoFH Core Potions": {
+        "body": "cofh_core:${1|chilled,clarity,enderference,explosion_resistance,lightning_resistance,love,magic_resistance,panacea,shocked,sundered,wrenched|}",
+        "prefix": "@cofh_core/potions/"
+    },
+
+    "CoFH Core Enchantments": {
+        "body": "cofh_core:${1|holding|}",
+        "prefix": "@cofh_core/enchant/"
+    }
+
+    // No biomes present.
+}

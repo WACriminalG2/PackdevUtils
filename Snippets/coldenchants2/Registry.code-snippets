@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Cold's Enchants 2.0 Blocks": {
+        "body": "coldenchants2:${1|lit_air,temp_sand|}",
+        "prefix": "@coldenchants2/blocks/"
+    },
+
+    // No items present.
+
+    "Cold's Enchants 2.0 Entities": {
+        "body": "coldenchants2:${1|summoned_wisp,summoner_attacker,summoner_healer|}",
+        "prefix": "@coldenchants2/entities/"
+    },
+
+    "Cold's Enchants 2.0 Potions": {
+        "body": "coldenchants2:${1|displaced_effect,miners_knowledge_effect,poison_cloud_effect,radiance_effect|}",
+        "prefix": "@coldenchants2/potions/"
+    },
+
+    "Cold's Enchants 2.0 Enchantments": {
+        "body": "coldenchants2:${1|blinding,botanist,bounding,butchering,cat_paw,chopper,cleave,counter,crit,death_wish,elder_protection,ender_pull,ender_throw,escape_artist,fireball,firebrand,float,flurry,freeze,frostball,frostfire,golden_bite,gravity,healing,hearthing,juggernaut,levitate,lifestealing,momentum,nether_bane,nether_run,night_vision,nourish,phantom,poison_cloud,poseidons_call,radiance,reinforced,renew,restful,sand_wall,scavenger,slimy,smithing,steal,strength,summoner,torchbringer,venom,wanderer,warding,water_breathing,weighted,wisdom,wisp_caller,wither,yoyo|}",
+        "prefix": "@coldenchants2/enchant/"
+    }
+
+    // No biomes present.
+}

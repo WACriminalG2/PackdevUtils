@@ -1,24 +1,4 @@
 {
-    "CoFH Core Enchantments": {
-        "body": "cofh_core:${1|holding|}",
-        "prefix": "@cofh_core/enchant/"
-    },
-    "Cold's Enchants 2.0 Enchantments": {
-        "body": "coldenchants2:${1|blinding,botanist,bounding,butchering,cat_paw,chopper,cleave,counter,crit,death_wish,elder_protection,ender_pull,ender_throw,escape_artist,fireball,firebrand,float,flurry,freeze,frostball,frostfire,golden_bite,gravity,healing,hearthing,juggernaut,levitate,lifestealing,momentum,nether_bane,nether_run,night_vision,nourish,phantom,poison_cloud,poseidons_call,radiance,reinforced,renew,restful,sand_wall,scavenger,slimy,smithing,steal,strength,summoner,torchbringer,venom,wanderer,warding,water_breathing,weighted,wisdom,wisp_caller,wither,yoyo|}",
-        "prefix": "@coldenchants2/enchant/"
-    },
-    "Cursed Enchantments": {
-        "body": "cursed:${1|blindness,curtail,dullness,echo,encumbrance,fading,fragility,ignorance,insomnia,midas,misfortune,obedience,radiance,ruin,silence,sinking|}",
-        "prefix": "@cursed/enchant/"
-    },
-    "Cursery Enchantments": {
-        "body": "cursery:${1|curse_anvil,curse_blindness,curse_electrified,curse_explosive,curse_heavy_enchant,curse_hungry,curse_hungryhealth,curse_hurtful,curse_illusion,curse_laddering,curse_loose,curse_poison,curse_recoil,curse_slowness,curse_steelfeet,curse_stubby,curse_switchy,curse_undead,curse_weakness|}",
-        "prefix": "@cursery/enchant/"
-    },
-    "Cyclic Enchantments": {
-        "body": "cyclic:${1|auto_smelt,beekeeper,beheading,curse,disarm,ender,excavate,experience_boost,growth,launch,life_leech,magnet,multishot,quickshot,reach,step,traveler,venom|}",
-        "prefix": "@cyclic/enchant/"
-    },
     "Effect Enchantments": {
         "body": "effectenchantments:${1|blinding,botening,decay,feathery,floating,gill_breathing,golden_vigor,gradualness,harming,leaping,mining,nocturnality,queasiness,radiance,repletion,shielding,starvation,strengthening,subaquatic,swiftness,tardiness,thermal_shielding,toxin,vigor,waterborne,weakening|}",
         "prefix": "@effectenchantments/enchant/"

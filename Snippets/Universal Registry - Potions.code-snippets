@@ -1,24 +1,4 @@
-{    
-    "Carrots Lib Potions": {
-        "body": "carrots:${1|attentiveness,birchsap_bucket,endurance,energized,exquisitely_stuffed,happiness,happiness_donor,honey_bucket,hydration,milk_bucket,muscle_boosted,placebo,placeholder,plenty_satisfied,resilience,resilience_donor,supremely_satisfied,well_fed|}",
-        "prefix": "@carrots/potions/"
-    },
-    "CoFH Core Potions": {
-        "body": "cofh_core:${1|chilled,clarity,enderference,explosion_resistance,lightning_resistance,love,magic_resistance,panacea,shocked,sundered,wrenched|}",
-        "prefix": "@cofh_core/potions/"
-    },
-    "Cold's Enchants 2.0 Potions": {
-        "body": "coldenchants2:${1|displaced_effect,miners_knowledge_effect,poison_cloud_effect,radiance_effect|}",
-        "prefix": "@coldenchants2/potions/"
-    },
-    "Crock Pot Potions": {
-        "body": "crockpot:${1|wither_resistance|}",
-        "prefix": "@crockpot/potions/"
-    },
-    "Cyclic Potions": {
-        "body": "cyclic:${1|stun,swimspeed|}",
-        "prefix": "@cyclic/potions/"
-    },
+{ 
     "Danny's Expansion Potions": {
         "body": "dannys_expansion:${1|cursed_flames,spores,venom|}",
         "prefix": "@dannys_expansion/potions/"

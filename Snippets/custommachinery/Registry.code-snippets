@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Custom Machinery Blocks": {
+        "body": "custommachinery:${1|custom_machine_block|}",
+        "prefix": "@custommachinery/blocks/"
+    },
+
+    "Custom Machinery Items": {
+        "body": "custommachinery:${1|box_creator_item,custom_machine_item,machine_creator_item|}",
+        "prefix": "@custommachinery/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

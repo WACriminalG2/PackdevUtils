@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "ComputerCraft Tweaked Blocks": {
+        "body": "computercraft:${1|cable,computer_advanced,computer_command,computer_normal,disk_drive,monitor_advanced,monitor_normal,printer,speaker,turtle_advanced,turtle_normal,wired_modem_full,wireless_modem_advanced,wireless_modem_normal|}",
+        "prefix": "@computercraft/blocks/"
+    },
+
+    "ComputerCraft Tweaked Items": {
+        "body": "computercraft:${1|cable,computer_advanced,computer_command,computer_normal,disk,disk_drive,monitor_advanced,monitor_normal,pocket_computer_advanced,pocket_computer_normal,printed_book,printed_page,printed_pages,printer,speaker,treasure_disk,turtle_advanced,turtle_normal,wired_modem,wired_modem_full,wireless_modem_advanced,wireless_modem_normal|}",
+        "prefix": "@computercraft/items/"
+    },
+
+    "ComputerCraft Tweaked Entities": {
+        "body": "computercraft:${1|turtle_player|}",
+        "prefix": "@computercraft/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

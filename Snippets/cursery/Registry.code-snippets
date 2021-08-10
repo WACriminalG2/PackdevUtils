@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    // No items present.
+
+    // No entities present.
+
+    // No potions present.
+
+    "Cursery Enchantments": {
+        "body": "cursery:${1|curse_anvil,curse_blindness,curse_electrified,curse_explosive,curse_heavy_enchant,curse_hungry,curse_hungryhealth,curse_hurtful,curse_illusion,curse_laddering,curse_loose,curse_poison,curse_recoil,curse_slowness,curse_steelfeet,curse_stubby,curse_switchy,curse_undead,curse_weakness|}",
+        "prefix": "@cursery/enchant/"
+    }
+
+    // No biomes present.
+}

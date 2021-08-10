@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Druidcraft Biomes": {
+        "body": "druidcraft:${1|darkwood_forest|}",
+        "prefix": "@druidcraft/biomes/"
+    }
+}

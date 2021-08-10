@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Cyclic Blocks": {
+        "body": "cyclic:${1|anvil,anvil_magma,anvil_void,apple_sprout,apple_sprout_diamond,apple_sprout_emerald,battery,battery_infinite,beacon,biomass_block,breaker,cask,clock,collector,collector_fluid,computer_shape,conveyor,crafter,crate,dark_glass,detector_entity,detector_item,detector_moon,detector_weather,dice,disenchanter,dropper,ender_controller,ender_shelf,energy_pipe,experience_pylon,eye_redstone,eye_teleport,fan,fan_slab,fireplace,fisher,flower_cyan,fluid_pipe,forester,ghost,ghost_phantom,harvester,honey_block,hopper,hopper_fluid,hopper_gold,item_infinite,item_pipe,laser,light_camo,magma_block,mason_cobble,mason_iron,mason_plate,mason_steel,mason_stone,melter,miner,peat_baked,peat_farm,peat_generator,peat_unbaked,placer,placer_fluid,plate_launch,plate_launch_redstone,rotator,scaffold_fragile,scaffold_replace,scaffold_responsive,screen,shearing,slime_block,solidifier,soundproofing,soundproofing_ghost,spikes_curse,spikes_fire,spikes_iron,sprinkler,structure,tank,terra_glass,terra_preta,trash,unbreakable_block,unbreakable_reactive,uncrafter,user,water_candle,wireless_receiver,wireless_transmitter,workbench,xpjuice_block|}",
+        "prefix": "@cyclic/blocks/"
+    },
+
+    "Cyclic Items": {
+        "body": "cyclic:${1|antigravity,antimatter_wand,anvil,anvil_magma,anvil_void,apple_bone,apple_chocolate,apple_chorus,apple_diamond,apple_emerald,apple_ender,apple_honey,apple_iron,apple_lapis,apple_prismarine,apple_sprout,apple_sprout_diamond,apple_sprout_emerald,battery,battery_infinite,beacon,biomass,biomass_bucket,blockstate_data,boomerang_carry,boomerang_damage,boomerang_stun,breaker,build_scepter,cable_wrench,carbon_paper,carrot_ender,cask,charm_antidote,charm_antipotion,charm_attack_speed,charm_boostpotion,charm_creeper,charm_crit,charm_fire,charm_home,charm_invisible,charm_knockback_resistance,charm_longfall,charm_luck,charm_magicdefense,charm_speed,charm_starvation,charm_stealthpotion,charm_stone,charm_torch,charm_torch_cave,charm_ultimate,charm_venom,charm_void,charm_water,charm_wither,charm_world,charm_xp_blocker,charm_xp_speed,chorus_flight,chorus_spectral,clock,collector,collector_fluid,computer_shape,conveyor,crafter,crafting_bag,crafting_stick,crate,crystal_axe,crystal_boots,crystal_chestplate,crystal_helmet,crystal_hoe,crystal_leggings,crystal_pickaxe,crystal_shovel,crystal_sword,dark_glass,detector_entity,detector_item,detector_moon,detector_weather,diamond_carrot_health,dice,disenchanter,dropper,elevation_wand,emerald_axe,emerald_boots,emerald_carrot_jump,emerald_chestplate,emerald_helmet,emerald_hoe,emerald_leggings,emerald_pickaxe,emerald_shovel,emerald_sword,ender_bag,ender_controller,ender_eye_reuse,ender_pearl_mounted,ender_pearl_reuse,ender_shelf,energy_pipe,evoker_fang,experience_food,experience_pylon,eye_redstone,eye_teleport,fan,fan_slab,filter_data,fire_scepter,fireplace,fisher,flippers,flower_cyan,fluid_pipe,forester,gem_amber,gem_obsidian,ghost,ghost_phantom,glove_climb,glowing_helmet,harvester,heart,heart_empty,honey_bucket,hopper,hopper_fluid,hopper_gold,ice_scepter,item_infinite,item_pipe,lapis_carrot_variant,laser,lever_remote,light_camo,lightning_scepter,location,magic_net,magma_bucket,mason_cobble,mason_iron,mason_plate,mason_steel,mason_stone,mattock,mattock_nether,melter,miner,mob_container,netherbrick_axe,netherbrick_hoe,netherbrick_pickaxe,netherbrick_shovel,netherbrick_sword,offset_scepter,peat_baked,peat_farm,peat_fuel,peat_fuel_enriched,peat_generator,peat_unbaked,placer,placer_fluid,plate_launch,plate_launch_redstone,quiver_damage,quiver_lightning,randomize_scepter,redstone_carrot_speed,replace_scepter,rotator,sandstone_axe,sandstone_hoe,sandstone_pickaxe,sandstone_shovel,sandstone_sword,scaffold_fragile,scaffold_replace,scaffold_responsive,screen,scythe_brush,scythe_forage,scythe_harvest,scythe_leaves,settings_data,shape_data,shearing,shears_flint,shears_obsidian,sleeping_mat,slime_bucket,solidifier,soundproofing,soundproofing_ghost,spawner_seeker,spell_ice,spell_water,spelunker,spikes_curse,spikes_fire,spikes_iron,sprinkler,stirrups,storage_bag,structure,tank,teleport_wand,terra_glass,terra_preta,tile_transporter,tile_transporter_empty,torch_launcher,toxic_carrot,trash,unbreakable_block,unbreakable_reactive,uncrafter,user,water_candle,wireless_receiver,wireless_transmitter,workbench,wrench,xpjuice_bucket|}",
+        "prefix": "@cyclic/items/"
+    },
+
+    "Cyclic Entities": {
+        "body": "cyclic:${1|boomerang_carry,boomerang_damage,boomerang_stun,conveyor_item,dungeon,eye,fire_bolt,lightning_bolt,magic_net,snow_bolt,torch_bolt|}",
+        "prefix": "@cyclic/entities/"
+    },
+
+    "Cyclic Potions": {
+        "body": "cyclic:${1|stun,swimspeed|}",
+        "prefix": "@cyclic/potions/"
+    },
+
+    "Cyclic Enchantments": {
+        "body": "cyclic:${1|auto_smelt,beekeeper,beheading,curse,disarm,ender,excavate,experience_boost,growth,launch,life_leech,magnet,multishot,quickshot,reach,step,traveler,venom|}",
+        "prefix": "@cyclic/enchant/"
+    }
+
+    // No biomes present.
+}

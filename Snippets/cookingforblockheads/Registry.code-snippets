@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Cooking for Blockheads Blocks": {
+        "body": "cookingforblockheads:${1|black_kitchen_floor,blue_kitchen_floor,brown_kitchen_floor,cabinet,cooking_table,corner,counter,cow_jar,cutting_board,cyan_kitchen_floor,fridge,fruit_basket,gray_kitchen_floor,green_kitchen_floor,hanging_corner,light_blue_kitchen_floor,light_gray_kitchen_floor,lime_kitchen_floor,magenta_kitchen_floor,milk_jar,orange_kitchen_floor,oven,pink_kitchen_floor,purple_kitchen_floor,red_kitchen_floor,sink,spice_rack,toaster,tool_rack,white_kitchen_floor,yellow_kitchen_floor|}",
+        "prefix": "@cookingforblockheads/blocks/"
+    },
+
+    "Cooking For Blockheads Items": {
+        "body": "cookingforblockheads:${1|black_kitchen_floor,blue_kitchen_floor,brown_kitchen_floor,cabinet,cooking_table,corner,counter,cow_jar,crafting_book,cyan_kitchen_floor,fridge,fruit_basket,gray_kitchen_floor,green_kitchen_floor,hanging_corner,heating_unit,ice_unit,light_blue_kitchen_floor,light_gray_kitchen_floor,lime_kitchen_floor,magenta_kitchen_floor,milk_jar,no_filter_edition,orange_kitchen_floor,oven,pink_kitchen_floor,preservation_chamber,purple_kitchen_floor,recipe_book,red_kitchen_floor,sink,spice_rack,toaster,tool_rack,white_kitchen_floor,yellow_kitchen_floor|}",
+        "prefix": "@cookingforblockheads/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Citadel Items": {
+        "body": "citadel:${1|citadel_book,debug|}",
+        "prefix": "@citadel/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

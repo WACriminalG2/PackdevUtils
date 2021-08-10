@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Crock Pot Blocks": {
+        "body": "crockpot:${1|asparaguses,corns,crock_pot_advanced,crock_pot_basic,crock_pot_ultimate,eggplants,onions,peppers,tomatoes,unknown_crops|}",
+        "prefix": "@crockpot/blocks/"
+    },
+
+    "Crock Pot Items": {
+        "body": "crockpot:${1|asparagus,asparagus_seeds,asparagus_soup,avaj,bacon_eggs,bone_soup,bone_stew,california_roll,candy,ceviche,cooked_egg,cooked_eggplant,cooked_frog_legs,corn,corn_seeds,crock_pot_advanced,crock_pot_basic,crock_pot_ultimate,eggplant,eggplant_seeds,fish_sticks,fish_tacos,flower_salad,food_category_dairy,food_category_egg,food_category_fish,food_category_frozen,food_category_fruit,food_category_inedible,food_category_meat,food_category_monster,food_category_sweetener,food_category_veggie,frog_legs,froggle_bunwich,fruit_medley,gazpacho,honey_ham,honey_nuggets,hot_chili,hot_cocoa,ice_cream,iced_tea,jammy_preserves,kabobs,meat_balls,milk_bottle,monster_lasagna,monster_tartare,moqueca,mushy_cake,onion,onion_seeds,pepper,pepper_popper,pepper_seeds,perogies,popcorn,potato_souffle,potato_tornado,pow_cake,pumpkin_cookie,ratatouille,salsa,seafood_gumbo,stuffed_eggplant,surf_n_turf,syrup,taffy,tea,tomato,tomato_seeds,tropical_bouillabaisse,turkey_dinner,unknown_seeds,veg_stinger,watermelon_icle,wet_goop|}",
+        "prefix": "@crockpot/items/"
+    },
+
+    // No entities present.
+
+    "Crock Pot Potions": {
+        "body": "crockpot:${1|wither_resistance|}",
+        "prefix": "@crockpot/potions/"
+    }
+
+    // No enchantments present.
+
+    // No biomes present.
+}

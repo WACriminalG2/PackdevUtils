@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "EvilCraft Biomes": {
+        "body": "evilcraft:${1|degraded|}",
+        "prefix": "@evilcraft/biomes/"
+    }
+}

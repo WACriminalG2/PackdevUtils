@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Fluffy's Farming Biomes": {
+        "body": "fluffy_farmer:${1|wolffir_forest|}",
+        "prefix": [
+            "@fluffy_farmer/biomes/",
+            "@fluffys_farming/biomes/"
+        ]
+    }
+}

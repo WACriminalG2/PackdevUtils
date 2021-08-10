@@ -8,7 +8,7 @@
         "vscode": "^1.8.0"
       },
     "repository": {"url": "https://github.com/WACriminalG2/PackdevUtils"},
-    "categories": ["Snippets"],
+    "categories": ["Snippets","Other"],
 
     "contributes": {
         "languages": [
@@ -190,6 +190,130 @@
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/byg/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/carrots/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/casinocraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ceramics/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/charm/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/chipped/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/chisel/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/chiselsandbits/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/citadel/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cofh_core/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/coldenchants2/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/comforts/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/computercraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cookingforblockheads/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/create/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cnb/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/crockpot/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/croptopia/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/culinaryconstruct/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/curios/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cursed/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cursery/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/custommachinery/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/cyclic/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/dimdungeons/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/druidcraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/environmental/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/evilcraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/experimental_m/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/fluffy_farmer/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/infernalexp/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/jellyfishing/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],

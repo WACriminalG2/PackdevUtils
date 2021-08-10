@@ -1,0 +1,33 @@
+{
+    // Version: ?????
+
+    "Creatures and Beasts Blocks": {
+        "body": "cnb:${1|lilytad_flower_block,lizard_egg_block,potted_lilytad_flower|}",
+        "prefix": [
+            "@cnb/blocks/",
+            "@creaturesandbeasts/blocks/"
+        ]
+    },
+
+    "Creatures & Beasts Items": {
+        "body": "cnb:${1|apple_slice,cindershell_bucket,cindershell_shell_shard,cindershell_spawn_egg,entity_net,lilytad_flower,lilytad_spawn_egg,little_grebe_spawn_egg,lizard_egg,lizard_item_0,lizard_item_1,lizard_item_2,lizard_item_3,lizard_spawn_egg,sporeling_crimson_fungus_egg,sporeling_nether_brown_egg,sporeling_nether_red_egg,sporeling_overworld_brown_egg,sporeling_overworld_red_egg,sporeling_warped_fungi_egg,yeti_antler,yeti_hide,yeti_spawn_egg|}",
+        "prefix": [
+            "@cnb/items/",
+            "@creaturesandbeasts/items/"
+        ]
+    },
+
+    "Creatures and Beasts Entities": {
+        "body": "cnb:${1|cindershell,friendly_sporeling,hostile_sporeling,lilytad,little_grebe,lizard,lizard_egg,neutral_sporeling,yeti|}",
+        "prefix": [
+            "@cnb/entities/",
+            "@creaturesandbeasts/entities/"
+        ]
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

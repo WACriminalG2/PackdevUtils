@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Carrots Lib Blocks": {
+        "body": "carrots:${1|liquid_honey_block,liquid_milk_block,liquid_oatmilk_block,liquid_potable_water_block,liquid_seedoil_block,liquid_squidink_block,liquid_xp_block|}",
+        "prefix": "@carrots/blocks/"
+    },
+
+    "Carrots Lib Items": {
+        "body": "carrots:${1|barter_token_base,barter_token_epic,barter_token_excellent,barter_token_good,barter_token_great,barter_token_legendary,barter_token_poor,barter_token_verygood,barter_token_verypoor,cowmilk_bucket,experience_bucket,honey_bucket,oatmilk_bucket,potable_water_bucket,seedoil_bucket,squidink_bucket|}",
+        "prefix": "@carrots/items/"
+    },
+
+    // No entities present.
+
+    "Carrots Lib Potions": {
+        "body": "carrots:${1|attentiveness,birchsap_bucket,endurance,energized,exquisitely_stuffed,happiness,happiness_donor,honey_bucket,hydration,milk_bucket,muscle_boosted,placebo,placeholder,plenty_satisfied,resilience,resilience_donor,supremely_satisfied,well_fed|}",
+        "prefix": "@carrots/potions/"
+    }
+
+    // No enchantments present.
+
+    // No biomes present.
+}

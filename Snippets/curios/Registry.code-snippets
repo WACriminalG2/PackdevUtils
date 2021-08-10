@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    "Curios Items": {
+        "body": "curios:${1|amulet,crown,knuckles,ring|}",
+        "prefix": "@curios/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Culinary Construct Blocks": {
+        "body": "culinaryconstruct:${1|culinary_station|}",
+        "prefix": "@culinaryconstruct/blocks/"
+    },
+
+    "Culinary Construct Items": {
+        "body": "culinaryconstruct:${1|culinary_station,food_bowl,sandwich|}",
+        "prefix": "@culinaryconstruct/items/"
+    }
+
+    // No entities present.
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

@@ -1,31 +1,4 @@
 {  
-    "Charm Entities": {
-        "body": "charm:${1|coral_squid,endermite_powder,glowball,moobloom|}",
-        "prefix": "@charm/entities/"
-    },
-    "Cold's Enchants 2.0 Entities": {
-        "body": "coldenchants2:${1|summoned_wisp,summoner_attacker,summoner_healer|}",
-        "prefix": "@coldenchants2/entities/"
-    },
-    "ComputerCraft Tweaked Entities": {
-        "body": "computercraft:${1|turtle_player|}",
-        "prefix": "@computercraft/entities/"
-    },
-    "Create Entities": {
-        "body": "create:${1|contraption,crafting_blueprint,gantry_contraption,potato_projectile,seat,stationary_contraption,super_glue|}",
-        "prefix": "@create/entities/"
-    },
-    "Creatures and Beasts Entities": {
-        "body": "cnb:${1|cindershell,friendly_sporeling,hostile_sporeling,lilytad,little_grebe,lizard,lizard_egg,neutral_sporeling,yeti|}",
-        "prefix": [
-            "@cnb/entities/",
-            "@creaturesandbeasts/entities/"
-        ]
-    },
-    "Cyclic Entities": {
-        "body": "cyclic:${1|boomerang_carry,boomerang_damage,boomerang_stun,conveyor_item,dungeon,eye,fire_bolt,lightning_bolt,magic_net,snow_bolt,torch_bolt|}",
-        "prefix": "@cyclic/entities/"
-    },
     "Danny's Expansion Entities": {
         "body": "dannys_expansion:${1|aquatic_bullet,arid_abomination,barren_orb,black_scorpion,blue_slime,bullet,child_rammer,cursed_fire,cursed_skull,desertic_fang,desolated,ender_arrow,ender_beast_archer,ender_beast_lancer,frozen_ghoul,frozen_slime,ghoul,golem_drone,grand_rammer,ice_arrow,ice_bullet,ice_elemental,jungle_golem,jungle_slime,kite,kite_knot,klifour,klifour_spit,magma_gulper,magma_slime,mummy,mummy_soul,mundane_slime,nyctoid,plasma_projectile,possessed_armor,rammer,sand_scarab,sand_scarab_egg,snaith,special_kite,spore,spore_bomb,spore_cloud,spore_slime,sporer,test_dummy,venom,vomit|}",
         "prefix": "@dannys_expansion/entities/"

@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Exotic Critters Biomes": {
+        "body": "experimental_m:${1|tallgrasses,endongobosque,deadforest|}",
+        "prefix": [
+            "@experimental_m/biomes/",
+            "@exoticcritters/biomes/"
+        ]
+    }
+}

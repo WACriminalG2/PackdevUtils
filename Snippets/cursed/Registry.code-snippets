@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks present.
+
+    // No items present.
+
+    // No entities present.
+
+    // No potions present.
+
+    "Cursed Enchantments": {
+        "body": "cursed:${1|blindness,curtail,dullness,echo,encumbrance,fading,fragility,ignorance,insomnia,midas,misfortune,obedience,radiance,ruin,silence,sinking|}",
+        "prefix": "@cursed/enchant/"
+    }
+
+    // No biomes present.
+}

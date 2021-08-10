@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Charm Blocks": {
+        "body": "charm:${1|acacia_barrel,acacia_bookcase,acacia_bookshelf,acacia_chest,acacia_crate,acacia_ladder,acacia_trapped_chest,birch_barrel,birch_bookcase,birch_bookshelf,birch_chest,birch_crate,birch_ladder,birch_trapped_chest,brain_sea_lantern,bubble_sea_lantern,candle,crimson_barrel,crimson_bookcase,crimson_bookshelf,crimson_chest,crimson_crate,crimson_ladder,crimson_trapped_chest,dark_oak_barrel,dark_oak_bookcase,dark_oak_bookshelf,dark_oak_chest,dark_oak_crate,dark_oak_ladder,dark_oak_trapped_chest,ender_pearl_block,entity_spawner,fire_sea_lantern,glowball_blob,gold_bars,gold_chain,gold_lantern,gold_soul_lantern,gunpowder_block,horn_sea_lantern,jungle_barrel,jungle_bookcase,jungle_bookshelf,jungle_chest,jungle_crate,jungle_ladder,jungle_trapped_chest,kiln,oak_barrel,oak_bookcase,oak_chest,oak_crate,oak_ladder,oak_trapped_chest,player_pressure_plate,redstone_lantern,redstone_sand,refined_obsidian,refined_obsidian_slab,refined_obsidian_stairs,refined_obsidian_wall,smooth_glowstone,spruce_barrel,spruce_bookcase,spruce_bookshelf,spruce_chest,spruce_crate,spruce_ladder,spruce_trapped_chest,sugar_block,tube_sea_lantern,warped_barrel,warped_bookcase,warped_bookshelf,warped_chest,warped_crate,warped_ladder,warped_trapped_chest,woodcutter|}",
+        "prefix": "@charm/blocks/"
+    },
+
+    "Charm Items": {
+        "body": "charm:${1|acacia_barrel,acacia_bookcase,acacia_bookshelf,acacia_chest,acacia_crate,acacia_ladder,acacia_trapped_chest,atlas,bat_bucket,beeswax,birch_barrel,birch_bookcase,birch_bookshelf,birch_chest,birch_crate,birch_ladder,birch_trapped_chest,brain_sea_lantern,bubble_sea_lantern,candle,coral_squid_bucket,coral_squid_spawn_egg,crimson_barrel,crimson_bookcase,crimson_bookshelf,crimson_chest,crimson_crate,crimson_ladder,crimson_trapped_chest,dark_oak_barrel,dark_oak_bookcase,dark_oak_bookshelf,dark_oak_chest,dark_oak_crate,dark_oak_ladder,dark_oak_trapped_chest,ender_pearl_block,endermite_powder,fire_sea_lantern,glowball,gold_bars,gold_chain,gold_lantern,gold_soul_lantern,gunpowder_block,horn_sea_lantern,jungle_barrel,jungle_bookcase,jungle_bookshelf,jungle_chest,jungle_crate,jungle_ladder,jungle_trapped_chest,kiln,netherite_nugget,oak_barrel,oak_bookcase,oak_chest,oak_crate,oak_ladder,oak_trapped_chest,player_pressure_plate,raid_horn,redstone_lantern,redstone_sand,refined_obsidian,refined_obsidian_slab,refined_obsidian_stairs,refined_obsidian_wall,smooth_glowstone,spruce_barrel,spruce_bookcase,spruce_bookshelf,spruce_chest,spruce_crate,spruce_ladder,spruce_trapped_chest,sugar_block,tube_sea_lantern,warped_barrel,warped_bookcase,warped_bookshelf,warped_chest,warped_crate,warped_ladder,warped_trapped_chest,woodcutter|}",
+        "prefix": "@charm/items/"
+    },
+
+    "Charm Entities": {
+        "body": "charm:${1|coral_squid,endermite_powder,glowball,moobloom|}",
+        "prefix": "@charm/entities/"
+    }
+
+    // No potions present.
+
+    // No enchantments present.
+
+    // No biomes present.
+}

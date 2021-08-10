@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Dimensional Dungeons Biomes": {
+        "body": "dimdungeons:${1|biome_dungeon|}",
+        "prefix": "@dimdungeons/biomes/"
+    }
+}

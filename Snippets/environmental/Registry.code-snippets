@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    "Environmental Biomes": {
+        "body": "environmental:${1|marsh,mushroom_marsh,blossom_woods,blossom_hills,blossom_highlands,blossom_valleys|}",
+        "prefix": "@environmental/biomes/"
+    }
+}
