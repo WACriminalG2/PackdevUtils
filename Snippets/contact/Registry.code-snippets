@@ -1,0 +1,21 @@
+{
+    // Version: 0.2.4-Beta
+
+    "Contact Blocks": {
+        "body": "contact:${1|black_mailbox,blue_mailbox,brown_mailbox,center_mailbox,cyan_mailbox,gray_mailbox,green_mailbox,green_postbox,light_blue_mailbox,light_gray_mailbox,lime_mailbox,magenta_mailbox,orange_mailbox,pink_mailbox,purple_mailbox,red_mailbox,red_postbox,white_mailbox,yellow_mailbox|}",
+        "prefix": "@contact/blocks/"
+    },
+
+    "Contact Items": {
+        "body": "contact:${1|black_mailbox,blue_mailbox,brown_mailbox,center_mailbox,cyan_mailbox,ender_parcel,ender_postcard,ender_wrapping_paper,gray_mailbox,green_mailbox,green_postbox,light_blue_mailbox,light_gray_mailbox,lime_mailbox,magenta_mailbox,mail,opened_mail,orange_mailbox,parcel,pink_mailbox,postcard,purple_mailbox,red_mailbox,red_postbox,white_mailbox,wrapping_paper,yellow_mailbox|}",
+        "prefix": "@contact/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

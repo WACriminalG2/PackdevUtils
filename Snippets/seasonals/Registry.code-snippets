@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Seasonals Blocks": {
+        "body": "seasonals:${1|pumpkin_cake,pumpkin_ice_cream_block,sweet_berry_cake,sweet_berry_ice_cream_block|}",
+        "prefix": "@seasonals/blocks/"
+    },
+
+    "Seasonals Items": {
+        "body": "seasonals:${1|chocolate_pumpkin_muffin,pumpkin_cake,pumpkin_feast,pumpkin_ice_cream,pumpkin_ice_cream_block,pumpkin_milkshake,roasted_pumpkin,sweet_berry_cake,sweet_berry_ice_cream,sweet_berry_ice_cream_block,sweet_berry_milkshake,sweet_berry_vanilla_yogurt|}",
+        "prefix": "@seasonals/items/"
+    },
+
+    // No entities.
+
+    "Seasonals Potions": {
+        "body": "seasonals:${1|fall_flavor,puppeteering,thorn_resistance|}",
+        "prefix": "@seasonals/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

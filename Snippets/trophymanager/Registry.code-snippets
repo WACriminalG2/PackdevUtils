@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Trophy Manager Blocks": {
+        "body": "trophymanager:${1|trophy|}",
+        "prefix": "@trophymanager/blocks/"
+    },
+
+    "Trophy Manager Items": {
+        "body": "trophymanager:${1|trophy|}",
+        "prefix": "@trophymanager/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

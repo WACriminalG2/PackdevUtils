@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Spartan Shields Items": {
+        "body": "spartanshields:${1|shield_basic_bronze,shield_basic_constantan,shield_basic_copper,shield_basic_diamond,shield_basic_electrum,shield_basic_gold,shield_basic_invar,shield_basic_iron,shield_basic_lead,shield_basic_netherite,shield_basic_nickel,shield_basic_obsidian,shield_basic_platinum,shield_basic_silver,shield_basic_steel,shield_basic_stone,shield_basic_tin,shield_basic_wood,shield_botania_elementium,shield_botania_manasteel,shield_botania_terrasteel,shield_mekanism_lapis_lazuli,shield_mekanism_osmium,shield_mekanism_powered_advanced,shield_mekanism_powered_basic,shield_mekanism_powered_elite,shield_mekanism_powered_ultimate,shield_mekanism_refined_glowstone,shield_mekanism_refined_obsidian,shield_tower_bronze,shield_tower_constantan,shield_tower_copper,shield_tower_diamond,shield_tower_electrum,shield_tower_gold,shield_tower_invar,shield_tower_iron,shield_tower_lead,shield_tower_netherite,shield_tower_nickel,shield_tower_obsidian,shield_tower_platinum,shield_tower_silver,shield_tower_steel,shield_tower_stone,shield_tower_tin,shield_tower_wood|}",
+        "prefix": "@spartanshields/items/"
+    },
+
+    // No entities.
+
+    // No potions.
+
+    "Spartan Shields Enchantments": {
+        "body": "spartanshields:${1|firebrand,payback,spikes|}",
+        "prefix": "@spartanshields/enchant/"
+    }
+
+    // No biomes.
+}

@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Twist Blocks": {
+        "body": "twist:${1|activemagma,ash,ashglove,ashstone,ashstonebricks,ashstonebrickslab,ashstonebrickstair,ashstonebrickwall,ashstoneslab,ashstonestair,ashstonewall,ashybrick,ashybrickslab,ashybrickstair,ashybrickwall,blisterbush,blisterbush_1,blisterbush_2,charred_fence,charred_fence_gate,charred_leaves,charred_log,charred_planks,charred_slab,charred_wood,charredboneblock,charredbrick,charredbrickslab,charredbrickstair,charredbrickwall,charredcobblestone,charreddirt,charreddoor,charredplankslab,charredplankstairs,charredroots,charredstone,charredtrapdoor,chiseledashstone,chiseledgnesis,chiseledlavabrick,chiseledvolcanicrock,crystalizedshinglesslab,crystalizedshinglestair,crystalizedshinglewall,crystalizedsulfurblock,crystalizedsulfurbrick,crystalizedsulfurbud,crystalizedsulfurslab,crystalizedsulfurstair,crystalizedsulfurtiles,crystalizedsulfurwall,darkeye,darkmass,dustycoal,emberash,emptyblisterbush,gnesisbricks,gnesisbrickslab,gnesisbrickstair,gnesisbrickwall,gnesispolished,gnesisslab,gnesisstair,gnesiswall,greyash,howlfurblock,lavabricks,lessenedcharredleaves,lightcap,lightmass,polishedashstone,polishedashstoneslab,polishedashstonestair,polishedashstonewall,polishedgnesisslab,polishedgnesisstair,polishedgnesiswall,polishedvolcanicrock,sulfurblock,sulfurdustblock,sulfurore,viscousslimeblock,volcanicbrickslab,volcanicbrickstair,volcanicbrickwall,volcaniccrumble,volcaniccrumbleslab,volcaniccrumblestair,volcaniccrumblewall,volcanicpillar,volcanicrock,volcanicrockstair,volcanicslab,volcanicwall,volcanovent|}",
+        "prefix": "@twist/blocks/"
+    },
+
+    "Twist Items": {
+        "body": "twist:${1|activemagma,ash,ashglove,ashpowder,ashstone,ashstonebricks,ashstonebrickslab,ashstonebrickstair,ashstonebrickwall,ashstoneslab,ashstonestair,ashstonewall,ashybrick,ashybrickslab,ashybrickstair,ashybrickwall,blisterberries,blisterbush,blisterbush_1,blisterbush_2,blisterjam,boomba_spawn_egg,charger_spawn_egg,chargertooth,charred_fence,charred_fence_gate,charred_leaves,charred_log,charred_planks,charred_slab,charred_wood,charredboneblock,charredbrick,charredbrickslab,charredbrickstair,charredbrickwall,charredcobblestone,charreddirt,charreddoor,charredplankslab,charredplankstairs,charredroots,charredstone,charredtrapdoor,chiseledashstone,chiseledgnesis,chiseledlavabrick,chiseledvolcanicrock,cookedstrider,crystalizedshinglesslab,crystalizedshinglestair,crystalizedshinglewall,crystalizedsulfurblock,crystalizedsulfurbrick,crystalizedsulfurbud,crystalizedsulfurslab,crystalizedsulfurstair,crystalizedsulfurtiles,crystalizedsulfurwall,darkeye,darkmass,dustycoal,emberash,emptyblisterbush,gnesisbricks,gnesisbrickslab,gnesisbrickstair,gnesisbrickwall,gnesispolished,gnesisslab,gnesisstair,gnesiswall,greyash,greyashpowder,howl_spawn_egg,howlchestplate_chestplate,howlfur,howlfurblock,lavabricks,lessenedcharredleaves,lightcap,lightmass,pebling,peblingitem,peblings_spawn_egg,polishedashstone,polishedashstoneslab,polishedashstonestair,polishedashstonewall,polishedgnesisslab,polishedgnesisstair,polishedgnesiswall,polishedvolcanicrock,powderedsulfur,rawstrider,slug_spawn_egg,slugger,slugs,spear,spearjab,sulfur,sulfurblock,sulfurdustblock,sulfurore,sweetjam,viscousslime,viscousslimeblock,volcanicbrickslab,volcanicbrickstair,volcanicbrickwall,volcaniccrumble,volcaniccrumbleslab,volcaniccrumblestair,volcaniccrumblewall,volcanicpillar,volcanicrock,volcanicrockstair,volcanicslab,volcanicwall,volcanovent|}",
+        "prefix": "@twist/items/"
+    },
+
+    "Twist Entities": {
+        "body": "twist:${1|boomba,charger,entitybulletpeblingitem,entitybulletslugger,entitybulletspearjab,howl,peblings,slug|}",
+        "prefix": "@twist/entities/"
+    },
+
+    "Twist Potions": {
+        "body": "twist:${1|afterburn,charging|}",
+        "prefix": "@twist/potions/"
+    },
+
+    // No enchantments.
+
+    "Twist Biomes": {
+        "body": "twist:${1|volcanic,charredwastes,burntforest|}",
+        "prefix": "@twist/biomes/"
+    }
+}

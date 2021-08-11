@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Water Strainer Blocks": {
+        "body": "waterstrainer:${1|strainer_base,worm_bin|}",
+        "prefix": "@waterstrainer/blocks/"
+    },
+
+    "Water Strainer Items": {
+        "body": "waterstrainer:${1|bait_pot,efficiency_meter,fertilizer,garden_trowel,iron_mesh,obsidian_mesh,strainer_base,strainer_fisherman,strainer_fisherman_reinforced,strainer_fisherman_solid,strainer_survivalist,strainer_survivalist_reinforced,strainer_survivalist_solid,string_mesh,super_worm,worm,worm_bin|}",
+        "prefix": "@waterstrainer/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Patchouli Items": {
+        "body": "patchouli:${1|guide_book|}",
+        "prefix": "@patchouli/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

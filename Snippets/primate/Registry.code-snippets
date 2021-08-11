@@ -1,0 +1,33 @@
+{
+    // Version: ?????
+
+    "Monke Madness Blocks": {
+        "body": "primate:${1|orangutan_carpet,orangutan_fur_block|}",
+        "prefix": [
+            "@primate/blocks/",
+            "@monkemadness/blocks/"
+        ]
+    },
+
+    "Monke Madness Items": {
+        "body": "primate:${1|baboon_spawn_egg,bale_monkey_spawn_egg,bonobo_spawn_egg,bush_baby_spawn_egg,carvers_knife,celebes_macaque_spawn_egg,gelada_spawn_egg,gibbon_spawn_egg,gift_card,gigantopithecus_spawn_egg,golden_banana,hamadryas_spawn_egg,howler_spawn_egg,japanese_macaque_spawn_egg,jungle_bat,mandrill_spawn_egg,monkey_motivator,music_disc_bamboo,orangutan_carpet,orangutan_cheek,orangutan_fur,orangutan_fur_block,orangutan_spawn_egg,poacher_spawn_egg,poop,primate_brain,primate_foot,proboscis_nose,proboscis_spawn_egg,rhesus_spawn_egg,ringtailed_lemur_spawn_egg,slow_loris_spawn_egg,snub_nosed_monkey_spawn_egg,tamarin_spawn_egg,tarsier_spawn_egg,uakari_forehead,uakari_spawn_egg,zombieape_spawn_egg|}",
+        "prefix": [
+            "@primate/items/",
+            "@monkemadness/items/"
+        ]
+    },
+
+    "Monke Madness Entities": {
+        "body": "primate:${1|baboon,bale_monkey,bonobo,bush_baby,celebes_macaque,gelada,gibbon,gigantopithecus,hamadryas,howler,japanese_macaque,lemur,mandrill,missing_ape,orangutan,poacher,poop,proboscis,rhesus,slow_loris,snub_nosed_monkey,tamarin,tarsier,uakari,zombieape|}",
+        "prefix": [
+            "@primate/entities/",
+            "@monkemadness/entities/"
+        ]
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Occultism Blocks": {
+        "body": "occultism:${1|candle_white,chalk_glyph_gold,chalk_glyph_purple,chalk_glyph_red,chalk_glyph_white,copper_block,copper_ore,datura,dimensional_mineshaft,golden_sacrificial_bowl,iesnium_block,iesnium_ore,iesnium_ore_natural,otherstone,otherstone_natural,otherstone_pedestal,otherstone_slab,otherworld_leaves,otherworld_leaves_natural,otherworld_log,otherworld_log_natural,otherworld_sapling,otherworld_sapling_natural,sacrificial_bowl,silver_block,silver_ore,skeleton_skull_dummy,spirit_attuned_crystal,spirit_fire,stable_wormhole,storage_controller,storage_controller_base,storage_stabilizer_tier1,storage_stabilizer_tier2,storage_stabilizer_tier3,storage_stabilizer_tier4,wither_skeleton_skull_dummy|}",
+        "prefix": "@occultism/blocks/"
+    },
+
+    "Occultism Items": {
+        "body": "occultism:${1|afrit_essence,book_of_binding_afrit,book_of_binding_bound_afrit,book_of_binding_bound_djinni,book_of_binding_bound_foliot,book_of_binding_bound_marid,book_of_binding_djinni,book_of_binding_foliot,book_of_binding_marid,book_of_calling_djinni_manage_machine,book_of_calling_foliot_cleaner,book_of_calling_foliot_lumberjack,book_of_calling_foliot_transport_items,brush,burnt_otherstone,butcher_knife,candle_white,chalk_gold,chalk_gold_impure,chalk_purple,chalk_purple_impure,chalk_red,chalk_red_impure,chalk_white,chalk_white_impure,copper_block,copper_dust,copper_ingot,copper_nugget,copper_ore,crushed_end_stone,datura,datura_seeds,debug_djinni_manage_machine,debug_djinni_test,debug_foliot_cleaner,debug_foliot_lumberjack,debug_foliot_trader,debug_foliot_transport_items,debug_wand,dictionary_of_spirits,dimensional_matrix,dimensional_mineshaft,divination_rod,familiar_ring,gold_dust,golden_sacrificial_bowl,iesnium_block,iesnium_dust,iesnium_ingot,iesnium_nugget,iesnium_ore,iesnium_ore_natural,iesnium_pickaxe,infused_lenses,infused_pickaxe,iron_dust,jei_dummy/none,jei_dummy/require_item_use,jei_dummy/require_sacrifice,lens_frame,lenses,magic_lamp_empty,miner_debug_unspecialized,miner_djinni_ores,miner_foliot_unspecialized,obsidian_dust,otherstone,otherstone_frame,otherstone_natural,otherstone_pedestal,otherstone_slab,otherstone_tablet,otherworld_ashes,otherworld_goggles,otherworld_leaves,otherworld_leaves_natural,otherworld_log,otherworld_log_natural,otherworld_sapling,otherworld_sapling_natural,pentacle,purified_ink,ritual_dummy/craft_dimensional_matrix,ritual_dummy/craft_dimensional_mineshaft,ritual_dummy/craft_familiar_ring,ritual_dummy/craft_infused_lenses,ritual_dummy/craft_infused_pickaxe,ritual_dummy/craft_miner_djinni_ores,ritual_dummy/craft_miner_foliot_unspecialized,ritual_dummy/craft_satchel,ritual_dummy/craft_soul_gem,ritual_dummy/craft_stabilizer_tier1,ritual_dummy/craft_stabilizer_tier2,ritual_dummy/craft_stabilizer_tier3,ritual_dummy/craft_stabilizer_tier4,ritual_dummy/craft_stable_wormhole,ritual_dummy/craft_storage_controller_base,ritual_dummy/craft_storage_remote,ritual_dummy/familiar_bat,ritual_dummy/familiar_greedy,ritual_dummy/familiar_otherworld_bird,ritual_dummy/familiar_parrot,ritual_dummy/possess_enderman,ritual_dummy/possess_endermite,ritual_dummy/possess_skeleton,ritual_dummy/summon_afrit_crusher,ritual_dummy/summon_afrit_rain_weather,ritual_dummy/summon_afrit_thunder_weather,ritual_dummy/summon_djinni_clear_weather,ritual_dummy/summon_djinni_crusher,ritual_dummy/summon_djinni_day_time,ritual_dummy/summon_djinni_manage_machine,ritual_dummy/summon_djinni_night_time,ritual_dummy/summon_foliot_cleaner,ritual_dummy/summon_foliot_crusher,ritual_dummy/summon_foliot_lumberjack,ritual_dummy/summon_foliot_otherstone_trader,ritual_dummy/summon_foliot_sapling_trader,ritual_dummy/summon_foliot_transport_items,ritual_dummy/summon_marid_crusher,ritual_dummy/summon_wild_afrit,ritual_dummy/summon_wild_hunt,ritual_dummy/summon_wild_otherworld_bird,ritual_dummy/summon_wild_parrot,sacrificial_bowl,satchel,silver_block,silver_dust,silver_ingot,silver_nugget,silver_ore,soul_gem,spawn_egg/afrit,spawn_egg/afrit_wild,spawn_egg/bat_familiar,spawn_egg/djinni,spawn_egg/foliot,spawn_egg/greedy_familiar,spawn_egg/marid,spawn_egg/otherworld_bird,spawn_egg/possessed_enderman,spawn_egg/possessed_endermite,spawn_egg/possessed_skeleton,spawn_egg/wild_hunt_skeleton,spawn_egg/wild_hunt_wither_skeleton,spirit_attuned_crystal,spirit_attuned_gem,spirit_attuned_pickaxe_head,spirit_fire,stable_wormhole,storage_controller,storage_controller_base,storage_remote,storage_remote_inert,storage_stabilizer_tier1,storage_stabilizer_tier2,storage_stabilizer_tier3,storage_stabilizer_tier4,tallow,wormhole_frame|}",
+        "prefix": "@occultism/items/"
+    },
+
+    "Occultism Entities": {
+        "body": "occultism:${1|afrit,afrit_wild,bat_familiar,djinni,foliot,greedy_familiar,marid,otherworld_bird,possessed_enderman,possessed_endermite,possessed_skeleton,wild_hunt_skeleton,wild_hunt_wither_skeleton|}",
+        "prefix": "@occultism/entities/"
+    },
+
+    "Occultism Potions": {
+        "body": "occultism:${1|double_jump,third_eye|}",
+        "prefix": "@occultism/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

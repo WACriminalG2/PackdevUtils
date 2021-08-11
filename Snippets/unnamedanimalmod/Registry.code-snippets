@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Unnamed Animal Mod Blocks": {
+        "body": "unnamedanimalmod:${1|chiseled_dried_mud_bricks,chiseled_mud_bricks,dried_mud_block,dried_mud_brick_slab,dried_mud_brick_stairs,dried_mud_bricks,flowering_mangrove_leaves,mangrove_button,mangrove_door,mangrove_fence,mangrove_fence_gate,mangrove_fruit,mangrove_leaves,mangrove_log,mangrove_planks,mangrove_pressure_plate,mangrove_sapling,mangrove_slab,mangrove_stairs,mangrove_trapdoor,mangrove_wood,mud_block,mud_brick_slab,mud_brick_stairs,mud_bricks,rich_farmland,salt,salt_block,stripped_mangrove_log,stripped_mangrove_wood|}",
+        "prefix": "@unnamedanimalmod/blocks/"
+    },
+
+    "Unnamed Animal Mod Items": {
+        "body": "unnamedanimalmod:${1|baby_humphead_parrotfish_bucket,banana_slug_pot,banana_slug_spawn_egg,black_diamond_stingray_bucket,black_diamond_stingray_spawn_egg,blubber,capybara_spawn_egg,chiseled_dried_mud_bricks,chiseled_mud_bricks,cooked_frog_legs,cooked_mangrove_fruit,cooked_musk_ox_shank,dried_mud_block,dried_mud_brick,dried_mud_brick_slab,dried_mud_brick_stairs,dried_mud_bricks,dried_mud_fragment,elephantnose_fish,elephantnose_fish_bucket,elephantnose_fish_spawn_egg,fiddler_crab_bucket,fiddler_crab_spawn_egg,flashlight_fish,flashlight_fish_bucket,flashlight_fish_spawn_egg,flowering_mangrove_leaves,fried_prairie_chicken_egg,frog_legs,greater_prairie_chicken_egg,greater_prairie_chicken_spawn_egg,humphead_parrotfish_spawn_egg,leafy_seadragon,leafy_seadragon_bucket,leafy_seadragon_spawn_egg,mangrove_boat,mangrove_button,mangrove_door,mangrove_fence,mangrove_fence_gate,mangrove_fruit,mangrove_leaves,mangrove_log,mangrove_planks,mangrove_pressure_plate,mangrove_sapling,mangrove_slab,mangrove_snake_egg,mangrove_snake_spawn_egg,mangrove_stairs,mangrove_trapdoor,mangrove_wood,marine_iguana_egg,marine_iguana_spawn_egg,mud_ball,mud_block,mud_brick,mud_brick_slab,mud_brick_stairs,mud_bricks,mudskipper_bucket,mudskipper_spawn_egg,musk_ox_shank,musk_ox_spawn_egg,pacman_frog_bowl,pacman_frog_egg,pacman_frog_spawn_egg,platypus_bucket,platypus_egg,platypus_spawn_egg,rich_farmland,rocket_killifish,rocket_killifish_bucket,rocket_killifish_spawn_egg,salt,salt_block,southern_right_whale_spawn_egg,spotted_garden_eel_bucket,spotted_garden_eel_spawn_egg,stripped_mangrove_log,stripped_mangrove_wood,tomato_frog_bowl,tomato_frog_egg,tomato_frog_spawn_egg|}",
+        "prefix": "@unnamedanimalmod/items/"
+    },
+
+    "Unnamed Animal Mod Entities": {
+        "body": "unnamedanimalmod:${1|banana_slug,black_diamond_stingray,capybara,elephantnose_fish,fiddler_crab,flashlight_fish,greater_prairie_chicken,greater_prairie_chicken_egg,humphead_parrotfish,leafy_seadragon,mangrove_boat,mangrove_snake,mangrove_snake_egg,marine_iguana,marine_iguana_egg,mudskipper,musk_ox,pacman_frog,platypus,platypus_egg,rocket_killifish,southern_right_whale,spotted_garden_eel,tomato_frog|}",
+        "prefix": "@unnamedanimalmod/entities/"
+    },
+
+    // No potions.
+
+    // No enchantments.
+
+    "Unnamed Animal Mod Biomes": {
+        "body": "unnamedanimalmod:${1|mangrove_forest|}",
+        "prefix": "@unnamedanimalmod/biomes/"
+    }
+}

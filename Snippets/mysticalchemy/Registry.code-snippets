@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Mystic Alchemy Blocks": {
+        "body": "mysticalchemy:${1|crucible|}",
+        "prefix": "@mysticalchemy/blocks/"
+    },
+
+    "Mystic Alchemy Items": {
+        "body": "mysticalchemy:${1|advanced_sampling_kit,crucible,crucible_spoon,simple_sampling_kit|}",
+        "prefix": "@mysticalchemy/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

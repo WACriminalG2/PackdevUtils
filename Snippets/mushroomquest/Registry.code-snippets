@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Mushroom Quest Blocks": {
+        "body": "mushroomquest:${1|acaciastump,baobabtree,bigmushroombunch,birchtree,birchtrunk,blueglowshroom,doublefern,fan_fern,fieldtrunk,fungal_bookshelf,fungal_door,fungal_fence,fungal_fence_gate,fungal_slab,fungal_stairs,fungal_trapdoor,fungalwoodplanks,glowshroomroots,glowshroomvine,glowstoolblock,glowstoolbunch,greenglowshroom,jungletrunk,koru,lanternshroomblock,magentaglowshroom,myceliumkoru,myceliumshortgrass,myceliumshrump,myceliumtallgrass,oakstump,puffballs,redwoodtree,shrump,spores,sprucestump,tall_crimson_fungi,tall_warped_fungus,tallkorubot,tinyfungibunch,tinymushroomplant,toadstool,verdantrock,willowtree,witchurn,ygdrassilsapling|}",
+        "prefix": "@mushroomquest/blocks/"
+    },
+
+    "Mushroom Quest Items": {
+        "body": "mushroomquest:${1|acaciastump,agarikon,angelswing,apricotjelly,artistconk,autumnskullcap,baobabtree,baybolete,beechmushrooms,beefsteakfungus,bigmushroombunch,birchbolete,birchpolypore,birchtree,birchtrunk,blacktruffle,bleedingfairyhelmet,bleedingtoothfungus,bluechanterelle,blueglowshroom,blueknight,bluingbolete,blushingbracket,bottleddreamscape,brewofintoxication,bristledsawgill,brownrollrim,caesarsmushroom,candlesnuff,candycap,caterpillarfungus,cauliflowerfungus,chaga,chestnutmushroom,chickenofthewoods,chingulungulu,cinnamonbracket,clusteredcoral,columnstinkhorn,commonbonnet,commonpuffball,cookeina,coraltoothfungus,crimsonwaxcap,darkscaledknight,deadly_webcap,deadmansfingers,deathcap,destroyingangels,devilsbolete,devilsbrew,devilscigar,devilsegg,dewofgiants,doublefern,dyerspolypore,earthstar,elfinsaddle,fairycharm,fairyringmushroom,falsemorel,fan_fern,fieldtrunk,flyagaric,fungal_bookshelf,fungal_door,fungal_fence,fungal_fence_gate,fungal_slab,fungal_stairs,fungal_trapdoor,fungalwoodplanks,fungling_spawn_egg,giantpolypore,giantpuffball,glowinggoo,glowshroomroots,glowshroomvine,glowstoolblock,glowstoolbunch,goldenchanterelle,goldenoyster,greenbrittlegill,greenglowshroom,growth_meld,hemlockvarnishshelf,henofthewoods,hexagonalpolypore,honeymushroom,hornofplenty,horsemushroom,indigomilkcap,inkycaps,jungletrunk,kingbolete,kingtrumpet,koru,lanternmushrooms,lanternshroomblock,latticemushroom,laughinggym,lingzhimushroom,lionsmane,lobstermushroom,magentaglowshroom,magicshrooms,manonhorseback,matsutake,meadowmushroom,micacaps,mortarandpestle,mossymazepolypore,mushroomofthesun,myceliumkoru,myceliumshortgrass,myceliumshrump,myceliumtallgrass,mycopedia,nameko,oakmazegill,oakstump,octopusstinkhorn,ointmentofburning,oldmanofthewoods,oystermushroom,panthercap,parasolmushroom,parrottoadstool,pennybun,pheasantback,pigsear,pinkwaxcap,plantpotdapperling,poisonfirecoral,portobello,puffballs,purplefairyclub,red_mushroom_cap,red_tear_mushroom,redbandedpolypore,redcrackedbolete,redwoodtree,rosyspikecap,rufousmilkcap,saffronmilkcap,sandystiltball,scaberstalk,scalypholiota,scarletcup,scarletina_bolete,shaggymane,shiitake,shortstemmedrussula,shrump,slipperyjack,snowfungus,spores,sprucestump,strawberrybracket,sulfurtuft,swamprussula,tall_crimson_fungi,tall_warped_fungus,tallkorubot,theblusher,thelastresort,theprince,tinderpolypore,tinyfungibunch,tinymushroomplant,toadstool,treeresin,truemorel,turkeytail,veiledlady,velvetfoot,verdantrock,verdigrisagaric,violetcort,weepingconk,weepingwidow,werewerekokako,whimsyfoam,willowtree,winecap,witchsbutter,witchshat,witchurn,woodblewit,woodears,woodhedgehog,woolychanterelle,woolymilkcap,wrinkledpeach,yellow_amanita,yellowstainer,ygdrassilsapling|}",
+        "prefix": "@mushroomquest/items/"
+    },
+
+    "Mushroom Quest Entities": {
+        "body": "mushroomquest:${1|brown_amanita_fungling,crimson_fungling,entitybulletbottleddreamscape,entitybulletbrewofintoxication,entitybulletdevilsbrew,morel_fungling,red_amanita_fungling,warped_fungling,wine_cap_fungling,yellow_amanita_fungling|}",
+        "prefix": "@mushroomquest/entities/"
+    },
+
+    "Mushroom Quest Potions": {
+        "body": "mushroomquest:${1|aromaticeffect|}",
+        "prefix": "@mushroomquest/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

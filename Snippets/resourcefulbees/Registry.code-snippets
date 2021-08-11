@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Resourceful Bees Blocks": {
+        "body": "resourcefulbees:${1|acacia_bee_nest,accelerator,apiary_breeder,apiary_storage,bee_nest,birch_bee_nest,bottomless_honey_pot,brown_mushroom_bee_nest,catnip_honey_block,catnip_honey_fluid_block,catnip_honeycomb_block,centrifuge,centrifuge_casing,centrifuge_controller,coal_honeycomb_block,creative_gen,creeper_honeycomb_block,crimson_bee_nest,crimson_nylium_bee_nest,dark_oak_bee_nest,diamond_honeycomb_block,dragon_honeycomb_block,elite_centrifuge_casing,elite_centrifuge_controller,emerald_honeycomb_block,ender_beecon,ender_honeycomb_block,error_preview_block,gold_flower,gold_honeycomb_block,grass_bee_nest,honey_congealer,honey_fluid_block,honey_generator,honey_pipe,iron_honeycomb_block,jungle_bee_nest,lapis_honeycomb_block,mechanical_centrifuge,nether_bee_nest,nether_honey_tank,nether_quartz_honeycomb_block,netherite_honeycomb_block,pigman_honeycomb_block,preview_block,prismarine_bee_nest,purpur_bee_nest,purpur_honey_tank,rainbow_honey,rainbow_honey_block,red_mushroom_bee_nest,redstone_honeycomb_block,rgbee_honeycomb_block,skeleton_honeycomb_block,spruce_bee_nest,t1_apiary,t1_beehive,t2_apiary,t2_beehive,t3_apiary,t3_beehive,t4_apiary,t4_beehive,warped_bee_nest,warped_nylium_bee_nest,wax_block,wither_bee_nest,wither_honeycomb_block,wooden_honey_tank,zombie_honeycomb_block|}",
+        "prefix": "@resourcefulbees/blocks/"
+    },
+
+    "Resourceful Bees Items": {
+        "body": "resourcefulbees:${1|acacia_bee_nest,apiary_breed_time_upgrade,apiary_breeder,apiary_breeder_upgrade,apiary_storage,bee_box,bee_jar,bee_nest,beepedia,bellow,birch_bee_nest,bottomless_honey_pot,brown_mushroom_bee_nest,catnip_honey_block,catnip_honey_bottle,catnip_honey_fluid_bucket,catnip_honeycomb,catnip_honeycomb_block,centrifuge,centrifuge_casing,centrifuge_controller,coal_bee_spawn_egg,coal_honeycomb,coal_honeycomb_block,crafting_bee_box,creeper_bee_spawn_egg,creeper_honeycomb,creeper_honeycomb_block,crimson_bee_nest,crimson_nylium_bee_nest,dark_oak_bee_nest,diamond_bee_spawn_egg,diamond_honeycomb,diamond_honeycomb_block,diamond_storage_upgrade,dragon_bee_spawn_egg,dragon_honeycomb,dragon_honeycomb_block,dungeon_bee_spawn_egg,elite_centrifuge_casing,elite_centrifuge_controller,emerald_bee_spawn_egg,emerald_honeycomb,emerald_honeycomb_block,emerald_storage_upgrade,ender_bee_spawn_egg,ender_beecon,ender_honeycomb,ender_honeycomb_block,fertilizer,gold_bee_spawn_egg,gold_flower,gold_honeycomb,gold_honeycomb_block,gold_storage_upgrade,grass_bee_nest,honey_congealer,honey_dipper,honey_fluid_bucket,honey_generator,icy_bee_spawn_egg,iron_bee_spawn_egg,iron_honeycomb,iron_honeycomb_block,iron_storage_upgrade,jungle_bee_nest,kitten_bee_spawn_egg,lapis_bee_spawn_egg,lapis_honeycomb,lapis_honeycomb_block,mechanical_centrifuge,nether_bee_nest,nether_honey_tank,nether_quartz_bee_spawn_egg,nether_quartz_honeycomb,nether_quartz_honeycomb_block,netherite_bee_spawn_egg,netherite_honeycomb,netherite_honeycomb_block,oreo_bee_spawn_egg,oreo_cookie,pigman_bee_spawn_egg,pigman_honeycomb,pigman_honeycomb_block,pollen,prismarine_bee_nest,purpur_bee_nest,purpur_honey_tank,rainbow_honey_block,rainbow_honey_bottle,rainbow_honey_fluid_bucket,red_mushroom_bee_nest,redstone_bee_spawn_egg,redstone_honeycomb,redstone_honeycomb_block,rgbee_bee_spawn_egg,rgbee_honeycomb,rgbee_honeycomb_block,scraper,skeleton_bee_spawn_egg,skeleton_honeycomb,skeleton_honeycomb_block,slimy_bee_spawn_egg,smoker,smoker_can,spruce_bee_nest,t1_apiary,t1_beehive,t1_hive_upgrade,t2_apiary,t2_beehive,t2_hive_upgrade,t3_apiary,t3_beehive,t3_hive_upgrade,t4_apiary,t4_beehive,t4_hive_upgrade,warped_bee_nest,warped_nylium_bee_nest,wax,wax_block,wither_bee_nest,wither_bee_spawn_egg,wither_honeycomb,wither_honeycomb_block,wooden_honey_tank,zombie_bee_spawn_egg,zombie_honeycomb,zombie_honeycomb_block|}",
+        "prefix": "@resourcefulbees/items/"
+    },
+
+    "Resourceful Bees Entities": {
+        "body": "resourcefulbees:${1|coal_bee,creeper_bee,diamond_bee,dragon_bee,dungeon_bee,emerald_bee,ender_bee,gold_bee,icy_bee,iron_bee,kitten_bee,lapis_bee,nether_quartz_bee,netherite_bee,oreo_bee,pigman_bee,redstone_bee,rgbee_bee,skeleton_bee,slimy_bee,wither_bee,zombie_bee|}",
+        "prefix": "@resourcefulbees/entities/"
+    },
+
+    "Resourceful Bees Potions": {
+        "body": "resourcefulbees:${1|calming|}",
+        "prefix": "@resourcefulbees/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

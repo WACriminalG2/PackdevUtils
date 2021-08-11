@@ -1,7 +1,9 @@
-# v1.24.0 -- 8/9/21
+# v1.24.0 -- 8/10/21
 
-* Added Wastelands of Baedoor (Blocks, Items, Entities, Potions, Enchantments) to Universal Registry.
-* Began migration of Universal Registry to distributed folders/files, to facilitate better version tracking and documentation. Unfortunately, since I didn't mark down what version I was using when I originally added things to the registry, the vast majority just have '?????' as their version until the IDs get re-dumped.
+* Added Contact, Eternal Tales, Futurepack, Mushroom Fox, Silveroak Outpost, Wastelands of Baedoor, and Wilds to Universal Registry.
+* Migrated Universal Registry to distributed folders/files, to facilitate better version tracking and documentation. Unfortunately, since I didn't mark down what version I was using when I originally started adding things to the registry, the vast majority just have '?????' as their version until/unless the IDs get re-dumped at some point.
+* No new schemas this time around, so count is still at 74.
+* Universal Registry currently supports 212 mods.
 
 # v1.23.0 -- 8/9/21
 

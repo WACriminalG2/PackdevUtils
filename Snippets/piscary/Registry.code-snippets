@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Piscary Blocks": {
+        "body": "piscary:${1|fish_trap,hatchery,recycler|}",
+        "prefix": "@piscary/blocks/"
+    },
+
+    "Piscary Items": {
+        "body": "piscary:${1|anchovy,anchovy_bucket,anchovy_spawn_egg,angelfish,angelfish_bucket,angelfish_spawn_egg,anglerfish,anglerfish_bucket,anglerfish_spawn_egg,bait,bass,bass_bucket,bass_spawn_egg,blue_tang,blue_tang_bucket,blue_tang_spawn_egg,bowfin,bowfin_bucket,bowfin_spawn_egg,butterflyfish,butterflyfish_bucket,butterflyfish_spawn_egg,carp,carp_bucket,carp_spawn_egg,catfish,catfish_bucket,catfish_spawn_egg,chub,chub_bucket,chub_spawn_egg,damselfish,damselfish_bucket,damselfish_spawn_egg,electric_ray,electric_ray_bucket,electric_ray_spawn_egg,empty_can,fish_bones,fish_fingers,fish_fossil,fish_stew,fish_trap,goldfish,goldfish_bucket,goldfish_spawn_egg,hatchery,koi,koi_bucket,koi_spawn_egg,lamprey,lamprey_bucket,lamprey_spawn_egg,lungfish,lungfish_bucket,lungfish_spawn_egg,manta_ray,manta_ray_bucket,manta_ray_spawn_egg,minnow,minnow_bucket,minnow_spawn_egg,neon_tetra,neon_tetra_bucket,neon_tetra_spawn_egg,northern_pike,northern_pike_bucket,northern_pike_spawn_egg,old_boot,perch,perch_bucket,perch_spawn_egg,pickerel,pickerel_bucket,pickerel_spawn_egg,piranha,piranha_bucket,piranha_spawn_egg,pirate_treasure,pupfish,pupfish_bucket,pupfish_spawn_egg,recycler,sardine,sardine_bucket,sardine_spawn_egg,sashimi,siamese_fighting_fish,siamese_fighting_fish_bucket,siamese_fighting_fish_spawn_egg,silver_stripe_blaasop,silver_stripe_blaasop_bucket,silver_stripe_blaasop_spawn_egg,stingray,stingray_bucket,stingray_spawn_egg,trout,trout_bucket,trout_spawn_egg,tuna,tuna_bucket,tuna_spawn_egg,walleye,walleye_bucket,walleye_spawn_egg,whitemargin_stargazer,whitemargin_stargazer_bucket,whitemargin_stargazer_spawn_egg|}",
+        "prefix": "@piscary/items/"
+    },
+
+    "Piscary Entities": {
+        "body": "piscary:${1|anchovy,angelfish,anglerfish,bass,blue_tang,bowfin,butterflyfish,carp,catfish,chub,damselfish,electric_ray,goldfish,koi,lamprey,lungfish,manta_ray,minnow,neon_tetra,northern_pike,perch,pickerel,piranha,pupfish,sardine,siamese_fighting_fish,silver_stripe_blaasop,stingray,trout,tuna,walleye,whitemargin_stargazer|}",
+        "prefix": "@piscary/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

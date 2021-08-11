@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Nature's Aura Blocks": {
+        "body": "naturesaura:${1|ancient_bark,ancient_leaves,ancient_log,ancient_planks,ancient_sapling,ancient_slab,ancient_stairs,animal_container,animal_generator,animal_spawner,aura_bloom,aura_cactus,aura_detector,aura_mushroom,aura_timer,auto_crafter,blast_furnace_booster,chorus_generator,chunk_loader,conversion_catalyst,crimson_aura_mushroom,crushing_catalyst,decayed_leaves,dimension_rail_end,dimension_rail_nether,dimension_rail_overworld,end_flower,ender_crate,field_creator,firework_generator,flower_generator,furnace_heater,generator_limit_remover,gold_brick,gold_nether_brick,gold_powder,golden_leaves,grated_chute,hopper_upgrade,infused_brick,infused_brick_slab,infused_brick_stairs,infused_iron_block,infused_slab,infused_stairs,infused_stone,item_distributor,light,moss_generator,nature_altar,nether_grass,nether_wart_mushroom,oak_generator,offering_table,pickup_stopper,placer,potion_generator,potted_aura_bloom,potted_aura_cactus,potted_aura_mushroom,potted_crimson_aura_mushroom,potted_warped_aura_mushroom,powder_placer,projectile_generator,rf_converter,slime_split_generator,snow_creator,spawn_lamp,spring,tainted_gold_block,time_changer,warped_aura_mushroom,weather_changer,wood_stand|}",
+        "prefix": "@naturesaura/blocks/"
+    },
+
+    "Nature's Aura Items": {
+        "body": "naturesaura:${1|ancient_bark,ancient_leaves,ancient_log,ancient_planks,ancient_sapling,ancient_slab,ancient_stairs,ancient_stick,animal_container,animal_generator,animal_spawner,aura_bloom,aura_bottle,aura_cache,aura_cactus,aura_detector,aura_mushroom,aura_timer,aura_trove,auto_crafter,birth_spirit,blast_furnace_booster,bottle_two_the_rebottling,break_prevention,calling_spirit,cave_finder,chorus_generator,chunk_loader,clock_hand,color_changer,conversion_catalyst,crimson_aura_mushroom,crimson_meal,crushing_catalyst,death_ring,decayed_leaves,dimension_rail_end,dimension_rail_nether,dimension_rail_overworld,effect_powder,end_city_finder,end_flower,ender_access,ender_crate,eye,eye_improved,farming_stencil,field_creator,firework_generator,flower_generator,fortress_finder,furnace_heater,generator_limit_remover,gold_brick,gold_fiber,gold_leaf,gold_nether_brick,gold_powder,golden_leaves,grated_chute,hopper_upgrade,infused_brick,infused_brick_slab,infused_brick_stairs,infused_iron,infused_iron_axe,infused_iron_block,infused_iron_chest,infused_iron_helmet,infused_iron_hoe,infused_iron_pants,infused_iron_pickaxe,infused_iron_shoes,infused_iron_shovel,infused_iron_sword,infused_slab,infused_stairs,infused_stone,item_distributor,light_staff,loot_finder,moss_generator,mover_cart,multiblock_maker,nature_altar,nether_grass,nether_wart_mushroom,netherite_finder,oak_generator,offering_table,outpost_finder,pet_reviver,pickup_stopper,placer,potion_generator,powder_placer,projectile_generator,range_visualizer,rf_converter,shockwave_creator,sky_axe,sky_chest,sky_helmet,sky_hoe,sky_ingot,sky_pants,sky_pickaxe,sky_shoes,sky_shovel,sky_sword,slime_split_generator,snow_creator,spawn_lamp,spring,tainted_gold,tainted_gold_block,time_changer,token_anger,token_euphoria,token_fear,token_grief,token_joy,token_rage,token_sorrow,token_terror,warped_aura_mushroom,weather_changer,wood_stand|}",
+        "prefix": "@naturesaura/items/"
+    },
+
+    "Nature's Aura Entities": {
+        "body": "naturesaura:${1|effect_inhibitor,light_projectile,mover_cart,structure_finder|}",
+        "prefix": "@naturesaura/entities/"
+    },
+
+    "Nature's Aura Potions": {
+        "body": "naturesaura:${1|breathless|}",
+        "prefix": "@naturesaura/potions/"
+    },
+
+    "Nature's Aura Enchantments": {
+        "body": "naturesaura:${1|aura_mending|}",
+        "prefix": "@naturesaura/enchant/"
+    }
+
+    // No biomes
+}

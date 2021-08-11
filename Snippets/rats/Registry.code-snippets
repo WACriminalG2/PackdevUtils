@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Rats Blocks": {
+        "body": "rats:${1|auto_curdler,block_of_blue_cheese,block_of_cheese,cauldron_cheese,cauldron_milk,compressed_garbage,cursed_garbage,dye_sponge,fish_barrel,garbage_pile,jack_o_ratern,manhole,marbled_cheese_raw,pied_garbage,pied_wool,purified_garbage,rat_attractor,rat_cage,rat_cage_breeding_lantern,rat_cage_decorated,rat_cage_wheel,rat_crafting_table,rat_hole,rat_quarry,rat_quarry_platform,rat_trap,rat_tube,rat_upgrade_block,trash_can,upgrade_combiner,upgrade_separator|}",
+        "prefix": "@rats/blocks/"
+    },
+
+    "Rats Items": {
+        "body": "rats:${1|archeologist_hat,assorted_vegetables,auto_curdler,bee_wing,black_death_mask,block_of_blue_cheese,block_of_cheese,blue_cheese,cauldron_cheese,cauldron_milk,centipede,charged_creeper_chunk,cheese,cheese_banner_pattern,cheese_stick,chef_toque,compressed_garbage,confit_byaldi,contaminated_food,cooked_rat,corrupt_rat_skull,creative_cheese,crimson_liquid,cursed_garbage,dragon_wing,dye_sponge,exterminator_hat,farmer_hat,feathery_wing,filth,filth_corruption,fish_barrel,fisherman_hat,garbage_pile,gilded_rat_flute,golden_rat_skull,halo_hat,herb_bundle,jack_o_ratern,little_black_squash_balls,little_black_worm,manhole,marbled_cheese_raw,music_disc_living_mice,music_disc_mice_on_venus,nether_cheese,party_hat_1,party_hat_2,party_hat_3,party_hat_4,patrol_stick,pied_garbage,pied_wool,piper_hat,pirat_hat,plague_doctor_mask,plague_doctorate,plague_essence,plague_leech,plague_scythe,plague_stew,plague_tome,plastic_waste,potato_kinishes,potato_pancake,purified_garbage,purifying_liquid,radius_stick,rat_and_crossbones_banner_pattern,rat_arrow,rat_attractor,rat_banner_pattern,rat_breeding_lantern,rat_burger,rat_cage,rat_cage_breeding_lantern,rat_cage_decorated,rat_cage_wheel,rat_capture_net,rat_crafting_table,rat_fez,rat_flute,rat_hammock_black,rat_hammock_blue,rat_hammock_brown,rat_hammock_cyan,rat_hammock_gray,rat_hammock_green,rat_hammock_light_blue,rat_hammock_light_gray,rat_hammock_lime,rat_hammock_magenta,rat_hammock_orange,rat_hammock_pink,rat_hammock_purple,rat_hammock_red,rat_hammock_white,rat_hammock_yellow,rat_hole,rat_igloo_black,rat_igloo_blue,rat_igloo_brown,rat_igloo_cyan,rat_igloo_gray,rat_igloo_green,rat_igloo_light_blue,rat_igloo_light_gray,rat_igloo_lime,rat_igloo_magenta,rat_igloo_orange,rat_igloo_pink,rat_igloo_purple,rat_igloo_red,rat_igloo_white,rat_igloo_yellow,rat_king_crown,rat_nugget,rat_nugget_ore,rat_papers,rat_paw,rat_pelt,rat_quarry,rat_quarry_platform,rat_sack,rat_seed_bowl,rat_skull,rat_trap,rat_tube,rat_tube_black,rat_tube_blue,rat_tube_brown,rat_tube_cyan,rat_tube_gray,rat_tube_green,rat_tube_light_blue,rat_tube_light_gray,rat_tube_lime,rat_tube_magenta,rat_tube_orange,rat_tube_pink,rat_tube_purple,rat_tube_red,rat_tube_white,rat_tube_yellow,rat_upgrade_advanced_energy,rat_upgrade_angel,rat_upgrade_aquatic,rat_upgrade_aristocrat,rat_upgrade_armor,rat_upgrade_asbestos,rat_upgrade_basic,rat_upgrade_basic_energy,rat_upgrade_basic_mount,rat_upgrade_beast_mount,rat_upgrade_bee,rat_upgrade_big_bucket,rat_upgrade_blacklist,rat_upgrade_block,rat_upgrade_bow,rat_upgrade_breeder,rat_upgrade_bucket,rat_upgrade_carrat,rat_upgrade_chef,rat_upgrade_chicken_mount,rat_upgrade_christmas,rat_upgrade_combined,rat_upgrade_combined_creative,rat_upgrade_crafting,rat_upgrade_creative,rat_upgrade_crossbow,rat_upgrade_damage_protection,rat_upgrade_demon,rat_upgrade_disenchanter,rat_upgrade_dragon,rat_upgrade_elite_energy,rat_upgrade_enchanter,rat_upgrade_ender,rat_upgrade_extreme_energy,rat_upgrade_farmer,rat_upgrade_fisherman,rat_upgrade_flight,rat_upgrade_gemcutter,rat_upgrade_god,rat_upgrade_golem_mount,rat_upgrade_health,rat_upgrade_jury_rigged,rat_upgrade_lumberjack,rat_upgrade_milker,rat_upgrade_miner,rat_upgrade_miner_ore,rat_upgrade_no_flute,rat_upgrade_ore_doubling,rat_upgrade_placer,rat_upgrade_platter,rat_upgrade_poison,rat_upgrade_quarry,rat_upgrade_replanter,rat_upgrade_shears,rat_upgrade_speed,rat_upgrade_strength,rat_upgrade_strider_mount,rat_upgrade_tick_accelerator,rat_upgrade_tnt,rat_upgrade_tnt_survivor,rat_upgrade_undead,rat_upgrade_underwater,rat_upgrade_voodoo,rat_upgrade_warrior,rat_upgrade_whitelist,rat_water_bottle,rat_wheel,rat_whistle,ratbow_essence,raw_plastic,raw_rat,santa_hat,spawn_egg_black_death,spawn_egg_demon_rat,spawn_egg_piper,spawn_egg_plague_beast,spawn_egg_plague_cloud,spawn_egg_plague_doctor,spawn_egg_rat,spawn_egg_rat_king,string_cheese,tangled_rat_tails,tiny_coin,token_fragment,token_piece,top_hat,trash_can,treacle,upgrade_combiner,upgrade_separator|}",
+        "prefix": "@rats/items/"
+    },
+
+    "Rats Entities": {
+        "body": "rats:${1|black_death,demon_rat,pied_piper,plague_beast,plague_cloud,plague_doctor,plague_shot,purifying_liquid,rat,rat_arrow,rat_capture_net,rat_dragon_fire,rat_king,rat_mount_beast,rat_mount_chicken,rat_mount_golem,rat_mount_strider,rat_shot,rat_spawner,small_arrow,thrown_block|}",
+        "prefix": "@rats/entities/"
+    },
+
+    "Rats Potions": {
+        "body": "rats:${1|plague,synesthesia|}",
+        "prefix": "@rats/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

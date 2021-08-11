@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Simply Tea Blocks": {
+        "body": "simplytea:${1|potted_tea_sapling,tea_fence,tea_fence_gate,tea_sapling,tea_trunk|}",
+        "prefix": "@simplytea/blocks/"
+    },
+
+    "Simply Tea Items": {
+        "body": "simplytea:${1|black_tea,chorus_petal,cup,cup_cocoa,cup_tea_black,cup_tea_chai,cup_tea_chorus,cup_tea_floral,cup_tea_green,cup_tea_iced,ice_cube,tea_fence,tea_fence_gate,tea_leaf,tea_sapling,tea_stick,teabag,teabag_black,teabag_chorus,teabag_floral,teabag_green,teapot,teapot_frothed,teapot_hot,teapot_milk,teapot_water,unfired_cup,unfired_teapot|}",
+        "prefix": "@simplytea/items/"
+    },
+
+    // No entities.
+
+    "Simply Tea Potions": {
+        "body": "simplytea:${1|caffeinated,enderfalling,invigorated,relaxed,restful|}",
+        "prefix": "@simplytea/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

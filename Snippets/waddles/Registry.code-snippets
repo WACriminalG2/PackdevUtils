@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Waddles Items": {
+        "body": "waddles:${1|adelie_penguin_spawn_egg|}",
+        "prefix": "@waddles/items/"
+    },
+
+    "Waddles Entities": {
+        "body": "waddles:${1|adelie_penguin|}",
+        "prefix": "@waddles/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

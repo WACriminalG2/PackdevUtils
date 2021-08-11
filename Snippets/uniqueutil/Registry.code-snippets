@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    // No items.
+
+    // No entities.
+
+    // No potions.
+
+    "Unique Enchantments (Util) Enchantments": {
+        "body": "uniqueutil:${1|climber,demeters_blessing,famines_odium,mounting_aegis,phanes_regret,poseidons_soul,rocketman,sleipnirs_grace,thick_pick|}",
+        "prefix": "@uniqueutil/enchant/"
+    }
+
+    // No biomes.
+}

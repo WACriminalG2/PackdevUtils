@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Psi Blocks": {
+        "body": "psi:${1|black_psimetal_plate,cad_assembler,conjured,ebony_psimetal_block,ivory_psimetal_block,lit_black_psimetal_plate,lit_white_psimetal_plate,programmer,psidust_block,psigem_block,psimetal_block,white_psimetal_plate|}",
+        "prefix": "@psi/blocks/"
+    },
+
+    "Psi Items": {
+        "body": "psi:${1|black_psimetal_plate,cad,cad_assembler,cad_assembly_creative,cad_assembly_ebony_psimetal,cad_assembly_gold,cad_assembly_iron,cad_assembly_ivory_psimetal,cad_assembly_psimetal,cad_battery_basic,cad_battery_extended,cad_battery_ultradense,cad_colorizer_black,cad_colorizer_blue,cad_colorizer_brown,cad_colorizer_cyan,cad_colorizer_empty,cad_colorizer_gray,cad_colorizer_green,cad_colorizer_light_blue,cad_colorizer_light_gray,cad_colorizer_lime,cad_colorizer_magenta,cad_colorizer_orange,cad_colorizer_pink,cad_colorizer_psi,cad_colorizer_purple,cad_colorizer_rainbow,cad_colorizer_red,cad_colorizer_white,cad_colorizer_yellow,cad_core_basic,cad_core_conductive,cad_core_hyperclocked,cad_core_overclocked,cad_core_radiative,cad_socket_basic,cad_socket_huge,cad_socket_large,cad_socket_signaling,cad_socket_transmissive,detonator,ebony_psimetal,ebony_psimetal_block,ebony_substance,exosuit_controller,exosuit_sensor_heat,exosuit_sensor_light,exosuit_sensor_stress,exosuit_sensor_trigger,exosuit_sensor_water,ivory_psimetal,ivory_psimetal_block,ivory_substance,lit_black_psimetal_plate,lit_white_psimetal_plate,programmer,psidust,psidust_block,psigem,psigem_block,psimetal,psimetal_axe,psimetal_block,psimetal_exosuit_boots,psimetal_exosuit_chestplate,psimetal_exosuit_helmet,psimetal_exosuit_leggings,psimetal_pickaxe,psimetal_shovel,psimetal_sword,spell_bullet,spell_bullet_charge,spell_bullet_circle,spell_bullet_grenade,spell_bullet_loop,spell_bullet_mine,spell_bullet_projectile,spell_drive,vector_ruler,white_psimetal_plate|}",
+        "prefix": "@psi/items/"
+    },
+
+    "Psi Entities": {
+        "body": "psi:${1|spell_charge,spell_circle,spell_grenade,spell_mine,spell_projectile|}",
+        "prefix": "@psi/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

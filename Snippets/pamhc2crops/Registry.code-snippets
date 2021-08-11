@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "HarvestCraft 2 Crops Blocks": {
+        "body": "pamhc2crops:${1|aridgarden,frostgarden,pamagavecrop,pamamaranthcrop,pamarrowrootcrop,pamartichokecrop,pamasparaguscrop,pambarleycrop,pambeancrop,pambellpeppercrop,pamblackberrycrop,pamblueberrycrop,pambroccolicrop,pambrusselsproutcrop,pamcabbagecrop,pamcactusfruitcrop,pamcandleberrycrop,pamcantaloupecrop,pamcassavacrop,pamcauliflowercrop,pamcelerycrop,pamchickpeacrop,pamchilipeppercrop,pamcoffeebeancrop,pamcorncrop,pamcottoncrop,pamcranberrycrop,pamcucumbercrop,pameggplantcrop,pamelderberrycrop,pamflaxcrop,pamgarliccrop,pamgingercrop,pamgrapecrop,pamgreengrapecrop,pamhuckleberrycrop,pamjicamacrop,pamjuniperberrycrop,pamjutecrop,pamkalecrop,pamkenafcrop,pamkiwicrop,pamkohlrabicrop,pamleekcrop,pamlentilcrop,pamlettucecrop,pammilletcrop,pammulberrycrop,pammustardseedscrop,pamoatscrop,pamokracrop,pamonioncrop,pamparsnipcrop,pampeanutcrop,pampeascrop,pampineapplecrop,pamquinoacrop,pamradishcrop,pamraspberrycrop,pamrhubarbcrop,pamricecrop,pamrutabagacrop,pamryecrop,pamscallioncrop,pamsesameseedscrop,pamsisalcrop,pamsoybeancrop,pamspiceleafcrop,pamspinachcrop,pamstrawberrycrop,pamsweetpotatocrop,pamtarocrop,pamtealeafcrop,pamtomatillocrop,pamtomatocrop,pamturnipcrop,pamwaterchestnutcrop,pamwhitemushroomcrop,pamwintersquashcrop,pamzucchinicrop,shadedgarden,soggygarden,tropicalgarden,windygarden|}",
+        "prefix": [
+            "@harvestcraft2crops/blocks/",
+            "@pamhc2crops/blocks/"
+        ]
+    },
+
+    "HarvestCraft 2 Crops Items": {
+        "body": "pamhc2crops:${1|agaveitem,agaveseeditem,amaranthitem,amaranthseeditem,aridgarden,arrowrootitem,arrowrootseeditem,artichokeitem,artichokeseeditem,asparagusitem,asparagusseeditem,bakedarrowrootitem,bakedcassavaitem,bakedjicamaitem,bakedparsnipitem,bakedrutabagaitem,bakedsweetpotatoitem,bakedtaroitem,bakedturnipitem,bakedwaterchestnutitem,barleyitem,barleyseeditem,beanitem,beanseeditem,bellpepperitem,bellpepperseeditem,blackberryitem,blackberryseeditem,blueberryitem,blueberryseeditem,broccoliitem,broccoliseeditem,brusselsproutitem,brusselsproutseeditem,cabbageitem,cabbageseeditem,cactusfruititem,cactusfruitseeditem,candleberryitem,candleberryseeditem,cantaloupeitem,cantaloupeseeditem,cassavaitem,cassavaseeditem,caulifloweritem,cauliflowerseeditem,celeryitem,celeryseeditem,chickpeaitem,chickpeaseeditem,chilipepperitem,chilipepperseeditem,coffeebeanitem,coffeebeanseeditem,cornitem,cornseeditem,cottonitem,cottonseeditem,cranberryitem,cranberryseeditem,cucumberitem,cucumberseeditem,eggplantitem,eggplantseeditem,elderberryitem,elderberryseeditem,flaxitem,flaxseeditem,frostgarden,garlicitem,garlicseeditem,gingeritem,gingerseeditem,grapeitem,grapeseeditem,greengrapeitem,greengrapeseeditem,hotcoffeeitem,hotteaitem,huckleberryitem,huckleberryseeditem,jicamaitem,jicamaseeditem,juniperberryitem,juniperberryseeditem,juteitem,juteseeditem,kaleitem,kaleseeditem,kenafitem,kenafseeditem,kiwiitem,kiwiseeditem,kohlrabiitem,kohlrabiseeditem,leekitem,leekseeditem,lentilitem,lentilseeditem,lettuceitem,lettuceseeditem,milletitem,milletseeditem,mulberryitem,mulberryseeditem,mustardseedsitem,mustardseedsseeditem,oatsitem,oatsseeditem,okraitem,okraseeditem,onionitem,onionseeditem,parsnipitem,parsnipseeditem,peanutitem,peanutseeditem,peasitem,peasseeditem,pineappleitem,pineappleseeditem,quinoaitem,quinoaseeditem,radishitem,radishseeditem,raspberryitem,raspberryseeditem,rhubarbitem,rhubarbseeditem,riceitem,riceseeditem,roastedgarlicitem,roastedkohlrabiitem,roastedleekitem,roastedmushroomitem,roastedonionitem,roastedpeanutitem,roastedradishitem,roastedrhubarbitem,roastedscallionitem,rutabagaitem,rutabagaseeditem,ryeitem,ryeseeditem,scallionitem,scallionseeditem,sesameseedsitem,sesameseedsseeditem,shadedgarden,sisalitem,sisalseeditem,soggygarden,soybeanitem,soybeanseeditem,spiceleafitem,spiceleafseeditem,spinachitem,spinachseeditem,strawberryitem,strawberryseeditem,sweetpotatoitem,sweetpotatoseeditem,taroitem,taroseeditem,tealeafitem,tealeafseeditem,tomatilloitem,tomatilloseeditem,tomatoitem,tomatoseeditem,tropicalgarden,turnipitem,turnipseeditem,waterchestnutitem,waterchestnutseeditem,whitemushroomitem,whitemushroomseeditem,windygarden,wintersquashitem,wintersquashseeditem,zucchiniitem,zucchiniseeditem|}",
+        "prefix": "@pamhc2crops/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

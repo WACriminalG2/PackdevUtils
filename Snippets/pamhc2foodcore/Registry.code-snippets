@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "HarvestCraft 2 Food Core Items": {
+        "body": "pamhc2foodcore:${1|applejellyitem,applejellytoastitem,applejuiceitem,applepieitem,applesauceitem,applesmoothieitem,appleyogurtitem,baconandeggsitem,baconcheeseburgeritem,bakedvegetablemedlyitem,bakewareitem,basiccheeseburgeritem,basicchickensandwichitem,basicfishsandwichitem,basichamburgeritem,batteritem,beefjerkyitem,boiledeggitem,butteredbakedpotatoitem,butteritem,caramelappleitem,caramelcupcakeitem,caramelicecreamitem,caramelitem,caramelmuffinitem,caramelyogurtitem,carrotbreaditem,carrotcakeitem,carrotcupcakeitem,carrotmuffinitem,carrotsoupitem,cheesecakeitem,cheeseitem,chickendinneritem,chickenjerkyitem,chickennuggetitem,chickenpotpieitem,chocolatebaconitem,chocolatebaritem,chocolatecakeitem,chocolatecaramelfudgeitem,chocolatecupcakeitem,chocolatedonutitem,chocolateicecreamitem,chocolatemuffinitem,chocolatepuddingitem,chocolaterollitem,chocolateyogurtitem,cocoapowderitem,cookiesandmilkitem,cookingoilitem,cottoncandyitem,crackeritem,creamitem,cuttingboarditem,donutitem,doughitem,epicbaconitem,fishandchipsitem,fishjerkyitem,fishsticksitem,flouritem,freshmilkitem,freshwateritem,friedchickenitem,friedeggitem,friesitem,fruitcrumbleitem,fruitpunchitem,fruitsaladitem,glazedcarrotsitem,grilledcheeseitem,grinderitem,groundbeefitem,groundchickenitem,groundfishitem,groundmuttonitem,groundporkitem,groundrabbititem,gummybearsitem,hotchocolateitem,hotdogitem,icecreamitem,jellybeansitem,jellydonutitem,juiceritem,macncheeseitem,marshmellowchicksitem,marshmellowsitem,mashedpotatoesitem,mayonaiseitem,meatloafitem,melonjellyitem,melonjellytoastitem,melonjuiceitem,melonsmoothieitem,mixingbowlitem,muttonjerkyitem,noodlesoupitem,p8juiceitem,pastaitem,pickledbeetsitem,porkjerkyitem,potatochipsitem,potatosoupitem,potitem,potroastitem,pumpkinbreaditem,pumpkincheesecakeitem,pumpkincupcakeitem,pumpkinmuffinitem,pumpkinsoupitem,pumpkinyogurtitem,rabbitjerkyitem,roastedsunflowerseedsitem,rolleritem,saltitem,saucepanitem,scrambledeggitem,skilletitem,smoresitem,softpretzelitem,stewitem,stockitem,sunflowerseedsitem,sweetberryjellyitem,sweetberryjellytoastitem,sweetberryjuiceitem,sweetberrypieitem,sweetberrysmoothieitem,sweetberryyogurtitem,toastitem,trailmixitem,vinegaritem,yogurtitem|}",
+        "prefix": "@pamhc2foodcore/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

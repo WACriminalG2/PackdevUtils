@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Shopaholic Items": {
+        "body": "shopaholic:${1|economy_manager|}",
+        "prefix": "@shopaholic/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

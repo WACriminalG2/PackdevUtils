@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Sophisticated Backpacks Blocks": {
+        "body": "sophisticatedbackpacks:${1|backpack,diamond_backpack,gold_backpack,iron_backpack,netherite_backpack|}",
+        "prefix": "@sophisticatedbackpacks/blocks/"
+    },
+
+    "Sophisticated Backpacks Items": {
+        "body": "sophisticatedbackpacks:${1|advanced_compacting_upgrade,advanced_deposit_upgrade,advanced_filter_upgrade,advanced_magnet_upgrade,advanced_pickup_upgrade,advanced_restock_upgrade,advanced_tool_swapper_upgrade,advanced_void_upgrade,auto_smelting_upgrade,backpack,compacting_upgrade,crafting_upgrade,deposit_upgrade,diamond_backpack,everlasting_upgrade,feeding_upgrade,filter_upgrade,gold_backpack,inception_upgrade,iron_backpack,jukebox_upgrade,magnet_upgrade,netherite_backpack,pickup_upgrade,refill_upgrade,restock_upgrade,smelting_upgrade,stack_upgrade_tier_1,stack_upgrade_tier_2,stack_upgrade_tier_3,stack_upgrade_tier_4,stonecutter_upgrade,tool_swapper_upgrade,upgrade_base,void_upgrade|}",
+        "prefix": "@sophisticatedbackpacks/items/"
+    },
+
+    "Sophisticated Backpacks Entities": {
+        "body": "sophisticatedbackpacks:${1|everlasting_backpack_item|}",
+        "prefix": "@sophisticatedbackpacks/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Mowzie's Mobs Blocks": {
+        "body": "mowziesmobs:${1|painted_acacia,painted_acacia_slab,thatch_block|}",
+        "prefix": "@mowziesmobs/blocks/"
+    },
+
+    "Mowzie's Mobs Items": {
+        "body": "mowziesmobs:${1|barako_mask,barako_spawn_egg,barakoa_mask_bliss,barakoa_mask_faith,barakoa_mask_fear,barakoa_mask_fury,barakoa_mask_misery,barakoa_mask_rage,barakoa_spawn_egg,barakoa_sunblocker_spawn_egg,barakoana_spawn_egg,blowgun,captured_grottol,dart,earth_talisman,foliaath_seed,foliaath_spawn_egg,frostmaw_spawn_egg,glowing_jelly,grant_suns_blessing,grottol_spawn_egg,ice_crystal,lantern_spawn_egg,logo,mob_remover,naga_fang,naga_fang_dagger,naga_spawn_egg,painted_acacia,painted_acacia_slab,spear,sunblock_staff,thatch_block,wrought_axe,wrought_helmet,wroughtnaut_spawn_egg|}",
+        "prefix": "@mowziesmobs/items/"
+    },
+
+    "Mowzie's Mobs Entities": {
+        "body": "mowziesmobs:${1|axe_attack,baby_foliaath,barako,barakoa_sunblocker,barakoa_sunblocker_player,barakoan_barakoana,barakoan_player,barakoana,barakoaya,block_swapper,boulder_huge,boulder_large,boulder_medium,boulder_small,dart,falling_block,ferrous_wroughtnaut,foliaath,frostmaw,frozen_controller,grottol,ice_ball,ice_breath,lantern,naga,poison_ball,solar_beam,sunstrike,super_nova|}",
+        "prefix": "@mowziesmobs/entities/"
+    },
+
+    "Mowzie's Mobs Potions": {
+        "body": "mowziesmobs:${1|frozen,geomancy,poison_resist,sunblock,suns_blessing|}",
+        "prefix": "@mowziesmobs/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

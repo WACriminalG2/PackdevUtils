@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    // No items.
+
+    // No entities.
+
+    "Unique Enchantments (Core) Potions": {
+        "body": "uniquee:${1|pestilences_odium|}",
+        "prefix": "@uniquee/potions/"
+    },
+
+    "Unique Enchantments (Core) Enchantments": {
+        "body": "uniquee:${1|alchemistsgrace,all,aresblessing,arthropods,berserk,bone_crusher,climate_tranquility,cloudwalker,deaths_odium,demeters_soul,ecological,ender_eyes,ender_librarian,ender_mending,endermarksmen,endest_reap,fastfood,focus_impact,icarus_aegis,ifrits_grace,midas_blessing,momentum,naturesgrace,perpetualstrike,pestilences_odium,phoenixs_blessing,ranged,sages_blessing,smart_ass,spartanweapon,swift,swiftblade,treasurers_eyes,undead,vitae,warriorsgrace|}",
+        "prefix": "@uniquee/enchant/"
+    }
+
+    // No biomes.
+}

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "SushiGo Crafting Blocks": {
+        "body": "sushigocrafting:${1|avocado_leaves,avocado_leaves_logged,avocado_log,avocado_sapling,cooler_box,cucumber_crop,cutting_board,dried_seaweed_block,rice_cooker,rice_crop,roller,seaweed,seaweed_plant,sesame_crop,soy_crop,wasabi_crop|}",
+        "prefix": "@sushigocrafting/blocks/"
+    },
+
+    "SushiGo Crafting Items": {
+        "body": "sushigocrafting:${1|avocado,avocado_leaves,avocado_leaves_logged,avocado_log,avocado_maki,avocado_sapling,avocado_slices,cheese,chicken_temaki,cleaver_knife,cooked_rice,cooler_box,crab_california,crab_cheese_california,crab_cucumber_california,crab_maki,cucumber,cucumber_maki,cucumber_seeds,cucumber_slices,cutting_board,dried_seaweed,dried_seaweed_block,imitation_crab,nori_sheets,onigiri,raw_tuna,rice,rice_cooker,rice_seeds,roller,salmon_california,salmon_cheese_california,salmon_cucumber_california,salmon_fillet,salmon_gunkan,salmon_maki,salmon_nigiri,salmon_temaki,seaweed,seaweed_on_a_stick,sesame_seed,sesame_seeds,shrimp,shrimp_bucket,shrimp_nigiri,shrimp_temaki,soy_bean,soy_sauce,soy_seeds,tobiko,tobiko_crab_california,tobiko_crab_cheese_california,tobiko_crab_cucumber_california,tobiko_salmon_california,tobiko_salmon_cheese_california,tobiko_salmon_cucumber_california,tobiko_tuna_california,tobiko_tuna_cheese_california,tobiko_tuna_cucumber_california,tuna_bucket,tuna_california,tuna_cheese_california,tuna_cucumber_california,tuna_fillet,tuna_gunkan,tuna_maki,tuna_nigiri,tuna_temaki,wakame_gunkan,wasabi_paste,wasabi_root,wasabi_seeds|}",
+        "prefix": "@sushigocrafting/items/"
+    },
+
+    "SushiGo Crafting Entities": {
+        "body": "sushigocrafting:${1|shrimp,tuna|}",
+        "prefix": "@sushigocrafting/entities/"
+    },
+
+    "SushiGo Crafting Potions": {
+        "body": "sushigocrafting:${1|acquired_taste,small_bites,steady_hands|}",
+        "prefix": "@sushigocrafting/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

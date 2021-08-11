@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Tough As Nails Blocks": {
+        "body": "toughasnails:${1|rain_collector,water_purifier|}",
+        "prefix": "@toughasnails/blocks/"
+    },
+
+    "Tough As Nails Items": {
+        "body": "toughasnails:${1|dirty_water_bottle,dirty_water_canteen,empty_canteen,purified_water_bottle,purified_water_canteen,rain_collector,tan_icon,water_canteen,water_purifier|}",
+        "prefix": "@toughasnails/items/"
+    },
+
+    // No entities.
+
+    "Tough As Nails Potions": {
+        "body": "toughasnails:${1|thirst|}",
+        "prefix": "@toughasnails/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

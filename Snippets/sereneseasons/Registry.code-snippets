@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Serene Seasons Blocks": {
+        "body": "sereneseasons:${1|season_sensor|}",
+        "prefix": "@sereneseasons/blocks/"
+    },
+
+    "Serene Seasons Items": {
+        "body": "sereneseasons:${1|calendar,season_sensor,ss_icon|}",
+        "prefix": "@sereneseasons/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

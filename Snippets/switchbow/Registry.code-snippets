@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "SwitchBow Blocks": {
+        "body": "switchbow:${1|arrowdispenser,podest,redstonepiece|}",
+        "prefix": "@switchbow/blocks/"
+    },
+
+    "SwitchBow Items": {
+        "body": "switchbow:${1|arrowair,arrowairupgrade,arrowbone,arrowboneaoe,arrowbouncy,arrowburial,arrowburialaoe,arrowchorus,arrowdiamond,arrowdispenser,arrowdragonbreath,arrowenderperle,arrowfire,arrowfireupgrade,arrowflytomoon,arrowfrost,arrowknockback,arrowlightningbolt,arrowlightningboltstorm,arrowlove,arrowluck,arrowluckupgrade,arrowofthesearcher,arrowpiercing,arrowprotector,arrowredstone,arrowsplit,arrowsplitlove,arrowsplitloveupgrade,arrowsplitupgrade,arrowsprinkler,arrowtnt,arrowtorch,arrowtriple,arrowunderwater,arrowvampier,arrowwither,lovepotion,magicquiver,podest,quiver,switchbow,switchcrossbow|}",
+        "prefix": "@switchbow/items/"
+    },
+
+    "SwitchBow Entities": {
+        "body": "switchbow:${1|entityarrowair,entityarrowairupgrade,entityarrowbone,entityarrowboneaoe,entityarrowbouncy,entityarrowburial,entityarrowburialaoe,entityarrowchorus,entityarrowdiamond,entityarrowdragonbreath,entityarrowenderperle,entityarrowfire,entityarrowfireupgrade,entityarrowflytomoon,entityarrowfrost,entityarrowknockback,entityarrowlightningbolt,entityarrowlightningboltstorm,entityarrowlove,entityarrowluck,entityarrowluckupgrade,entityarrowofthesearcher,entityarrowpiercing,entityarrowprotector,entityarrowredstone,entityarrowsplit,entityarrowsplitlove,entityarrowsplitloveupgrade,entityarrowsplitupgrade,entityarrowsprinkler,entityarrowtnt,entityarrowtorch,entityarrowtriple,entityarrowunderwater,entityarrowvampier,entityarrowwither,entityburial,entityfire,entitylittleirongolem|}",
+        "prefix": "@switchbow/entities/"
+    },
+
+    "SwitchBow Potions": {
+        "body": "switchbow:${1|freeze,love|}",
+        "prefix": "@switchbow/potions/"
+    },
+
+    "SwitchBow Enchantments": {
+        "body": "switchbow:${1|activescope,cooldownreduce,pullspeed|}",
+        "prefix": "@switchbow/enchant/"
+    }
+
+    // No biomes.
+}

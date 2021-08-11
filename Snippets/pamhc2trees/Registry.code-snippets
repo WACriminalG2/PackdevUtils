@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "HarvestCraft 2 Trees Blocks": {
+        "body": "pamhc2trees:${1|almond_sapling,apple_sapling,apricot_sapling,avocado_sapling,banana_sapling,breadfruit_sapling,candlenut_sapling,cashew_sapling,cherry_sapling,chestnut_sapling,cinnamon_sapling,coconut_sapling,date_sapling,dragonfruit_sapling,durian_sapling,fig_sapling,gooseberry_sapling,grapefruit_sapling,guava_sapling,hazelnut_sapling,jackfruit_sapling,lemon_sapling,lime_sapling,lychee_sapling,mango_sapling,maple_sapling,nutmeg_sapling,olive_sapling,orange_sapling,pamalmond,pamapple,pamapricot,pamavocado,pambanana,pambreadfruit,pamcandlenut,pamcashew,pamcherry,pamchestnut,pamcinnamon,pamcoconut,pamdate,pamdragonfruit,pamdurian,pamfig,pamgooseberry,pamgrapefruit,pamguava,pamhazelnut,pamjackfruit,pamlemon,pamlime,pamlychee,pammango,pammaple,pamnutmeg,pamolive,pamorange,pampapaya,pampaperbark,pampassionfruit,pampawpaw,pampeach,pampear,pampecan,pampeppercorn,pampersimmon,pampinenut,pampistachio,pamplum,pampomegranate,pamrambutan,pamsoursop,pamspiderweb,pamstarfruit,pamtamarind,pamvanillabean,pamwalnut,papaya_sapling,paperbark_sapling,passionfruit_sapling,pawpaw_sapling,peach_sapling,pear_sapling,pecan_sapling,peppercorn_sapling,persimmon_sapling,pinenut_sapling,pistachio_sapling,plum_sapling,pomegranate_sapling,rambutan_sapling,soursop_sapling,spiderweb_sapling,starfruit_sapling,tamarind_sapling,vanillabean_sapling,walnut_sapling|}",
+        "prefix": [
+            "@harvestcraft2trees/blocks/",
+            "@pamhc2trees/blocks/"
+        ]
+    },
+
+    "HarvestCraft 2 Trees Items": {
+        "body": "pamhc2trees:${1|almond_sapling,almonditem,apple_sapling,apricot_sapling,apricotitem,avocado_sapling,avocadoitem,banana_sapling,bananaitem,breadfruit_sapling,breadfruititem,candlenut_sapling,candlenutitem,cashew_sapling,cashewitem,cherry_sapling,cherryitem,chestnut_sapling,chestnutitem,cinnamon_sapling,cinnamonitem,coconut_sapling,coconutitem,date_sapling,dateitem,dragonfruit_sapling,dragonfruititem,durian_sapling,durianitem,fig_sapling,figitem,gooseberry_sapling,gooseberryitem,grapefruit_sapling,grapefruititem,guava_sapling,guavaitem,hazelnut_sapling,hazelnutitem,jackfruit_sapling,jackfruititem,lemon_sapling,lemonitem,lime_sapling,limeitem,lychee_sapling,lycheeitem,mango_sapling,mangoitem,maple_sapling,maplesyrupitem,nutmeg_sapling,nutmegitem,olive_sapling,oliveitem,orange_sapling,orangeitem,pamalmond,pamapple,pamapricot,pamavocado,pambanana,pambreadfruit,pamcandlenut,pamcashew,pamcherry,pamchestnut,pamcinnamon,pamcoconut,pamdate,pamdragonfruit,pamdurian,pamfig,pamgooseberry,pamgrapefruit,pamguava,pamhazelnut,pamjackfruit,pamlemon,pamlime,pamlychee,pammango,pammaple,pamnutmeg,pamolive,pamorange,pampapaya,pampaperbark,pampassionfruit,pampawpaw,pampeach,pampear,pampecan,pampeppercorn,pampersimmon,pampinenut,pampistachio,pamplum,pampomegranate,pamrambutan,pamsoursop,pamspiderweb,pamstarfruit,pamtamarind,pamvanillabean,pamwalnut,papaya_sapling,papayaitem,paperbark_sapling,passionfruit_sapling,passionfruititem,pawpaw_sapling,pawpawitem,peach_sapling,peachitem,pear_sapling,pearitem,pecan_sapling,pecanitem,peppercorn_sapling,peppercornitem,persimmon_sapling,persimmonitem,pinenut_sapling,pinenutitem,pistachio_sapling,pistachioitem,plum_sapling,plumitem,pomegranate_sapling,pomegranateitem,rambutan_sapling,rambutanitem,roastedalmonditem,roastedcashewitem,roastedchestnutitem,roastedhazelnutitem,roastedpecanitem,roastedpinenutitem,roastedpistachioitem,roastedwalnutitem,soursop_sapling,soursopitem,spiderweb_sapling,starfruit_sapling,starfruititem,tamarind_sapling,tamarinditem,vanillabean_sapling,vanillabeanitem,walnut_sapling,walnutitem|}",
+        "prefix": "@pamhc2trees/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

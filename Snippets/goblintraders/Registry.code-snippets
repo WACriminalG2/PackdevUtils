@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Goblin Traders Items": {
+        "body": "goblintraders:${1|goblin_trader_spawn_egg,vein_goblin_trader_spawn_egg|}",
+        "prefix": "@goblintraders/items/"
+    },
+
+    "Goblin Traders Entities": {
+        "body": "goblintraders:${1|goblin_trader,vein_goblin_trader|}",
+        "prefix": "@goblintraders/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

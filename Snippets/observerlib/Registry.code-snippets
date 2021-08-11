@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    "ObserverLib Blocks": {
+        "body": "observerlib:${1|air_preview|}",
+        "prefix": "@observerlib/blocks/"
+    }
+
+    // No items
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

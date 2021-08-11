@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "The One Probe Items": {
+        "body": "theoneprobe:${1|creativeprobe,diamond_helmet_probe,gold_helmet_probe,iron_helmet_probe,probe,probenote|}",
+        "prefix": [
+            "@theoneprobe/items/",
+            "@TOP/items/"
+        ]
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

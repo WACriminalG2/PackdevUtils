@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Reliquary Blocks": {
+        "body": "xreliquary:${1|alkahestry_altar,apothecary_cauldron,apothecary_mortar,fertile_lily_pad,interdiction_torch,pedestals/black_pedestal,pedestals/blue_pedestal,pedestals/brown_pedestal,pedestals/cyan_pedestal,pedestals/gray_pedestal,pedestals/green_pedestal,pedestals/light_blue_pedestal,pedestals/light_gray_pedestal,pedestals/lime_pedestal,pedestals/magenta_pedestal,pedestals/orange_pedestal,pedestals/passive/black_passive_pedestal,pedestals/passive/blue_passive_pedestal,pedestals/passive/brown_passive_pedestal,pedestals/passive/cyan_passive_pedestal,pedestals/passive/gray_passive_pedestal,pedestals/passive/green_passive_pedestal,pedestals/passive/light_blue_passive_pedestal,pedestals/passive/light_gray_passive_pedestal,pedestals/passive/lime_passive_pedestal,pedestals/passive/magenta_passive_pedestal,pedestals/passive/orange_passive_pedestal,pedestals/passive/pink_passive_pedestal,pedestals/passive/purple_passive_pedestal,pedestals/passive/red_passive_pedestal,pedestals/passive/white_passive_pedestal,pedestals/passive/yellow_passive_pedestal,pedestals/pink_pedestal,pedestals/purple_pedestal,pedestals/red_pedestal,pedestals/white_pedestal,pedestals/yellow_pedestal,wall_interdiction_torch,wraith_node|}",
+        "prefix": "@xreliquary/blocks/"
+    },
+
+    "Reliquary Items": {
+        "body": "xreliquary:${1|alkahestry_altar,alkahestry_tome,angelheart_vial,angelic_feather,apothecary_cauldron,apothecary_mortar,attraction_potion,barrel_assembly,bat_wing,bullets/blaze_bullet,bullets/buster_bullet,bullets/concussive_bullet,bullets/empty_bullet,bullets/ender_bullet,bullets/exorcism_bullet,bullets/neutral_bullet,bullets/sand_bullet,bullets/seeker_bullet,bullets/storm_bullet,catalyzing_gland,chelicerae,crimson_cloth,destruction_catalyst,emperor_chalice,empty_potion_vial,ender_staff,eye_of_the_storm,fertile_essence,fertile_lily_pad,fertile_potion,fortune_coin,frozen_core,glacial_staff,glowing_bread,glowing_water,grip_assembly,guardian_spike,hammer_assembly,handgun,harvest_rod,hero_medallion,holy_hand_grenade,ice_magus_rod,infernal_chalice,infernal_claw,infernal_claws,infernal_tear,interdiction_torch,kraken_shell,kraken_shell_fragment,lantern_of_paranoia,lingering_potion,magazines/blaze_magazine,magazines/buster_magazine,magazines/concussive_magazine,magazines/empty_magazine,magazines/ender_magazine,magazines/exorcism_magazine,magazines/neutral_magazine,magazines/sand_magazine,magazines/seeker_magazine,magazines/storm_magazine,magicbane,mercy_cross,midas_touchstone,mob_charm,mob_charm_belt,mob_charm_fragment,molten_core,nebulous_heart,pedestals/black_pedestal,pedestals/blue_pedestal,pedestals/brown_pedestal,pedestals/cyan_pedestal,pedestals/gray_pedestal,pedestals/green_pedestal,pedestals/light_blue_pedestal,pedestals/light_gray_pedestal,pedestals/lime_pedestal,pedestals/magenta_pedestal,pedestals/orange_pedestal,pedestals/passive/black_passive_pedestal,pedestals/passive/blue_passive_pedestal,pedestals/passive/brown_passive_pedestal,pedestals/passive/cyan_passive_pedestal,pedestals/passive/gray_passive_pedestal,pedestals/passive/green_passive_pedestal,pedestals/passive/light_blue_passive_pedestal,pedestals/passive/light_gray_passive_pedestal,pedestals/passive/lime_passive_pedestal,pedestals/passive/magenta_passive_pedestal,pedestals/passive/orange_passive_pedestal,pedestals/passive/pink_passive_pedestal,pedestals/passive/purple_passive_pedestal,pedestals/passive/red_passive_pedestal,pedestals/passive/white_passive_pedestal,pedestals/passive/yellow_passive_pedestal,pedestals/pink_pedestal,pedestals/purple_pedestal,pedestals/red_pedestal,pedestals/white_pedestal,pedestals/yellow_pedestal,phoenix_down,potion,potion_essence,pyromancer_staff,rending_gale,rib_bone,rod_of_lyssa,salamander_eye,serpent_staff,shears_of_winter,slime_pearl,sojourner_staff,splash_potion,squid_beak,tipped_arrow,twilight_cloak,void_tear,witch_hat,withered_rib,witherless_rose,wraith_node,zombie_heart|}",
+        "prefix": "@xreliquary/items/"
+    },
+
+    "Reliquary Entities": {
+        "body": "xreliquary:${1|aphrodite_potion,blaze_shot,buster_shot,concussive_shot,ender_shot,ender_staff_projectile,exorcism_shot,fertile_potion,glowing_water,holy_hand_grenade,kraken_slime,lyssa_hook,neutral_shot,sand_shot,seeker_shot,special_snowball,storm_shot,thrown_potion,tipped_arrow|}",
+        "prefix": "@xreliquary/entities/"
+    },
+
+    "Reliquary Potions": {
+        "body": "xreliquary:${1|cure,flight,pacification|}",
+        "prefix": "@xreliquary/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

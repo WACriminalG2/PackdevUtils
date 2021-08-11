@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "XNet Blocks": {
+        "body": "xnet:${1|advanced_connector,antenna,antenna_base,antenna_dish,connector,controller,facade,netcable,redstone_proxy,redstone_proxy_upd,router,wireless_router|}",
+        "prefix": "@xnet/blocks/"
+    },
+
+    "XNet Items": {
+        "body": "xnet:${1|advanced_connector_blue,advanced_connector_green,advanced_connector_red,advanced_connector_routing,advanced_connector_yellow,antenna,antenna_base,antenna_dish,connector_blue,connector_green,connector_red,connector_routing,connector_upgrade,connector_yellow,controller,facade,netcable_blue,netcable_green,netcable_red,netcable_routing,netcable_yellow,redstone_proxy,redstone_proxy_upd,router,wireless_router|}",
+        "prefix": "@xnet/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

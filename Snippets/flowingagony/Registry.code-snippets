@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    // No items.
+
+    // No entities.
+
+    "Flowing Agony Potions": {
+        "body": "flowingagony:${1|agony_resonance,back_and_fill_enchantment_active,been_resonated,curse_of_undead,cursed_antipathy,cursed_hatred,envious_being,extreme_hatred,eyesore_enchantment_active,fresh_revenge_enchantment_active,frivolous_step_enchantment_active,hatred_bloodline_enchantment_active,insane_poet_enchantment_active,let_me_savor_it,lightburn_fungal_infection,listen_to_me_singing,miraculous_escape_enchantment_active,miraculous_escape_enchantment_force_escape,paper_brain_enchantment_active,potential_burst_enchantment_active,prototype_chaotic_enchantment_active,shock_therapy_enchantment_active,thorn_in_flesh_active,thorn_in_flesh_active_for_player|}",
+        "prefix": "@flowingagony/potions/"
+    }, 
+
+    "Flowing Agony Enchantments": {
+        "body": "flowingagony:${1|agony_screamer,an_enchanted_golden_apple_a_day,armor_up,back_and_fill,burial_object,burning_phobia,carefully_identified,cleansing_before_using,come_back_at_dusk,constrained_heart,corrupted_kindred,covert_knife,cutting_watermelon_dream,deathpunk,destruction_worship,dirty_money,drowning_phobia,encious_kind,exotic_healer,eyesore,fresh_revenge,frivolous_step,guidens_regret,hatred_bloodline,i_see_you_now,infectious_malice,insane_poet,last_sweet_dream,lightburn_fungal_parasitic,malice_outbreak,miraculous_escape,morirs_deathwish,morirs_lifebound,necessary_evil,nimble_finger,original_sin_erosion,outrageous_spirit,paper_brain,perceived_malice,piercing_fever,pilferage_creed,potential_burst,prayer_of_pain,prototype_chaotic,prototype_chaotic_type_beta,regular_customer_program,resentful_soul,savor_the_tasted,scholar_of_original_sin,shadowborn,shock_therapy,source_of_envy,stubborn_step,survival_ruse,survival_shortcut,thorn_in_flesh,too_resentful_to_die,trickster,vengeance|}",
+        "prefix": "@flowingagony/enchant/"
+    }
+
+    // No biomes.
+}

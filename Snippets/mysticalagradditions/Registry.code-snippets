@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Mystical Agradditions Blocks": {
+        "body": "mysticalagradditions:${1|dragon_egg_crux,end_inferium_ore,end_prosperity_ore,imperium_coal_block,inferium_coal_block,insanium_block,insanium_coal_block,insanium_farmland,insanium_gemstone_block,insanium_ingot_block,nether_inferium_ore,nether_prosperity_ore,nether_star_crux,nitro_crystal_crux,prudentium_coal_block,supremium_coal_block,tertium_coal_block|}",
+        "prefix": "@mysticalagradditions/blocks/"
+    },
+
+    "Mystical Agradditions Items": {
+        "body": "mysticalagradditions:${1|creative_essence,dragon_egg_chunk,dragon_egg_crux,dragon_scale,end_inferium_ore,end_prosperity_ore,imperium_apple,imperium_coal,imperium_coal_block,imperium_paxel,inferium_apple,inferium_coal,inferium_coal_block,inferium_paxel,insanium_apple,insanium_block,insanium_coal,insanium_coal_block,insanium_essence,insanium_farmland,insanium_gemstone,insanium_gemstone_block,insanium_ingot,insanium_ingot_block,insanium_nugget,molten_imperium_bucket,molten_inferium_bucket,molten_prudentium_bucket,molten_soulium_bucket,molten_supremium_bucket,molten_tertium_bucket,nether_inferium_ore,nether_prosperity_ore,nether_star_crux,nether_star_shard,nitro_crystal_crux,prudentium_apple,prudentium_coal,prudentium_coal_block,prudentium_paxel,supremium_apple,supremium_coal,supremium_coal_block,supremium_paxel,tertium_apple,tertium_coal,tertium_coal_block,tertium_paxel,withering_soul|}",
+        "prefix": "@mysticalagradditions/items/"
+    }
+
+    // No entities
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

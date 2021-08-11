@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "MrCrayfish's Guns Blocks": {
+        "body": "cgm:${1|workbench|}",
+        "prefix": "@cgm/blocks/"
+    },
+
+    "MrCrayfish's Guns Items": {
+        "body": "cgm:${1|advanced_bullet,assault_rifle,basic_bullet,bazooka,grenade,grenade_launcher,heavy_rifle,light_grip,light_stock,long_scope,machine_pistol,medium_scope,mini_gun,missile,pistol,rifle,shell,short_scope,shotgun,silencer,specialised_grip,stun_grenade,tactical_stock,weighted_stock,workbench|}",
+        "prefix": "@cgm/items/"
+    },
+
+    "MrCrayfish's Guns Entities": {
+        "body": "cgm:${1|grenade,missile,projectile,throwable_grenade,throwable_stun_grenade|}",
+        "prefix": "@cgm/entities/"
+    },
+
+    "MrCrayfish's Guns Potions": {
+        "body": "cgm:${1|blinded,deafened|}",
+        "prefix": "@cgm/potions/"
+    },
+
+    "MrCrayfish's Guns Enchantments": {
+        "body": "cgm:${1|accelerator,collateral,fire_starter,lightweight,over_capacity,puncturing,quick_hands,reclaimed,trigger_finger|}",
+        "prefix": "@cgm/enchant/"
+    }
+
+    // No biomes
+}

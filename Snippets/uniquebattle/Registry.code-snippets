@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    // No items.
+
+    // No entities.
+
+    // No potions.
+
+    "Unique Enchantments (Battle) Enchantments": {
+        "body": "uniquebattle:${1|ares_fragment,celestial_blessing,lunatic_despair|}",
+        "prefix": "@uniquebattle/enchant/"
+    }
+
+    // No biomes.
+}

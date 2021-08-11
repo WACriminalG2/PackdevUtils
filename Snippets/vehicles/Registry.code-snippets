@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "MrCrayfish's Vehicles Blocks": {
+        "body": "vehicles:${1|blaze_juice,ender_sap,fluid_extractor,fluid_mixer,fluid_pipe,fluid_pump,fuel_drum,fuelium,gas_pump,industrial_fuel_drum,jack,traffic_cone,vehicle_crate,workstation|}",
+        "prefix": "@vehicles/blocks/"
+    },
+
+    "MrCrayfish's Vehicles Items": {
+        "body": "vehicles:${1|all_terrain_wheel,blaze_juice_bucket,diamond_electric_engine,diamond_large_engine,diamond_small_engine,ender_sap_bucket,fluid_extractor,fluid_mixer,fluid_pipe,fluid_pump,fuel_drum,fuelium_bucket,gas_pump,gold_electric_engine,gold_large_engine,gold_small_engine,hammer,industrial_fuel_drum,industrial_jerry_can,iron_electric_engine,iron_large_engine,iron_small_engine,jack,jerry_can,key,off_road_wheel,panel,plastic_wheel,racing_wheel,snow_wheel,sports_wheel,spray_can,standard_wheel,stone_electric_engine,stone_large_engine,stone_small_engine,traffic_cone,vehicle_crate,wood_electric_engine,wood_large_engine,wood_small_engine,workstation,wrench|}",
+        "prefix": "@vehicles/items/"
+    },
+
+    "MrCrayfish's Vehicles Entities": {
+        "body": "vehicles:${1|aluminum_boat,atv,bumper_car,dirt_bike,dune_buggy,fertilizer,fluid_trailer,go_kart,golf_cart,jack,jet_ski,lawn_mower,mini_bike,mini_bus,moped,off_roader,seeder,shopping_cart,smart_car,speed_boat,sports_plane,storage_trailer,tractor,vehicle_trailer|}",
+        "prefix": "@vehicles/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

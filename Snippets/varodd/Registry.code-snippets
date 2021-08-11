@@ -1,0 +1,33 @@
+{
+    // Version: ?????
+
+    "Various Oddities Blocks": {
+        "body": "varodd:${1|drafting_table,inert_kobold_egg,kobold_egg,moss_block,scale_layer|}",
+        "prefix": [
+            "@varodd/blocks/",
+            "@variousoddities/blocks/"
+        ]
+    },
+
+    "Various Oddities Items": {
+        "body": "varodd:${1|drafting_table,giant_rat_spawn_egg,giant_scorpion_spawn_egg,goblin_spawn_egg,held_flag_agender,held_flag_aromantic,held_flag_asexual,held_flag_bisexual,held_flag_gay,held_flag_genderfluid,held_flag_genderqueer,held_flag_intersex,held_flag_lesbian,held_flag_nonbinary,held_flag_pansexual,held_flag_polysexual,held_flag_queer,held_flag_transgender,inert_kobold_egg,kobold_egg,kobold_scale,kobold_spawn_egg,moss_block,moss_bottle,rat_spawn_egg,scale_layer,scorpion_spawn_egg|}",
+        "prefix": [
+            "@variousoddities/items/",
+            "@varodd/items/"
+        ]
+    },
+
+    "Various Oddities Entities": {
+        "body": "varodd:${1|giant_rat,giant_scorpion,goblin,kobold,marimo,rat,scorpion,spell|}",
+        "prefix": [
+            "@variousoddities/entities/",
+            "@varodd/entities/"
+        ]
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

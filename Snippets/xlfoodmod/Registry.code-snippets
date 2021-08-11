@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "XL Food Mod Blocks": {
+        "body": "xlfoodmod:${1|cheese_cake,chocolate_cake,chocolate_cookie_cake,corn_plant,cucumber_plant,lemon_plant,lettuce_plant,nether_cake,onion_plant,pepper_plant,pineapple_plant,pizza,pumpkin_cake,rice_plant,rock_salt,strawberry_cake,strawberry_plant,tomato_plant,vanilla_flower|}",
+        "prefix": "@xlfoodmod/blocks/"
+    },
+
+    "XL Food Mod Items": {
+        "body": "xlfoodmod:${1|apple_pie,bacon,bacon_pie,baguette,beef_jerky,beef_stew,beer,blt_sandwich,bottom_bun,bourbon_biscuit,bowl,breakfast_sandwich,brownie,bucket_of_fried_chicken,burrito,butter,butter_rice,caesar_salad,cappuccino,caramel_apple,cheese,cheese_cake,cheese_pie,cheese_puff,cheeseburger,cheesy_bread,chicken_pot_pie,chicken_salad,chicken_sandwich,chicken_soup,chickenburger,chips,chocolate,chocolate_cake,chocolate_cookie,chocolate_cookie_cake,chocolate_cookie_cupcake,chocolate_cupcake,chocolate_donut,chocolate_ice_cream,chocolate_ice_cream_ball,chocolate_pie,chocolate_syrup,coffee,coffee_cup,cooked_chicken_wing,cooked_dough,corn,corn_bread,corn_plant,corn_seeds,crescent_roll,crouton,cucumber,cucumber_plant,cucumber_seeds,cucumber_soup,deadly_energy_drink,donut,dough,empty_can,enchilada,fish_pie,flesh,fried_egg,fried_rice,futomaki,garden_salad,glass_mug,golden_apple_pie,grilled_cheese_sandwich,ground_beef,ham,hamburger,healthy_energy_drink,hot_dog,hot_sauce,ice_cream_cone,ice_cream_sandwich,jambon_beurre,kebab,lasagne,lemon,lemon_juice,lemon_plant,lemon_seeds,lemon_slushie,lemon_syrup,lettuce,lettuce_plant,lettuce_seeds,macaroni_and_cheese,marshmallow,nether_cake,onion,onion_plant,onion_rings,onion_salad,oshizushi,pancake,paper_cup,pepper,pepper_plant,pepper_seeds,pie_shell,pineapple,pineapple_juice,pineapple_plant,pineapple_seeds,pineapple_slushie,pineapple_syrup,pizza,potato_bread,pumpkin_cake,pumpkin_stew,raw_chicken_wing,raw_corn,rice,rice_bread,rice_plant,roasted_marshmallow,rock_salt,salt,salty_chips,sausage,sausage_roll,seaweed,slice_of_pizza,spaghetti,speedy_energy_drink,spicy_chicken_wing,spicy_chips,stealthy_energy_drink,strawberry,strawberry_cake,strawberry_cupcake,strawberry_ice_cream,strawberry_ice_cream_ball,strawberry_juice,strawberry_pie,strawberry_plant,strawberry_seeds,strawberry_slushie,strawberry_syrup,strong_energy_drink,sugar_donut,super_energy_drink,taco,taco_salad,tomato,tomato_plant,tomato_sauce,tomato_seeds,tomato_soup,top_bun,tortilla,uramaki,vanilla_cookie,vanilla_cream,vanilla_cupcake,vanilla_donut,vanilla_extract,vanilla_flower,vanilla_ice_cream,vanilla_ice_cream_ball,vegetable_soup,waffle|}",
+        "prefix": "@xlfoodmod/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

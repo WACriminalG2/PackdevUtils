@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Waystones Blocks": {
+        "body": "waystones:${1|black_sharestone,blue_sharestone,brown_sharestone,cyan_sharestone,gray_sharestone,green_sharestone,light_blue_sharestone,light_gray_sharestone,lime_sharestone,magenta_sharestone,mossy_waystone,orange_sharestone,pink_sharestone,portstone,purple_sharestone,red_sharestone,sandy_waystone,sharestone,warp_plate,waystone,white_sharestone,yellow_sharestone|}",
+        "prefix": "@waystones/blocks/"
+    },
+
+    "Waystones Items": {
+        "body": "waystones:${1|attuned_shard,black_sharestone,blue_sharestone,bound_scroll,brown_sharestone,cyan_sharestone,gray_sharestone,green_sharestone,light_blue_sharestone,light_gray_sharestone,lime_sharestone,magenta_sharestone,mossy_waystone,orange_sharestone,pink_sharestone,portstone,purple_sharestone,red_sharestone,return_scroll,sandy_waystone,sharestone,warp_dust,warp_plate,warp_scroll,warp_stone,waystone,white_sharestone,yellow_sharestone|}",
+        "prefix": "@waystones/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

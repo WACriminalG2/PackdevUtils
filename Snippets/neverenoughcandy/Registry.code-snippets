@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "NeverEnoughCandy Items": {
+        "body": "neverenoughcandy:${1|candy_batty,candy_corn,candy_enderpop,candy_halloween,candy_midnight,candy_skull,candy_spider,candy_witch,candy_witchy,jelly_bean,mob_candy|}",
+        "prefix": "@neverenoughcandy/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

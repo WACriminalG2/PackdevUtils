@@ -1,0 +1,19 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Nature's Compass Items": {
+        "body": "naturescompass:${1|naturescompass|}",
+        "prefix": "@naturescompass/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+
+}

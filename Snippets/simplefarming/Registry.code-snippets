@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Simple Farming Blocks": {
+        "body": "simplefarming:${1|apple_leaves,apple_sapling,apricot_leaves,apricot_sapling,attached_cantaloupe_stem,attached_honeydew_stem,attached_squash_stem,banana_leaves,banana_sapling,barley_crop,barley_hay_block,birthday_cake,blackberry_bush,blueberry_bush,brewing_barrel,broccoli_crop,cactus_crop,cantaloupe_block,cantaloupe_crop,cantaloupe_stem,carrot_crop,cassava_crop,cheese_block,cherry_leaves,cherry_sapling,chicory,chocolate_cake,corn_crop,cotton_crop,cucumber_crop,cumin,eggplant_crop,fruit_log,ginger_crop,grape_block,grape_leaves,grape_leaves_base,grape_plant,honeydew_block,honeydew_crop,honeydew_stem,kenaf_crop,lettuce_crop,mango_leaves,mango_sapling,marshmallow,melon_crop,oat_crop,oat_hay_block,olive_leaves,olive_sapling,onion_crop,orange_leaves,orange_sapling,pea_crop,peanut_crop,pear_leaves,pear_sapling,pepper_crop,plum_leaves,plum_sapling,potato_crop,pumpkin_crop,quinoa,radish_crop,raspberry_bush,rice_crop,rice_hay_block,rye_crop,rye_hay_block,scarecrow,sorghum_crop,soybean_crop,spinach_crop,squash_block,squash_crop,squash_stem,strawberry_bush,sunflower,sweet_potato_crop,tomato_crop,turnip_crop,wild_crop,yam_crop,zucchini_crop|}",
+        "prefix": "@simplefarming/blocks/"
+    },
+
+    "Simple Farming Items": {
+        "body": "simplefarming:${1|apple_pie,apple_sapling,apricot,apricot_pie,apricot_sapling,baked_sweet_potato,baked_yam,banana,banana_bread,banana_sapling,barley,barley_bread,barley_hay_block,barley_seeds,beef_and_broccoli,beef_curry,beer,birthday_cake,blackberries,blackberry_bush,blackberry_pie,blt,blueberries,blueberry_bush,blueberry_pie,borscht,brewing_barrel,broccoli,broccoli_cheese_soup,broccoli_seeds,cactus_crop,cactus_fruit,caesar_salad,candy,candy_cane,cantaloupe,cantaloupe_block,cantaloupe_seeds,carrot_seeds,carrot_soup,cassava,cassava_cake,cassava_seeds,cauim,cheese_block,cheese_slice,cheeseburger,cherries,cherry_pie,cherry_sapling,chicken_curry,chicken_noodle_soup,chicken_parmesan,chicory_gratin,chicory_root,chili,chocolate,chocolate_cake,cider,cooked_bacon,cooked_chicken_wings,cooked_egg,cooked_horse_meat,cooked_sausage,corn,corn_salad,corn_seeds,cornbread,cotton,cotton_seeds,cucumber,cucumber_seeds,cucumber_soup,cumin_seeds,curry_powder,egg_sandwich,eggplant,eggplant_parmesan,eggplant_seeds,fish_and_chips,fish_fillet,fish_sandwich,fried_calamari,fried_rice,fruit_log,fruit_salad,ginger,ginger_seeds,golden_habanero,grape_seeds,grapes,habanero,hamburger,honeydew,honeydew_block,honeydew_seeds,hotdog,ice_cream_sundae,italian_beef,jaffa_cake,jam,kenaf_fiber,kenaf_seeds,lasagna,lettuce,lettuce_seeds,mac_and_cheese,mango,mango_sapling,marshmallow,marshmallow_root,mead,mushroom_barley,music_disc_nourish,mutton_curry,noodles,oat,oat_bread,oat_hay_block,oat_seeds,oatmeal,olive_oil,olive_sapling,olive_tomato_salad,olives,onion,onion_seeds,onion_soup,orange,orange_sapling,pad_thai,pancakes,pasta,pbj,pea_pod,pea_seeds,pea_soup,peanut,peanut_butter_cookie,peanut_butter_pie,peanut_seeds,pear,pear_pie,pear_sapling,pepper,pepper_seeds,pickle,pickled_beetroot,pizza,plum,plum_pie,plum_sapling,popcorn,pork_curry,potato_knish,potato_seeds,pulled_pork_sandwich,pumpkin_soup,quinoa_salad,quinoa_seeds,radish,radish_seeds,radish_soup,raisins,raspberries,raspberry_bush,raspberry_pie,raw_bacon,raw_calamari,raw_chicken_wings,raw_horse_meat,raw_sausage,rice,rice_bowl,rice_bread,rice_hay_block,rice_seeds,rye,rye_bread,rye_hay_block,rye_seeds,sake,salad,sandwich,sausage_barley_soup,scarecrow,sorghum,sorghum_bread,sorghum_porridge,sorghum_seeds,soybean,soybean_seeds,spaghetti,spinach,spinach_mushroom_quiche,spinach_quinoa_quiche,spinach_seeds,sprinkles,squash,squash_block,squash_casserole,squash_seeds,squash_soup,squid_ink_pasta,strawberries,strawberry_bush,strawberry_pie,stuffed_corn_zucchini,sunflower_seeds,sushi,sweet_potato,sweet_potato_quinoa_cakes,sweet_potato_seeds,tiswin,tofu,tofu_scramble,tomato,tomato_seeds,tomato_soup,trail_mix,turnip,turnip_beetroot_gratin,turnip_seeds,vegetable_curry,vegetable_medley,veggie_burger,vinegar,vodka,whiskey,wine,yam,yam_seeds,zucchini,zucchini_bread,zucchini_seeds|}",
+        "prefix": "@simplefarming/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

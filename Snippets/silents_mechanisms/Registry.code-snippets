@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Silent's Mechanisms Blocks": {
+        "body": "silents_mechanisms:${1|acacia_drying_rack,alloy_machine_frame,alloy_smelter,aluminum_block,aluminum_steel_block,basic_alloy_smelter,basic_crusher,battery_box,bauxite_ore,birch_drying_rack,bismuth_block,bismuth_brass_block,bismuth_ore,bismuth_steel_block,brass_block,bronze_block,coal_generator,compressor,copper_block,copper_ore,crusher,dark_oak_drying_rack,diesel,diesel_generator,electric_furnace,electrum_block,enderium_block,infuser,invar_block,jungle_drying_rack,lava_generator,lead_block,lead_ore,lumium_block,mixer,nickel_block,nickel_ore,oak_drying_rack,oil,pipe,platinum_block,platinum_ore,pump,redstone_alloy_block,refinery,signalum_block,silver_block,silver_ore,solidifier,spruce_drying_rack,steel_block,stone_machine_frame,tin_block,tin_ore,uranium_block,uranium_ore,wire,zinc_block,zinc_ore|}",
+        "prefix": "@silents_mechanisms/blocks/"
+    },
+
+    "Silent's Mechanisms Items": {
+        "body": "silents_mechanisms:${1|acacia_drying_rack,alloy_machine_frame,alloy_smelter,aluminum_block,aluminum_dust,aluminum_ingot,aluminum_nugget,aluminum_steel_block,aluminum_steel_dust,aluminum_steel_ingot,aluminum_steel_nugget,basic_alloy_smelter,basic_crusher,battery,battery_box,bauxite_chunks,bauxite_ore,beef_jerky,birch_drying_rack,bismuth_block,bismuth_brass_block,bismuth_brass_dust,bismuth_brass_ingot,bismuth_brass_nugget,bismuth_chunks,bismuth_dust,bismuth_ingot,bismuth_nugget,bismuth_ore,bismuth_steel_block,bismuth_steel_dust,bismuth_steel_ingot,bismuth_steel_nugget,brass_block,brass_dust,brass_ingot,brass_nugget,bronze_block,bronze_dust,bronze_ingot,bronze_nugget,canister,chicken_jerky,circuit_board,coal_dust,coal_generator,cod_jerky,compressed_iron_ingot,compressor,copper_block,copper_chunks,copper_dust,copper_ingot,copper_nugget,copper_ore,crusher,dark_oak_drying_rack,debug_item,diesel_bucket,diesel_generator,electric_furnace,electrum_block,electrum_dust,electrum_ingot,electrum_nugget,empty_canister,enderium_block,enderium_dust,enderium_ingot,enderium_nugget,energy_capacity_upgrade,energy_efficiency_upgrade,ethane_bucket,gold_chunks,gold_dust,hand_pump,heating_element,infuser,invar_block,invar_dust,invar_ingot,invar_nugget,iron_chunks,iron_dust,jungle_drying_rack,lava_generator,lead_block,lead_chunks,lead_dust,lead_ingot,lead_nugget,lead_ore,lumium_block,lumium_dust,lumium_ingot,lumium_nugget,mixer,mutton_jerky,nickel_block,nickel_chunks,nickel_dust,nickel_ingot,nickel_nugget,nickel_ore,oak_drying_rack,oil_bucket,output_chance_upgrade,pipe,plastic_pellets,plastic_sheet,platinum_block,platinum_chunks,platinum_dust,platinum_ingot,platinum_nugget,platinum_ore,polyethylene_bucket,pork_jerky,processing_speed_upgrade,pump,rabbit_jerky,range_upgrade,redstone_alloy_block,redstone_alloy_dust,redstone_alloy_ingot,redstone_alloy_nugget,refined_iron_ingot,refinery,salmon_jerky,signalum_block,signalum_dust,signalum_ingot,signalum_nugget,silver_block,silver_chunks,silver_dust,silver_ingot,silver_nugget,silver_ore,solder,solidifier,spruce_drying_rack,steel_block,steel_dust,steel_ingot,steel_nugget,stone_machine_frame,tin_block,tin_chunks,tin_dust,tin_ingot,tin_nugget,tin_ore,upgrade_case,uranium_block,uranium_chunks,uranium_dust,uranium_ingot,uranium_nugget,uranium_ore,wire,wrench,zinc_block,zinc_chunks,zinc_dust,zinc_ingot,zinc_nugget,zinc_ore,zombie_leather|}",
+        "prefix": "@silents_mechanisms/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

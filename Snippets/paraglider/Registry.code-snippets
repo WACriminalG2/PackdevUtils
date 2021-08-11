@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Paraglider Blocks": {
+        "body": "paraglider:${1|horned_statue|}",
+        "prefix": "@paraglider/blocks/"
+    },
+
+    "Paraglider Items": {
+        "body": "paraglider:${1|anti_vessel,deku_leaf,essence,goddess_statue,goron_goddess_statue,heart_container,horned_statue,kakariko_goddess_statue,paraglider,rito_goddess_statue,spirit_orb,stamina_vessel|}",
+        "prefix": "@paraglider/items/"
+    },
+
+    "Paraglider Entities": {
+        "body": "paraglider:${1|wind|}",
+        "prefix": "@paraglider/entities/"
+    },
+
+    "Paraglider Potions": {
+        "body": "paraglider:${1|exhausted|}",
+        "prefix": "@paraglider/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

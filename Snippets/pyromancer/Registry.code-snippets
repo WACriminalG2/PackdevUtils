@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Pyromancer Blocks": {
+        "body": "pyromancer:${1|brimstone_bricks,brimstone_bricks_slab,brimstone_bricks_stairs,brimstone_bricks_wall,brimstone_ore,chiseled_brimstone_bricks,chiseled_mercury_bricks,cinnabar_ore,cracked_brimstone_bricks,cracked_mercury_bricks,debug_block,faded_fungus,faded_nylium,faded_roots,frozen_mercury,hog_trap,mercury_bricks,mercury_bricks_slab,mercury_bricks_stairs,mercury_bricks_wall,mysterious_vegetable,polished_frozen_mercury,potted_faded_fungus,potted_faded_roots,pyromancer_table,pyrowood_door,pyrowood_fence,pyrowood_gate,pyrowood_leaves,pyrowood_log,pyrowood_planks,pyrowood_sapling,pyrowood_slab,pyrowood_stairs,pyrowood_trapdoor,sporecore,unburneds_sapling|}",
+        "prefix": "@pyromancer/blocks/"
+    },
+
+    "Pyromancer Items": {
+        "body": "pyromancer:${1|ash_projectile,blazing_journal,blazing_quill,bombsack,borov_spawn_egg,bottle_of_vapors,brimstone,brimstone_bricks,brimstone_bricks_slab,brimstone_bricks_stairs,brimstone_bricks_wall,brimstone_ore,chiseled_brimstone_bricks,chiseled_mercury_bricks,cinnabar_chunk,cinnabar_ore,core_shard,cracked_brimstone_bricks,cracked_mercury_bricks,debug_block,diamond_mace,drops_of_mercury,eordums_judgement,faded_fungus,faded_nylium,faded_roots,firelink,fractal_cucumber,frozen_mercury,fungus_quill,golden_mace,hog_trap,hoglins_hide,hogwhip,ignited_spawn_egg,iron_mace,marauders_armor_boots,marauders_armor_chestplate,marauders_armor_helmet,marauders_armor_leggings,membrane_quill,mercury_bricks,mercury_bricks_slab,mercury_bricks_stairs,mercury_bricks_wall,mysterious_vegetable,napalm_bombsack,netherite_mace,netherite_mask_helmet,netherite_shard,nitropowder,nomad_quill,pebble,pigbrew,pigman_breaker_spawn_egg,pigman_chief_spawn_egg,pigman_protector_spawn_egg,pigman_vexillary_spawn_egg,polished_frozen_mercury,potted_faded_fungus,potted_faded_roots,pygromancer_fireball,pygromancer_spawn_egg,pyromancer_table,pyrowood_door,pyrowood_fence,pyrowood_gate,pyrowood_leaves,pyrowood_log,pyrowood_planks,pyrowood_sapling,pyrowood_slab,pyrowood_stairs,pyrowood_trapdoor,rooted_unburned_spawn_egg,scatter_bombsack,slingshot,slingshot_brimstone,slingshot_flint,slingshot_magma_cream,slingshot_pebbles,slingshot_slime,smoldering_twig,sporecore,sporeder_spawn_egg,thermometer,unburneds_sapling,vaporizer|}",
+        "prefix": "@pyromancer/items/"
+    },
+
+    "Pyromancer Entities": {
+        "body": "pyromancer:${1|borov,charred_unburned,entitybulletash_projectile,entitybulletbombsack,entitybulletbottle_of_vapors,entitybulletnapalm_bombsack,entitybulletpygromancer_fireball,entitybulletscatter_bombsack,entitybulletslingshot_brimstone,entitybulletslingshot_flint,entitybulletslingshot_magma_cream,entitybulletslingshot_pebbles,entitybulletslingshot_slime,ignited,pigman_breaker,pigman_chief,pigman_protector,pigman_vexillary,pygromancer,pyroroots,rooted_unburned,sporeder,unburned|}",
+        "prefix": "@pyromancer/entities/"
+    },
+
+    "Pyromancer Potions": {
+        "body": "pyromancer:${1|brimflame,pigmen_legion_cd,volcanic_mark_effect|}",
+        "prefix": "@pyromancer/potions/"
+    },
+
+    "Pyromancer Enchantments": {
+        "body": "pyromancer:${1|ashen_pages,blazing_wounds,breakthrough,goliath_slayer,hook,infernal_harvest,legerdemain,lightspeed,resilience,rush,scalding_spikes,sturdiness,tamer,two_handed,undertaker,volcanic_mark,yatagarasu|}",
+        "prefix": "@pyromancer/enchant/"
+    }
+
+    // No biomes.
+}

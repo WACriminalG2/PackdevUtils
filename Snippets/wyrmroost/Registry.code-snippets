@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Wyrmroost Blocks": {
+        "body": "wyrmroost:${1|blue_geode_block,blue_geode_ore,platinum_block,platinum_ore,purple_geode_block,purple_geode_ore,red_geode_block,red_geode_ore|}",
+        "prefix": "@wyrmroost/blocks/"
+    },
+
+    "Wyrmroost Items": {
+        "body": "wyrmroost:${1|alpine_spawn_egg,blue_geode,blue_geode_axe,blue_geode_block,blue_geode_boots,blue_geode_chestplate,blue_geode_dragon_armor,blue_geode_helmet,blue_geode_hoe,blue_geode_leggings,blue_geode_ore,blue_geode_pickaxe,blue_geode_shovel,blue_geode_sword,blue_geode_tipped_arrow,butterfly_leviathan_spawn_egg,canari_wyvern_spawn_egg,coin_dragon,cooked_apex_meat,cooked_behemoth_meat,cooked_common_meat,cooked_desertwyrm,cooked_lowtier_meat,desert_wyrm,diamond_dragon_armor,dragon_egg,dragon_fruit_drake_spawn_egg,dragon_staff,drake_backplate,drake_boots,drake_chestplate,drake_helmet,drake_leggings,gold_dragon_armor,iron_dragon_armor,jewelled_apple,lesser_desertwyrm_spawn_egg,overworld_drake_spawn_egg,platinum_axe,platinum_block,platinum_boots,platinum_chestplate,platinum_dragon_armor,platinum_helmet,platinum_hoe,platinum_ingot,platinum_leggings,platinum_ore,platinum_pickaxe,platinum_shovel,platinum_sword,purple_geode,purple_geode_axe,purple_geode_block,purple_geode_boots,purple_geode_chestplate,purple_geode_dragon_armor,purple_geode_helmet,purple_geode_hoe,purple_geode_leggings,purple_geode_ore,purple_geode_pickaxe,purple_geode_shovel,purple_geode_sword,purple_geode_tipped_arrow,raw_apex_meat,raw_behemoth_meat,raw_common_meat,raw_lowtier_meat,red_geode,red_geode_axe,red_geode_block,red_geode_boots,red_geode_chestplate,red_geode_dragon_armor,red_geode_helmet,red_geode_hoe,red_geode_leggings,red_geode_ore,red_geode_pickaxe,red_geode_shovel,red_geode_sword,red_geode_tipped_arrow,roost_stalker_spawn_egg,royal_red_spawn_egg,silver_glider_spawn_egg,soul_crystal,trumpet|}",
+        "prefix": "@wyrmroost/items/"
+    },
+
+    "Wyrmroost Entities": {
+        "body": "wyrmroost:${1|alpine,butterfly_leviathan,canari_wyvern,coin_dragon,dragon_egg,dragon_fruit_drake,fire_breath,geode_tipped_arrow,lesser_desertwyrm,overworld_drake,roost_stalker,royal_red,silver_glider,wind_gust|}",
+        "prefix": "@wyrmroost/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

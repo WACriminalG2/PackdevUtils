@@ -1,0 +1,18 @@
+{
+    // Version: 0.3.6-Beta
+
+    // No blocks.
+
+    "Silveroak Outpost Items": {
+        "body": "silveroakoutpost:${1|hygrometer,rain_gauge,thermometer|}",
+        "prefix": "@silveroakoutpost/items/"
+      }
+
+      // No entities.
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

@@ -1,0 +1,27 @@
+{
+    // Version: V.3_1.16.5
+
+    "Mushroom Fox Blocks": {
+        "body": "mushroom_fox:${1|flowering_peyote,forgotten_keep_portal,kumquat_bush,mudstone,mudstone_grass,peyote,quicker_sand,ruined_brick,sand_grass,stage_0,stage_1,stage_2,stage_3,statue,stone_tiles,stone_tiles_slab,stone_tiles_stairs,stone_tiles_wall,terracotta_grass|}",
+        "prefix": "@mushroom_fox/blocks/"
+      },
+
+      "Mushroom Fox Items": {
+        "body": "mushroom_fox:${1|blueberry,cookie_chicken_spawn_egg,flowering_peyote,forgotten_keep,kumquat,kumquat_bush,mudstone,mudstone_grass,mushroom_fox_spawn_egg,peyote,quicker_sand,ruined_brick,sand_grass,sand_snake_spawn_egg,stage_0,stage_1,stage_2,stage_3,statue,stone_tiles,stone_tiles_slab,stone_tiles_stairs,stone_tiles_wall,terracotta_grass|}",
+        "prefix": "@mushroom_fox/items/"
+      },
+
+      "Mushroom Fox Entities": {
+        "body": "mushroom_fox:${1|cookie_chicken,mushroom_fox,sand_snake|}",
+        "prefix": "@mushroom_fox/entities/"
+      },
+
+      // No potions.
+
+      // No enchantments.
+
+      "Mushroom Fox Biomes": {
+        "body": "mushroom_fox:${1|fall_forest,muddy_hills|}",
+        "prefix": "@mushroom_fox/biomes/"
+      }
+}

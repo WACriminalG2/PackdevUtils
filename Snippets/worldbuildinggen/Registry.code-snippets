@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "World-Building Plus Blocks": {
+        "body": "worldbuildinggen:${1|asteroid,asteroid_slab,asteroid_stairs,asteroid_wall,brittle_iron_ore,cast_iron_block,dolomite,dolomite_slab,dolomite_stairs,dolomite_wall,polished_asteroid,polished_dolomite,raw_peridot,raw_star_fragment,silver_block,silver_ore|}",
+        "prefix": [
+            "@worldbuildinggen/blocks/",
+            "@worldbuildingplus/blocks/"
+        ]
+    },
+
+    "World-Building Plus Items": {
+        "body": "worldbuildinggen:${1|amphipod_spawn_egg,asteroid,asteroid_slab,asteroid_stairs,asteroid_wall,brittle_iron_ore,cast_iron_axe,cast_iron_block,cast_iron_boots,cast_iron_chestplate,cast_iron_helmet,cast_iron_hoe,cast_iron_ingot,cast_iron_leggings,cast_iron_pickaxe,cast_iron_shovel,cast_iron_sword,cooked_hogsback_steak,cooked_mouring_tooth_meat,cooked_strongarm_meat,corus_bear_spawn_egg,corus_citizen_spawn_egg,corus_guard_spawn_egg,dolomite,dolomite_slab,dolomite_stairs,dolomite_wall,feral_kobold_spawn_egg,glowstick,hogsback_eyeblade,hogsback_spawn_egg,hogsback_steak,hound_spawn_egg,hussein_bull_spawn_egg,hussein_native_spawn_egg,iron_machi,kobold_spawn_egg,mourning_tooth_meat,mourning_tooth_spawn_egg,orc_spawn_egg,parasite_spawn_egg,peridot,peridot_staff,polished_asteroid,polished_dolomite,puffpuff_spawn_egg,raw_peridot,raw_star_fragment,silver_axe,silver_block,silver_boots,silver_chestplate,silver_dime,silver_helmet,silver_hoe,silver_ingot,silver_leggings,silver_ore,silver_pickaxe,silver_shovel,silver_sword,star_fragment,star_fragment_sword,stars,strongarm_muncher_spawn_egg,strongarmmunchermeat,tamive_elf_spawn_egg,tamive_shelly_spawn_egg,tau_jelly_spawn_egg,troll_spawn_egg,troll_tooth,troll_tooth_sword|}",
+        "prefix": [
+            "@worldbuildinggen/items/",
+            "@worldbuildingplus/items/"
+        ]
+    },
+
+    "World-Building Plus Entities": {
+        "body": "worldbuildinggen:${1|amphipod,corus_bear,corus_citizen,corus_guard,entitybulletglowstick,entitybulletperidot_staff,feral_kobold,hogsback,hound,hussein_bull,hussein_native,kobold,mourning_tooth,orc,parasite,puffpuff,strongarm_muncher,tamive_elf,tamive_shelly,tau_jelly,troll|}",
+        "prefix": "@worldbuildinggen/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

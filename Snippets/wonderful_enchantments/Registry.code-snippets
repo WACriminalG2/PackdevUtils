@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Wonderful Enchantments Items": {
+        "body": "wonderful_enchantments:${1|wonderful_book|}",
+        "prefix": "@wonderful_enchantments/items/"
+    },
+
+    // No entities.
+
+    "Wonderful Enchantments Potions": {
+        "body": "wonderful_enchantments:${1|mithridatism_protection|}",
+        "prefix": "@wonderful_enchantments/potions/"
+    },
+
+    "Wonderful Enchantments Enchantments": {
+        "body": "wonderful_enchantments:${1|absorber,corrosion_curse,dodge,elder_guardian_favor,enlightenment,fatigue_curse,fishing_fanatic,fuse_cutter,gotta_mine_fast,harvester,horse_frost_walker,horse_protection,human_slayer,hunter,immortality,incompatibility_curse,leech,magic_protection,mithridatism,phoenix_dive,pufferfish_vengeance,sixth_sense,slowness_curse,smelter,swiftness,telekinesis,vampirism_curse,vitality|}",
+        "prefix": "@wonderful_enchantments/enchant/"
+    }
+
+    // No biomes.
+}

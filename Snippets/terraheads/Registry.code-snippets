@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Terraqueous Heads Blocks": {
+        "body": "terraheads:${1|illager_head,illager_wall_head,villager_head,villager_wall_head,wandering_trader_head,wandering_trader_wall_head,witch_head,witch_wall_head,zombie_villager_head,zombie_villager_wall_head|}",
+        "prefix": "@terraheads/blocks/"
+    },
+
+    "Terraqueous Heads Items": {
+        "body": "terraheads:${1|illager_head,villager_head,wandering_trader_head,witch_head,zombie_villager_head|}",
+        "prefix": "@terraheads/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Hats Items": {
+        "body": "hats:${1|hat_launcher|}",
+        "prefix": "@hats/items/"
+    },  
+
+    "Hats Entities": {
+        "body": "hats:${1|hat|}",
+        "prefix": "@hats/entities/"
+    }
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

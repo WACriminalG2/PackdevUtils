@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Tetra Blocks": {
+        "body": "tetra:${1|basic_workbench,block_geode,chthonic_extractor,core_extractor,depleted_bedrock,extractor_pipe,extractor_piston,forged_container,forged_crate,forged_pillar,forged_platform,forged_platform_slab,forged_vent,forged_wall,forged_workbench,fractured_bedrock,hammer_base,hammer_head,rack,scroll_open,scroll_rolled,scroll_wall,seeping_bedrock,transfer_unit|}",
+        "prefix": "@tetra/blocks/"
+    },
+
+    "Tetra Items": {
+        "body": "tetra:${1|basic_workbench,chthonic_extractor,chthonic_extractor_used,combustion_chamber,core_extractor,dragon_sinew,earthpiercer,extractor_pipe,forged_beam,forged_bolt,forged_container,forged_crate,forged_mesh,forged_pillar,forged_platform,forged_platform_slab,forged_vent,forged_wall,forged_workbench,geode,hammer_base,holo,lubricant_dispenser,magmatic_cell,metal_scrap,modular_bow,modular_crossbow,modular_double,modular_shield,modular_single,modular_sword,modular_toolbelt,planar_stabilizer,pristine_diamond,pristine_emerald,pristine_lapis,quick_latch,rack,scroll_rolled,seeping_bedrock,stonecutter,transfer_unit,vent_plate|}",
+        "prefix": "@tetra/items/"
+    },
+
+    "Tetra Entities": {
+        "body": "tetra:${1|extractor_projectile,thrown_modular_item|}",
+        "prefix": "@tetra/entities/"
+    },
+
+    "Tetra Potions": {
+        "body": "tetra:${1|bleeding,earthbound,exhausted,howling,pried,punctured,severed,small_absorb,small_health,small_strength,steeled,stun,suspended,unwavering|}",
+        "prefix": "@tetra/potions/"
+    }
+
+    // No enchantments.
+
+    // No biomes.
+}

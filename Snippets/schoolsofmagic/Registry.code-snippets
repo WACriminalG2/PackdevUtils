@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Schools of Magic Blocks": {
+        "body": "schoolsofmagic:${1|andesite_podium,basalt_podium,blackstone_podium,diorite_podium,endstone_podium,granite_podium,netherbrick_podium,obsidian_podium,prismarine_podium,purpur_podium,quartz_podium,red_sandstone_podium,sandstone_podium,stone_podium|}",
+        "prefix": "@schoolsofmagic/blocks/"
+    },
+
+    "Schools of Magic Items": {
+        "body": "schoolsofmagic:${1|andesite_podium,apprentice_wand_1,apprentice_wand_2,apprentice_wand_3,apprentice_wand_4,basalt_podium,basic_arcana,blackstone_podium,diorite_podium,endstone_podium,granite_podium,letter_ccw,netherbrick_podium,obsidian_podium,prismarine_podium,purpur_podium,quartz_podium,quest_note,red_sandstone_podium,sandstone_podium,stone_podium|}",
+        "prefix": "@schoolsofmagic/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

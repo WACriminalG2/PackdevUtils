@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "RF Tools Base Blocks": {
+        "body": "rftoolsbase:${1|dimensionalshard_end,dimensionalshard_nether,dimensionalshard_overworld,information_screen,machine_infuser|}",
+        "prefix": "@rftoolsbase/blocks/"
+    },
+
+    "RF Tools Base Items": {
+        "body": "rftoolsbase:${1|crafting_card,dimensionalshard,dimensionalshard_end,dimensionalshard_nether,dimensionalshard_overworld,filter_module,information_screen,infused_diamond,infused_enderpearl,machine_base,machine_frame,machine_infuser,manual,smartwrench,smartwrench_select,tablet,tablet_filled|}",
+        "prefix": "@rftoolsbase/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

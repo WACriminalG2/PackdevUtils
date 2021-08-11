@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    // No items.
+
+    // No entities.
+
+    // No potions.
+
+    "Flashfyre's Enchantments": {
+        "body": "ffenchants:${1|anchoring_curse,aquatic_rejuvenation,bloodlust,buoyancy_horse,butchering,inferno,leaping_horse,maelstrom,obsidian_skull,outrush,pillaging,poison_aspect,quickness_horse,searing,sharpshooter,steadfast,torrent,vampiric,weighted,wither_aspect|}",
+        "prefix": "@ffenchants/enchant/"
+    }
+
+    // No biomes.
+}

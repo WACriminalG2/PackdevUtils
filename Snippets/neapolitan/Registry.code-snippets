@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Neapolitan Blocks": {
+        "body": "neapolitan:${1|adzuki_cake,adzuki_crate,adzuki_ice_cream_block,adzuki_soil,adzuki_sprouts,banana_bundle,banana_cake,banana_crate,banana_frond,banana_ice_cream_block,banana_stalk,beanstalk,beanstalk_thorns,carved_banana_stalk,chiseled_chocolate_bricks,chocolate_block,chocolate_brick_slab,chocolate_brick_stairs,chocolate_brick_vertical_slab,chocolate_brick_wall,chocolate_bricks,chocolate_cake,chocolate_ice_cream_block,chocolate_tile_slab,chocolate_tile_stairs,chocolate_tile_vertical_slab,chocolate_tile_wall,chocolate_tiles,dried_vanilla_pod_block,frond_thatch,frond_thatch_slab,frond_thatch_stairs,frond_thatch_vertical_slab,large_banana_frond,mint,mint_basket,mint_cake,mint_ice_cream_block,roasted_adzuki_crate,small_banana_frond,strawberry_basket,strawberry_bush,strawberry_cake,strawberry_ice_cream_block,vanilla_cake,vanilla_ice_cream_block,vanilla_pod_block,vanilla_vine,vanilla_vine_plant,white_strawberry_basket|}",
+        "prefix": "@neapolitan/blocks/"
+    },
+
+    "Neapolitan Items": {
+        "body": "neapolitan:${1|adzuki_beans,adzuki_bun,adzuki_cake,adzuki_crate,adzuki_curry,adzuki_ice_cream,adzuki_ice_cream_block,adzuki_milkshake,adzuki_soil,adzuki_stew,banana,banana_bread,banana_bunch,banana_bundle,banana_cake,banana_crate,banana_frond,banana_ice_cream,banana_ice_cream_block,banana_milkshake,banana_stalk,bananarrow,beanstalk,beanstalk_thorns,carved_banana_stalk,chimpanzee_banner_pattern,chimpanzee_spawn_egg,chiseled_chocolate_bricks,chocolate_bar,chocolate_block,chocolate_brick_slab,chocolate_brick_stairs,chocolate_brick_vertical_slab,chocolate_brick_wall,chocolate_bricks,chocolate_cake,chocolate_ice_cream,chocolate_ice_cream_block,chocolate_milkshake,chocolate_spider_eye,chocolate_strawberries,chocolate_tile_slab,chocolate_tile_stairs,chocolate_tile_vertical_slab,chocolate_tile_wall,chocolate_tiles,cooked_mint_chops,dried_banana,dried_vanilla_pod_block,dried_vanilla_pods,frond_thatch,frond_thatch_slab,frond_thatch_stairs,frond_thatch_vertical_slab,ice_cubes,large_banana_frond,magic_beans,milk_bottle,mint_basket,mint_cake,mint_candies,mint_chocolate,mint_chops,mint_ice_cream,mint_ice_cream_block,mint_leaves,mint_milkshake,mint_sprout,neapolitan_ice_cream,plantain_spider_spawn_egg,roasted_adzuki_beans,roasted_adzuki_crate,small_banana_frond,strawberries,strawberry_banana_smoothie,strawberry_basket,strawberry_bean_bonbons,strawberry_cake,strawberry_ice_cream,strawberry_ice_cream_block,strawberry_milkshake,strawberry_pips,strawberry_scones,vanilla_cake,vanilla_chocolate_fingers,vanilla_fudge,vanilla_ice_cream,vanilla_ice_cream_block,vanilla_milkshake,vanilla_pod_block,vanilla_pods,vanilla_pudding,white_strawberries,white_strawberry_basket|}",
+        "prefix": "@neapolitan/items/"
+    },
+
+    "Neapolitan Entities": {
+        "body": "neapolitan:${1|banana_peel,bananarrow,chimpanzee,plantain_spider|}",
+        "prefix": "@neapolitan/entities/"
+    },
+
+    "Neapolitan Potions": {
+        "body": "neapolitan:${1|agility,berserking,harmony,slipping,sugar_rush,vanilla_scent|}",
+        "prefix": "@neapolitan/potions/"
+    }
+
+    // No enchantments
+
+    // No biomes
+}

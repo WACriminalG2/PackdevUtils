@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "PokeCube Adventures Blocks": {
+        "body": "pokecube_adventures:${1|afa,cloner,commander,daycare,extractor,laboratory_glass,siphon,splicer,warppad|}",
+        "prefix": "@pokecube_adventures/blocks/"
+    },
+
+    "PokeCube Adventures Items": {
+        "body": "pokecube_adventures:${1|afa,badge_bug,badge_dark,badge_dragon,badge_electric,badge_fairy,badge_fighting,badge_fire,badge_flying,badge_ghost,badge_grass,badge_ground,badge_ice,badge_normal,badge_poison,badge_psychic,badge_rock,badge_steel,badge_unknown,badge_water,bag,cloner,commander,daycare,exp_share,extractor,laboratory_glass,linker,siphon,splicer,warppad|}",
+        "prefix": "@pokecube_adventures/items/"
+    },
+
+    "PokeCube Adventures Entities": {
+        "body": "pokecube_adventures:${1|leader,trainer|}",
+        "prefix": "@pokecube_adventures/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

@@ -1,0 +1,27 @@
+{
+    // Version: ?????
+
+    "Traverse Blocks": {
+        "body": "traverse:${1|brown_autumnal_leaves,brown_autumnal_sapling,fir_button,fir_door,fir_fence,fir_fence_gate,fir_leaves,fir_log,fir_planks,fir_pressure_plate,fir_sapling,fir_sign,fir_slab,fir_stairs,fir_trapdoor,fir_wall_sign,fir_wood,orange_autumnal_leaves,orange_autumnal_sapling,red_autumnal_leaves,red_autumnal_sapling,stripped_fir_log,stripped_fir_wood,yellow_autumnal_leaves,yellow_autumnal_sapling|}",
+        "prefix": "@traverse/blocks/"
+    },
+
+    "Traverse Items": {
+        "body": "traverse:${1|brown_autumnal_leaves,brown_autumnal_sapling,fir_boat,fir_button,fir_door,fir_fence,fir_fence_gate,fir_leaves,fir_log,fir_planks,fir_pressure_plate,fir_sapling,fir_sign,fir_slab,fir_stairs,fir_trapdoor,fir_wood,orange_autumnal_leaves,orange_autumnal_sapling,red_autumnal_leaves,red_autumnal_sapling,stripped_fir_log,stripped_fir_wood,yellow_autumnal_leaves,yellow_autumnal_sapling|}",
+        "prefix": "@traverse/items/"
+    },
+
+    "Traverse Entities": {
+        "body": "traverse:${1|fir_boat|}",
+        "prefix": "@traverse/entities/"
+    },
+
+    // No potions.
+
+    // No enchantments.
+
+    "Traverse Biomes": {
+        "body": "traverse:${1|snowy_coniferous_forest,autumnal_woods,coniferous_forest,wooded_plateau,woodlands,desert_shrubland,snowy_coniferous_wooded_hills,mini_jungle,coniferous_wooded_hills,autumnal_wooded_hills,rocky_edge,snowy_high_coniferous_forest,wooded_island,lush_swamp,meadow,cliffs,high_coniferous_forest,snowy_cliffs,arid_highlands,plains_plateau,rolling_hills|}",
+        "prefix": "@traverse/biomes/"
+    }
+}

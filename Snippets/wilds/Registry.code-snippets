@@ -1,0 +1,27 @@
+{
+    // Version: 1.1
+
+    "Wilds Blocks": {
+        "body": "wilds:${1|baneberry_bush,baneberry_bush_crop,camellia_bush,dead_camellia_bush,flowering_camellia_bush,player_placed_termite_mound,potted_baneberry_bush,potted_camellia_bush,potted_dead_camellia_bush,potted_flowering_camellia_bush,scorched_grass,scorched_grassy_soil,scorched_soil,short_grass,termite_mound|}",
+        "prefix": "@wilds/blocks/"
+      },
+
+      "Wilds Items": {
+        "body": "wilds:${1|armadillo_armor_chestplate,armadillo_plate,armadillo_spawn_egg,baneberries,baneberry_bush,baneberry_bush_crop,camellia_bush,congealed_blood,dead_camellia_bush,dropbear_armor_boots,dropbear_foot,dropbear_spawn_egg,flowering_camellia_bush,koala_armor_helmet,koala_fur,koala_spawn_egg,player_placed_termite_mound,potted_baneberry_bush,potted_camellia_bush,potted_dead_camellia_bush,potted_flowering_camellia_bush,scorched_grass,scorched_grassy_soil,scorched_soil,short_grass,small_horned_lizard_spawn_egg,termite_mound|}",
+        "prefix": "@wilds/items/"
+      },
+
+      "Wilds Entities": {
+        "body": "wilds:${1|armadillo,dropbear,koala,small_horned_lizard|}",
+        "prefix": "@wilds/entities/"
+      },
+
+      "Wilds Potions": {
+        "body": "wilds:${1|bane|}",
+        "prefix": "@wilds/potions/"
+      }
+
+      // No enchantments.
+
+      // No biomes.
+}

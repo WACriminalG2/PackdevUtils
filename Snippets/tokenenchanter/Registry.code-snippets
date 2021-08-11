@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Token Enchanter Blocks": {
+        "body": "tokenenchanter:${1|token_enchanter|}",
+        "prefix": "@tokenenchanter/blocks/"
+    },
+
+    "Token Enchanter Items": {
+        "body": "tokenenchanter:${1|enchanted_token,gold_token,large_xp_crystal,silver_token,small_xp_crystal,token_enchanter,xp_bread,xp_crystal|}",
+        "prefix": "@tokenenchanter/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

@@ -1,0 +1,21 @@
+{
+    // Version: ?????
+
+    "Solar Cooker Blocks": {
+        "body": "solarcooker:${1|reflector,shining_diamond_block,solar_cooker|}",
+        "prefix": "@solarcooker/blocks/"
+    },
+
+    "Solar Cooker Items": {
+        "body": "solarcooker:${1|reflector,shining_diamond_block,solar_cooker|}",
+        "prefix": "@solarcooker/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}

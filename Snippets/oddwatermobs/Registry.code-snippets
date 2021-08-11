@@ -1,0 +1,30 @@
+{
+    // Version: ?????
+
+    "Odd Water Mobs Blocks": {
+        "body": "oddwatermobs:${1|angler_bucket_block,baby_crab_bucket_block,bio_scales_ceiling,bio_scales_floor,bio_scales_wall,bioluminescent_block,chiseled_deep_sandstone,coelacanth_bucket_block,crab_eggs,cut_deep_sandstone,cut_deep_sandstone_slab,dark_ghost_shark_bucket_block,deep_sand,deep_sandstone,deep_sandstone_slab,deep_sandstone_stairs,deep_sandstone_wall,ghost_shark_bucket_block,horseshoe_bucket_block,isopod_bucket_block,long_nosed_ghost_shark_bucket_block,mudskipper_bucket_block,pink_ghost_shark_block,smooth_deep_sandstone,smooth_deep_sandstone_slab,smooth_deep_sandstone_stairs,tube_worm_base,tube_worm_top|}",
+        "prefix": "@oddwatermobs/blocks/"
+    },
+
+    "Odd Water Mobs Items": {
+        "body": "oddwatermobs:${1|angler_bucket_block,anglerfish_spawn_egg,baby_crab_bucket_block,bathosphere,bio_scales_ceiling,bio_scales_floor,bio_scales_wall,bioluminescent_block,chimaera_sting,chiseled_deep_sandstone,coelacanth_bucket_block,coelacanth_record,coelacanth_spawn_egg,cooked_crab_leg,cooked_isopod,cooked_mudskipper,crab_eggs,crab_leg,cut_deep_sandstone,cut_deep_sandstone_slab,dark_ghost_shark_bucket_block,deep_sand,deep_sandstone,deep_sandstone_slab,deep_sandstone_stairs,deep_sandstone_wall,ghost_shark_bucket_block,ghost_shark_spawn_egg,horseshoe_bucket_block,horseshoe_crab_spawn_egg,horseshoe_crab_thorax,isopod_bucket_block,isopod_spawn_egg,long_nosed_ghost_shark_bucket_block,mudskipper_bucket_block,mudskipper_fin,mudskipper_spawn_egg,pink_ghost_shark_block,raw_anglerfish,raw_coelacanth,raw_ghost_shark,raw_isopod,raw_mudskipper,seapig_record,smooth_deep_sandstone,smooth_deep_sandstone_slab,smooth_deep_sandstone_stairs,spider_crab_spawn_egg,tube_worm_base,tube_worm_top|}",
+        "prefix": "@oddwatermobs/items/"
+    },
+
+    "Odd Water Mobs Entities": {
+        "body": "oddwatermobs:${1|anglerfish,anglerfish_puff,baby_spider_crab,coelacanth,dark_ghost_shark,faefa,ghost_shark,horseshoe_crab,isopod,long_nosed_ghost_shark,mudskipper,pink_ghost_shark,spider_crab|}",
+        "prefix": "@oddwatermobs/entities/"
+    },
+
+    "Odd Water Mobs Potions": {
+        "body": "oddwatermobs:${1|healing_vigor,potion_of_mudskipping,potion_of_mudskipping_plus,sinking|}",
+        "prefix": "@oddwatermobs/potions/"
+    },
+
+    // No enchantments
+
+    "Odd Water Mobs Biomes": {
+        "body": "oddwatermobs:${1|deep_ocean_dunes|}",
+        "prefix": "@oddwatermobs/biomes/"
+    }
+}

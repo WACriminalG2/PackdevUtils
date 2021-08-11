@@ -1,0 +1,24 @@
+{
+    // Version: ?????
+
+    "Pandora's Creatures Blocks": {
+        "body": "pandoras_creatures:${1|arachnon_crystal,black_end_troll_box,blue_end_troll_box,brown_end_troll_box,cyan_end_troll_box,dhania,end_troll_box,gray_end_troll_box,green_end_troll_box,hill_bloom,horsetail,light_blue_end_troll_box,light_gray_end_troll_box,lime_end_troll_box,magenta_end_troll_box,orange_end_troll_box,pink_end_troll_box,purple_end_troll_box,red_end_troll_box,white_end_troll_box,yellow_end_troll_box|}",
+        "prefix": "@pandoras_creatures/blocks/"
+    },
+
+    "Pandora's Creatures Items": {
+        "body": "pandoras_creatures:${1|acidic_archvine_spawn_egg,acidic_archvine_tongue,arachnon_crystal,arachnon_hammer,arachnon_spawn_egg,black_end_troll_box,blue_end_troll_box,brown_end_troll_box,bufflon_beef,bufflon_beef_cooked,bufflon_hide,bufflon_large_storage,bufflon_player_seats,bufflon_saddle,bufflon_small_storage,bufflon_spawn_egg,crab_bucket,crab_meat,crab_meat_cooked,crab_spawn_egg,cyan_end_troll_box,dhania,end_troll_box,end_troll_skin,end_troll_spawn_egg,gray_end_troll_box,green_end_troll_box,hellhound_spawn_egg,herb_bundle,hill_bloom,horsetail,light_blue_end_troll_box,light_gray_end_troll_box,lime_end_troll_box,magenta_end_troll_box,orange_end_troll_box,pink_end_troll_box,plant_hat,purple_end_troll_box,red_end_troll_box,seahorse,seahorse_bucket,seahorse_cooked,seahorse_spawn_egg,white_end_troll_box,yellow_end_troll_box|}",
+        "prefix": "@pandoras_creatures/items/"
+    },
+
+    "Pandora's Creatures Entities": {
+        "body": "pandoras_creatures:${1|acidic_archvine,arachnon,bufflon,crab,end_troll,end_troll_bullet_damage,end_troll_bullet_poison,end_troll_bullet_wither,hellhound,seahorse|}",
+        "prefix": "@pandoras_creatures/entities/"
+    }
+
+    // No potions
+
+    // No enchantments
+
+    // No biomes
+}

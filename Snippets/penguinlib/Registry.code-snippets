@@ -1,0 +1,18 @@
+{
+    // Version: ?????
+
+    // No blocks.
+
+    "Penguin Lib Items": {
+        "body": "penguinlib:${1|deep_bowl,glass,jam_jar,mug,penguin_banner_pattern,pickling_jar,plate,unfired_mug,unfired_plate|}",
+        "prefix": "@penguinlib/items/"
+    }
+
+    // No entities.
+
+    // No potions.
+
+    // No enchantments.
+
+    // No biomes.
+}
