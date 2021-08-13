@@ -1,0 +1,214 @@
+{
+    "$comment": "TODO: Refactor output field to accept single, un-weighted output recipes.",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Interactio - Fluid to Item Recipe",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type","inputs","fluid","output","consume_fluid"],
+
+    "properties": {
+        "type": {
+            "const": "interactio:item_fluid_transform"
+        },
+
+        "inputs": {
+            "type": "array",
+            "description": "A list of ingredients to be tossed into the fluid for this recipe. Can be items or tags.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/RecipeIngredient"
+            }
+        },
+
+        "fluid": {
+            "description": "The fluid required for this recipe. Tossing the inputs into this fluid will result in the output. Can be a specific 'fluid', or a 'tag'.",
+            "$ref": "#/definitions/FluidIngredient"
+        },
+
+        "output": {
+            "type": "object",
+            "description": "The recipe's output.",
+            "additionalProperties": false,
+            "required": ["entries","empty_weight","rolls"],
+            "properties": {
+                "entries": {
+                    "type": "array",
+                    "description": "A collection of weighted possible results/outputs for this recipe.",
+                    "items": {
+                        "$ref": "#/definitions/WeightedOutput"
+                    }
+                },
+                "empty_weight": {
+                    "type": "integer",
+                    "description": "The chance that this recipe will not produce any outputs for a given roll.",
+                    "default": 0,
+                    "minimum": 0
+                },
+                "rolls": {
+                    "type": "integer",
+                    "description": "The number of rolls this recipe will make per instance.",
+                    "minimum": 1,
+                    "default": 1
+                }
+            }
+        },
+
+        "consume_fluid": {
+            "type": "number",
+            "description": "The chance that this recipe will consume the fluid catalyst. Range: 0.0 - 1.0",
+            "default": 0.0,
+            "minimum": 0.0,
+            "maximum": 1.0
+        }
+    },
+
+    "definitions": {
+        "RecipeIngredient": {
+            "type": "object",
+            "additionalProperties": false,
+            "oneOf": [
+                { 
+                    "required": ["item"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "The item ID required.",
+                            "examples": ["minecraft:diamond","minecraft:potato"]
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The amount of the item needed.",
+                            "minimum": 1
+                        },
+                        "return_chance": {
+                            "type": "number",
+                            "description": "The probability that this item will not be consumed by the recipe. Range: 0.0 - 1.0",
+                            "minimum": 0.0,
+                            "maximum": 1.0,
+                            "default": 0.0
+                        }
+                    }
+                },
+                {
+                    "required": ["tag"],
+                    "properties": {
+                        "tag": {
+                            "type": "string",
+                            "description": "A tag ID. Any item in this tag will be accepted as a recipe input.",
+                            "examples": ["forge:ingots/iron"]
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The amount of the item needed.",
+                            "minimum": 1
+                        },
+                        "return_chance": {
+                            "type": "number",
+                            "description": "The probability that this item will not be consumed by the recipe. Range: 0.0 - 1.0",
+                            "minimum": 0.0,
+                            "maximum": 1.0,
+                            "default": 0.0
+                        }
+                    }
+                },
+                {
+                    "required": ["type","item","nbt"],
+                    "properties": {
+                        "type": {
+                            "const": "forge:nbt"
+                        },
+                        "item": {
+                            "type": "string",
+                            "description": "The item ID.",
+                            "examples": ["ceramics:clay_bucket"]
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The amount of this ingredient required.",
+                            "minimum": 1,
+                            "default": 1
+                        },
+                        "return_chance": {
+                            "type": "number",
+                            "description": "The chance that this input will not be consumed. Range: 0.0 - 1.0",
+                            "minimum": 0.0,
+                            "maximum": 1.0,
+                            "default": 0.0
+                        },
+                        "nbt": {
+                            "type": "object",
+                            "description": "An object declaring NBT values that must be present on the item."
+                        }
+                    }
+                }
+            ]
+        },
+
+        "FluidIngredient": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "fluid": {
+                    "type": "string",
+                    "description": "ID for a specific fluid required for this recipe."
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "ID for a fluid tag. Any fluid which has this tag will be accepted for this recipe."
+                }
+            }
+        },
+
+        "BlockIngredient": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "block": {
+                    "type": "string",
+                    "description": "A specific block ID required for this recipe."
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "A block tag ID. Any block which has this tag will be accepted for this recipe."
+                }
+            }
+        },
+
+        "WeightedOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["result","weight"],
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "description": "A possible result for this recipe.",
+                    "additionalProperties": false,
+                    "required": ["item","count"],
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "description": "A specific item ID.",
+                            "examples": ["minecraft:diamond","minecraft:potato"]
+                        },
+                        "count": {
+                            "type": "integer",
+                            "description": "The amount of this item to produce.",
+                            "minimum": 1,
+                            "default": 1
+                        }
+                    }
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "The relative probability that this output will be selected.",
+                    "minimum": 1,
+                    "default": 1
+                }
+            }
+        }
+    }
+}

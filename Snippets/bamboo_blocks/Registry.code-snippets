@@ -1,0 +1,21 @@
+{
+    // Version: 3.0.0
+
+    "Bamboo Blocks Blocks": {
+        "body": "bamboo_blocks:${1|bamboo_beehive,bamboo_bookshelf,bamboo_button,bamboo_chest,bamboo_door,bamboo_fence,bamboo_fence_gate,bamboo_ladder,bamboo_planks,bamboo_pressure_plate,bamboo_sign,bamboo_slab,bamboo_stairs,bamboo_torch,bamboo_trapdoor,bamboo_trapped_chest,bamboo_vertical_slab,bamboo_wall_sign,bamboo_wall_torch,ender_bamboo_torch,ender_bamboo_wall_torch,potted_bamboo_torch,potted_ender_bamboo_torch,potted_soul_bamboo_torch,reed_thatch,reed_thatch_slab,reed_thatch_stairs,reed_thatch_vertical_slab,soul_bamboo_torch,soul_bamboo_wall_torch,vertical_bamboo_planks|}",
+        "prefix": "@bamboo_blocks/blocks/"
+      },
+
+      "Bamboo Blocks Items": {
+        "body": "bamboo_blocks:${1|bamboo_beehive,bamboo_boat,bamboo_bookshelf,bamboo_button,bamboo_chest,bamboo_door,bamboo_fence,bamboo_fence_gate,bamboo_ladder,bamboo_planks,bamboo_pressure_plate,bamboo_sign,bamboo_slab,bamboo_stairs,bamboo_torch,bamboo_trapdoor,bamboo_trapped_chest,bamboo_vertical_slab,ender_bamboo_torch,reed_thatch,reed_thatch_slab,reed_thatch_stairs,reed_thatch_vertical_slab,soul_bamboo_torch,vertical_bamboo_planks|}",
+        "prefix": "@bamboo_blocks/items/"
+      }
+
+      // No entities.
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

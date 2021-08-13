@@ -1,3 +1,12 @@
+# v1.25.0 -- 8/12/21
+
+* Added schema validation for Interactio: item fluid transformation.
+* Universal Registry added: Bamboo Blocks, MCDoom, Project: Vibrant Journeys.
+* Universal Registry updated: Abnormals Core (3.2.0), BYG (1.3.1), Citadel (1.7.3), Curios (4.0.5.2) Supplementaries (0.15.2), Twist (1.3.3).
+* Schema count: 75.
+* Universal Registry: 215 mods supported.
+
+
 # v1.24.0 -- 8/10/21
 
 * Added Contact, Eternal Tales, Futurepack, Mushroom Fox, Silveroak Outpost, Wastelands of Baedoor, and Wilds to Universal Registry.

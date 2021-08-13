@@ -1,12 +1,12 @@
 {
-    // Version: ?????
+    // Version: 4.0.5.2
 
     // No blocks present.
 
-    "Curios Items": {
+    "Curios API Items": {
         "body": "curios:${1|amulet,crown,knuckles,ring|}",
         "prefix": "@curios/items/"
-    }
+      }
 
     // No entities present.
 

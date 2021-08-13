@@ -1,12 +1,12 @@
 {
-    // Version: ?????
+    // Version: 1.7.3
 
     // No blocks present.
 
     "Citadel Items": {
         "body": "citadel:${1|citadel_book,debug|}",
         "prefix": "@citadel/items/"
-    }
+      }
 
     // No entities present.
 
