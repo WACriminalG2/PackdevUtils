@@ -1,0 +1,30 @@
+{
+    // Version: 1.2.3
+
+    "Peru Mod Blocks": {
+        "body": "peru_mod:${1|adobe,adobe_man,adobe_pattern,adobe_stairs,adobe_sun,adobe_wall,adobeslabs,algarrobo_leaves,algorrobo_log,amancae,amazon_leaves,amazon_log,broken_adobe,cabeza_clava,cajon,camu_camu_plant,cantuta,chiseled_adobe,coca,cotton_plant,cotton_rope,dark_andesite,dirty_rock,dirty_sand,dirty_sandstone,dirty_sandstone_stairs,dirty_sandstone_wall,dirty_slab,dirty_stone_bricks,dirty_stone_slab,dirty_stone_stairs,dirty_stonewall,escudo,fertilized_dirt,firefly_jar,guano_andesite,heliconia_plant,hot_spring_water,intihuatana,iricolor,jungle_dirt,junglepodzol,kinwa,lanzon_wanka,lime_leaves,mahogany_fence,mahogany_fence_gate,mahogany_leaves,mahogany_log,mahogany_planks,mahogany_slabs,mahogany_stairs,onion_plant,orchid,pachamanca,pachamanca_cooked,pachamanca_crescent,pachamanca_gibbous,pachamanca_quarter,papaya_bunch,plantain_bunch,potatosprout,purple_corn_plant,puya_stem,puya_stem_tip,puyabase,quina_leaves,quina_log,rice_plant,san_pedro,sea_andesite,senordelos_milagros,star,stripped_mahogany,totora,waqanki,wiphala,yareta|}",
+        "prefix": "@peru_mod/blocks/"
+      },
+
+      "Peru Mod Items": {
+        "body": "peru_mod:${1|adobe,adobe_man,adobe_pattern,adobe_stairs,adobe_sun,adobe_wall,adobeslabs,aguaje,alfajor,algarroba,algarrobina,algarrobo_leaves,algorrobo_log,alpaca_dark_spawn_egg,alpaca_meat,alpaca_spawn_egg,alpaca_wool,amancae,amazon_leaves,amazon_log,ancient_spirit_essence,ancient_spirit_spawn_egg,andromeda_satyr,andromeda_satyr_swarm_spawn_egg,anticuchos,arroz_chaufa,arrozcon_pollo,arrozconleche,baked_sweet_potato,bijao,black_caiman_spawn_egg,black_papa,blowgun,boto_spawn_egg,broken_adobe,bug_net,caballito_totora,cabeza_clava,cactussanpedro,caiman_plating_chestplate,caiman_skin,caiman_spawner_spawn_egg,cajon,camu_camu,camu_camu_plant,cancha,cantuta,cantuta_flower,capybara_spawn_egg,causa,cetro,ceviche,chakana,charango,charqui,charquican,chicha_morada,chichade_jora,chiseled_adobe,coca,coca_leaf,coca_paste,cocaine,condor_perched_spawn_egg,cooked_cuy,cooked_plantain,corn,cotton,cotton_plant,cotton_rope,cuy_black_spawn_egg,cuy_spawn_egg,dark_andesite,dart_blown,dirty_rock,dirty_sand,dirty_sandstone,dirty_sandstone_stairs,dirty_sandstone_wall,dirty_slab,dirty_stone_bricks,dirty_stone_slab,dirty_stone_stairs,dirty_stonewall,doris_longwing,doris_longwing_swarm_spawn_egg,emoliente,emperor_butterfly,emperor_swarm_spawn_egg,escudo,fertilized_dirt,firefly_bug,firefly_jar,firefly_swarm_spawn_egg,fried_yuca,full_ceviche,gallitodelas_rocas_spawn_egg,guanay_spawn_egg,guano,guano_andesite,heliconia_plant,honda,inca_armor_helmet,inca_kola,intihuatana,iricolor,juane,jungle_dirt,junglepodzol,kinwa,lanzon_wanka,left_hand_spawn_egg,lime,lime_leaves,lobo_marino_spawn_egg,lomo_saltado,mahogany_fence,mahogany_fence_gate,mahogany_leaves,mahogany_log,mahogany_planks,mahogany_slabs,mahogany_stairs,maizde_jora,masato,mate_coca,mazamorra,morpho_butterfly,morpho_swarm_spawn_egg,onion,onion_plant,orchid,pachamanca,pachamanca_cooked,pachamanca_crescent,pachamanca_gibbous,pachamanca_quarter,paleta_fronton,pan_con_chicharron,papaya,papaya_bunch,pebble,pelota_fronton,picarones,pisco_sour,plantain,plantain_bunch,poison_antitoxin,poison_dart,poison_frog_spawn_egg,potatosprout,purple_corn,purple_corn_plant,pututu,puya_seed,puya_stem,puya_stem_tip,puyabase,quina_leaves,quina_log,quinabranch,quinina,quinoa_cooked,quinoa_seeds,quirquincho_shell,quirquincho_spawn_egg,raw_cuy,red_papa,rice,rice_plant,right_hand_spawn_egg,sacred_gold_ingot,san_pedro,sea_andesite,senordelos_milagros,sipan_armor_helmet,sloth_spawn_egg,specskin,spectacled_caiman_spawn_egg,star,stripped_mahogany,suspiro,sweet_potato,sweet_potato_flour,tiger_longwing,tiger_longwing_swarm_spawn_egg,totora,totora_bunch,toxin,tumi,turron,vicugnawool,vicuna_spawn_egg,waqanki,wiphala,yareta,yuca|}",
+        "prefix": "@peru_mod/items/"
+      },
+
+      "Peru Mod Entities": {
+        "body": "peru_mod:${1|alpaca,alpaca_dark,ancient_spirit,andromeda_satyr_swarm,black_caiman,boto,caballito_de_totora,caiman_spawner,capybara,condor,condor_perched,cuy,cuy_black,doris_longwing_swarm,emperor_swarm,entitybulletblowgun,entitybullethonda,entitybulletpaleta_fronton,firefly_swarm,gallitodelas_rocas,guanay,left_hand,lobo_marino,morpho_swarm,poison_frog,quirquincho,right_hand,sloth,spectacled_caiman,tiger_longwing_swarm,vicuna,wiracocha_handless,wiracocha_the_creator|}",
+        "prefix": "@peru_mod/entities/"
+      },
+
+      "Peru Mod Potions": {
+        "body": "peru_mod:${1|antitoxin,chasqui_potion_item,cocaine_high,euphoria,frostbite,gracia_selva_potion_item,mescaline_high,soroche_potion_item|}",
+        "prefix": "@peru_mod/potions/"
+      },
+
+      // No enchantments.
+
+      "Peru Mod Biomes": {
+        "body": "peru_mod:${1|chala,guano_islands,hanan_pacha,janca,omagua,puna,quechua,rupa_rupa|}",
+        "prefix": "@peru_mod/biomes/"
+      }
+}

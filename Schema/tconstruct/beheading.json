@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Tinker's Construct 3 - Beheading Recipe",
+    "additionalProperties": false,
+    "required": ["type","entity","result"],
+    "properties": {
+        "type": {
+            "const": "tconstruct:beheading"
+        },
+
+        "entity": {
+            "type": ["object","array"],
+            "description": "An entity or list of entities who should be valid inputs for this recipe.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "A specific entity.",
+                    "examples": ["minecraft:creeper","minecraft:skeleton_horse"]
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "An entity tag.",
+                    "examples": ["minecraft:skeletons"]
+                },
+                "types": {
+                    "type": "array",
+                    "description": "A list of specific entities.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "examples": ["minecraft:villager","minecraft:wandering_trader"]
+                    }
+                }
+            },
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 1,
+                "additionalProperties": false,
+                "properties": {
+                    "tag": {
+                        "type": "string",
+                        "description": "An entity tag.",
+                        "examples": ["minecraft:skeletons"]
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "A specific entity.",
+                        "examples": ["minecraft:creeper","minecraft:skeleton_horse"]
+                    }
+                }
+            }
+        },
+
+        "result": {
+            "type": "object",
+            "description": "An item tag to result from beheading the input entity. This will output the first item listed in that tag.",
+            "additionalProperties": false,
+            "required": ["tag"],
+            "properties": {
+                "tag": {
+                    "type": "string",
+                    "examples": ["forge:ingots/invar"]
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "The item count to output.",
+                    "minimum": 1,
+                    "default": 1
+                },
+                "nbt": {
+                    "type": "string",
+                    "description": "NBT data to apply to the output."
+                }
+            }
+
+        }
+    }
+}

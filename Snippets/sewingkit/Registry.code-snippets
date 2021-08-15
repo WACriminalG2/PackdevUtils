@@ -1,0 +1,21 @@
+{
+    // Version: 1.3.1
+
+    "Sewing Kit Blocks": {
+        "body": "sewingkit:${1|sewing_station,storing_sewing_station|}",
+        "prefix": "@sewingkit/blocks/"
+      },
+
+      "Sewing Kit Items": {
+        "body": "sewingkit:${1|bone_sewing_needle,common_pattern,diamond_sewing_needle,file,gold_sewing_needle,iron_sewing_needle,leather_sheet,leather_strip,legendary_pattern,netherite_sewing_needle,rare_pattern,sewing_station,stone_sewing_needle,storing_sewing_station,uncommon_pattern,wood_sewing_needle,wool_hat,wool_pants,wool_roll,wool_shirt,wool_shoes,wool_trim|}",
+        "prefix": "@sewingkit/items/"
+      }
+
+      // No entities.
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

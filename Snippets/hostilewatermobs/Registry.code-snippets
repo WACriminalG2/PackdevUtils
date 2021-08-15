@@ -1,0 +1,21 @@
+{
+    // Version: 1.36.1.14
+
+    // No blocks.
+
+    "Hostile Water Mobs Items": {
+        "body": "hostilewatermobs:${1|classicsnake_scales,classicsnake_spawn_egg,gurty_gland,gurty_guts,gurty_spawn_egg,river_guardian_scales,river_guardian_spawn_egg,slipperybiter_gland,slipperybiter_scales,slipperybiter_spawn_egg|}",
+        "prefix": "@hostilewatermobs/items/"
+      },
+
+      "Hostile Water Mobs Entities": {
+        "body": "hostilewatermobs:${1|gurty,river_guardian,slipperybiter,watersnake|}",
+        "prefix": "@hostilewatermobs/entities/"
+      }
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

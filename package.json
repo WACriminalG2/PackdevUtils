@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.25.0",
+    "version": "1.26.0",
     "publisher": "PackDevUtils",
     "icon": "Images/icon.png",
     "engines": {
@@ -425,6 +425,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/hostilewatermobs/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/husbandry/Registry.code-snippets"
             },
             {
@@ -617,6 +621,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/peru_mod/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/piscary/Registry.code-snippets"
             },
             {
@@ -693,6 +701,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/sewingkit/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/shopaholic/Registry.code-snippets"
             },
             {
@@ -718,6 +730,10 @@
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/simplytea/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/smallships/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -841,6 +857,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/vanilla_degus/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/vanillafoodpantry/Registry.code-snippets"
             },
             {
@@ -925,6 +945,14 @@
               {
                   "fileMatch": "*/tags/*.json",
                   "url": "./Schema/minecraft/tag.json"
+              },
+              {
+                "fileMatch": "*/recipes/immersiveengineering/fermenter/*.json",
+                "url": "./Schema/immersiveengineering/fermenter.json"
+              },
+              {
+                "fileMatch": "*/recipes/tconstruct/beheading/*.json",
+                "url": "./Schema/tconstruct/beheading.json"
               },
               {
                   "fileMatch": "*/mysticalchemy/recipes/ingredients/*.json",

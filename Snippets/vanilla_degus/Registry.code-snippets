@@ -1,0 +1,21 @@
+{
+    // Version: 1.2.0
+
+    // No blocks.
+
+    "Vanilla Degus Items": {
+        "body": "vanilla_degus:${1|degu_spawn_egg|}",
+        "prefix": "@vanilla_degus/items/"
+      },
+
+      "Vanilla Degus Entities": {
+        "body": "vanilla_degus:${1|degu|}",
+        "prefix": "@vanilla_degus/entities/"
+      }
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

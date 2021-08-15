@@ -1,3 +1,11 @@
+# v1.26.0 -- 8/14/21
+
+* Universal Registry added: Hostile Water Mobs, Milán's Peru Mod, Sewing Kit, Small Ships, Vanilla Degus.
+* Added schema validation for Immersive Engineering fermenter recipes.
+* Added schema validation for Tinker's Construct 3 beheading recipes.
+* Schema count: 77
+* Universal Registry: 220 mods supported.
+
 # v1.25.0 -- 8/12/21
 
 * Added schema validation for Interactio: item fluid transformation.

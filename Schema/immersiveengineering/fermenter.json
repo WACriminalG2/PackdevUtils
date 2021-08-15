@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Immersive Engineering - Fermenter Recipe",
+    "additionalProperties": false,
+    "required": ["type","fluid","input","energy"],
+    "properties": {
+        "type": {
+            "const": "immersiveengineering:fermenter"
+        },
+
+        "fluid": {
+            "type": "object",
+            "description": "The fluid produced by this recipe.",
+            "additionalProperties": false,
+            "required": ["fluid","amount"],
+            "properties": {
+                "fluid": {
+                    "type": "string",
+                    "description": "The namespaced ID for the desired fluid.",
+                    "examples": ["immersiveengineering:ethanol","minecraft:water"]
+                },
+
+                "amount": {
+                    "type": "integer",
+                    "description": "The amount of fluid produced, in millibuckets.",
+                    "minimum": 1,
+                    "default": 20
+                }
+            }
+        },
+
+        "input": {
+            "type": "object",
+            "description": "The item input to the fermenter for this recipe. Can also be a tag.",
+            "minProperties": 1,
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "examples": ["minecraft:potato"]
+                },
+                "tag": {
+                    "type": "string",
+                    "examples": ["forge:crops/potato"]
+                }
+            }
+        },
+
+        "energy": {
+            "type": "integer",
+            "description": "The amount of energy consumed by this recipe.",
+            "minimum": 0,
+            "default": 6400
+        }
+    }
+}
