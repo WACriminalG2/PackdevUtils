@@ -1,0 +1,21 @@
+{
+    // Version: 1.7.7
+
+    "Structure Gel API Blocks": {
+        "body": "structure_gel:${1|blue_gel,cyan_gel,green_gel,orange_gel,red_gel,yellow_gel|}",
+        "prefix": "@structure_gel/blocks/"
+      },
+
+      "Structure Gel API Items": {
+        "body": "structure_gel:${1|blue_gel,cyan_gel,green_gel,orange_gel,red_gel,yellow_gel|}",
+        "prefix": "@structure_gel/items/"
+      }
+
+      // No entities.
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

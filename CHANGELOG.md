@@ -1,3 +1,10 @@
+# v1.27.0 -- 8/15/21
+
+* Universal Registry added: Ars Nouveau, Blue Skies, Desolation, Dyenamics, Frozen Up, Hyper Lighting, Joy of Painting, Structure Gel API, Subterra, Subeterranean Wilderness, Vampirism.
+* Added schema validation for Hyper Lighting's colored light declaration JSONs.
+* Schema count: 79
+* Universal Registry: 231 mods supported.
+
 # v1.26.0 -- 8/14/21
 
 * Universal Registry added: Hostile Water Mobs, Milán's Peru Mod, Sewing Kit, Small Ships, Vanilla Degus.

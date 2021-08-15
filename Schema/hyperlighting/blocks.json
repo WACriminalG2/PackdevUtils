@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Hyper Lighting - Colored Lighting Blocks List",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["enabled","lights"],
+    "properties": {
+
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether colored lighting should be enabled for blocks.",
+            "default": true
+        },
+
+        "lights": {
+            "type": "array",
+            "description": "A list of blocks which should provide colored light.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name","r","g","b","radius","state"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The ID of a block that should provide colored lighting.",
+                        "examples": ["minecraft:sea_lantern","minecraft:redstone_torch","minecraft:campfire"]
+                    },
+                    "r": {
+                        "type": "integer",
+                        "description": "The intensity of this light's red component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "g": {
+                        "type": "integer",
+                        "description": "The intensity of this light's green component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "b": {
+                        "type": "integer",
+                        "description": "The intensity of this light's blue component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "radius": {
+                        "type": "integer",
+                        "description": "The distance this block should cast its light.",
+                        "default": 14,
+                        "minimum": 1
+                    },
+                    "state": {
+                        "type": "object",
+                        "description": "A blockstate property that should be required in order for this block to cast light.",
+                        "additionalProperties": false,
+                        "required": ["property","value"],
+                        "properties": {
+                            "property": {
+                                "type": "string",
+                                "description": "The property key. Can be left blank.",
+                                "default": "",
+                                "examples": ["lit","power"]
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "The value that must be present in the given property. Can be left blank.",
+                                "default": "",
+                                "examples": ["15","true"]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

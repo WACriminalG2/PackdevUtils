@@ -1,0 +1,33 @@
+{
+    // Version: 1.21.2
+
+    "Ars Nouveau Blocks": {
+        "body": "ars_nouveau:${1|ab_alternating,ab_basket,ab_clover,ab_herring,ab_mosaic,ab_smooth,ab_smooth_slab,alchemical_sourcelink,arcane_bricks,arcane_core,arcane_ore,arcane_pedestal,arcane_relay,arcane_relay_splitter,arcane_road,arcane_stone,archwood_button,archwood_door,archwood_fence,archwood_fence_gate,archwood_planks,archwood_pressure_plate,archwood_slab,archwood_stairs,archwood_trapdoor,archwood_wall_sign,as_gold_alt,as_gold_ashlar,as_gold_basket,as_gold_clover,as_gold_herring,as_gold_mosaic,as_gold_slab,as_gold_stone,blue_archwood_leaves,blue_archwood_log,blue_archwood_sapling,blue_archwood_wood,creative_mana_jar,crystallizer,drygmy_stone,enchanting_apparatus,glyph_press,green_archwood_leaves,green_archwood_log,green_archwood_sapling,green_archwood_wood,intangible_air,lava_lily,light_block,mana_berry_bush,mana_bloom_crop,mana_condenser,mana_gem_block,mana_jar,mycelial_sourcelink,phantom_block,portal,potion_jar,potion_melder,purple_archwood_leaves,purple_archwood_log,purple_archwood_sapling,purple_archwood_wood,red_archwood_leaves,red_archwood_log,red_archwood_sapling,red_archwood_wood,redstone_air,relay_deposit,relay_warp,ritual,rune,sas_alternating,sas_ashlar,sas_basket,sas_clover,sas_herring,sas_mosaic,sconce,scribes_table,spell_turret,stripped_blue_archwood_log,stripped_blue_archwood_wood,stripped_green_archwood_log,stripped_green_archwood_wood,stripped_purple_archwood_log,stripped_purple_archwood_wood,stripped_red_archwood_log,stripped_red_archwood_wood,summoning_crystal,vitalic_sourcelink,volcanic_accumulator,warding_stone,wixie_cauldron|}",
+        "prefix": "@ars_nouveau/blocks/"
+      },
+
+      "Ars Nouveau Items": {
+        "body": "ars_nouveau:${1|ab_alternating,ab_basket,ab_clover,ab_herring,ab_mosaic,ab_smooth,ab_smooth_slab,alchemical_sourcelink,allow_scroll,amplify_arrow,amulet_of_mana_boost,amulet_of_mana_regen,apprentice_boots,apprentice_hood,apprentice_leggings,apprentice_robes,apprentice_spell_book,arcane_bricks,arcane_core,arcane_ore,arcane_pedestal,arcane_relay,arcane_relay_splitter,arcane_road,arcane_stone,archmage_boots,archmage_hood,archmage_leggings,archmage_robes,archmage_spell_book,archwood_button,archwood_door,archwood_fence,archwood_fence_gate,archwood_planks,archwood_pressure_plate,archwood_slab,archwood_stairs,archwood_trapdoor,as_gold_alt,as_gold_ashlar,as_gold_basket,as_gold_clover,as_gold_herring,as_gold_mosaic,as_gold_slab,as_gold_stone,belt_of_levitation,belt_of_unstable_gifts,blank_glyph,blank_parchment,blaze_fiber,blue_archwood_leaves,blue_archwood_log,blue_archwood_sapling,blue_archwood_wood,bucket_of_mana,carbuncle_charm,carbuncle_se,carbuncle_shards,caster_tome,creative_mana_jar,creative_spell_book,crystallizer,debug,deny_scroll,dominion_wand,drygmy_charm,drygmy_shard,drygmy_stone,dull_trinket,enchanters_shield,enchanters_sword,enchanting_apparatus,end_fiber,experience_gem,glyph_accelerate,glyph_amplify,glyph_aoe,glyph_aquatic,glyph_blink,glyph_break,glyph_cold_snap,glyph_conjure_water,glyph_craft,glyph_crush,glyph_cut,glyph_dampen,glyph_delay,glyph_dispel,glyph_duration_down,glyph_ender_inventory,glyph_exchange,glyph_explosion,glyph_extend_time,glyph_extract,glyph_fangs,glyph_fell,glyph_flare,glyph_fortune,glyph_freeze,glyph_glide,glyph_gravity,glyph_grow,glyph_gust,glyph_harm,glyph_harvest,glyph_haste,glyph_heal,glyph_hex,glyph_ignite,glyph_intangible,glyph_interact,glyph_invisibility,glyph_launch,glyph_leap,glyph_light,glyph_lightning,glyph_orbit,glyph_phantom_block,glyph_pickup,glyph_pierce,glyph_place_block,glyph_press,glyph_projectile,glyph_pull,glyph_redstone_signal,glyph_rune,glyph_self,glyph_shield,glyph_slowfall,glyph_smelt,glyph_snare,glyph_split,glyph_strength,glyph_summon_decoy,glyph_summon_steed,glyph_summon_vex,glyph_summon_wolves,glyph_touch,glyph_underfoot,glyph_wither,greater_experience_gem,green_archwood_leaves,green_archwood_log,green_archwood_sapling,green_archwood_wood,jar_of_light,lava_lily,light_block,magic_clay,mana_berry,mana_bloom,mana_bloom_crop,mana_condenser,mana_fiber,mana_gem,mana_gem_block,mana_jar,marvelous_clay,mimic_scroll,mundane_belt,mycelial_sourcelink,mythical_clay,novice_boots,novice_hood,novice_leggings,novice_robes,novice_spell_book,phantom_block,pierce_arrow,portal,potion_flask,potion_flask_amplify,potion_flask_extend_time,potion_jar,potion_melder,purple_archwood_leaves,purple_archwood_log,purple_archwood_sapling,purple_archwood_wood,red_archwood_leaves,red_archwood_log,red_archwood_sapling,red_archwood_wood,relay_deposit,relay_warp,ring_of_greater_discount,ring_of_lesser_discount,ring_of_potential,ritual,ritual_burrowing,ritual_challenge,ritual_cloudshaping,ritual_disintegration,ritual_fertility,ritual_flight,ritual_moonfall,ritual_overgrowth,ritual_restoration,ritual_scrying,ritual_sunrise,ritual_warping,ritual_wilden_summon,rune,runic_chalk,sas_alternating,sas_ashlar,sas_basket,sas_clover,sas_herring,sas_mosaic,sconce,scribes_table,source_berry_pie,source_berry_roll,spell_bow,spell_parchment,spell_turret,split_arrow,stripped_blue_archwood_log,stripped_blue_archwood_wood,stripped_green_archwood_log,stripped_green_archwood_wood,stripped_purple_archwood_log,stripped_purple_archwood_wood,stripped_red_archwood_log,stripped_red_archwood_wood,summon_focus,summoning_crystal,sylph_charm,sylph_se,sylph_shards,vitalic_sourcelink,void_jar,volcanic_accumulator,wand,warding_stone,warp_scroll,whelp_charm,wilden_guardian_se,wilden_horn,wilden_hunter_se,wilden_spike,wilden_stalker_se,wilden_tribute,wilden_wing,wixie_cauldron,wixie_charm,wixie_shards,worn_notebook|}",
+        "prefix": "@ars_nouveau/items/"
+      },
+
+      "Ars Nouveau Entities": {
+        "body": "ars_nouveau:${1|ally_vex,an_lightning,carbuncle,drygmy,dummy,familiar_carbuncle,fangs,flying_item,follow_proj,ritual,spell_arrow,spell_proj,spike,summon_horse,summon_wolf,sylph,ward_entity,whelp,wilden_boss,wilden_guardian,wilden_hunter,wilden_stalker,wixie|}",
+        "prefix": "@ars_nouveau/entities/"
+      },
+
+      "Ars Nouveau Potions": {
+        "body": "ars_nouveau:${1|flight,glide,gravity,hex,mana_regen,scrying,shield,shocked,snared,spell_damage,summoning_sickness|}",
+        "prefix": "@ars_nouveau/potions/"
+      },
+
+      "Ars Nouveau Enchantments": {
+        "body": "ars_nouveau:${1|mana_boost,mana_regen,reactive|}",
+        "prefix": "@ars_nouveau/enchant/"
+      },
+
+      "Ars Nouveau Biomes": {
+        "body": "ars_nouveau:${1|archwood_forest|}",
+        "prefix": "@ars_nouveau/biomes/"
+      }
+}

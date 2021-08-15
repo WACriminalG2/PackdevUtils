@@ -1,0 +1,33 @@
+{
+    // Version: 1.7.12
+
+    "Vampirism Blocks": {
+        "body": "vampirism:${1|alchemical_cauldron,alchemical_fire,altar_infusion,altar_inspiration,altar_pillar,altar_tip,blood_container,blood_grinder,blood_pedestal,blood_sieve,bloody_spruce_leaves,bloody_spruce_log,bloody_spruce_sapling,castle_block_dark_brick,castle_block_dark_brick_bloody,castle_block_dark_stone,castle_block_normal_brick,castle_block_purple_brick,castle_slab_dark_brick,castle_slab_dark_stone,castle_slab_purple_brick,castle_stairs_dark_brick,castle_stairs_dark_stone,castle_stairs_purple_brick,church_altar,coffin,cursed_earth,fire_place,garlic,garlic_beacon_improved,garlic_beacon_normal,garlic_beacon_weak,hunter_table,med_chair,potion_table,potted_vampire_orchid,sunscreen_beacon,tent,tent_main,totem_base,totem_top,totem_top_crafted,totem_top_vampirism_hunter,totem_top_vampirism_hunter_crafted,totem_top_vampirism_vampire,totem_top_vampirism_vampire_crafted,vampire_orchid,vampire_spruce_leaves,weapon_table|}",
+        "prefix": "@vampirism/blocks/"
+      },
+
+      "Vampirism Items": {
+        "body": "vampirism:${1|advanced_vampire_hunter_spawn_egg,advanced_vampire_spawn_egg,alchemical_cauldron,altar_infusion,altar_inspiration,altar_pillar,altar_tip,armor_of_swiftness_chest_enhanced,armor_of_swiftness_chest_normal,armor_of_swiftness_chest_ultimate,armor_of_swiftness_feet_enhanced,armor_of_swiftness_feet_normal,armor_of_swiftness_feet_ultimate,armor_of_swiftness_head_enhanced,armor_of_swiftness_head_normal,armor_of_swiftness_head_ultimate,armor_of_swiftness_legs_enhanced,armor_of_swiftness_legs_normal,armor_of_swiftness_legs_ultimate,basic_crossbow,basic_double_crossbow,basic_tech_crossbow,blood_bottle,blood_bucket,blood_container,blood_grinder,blood_infused_enhanced_iron_ingot,blood_infused_iron_ingot,blood_pedestal,blood_sieve,bloody_spruce_leaves,bloody_spruce_log,bloody_spruce_sapling,castle_block_dark_brick,castle_block_dark_brick_bloody,castle_block_dark_stone,castle_block_normal_brick,castle_block_purple_brick,castle_slab_dark_brick,castle_slab_dark_stone,castle_slab_purple_brick,castle_stairs_dark_brick,castle_stairs_dark_stone,castle_stairs_purple_brick,church_altar,coffin,crossbow_arrow_normal,crossbow_arrow_spitfire,crossbow_arrow_vampire_killer,cursed_earth,enhanced_crossbow,enhanced_double_crossbow,enhanced_tech_crossbow,feeding_adapter,fire_place,garlic_beacon_core,garlic_beacon_core_improved,garlic_beacon_improved,garlic_beacon_normal,garlic_beacon_weak,garlic_bread,heart_seeker_enhanced,heart_seeker_normal,heart_seeker_ultimate,heart_striker_enhanced,heart_striker_normal,heart_striker_ultimate,holy_salt,holy_salt_water,holy_water_bottle_enhanced,holy_water_bottle_normal,holy_water_bottle_ultimate,holy_water_splash_bottle_enhanced,holy_water_splash_bottle_normal,holy_water_splash_bottle_ultimate,human_heart,hunter_axe_enhanced,hunter_axe_normal,hunter_axe_ultimate,hunter_coat_chest_enhanced,hunter_coat_chest_normal,hunter_coat_chest_ultimate,hunter_coat_feet_enhanced,hunter_coat_feet_normal,hunter_coat_feet_ultimate,hunter_coat_head_enhanced,hunter_coat_head_normal,hunter_coat_head_ultimate,hunter_coat_legs_enhanced,hunter_coat_legs_normal,hunter_coat_legs_ultimate,hunter_hat_head_0,hunter_hat_head_1,hunter_intel_0,hunter_intel_1,hunter_intel_2,hunter_intel_3,hunter_intel_4,hunter_intel_5,hunter_intel_6,hunter_intel_7,hunter_intel_8,hunter_intel_9,hunter_minion_equipment,hunter_minion_upgrade_enhanced,hunter_minion_upgrade_simple,hunter_minion_upgrade_special,hunter_table,hunter_trainer_spawn_egg,impure_blood_bucket,injection_empty,injection_garlic,injection_sanguinare,item_alchemical_fire,item_garlic,item_med_chair,item_tent,item_tent_spawner,obsidian_armor_chest_enhanced,obsidian_armor_chest_normal,obsidian_armor_chest_ultimate,obsidian_armor_feet_enhanced,obsidian_armor_feet_normal,obsidian_armor_feet_ultimate,obsidian_armor_head_enhanced,obsidian_armor_head_normal,obsidian_armor_head_ultimate,obsidian_armor_legs_enhanced,obsidian_armor_legs_normal,obsidian_armor_legs_ultimate,pitchfork,potion_table,pure_blood_0,pure_blood_1,pure_blood_2,pure_blood_3,pure_blood_4,pure_salt,purified_garlic,soul_orb_vampire,stake,sunscreen_beacon,tech_crossbow_ammo_package,totem_base,totem_top,totem_top_crafted,totem_top_vampirism_hunter,totem_top_vampirism_vampire,umbrella,vampire_baron_spawn_egg,vampire_blood_bottle,vampire_book,vampire_cloak_black_blue,vampire_cloak_black_red,vampire_cloak_black_white,vampire_cloak_red_black,vampire_cloak_white_black,vampire_fang,vampire_hunter_spawn_egg,vampire_minion_binding,vampire_minion_upgrade_enhanced,vampire_minion_upgrade_simple,vampire_minion_upgrade_special,vampire_orchid,vampire_spawn_egg,vampire_spruce_leaves,weak_human_heart,weapon_table|}",
+        "prefix": "@vampirism/items/"
+      },
+
+      "Vampirism Entities": {
+        "body": "vampirism:${1|advanced_hunter,advanced_hunter_imob,advanced_vampire,advanced_vampire_imob,blinding_bat,converted_creature,converted_creature_imob,converted_horse,converted_sheep,crossbow_arrow,dark_blood_projectile,dummy_creature,hunter,hunter_imob,hunter_minion,hunter_trainer,hunter_trainer_dummy,particle_cloud,soul_orb,task_master_hunter,task_master_vampire,throwable_item,vampire,vampire_baron,vampire_imob,vampire_minion,villager_angry,villager_converted|}",
+        "prefix": "@vampirism/entities/"
+      },
+
+      "Vampirism Potions": {
+        "body": "vampirism:${1|disguise_as_vampire,fire_protection,freeze,garlic,poison,sanguinare,saturation,sunscreen,thirst|}",
+        "prefix": "@vampirism/potions/"
+      },
+
+      "Vampirism Enchantments": {
+        "body": "vampirism:${1|crossbowfrugality,vampireslayer|}",
+        "prefix": "@vampirism/enchant/"
+      },
+
+      "Vampirism Biomes": {
+        "body": "vampirism:${1|vampire_forest,vampire_forest_hills|}",
+        "prefix": "@vampirism/biomes/"
+      }
+}

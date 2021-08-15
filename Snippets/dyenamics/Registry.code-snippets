@@ -1,0 +1,24 @@
+{
+    // Version: 1.1.0
+
+    "Dyenamics Blocks": {
+        "body": "dyenamics:${1|aquamarine_carpet,aquamarine_concrete,aquamarine_concrete_powder,aquamarine_glazed_terracotta,aquamarine_stained_glass,aquamarine_stained_glass_pane,aquamarine_terracotta,aquamarine_wool,bubblegum_carpet,bubblegum_concrete,bubblegum_concrete_powder,bubblegum_glazed_terracotta,bubblegum_stained_glass,bubblegum_stained_glass_pane,bubblegum_terracotta,bubblegum_wool,cherenkov_carpet,cherenkov_concrete,cherenkov_concrete_powder,cherenkov_glazed_terracotta,cherenkov_stained_glass,cherenkov_stained_glass_pane,cherenkov_terracotta,cherenkov_wool,fluorescent_carpet,fluorescent_concrete,fluorescent_concrete_powder,fluorescent_glazed_terracotta,fluorescent_stained_glass,fluorescent_stained_glass_pane,fluorescent_terracotta,fluorescent_wool,lavender_carpet,lavender_concrete,lavender_concrete_powder,lavender_glazed_terracotta,lavender_stained_glass,lavender_stained_glass_pane,lavender_terracotta,lavender_wool,maroon_carpet,maroon_concrete,maroon_concrete_powder,maroon_glazed_terracotta,maroon_stained_glass,maroon_stained_glass_pane,maroon_terracotta,maroon_wool,mint_carpet,mint_concrete,mint_concrete_powder,mint_glazed_terracotta,mint_stained_glass,mint_stained_glass_pane,mint_terracotta,mint_wool,peach_carpet,peach_concrete,peach_concrete_powder,peach_glazed_terracotta,peach_stained_glass,peach_stained_glass_pane,peach_terracotta,peach_wool,persimmon_carpet,persimmon_concrete,persimmon_concrete_powder,persimmon_glazed_terracotta,persimmon_stained_glass,persimmon_stained_glass_pane,persimmon_terracotta,persimmon_wool|}",
+        "prefix": "@dyenamics/blocks/"
+      },
+
+      "Dyenamics Items": {
+        "body": "dyenamics:${1|aquamarine_carpet,aquamarine_concrete,aquamarine_concrete_powder,aquamarine_dye,aquamarine_glazed_terracotta,aquamarine_stained_glass,aquamarine_stained_glass_pane,aquamarine_terracotta,aquamarine_wool,bubblegum_carpet,bubblegum_concrete,bubblegum_concrete_powder,bubblegum_dye,bubblegum_glazed_terracotta,bubblegum_stained_glass,bubblegum_stained_glass_pane,bubblegum_terracotta,bubblegum_wool,cherenkov_carpet,cherenkov_concrete,cherenkov_concrete_powder,cherenkov_dye,cherenkov_glazed_terracotta,cherenkov_stained_glass,cherenkov_stained_glass_pane,cherenkov_terracotta,cherenkov_wool,fluorescent_carpet,fluorescent_concrete,fluorescent_concrete_powder,fluorescent_dye,fluorescent_glazed_terracotta,fluorescent_stained_glass,fluorescent_stained_glass_pane,fluorescent_terracotta,fluorescent_wool,lavender_carpet,lavender_concrete,lavender_concrete_powder,lavender_dye,lavender_glazed_terracotta,lavender_stained_glass,lavender_stained_glass_pane,lavender_terracotta,lavender_wool,maroon_carpet,maroon_concrete,maroon_concrete_powder,maroon_dye,maroon_glazed_terracotta,maroon_stained_glass,maroon_stained_glass_pane,maroon_terracotta,maroon_wool,mint_carpet,mint_concrete,mint_concrete_powder,mint_dye,mint_glazed_terracotta,mint_stained_glass,mint_stained_glass_pane,mint_terracotta,mint_wool,peach_carpet,peach_concrete,peach_concrete_powder,peach_dye,peach_glazed_terracotta,peach_stained_glass,peach_stained_glass_pane,peach_terracotta,peach_wool,persimmon_carpet,persimmon_concrete,persimmon_concrete_powder,persimmon_dye,persimmon_glazed_terracotta,persimmon_stained_glass,persimmon_stained_glass_pane,persimmon_terracotta,persimmon_wool|}",
+        "prefix": "@dyenamics/items/"
+      },
+
+      "Dyenamics Entities": {
+        "body": "dyenamics:${1|sheep|}",
+        "prefix": "@dyenamics/entities/"
+      }
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Hyper Lighting - Colored Lighting Items List",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["enabled","lights"],
+    "properties": {
+
+        "enabled": {
+            "type": "boolean",
+            "description": "Whether colored lighting should be enabled for items.",
+            "default": true
+        },
+
+        "lights": {
+            "type": "array",
+            "description": "A list of items which should provide colored light.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name","r","g","b","radius","state"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The ID of an item that should provide colored lighting.",
+                        "examples": ["minecraft:torch","minecraft:redstone_torch","minecraft:soul_torch"]
+                    },
+                    "r": {
+                        "type": "integer",
+                        "description": "The intensity of this light's red component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "g": {
+                        "type": "integer",
+                        "description": "The intensity of this light's green component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "b": {
+                        "type": "integer",
+                        "description": "The intensity of this light's blue component, from 0 - 255.",
+                        "minimum": 0,
+                        "maximum": 255,
+                        "default": 0
+                    },
+                    "radius": {
+                        "type": "integer",
+                        "description": "The distance this item should cast its light.",
+                        "default": 14,
+                        "minimum": 1
+                    }
+                }
+            }
+        }
+    }
+}

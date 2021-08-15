@@ -1,7 +1,7 @@
 {
     "name": "packdevutils",
     "displayName": "Packdev Utils",
-    "version": "1.26.0",
+    "version": "1.27.0",
     "publisher": "PackDevUtils",
     "icon": "Images/icon.png",
     "engines": {
@@ -93,6 +93,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/ars_nouveau/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/artifacts/Registry.code-snippets"
             },
             {
@@ -150,6 +154,10 @@
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/bloom_and_gloom/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/blue_skies/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -289,6 +297,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/desolation/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/dimdungeons/Registry.code-snippets"
             },
             {
@@ -298,6 +310,10 @@
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/druidcraft/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/dyenamics/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -397,6 +413,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/frozenup/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/futurepack/Registry.code-snippets"
             },
             {
@@ -430,6 +450,10 @@
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/husbandry/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/hyperlighting/Registry.code-snippets"
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
@@ -757,6 +781,18 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/structure_gel/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/subterra/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/subwild/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/supplementaries/Registry.code-snippets"
             },
             {
@@ -857,6 +893,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/vampirism/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/vanilla_degus/Registry.code-snippets"
             },
             {
@@ -905,6 +945,10 @@
             },
             {
                 "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
+                "path": "./Snippets/xercapaint/Registry.code-snippets"
+            },
+            {
+                "languages": ["json","hjson","jsonc","javascript","typescript","toml","openterraingenerator","cavegenerator","zenscript","nbt","ini"],
                 "path": "./Snippets/xlfoodmod/Registry.code-snippets"
             },
             {
@@ -945,6 +989,14 @@
               {
                   "fileMatch": "*/tags/*.json",
                   "url": "./Schema/minecraft/tag.json"
+              },
+              {
+                "fileMatch": "*/coloredlights/blocks.json",
+                "url": "./Schema/hyperlighting/blocks.json"
+              },
+              {
+                "fileMatch": "*/coloredlights/items.json",
+                "url": "./Schema/hyperlighting/items.json"
               },
               {
                 "fileMatch": "*/recipes/immersiveengineering/fermenter/*.json",

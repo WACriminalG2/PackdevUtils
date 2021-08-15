@@ -1,0 +1,21 @@
+{
+    // Version: 1.0
+
+    // No blocks.
+
+    "Joy of Painting Items": {
+        "body": "xercapaint:${1|item_canvas,item_canvas_large,item_canvas_long,item_canvas_tall,item_palette|}",
+        "prefix": "@xercapaint/items/"
+      },
+
+      "Joy of Painting Entities": {
+        "body": "xercapaint:${1|canvas|}",
+        "prefix": "@xercapaint/entities/"
+      }
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}

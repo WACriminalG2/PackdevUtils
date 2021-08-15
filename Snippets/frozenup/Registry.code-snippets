@@ -1,0 +1,24 @@
+{
+    // Version: 1.0.1
+
+    "Frozen Up Blocks": {
+        "body": "frozenup:${1|chilloo_feather_block,chilloo_feather_block_carpet,chilloo_feather_lamp,truffle_cake|}",
+        "prefix": "@frozenup/blocks/"
+      },
+
+      "Frozen Up Items": {
+        "body": "frozenup:${1|chilloo_feather,chilloo_feather_block,chilloo_feather_block_carpet,chilloo_feather_lamp,chilloo_spawn_egg,empty_mug,frozen_truffle,mug_of_chocolate_milk,mug_of_milk,mug_of_truffle_hot_chocolate,truffle,truffle_cake,truffle_muffin|}",
+        "prefix": "@frozenup/items/"
+      },
+
+      "Frozen Up Entities": {
+        "body": "frozenup:${1|chilloo|}",
+        "prefix": "@frozenup/entities/"
+      }
+
+      // No potions.
+
+      // No enchantments.
+
+      // No biomes.
+}
