@@ -21,18 +21,20 @@
                 "origins:status_bar_texture", "origins:swimming", "origins:toggle_night_vision", "origins:toggle", "origins:tooltip",
                 "origins:walk_on_fluid",
 
-                "origins:action_on_block_break", "origins:action_on_callback", "origins:action_on_item_use", "origins:action_on_land",
-                "origins:action_on_wake_up", "origins:action_over_time", "origins:active_self", "origins:attacker_action_when_hit",
-                "origins:self_action_on_hit", "origins:self_action_on_kill", "origins:self_action_when_hit",
+                "origins:action_on_being_used", "origins:action_on_block_break", "origins:action_on_callback", "origins:action_on_entity_use",
+                "origins:action_on_hit", "origins:action_on_item_use", "origins:action_on_land", "origins:action_on_wake_up",
+                "origins:action_over_time", "origins:action_when_damage_taken", "origins:action_when_hit", "origins:active_self",
+                "origins:attacker_action_when_hit", "origins:self_action_on_hit", "origins:self_action_on_kill", "origins:self_action_when_hit",
                 "origins:target_action_on_hit",
 
-                "origins:modify_break_speed", "origins:modify_damage_dealt", "origins:modify_damage_taken", "origins:modify_exhaustion",
-                "origins:modify_falling", "origins:modify_food", "origins:modify_harvest", "origins:modify_jump",
+                "origins:modify_air_speed", "origins:modify_block_render", "origins:modify_break_speed", "origins:modify_camera_submersion",
+                "origins:modify_crafting", "origins:modify_damage_dealt", "origins:modify_damage_taken", "origins:modify_exhaustion",
+                "origins:modify_falling", "origins:modify_fluid_render", "origins:modify_food", "origins:modify_harvest", "origins:modify_jump",
                 "origins:modify_lava_speed", "origins:modify_player_spawn", "origins:modify_projectile_damage", "origins:modify_swim_speed",
                 "origins:modify_xp_gain",
 
-                "origins:prevent_block_selection", "origins:prevent_block_use", "origins:prevent_death", "origins:prevent_entity_render",
-                "origins:prevent_item_use", "origins:prevent_sleep"
+                "origins:prevent_being_used", "origins:prevent_block_selection", "origins:prevent_block_use", "origins:prevent_death",
+                "origins:prevent_entity_render", "origins:prevent_item_use", "origins:prevent_sleep"
             ]
         },
         "name": {
@@ -56,6 +58,23 @@
             "type": "integer",
             "description": "Specifies when this power is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID.",
             "default": 0
+        },
+        "badges": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "sprite": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "ID of the texture to be displayed as an icon."
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "The string to display when you hover over the icon."
+                    }
+                }
+            },
+            "description": "If set, it will display icon(s) after the name of the power."
         }
     },
     "required": [ "type" ],
@@ -772,13 +791,14 @@
                                 "origins:and", "origins:or", "origins:constant",
                                 "origins:advancement", "origins:air", "origins:attribute", "origins:biome", "origins:block_collision",
                                 "origins:block_in_radius", "origins:brightness", "origins:climbing", "origins:collided_horizontally",
-                                "origins:command", "origins:daytime", "origins:dimension", "origins:enchantment", "origins:entity_group",
-                                "origins:entity_type", "origins:equipped_item", "origins:exposed_to_sky", "origins:exposed_to_sun",
-                                "origins:fall_distance", "origins:fall_flying", "origins:fluid_height", "origins:food_level",
-                                "origins:gamemode", "origins:health", "origins:in_block_anywhere", "origins:in_block", "origins:in_rain",
-                                "origins:in_tag", "origins:invisible", "origins:moving", "origins:on_block", "origins:on_fire",
-                                "origins:origin", "origins:power_active","origins:power", "origins:predicate", "origins:relative_health",
-                                "origins:resource", "origins:saturation_level","origins:scoreboard", "origins:sneaking",
+                                "origins:command", "origins:creative_flying", "origins:daytime", "origins:dimension", "origins:enchantment",
+                                "origins:entity_group", "origins:entity_type", "origins:equipped_item", "origins:exists",
+                                "origins:exposed_to_sky", "origins:exposed_to_sun", "origins:fall_distance", "origins:fall_flying",
+                                "origins:fluid_height", "origins:food_level", "origins:gamemode", "origins:health", "origins:in_block_anywhere",
+                                "origins:in_block", "origins:in_rain", "origins:in_tag", "origins:invisible", "origins:living",
+                                "origins:moving", "origins:on_block", "origins:on_fire", "origins:origin", "origins:passenger_recursive",
+                                "origins:passenger", "origins:power_active","origins:power", "origins:predicate", "origins:relative_health",
+                                "origins:resource", "origins:riding_recursive", "origins:riding_root", "origins:riding", "origins:saturation_level","origins:scoreboard", "origins:sneaking",
                                 "origins:sprinting", "origins:status_effect", "origins:submerged_in","origins:swimming", "origins:tamed",
                                 "origins:using_effective_tool", "origins:using_item", "origins:xp_levels", "origins:xp_points"
                             ]
@@ -1330,6 +1350,30 @@
                         },
                         {
                             "if": {
+                                "properties": { "type": { "enum": ["origins:passenger_recursive", "origins:passenger"] } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "If specified, it will check for the entity/entities that fulfills the bi-entity condition."
+                                    },
+                                    "comparison": {
+                                        "description": "How the number of entities that are currently riding the entity should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "default": ">="
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the number of entities currently riding the entity should be compared to.",
+                                        "default": 1
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
                                 "properties": { "type": { "const": "origins:power_active" } },
                                 "required": [ "type" ]
                             },
@@ -1419,6 +1463,44 @@
                                     }
                                 },
                                 "required": [ "resource", "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:riding_recursive" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "If specified, it will check for the entity/entities that fulfills the bi-entity condition."
+                                    },
+                                    "comparison": {
+                                        "description": "How the number of entities that are currently riding the entity should be compared to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+                                        "default": ">="
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value the number of entities currently riding the entity should be compared to.",
+                                        "default": 1
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "enum": ["origins:riding_root", "origins:riding"] } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "If specified, it will only check for the entity/entities that fulfills the bi-entity condition."
+                                    }
+                                }
                             }
                         },
                         {
@@ -1675,8 +1757,8 @@
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [
                                 "origins:and", "origins:or", "origins:constant",
-                                "origins:armor_value", "origins:enchantment", "origins:food",
-                                "origins:harvest_level", "origins:ingredient", "origins:meat"
+                                "origins:amount", "origins:armor_value", "origins:empty", "origins:enchantment", "origins:fireproof",
+                                "origins:food", "origins:harvest_level", "origins:ingredient", "origins:meat", "origins:nbt"
                             ]
                         },
                         "inverted": {
@@ -1737,6 +1819,25 @@
                                 "required": ["value"]
                             },
                             "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:amount" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "Determines how to compare the number of items in this stack to the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "integer",
+                                        "description": "Which value to compare the item's count value to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
                         },
                         {
                             "if": {
@@ -1813,6 +1914,22 @@
                                     "ingredient": {
                                         "$ref": "#/definitions/origins_data_types/properties/ingredient",
                                         "description": "The ingredient this item must match to pass the check."
+                                    }
+                                },
+                                "required": [ "ingredient" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:nbt" } },
+                                "require": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "nbt": {
+                                        "type": "string",
+                                        "description": "The NBT data to check for.",
+                                        "examples": ["{exampleCustomTag: 1b}"]
                                     }
                                 },
                                 "required": [ "ingredient" ]
@@ -2014,10 +2131,12 @@
                             "examples": [
                                 "origins:and", "origins:chance", "origins:choice", "origins:delay", "origins:if_else", "origins:if_else_list",
                                 "origins:add_velocity", "origins:add_xp", "origins:apply_effect", "origins:block_action_at",
-                                "origins:change_resource", "origins:clear_effect", "origins:damage", "origins:equipped_item_action",
-                                "origins:execute_command", "origins:exhaust", "origins:extinguish", "origins:feed", "origins:gain_air",
-                                "origins:give", "origins:heal", "origins:play_sound", "origins:set_fall_distance", "origins:set_on_fire",
-                                "origins:spawn_effect_cloud", "origins:spawn_entity", "origins:trigger_cooldown"
+                                "origins:change_resource", "origins:clear_effect", "origins:damage", "origins:dismount",
+                                "origins:emit_game_event", "origins:equipped_item_action", "origins:execute_command", "origins:exhaust",
+                                "origins:explode", "origins:extinguish", "origins:feed", "origins:gain_air", "origins:give",
+                                "origins:grant_power", "origins:heal", "origins:passenger_action", "origins:play_sound", "origins:revoke_power",
+                                "origins:riding_action", "origins:set_fall_distance", "origins:set_on_fire", "origins:spawn_effect_cloud",
+                                "origins:spawn_entity", "origins:toggle", "origins:trigger_cooldown"
                             ]
                         }
                     },
@@ -2306,6 +2425,39 @@
                         },
                         {
                             "if": {
+                                "properties": { "type": { "const": "origins:emit_game_event" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "event": {
+                                        "type": "string",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "description": "The ID of a game event. See: https://minecraft.fandom.com/wiki/Sculk_Sensor#Vibration_amplitudes",
+                                        "examples": [
+                                            "minecraft:step",
+                                            "minecraft:flap",
+                                            "minecraft:swim",
+                                            "minecraft:elytra_free_fall",
+                                            "minecraft:hit_ground",
+                                            "minecraft:block_change", "minecraft:minecart_moving", "minecraft:ring_bell", "minecraft:splash", "minecraft:wolf_shaking",
+                                            "minecraft:drinking_finish", "minecraft:prime_fuse", "minecraft:projectile_shoot",
+                                            "minecraft:mob_interact", "minecraft:projectile_land", "minecraft:eat", "minecraft:entity_damaged",
+                                            "minecraft:equip", "minecraft:shear", "minecraft:ravager_roar",
+                                            "minecraft:block_close", "minecraft:block_unswitch", "minecraft:block_unpress", "minecraft:block_detach", "minecraft:dispense_fail",
+                                            "minecraft:block_open", "minecraft:block_switch", "minecraft:block_press", "minecraft:block_attach",
+                                            "minecraft:block_place", "minecraft:entity_place", "minecraft:fluid_place",
+                                            "minecraft:block_destroy", "minecraft:entity_killed", "minecraft:fluid_pickup",
+                                            "minecraft:fishing_rod_reel_in", "minecraft:container_close", "minecraft:piston_contract", "minecraft:shulker_close",
+                                            "minecraft:fishing_rod_cast", "minecraft:container_open", "minecraft:explode", "minecraft:lightning_strike", "minecraft:piston_extend", "minecraft:shulker_open"
+                                        ]
+                                    }
+                                },
+                                "required": ["event"]
+                            }
+                        },
+                        {
+                            "if": {
                                 "properties": { "type": { "const": "origins:equipped_item_action" } },
                                 "required": [ "type" ]
                             },
@@ -2361,6 +2513,44 @@
                         },
                         {
                             "if": {
+                                "properties": { "type": { "const": "origins:explode" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "power": {
+                                        "type": "number",
+                                        "description": "Determines the power of the explosion."
+                                    },
+                                    "destruction_type": {
+                                        "enum": ["destroy", "break", "none"],
+                                        "description": "Determines if the explosion should destroy the terrain, destroy the terrain and drop the loot of the blocks, or none. Accepts either \"destroy\", \"break\" or \"none\".",
+                                        "default": "break"
+                                    },
+                                    "damage_self": {
+                                        "type": "boolean",
+                                        "description": "Determines if the player should take damage from the explosion.",
+                                        "default": true
+                                    },
+                                    "indestructible": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "If set, blocks specified in this block condition object is not destroyed by the explosion."
+                                    },
+                                    "destructible": {
+                                        "$ref": "#/definitions/conditions/properties/block_condition",
+                                        "description": "If set, blocks specified in this block condition object will be the only blocks destroyed by the explosion."
+                                    },
+                                    "create_fire": {
+                                        "type": "boolean",
+                                        "description": "Determines if the explosion should create fire.",
+                                        "default": false
+                                    }
+                                },
+                                "required": ["power"]
+                            }
+                        },
+                        {
+                            "if": {
                                 "properties": { "type": { "const": "origins:feed" } },
                                 "required": [ "type" ]
                             },
@@ -2410,6 +2600,28 @@
                         },
                         {
                             "if": {
+                                "properties": { "type": { "enum": ["origins:grant_power", "origins:revoke_power"] } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "power": {
+                                        "type": "string",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "description": "The ID of the power to be granted/revoked to/from the entity.",
+                                        "examples": ["origins:elytra"]
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "description": "The source of the power.",
+                                        "examples": ["origins:elytrian"]
+                                    }
+                                },
+                                "required": ["power", "source"]
+                            }
+                        },
+                        {
+                            "if": {
                                 "properties": { "type": { "const": "origins:heal" } },
                                 "required": [ "type" ]
                             },
@@ -2421,6 +2633,33 @@
                                     }
                                 },
                                 "required": ["amount"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:passenger_action" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "If set, executes the specified action on the passenger entity."
+                                    },
+                                    "bientity_action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action",
+                                        "description": "If set, executes the specified action that can execute on both the passenger and the entity that's being ridden."
+                                    },
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "If set, only execute the specified actions if the bi-entity condition is fulfilled."
+                                    },
+                                    "recursive": {
+                                        "type": "boolean",
+                                        "description": "If set to true, executes the specified actions on all the passenger entities, if there are more than one.",
+                                        "default": false
+                                    }
+                                }
                             }
                         },
                         {
@@ -2449,6 +2688,33 @@
                                     }
                                 },
                                 "required": ["sound"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:riding_action" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "If set, executes the specified action on the entity that's been ridden."
+                                    },
+                                    "bientity_action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action",
+                                        "description": "If set, executes the specified action that can execute on both the passenger and the entity that's being ridden."
+                                    },
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "If set, only execute the specified actions if the bi-entity condition is fulfilled."
+                                    },
+                                    "recursive": {
+                                        "type": "boolean",
+                                        "description": "If set to true, executes the specified actions on all entities that are being ridden, if there are more than one.",
+                                        "default": false
+                                    }
+                                }
                             }
                         },
                         {
@@ -2544,6 +2810,23 @@
                                     }
                                 },
                                 "required": ["entity_type"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:toggle" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "power": {
+                                        "type": "string",
+                                        "description": "The namespace and ID of the power that uses the origins:toggle power type.",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "examples": ["origins:phantomize"]
+                                    }
+                                },
+                                "required": ["power"]
                             }
                         },
                         {
@@ -2744,7 +3027,7 @@
                             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
                             "examples": [
                                 "origins:and", "origins:chance", "origins:choice", "origins:if_else",
-                                "origins:consume"
+                                "origins:consume", "origins:damage", "origins:modify"
                             ]
                         }
                     },
@@ -2843,6 +3126,41 @@
                                     }
                                 }
                             }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:damage" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "description": "The amount of damage it should do to the item stack.",
+                                        "default": 1
+                                    },
+                                    "ignore_unbreaking": {
+                                        "type": "boolean",
+                                        "description": "Determines if this action should ignore the Unbreaking enchantment.",
+                                        "default": false
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:modify" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "modifier": {
+                                        "type": "string",
+                                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                                        "description": "The ID of an item modifier."
+                                    }
+                                }
+                            }
                         }
                     ]
                 }
@@ -2851,7 +3169,7 @@
         "origins_data_types": {
             "type": "object",
             "description": "Group for https://origins.readthedocs.io/en/latest/data_types/",
-            "$comment": "As Comparison and Modifier Operation are basicaly just enum's they are not included in this list.",
+            "$comment": "As Comparison and Modifier Operation are basicaly just enum's and badges are only used once they are not included in this list.",
             "properties": {
                 "modifier": {
                     "type": "object",
@@ -3057,8 +3375,7 @@
                             "$ref": "#/definitions/conditions/properties/entity_condition",
                             "description": "If set (and should_render is true), the bar will only display when the entity with the power fulfills this condition."
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "ingredient": {
                     "type": ["object", "array"],
@@ -4192,6 +4509,56 @@
         {
             "$comment": "#region Action-related",
             "if": {
+                "properties": { "type": { "enum": ["origins:action_on_entity_use", "origins:action_on_being_used"] } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "bientity_action": {
+                        "$ref": "#/definitions/actions/properties/bientity_action",
+                        "description": "The action to be executed if specified."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+                    },
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the player's specified hand(s) determined by the hands string field."
+                    },
+                    "hands": {
+                        "type": "array",
+                        "items": {
+                            "enum": ["off_hand", "main_hand"]
+                        },
+                        "default": ["off_hand", "main_hand"],
+                        "description": "Determines if the power should be activated if the player used the specified hand(s). Accepts \"off_hand\", \"main_hand\" or both."
+                    },
+                    "result_stack": {
+                        "$ref": "#/definitions/origins_data_types/properties/item_stack",
+                        "description": "If specified, gives an item stack to the player."
+                    },
+                    "held_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If specified, executes an item action on the item stack used for right-clicking the entity in the specified hand slot."
+                    },
+                    "result_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, executes an item action on the result item stack."
+                    },
+                    "action_result": {
+                        "enum": ["consume", "consume_partial", "fail", "pass", "success"],
+                        "default": "success",
+                        "description": "Determines the result of the action. Accepts \"consume\", \"consume_partial\", \"fail\", \"pass\" or \"success\"."
+                    }
+                },
+                "dependencies": {
+                    "result_item_action": ["result_stack"]
+                }
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:action_on_block_break" } },
                 "required": [ "type" ]
             },
@@ -4261,6 +4628,41 @@
                     {"required": ["entity_action_removed"]},
                     {"required": ["entity_action_respawned"]}
                 ]
+            },
+            "$comment": "origins:action_on_entity_use is done at origins:action_on_entity_use"
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_on_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "bientity_action": {
+                        "$ref": "#/definitions/actions/properties/bientity_action",
+                        "description": "The action to execute upon hit."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the entity that has the power."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 1,
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again."
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "default": {"should_render": false},
+                        "description": "Determines how the cooldown of this power is visualized on the HUD."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If set, the action will only trigger when this bi-entity condition is fulfilled."
+                    }
+                },
+                "required": ["bientity_action"]
             }
         },
         {
@@ -4365,6 +4767,70 @@
                     "rising_action": ["condition"],
                     "falling_action": ["condition"]
                 }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_when_damage_taken" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "The action to execute on the player each interval."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If specified, the action will only trigger when this condition holds for the specified type of damage."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 1,
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again."
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "default": {"should_render": false},
+                        "description": "Determines how the cooldown of this power is visualized on the HUD."
+                    }
+                },
+                "required": ["entity_action"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:action_when_hit" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "bientity_action": {
+                        "$ref": "#/definitions/actions/properties/bientity_action",
+                        "description": "The action to execute upon being hit."
+                    },
+                    "damage_condition": {
+                        "$ref": "#/definitions/conditions/properties/damage_condition",
+                        "description": "If specified, the specified action will only trigger when this condition holds for the specified type of damage."
+                    },
+                    "cooldown": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 1,
+                        "description": "Interval of ticks this power needs to recharge before the action can be executed again."
+                    },
+                    "hud_render": {
+                        "$ref": "#/definitions/origins_data_types/properties/hud_render",
+                        "default": {"should_render": false},
+                        "description": "Determines how the cooldown of this power is visualized on the HUD."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If specified, the specified action will only trigger if the bi-entity condition is fulfilled."
+                    }
+                },
+                "required": ["bientity_action"]
             }
         },
         {
@@ -4552,6 +5018,50 @@
         {
             "$comment": "#region Modifying types",
             "if": {
+                "properties": { "type": { "const": "origins:modify_air_speed" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "modifier": {
+                        "$ref": "#/definitions/origins_data_types/properties/modifier",
+                        "description": "If specified, this modifier will be applied to the entity's air speed."
+                    },
+                    "modifiers": {
+                        "type": "array",
+                        "description": "If specified, these modifiers will be applied to the entity's air speed.",
+                        "items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+                        "minItems": 2
+                    }
+                },
+                "oneOf": [
+                    {"required": ["modifier"]},
+                    {"required": ["modifiers"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_block_render" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, modifies how the block would look like that meets this condition."
+                    },
+                    "block": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "The ID of the block that would replace the block that meets the condition from the block_condition object field would look like."
+                    }
+                },
+                "required": [ "block" ]
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:modify_break_speed" } },
                 "required": [ "type" ]
             },
@@ -4576,6 +5086,63 @@
                     {"required": ["modifier"]},
                     {"required": ["modifiers"]}
                 ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_camera_submersion" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "from": {
+                        "enum": ["none", "water", "lava"],
+                        "description": "Which submersion type to modify. Can be none, water or lava."
+                    },
+                    "to": {
+                        "enum": ["none", "water", "lava"],
+                        "description": "Which submersion type to change to. Can be none, water or lava."
+                    }
+                },
+                "anyOf": [
+                    {"required": ["from"]},
+                    {"required": ["to"]}
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_crafting" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "recipe": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "The ID of the recipe to be modified."
+                    },
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, it will only apply the item stack from the result field, and trigger the actions when this condition is met by the result item from the crafting recipe."
+                    },
+                    "result": {
+                        "$ref": "#/definitions/origins_data_types/properties/item_stack",
+                        "description": "If set, replaces the result item stack of the recipe."
+                    },
+                    "item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, execute this item action on the result item stack."
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, execute this entity action on the player."
+                    },
+                    "block_action": {
+                        "$ref": "#/definitions/actions/properties/block_action",
+                        "description": "If set, execute this block action at the block used for crafting the recipe."
+                    }
+                }
             }
         },
         {
@@ -4700,6 +5267,30 @@
                     }
                 },
                 "required": ["velocity"]
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:modify_fluid_render" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "block_condition": {
+                        "$ref": "#/definitions/conditions/properties/block_condition",
+                        "description": "If set, modifies how the block that meets this condition would look like."
+                    },
+                    "fluid_condition": {
+                        "$ref": "#/definitions/conditions/properties/fluid_condition",
+                        "description": "If set, modifies how the fluid that meets the condition would look like."
+                    },
+                    "fluid": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "The ID of the fluid that would replace how the block/fluid that meets the conditions in the block_condition and/or fluid_condition object field would look like."
+                    }
+                },
+                "required": [ "fluid" ]
             }
         },
         {
@@ -4971,6 +5562,42 @@
         {
             "$comment": "#region Preventing types",
             "if": {
+                "properties": { "type": { "const": "origins:prevent_being_used" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "bientity_action": {
+                        "$ref": "#/definitions/actions/properties/bientity_action",
+                        "description": "The action to execute upon preventing other players from right-clicking the entity that has the power if specified."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+                    },
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the other player's specified hand(s) equipment slot determined by the hands string field."
+                    },
+                    "hands": {
+                        "type": "array",
+                        "items": { "enum": ["off_hand", "main_hand"] },
+                        "default": ["off_hand", "main_hand"],
+                        "description": "Determines if the power should be activated if the other player used the specified hand slot(s). Accepts \"off_hand\", \"main_hand\" or both."
+                    },
+                    "result_stack": {
+                        "$ref": "#/definitions/origins_data_types/properties/item_stack",
+                        "description": "If specified, gives an item stack to the player."
+                    },
+                    "result_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If specified, executes an item action on the given item stack."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:prevent_block_selection" } },
                 "required": [ "type" ]
             },
@@ -5025,6 +5652,46 @@
                     "entity_condition": {
                         "$ref": "#/definitions/conditions/properties/entity_condition",
                         "description": "If set, only entities which fulfill this condition will be invisible."
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:prevent_entity_use" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "bientity_action": {
+                        "$ref": "#/definitions/actions/properties/bientity_action",
+                        "description": "The action to execute upon being prevented from right-clicking an entity."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+                    },
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the other player's specified hand(s) equipment slot determined by the hands string field."
+                    },
+                    "hands": {
+                        "type": "array",
+                        "items": { "enum": ["off_hand", "main_hand"] },
+                        "default": ["off_hand", "main_hand"],
+                        "description": "Determines if the power should be activated if the player used the specified hand slot(s). Accepts \"off_hand\", \"main_hand\" or both."
+                    },
+                    "result_stack": {
+                        "$ref": "#/definitions/origins_data_types/properties/item_stack",
+                        "description": "If specified, gives the result item stack to the player."
+                    },
+                    "held_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If specified, executes an item action on the item stack used for right-clicking the entity in the specified hand slot."
+                    },
+                    "result_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If specified, executes an item action on the result item stack."
                     }
                 }
             }
