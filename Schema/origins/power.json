@@ -10,15 +10,16 @@
             "description": "ID of the desired Power Type.",
             "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
             "examples": [
-                "origins:attribute", "origins:burn", "origins:climbing", "origins:conditioned_attribute",
+                "origins:attribute_modify_transfer", "origins:attribute", "origins:burn", "origins:climbing", "origins:conditioned_attribute",
                 "origins:conditioned_restrict_armor", "origins:cooldown", "origins:creative_flight", "origins:damage_over_time",
                 "origins:disable_regen", "origins:effect_immunity", "origins:elytra_flight", "origins:entity_glow",
-                "origins:entity_group", "origins:exhaust", "origins:fire_immunity", "origins:fire_projectile",
-                "origins:ignore_water", "origins:inventory", "origins:invisibility", "origins:invulnerability", "origins:launch",
-                "origins:lava_vision", "origins:model_color", "origins:multiple", "origins:night_vision", "origins:particle",
-                "origins:phasing", "origins:recipe", "origins:resource", "origins:restrict_armor", "origins:shader", "origins:shaking",
-                "origins:simple", "origins:stacking_status_effect", "origins:starting_equipment", "origins:swimming", 
-                "origins:toggle_night_vision", "origins:toggle", "origins:walk_on_fluid",
+                "origins:entity_group", "origins:exhaust", "origins:fire_immunity", "origins:fire_projectile", "origins:freeze",
+                "origins:ignore_water", "origins:inventory", "origins:invisibility", "origins:invulnerability", "origins:item_on_item",
+                "origins:launch", "origins:lava_vision", "origins:model_color", "origins:multiple", "origins:night_vision", "origins:overlay",
+                "origins:particle", "origins:phasing", "origins:recipe", "origins:resource", "origins:restrict_armor", "origins:self_glow",
+                "origins:shader", "origins:shaking", "origins:simple", "origins:stacking_status_effect", "origins:starting_equipment",
+                "origins:status_bar_texture", "origins:swimming", "origins:toggle_night_vision", "origins:toggle", "origins:tooltip",
+                "origins:walk_on_fluid",
 
                 "origins:action_on_block_break", "origins:action_on_callback", "origins:action_on_item_use", "origins:action_on_land",
                 "origins:action_on_wake_up", "origins:action_over_time", "origins:active_self", "origins:attacker_action_when_hit",
@@ -63,6 +64,176 @@
             "type": "object",
             "description": "Group for conditions",
             "properties": {
+                "bientity_condition": {
+                    "type": "object",
+                    "description": "Bi-entity Conditions operate on a Pair<Entity, Entity>, or in simpler terms: an actor and a target. The actor and target is determined depending on the used power type, and can be swapped. These are available to power types that provides a bientity_condition field, which restricts when a power is active.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:or", "origins:constant",
+                                "origins:actor_condition", "origins:attack_target", "origins:attacker", "origins:both", "origins:can_see",
+                                "origins:distance", "origins:either", "origins:invert", "origins:owner", "origins:riding_recursive",
+                                "origins:riding_root", "origins:riding", "origins:target_condition"
+                            ]
+                        },
+                        "inverted": {
+                            "type": "boolean",
+                            "description": "If true, the condition acts inverted.",
+                            "default": false
+                        }
+                    },
+                    "required": [ "type" ],
+                    "allOf": [
+                        {
+                            "$comment": "#region meta",
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/bientity_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:or" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "conditions": {
+                                        "type": "array",
+                                        "description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
+                                        "items": { "$ref": "#/definitions/conditions/properties/bientity_condition" },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [ "conditions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:constant" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "value": {
+                                        "type": "boolean",
+                                        "description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+                                    }
+                                },
+                                "required": [ "value" ]
+                            },
+                            "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:actor_condition" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                                        "description": "The condition to check for on the acting entity."
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:both" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                                        "description": "The condition to check on both the actor and target entity."
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:distance" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "comparison": {
+                                        "description": "How to compare the distance against the specified value.",
+                                        "enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+                                    },
+                                    "compare_to": {
+                                        "type": "number",
+                                        "description": "The distance (in blocks) to compare the distance between the actor and target to."
+                                    }
+                                },
+                                "required": [ "comparison", "compare_to" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:either" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                                        "description": "The condition to check on either actor or target entities."
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:invert" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "bientity_condition": {
+                                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                                        "description": "The bi-entity condition to check which will have its 'target' and 'actor' contexts swapped."
+                                    }
+                                },
+                                "required": [ "bientity_condition" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:target_condition" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": {
+                                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                                        "description": "The condition to check for on the target entity."
+                                    }
+                                },
+                                "required": [ "condition" ]
+                            }
+                        }
+                    ]
+                },
                 "biome_condition": {
                     "type": "object",
                     "description": "Biome Conditions operate on a Biome.",
@@ -1655,6 +1826,184 @@
             "type": "object",
             "description": "Group for actions",
             "properties": {
+                "bientity_action": {
+                    "type": "object",
+                    "description": "Bi-Entity Actions operate on a Pair<Entity, Entity>; in simpler terms: an actor and a target. The actor and target is determined depending on the used power type, and can be swapped.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                            "examples": [
+                                "origins:and", "origins:chance", "origins:choice", "origins:delay", "origins:if_else",
+                                "origins:actor_action", "origins:add_velocity", "origins:invert", "origins:mount",
+                                "origins:set_in_love", "origins:tame", "origins:target_action"
+                            ]
+                        }
+                    },
+                    "required": ["type"],
+                    "allOf": [
+                        {
+                            "$comment": "#region meta",
+                            "if": {
+                                "properties": { "type": { "const": "origins:and" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "actions": {
+                                        "type": "array",
+                                        "description": "These actions will be executed one after the other (but in the same tick).",
+                                        "items": {"$ref": "#/definitions/actions/properties/bientity_action"},
+                                        "minItems": 2
+                                    }
+                                },
+                                "required": ["actions"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:chance" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action" 
+                                    },
+                                    "chance": {
+                                        "type": "number",
+                                        "description": "The chance that the action will execute, from 0 to 1. (E.g. 0.1 means 10% chance, 0.95 means 95% chance)",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                    }
+                                },
+                                "required": ["action", "chance"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:choice" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "actions": {
+                                        "type": "array",
+                                        "description": "Array of Objects, each with an element Action and a weight Integer.",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "action": {"$ref": "#/definitions/actions/properties/bientity_action"},
+                                                "weight": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": ["action", "weight"]
+                                        },
+                                        "minItems": 2
+                                    }
+                                },
+                                "required": [ "actions" ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:if_else" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "condition": { "$ref": "#/definitions/conditions/properties/bientity_condition"},
+                                    "if_action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action",
+                                        "description": "The action which is executed when the condition evaluates to true."
+                                    },
+                                    "else_action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action",
+                                        "description": "If present, this action will be executed when the condition evaluates to false."
+                                    }
+                                },
+                                "required": ["condition", "if_action"]
+                            },
+                            "$comment": "#endregion meta"
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:actor_action" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "The action to execute on the actor entity."
+                                    }
+                                },
+                                "required": ["action"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:add_velocity" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "x": {
+                                        "type": "number",
+                                        "default": 0,
+                                        "description": "The amount of velocity to add on the x-axis."
+                                    },
+                                    "y": {
+                                        "type": "number",
+                                        "default": 0,
+                                        "description": "The amount of velocity to add on the y-axis."
+                                    },
+                                    "z": {
+                                        "type": "number",
+                                        "default": 0,
+                                        "description": "The amount of velocity to add on the z-axis."
+                                    },
+                                    "set": {
+                                        "type": "boolean",
+                                        "default": false,
+                                        "description": "If this is true, the action will act as a \"set\" velocity action, overriding the entity's current velocity instead of adding to it."
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:invert" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/bientity_action",
+                                        "description": " The bi-entity action to execute which will have its 'target' and 'actor' contexts swapped."
+                                    }
+                                },
+                                "required": ["action"]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": { "type": { "const": "origins:target_action" } },
+                                "required": [ "type" ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action": {
+                                        "$ref": "#/definitions/actions/properties/entity_action",
+                                        "description": "The action to execute on the target entity."
+                                    }
+                                },
+                                "required": ["action"]
+                            }
+                        }
+                    ]
+                },
                 "entity_action": {
                     "type": "object",
                     "description": "Entity Actions operate on an Entity. Some more specific actions only have an effect on more specific entity types (e.g. Exhaust (Action) only works on PlayerEntity, as other entities do not have a hunger bar).",
@@ -2873,6 +3222,32 @@
         {
             "$comment": "#region Regular types",
             "if": {
+                "properties": { "type": { "const": "origins:attribute_modify_transfer" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "class": {
+                        "type": "string",
+                        "description": "The path and ID of the class to transfer the value of an attribute to.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                    },
+                    "attribute": {
+                        "type": "string",
+                        "description": "The namespace and ID of the attribute to transfer the value from.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                    },
+                    "multiplier": {
+                        "type": "number",
+                        "description": "Determines the multiplier for the value.",
+                        "default": 1.0
+                    }
+                },
+                "required": ["class", "attribute"]
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:attribute" } },
                 "required": [ "type" ]
             },
@@ -3251,6 +3626,47 @@
         },
         {
             "if": {
+                "properties": { "type": { "const": "origins:item_on_item" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "using_item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, the actions will only trigger when this condition is met by the item used to right-click an item stack."
+                    },
+                    "on_item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, the actions will only trigger when this condition is met by the item stack that's been right-clicked."
+                    },
+                    "result": {
+                        "$ref": "#/definitions/origins_data_types/properties/item_stack",
+                        "description": "If set, the specified item stack will be given to the player."
+                    },
+                    "using_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, this action will be executed on the item stack used to right-click an item stack."
+                    },
+                    "on_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, this action will be executed on the item stack that's been right-clicked."
+                    },
+                    "result_item_action": {
+                        "$ref": "#/definitions/actions/properties/item_action",
+                        "description": "If set, this action will be executed on the item stack specified in the result field."
+                    },
+                    "entity_action": {
+                        "$ref": "#/definitions/actions/properties/entity_action",
+                        "description": "If set, this action will be executed on the player after they used an item on an item."
+                    }
+                },
+                "dependencies": {
+                    "result_item_action": ["result"]
+                }
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:launch" } },
                 "required": [ "type" ]
             },
@@ -3365,6 +3781,68 @@
                         "maximum": 1
                     }
                 }
+            }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:overlay" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "texture": {
+                        "type": "string",
+                        "description": "The ID of the texture to use as an overlay.",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+                    },
+                    "strength": {
+                        "type": "number",
+                        "description": "Value by which the alpha (transparency) component of the texture will be multiplied. Range: 0.0 to 1.0.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "red": {
+                        "type": "number",
+                        "description": "Value by which the red component of the texture will be multiplied. Range: 0.0 to 1.0.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "green": {
+                        "type": "number",
+                        "description": "Value by which the green component of the texture will be multiplied. Range: 0.0 to 1.0.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "blue": {
+                        "type": "number",
+                        "description": "Value by which the blue component of the texture will be multiplied. Range: 0.0 to 1.0.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "draw_mode": {
+                        "enum": ["nausea", "texture"],
+                        "description": "Determines whether to treat black as transparent or draw the texture as is (\"nausea\" or \"texture\" respectively)."
+                    },
+                    "draw_phase": {
+                        "enum": ["below_hud", "above_hud"],
+                        "description": "Determines if the overlay should render below or above the HUD (\"below_hud\" or \"above_hud\" respectively)."
+                    },
+                    "hide_with_hud": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Determines if the overlay should be hidden if the HUD elements are hidden (with F1)."
+                    },
+                    "visible_in_third_person": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Determines if the overlay is visible in third person."
+                    }
+                },
+                "required": ["texture", "draw_mode", "draw_phase"]
             }
         },
         {
@@ -3488,6 +3966,50 @@
         },
         {
             "if": {
+                "properties": { "type": { "const": "origins:self_glow" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "entity_condition": {
+                        "$ref": "#/definitions/conditions/properties/entity_condition",
+                        "description": "If set, only entities which fulfill this condition will see the entity that has the power glow."
+                    },
+                    "bientity_condition": {
+                        "$ref": "#/definitions/conditions/properties/bientity_condition",
+                        "description": "If set, only entities which fulfill this bi-entity condition in relation to the entity that has the power will see the entity that has the power glow."
+                    },
+                    "use_teams": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Whether glowing entities should use their team's color with their glow. If set to false, the entity will instead use the red, green and blue fields within this power type."
+                    },
+                    "red": {
+                        "type": "number",
+                        "description": "Value by which the red component of the glow will be multiplied. Range: 0 - 1.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "green": {
+                        "type": "number",
+                        "description": "Value by which the green component of the glow will be multiplied. Range: 0 - 1.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    },
+                    "blue": {
+                        "type": "number",
+                        "description": "Value by which the blue component of the glow will be multiplied. Range: 0 - 1.",
+                        "default": 1.0,
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                }
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:shader" } },
                 "required": [ "type" ]
             },
@@ -3567,6 +4089,22 @@
         },
         {
             "if": {
+                "properties": { "type": { "const": "origins:status_bar_texture" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "texture": {
+                        "type": "string",
+                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+                        "description": "The ID of the sprite sheet to replace the default one with. Here's what the vanilla sprite sheet looks like: https://media.discordapp.net/attachments/802622603008409600/893716345055772682/unknown.png"
+                    }
+                },
+                "required": ["texture"]
+            }
+        },
+        {
+            "if": {
                 "properties": { "type": { "const": "origins:toggle_night_vision" } },
                 "required": [ "type" ]
             },
@@ -3607,6 +4145,31 @@
                     }
                 }
             }
+        },
+        {
+            "if": {
+                "properties": { "type": { "const": "origins:tooltip" } },
+                "required": [ "type" ]
+            },
+            "then": {
+                "properties": {
+                    "item_condition": {
+                        "$ref": "#/definitions/conditions/properties/item_condition",
+                        "description": "If set, only applies the tooltip(s) to the item(s) that meets this condition."
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "If set, apply this string as a tooltip."
+                    },
+                    "texts": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "minItems": 2,
+                        "description": "If set, apply these strings as a tooltip."
+                    }
+                }
+            },
+            "$comment": "#endregion Regular types"
         },
         {
             "if": {
