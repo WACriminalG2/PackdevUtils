@@ -1055,10 +1055,11 @@
 									},
 									"permission_level": {
 										"type": "integer",
-										"description": "The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
+										"description": "[Deprecated since 1.1.0]The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
 										"default": 4,
 										"minimum": 0,
-										"maximum": 4
+										"maximum": 4,
+										"deprecated": true
 									}
 								},
 								"required": [ "command", "comparison", "compare_to" ]
@@ -1955,7 +1956,7 @@
 					"properties": {
 						"operation": {
 							"description": "The operation which will be performed by this modifier.",
-							"enum": [ "addition", "multiply_base", "multiply_total" ]
+							"enum": ["addition", "multiply_base", "multiply_total"]
 						},
 						"value": {
 							"type": "number",

@@ -84,6 +84,7 @@
 			"description": "Group for conditions",
 			"properties": {
 				"bientity_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/bientity_conditions/",
 					"type": "object",
 					"description": "Bi-entity Conditions operate on a Pair<Entity, Entity>, or in simpler terms: an actor and a target. The actor and target is determined depending on the used power type, and can be swapped. These are available to power types that provides a bientity_condition field, which restricts when a power is active.",
 					"properties": {
@@ -93,9 +94,11 @@
 							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
-								"origins:actor_condition", "origins:attack_target", "origins:attacker", "origins:both", "origins:can_see",
-								"origins:distance", "origins:either", "origins:invert", "origins:owner", "origins:riding_recursive",
-								"origins:riding_root", "origins:riding", "origins:target_condition"
+								"origins:actor_condition", "origins:both", "origins:either", "origins:invert",
+								"origins:target_condition", "origins:undirected",
+								"origins:attack_target", "origins:attacker", "origins:can_see",
+								"origins:distance", "origins:owner", "origins:riding_recursive",
+								"origins:riding_root", "origins:riding"
 							]
 						},
 						"inverted": {
@@ -104,13 +107,14 @@
 							"default": false
 						}
 					},
-					"required": [ "type" ],
+					"required": ["type"],
 					"allOf": [
 						{
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/and/"
 							},
 							"then": {
 								"properties": {
@@ -121,13 +125,14 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/or/"
 							},
 							"then": {
 								"properties": {
@@ -138,13 +143,14 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/constant/"
 							},
 							"then": {
 								"properties": {
@@ -153,14 +159,14 @@
 										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
 									}
 								},
-								"required": [ "value" ]
-							},
-							"$comment": "#endregion meta"
+								"required": ["value"]
+							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:actor_condition" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/actor_condition/"
 							},
 							"then": {
 								"properties": {
@@ -169,13 +175,13 @@
 										"description": "The condition to check for on the acting entity."
 									}
 								},
-								"required": [ "condition" ]
+								"required": ["condition"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:both" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -184,26 +190,7 @@
 										"description": "The condition to check on both the actor and target entity."
 									}
 								},
-								"required": [ "condition" ]
-							}
-						},
-						{
-							"if": {
-								"properties": { "type": { "const": "origins:distance" } },
-								"required": [ "type" ]
-							},
-							"then": {
-								"properties": {
-									"comparison": {
-										"description": "How to compare the distance against the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
-									},
-									"compare_to": {
-										"type": "number",
-										"description": "The distance (in blocks) to compare the distance between the actor and target to."
-									}
-								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["condition"]
 							}
 						},
 						{
@@ -224,7 +211,7 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:invert" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -233,13 +220,13 @@
 										"description": "The bi-entity condition to check which will have its 'target' and 'actor' contexts swapped."
 									}
 								},
-								"required": [ "bientity_condition" ]
+								"required": ["bientity_condition"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:target_condition" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -248,12 +235,50 @@
 										"description": "The condition to check for on the target entity."
 									}
 								},
-								"required": [ "condition" ]
+								"required": ["condition"]
+							}
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:undirected" } },
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/undirected/"
+							},
+							"then": {
+								"properties": {
+									"condition": {
+										"$ref": "#/definitions/conditions/properties/bientity_condition",
+										"description": "The condition to check for on the target entity."
+									}
+								},
+								"required": ["condition"]
+							},
+							"$comment": "#endregion meta"
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:distance" } },
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/bientity_conditions/distance/"
+							},
+							"then": {
+								"properties": {
+									"comparison": {
+										"description": "How to compare the distance against the specified value.",
+										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+									},
+									"compare_to": {
+										"type": "number",
+										"description": "The distance (in blocks) to compare the distance between the actor and target to."
+									}
+								},
+								"required": ["comparison", "compare_to"]
 							}
 						}
 					]
 				},
 				"biome_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/biome_conditions/",
 					"type": "object",
 					"description": "Biome Conditions operate on a Biome.",
 					"properties": {
@@ -327,7 +352,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:category" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/biome_conditions/category/"
 							},
 							"then": {
 								"properties": {
@@ -347,7 +373,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:precipitation" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment":"https://origins.readthedocs.io/en/latest/biome_conditions/precipitation/"
 							},
 							"then": {
 								"properties": {
@@ -362,7 +389,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:temperature" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment":"https://origins.readthedocs.io/en/latest/biome_conditions/temperature/"
 							},
 							"then": {
 								"properties": {
@@ -381,6 +409,7 @@
 					]
 				},
 				"block_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/",
 					"type": "object",
 					"description": "Block Conditions operate on CachedBlockPosition, essentially a combination of World and BlockPos, which allows retrieving all necessary information about the block.",
 					"properties": {
@@ -388,7 +417,7 @@
 							"type": "string",
 							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
 							"examples": [
-								"origins:and", "origins:or", "origins:constant",
+								"origins:and", "origins:constant", "origins:or",
 								"origins:adjacent", "origins:attachable", "origins:block", "origins:block_state",
 								"origins:exposed_to_sky", "origins:fluid", "origins:height", "origins:in_tag", "origins:light_blocking",
 								"origins:light_level", "origins:movement_blocking", "origins:offset", "origins:replacable",
@@ -407,7 +436,7 @@
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -418,13 +447,28 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
+							}
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:constant" } },
+								"required": ["type"]
+							},
+							"then": {
+								"properties": {
+									"value": {
+										"type": "boolean",
+										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+									}
+								},
+								"required": ["value"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -435,29 +479,46 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"properties": { "type": { "const": "origins:offset" } },
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/meta_conditions/offset/"
 							},
 							"then": {
 								"properties": {
-									"value": {
-										"type": "boolean",
-										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
+									"condition": {
+										"$ref": "#/definitions/conditions/properties/block_condition",
+										"description": "The condition to check with the given offset."
+									},
+									"x": {
+										"type": "integer",
+										"description": "How much to offset the position on the x-axis.",
+										"default": 0
+									},
+									"y": {
+										"type": "integer",
+										"description": "How much to offset the position on the y-axis.",
+										"default": 0
+									},
+									"z": {
+										"type": "integer",
+										"description": "How much to offset the position on the z-axis.",
+										"default": 0
 									}
 								},
-								"required": [ "value" ]
+								"required": ["condition"]
 							},
 							"$comment": "#endregion meta"
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:adjacent" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/adjacent/"
 							},
 							"then": {
 								"properties": {
@@ -479,25 +540,9 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block" } },
-								"required": [ "type" ]
-							},
-							"then": {
-								"properties": {
-									"block": {
-										"type": "string",
-										"description": "ID of the block that this block needs to be to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
-									}
-								},
-								"required": [ "block" ]
-							}
-						},
-						{
-							"if": {
 								"properties": { "type": { "const": "origins:block_state" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/block_state/"
 							},
 							"then": {
 								"properties": {
@@ -528,8 +573,27 @@
 						},
 						{
 							"if": {
+								"properties": { "type": { "const": "origins:block" } },
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/block/"
+							},
+							"then": {
+								"properties": {
+									"block": {
+										"type": "string",
+										"description": "ID of the block that this block needs to be to pass the check.",
+										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
+									}
+								},
+								"required": [ "block" ]
+							}
+						},
+						{
+							"if": {
 								"properties": { "type": { "const": "origins:fluid" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/fluid/"
 							},
 							"then": {
 								"properties": {
@@ -544,7 +608,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:height" } },
-								"required": [ "type" ]
+								"required": [ "type" ],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/height/"
 							},
 							"then": {
 								"properties": {
@@ -563,7 +628,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:in_tag" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/in_tag/"
 							},
 							"then": {
 								"properties": {
@@ -571,68 +637,40 @@
 										"type": "string",
 										"description": "ID of the tag which the block should be in to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:base_stone_overworld" ]
+										"examples": ["minecraft:base_stone_overworld"]
 									}
 								},
-								"required": [ "tag" ]
+								"required": ["tag"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:light_level" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/block_conditions/light_level/"
 							},
 							"then": {
 								"properties": {
 									"light_type": {
 										"description": "The type of light level to compare. Either sky or block. If no type is provided, the greater value of the two types will be used, which is the \"resulting\" light level of that position.",
-										"enum": [ "sky", "block" ]
+										"enum": ["sky", "block"]
 									},
 									"comparison": {
 										"description": "How the light level should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "The value to compare the light level at the block's position to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
-							}
-						},
-						{
-							"if": {
-								"properties": { "type": { "const": "origins:offset" } },
-								"required": [ "type" ]
-							},
-							"then": {
-								"properties": {
-									"condition": {
-										"$ref": "#/definitions/conditions/properties/block_condition",
-										"description": "The condition to check with the given offset."
-									},
-									"x": {
-										"type": "integer",
-										"description": "How much to offset the position on the x-axis.",
-										"default": 0
-									},
-									"y": {
-										"type": "integer",
-										"description": "How much to offset the position on the y-axis.",
-										"default": 0
-									},
-									"z": {
-										"type": "integer",
-										"description": "How much to offset the position on the z-axis.",
-										"default": 0
-									}
-								},
-								"required": [ "condition" ]
+								"required": ["comparison", "compare_to"]
 							}
 						}
 					]
 				},
 				"damage_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/damage_conditions/",
 					"type": "object",
 					"description": "Damage Conditions operate on a combination of DamageSource and Float, allowing to check not only the type of damage dealt, but also how much damage was dealt.",
 					"properties": {
@@ -651,13 +689,13 @@
 							"description": "If true, the condition acts inverted."
 						}
 					},
-					"required": [ "type" ],
+					"required": ["type"],
 					"allOf": [
 						{
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -668,13 +706,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -685,13 +723,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -700,33 +738,35 @@
 										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
 									}
 								},
-								"required": [ "value" ]
+								"required": ["value"]
 							},
 							"$comment": "#endregion meta"
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:amount" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/damage_conditions/amount/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the amount of damage should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
 										"description": "The value to compare the amount of damage to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:attacker" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/damage_conditions/attacker/"
 							},
 							"then": {
 								"properties": {
@@ -740,7 +780,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:name" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/damage_conditions/name/"
 							},
 							"then": {
 								"properties": {
@@ -755,16 +796,19 @@
 											"indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
 											"magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
 											"starve", "sting", "sweetBerryBush", "thorns", "thrown",
-											"trident", "wither", "witherSkull"
+											"trident", "wither", "witherSkull",
+											"no_water_for_gills", "hurt_by_water", "genericDamageOverTime"
 										]
 									}
-								}
+								},
+								"required": ["name"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:projectile" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/damage_conditions/projectile/"
 							},
 							"then": {
 								"properties": {
@@ -772,7 +816,7 @@
 										"type": "string",
 										"description": "If set, the check will only pass if the projectile was of an entity type with this ID.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:spectral_arrow" ]
+										"examples": ["minecraft:spectral_arrow"]
 									}
 								}
 							}
@@ -780,6 +824,7 @@
 					]
 				},
 				"entity_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/",
 					"type": "object",
 					"description": "Entity Conditions operate on a LivingEntity, which also allows access to the world. These are available to be used in most powers in the condition field, which restricts when a power is active.",
 					"properties": {
@@ -796,7 +841,7 @@
 								"origins:exposed_to_sky", "origins:exposed_to_sun", "origins:fall_distance", "origins:fall_flying",
 								"origins:fluid_height", "origins:food_level", "origins:gamemode", "origins:health", "origins:in_block_anywhere",
 								"origins:in_block", "origins:in_rain", "origins:in_tag", "origins:invisible", "origins:living",
-								"origins:moving", "origins:on_block", "origins:on_fire", "origins:origin", "origins:passenger_recursive",
+								"origins:moving", "origins:nbt", "origins:on_block", "origins:on_fire", "origins:origin", "origins:passenger_recursive",
 								"origins:passenger", "origins:power_active","origins:power", "origins:predicate", "origins:relative_health",
 								"origins:resource", "origins:riding_recursive", "origins:riding_root", "origins:riding", "origins:saturation_level","origins:scoreboard", "origins:sneaking",
 								"origins:sprinting", "origins:status_effect", "origins:submerged_in","origins:swimming", "origins:tamed",
@@ -809,13 +854,13 @@
 							"default": false
 						}
 					},
-					"required": [ "type" ],
+					"required": ["type"],
 					"allOf": [
 						{
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -826,13 +871,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -843,13 +888,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -858,14 +903,15 @@
 										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
 									}
 								},
-								"required": [ "value" ]
+								"required": ["value"]
 							},
 							"$comment": "#endregion meta"
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:advancement" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/advancement/"
 							},
 							"then": {
 								"properties": {
@@ -873,21 +919,22 @@
 										"type": "string",
 										"description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:story/smelt_iron" ]
+										"examples": ["minecraft:story/smelt_iron"]
 									}
 								},
-								"required": [ "advancement" ]
+								"required": ["advancement"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:air" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/air/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
-										"description": "How the breath (in ticks) should be compared to the specified value.",
+										"description": "How the breath (in ticks) should be compared to the specified value.\nPlayers (and most mobs) have a max value of 300 ticks, whilst dolphins have a max value of 4800 ticks. Axolotls, on the other hand, have a max value of 6000 ticks.\nIn order to get the value of a single bubble, you can divide the max value by 10. (max / 10 = value)",
 										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
 									},
 									"compare_to": {
@@ -895,21 +942,31 @@
 										"description": "Which value the breath should be compared to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:attribute" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/attribute/"
 							},
 							"then": {
 								"properties": {
 									"attribute": {
 										"type": "string",
-										"description": "ID of the attribute of which the value should be checked.",
+										"description": "ID of the attribute of which the value should be checked.\nFor a list of attributes available in vanilla, see https://minecraft.fandom.com/wiki/Attribute#Attributes",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:generic.armor" ]
+										"examples": [
+											"generic.max_health ", "generic.follow_range",
+											"generic.knockback_resistance", "generic.movement_speed",
+											"generic.attack_damage", "minecraft:generic.armor",
+											"generic.armor_toughness", "generic.attack_knockback",
+											"generic.attack_speed", "generic.luck",
+											"horse.jump_strength",
+											"generic.flying_speed",
+											"zombie.spawn_reinforcements"
+										]
 									},
 									"comparison": {
 										"description": "How to compare the attribute's value to the specified value.",
@@ -920,7 +977,7 @@
 										"description": "Which value to compare the attribute's value to."
 									}
 								},
-								"required": [ "attribute", "comparison", "compare_to" ]
+								"required": ["attribute", "comparison", "compare_to"]
 							}
 						},
 						{
@@ -950,13 +1007,21 @@
 										"$ref": "#/definitions/conditions/properties/biome_condition",
 										"description": "If set, this condition needs to be fulfilled (in addition to having the right ID, if provided) by the biome in order for the condition to evaluate to true."
 									}
-								}
+								},
+								"oneOf": [
+									{"required": ["biome"]},
+									{"required": ["biomes"]},
+									{"required": ["condition"]},
+									{"required": ["biome", "condition"]},
+									{"required": ["biomes", "condition"]}
+								]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:block_collision" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/block_collision/"
 							},
 							"then": {
 								"properties": {
@@ -973,13 +1038,14 @@
 										"description": "By how much of the bounding box size should the box be offset in the Z direction (e.g.: 0 = no offset, 1 = offset of exact width, 2 = offset of twice the width of the bounding box)"
 									}
 								},
-								"required": [ "offset_x", "offset_y", "offset_z" ]
+								"required": ["offset_x", "offset_y", "offset_z"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:block_in_radius" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/block_in_radius/"
 							},
 							"then": {
 								"properties": {
@@ -993,7 +1059,7 @@
 									},
 									"shape": {
 										"description": "Whether to check in a cube- or a star-shaped form. Either \"cube\" or \"star\".",
-										"enum": [ "cube", "star" ],
+										"enum": ["cube", "star"],
 										"default": "cube"
 									},
 									"comparison": {
@@ -1007,13 +1073,14 @@
 										"default": 1
 									}
 								},
-								"required": [ "block_condition", "radius" ]
+								"required": ["block_condition", "radius"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:brightness" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/brightness/"
 							},
 							"then": {
 								"properties": {
@@ -1023,22 +1090,26 @@
 									},
 									"compare_to": {
 										"type": "number",
-										"description": "Which value to compare the brightness against."
+										"description": "Which value to compare the brightness against.\nSee https://origins.readthedocs.io/en/latest/entity_conditions/brightness/",
+										"minimum": 0,
+										"maximum": 1
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:command" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/command/"
 							},
 							"then": {
 								"properties": {
 									"command": {
 										"type": "string",
-										"description": "Command to run."
+										"description": "Command to run. origins:command is only effective server-side. That means client-side power types such as origins:climbing, origins:entity_glow, origins:shader, etc. won't work with this.",
+										"examples": ["execute if score @s objective1 = @s objective2"]
 									},
 									"comparison": {
 										"description": "How to compare the command's result to the specified value.",
@@ -1050,19 +1121,21 @@
 									},
 									"permission_level": {
 										"type": "integer",
-										"description": "The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
+										"description": "[Deprecated since 1.1.0]The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
 										"default": 4,
 										"minimum": 0,
-										"maximum": 4
+										"maximum": 4,
+										"deprecated": true
 									}
 								},
-								"required": [ "command", "comparison", "compare_to" ]
+								"required": ["command", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:dimension" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/dimension/"
 							},
 							"then": {
 								"properties": {
@@ -1070,16 +1143,17 @@
 										"type": "string",
 										"description": "ID of the dimension the player needs to be in for this condition to evaluate to true. Vanilla dimensions are minecraft:overworld, minecraft:the_nether and minecraft:the_end, but IDs of custom/modded dimensions should also work.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
+										"examples": ["minecraft:overworld", "minecraft:the_nether", "minecraft:the_end"]
 									}
 								},
-								"required": [ "dimension" ]
+								"required": ["dimension"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:enchantment" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/enchantment/"
 							},
 							"then": {
 								"properties": {
@@ -1087,44 +1161,46 @@
 										"type": "string",
 										"description": "ID of the enchantment of interest.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:protection" ]
+										"examples": ["minecraft:protection"]
 									},
 									"calculation": {
 										"description": "Which number to compare - either the sum of levels of this enchantment on all of the player's equipment, or the max level of this enchantment on any of the player's equipment.",
-										"enum": [ "sum", "max" ],
+										"enum": ["sum", "max"],
 										"default": "sum"
 									},
 									"comparison": {
 										"description": "How the enchantment level should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "The value to compare the enchantment level to."
 									}
 								},
-								"required": [ "enchantment", "comparison", "compare_to" ]
+								"required": ["enchantment", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:entity_group" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/entity_group/"
 							},
 							"then": {
 								"properties": {
 									"group": {
 										"description": "Entity group required for the entity to pass the check. One of default, undead, arthropod, illager and aquatic.",
-										"enum": [ "default", "undead", "arthropod", "illager", "aquatic" ]
+										"enum": ["default", "undead", "arthropod", "illager", "aquatic"]
 									}
 								},
-								"required": [ "group" ]
+								"required": ["group"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:entity_type" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/entity_type/"
 							},
 							"then": {
 								"properties": {
@@ -1132,7 +1208,7 @@
 										"type": "string",
 										"description": "ID of the entity type the entity needs to have to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:creeper" ]
+										"examples": ["minecraft:creeper"]
 									}
 								},
 								"required": ["entity_type"]
@@ -1141,13 +1217,14 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:equipped_item" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/equipped_item/"
 							},
 							"then": {
 								"properties": {
 									"equipment_slot": {
 										"description": "Which equipped item to check. One of: \"mainhand\", \"offhand\", \"head\", \"chest\", \"legs\", \"feet\".",
-										"enum": [ "mainhand", "offhand", "head", "chest", "legs", "feet" ]
+										"enum": ["mainhand", "offhand", "head", "chest", "legs", "feet"]
 									},
 									"item_condition": {
 										"$ref": "#/definitions/conditions/properties/item_condition",
@@ -1160,26 +1237,28 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:fall_distance" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/fall_distance/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
-										"description": "How the fall distance should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"description": "How the fall distance should be compared to the specified value.\nNote that the fall distance is 0 if the player has slow falling.",
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
-										"description": "The value to compare the fall distance to."
+										"description": "The value in blocks to compare the fall distance to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:fluid_height" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/fluid_height/"
 							},
 							"then": {
 								"properties": {
@@ -1187,77 +1266,81 @@
 										"type": "string",
 										"description": "ID of the fluid tag of which the height should be checked.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:water", "minecraft:lava" ]
+										"examples": ["minecraft:water", "minecraft:lava"]
 									},
 									"comparison": {
 										"description": "How the fluid height should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
 										"description": "Which value the fluid height should be compared to."
 									}
 								},
-								"required": [ "fluid", "comparison", "compare_to" ]
+								"required": ["fluid", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:food_level" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/food_level/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the food level should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
-										"description": "Which value the food level should be compared to."
+										"description": "Which value the food level should be compared to.\nThe food level is in the range of 0 to 20."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:gamemode" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/gamemode/"
 							},
 							"then": {
 								"properties": {
 									"gamemode": {
 										"description": "Name of the gamemode the player should have in order for this condition to evaluate to true.",
-										"enum": [ "adventure", "creative", "spectator", "survival" ]
+										"examples": ["adventure", "creative", "spectator", "survival"]
 									}
 								},
-								"required": [ "gamemode" ]
+								"required": ["gamemode"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:health" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/health/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the health of the player should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
 										"description": "Which value the health should be compared to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:in_block_anywhere" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/in_block_anywhere/"
 							},
 							"then": {
 								"properties": {
@@ -1267,7 +1350,7 @@
 									},
 									"comparison": {
 										"description": "How the number of blocks which overlap and fulfill block_condition should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+										"enum": ["<", "<=", ">", ">=", "==", "!="],
 										"default": ">="
 									},
 									"compare_to": {
@@ -1276,13 +1359,14 @@
 										"default": 1
 									}
 								},
-								"required": [ "block_condition" ]
+								"required": ["block_condition"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:in_block" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/in_block/"
 							},
 							"then": {
 								"properties": {
@@ -1291,13 +1375,14 @@
 										"description": "The block condition which is applied to the block at the player's lower body half."
 									}
 								},
-								"required": [ "block_condition" ]
+								"required": ["block_condition"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:in_tag" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/in_tag/"
 							},
 							"then": {
 								"properties": {
@@ -1305,16 +1390,34 @@
 										"type": "string",
 										"description": "ID of the tag the entity type needs to be in to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:skeletons" ]
+										"examples": ["minecraft:skeletons"]
 									}
 								},
-								"required": [ "tag" ]
+								"required": ["tag"]
+							}
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:nbt" } },
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/nbt/"
+							},
+							"then": {
+								"properties": {
+									"nbt": {
+										"type": "string",
+										"description": "The NBT data to check for.\norigins:nbt is only effective server-side. That means client-side power types such as origins:climbing, origins:entity_glow, origins:shader, etc. won't work with this.",
+										"examples": ["{Tags: ['example_tag']}"]
+									}
+								},
+								"required": ["nbt"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:on_block" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/on_block/"
 							},
 							"then": {
 								"properties": {
@@ -1328,7 +1431,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:origin" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/origin/"
 							},
 							"then": {
 								"properties": {
@@ -1336,32 +1440,33 @@
 										"type": "string",
 										"description": "ID of the origin the player needs to have to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "origins:human" ]
+										"examples": ["origins:human"]
 									},
 									"layer": {
 										"type": "string",
 										"description": "If set, will check only the layer with the provided ID for the origin.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "origins:origin" ]
+										"examples": ["origins:origin"]
 									}
 								},
-								"required": [ "origin" ]
+								"required": ["origin"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "enum": ["origins:passenger_recursive", "origins:passenger"] } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/passenger/ https://origins.readthedocs.io/en/latest/entity_conditions/passenger_recursive/"
 							},
 							"then": {
 								"properties": {
 									"bientity_condition": {
 										"$ref": "#/definitions/conditions/properties/bientity_condition",
-										"description": "If specified, it will check for the entity/entities that fulfills the bi-entity condition."
+										"description": "If specified, it will check for the entity/entities that fulfill the bi-entity condition."
 									},
 									"comparison": {
 										"description": "How the number of entities that are currently riding the entity should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+										"enum": ["<", "<=", ">", ">=", "==", "!="],
 										"default": ">="
 									},
 									"compare_to": {
@@ -1375,24 +1480,26 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:power_active" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/power_active/"
 							},
 							"then": {
 								"properties": {
 									"power": {
 										"type": "string",
-										"description": "ID of the power which will be checked for being active.",
+										"description": "ID of the power which will be checked for being active. (meaning the player has the power and the power has all conditions fulfilled)",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "origins:phantomize" ]
+										"examples": ["origins:phantomize"]
 									}
 								},
-								"required": [ "power" ]
+								"required": ["power"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:power" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/power/"
 							},
 							"then": {
 								"properties": {
@@ -1400,75 +1507,83 @@
 										"type": "string",
 										"description": "ID of the power the player needs to have to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "origins:phantomize" ]
+										"examples": ["origins:phantomize", "origins:damage_from_potions"]
 									}
 								},
-								"required": [ "power" ]
+								"required": ["power"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:predicate" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/predicate/"
 							},
 							"then": {
 								"properties": {
 									"predicate": {
 										"type": "string",
-										"description": "ID of the predicate the entity needs to pass.\nNote: due to the nature of predicates, this condition is only effective on the server-side.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"description": "ID of the predicate the entity needs to pass.\nNote: This condition is only effective server-side. That means client-side power types such as origins:climbing, origins:entity_glow, origins:shader, etc. won't work with this.",
+										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"examples": ["example:weather/is_thunderstorm"]
 									}
 								},
-								"required": [ "predicate" ]
+								"required": ["predicate"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:relative_health" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/relative_health/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the relative health of the player should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
-										"description": "Which value the relative health should be compared to."
+										"description": "Which value the relative health should be compared to.\nrelativeHealth = currentHealth / maxHealth",
+										"minimum": 0,
+										"maximum": 1
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:resource" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/resource/"
 							},
 							"then": {
 								"properties": {
 									"resource": {
 										"type": "string",
 										"description": "ID of the power type that defines the resource. Must be a Resource (Power Type) which exists on the player.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"examples": ["example:a_simple_resource"]
 									},
 									"comparison": {
 										"description": "How the resource should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value the resource should be compared to."
 									}
 								},
-								"required": [ "resource", "comparison", "compare_to" ]
+								"required": ["resource", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:riding_recursive" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/riding_recursive/"
 							},
 							"then": {
 								"properties": {
@@ -1478,7 +1593,7 @@
 									},
 									"comparison": {
 										"description": "How the number of entities that are currently riding the entity should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ],
+										"enum": ["<", "<=", ">", ">=", "==", "!="],
 										"default": ">="
 									},
 									"compare_to": {
@@ -1492,7 +1607,8 @@
 						{
 							"if": {
 								"properties": { "type": { "enum": ["origins:riding_root", "origins:riding"] } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/riding_root/ https://origins.readthedocs.io/en/latest/entity_conditions/riding/"
 							},
 							"then": {
 								"properties": {
@@ -1506,26 +1622,28 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:saturation_level" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/saturation_level/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the saturation level should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "number",
 										"description": "Which value the saturation level should be compared to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:scoreboard" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/scoreboard/"
 							},
 							"then": {
 								"properties": {
@@ -1535,37 +1653,39 @@
 									},
 									"comparison": {
 										"description": "How to compare the objective's value to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value to compare the objective's value to."
 									}
 								},
-								"required": [ "objective", "comparison", "compare_to" ]
+								"required": ["objective", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:status_effect" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/status_effect/"
 							},
 							"then": {
 								"properties": {
 									"effect": {
 										"type": "string",
 										"description": "ID of the status effect the player should have.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"examples": ["minecraft:speed"]
 									},
 									"min_amplifier": {
 										"type": "integer",
-										"description": "The minimum amplifier the status effect should have in order to pass the check.",
+										"description": "The minimum amplifier the status effect should have in order to pass the check.\nNote: As 0 is the default strenght; effects like 'Speed II' have an amplifier (or bonus if you will) of 1.",
 										"default": 0,
 										"maximum": 2147483647
 									},
 									"max_amplifier": {
 										"type": "integer",
-										"description": "The maximum amplifier the status effect should have in order to pass the check.",
+										"description": "The maximum amplifier the status effect should have in order to pass the check.\nNote: As 0 is the default strenght; effects like 'Speed II' have an amplifier (or bonus if you will) of 1.",
 										"default": 2147483647,
 										"maximum": 2147483647
 									},
@@ -1584,13 +1704,14 @@
 										"maximum": 2147483647
 									}
 								},
-								"required": [ "effect" ]
+								"required": ["effect"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:submerged_in" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/submerged_in/"
 							},
 							"then": {
 								"properties": {
@@ -1598,16 +1719,17 @@
 										"type": "string",
 										"description": "ID of the fluid tag that should be checked.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:water", "minecraft:lava" ]
+										"examples": ["minecraft:water", "minecraft:lava"]
 									}
 								},
-								"required": [ "fluid" ]
+								"required": ["fluid"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:using_item" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/using_item/"
 							},
 							"then": {
 								"properties": {
@@ -1621,44 +1743,47 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:xp_levels" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/xp_levels/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the experience level of the player should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value the experience level should be compared to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:xp_points" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/xp_points/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "How the experience points of the player should be compared to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value the experience points should be compared to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						}
 					]
 				},
 				"fluid_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/fluid_conditions/",
 					"type": "object",
 					"description": "Fluid Conditions operate on a FluidState, essentially which fluid (if any) exists, as well as properties of the fluid.",
 					"properties": {
@@ -1682,7 +1807,7 @@
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -1693,13 +1818,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -1710,13 +1835,13 @@
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -1725,14 +1850,15 @@
 										"description": "If true, the condition is always fulfilled. If false, the condition is never fulfilled."
 									}
 								},
-								"required": [ "value" ]
+								"required": ["value"]
 							},
 							"$comment": "#endregion meta"
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:in_tag" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/fluid_conditions/in_tag/"
 							},
 							"then": {
 								"properties": {
@@ -1740,15 +1866,16 @@
 										"type": "string",
 										"description": "ID of the tag which the fluid should be in to pass the check.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:water" ]
+										"examples": ["minecraft:water"]
 									}
 								},
-								"required": [ "tag" ]
+								"required": ["tag"]
 							}
 						}
 					]
 				},
 				"item_condition": {
+					"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/",
 					"type": "object",
 					"description": "Item Conditions operate on an ItemStack.",
 					"properties": {
@@ -1767,47 +1894,47 @@
 							"default": false
 						}
 					},
-					"required": [ "type" ],
+					"required": ["type"],
 					"allOf": [
 						{
 							"$comment": "#region meta",
 							"if": {
 								"properties": { "type": { "const": "origins:and" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
 									"conditions": {
 										"type": "array",
 										"description": "All of these conditions have to be fulfilled in order for this condition to be fulfilled.",
-										"items": { "$ref": "#/definitions/conditions/properties/item_condition" },
+										"items": {"$ref": "#/definitions/conditions/properties/item_condition"},
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:or" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
 									"conditions": {
 										"type": "array",
 										"description": "Any of these conditions have to be fulfilled in order for this condition to be fulfilled.",
-										"items": { "$ref": "#/definitions/conditions/properties/item_condition" },
+										"items": {"$ref": "#/definitions/conditions/properties/item_condition"},
 										"minItems": 1
 									}
 								},
-								"required": [ "conditions" ]
+								"required": ["conditions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:constant" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -1823,45 +1950,48 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:amount" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/amount/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
 										"description": "Determines how to compare the number of items in this stack to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value to compare the item's count value to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:armor_value" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/armor_value/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
-										"description": "How to compare the item's armor value to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"description": "How to compare the item's armor value to the specified value.\nNon-armor items are considered as having an armor value of 0.",
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value to compare the item's armor value to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:enchantment" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/enchantment/"
 							},
 							"then": {
 								"properties": {
@@ -1869,31 +1999,31 @@
 										"type": "string",
 										"description": "ID of the enchantment of interest.",
 										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-										"examples": [ "minecraft:fortune" ]
+										"examples": ["minecraft:aqua_affinity", "minecraft:bane_of_arthropods", "minecraft:blast_protection", "minecraft:channeling", "minecraft:protection", "minecraft:fortune"]
 									},
 									"comparison": {
 										"description": "How to compare the enchantment level the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
-										
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 									},
 									"compare_to": {
 										"type": "integer",
 										"description": "Which value to compare the enchantment level against."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["enchantment", "comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:harvest_level" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/harvest_level/"
 							},
 							"then": {
 								"properties": {
 									"comparison": {
-										"description": "How to compare the item's harvest level to the specified value.",
-										"enum": [ "<", "<=", ">", ">=", "==", "!=" ]
+										"description": "How to compare the item's harvest level to the specified value.\nItems without a material are considered to have a harvest level of 0.\nSee: https://minecraft.fandom.com/wiki/Tiers",
+										"enum": ["<", "<=", ">", ">=", "==", "!="]
 										
 									},
 									"compare_to": {
@@ -1901,13 +2031,14 @@
 										"description": "Which value to compare the item's harvest level to."
 									}
 								},
-								"required": [ "comparison", "compare_to" ]
+								"required": ["comparison", "compare_to"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:ingredient" } },
-								"require": [ "type" ]
+								"require": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/item_conditions/ingredient/"
 							},
 							"then": {
 								"properties": {
@@ -1916,13 +2047,13 @@
 										"description": "The ingredient this item must match to pass the check."
 									}
 								},
-								"required": [ "ingredient" ]
+								"required": ["ingredient"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:nbt" } },
-								"require": [ "type" ]
+								"require": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -1932,7 +2063,7 @@
 										"examples": ["{exampleCustomTag: 1b}"]
 									}
 								},
-								"required": [ "ingredient" ]
+								"required": ["nbt"]
 							}
 						}
 					]
@@ -2487,10 +2618,11 @@
 									},
 									"permission_level": {
 										"type": "integer",
-										"description": "The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
+										"description": "[Deprecated since 1.1.0]The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
 										"default": 4,
 										"minimum": 0,
-										"maximum": 4
+										"maximum": 4,
+										"deprecated": true
 									}
 								},
 								"required": ["command"]
@@ -2972,10 +3104,11 @@
 									},
 									"permission_level": {
 										"type": "integer",
-										"description": "The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
+										"description": "[Deprecated since 1.1.0]The permission level to use for the command. 0 is a \"survival player\", anything higher emulates some form of operator. See https://minecraft.fandom.com/wiki/Server.properties#op-permission-level for details.",
 										"default": 4,
 										"minimum": 0,
-										"maximum": 4
+										"maximum": 4,
+										"deprecated": true
 									}
 								},
 								"required": ["command"]
