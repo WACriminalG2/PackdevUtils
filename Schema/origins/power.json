@@ -4263,9 +4263,7 @@
 		{
 			"if": {"properties":{"type":{"const":"origins:multiple"}},"required":["type"]},
 			"then": {
-				"patternProperties": {
-					".+": {"$ref": "#"}
-				}
+				"$comment": "Should work but incorrectly markes properties as wrong\n\"additionalProperties\": {\"$ref\": \"#\"}"
 			}
 		},
 		{
