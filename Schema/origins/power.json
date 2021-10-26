@@ -4263,7 +4263,9 @@
 		{
 			"if": {"properties":{"type":{"const":"origins:multiple"}},"required":["type"]},
 			"then": {
-				"additionalProperties": {"$ref": "#/properties"}
+				"patternProperties": {
+					".+": {"$ref": "#"}
+				}
 			}
 		},
 		{
