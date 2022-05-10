@@ -2,15 +2,15 @@
 	"$id": "https://raw.githubusercontent.com/WACriminalG2/PackdevUtils/main/Schema/origins/origin.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Origins origin JSON schema by S_K_Tiger",
-	"description": "See: https://origins.readthedocs.io/en/latest/origin_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/WACriminalG2/PackdevUtils/issues",
+	"description": "See: https://origins.readthedocs.io/en/latest/json/origin/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/WACriminalG2/PackdevUtils/issues",
 	"type": "object",
 	"properties": {
 		"powers": {
 			"type": "array",
-			"description": "IDs of the powers this origin should have.",
+			"description": "The namespace and IDs of the powers this origin should have.",
 			"items": {
 				"type": "string",
-				"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 				"examples": [
 					"origins:fall_immunity", "origins:aerial_combatant", "origins:aqua_affinity", "origins:aquatic",
 					"origins:arthropod", "origins:more_kinetic_damage", "origins:burning_wrath", "origins:carnivore",
@@ -32,7 +32,7 @@
 		"icon": {
 			"$ref": "#/definitions/item_stack",
 			"description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen.",
-			"examples": [{"item": "minecraft:golden_helmet"}]
+			"examples": [{"item": "minecraft:golden_helmet"}, {"item": "minecraft:zombie_head"}, {"item": "minecraft:cobweb"}]
 		},
 		"unchoosable": {
 			"type": "boolean",
@@ -60,26 +60,28 @@
 		},
 		"upgrades": {
 			"type": "array",
-			"description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.",
+			"description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.\nSee: https://origins.readthedocs.io/en/latest/json/upgrade/",
 			"items": {
 				"type": "object",
+				"description": "An Object used to specify an upgrade of an origin within an Origin JSON.",
 				"properties": {
 					"condition": {
 						"type": "string",
-						"description": "ID of an advancement which should trigger this upgrade.",
-						"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+						"description": "The namespace and ID of an advancement which should trigger this upgrade.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					},
 					"origin": {
 						"type": "string",
-						"description": "ID of an origin the origin with this upgrade should upgrade to.",
-						"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+						"description": "The namespace and ID of an origin the origin with this upgrade should upgrade to.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					},
 					"announcement": {
 						"type": "string",
 						"description": "A text which will show up in the local chat of the player in a pretty color. If none is specified, there won't be a message."
 					}
 				},
-				"required": [ "condition", "origin" ]
+				"required": ["condition", "origin"],
+				"examples": [{"condition": "minecraft:end/kill_dragon", "origin": "origins:elytrian", "announcement": "You have killed an ender dragon! You have evolved to Elytrian"}]
 			}
 		},
 		"loading_priority": {
@@ -91,12 +93,12 @@
 	"definitions": {
 		"item_stack": {
 			"type": "object",
-			"description": "An Object which defines a new item stack.",
+			"description": "An Object which defines a new item stack.\nSee: https://origins.readthedocs.io/en/latest/types/data_types/item_stack/",
 			"properties": {
 				"item": {
 					"type": "string",
 					"description": "ID of a registered item.",
-					"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+					"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 				},
 				"amount": {
 					"type": "integer",

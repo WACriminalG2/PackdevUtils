@@ -14,7 +14,7 @@
 			"description": "Defines the origins that should be in this layer. Identifier strings and Conditioned Origin objects can be mixed in the same array.",
 			"items": {
 				"type": ["string", "object"],
-				"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 				"properties": {
 					"condition": { "$ref": "#/definitions/conditions/properties/entity_condition" },
 					"origins": {
@@ -23,7 +23,7 @@
 						"items": {
 							"type": "string",
 							"description": "Identifier string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 						}
 					}
 				},
@@ -68,13 +68,13 @@
 			"items": {
 				"type": "string",
 				"description": "Identifier string",
-				"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 			}
 		},
 		"default_origin": {
 			"type": "string",
 			"description": "If set, the origin with this ID will automatically be chosen for a new player. If an orb of origin is used later on, the player will be able to choose another origin then and the default_origin will not apply. Could for example be used to make all players start as human, and then use the orb as a progression item to select an origin.",
-			"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+			"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 		},
 		"auto_choose": {
 			"type": "boolean",
@@ -95,7 +95,7 @@
 						"type": {
 							"type": "string",
 							"description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:actor_condition", "origins:attack_target", "origins:attacker", "origins:both", "origins:can_see",
@@ -264,7 +264,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:category", "origins:high_humidity", "origins:precipitation", "origins:temperature"
@@ -391,7 +391,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:adjacent", "origins:attachable", "origins:block", "origins:block_state",
@@ -492,7 +492,7 @@
 									"block": {
 										"type": "string",
 										"description": "ID of the block that this block needs to be to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:diamond_block", "minecraft:emerald_block" ]
 									}
 								},
@@ -575,7 +575,7 @@
 									"tag": {
 										"type": "string",
 										"description": "ID of the tag which the block should be in to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:base_stone_overworld" ]
 									}
 								},
@@ -643,7 +643,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:amount", "origins:attacker", "origins:fire", "origins:name",
@@ -776,7 +776,7 @@
 									"projectile": {
 										"type": "string",
 										"description": "If set, the check will only pass if the projectile was of an entity type with this ID.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:spectral_arrow" ]
 									}
 								}
@@ -791,7 +791,7 @@
 						"type": {
 							"type": "string",
 							"description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:advancement", "origins:air", "origins:attribute", "origins:biome", "origins:block_collision",
@@ -877,7 +877,7 @@
 									"advancement": {
 										"type": "string",
 										"description": "ID of the advancement the player needs to have completed in order for this condition to evaluate to true.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:story/smelt_iron" ]
 									}
 								},
@@ -913,7 +913,7 @@
 									"attribute": {
 										"type": "string",
 										"description": "ID of the attribute of which the value should be checked.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:generic.armor" ]
 									},
 									"comparison": {
@@ -938,7 +938,7 @@
 									"biome": {
 										"type": "string",
 										"description": "If set, this is the ID of the biome the player needs to be in for this condition to evaluate to true, e.g. minecraft:savanna.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:savanna" ]
 									},
 									"biomes": {
@@ -947,7 +947,7 @@
 										"items": {
 											"type": "string",
 											"description": "If set, this is the ID of the biome the player needs to be in for this condition to evaluate to true, e.g. minecraft:savanna.",
-											"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+											"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 											"examples": [ "minecraft:savanna" ]
 										}
 									},
@@ -1075,7 +1075,7 @@
 									"dimension": {
 										"type": "string",
 										"description": "ID of the dimension the player needs to be in for this condition to evaluate to true. Vanilla dimensions are minecraft:overworld, minecraft:the_nether and minecraft:the_end, but IDs of custom/modded dimensions should also work.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
 									}
 								},
@@ -1092,7 +1092,7 @@
 									"enchantment": {
 										"type": "string",
 										"description": "ID of the enchantment of interest.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:protection" ]
 									},
 									"calculation": {
@@ -1137,7 +1137,7 @@
 									"entity_type": {
 										"type": "string",
 										"description": "ID of the entity type the entity needs to have to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:creeper" ]
 									}
 								},
@@ -1192,7 +1192,7 @@
 									"fluid": {
 										"type": "string",
 										"description": "ID of the fluid tag of which the height should be checked.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:water", "minecraft:lava" ]
 									},
 									"comparison": {
@@ -1310,7 +1310,7 @@
 									"tag": {
 										"type": "string",
 										"description": "ID of the tag the entity type needs to be in to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:skeletons" ]
 									}
 								},
@@ -1341,13 +1341,13 @@
 									"origin": {
 										"type": "string",
 										"description": "ID of the origin the player needs to have to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "origins:human" ]
 									},
 									"layer": {
 										"type": "string",
 										"description": "If set, will check only the layer with the provided ID for the origin.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "origins:origin" ]
 									}
 								},
@@ -1388,7 +1388,7 @@
 									"power": {
 										"type": "string",
 										"description": "ID of the power which will be checked for being active.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "origins:phantomize" ]
 									}
 								},
@@ -1405,7 +1405,7 @@
 									"power": {
 										"type": "string",
 										"description": "ID of the power the player needs to have to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "origins:phantomize" ]
 									}
 								},
@@ -1422,7 +1422,7 @@
 									"predicate": {
 										"type": "string",
 										"description": "ID of the predicate the entity needs to pass.\nNote: due to the nature of predicates, this condition is only effective on the server-side.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 									}
 								},
 								"required": [ "predicate" ]
@@ -1457,7 +1457,7 @@
 									"resource": {
 										"type": "string",
 										"description": "ID of the power type that defines the resource. Must be a Resource (Power Type) which exists on the player.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 									},
 									"comparison": {
 										"description": "How the resource should be compared to the specified value.",
@@ -1561,7 +1561,7 @@
 									"effect": {
 										"type": "string",
 										"description": "ID of the status effect the player should have.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 									},
 									"min_amplifier": {
 										"type": "integer",
@@ -1603,7 +1603,7 @@
 									"fluid": {
 										"type": "string",
 										"description": "ID of the fluid tag that should be checked.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:water", "minecraft:lava" ]
 									}
 								},
@@ -1670,7 +1670,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:empty", "origins:in_tag", "origins:stil"
@@ -1745,7 +1745,7 @@
 									"tag": {
 										"type": "string",
 										"description": "ID of the tag which the fluid should be in to pass the check.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:water" ]
 									}
 								},
@@ -1760,7 +1760,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
 								"origins:and", "origins:or", "origins:constant",
 								"origins:amount", "origins:armor_value", "origins:empty", "origins:enchantment", "origins:fireproof",
@@ -1874,7 +1874,7 @@
 									"enchantment": {
 										"type": "string",
 										"description": "ID of the enchantment of interest.",
-										"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [ "minecraft:fortune" ]
 									},
 									"comparison": {
@@ -1976,7 +1976,7 @@
 						"attribute": {
 							"type": "string",
 							"description": "ID of the attribute which will be modified by this modifier.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [ "minecraft:generic.attack_speed" ]
 						},
 						"operation": {
@@ -2004,7 +2004,7 @@
 						},
 						"id": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"description": "An ID for this recipe. Has to be unique among all recipes, otherwise there will be a conflict."
 						},
 						"result": {
@@ -2013,7 +2013,7 @@
 							"properties": {
 								"item": {
 									"type": "string",
-									"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+									"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 								},
 								"count": {
 									"type": "integer"
@@ -2132,7 +2132,7 @@
 						"sprite_location": {
 							"type": "string",
 							"description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"default": "origins:textures/gui/resource_bar.png",
 							"examples": [
 								"origins:textures/gui/resource_bar.png",
@@ -2164,12 +2164,12 @@
 						"properties": {
 							"item": {
 								"type": "string",
-								"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+								"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 								"description": "ID of a registered item."
 							},
 							"tag": {
 								"type": "string",
-								"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+								"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 								"description": "ID of an item tag. Will be ignored if item is set."
 							}
 						},
@@ -2181,12 +2181,12 @@
 					"properties": {
 						"item": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"description": "ID of a registered item."
 						},
 						"tag": {
 							"type": "string",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"description": "ID of an item tag. Will be ignored if item is set."
 						}
 					},
@@ -2204,7 +2204,7 @@
 						"item": {
 							"type": "string",
 							"description": "ID of a registered item.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 						},
 						"amount": {
 							"type": "integer",
@@ -2248,7 +2248,7 @@
 						"item": {
 							"type": "string",
 							"description": "ID of a registered item.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 						},
 						"amount": {
 							"type":"integer",
@@ -2278,7 +2278,7 @@
 						"effect": {
 							"type": "string",
 							"description": "ID of the status effect.",
-							"pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": ["minecraft:slowness"]
 						},
 						"duration": {
