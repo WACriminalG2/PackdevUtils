@@ -4126,7 +4126,8 @@
 							"type": "string",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"examples": [
-								"origins:and", "origins:chance", "origins:choice", "origins:if_else",
+								"origins:and", "origins:chance", "origins:choice", "origins:delay",
+								"origins:if_else_list", "origins:if_else", "origins:nothing",
 								"origins:consume", "origins:damage", "origins:modify"
 							]
 						}
@@ -4143,9 +4144,9 @@
 								"properties": {
 									"actions": {
 										"type": "array",
-										"description": "These actions will be executed one after the other (but in the same tick).",
+										"description": "These actions will be executed one after the other (but in the same tick).\nSee https://origins.readthedocs.io/en/latest/types/meta_action_types/and/",
 										"items": {"$ref": "#/definitions/actions/properties/item_action"},
-										"minItems": 2
+										"minItems": 1
 									}
 								},
 								"required": ["actions"]
@@ -4154,18 +4155,24 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:chance" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
 							"then": {
 								"properties": {
 									"action": {
-										"$ref": "#/definitions/actions/properties/item_action" 
+										"$ref": "#/definitions/actions/properties/item_action",
+										"description": "The action which might be executed."
 									},
 									"chance": {
 										"type": "number",
-										"description": "The chance that the action will execute, from 0 to 1. (E.g. 0.1 means 10% chance, 0.95 means 95% chance)",
-										"minimum": 0,
-										"maximum": 1
+										"description": "The chance that the action will execute, from 0 to 1. (E.g. 0.1 means 10% chance, 0.95 means 95% chance).",
+										"exclusiveMinimum": 0,
+										"exclusiveMaximum": 1
+									},
+									"fail_action": {
+										"$ref": "#/definitions/actions/properties/item_action",
+										"description": "The action to execute if the specified action in the action field is not executed."
 									}
 								},
 								"required": ["action", "chance"]
@@ -4174,39 +4181,92 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:choice" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
 							"then": {
 								"properties": {
 									"actions": {
 										"type": "array",
-										"description": "Array of Objects, each with an element Action and a weight Integer.",
+										"description": "Executes one of the provided actions, choosing randomly based on the assigned weights. The actions with higher weight values are more likely to be chosen.\nweight / sumOfAllWeights = chance",
 										"items": {
 											"type": "object",
 											"properties": {
-												"action": {"$ref": "#/definitions/actions/properties/item_action"},
-												"weight": {
-													"type": "integer"
-												}
+												"element": {"$ref": "#/definitions/actions/properties/item_action"},
+												"weight": {"type": "integer"}
 											},
-											"required": ["action", "weight"]
+											"required": ["element", "weight"]
 										},
 										"minItems": 2
 									}
 								},
-								"required": [ "actions" ]
+								"required": ["actions"]
+							}
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:delay" } },
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
+							},
+							"then": {
+								"properties": {
+									"action": {
+										"$ref": "#/definitions/actions/properties/item_action",
+										"description": "The action which will be executed after the delay."
+									},
+									"ticks": {
+										"type":"integer",
+										"description": "The amount of ticks until the action is executed.\nDelaying an action for more than a few ticks is not recommended! This meta action type is not reliable for such task.\nSee https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
+									}
+								},
+								"required": ["action", "ticks"]
+							}
+						},
+						{
+							"if": {
+								"properties": { "type": { "const": "origins:if_else_list" } },
+								"required": ["type"]
+							},
+							"then": {
+								"properties": {
+									"actions": {
+										"type": "array",
+										"description": "Checks a list of actions associated with conditions, and executes the first one in the list for which the condition holds. Basically a less indentation-heavy way to represent a deeply nested If-Else (Meta Action Type).\nSee https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else_list/",
+										"items": {
+											"type": "object",
+											"properties": {
+												"action": {"$ref": "#/definitions/actions/properties/item_action"},
+												"condition": {"$ref": "#/definitions/conditions/properties/item_condition"}
+											},
+											"required": ["action", "condition"]
+										},
+										"minItems": 2
+									}
+								},
+								"required": ["actions"]
 							}
 						},
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:if_else" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
 							"then": {
 								"properties": {
-									"condition": { "$ref": "#/definitions/conditions/properties/item_condition"},
-									"if_action": { "$ref": "#/definitions/actions/properties/item_action" },
-									"else_action": { "$ref": "#/definitions/actions/properties/item_action" }
+									"condition": {
+										"$ref": "#/definitions/conditions/properties/item_condition",
+										"description": "A condition based on the type of action."
+									},
+									"if_action": {
+										"$ref": "#/definitions/actions/properties/item_action",
+										"description": "The action which is executed when the condition evaluates to true."
+									},
+									"else_action": {
+										"$ref": "#/definitions/actions/properties/item_action",
+										"description": "If present, this action will be executed when the condition evaluates to false."
+									}
 								},
 								"required": ["condition", "if_action"]
 							},
@@ -4215,14 +4275,16 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:consume" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/consume/"
 							},
 							"then": {
 								"properties": {
 									"amount": {
 										"type": "integer",
 										"description": "The amount of items to remove.",
-										"default": 1
+										"default": 1,
+										"minimum": 1
 									}
 								}
 							}
@@ -4230,7 +4292,7 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:damage" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -4250,7 +4312,8 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "origins:modify" } },
-								"required": [ "type" ]
+								"required": ["type"],
+								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/modify/"
 							},
 							"then": {
 								"properties": {
@@ -4259,7 +4322,8 @@
 										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"description": "The ID of an item modifier."
 									}
-								}
+								},
+								"required": ["modifier"]
 							}
 						}
 					]
@@ -4288,7 +4352,7 @@
 							"description": "A descriptive name for the modifier, describing where it comes from."
 						}
 					},
-					"required": [ "operation", "value" ]
+					"required": ["operation", "value"]
 				},
 				"attributed_modifier": {
 					"type": "object",
@@ -4313,14 +4377,14 @@
 							"description": "A descriptive name for the modifier, describing where it comes from."
 						}
 					},
-					"required": [ "attribute", "operation", "value" ]
+					"required": ["attribute", "operation", "value"]
 				},
 				"crafting_recipe": {
 					"type": "object",
 					"description": "An Object specifying a shapeless or shaped crafting recipe. For some more information, See https://minecraft.gamepedia.com/Recipe",
 					"properties": {
 						"type": {
-							"description": "The type of recipe. Either minecraft:crafting_shaped or minecraft:crafting_shapeless. Other recipe types are not supported.",
+							"description": "The type of recipe. Either `minecraft:crafting_shaped` or `minecraft:crafting_shapeless`. Other recipe types are not supported.",
 							"enum": ["minecraft:crafting_shaped", "minecraft:crafting_shapeless"]
 						},
 						"id": {
@@ -4344,13 +4408,13 @@
 							"additionalProperties": false
 						}
 					},
-					"required": ["type", "id", "result" ],
+					"required": ["type", "id", "result"],
 					"additionalProperties": false,
 					"allOf": [
 						{
 							"if": {
 								"properties": { "type": { "const": "minecraft:crafting_shapeless" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -4368,7 +4432,7 @@
 						{
 							"if": {
 								"properties": { "type": { "const": "minecraft:crafting_shaped" } },
-								"required": [ "type" ]
+								"required": ["type"]
 							},
 							"then": {
 								"properties": {
@@ -4402,14 +4466,27 @@
 							"type": "string",
 							"description": "The name of the damage source. Controls death message as well as other interactions. Consider https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/ when picking a name.",
 							"examples": [
-								"anvil", "arrow", "badRespawnPoint", "cactus", "cramming",
-								"dragonBreath", "drown", "dryout", "explosion.player",
-								"explosion", "fall", "fallingBlock", "fallingStalactite",
-								"fireworks", "flyIntoWall", "freeze", "generic", "hotFloor",
-								"indirectMagic", "inFire", "inWall", "lava", "lightningBolt",
-								"magic", "mob", "onFire", "outOfWorld", "player", "stalagmite",
-								"starve", "sting", "sweetBerryBush", "thorns", "thrown",
-								"trident", "wither", "witherSkull"
+								"anvil.player", "anvil", "arrow.item", "arrow", "badRespawnPoint",
+								"cactus.player", "cactus", "cramming.player", "cramming",
+								"dragonBreath.player", "dragonBreath", "drown.player", "drown",
+								"dryout.player", "dryout", "even_more_magic", "explosion.player",
+								"explosion", "fall.player", "fall", "fallingBlock.player",
+								"fallingBlock", "fallingStalactite.player", "fallingStalactite",
+								"fireball.item", "fireball", "fireworks.item", "fireworks.player",
+								"fireworks", "flyIntoWall.player", "flyIntoWall", "freeze.player",
+								"freeze", "generic.player", "generic", "hotFloor.player", "hotFloor",
+								"indirectMagic.item", "indirectMagic", "inFire.player", "inFire",
+								"inWall.player", "inWall", "lava.player", "lava",
+								"lightningBolt.player", "lightningBolt", "magic.player", "magic",
+								"mob.item", "mob", "onFire.player", "onFire", "outOfWorld.player",
+								"outOfWorld", "player.item", "player", "stalagmite.player",
+								"stalagmite", "starve.player", "starve", "sting.item", "sting.player",
+								"sting", "sweetBerryBush.player", "sweetBerryBush", "thorns.item",
+								"thorns", "thrown.item", "trident.item", "trident", "wither.player",
+								"wither", "witherSkull",
+								"genericDamageOverTime.player", "genericDamageOverTime",
+								"hurt_by_water.player", "hurt_by_water", "no_water_for_gills.player",
+								"no_water_for_gills"
 							]
 						},
 						"bypasses_armor": {
@@ -4438,7 +4515,7 @@
 							"default": false
 						}
 					},
-					"required": [ "name" ],
+					"required": ["name"],
 					"additionalProperties": false
 				},
 				"hud_render": {
@@ -4474,6 +4551,11 @@
 						"condition": {
 							"$ref": "#/definitions/conditions/properties/entity_condition",
 							"description": "If set (and should_render is true), the bar will only display when the entity with the power fulfills this condition."
+						},
+						"inverted": {
+							"type":"boolean",
+							"description": "If set to true, inverts the way the hud render process (it'll look like its value is being decreased).",
+							"default":false
 						}
 					}
 				},
@@ -4520,7 +4602,7 @@
 				},
 				"item_stack": {
 					"type": "object",
-					"description": "An Object which defines a new item stack.",
+					"description": "An Object which defines a new item stack.\nSee: https://origins.readthedocs.io/en/latest/types/data_types/item_stack/",
 					"properties": {
 						"item": {
 							"type": "string",
@@ -4549,9 +4631,16 @@
 					"properties": {
 						"key": {
 							"type": "string",
-							"description": "A string specifying the keybinding. See https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
+							"description": "A string specifying the keybinding.\nSee https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
 							"pattern": "^[a-z0-9\\-\\_\\.]+$",
-							"examples": [ "key.origins.primary_active", "key.origins.secondary_active" ]
+							"examples": [
+								"key.origins.primary_active", "key.origins.secondary_active", "key.origins.view_origin",
+								"key.sprint", "key.forward", "key.left", "key.back", "key.right", "key.jump", "key.inventory", "key.drop",
+								"key.swapOffhand", "key.chat", "key.sneak", "key.playerlist", "key.attack", "key.use", "key.pickItem", "key.command",
+								"key.screenshot", "key.togglePerspective", "key.smoothCamera", "key.fullscreen", "key.spectatorOutlines",
+								"key.hotbar.1", "key.hotbar.2", "key.hotbar.3", "key.hotbar.4", "key.hotbar.5", "key.hotbar.6", "key.hotbar.7", "key.hotbar.8", "key.hotbar.9",
+								"key.saveToolbarActivator", "key.loadToolbarActivator", "key.advancements"
+							]
 						},
 						"continuous": {
 							"type": "boolean",
@@ -4559,7 +4648,7 @@
 							"default": false
 						}
 					},
-					"required": [ "key" ],
+					"required": ["key"],
 					"additionalProperties": false
 				},
 				"particle_effect": {
@@ -4577,7 +4666,8 @@
 						}
 					},
 					"required": ["type", "params"],
-					"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+					"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+					"examples": ["minecraft:happy_villager", {"type":"minecraft:dust","params":"0.922 0.314 0.314 2"}, {"type":"minecraft:block","params":"minecraft:ice"}]
 				},
 				"positioned_item_stack": {
 					"type": "object",
@@ -4617,7 +4707,7 @@
 							"type": "string",
 							"description": "ID of the status effect.",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-							"examples": ["minecraft:slowness"]
+							"examples": ["minecraft:slowness", "minecraft:levitation", "minecraft:slow_falling"]
 						},
 						"duration": {
 							"type": "integer",
