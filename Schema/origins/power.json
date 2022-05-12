@@ -5887,19 +5887,19 @@
 					{"required": ["text"]},
 					{"required": ["texts"]}
 				]
-			},
-			"$comment": "#endregion Regular types"
+			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:walk_on_fluid" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/walk_on_fluid/"
 			},
 			"then": {
 				"properties": {
 					"fluid": {
 						"type": "string",
-						"description": "ID of the fluid tag on which the player should be able to walk.",
+						"description": "The namespace and ID of the fluid tag on which the player should be able to walk onto.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 						"examples": ["minecraft:water", "minecraft:lava"]
 					}
