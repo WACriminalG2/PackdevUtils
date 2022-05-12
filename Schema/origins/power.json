@@ -15,11 +15,11 @@
 				"origins:disable_regen", "origins:effect_immunity", "origins:elytra_flight", "origins:entity_glow",
 				"origins:entity_group", "origins:exhaust", "origins:fire_immunity", "origins:fire_projectile", "origins:freeze",
 				"origins:ignore_water", "origins:inventory", "origins:invisibility", "origins:invulnerability", "origins:item_on_item",
-				"origins:launch", "origins:lava_vision", "origins:model_color", "origins:multiple", "origins:night_vision", "origins:overlay",
-				"origins:particle", "origins:phasing", "origins:recipe", "origins:resource", "origins:restrict_armor", "origins:self_glow",
-				"origins:shader", "origins:shaking", "origins:simple", "origins:stacking_status_effect", "origins:starting_equipment",
-				"origins:status_bar_texture", "origins:swimming", "origins:toggle_night_vision", "origins:toggle", "origins:tooltip",
-				"origins:walk_on_fluid",
+				"origins:keep_inventory", "origins:launch", "origins:lava_vision", "origins:model_color", "origins:multiple",
+				"origins:night_vision", "origins:overlay", "origins:particle", "origins:phasing", "origins:recipe", "origins:resource",
+				"origins:restrict_armor", "origins:self_glow", "origins:shader", "origins:shaking", "origins:simple",
+				"origins:stacking_status_effect", "origins:starting_equipment", "origins:status_bar_texture", "origins:swimming",
+				"origins:toggle_night_vision", "origins:toggle", "origins:tooltip", "origins:walk_on_fluid",
 
 				"origins:action_on_being_used", "origins:action_on_block_break", "origins:action_on_callback", "origins:action_on_entity_use",
 				"origins:action_on_hit", "origins:action_on_item_use", "origins:action_on_land", "origins:action_on_wake_up",
@@ -1253,14 +1253,14 @@
 										"description": "ID of the attribute of which the value should be checked. See https://minecraft.fandom.com/wiki/Attribute#Attributes for a list of vanilla attributes that can be checked for.",
 										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 										"examples": [
-											"generic.max_health", "generic.follow_range",
-											"generic.knockback_resistance", "generic.movement_speed",
-											"generic.attack_damage", "minecraft:generic.armor",
-											"generic.armor_toughness", "generic.attack_knockback",
-											"generic.attack_speed", "generic.luck",
-											"horse.jump_strength",
-											"generic.flying_speed",
-											"zombie.spawn_reinforcements"
+											"minecraft:generic.max_health", "minecraft:generic.follow_range",
+											"minecraft:generic.knockback_resistance", "minecraft:generic.movement_speed",
+											"minecraft:generic.attack_damage", "minecraft:generic.armor",
+											"minecraft:generic.armor_toughness", "minecraft:generic.attack_knockback",
+											"minecraft:generic.attack_speed", "minecraft:generic.luck",
+											"minecraft:horse.jump_strength",
+											"minecraft:generic.flying_speed",
+											"minecraft:zombie.spawn_reinforcements"
 										]
 									},
 									"comparison": {
@@ -4693,7 +4693,7 @@
 						"slot": {
 							"$comment": "Because certian mods add inventory slots I've not specified a maximum",
 							"type": "integer",
-							"description": "Inventory slot position of the stack. If not specified, will be the first free slot in the inventory. See https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
+							"description": "Inventory slot position of the stack.\nIf not specified, will be the first free slot in the inventory.\nSee https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
 							"minimum": 0
 						}
 					},
@@ -4768,19 +4768,35 @@
 			"$comment": "#region Regular types",
 			"if": {
 				"properties": { "type": { "const": "origins:attribute_modify_transfer" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attribute_modify_transfer/"
 			},
 			"then": {
 				"properties": {
 					"class": {
 						"type": "string",
-						"description": "The path and ID of the class to transfer the value of an attribute to.",
-						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+						"description": "The ID of the class to transfer the value of an attribute modifier to. See https://origins.readthedocs.io/en/latest/misc/extras/value_modifying_power_classes/ for possible values.",
+						"pattern": "^[a-z0-9\\-_\\./]+$",
+						"examples": [
+							"modify_air_speed", "modify_break_speed", "modify_crafting", "modify_damage_dealt", "modify_damage_taken",
+							"modify_exhaustion", "modify_xp_gain", "modify_jump", "modify_lava_speed", "modify_projectile_damage",
+							"modify_slipperiness", "modify_status_effect_amplifier", "modify_status_effect_duration", "modify_swim_speed"
+						]
 					},
 					"attribute": {
 						"type": "string",
-						"description": "The namespace and ID of the attribute to transfer the value from.",
-						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+						"description": "The namespace and ID of the attribute to transfer the value from.\nRefer to the https://minecraft.fandom.com/wiki/Attribute page for a list of vanilla attributes that you can get the value from.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+						"examples": [
+							"minecraft:generic.max_health", "minecraft:generic.follow_range",
+							"minecraft:generic.knockback_resistance", "minecraft:generic.movement_speed",
+							"minecraft:generic.attack_damage", "minecraft:generic.armor",
+							"minecraft:generic.armor_toughness", "minecraft:generic.attack_knockback",
+							"minecraft:generic.attack_speed", "minecraft:generic.luck",
+							"minecraft:horse.jump_strength",
+							"minecraft:generic.flying_speed",
+							"minecraft:zombie.spawn_reinforcements"
+						]
 					},
 					"multiplier": {
 						"type": "number",
@@ -4794,7 +4810,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:attribute" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attribute/"
 			},
 			"then": {
 				"properties": {
@@ -4805,7 +4822,7 @@
 					"modifiers": {
 						"type": "array",
 						"description": "If specified, these modifiers will be applied to their corresponding attributes.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" }
+						"items": {"$ref": "#/definitions/origins_data_types/properties/attributed_modifier"}
 					},
 					"update_health": {
 						"type": "boolean",
@@ -4822,7 +4839,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:burn" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/burn/"
 			},
 			"then": {
 				"properties": {
@@ -4833,7 +4851,7 @@
 					},
 					"burn_duration": {
 						"type": "integer",
-						"description": "Time the fire should last on the player each time it is set, in seconds.",
+						"description": "Determines how long the fire should last on the entity each time it is set, in seconds.",
 						"minimum": 0
 					}
 				},
@@ -4843,18 +4861,18 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:climbing" } },
-				"required": [ "type" ]
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
 					"allow_holding": {
 						"type": "boolean",
-						"description": "If true, the player is able to hold onto blocks.",
+						"description": "If true, the entity that has the power is able to hold onto blocks.\nSee https://origins.readthedocs.io/en/latest/types/power_types/climbing/",
 						"default": true
 					},
 					"hold_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set and allow_holding is true, players with the power who are sneaking and meet this condition are \"holding onto the block\", meaning they won't be affected by gravity."
+						"description": "If specified and `allow_holding` is true, the entity that has the power will be able to 'hold onto the block' (not affected by gravity) if the entity is sneaking and if this condition is fulfilled."
 					}
 				}
 			}
@@ -4862,7 +4880,7 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:conditioned_attribute" } },
-				"required": [ "type" ]
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
@@ -4873,12 +4891,17 @@
 					"modifiers": {
 						"type": "array",
 						"description": "If specified, these modifiers will be applied to their corresponding attributes.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/attributed_modifier" }
+						"items": {"$ref": "#/definitions/origins_data_types/properties/attributed_modifier"}
 					},
 					"tick_rate": {
 						"type": "integer",
 						"description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost.",
 						"default": 20
+					},
+					"update_health": {
+						"type": "boolean",
+						"description": "Determines whether the health percentage will update to match the entity's new maximum health.",
+						"default": true
 					}
 				},
 				"oneOf": [
@@ -4890,15 +4913,27 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:conditioned_restrict_armor" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/conditioned_restrict_armor/"
 			},
-			"$comment": "TODO: check https://origins.readthedocs.io/en/latest/power_types/conditioned_restrict_armor/ when fixed",
 			"then": {
 				"properties": {
-					"head": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"chest": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"legs": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"feet": { "$ref": "#/definitions/conditions/properties/item_condition" },
+					"head": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the head equipment slot."
+					},
+					"chest": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the chest equipment slot."
+					},
+					"legs": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the legs equipment slot."
+					},
+					"feet": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the feet equipment slot."
+					},
 					"tick_rate": {
 						"type": "integer",
 						"description": "The frequency (in ticks) with which to check the condition. Lower values mean the condition changes are detected more quickly, but this comes at a potentially huge performance cost.",
@@ -4916,24 +4951,26 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:cooldown" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/cooldown/"
 			},
 			"then": {
 				"properties": {
 					"cooldown": {
 						"type": "integer",
 						"description": "Cooldown duration in ticks.",
-						"minimum": 0
+						"minimum": 1
 					},
-					"hud_render": { "$ref": "#/definitions/origins_data_types/properties/hud_render" }
+					"hud_render": {"$ref": "#/definitions/origins_data_types/properties/hud_render"}
 				},
-				"required": [ "cooldown", "hud_render" ]
+				"required": ["cooldown", "hud_render"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:damage_over_time" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/damage_over_time/"
 			},
 			"then": {
 				"properties": {
@@ -4944,7 +4981,7 @@
 					},
 					"onset_delay": {
 						"type": "integer",
-						"description": "How many ticks the power has to be active in order to apply the first damage. If not set, this will be equal to interval.",
+						"description": "How many ticks the power has to be active in order to apply the first damage.\nIf not set, this will be equal to `interval`.",
 						"minimum": 0
 					},
 					"damage": {
@@ -4953,40 +4990,40 @@
 					},
 					"damage_easy": {
 						"type": "number",
-						"description": "How much damage will be dealt each interval on Easy difficulty. If not set, this will be equal to damage."
+						"description": "How much damage will be dealt each interval on Easy difficulty.\nIf not set, this will be equal to `damage`."
 					},
-					"damage_source": { "$ref": "#/definitions/origins_data_types/properties/damage_source" },
+					"damage_source": {"$ref": "#/definitions/origins_data_types/properties/damage_source"},
 					"protection_enchantment": {
 						"type": "string",
-						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "If set, the total amount of levels of this enchantment will be counted on the player's armor to increase the onset_delay.",
-						"minimum": 0
+						"description": "If set, the total amount of levels of this enchantment will be counted on the player's armor to increase the `onset_delay`.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					},
 					"protection_effectiveness": {
 						"type": "number",
-						"default": 1.0,
-						"description": "If protection_enchantment is set, this multiplier scales how effective it will be (1.0 = time the onset_delay is increased is the same as with Hydrophobia and Water Protection)."
+						"description": "If `protection_enchantment` is set, this multiplier scales how effective it will be (1.0 = time the `onset_delay` is increased is the same as with Hydrophobia and Water Protection).",
+						"default": 1.0
 					}
 				},
-				"required": [ "interval", "damage" ]
+				"required": ["interval", "damage"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:effect_immunity" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/effect_immunity/"
 			},
 			"then": {
 				"properties": {
 					"effect": {
 						"type": "string",
-						"description": "If specified, the effect with this ID can not be applied to the player.",
+						"description": "If specified, the status effect with this namespace and ID can not be applied to the entity that has the power.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 						"examples": ["minecraft:weakness", "minecraft:strength"]
 					},
 					"effects": {
 						"type": "array",
-						"description": "If specified, the effects with these IDs can not be applied to the player.",
+						"description": "If specified, the status effects with the specified namespace and IDs can not be applied to the entity that has the power.",
 						"items": {
 							"type": "string",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
@@ -5004,28 +5041,62 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:elytra_flight" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/elytra_flight/"
 			},
 			"then": {
 				"properties": {
 					"render_elytra": {
 						"type": "boolean",
 						"description": "Whether an Elytra should render on the player's back while this power is active."
+					},
+					"texture_location": {
+						"type": "string",
+						"description": "If specified, this will be the texture used by the Elytra granted by this power.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					}
 				},
-				"required": [ "render_elytra" ]
+				"required": ["render_elytra"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:entity_glow" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/entity_glow/"
 			},
 			"then": {
 				"properties": {
 					"entity_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, only entities which fulfill this condition will glow for the player with this power."
+						"description": "If specified, only entities which fulfill this condition will glow for the player that has the power."
+					},
+					"bientity_condition": {
+						"$ref": "#/definitions/conditions/properties/bientity_condition",
+						"description": "If specified, the power will only be active if this condition is fulfilled by either or both the 'actor' (the player that has the power) and 'target' (the entity that would glow) entities."
+					},
+					"use_teams": {
+						"type":"boolean",
+						"description": "Determines whether glowing entities should use their team's color with their glow. If set to false, the entity will instead use the `red`, `green` and `blue` fields within this power type.",
+						"default":true
+					},
+					"red": {
+						"type":"number",
+						"description": "Value by which the red component of the glow will be multiplied. Range: 0.0 - 1.0.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
+					},
+					"green": {
+						"type":"number",
+						"description": "Value by which the green component of the glow will be multiplied. Range: 0.0 - 1.0.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
+					},
+					"blue": {
+						"type":"number",
+						"description": "Value by which the blue component of the glow will be multiplied. Range: 0.0 - 1.0.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					}
 				}
 			}
@@ -5033,22 +5104,24 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:entity_group" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/entity_group/"
 			},
 			"then": {
 				"properties": {
 					"group": {
-						"description": "The group to associate with the player. One of default, undead, arthropod, illager, or aquatic. See https://minecraft.fandom.com/wiki/Mob#Classification for more information about the entity groups",
-						"enum": [ "default", "undead", "arthropod", "illager", "aquatic" ]
+						"description": "The group to associate with the player. One of `default`, `undead`, `arthropod`, `illager`, or `aquatic`.\nSee https://minecraft.fandom.com/wiki/Mob#Classification for more information about the entity groups",
+						"enum": ["default", "undead", "arthropod", "illager", "aquatic"]
 					}
 				},
-				"required": [ "group" ]
+				"required": ["group"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:exhaust" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/exhaust/"
 			},
 			"then": {
 				"properties": {
@@ -5062,13 +5135,14 @@
 						"description": "How much exhaustion will be applied each interval."
 					}
 				},
-				"required": [ "interval", "exhaustion" ]
+				"required": ["interval", "exhaustion"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:fire_projectile" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/fire_projectile/"
 			},
 			"then": {
 				"properties": {
@@ -5079,51 +5153,67 @@
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "The number of ticks the player has to wait between uses of this power.",
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
 						"minimum": 1
 					},
-					"hud_render": { "$ref": "#/definitions/origins_data_types/properties/hud_render" },
+					"hud_render": {"$ref": "#/definitions/origins_data_types/properties/hud_render"},
 					"count": {
 						"type": "integer",
 						"description": "The amount of projectiles to fire each use.",
 						"default": 1,
 						"minimum": 0
 					},
+					"interval": {
+						"type":"integer",
+						"description": "Determines the interval for firing multiple projectiles consecutively (in ticks).\nIf set to 0, it will fire all the projectiles at the same tick.",
+						"default":0
+					},
+					"start_delay": {
+						"type":"integer",
+						"description": "Determines how long the start of the firing process is delayed (in ticks).",
+						"default":0
+					},
 					"speed": {
-						"type": "number",
-						"default": 1.5,
-						"description": "The speed applied to the fired projectile."
+						"type":"number",
+						"description": "The speed applied to the fired projectile.",
+						"default": 1.5
 					},
 					"divergence": {
-						"type": "number",
-						"default": 1.0,
-						"description": "How much each projectile fired is affected by random spread."
+						"type":"number",
+						"description": "How much each projectile fired is affected by random spread.",
+						"default": 1.0
 					},
 					"sound": {
-						"type": "string",
-						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "If set, the sound with this ID will be played when the power is used."
+						"type":"string",
+						"description": "If set, the sound with this ID will be played when the power is used.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					},
 					"tag": {
 						"type": "string",
 						"description": "NBT data of the entity.",
 						"pattern": "\\{.*\\:.*\\}"
 					},
-					"key": { "$ref": "#/definitions/origins_data_types/properties/key" }
+					"key": {
+						"$ref": "#/definitions/origins_data_types/properties/key",
+						"description": "Which active key this power should respond to.\nIf none is specified, this power will use the primary active power key (by default G).\nThe default value is technically `{\"key\": \"none\"}` but Origins adds a power key mapping none to the primary key.",
+						"default": {"key": "key.origins.primary_active"}
+					}
 				},
-				"required": [ "entity_type", "cooldown", "hud_render" ]
+				"required": ["entity_type", "cooldown", "hud_render"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:inventory" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/inventory/"
 			},
 			"then": {
 				"properties": {
 					"name": {
 						"type": "string",
 						"description": "The translation key or literal text to use as the display name for the inventory.",
+						"pattern": "^[a-z0-9\\-_\\./]+$",
 						"default": "container.inventory"
 					},
 					"drop_on_death": {
@@ -5135,14 +5225,19 @@
 						"$ref": "#/definitions/conditions/properties/item_condition",
 						"description": "If this is set, only item stacks matching this condition will be dropped on death."
 					},
-					"key": { "$ref": "#/definitions/origins_data_types/properties/key" }
+					"key": {
+						"$ref": "#/definitions/origins_data_types/properties/key",
+						"description": "Which active key this power should respond to.\nIf none is specified, this power will use the primary active power key (by default G).\nThe default value is technically `{\"key\": \"none\"}` but Origins adds a power key mapping none to the primary key.",
+						"default": {"key": "key.origins.primary_active"}
+					}
 				}
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:invisibility" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/invisibility/"
 			},
 			"then": {
 				"properties": {
@@ -5151,90 +5246,120 @@
 						"description": "Whether or not the player's armor should be shown."
 					}
 				},
-				"required": [ "render_armor" ]
+				"required": ["render_armor"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:invulnerability" } },
-				"required": [ "type" ]
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "Specifies which damage the player will be immune to."
+						"description": "Specifies which damage the player will be immune to.\nNOTE: This power type does not support the Amount (Damage Condition Type). See https://origins.readthedocs.io/en/latest/types/power_types/invulnerability/"
 					}
 				},
-				"required": ["damage_condition"]
+				"required": ["damage_condition"],
+				"not":{"damage_condition":{"type":{"const":"origins:amount"}}}
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:item_on_item" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/item_on_item/"
 			},
 			"then": {
 				"properties": {
 					"using_item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, the actions will only trigger when this condition is met by the item used to right-click an item stack."
+						"description": "If specified, the specified actions will only execute if this condition is fulfilled by the item that is used to right-click an item."
 					},
 					"on_item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, the actions will only trigger when this condition is met by the item stack that's been right-clicked."
+						"description": "If specified, the specified actions will only execute if this condition is fulfilled by the item that has been right-clicked."
 					},
 					"result": {
 						"$ref": "#/definitions/origins_data_types/properties/item_stack",
-						"description": "If set, the specified item stack will be given to the player."
+						"description": "If specified, this item will be given to the player."
+					},
+					"result_from_on_stack": {
+						"type":"integer",
+						"description": "Determines how many items based on the `on_item` stack will be given as a result for using an item on an item. Mostly to be used in conjunction with `result_item_action`.",
+						"default":0
 					},
 					"using_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, this action will be executed on the item stack used to right-click an item stack."
+						"description": "If specified, this action will be executed on the item that is used to right-click an item."
 					},
 					"on_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, this action will be executed on the item stack that's been right-clicked."
+						"description": "If specified, this action will be executed on the item that has been right-clicked."
 					},
 					"result_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, this action will be executed on the item stack specified in the result field."
+						"description": "If specified, this action will be executed on the item that is given to the player."
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player after they used an item on an item."
+						"description": "If specified, this action will be executed on the player after they used an item on an item."
 					}
-				},
-				"dependencies": {
-					"result_item_action": ["result"]
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": { "const": "origins:keep_inventory" } },
+				"required": ["type"]
+			},
+			"then": {
+				"properties": {
+					"item_condition": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, only make the items that fulfill the specified item condition type persist in the entity's inventory."
+					},
+					"slots": {
+						"type": "array",
+						"description": "If specified, only make the items that are in the listed inventory slots persist in the entity's inventory.\nSee https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values.",
+						"items": {
+							"$comment": "Because certian mods add inventory slots I've not specified a maximum",
+							"type": "integer",
+							"minimum": 0
+						}
+					}
 				}
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:launch" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/launch/"
 			},
 			"then": {
 				"properties": {
 					"cooldown": {
 						"type": "integer",
-						"description": "The number of ticks the player has to wait between uses of this power.",
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
 						"minimum": 1
 					},
 					"speed": {
 						"type": "number",
 						"description": "The speed applied to the player in the upwards direction."
 					},
-					"hud_render": {
-						"$ref": "#/definitions/origins_data_types/properties/hud_render"
-					},
+					"hud_render": {"$ref": "#/definitions/origins_data_types/properties/hud_render"},
 					"sound": {
 						"type": "string",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "If set, the sound with this ID will be played when the power is used."
+						"description": "If specified, the sound event with this namespace and ID will be played when the power is triggered."
 					},
-					"key": { "$ref": "#/definitions/origins_data_types/properties/key" }
+					"key": {
+						"$ref": "#/definitions/origins_data_types/properties/key",
+						"description": "Which active key this power should respond to.",
+						"default": {"key": "key.origins.primary_active"}
+					}
 				},
 				"required": ["cooldown", "speed", "hud_render"]
 			}
@@ -5242,7 +5367,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:lava_vision" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/lava_vision/"
 			},
 			"then": {
 				"properties": {
@@ -5261,37 +5387,34 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:model_color" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/model_color/"
 			},
 			"then": {
 				"properties": {
 					"red": {
 						"type": "number",
 						"description": "Value by which the red component of the texture will be multiplied.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"green": {
 						"type": "number",
 						"description": "Value by which the green component of the texture will be multiplied.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"blue": {
 						"type": "number",
 						"description": "Value by which the blue component of the texture will be multiplied.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"alpha": {
 						"type": "number",
 						"description": "Value by which the alpha (= transparency) component of the texture will be multiplied.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					}
 				},
 				"anyOf": [
@@ -5303,24 +5426,28 @@
 			}
 		},
 		{
-			"if": {"properties":{"type":{"const":"origins:multiple"}},"required":["type"]},
+			"if": {
+				"properties":{"type":{"const":"origins:multiple"}},"required":["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/multiple/"
+			},
 			"then": {
-				"$comment": "Should work but incorrectly marks contents of properties: {} as wrong\n\"additionalProperties\": {\"$ref\": \"#\"}"
+				"$comment": "Should work but incorrectly marks contents of properties: {} as wrong\n\"additionalProperties\": {\"$ref\": \"#\"}",
+				"additionalProperties": true
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:night_vision" } },
-				"required": ["type"]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/night_vision/"
 			},
 			"then": {
 				"properties": {
 					"strength": {
 						"type": "number",
 						"description": "How strong the night vision effect is.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					}
 				}
 			}
@@ -5328,46 +5455,43 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:overlay" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/overlay/"
 			},
 			"then": {
 				"properties": {
 					"texture": {
 						"type": "string",
-						"description": "The ID of the texture to use as an overlay.",
+						"description": "The namespace and ID of the texture to use as an overlay.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 					},
 					"strength": {
 						"type": "number",
-						"description": "Value by which the alpha (transparency) component of the texture will be multiplied. Range: 0.0 to 1.0.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "If the `\"texture\"` draw mode is used, it determines the alpha (transparency) value of the texture. If the `\"nausea\"` draw mode is used, it determines the value of how the texture is stretched (1.0 = screen size).",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"red": {
 						"type": "number",
-						"description": "Value by which the red component of the texture will be multiplied. Range: 0.0 to 1.0.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the red component of the texture will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"green": {
 						"type": "number",
-						"description": "Value by which the green component of the texture will be multiplied. Range: 0.0 to 1.0.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the green component of the texture will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"blue": {
 						"type": "number",
-						"description": "Value by which the blue component of the texture will be multiplied. Range: 0.0 to 1.0.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the blue component of the texture will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"draw_mode": {
 						"enum": ["nausea", "texture"],
-						"description": "Determines whether to treat black as transparent or draw the texture as is (\"nausea\" or \"texture\" respectively)."
+						"description": "Determines whether to treat black as transparent or draw the texture as is (`\"nausea\"` or `\"texture\"` respectively)."
 					},
 					"draw_phase": {
 						"enum": ["below_hud", "above_hud"],
@@ -5390,19 +5514,24 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:particle" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/particle/"
 			},
 			"then": {
 				"properties": {
 					"particle": {
-						"type": "string",
-						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "ID of the particle type to use."
+						"$ref": "#/definitions/origins_data_types/particle_effect",
+						"description": "The particle type that will be spawned."
 					},
 					"frequency": {
 						"type": "integer",
 						"description": "How often the particles should spawn (interval in ticks).",
 						"minimum": 1
+					},
+					"visible_in_first_person": {
+						"type":"boolean",
+						"description": "Determines whether the particle should be visible in first person.",
+						"default":false
 					}
 				},
 				"required": ["particle", "frequency"]
@@ -5411,30 +5540,33 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:phasing" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/phasing/"
 			},
 			"then": {
 				"properties": {
 					"blacklist": {
 						"type": "boolean",
-						"description": "If set to true, the block_condition will define which blocks the player can NOT move through.",
+						"description": "If set to true, the `block_condition` will define which blocks the player can NOT move through.",
 						"default": false
 					},
-					"block_condition": { "$ref": "#/definitions/conditions/properties/block_condition" },
+					"block_condition": {
+						"$ref": "#/definitions/conditions/properties/block_condition",
+						"description": "If specified, the entity will only be able to move through these blocks (or not be able to move through these, depending on what `blacklist` is set to)."
+					},
 					"render_type": {
-						"description": "Defines how the phasing will look when inside a block.",
-						"enum": ["remove_blocks", "blindness"],
+						"description": "Determines how the environment is rendered when \"phasing\" through (moving) blocks. Accepts `\"blindness\"`, `\"remove_blocks\"` or `\"none\"`.",
+						"enum": ["remove_blocks", "blindness", "none"],
 						"default": "blindness"
 					},
 					"view_distance": {
 						"type": "number",
-						"default": 10.0,
-						"description": "How far the player can look through walls while phasing with the \"blindness\" render_type."
+						"description": "Determines how far the player can look through walls when \"phasing\" (moving) through blocks when `render_type` is set to `\"blindness\"`.",
+						"default": 10.0
 					},
 					"phase_down_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "When specified, this condition needs to be fulfilled in order for blocks below the player to become phasable. Defaults to a condition which checks for sneaking.",
-						"default": {"type": "origins:and", "conditions": [{"type": "origins:sneaking"}, {"type": "origins:on_block"}]}
+						"description": "If specified, the entity will only be able to \"phase\" (move) downwards if this condition is fulfilled."
 					}
 				}
 			}
@@ -5442,13 +5574,14 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:recipe" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/recipe/"
 			},
 			"then": {
 				"properties": {
 					"recipe": {
 						"$ref": "#/definitions/origins_data_types/properties/crafting_recipe",
-						"description": "The recipe to craft, including an id field which can be any arbitrary (but unique) identifier."
+						"description": "The recipe to craft, including an `id` field which can be any arbitrary (but unique) identifier."
 					}
 				},
 				"required": ["recipe"]
@@ -5457,7 +5590,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:resource" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/resource/"
 			},
 			"then": {
 				"properties": {
@@ -5472,7 +5606,7 @@
 					"hud_render": {"$ref": "#/definitions/origins_data_types/properties/hud_render"},
 					"start_value": {
 						"type": "integer",
-						"description": "The value of the resource when the player first chooses an origin with this power. If not set, this will be the same as min."
+						"description": "The value of the resource when the entity first receives the power. If not set, this will be set to the value of the `min` integer field."
 					},
 					"min_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
@@ -5489,14 +5623,27 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:restrict_armor" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/restrict_armor/"
 			},
 			"then": {
 				"properties": {
-					"head": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"chest": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"legs": { "$ref": "#/definitions/conditions/properties/item_condition" },
-					"feet": { "$ref": "#/definitions/conditions/properties/item_condition" }
+					"head": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the head equipment slot."
+					},
+					"chest": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the chest equipment slot."
+					},
+					"legs": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the legs equipment slot."
+					},
+					"feet": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, items which fulfills this condition cannot be equipped in the feet equipment slot."
+					}
 				},
 				"anyOf": [
 					{"required": ["head"]},
@@ -5509,7 +5656,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:self_glow" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/self_glow/"
 			},
 			"then": {
 				"properties": {
@@ -5524,28 +5672,25 @@
 					"use_teams": {
 						"type": "boolean",
 						"default": true,
-						"description": "Whether glowing entities should use their team's color with their glow. If set to false, the entity will instead use the red, green and blue fields within this power type."
+						"description": "Whether glowing entities should use their team's color with their glow. If set to false, the entity will instead use the `red`, `green` and `blue` fields within this power type."
 					},
 					"red": {
 						"type": "number",
-						"description": "Value by which the red component of the glow will be multiplied. Range: 0 - 1.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the red component of the glow will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"green": {
 						"type": "number",
-						"description": "Value by which the green component of the glow will be multiplied. Range: 0 - 1.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the green component of the glow will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
 					"blue": {
 						"type": "number",
-						"description": "Value by which the blue component of the glow will be multiplied. Range: 0 - 1.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"description": "Value by which the blue component of the glow will be multiplied.",
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					}
 				}
 			}
@@ -5553,14 +5698,20 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:shader" } },
-				"required": [ "type" ]
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
 					"shader": {
 						"type": "string",
+						"description": "Specifies the location of the shader resource file to use.\nFor more information about shaders, See https://minecraft.fandom.com/wiki/Shaders/Before_1.9",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "Specifies the location of the shader resource file to use. For more information about shaders, See https://minecraft.fandom.com/wiki/Shaders/Before_1.9"
+						"examples": ["minecraft:shaders/post/pencil.json"]
+					},
+					"toggleable": {
+						"type":"boolean",
+						"description": "Determines if the applied shader can be toggled.",
+						"default":true
 					}
 				},
 				"required": ["shader"]
@@ -5569,7 +5720,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:stacking_status_effect" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/stacking_status_effect/"
 			},
 			"then": {
 				"properties": {
@@ -5583,14 +5735,22 @@
 					},
 					"duration_per_stack": {
 						"type": "integer",
-						"description": "When the status effects are applied, their duration will be 'stacks * duration_per_stack' in ticks."
+						"description": "Determines the duration of the specified status effect(s) for each stack.\nThe actual duration of the specified status effect(s) is determined by the `stacks * duration_per_stack` formula."
 					},
-					"effect": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" },
+					"tick_rate": {
+						"type":"integer",
+						"description": "Determines how fast the power will gain/lose stacks in ticks.",
+						"default":10
+					},
+					"effect": {
+						"$ref": "#/definitions/origins_data_types/properties/status_effect_instance",
+						"description": "If specified, this status effect will be applied on the entity that has the power."
+					},
 					"effects": {
 						"type": "array",
-						"description": "If set, these status effects will be applied by this power.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/status_effect_instance" },
-						"minItems": 2
+						"description": "If specified, these status effects will be applied on the entity that has the power.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/status_effect_instance"},
+						"minItems": 1
 					}
 				},
 				"required": ["min_stacks", "max_stacks", "duration_per_stack"],
@@ -5603,43 +5763,45 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:starting_equipment" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/starting_equipment/"
 			},
 			"then": {
 				"properties": {
 					"stack": {
 						"$ref": "#/definitions/origins_data_types/properties/positioned_item_stack",
-						"description": "If set, this item stack will be given to the player, optionally into the specified inventory slot."
+						"description": "If specified, this item will be given to the player (can be specified in an inventory slot)."
 					},
 					"stacks": {
 						"type": "array",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/positioned_item_stack" },
-						"minItems": 2,
-						"description": "If set, these item stacks will be given to the player, optionally into the specified inventory slots."
+						"description": "If specified, these items will be given to the player (can be specified in an inventory slot).",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/positioned_item_stack"},
+						"minItems": 1
 					},
 					"recurrent": {
 						"type":"boolean",
 						"default": false,
-						"description": "When set to true, the starting equipment will always be given to the player after they died, otherwise only once when the power is gained."
+						"description": "Determines whether the specified item(s) should be given after respawning."
 					}
 				},
 				"oneOf": [
-					{ "required": ["stack"] },
-					{ "required": ["stacks"] }
+					{"required": ["stack"]},
+					{"required": ["stacks"]}
 				]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:status_bar_texture" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/status_bar_texture/"
 			},
 			"then": {
 				"properties": {
 					"texture": {
 						"type": "string",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "The ID of the sprite sheet to replace the default one with. Here's what the vanilla sprite sheet looks like: https://media.discordapp.net/attachments/802622603008409600/893716345055772682/unknown.png"
+						"description": "The namespace and ID of the sprite sheet to replace the default one with.\nHere's what the vanilla sprite sheet looks like: https://raw.githubusercontent.com/misode/mcmeta/6d496b1a91476c4fdd45fdb093d0319141f9c109/assets/minecraft/textures/gui/icons.png"
 					}
 				},
 				"required": ["texture"]
@@ -5648,7 +5810,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:toggle_night_vision" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/toggle_night_vision/"
 			},
 			"then": {
 				"properties": {
@@ -5660,18 +5823,22 @@
 					"strength": {
 						"type": "number",
 						"description": "How strong the night vision effect is.",
-						"default": 1.0,
-						"minimum": 0,
-						"maximum": 1
+						"minimum": 0.0, "maximum": 1.0,
+						"default": 1.0
 					},
-					"key": { "$ref": "#/definitions/origins_data_types/properties/key" }
+					"key": {
+						"$ref": "#/definitions/origins_data_types/properties/key",
+						"description": "Which active key this power should respond to.\nIf none is specified, this power will use the primary active power key (by default G).",
+						"default": {"key": "key.origins.primary_active"}
+					}
 				}
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:toggle" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/toggle/"
 			},
 			"then": {
 				"properties": {
@@ -5683,7 +5850,12 @@
 					"key": {
 						"$ref": "#/definitions/origins_data_types/properties/key",
 						"description": "Which active key this power should respond to.",
-						"default": "primary"
+						"default": {"key": "key.origins.primary_active"}
+					},
+					"retain_state": {
+						"type":"boolean",
+						"description": "Whether this power switches back to default if the condition is no longer met.",
+						"default":true
 					}
 				}
 			}
@@ -5691,25 +5863,30 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:tooltip" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/tooltip/"
 			},
 			"then": {
 				"properties": {
 					"item_condition": {
-						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, only applies the tooltip(s) to the item(s) that meets this condition."
+						"$ref":"#/definitions/conditions/properties/item_condition",
+						"description": "If specified, the specified tooltip(s) will only apply to items that fulfills this condition."
 					},
 					"text": {
-						"type": "string",
-						"description": "If set, apply this string as a tooltip."
+						"type":"string",
+						"description": "If specified, apply this string as a tooltip."
 					},
 					"texts": {
-						"type": "array",
-						"items": { "type": "string" },
-						"minItems": 2,
-						"description": "If set, apply these strings as a tooltip."
+						"type":"array",
+						"items": {"type":"string"},
+						"minItems": 1,
+						"description": "If specified, apply these strings as a tooltip."
 					}
-				}
+				},
+				"oneOf": [
+					{"required": ["text"]},
+					{"required": ["texts"]}
+				]
 			},
 			"$comment": "#endregion Regular types"
 		},
