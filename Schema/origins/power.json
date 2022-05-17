@@ -5520,7 +5520,7 @@
 			"then": {
 				"properties": {
 					"particle": {
-						"$ref": "#/definitions/origins_data_types/particle_effect",
+						"$ref": "#/definitions/origins_data_types/properties/particle_effect",
 						"description": "The particle type that will be spawned."
 					},
 					"frequency": {
@@ -6486,7 +6486,7 @@
 			"$comment": "#region Modifying types",
 			"if": {
 				"properties": { "type": { "const": "origins:modify_air_speed" } },
-				"required": [ "type" ]
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
@@ -6497,7 +6497,7 @@
 					"modifiers": {
 						"type": "array",
 						"description": "If specified, these modifiers will be applied to the entity's air speed.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
 						"minItems": 2
 					}
 				},
