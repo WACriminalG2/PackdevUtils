@@ -5253,7 +5253,7 @@
 					}
 				},
 				"required": ["damage_condition"],
-				"not":{"damage_condition":{"type":{"const":"origins:amount"}}}
+				"$comment": "Find a better way to implement \"not\":{\"damage_condition\":{\"type\":{\"const\":\"origins:amount\"}}}"
 			}
 		},
 		{
