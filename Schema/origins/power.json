@@ -21,11 +21,11 @@
 				"origins:stacking_status_effect", "origins:starting_equipment", "origins:status_bar_texture", "origins:swimming",
 				"origins:toggle_night_vision", "origins:toggle", "origins:tooltip", "origins:walk_on_fluid",
 
-				"origins:action_on_being_used", "origins:action_on_block_break", "origins:action_on_callback", "origins:action_on_entity_use",
-				"origins:action_on_hit", "origins:action_on_item_use", "origins:action_on_land", "origins:action_on_wake_up",
-				"origins:action_over_time", "origins:action_when_damage_taken", "origins:action_when_hit", "origins:active_self",
-				"origins:attacker_action_when_hit", "origins:self_action_on_hit", "origins:self_action_on_kill", "origins:self_action_when_hit",
-				"origins:target_action_on_hit",
+				"origins:action_on_being_used", "origins:action_on_block_break", "origins:action_on_block_use", "origins:action_on_callback",
+				"origins:action_on_entity_use", "origins:action_on_hit", "origins:action_on_item_use", "origins:action_on_land",
+				"origins:action_on_wake_up", "origins:action_over_time", "origins:action_when_damage_taken", "origins:action_when_hit",
+				"origins:active_self", "origins:attacker_action_when_hit", "origins:self_action_on_hit", "origins:self_action_on_kill",
+				"origins:self_action_when_hit", "origins:target_action_on_hit",
 
 				"origins:modify_air_speed", "origins:modify_block_render", "origins:modify_break_speed", "origins:modify_camera_submersion",
 				"origins:modify_crafting", "origins:modify_damage_dealt", "origins:modify_damage_taken", "origins:modify_exhaustion",
@@ -5912,75 +5912,80 @@
 			"$comment": "#region Action-related",
 			"if": {
 				"properties": { "type": { "enum": ["origins:action_on_entity_use", "origins:action_on_being_used"] } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_being_used/ https://origins.readthedocs.io/en/latest/types/power_types/action_on_entity_use/"
 			},
 			"then": {
 				"properties": {
 					"bientity_action": {
 						"$ref": "#/definitions/actions/properties/bientity_action",
-						"description": "The action to be executed if specified."
+						"description": "If specified, this action will be executed on either or both 'actor' (player) or 'target' (the entity that's been right-clicked) entity."
 					},
 					"bientity_condition": {
 						"$ref": "#/definitions/conditions/properties/bientity_condition",
-						"description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by either or both 'actor' (player) or 'target' (the entity that's been right-clicked) entity."
 					},
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the player's specified hand(s) determined by the hands string field."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by the item in the 'actor' (player) entity's specified hand(s) determined by the `hands` string array field."
 					},
 					"hands": {
 						"type": "array",
-						"items": {
-							"enum": ["off_hand", "main_hand"]
-						},
+						"items": {"enum": ["off_hand", "main_hand"]},
 						"default": ["off_hand", "main_hand"],
-						"description": "Determines if the power should be activated if the player used the specified hand(s). Accepts \"off_hand\", \"main_hand\" or both."
+						"uniqueItems": true,
+						"description": "Determines if the power should be activated if the player used the specified hand(s). Accepts `\"off_hand\"`, `\"main_hand\"` or both."
 					},
 					"result_stack": {
 						"$ref": "#/definitions/origins_data_types/properties/item_stack",
-						"description": "If specified, gives an item stack to the player."
+						"description": "If specified, this item will be given to the 'actor' (player) entity."
 					},
 					"held_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If specified, executes an item action on the item stack used for right-clicking the entity in the specified hand slot."
+						"description": "If specified, this action will be executed on the item used for right-clicking the 'target' entity in the specified hand(s) determined by the `hands` string array field."
 					},
 					"result_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, executes an item action on the result item stack."
+						"description": "If specified, this action will be executed on the item that is given to the 'actor' (player) entity."
 					},
 					"action_result": {
-						"enum": ["consume", "consume_partial", "fail", "pass", "success"],
+						"enum": ["consume_partial", "consume", "fail", "pass", "success"],
 						"default": "success",
-						"description": "Determines the result of the action. Accepts \"consume\", \"consume_partial\", \"fail\", \"pass\" or \"success\"."
+						"description": "Determines the result of the 'use' action."
 					}
 				},
-				"dependencies": {
-					"result_item_action": ["result_stack"]
-				}
+				"anyOf": [
+					{"required": ["entity_action"]},
+					{"required": ["block_action"]},
+					{"required": ["held_item_action"]},
+					{"required": ["result_item_action"]}
+				],
+				"dependencies": {"result_item_action": ["result_stack"]}
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_on_block_break" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_block_break/"
 			},
 			"then": {
 				"properties": {
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when a block is broken."
+						"description": "If specified, this action will be executed on the player when a block is broken."
 					},
 					"block_action": {
 						"$ref": "#/definitions/actions/properties/block_action",
-						"description": "If set, this action will be executed on the block that is broken."
+						"description": "If specified, this action will be executed on the block that is broken."
 					},
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, the actions will only trigger when this block condition is met by the broken block."
+						"description": "If set, the specified actions will only trigger when this block condition is met by the broken block."
 					},
 					"only_when_harvested": {
 						"type": "boolean",
-						"description": "If this is true, the actions will only execute when the player succeeds in harvesting the block (e.g. they will not trigger when stone is broken by hand).",
+						"description": "If this is true, the specified actions will only execute when the player succeeds in harvesting the block (e.g. they will not trigger when stone is broken by hand).",
 						"default": true
 					}
 				},
@@ -5992,39 +5997,111 @@
 		},
 		{
 			"if": {
+				"properties": { "type": { "const": "origins:action_on_block_use" } },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_block_use/"
+			},
+			"then": {
+				"properties": {
+					"entity_action": {
+						"$ref": "#/definitions/actions/properties/entity_action",
+						"description": "If specified, this entity action type will be executed if all conditions are met."
+					},
+					"block_action": {
+						"$ref": "#/definitions/actions/properties/block_action",
+						"description": "If specified, the used block will run this action if all conditions are met."
+					},
+					"block_condition": {
+						"$ref": "#/definitions/conditions/properties/block_condition",
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by the used block."
+					},
+					"item_condition": {
+						"$ref": "#/definitions/conditions/properties/item_condition",
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by the item in the 'actor' (the player that has the power) entity's specified hand(s) determined by the `hands` string field.",
+						"default": true
+					},
+					"directions": {
+						"type":"array",
+						"items": {"enum": ["north", "east", "south", "west", "up", "down"]},
+						"uniqueItems": true,
+						"default": ["north", "east", "south", "west", "up", "down"],
+						"description": "If specified, only execute the specified actions if you used the specified face of the block."
+					},
+					"hands": {
+						"type": "array",
+						"items": {"enum": ["off_hand", "main_hand"]},
+						"default": ["off_hand", "main_hand"],
+						"uniqueItems": true,
+						"description": "Determines if the power should be activated if the player used the specified hand(s). Accepts `\"off_hand\"`, `\"main_hand\"` or both."
+					},
+					"result_stack": {
+						"$ref": "#/definitions/origins_data_types/properties/item_stack",
+						"description": "If specified, gives the item to the 'actor' (the player that has the power) entity."
+					},
+					"held_item_action": {
+						"$ref": "#/definitions/actions/properties/item_action",
+						"description": "If specified, this action will be executed on the item used for right-clicking the 'target' entity in the specified hand(s) determined by the `hands` string field."
+					},
+					"result_item_action": {
+						"$ref": "#/definitions/actions/properties/item_action",
+						"description": "If specified, this action will be executed on the item that is given to the 'actor' (the player that has the power) entity."
+					},
+					"action_result": {
+						"enum": ["consume_partial", "consume", "fail", "pass", "success"],
+						"default": "success",
+						"description": "Determines the result of the 'use' action."
+					}
+				},
+				"anyOf": [
+					{"required": ["entity_action"]},
+					{"required": ["block_action"]},
+					{"required": ["held_item_action"]},
+					{"required": ["result_item_action"]}
+				],
+				"dependencies": {"result_item_action": ["result_stack"]}
+			}
+		},
+		{
+			"if": {
 				"properties": { "type": { "const": "origins:action_on_callback" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_callback/"
 			},
 			"then": {
 				"properties": {
 					"entity_action_chosen": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when the player chooses their origin on the last layer through the menu - by using the Orb of Origin or missing an origin or joining for the first time - if the power was gained from any of the layers."
+						"description": "If specified, this action will be executed on the player when the player chooses their origin on the last layer through the menu - by using the Orb of Origin or missing an origin or joining for the first time - if the power was gained from any of the layers."
 					},
 					"execute_chosen_when_orb": {
 						"type": "boolean",
-						"description": "When this is false, the entity_action_chosen will not be executed when the player changes their origin with an orb, but only when the player chooses an origin for the first time or their origin was reset to origins:empty via a command.",
+						"description": "When this is false, the `entity_action_chosen` will not be executed when the player changes their origin with an orb, but only when the player chooses an origin for the first time or their origin was reset to `origins:empty` via a command.",
 						"default": true
+					},
+					"entity_action_gained": {
+						"$ref": "#/definitions/actions/properties/entity_action",
+						"description": "If specified, this action will be executed on the player when the power is gained."
 					},
 					"entity_action_lost": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when the power is lost."
+						"description": "If specified, this action will be executed on the player when the power is lost."
 					},
 					"entity_action_added": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when the power is added. Joining a world adds each power back."
+						"description": "If specified, this action will be executed on the player when the power is added.\nJoining a world adds each power back."
 					},
 					"entity_action_removed": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when the power is removed and right after the player respawns. Leaving a world removes each power."
+						"description": "If specified, this action will be executed on the player when the power is removed and right after the player respawns.\nLeaving a world removes each power."
 					},
 					"entity_action_respawned": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player right after the player respawns, after the entity_action_removed."
+						"description": "If specified, this action will be executed on the player right after the player respawns, after the `entity_action_removed`."
 					}
 				},
 				"anyOf": [
 					{"required": ["entity_action_chosen"]},
+					{"required": ["entity_action_gained"]},
 					{"required": ["entity_action_lost"]},
 					{"required": ["entity_action_added"]},
 					{"required": ["entity_action_removed"]},
@@ -6036,32 +6113,33 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_on_hit" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_hit/"
 			},
 			"then": {
 				"properties": {
 					"bientity_action": {
 						"$ref": "#/definitions/actions/properties/bientity_action",
-						"description": "The action to execute upon hit."
+						"description": "The action to be executed on either or both 'actor' (the entity that has the power) and 'target' (the entity/entities that's been hit) entities."
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the entity that has the power."
+						"description": "If specified, the action will only execute when this condition holds for the damage that was dealt by the 'actor' (the entity that has the power) entity."
 					},
 					"cooldown": {
 						"type": "integer",
 						"minimum": 0,
 						"default": 1,
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again."
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again."
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"default": {"should_render": false},
+						"default": {"should_render":false},
 						"description": "Determines how the cooldown of this power is visualized on the HUD."
 					},
 					"bientity_condition": {
 						"$ref": "#/definitions/conditions/properties/bientity_condition",
-						"description": "If set, the action will only trigger when this bi-entity condition is fulfilled."
+						"description": "If specified, the action will only execute when this condition is fulfilled by either or both 'actor' (the entity that has the power) and 'target' (the entity/entities that's been hit) entities."
 					}
 				},
 				"required": ["bientity_action"]
@@ -6070,21 +6148,22 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_on_item_use" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_item_use/"
 			},
 			"then": {
 				"properties": {
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player after they use the item."
+						"description": "If specified, this action will be executed on the player after they use an item."
 					},
 					"item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, this action will be executed on the remaining item stack."
+						"description": "If specified, this action will be executed on the remaining item."
 					},
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, the actions will only trigger when this item condition is met by the item stack before use."
+						"description": "If specified, the actions will only execute if this condition is fulfilled by the item before use."
 					}
 				},
 				"anyOf": [
@@ -6096,7 +6175,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_on_land" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_land/"
 			},
 			"then": {
 				"properties": {
@@ -6111,21 +6191,22 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_on_wake_up" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_wake_up/"
 			},
 			"then": {
 				"properties": {
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player when they wake up."
+						"description": "If specified, this action will be executed on the player when they wake up."
 					},
 					"block_action": {
 						"$ref": "#/definitions/actions/properties/block_action",
-						"description": "If set, this action will be executed on the bed block."
+						"description": "If specified, this action will be executed on the bed block."
 					},
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, the actions will only trigger when this block condition is met by the bed block."
+						"description": "If specified, the specified actions will only execute if this condition is fulfilled by the bed block."
 					}
 				},
 				"anyOf": [
@@ -6137,18 +6218,19 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_over_time" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_over_time/"
 			},
 			"then": {
 				"properties": {
 					"interval": {
 						"type": "integer",
-						"description": "Interval of ticks between subsequent executions of the action.",
+						"description": "Interval of ticks between subsequent executions of the specified actions.\nMust be a value of at least 1.",
 						"minimum": 1
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "The action to execute on the player each interval."
+						"description": "The action to execute on the entity that has the power each interval."
 					},
 					"rising_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
@@ -6174,13 +6256,14 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_when_damage_taken" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_when_damage_taken/"
 			},
 			"then": {
 				"properties": {
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "The action to execute on the player each interval."
+						"description": "The action to be executed upon taking damage."
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
@@ -6189,28 +6272,28 @@
 					"cooldown": {
 						"type": "integer",
 						"minimum": 0,
-						"default": 1,
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again."
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again."
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"default": {"should_render": false},
+						"default": {"should_render":false},
 						"description": "Determines how the cooldown of this power is visualized on the HUD."
 					}
 				},
-				"required": ["entity_action"]
+				"required": ["entity_action", "cooldown"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:action_when_hit" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_when_hit/"
 			},
 			"then": {
 				"properties": {
 					"bientity_action": {
 						"$ref": "#/definitions/actions/properties/bientity_action",
-						"description": "The action to execute upon being hit."
+						"description": "The action to be executed on either or both 'actor' (the attacker entity) entity and 'target' (the entity that has the power) entity."
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
@@ -6220,7 +6303,7 @@
 						"type": "integer",
 						"minimum": 0,
 						"default": 1,
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again."
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again."
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
@@ -6229,7 +6312,7 @@
 					},
 					"bientity_condition": {
 						"$ref": "#/definitions/conditions/properties/bientity_condition",
-						"description": "If specified, the specified action will only trigger if the bi-entity condition is fulfilled."
+						"description": "If specified, the specified action will only trigger if this condition is fulfilled by either or both 'actor' (the attacker entity) entity and 'target' (the entity that has the power) entity."
 					}
 				},
 				"required": ["bientity_action"]
@@ -6238,7 +6321,8 @@
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:active_self" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/active_self/"
 			},
 			"then": {
 				"properties": {
@@ -6248,26 +6332,29 @@
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 1
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
+						"minimum": 0,
+						"default": 1
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
+						"default":{"should_render":false},
 						"description": "Determines how the cooldown of this power is visualized on the HUD."
 					},
 					"key": {
 						"$ref": "#/definitions/origins_data_types/properties/key",
 						"description": "Which active key this power should respond to.",
-						"default": {"key": "key.origins.primary_active"}
+						"default":{"key":"key.origins.primary_active"}
 					}
 				},
-				"required": ["entity_action", "cooldown", "hud_render"]
+				"required": ["entity_action"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:attacker_action_when_hit" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attacker_action_when_hit/"
 			},
 			"then": {
 				"properties": {
@@ -6277,8 +6364,9 @@
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 0
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
+						"minimum": 0,
+						"default": 1
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
@@ -6286,7 +6374,8 @@
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+						"default":{"should_render":false},
+						"description": "If specified, determines how the cooldown of this power is visualized on the HUD."
 					}
 				},
 				"required": ["entity_action", "cooldown"]
@@ -6294,72 +6383,44 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:self_action_on_hit" } },
-				"required": [ "type" ]
+				"properties": { "type": { "enum": ["origins:self_action_on_hit", "origins:self_action_on_kill"] } },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/self_action_on_hit/ https://origins.readthedocs.io/en/latest/types/power_types/self_action_on_kill/"
 			},
 			"then": {
 				"properties": {
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "The action to execute on the player."
+						"description": "The action to execute on the entity."
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 0
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
+						"minimum": 0,
+						"default": 1
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+						"default":{"should_render":false},
+						"description": "If specified, determines how the cooldown of this power is visualized on the HUD."
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
+						"description": "If specified, the specified action will only be executed if the damage dealt is fulfills this condition."
 					},
 					"target_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is hit."
+						"description": "If specified, the specified actions will only be executed if the entity/entities that has been hit fulfills this condition."
 					}
 				},
-				"required": ["entity_action", "cooldown"]
-			}
-		},
-		{
-			"if": {
-				"properties": { "type": { "const": "origins:self_action_on_kill" } },
-				"required": [ "type" ]
-			},
-			"then": {
-				"properties": {
-					"entity_action": {
-						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "The action to execute on the player."
-					},
-					"cooldown": {
-						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 0
-					},
-					"hud_render": {
-						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
-					},
-					"damage_condition": {
-						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
-					},
-					"target_condition": {
-						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is killed."
-					}
-				},
-				"required": ["entity_action", "cooldown"]
+				"required": ["entity_action"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:self_action_when_hit" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/self_action_when_hit/"
 			},
 			"then": {
 				"properties": {
@@ -6369,25 +6430,28 @@
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 0
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
+						"minimum": 0,
+						"default": 1
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way.",
+						"default":{"should_render":false}
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the action will only trigger when this condition holds for the specified type of damage."
+						"description": "If specified, the specified action will only execute if the damage taken fulfills this condition."
 					}
 				},
-				"required": ["entity_action", "cooldown"]
+				"required": ["entity_action"]
 			}
 		},
 		{
 			"if": {
 				"properties": { "type": { "const": "origins:target_action_on_hit" } },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/target_action_on_hit/"
 			},
 			"then": {
 				"properties": {
@@ -6397,23 +6461,24 @@
 					},
 					"cooldown": {
 						"type": "integer",
-						"description": "Interval of ticks this power needs to recharge before the action can be executed again.",
-						"minimum": 0
+						"description": "Interval of ticks this power needs to recharge before the power can be triggered again.",
+						"minimum": 0,
+						"default": 1
 					},
 					"hud_render": {
 						"$ref": "#/definitions/origins_data_types/properties/hud_render",
-						"description": "If set, the cooldown of this power is visualized on the HUD in the specified way."
+						"description": "If specified, determines how the cooldown of this power is visualized on the HUD."
 					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the action will only trigger when this condition holds for the damage that was dealt by the player."
+						"description": "If specified, the specified action will only execute if the damage dealt by the entity that has the power fulfills this condition."
 					},
 					"target_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is hit."
+						"description": "If specified, the specified action will only execute if the entity that has been hit fulfills this condition."
 					}
 				},
-				"required": ["entity_action", "cooldown"]
+				"required": ["entity_action"]
 			},
 			"$comment": "#endregion Action-related"
 		},
