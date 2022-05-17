@@ -3364,16 +3364,7 @@
 										"description": "If this is true, the action will act as a \"set\" velocity action, overriding the entity's current velocity instead of adding to it."
 									}
 								},
-								"$comment": "origins:nothing should be used instead if you want no change.",
-								"allOf": [
-									{"not": { "properties": {
-										"x": {"const": 0}, "y": {"const": 0}, "z": {"const": 0},
-										"set": {"const": false}
-									}}},
-									{"not": { "properties": {
-										"client": {"const": false}, "server": {"const": false}
-									}}}
-								]
+								"$comment": "origins:nothing should be used instead if you want no change."
 							}
 						},
 						{
