@@ -41,7 +41,7 @@
 		},
 		"order": {
 			"type": "integer",
-			"description": "Specifies the position of this origin in the choose origin screen among the other origins with the same impact in the layer. If not specified, will be a really large number - basically adding it in the end."
+			"description": "Specifies the position of this origin in the choose origin screen among the other origins with the same impact in the layer.\nIf not specified, will be a really large number - basically adding it in the end."
 		},
 		"impact": {
 			"type": "integer",

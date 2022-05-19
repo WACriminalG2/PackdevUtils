@@ -35,7 +35,8 @@
 				"origins:modify_xp_gain",
 
 				"origins:prevent_being_used", "origins:prevent_block_selection", "origins:prevent_block_use", "origins:prevent_death",
-				"origins:prevent_entity_render", "origins:prevent_item_use", "origins:prevent_sleep"
+				"origins:prevent_elytra_flight", "origins:prevent_entity_collision", "origins:prevent_entity_render", "origins:prevent_entity_use",
+				"origins:prevent_feature_render", "origins:prevent_game_event", "origins:prevent_item_use", "origins:prevent_sleep"
 			]
 		},
 		"name": {
@@ -7106,63 +7107,56 @@
 			"$comment": "#region Preventing types",
 			"if": {
 				"properties": { "type": {"const":"origins:prevent_being_used"} },
-				"required": ["type"]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_being_used/"
 			},
 			"then": {
 				"properties": {
 					"bientity_action": {
 						"$ref": "#/definitions/actions/properties/bientity_action",
-						"description": "The action to execute upon preventing other players from right-clicking the entity that has the power if specified."
+						"description": "If specified, this action will be executed on either or both 'actor' (player) or 'target' (the entity that has the power) entities."
 					},
 					"bientity_condition": {
 						"$ref": "#/definitions/conditions/properties/bientity_condition",
-						"description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by either or both 'actor' (player) or 'target' (the entity that has the power) entities."
 					},
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the other player's specified hand(s) equipment slot determined by the hands string field."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by the item in the 'actor' (player) entity's specified hand(s) determined by the `hands` string array field."
 					},
 					"hands": {
 						"type": "array",
-						"items": { "enum": ["off_hand", "main_hand"] },
-						"default": ["off_hand", "main_hand"],
-						"description": "Determines if the power should be activated if the other player used the specified hand slot(s). Accepts \"off_hand\", \"main_hand\" or both."
+						"description": "Determines if the power should be activated if the 'actor' (player) entity used the specified hand(s).\nAccepts `\"off_hand\"`, `\"main_hand\"` or both.",
+						"items": {"enum": ["off_hand", "main_hand"]},
+						"uniqueItems": true,
+						"default": ["off_hand", "main_hand"]
 					},
 					"result_stack": {
 						"$ref": "#/definitions/origins_data_types/properties/item_stack",
-						"description": "If specified, gives an item stack to the player."
+						"description": "If specified, this item will be given to the 'actor' (player) entity."
+					},
+					"held_item_action": {
+						"$ref": "#/definitions/actions/properties/item_action",
+						"description": "If specified, this action will be executed on the item used for right-clicking the 'target' (the entity that has the power) entity in the 'actor' (player) entity's specified hand(s) determined by the `hands` string array field."
 					},
 					"result_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If specified, executes an item action on the given item stack."
+						"description": "If specified, this action will be executed on the item that is given to the 'actor' (player) entity."
 					}
 				}
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": {"const":"origins:prevent_block_selection"} },
-				"required": [ "type" ]
+				"properties": { "type": {"enum":["origins:prevent_block_selection", "origins:prevent_block_use"]} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_block_selection/ https://origins.readthedocs.io/en/latest/types/power_types/prevent_block_use/"
 			},
 			"then": {
 				"properties": {
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "When set, only blocks which meet this condition will be unable to be selected."
-					}
-				}
-			}
-		},
-		{
-			"if": {
-				"properties": { "type": {"const":"origins:prevent_block_use"} },
-				"required": [ "type" ]
-			},
-			"then": {
-				"properties": {
-					"block_condition": {
-						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "When set, only blocks which meet this condition will be unable to be used."
+						"description": "If specified, only blocks that fulfil this condition are affected."
 					}
 				}
 			}
@@ -7170,17 +7164,48 @@
 		{
 			"if": {
 				"properties": { "type": {"const":"origins:prevent_death"} },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_death/"
 			},
 			"then": {
 				"properties": {
 					"damage_condition": {
-						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, death will only prevented when damage which matches this condition is dealt. Other damage will still kill the player."
+						"$ref": "#/definitions/conditions/properties/damage_condition",
+						"description": "If specified, death will only be prevented if the damage dealt to the entity fulfills this condition."
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "The action to execute on the player when death is prevented."
+						"description": "If specified, this action will be executed on the entity when death is prevented."
+					}
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": {"const":"origins:prevent_elytra_flight"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_elytra_flight/"
+			},
+			"then": {
+				"properties": {
+					"entity_action": {
+						"$ref": "#/definitions/actions/properties/entity_action",
+						"description": "If specified, execute this entity action type upon preventing the entity that has the power."
+					}
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": {"const":"origins:prevent_entity_collision"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_entity_collision/"
+			},
+			"then": {
+				"properties": {
+					"bientity_condition": {
+						"$ref": "#/definitions/conditions/properties/bientity_condition",
+						"description": "If specified, collision is only affected as long as both the 'actor' (the entity with the power), and the 'target' fulfill the specified conditions."
 					}
 				}
 			}
@@ -7188,13 +7213,18 @@
 		{
 			"if": {
 				"properties": { "type": {"const":"origins:prevent_entity_render"} },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_entity_render/"
 			},
 			"then": {
 				"properties": {
 					"entity_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, only entities which fulfill this condition will be invisible."
+						"description": "If specified, only entities which fulfills this condition will be affected."
+					},
+					"bientity_condition": {
+						"$ref": "#/definitions/conditions/properties/bientity_condition",
+						"description": "If specified, the power will only be active if this condition is fulfilled by either or both the 'actor' (the player that has the power) and 'target' (the entity that will not render) entities."
 					}
 				}
 			}
@@ -7202,53 +7232,134 @@
 		{
 			"if": {
 				"properties": { "type": {"const":"origins:prevent_entity_use"} },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_entity_use/"
 			},
 			"then": {
 				"properties": {
 					"bientity_action": {
 						"$ref": "#/definitions/actions/properties/bientity_action",
-						"description": "The action to execute upon being prevented from right-clicking an entity."
+						"description": "If specified, this action will be executed on either or both 'actor' (the player that has the power) or 'target' (the entity that is right-clicked) entities."
 					},
 					"bientity_condition": {
 						"$ref": "#/definitions/conditions/properties/bientity_condition",
-						"description": "If specified, only execute the specified actions if the bi-entity condition is fulfilled."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by either or both 'actor' (the player that has the power) or 'target' (the entity that is right-clicked) entities."
 					},
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If specified, only execute the specified actions if the item condition is fulfilled by the item in the other player's specified hand(s) equipment slot determined by the hands string field."
+						"description": "If specified, only execute the specified actions if this condition is fulfilled by the item in the 'actor' (the player that has the power) entity's specified hand(s) determined by the `hands` string array field."
 					},
 					"hands": {
 						"type": "array",
-						"items": { "enum": ["off_hand", "main_hand"] },
-						"default": ["off_hand", "main_hand"],
-						"description": "Determines if the power should be activated if the player used the specified hand slot(s). Accepts \"off_hand\", \"main_hand\" or both."
+						"description": "Determines if the power should be activated if the 'actor' (the player that has the power) entity used the specified hand(s). Accepts `\"off_hand\"`, `\"main_hand\"` or both.",
+						"items": {"enum": ["off_hand", "main_hand"]},
+						"uniqueItems": true,
+						"default": ["off_hand", "main_hand"]
 					},
 					"result_stack": {
 						"$ref": "#/definitions/origins_data_types/properties/item_stack",
-						"description": "If specified, gives the result item stack to the player."
+						"description": "If specified, this item will be given to the 'actor' (the player that has the power) entity."
 					},
 					"held_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If specified, executes an item action on the item stack used for right-clicking the entity in the specified hand slot."
+						"description": "If specified, this action will be executed on the item used for right-clicking the 'target' (the entity that is right-clicked) entity in the 'actor' (the player that has the power) entity's specified hand(s) determined by the `hands` string array field."
 					},
 					"result_item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If specified, executes an item action on the result item stack."
+						"description": "If specified, this action will be executed on the item that is given to the 'actor' (the player that has the power) entity."
 					}
 				}
 			}
 		},
 		{
 			"if": {
+				"properties": { "type": {"const":"origins:prevent_feature_render"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_feature_render/"
+			},
+			"then": {
+				"properties": {
+					"feature": {
+						"enum": [
+							"armor", "cape", "cat_collar", "deadmau5", "dolphin_held_item", "drowned_overlay", "elytra", "enderman_block",
+							"energy_swirl_overlay", "eyes", "fox_held_item", "head", "held_item", "horse_armor", "horse_marking", "iron_golem_crack",
+							"iron_golem_flower", "llama_decor", "mooshroom_mushroom", "panda_held_item", "saddle", "sheep_wool", "shoulder_parrot",
+							"shulker_head", "slime_overlay", "snowman_pumpkin", "stray_overlay", "stuck_objects", "trident_riptide",
+							"tropical_fish_color", "villager_clothing", "villager_held_item", "wolf_collar"
+						],
+						"description": "If specified, this feature renderer will not be rendered."
+					},
+					"features": {
+						"type": "array",
+						"description": "If specified, these feature renderers will not be rendered.",
+						"items": {
+							"enum": [
+								"armor", "cape", "cat_collar", "deadmau5", "dolphin_held_item", "drowned_overlay", "elytra", "enderman_block",
+								"energy_swirl_overlay", "eyes", "fox_held_item", "head", "held_item", "horse_armor", "horse_marking",
+								"iron_golem_crack", "iron_golem_flower", "llama_decor", "mooshroom_mushroom", "panda_held_item", "saddle",
+								"sheep_wool", "shoulder_parrot", "shulker_head", "slime_overlay", "snowman_pumpkin", "stray_overlay", "stuck_objects",
+								"trident_riptide", "tropical_fish_color", "villager_clothing", "villager_held_item", "wolf_collar"
+							]
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					}
+				},
+				"oneOf": [
+					{"required": ["feature"]},
+					{"required": ["features"]}
+				]
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": {"const":"origins:prevent_game_event"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_game_event/"
+			},
+			"then": {
+				"properties": {
+					"event": {
+						"type":"string",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+						"description": "If specified, the game event with this namespace and ID will be prevent from being emitted by the entity.",
+						"examples": ["minecraft:hit_ground"]
+					},
+					"events": {
+						"type": "array",
+						"description": "If specified, the game events with these namespace and IDs will be prevent from being emitted by the entity.",
+						"items": {
+							"type":"string",
+							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+							"examples": ["minecraft:hit_ground"]
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"tag": {
+						"type":"string",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+						"description": "If specified, the game events inside game event tag will be prevented from being emitted by the entity."
+					},
+					"entity_action": {
+						"$ref": "#/definitions/actions/properties/entity_action",
+						"description": "If specified, this action will be executed on the entity upon preventing game events."
+					}
+				},
+				"not": {"required": ["event", "events"]}
+			}
+		},
+		{
+			"if": {
 				"properties": { "type": {"const":"origins:prevent_item_use"} },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_item_use/"
 			},
 			"then": {
 				"properties": {
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, only items which satisfy this condition will be blocked from being used."
+						"description": "If specified, only items that fulfills this condition will be prevented from being used."
 					}
 				}
 			}
@@ -7256,13 +7367,14 @@
 		{
 			"if": {
 				"properties": { "type": {"const":"origins:prevent_sleep"} },
-				"required": [ "type" ]
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/prevent_sleep/"
 			},
 			"then": {
 				"properties": {
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, sleep will only be prevented if this condition holds for the bed."
+						"description": "If specified, sleep will only be prevented if this condition is fulfilled by the bed block."
 					},
 					"message": {
 						"type": "string",
@@ -7271,7 +7383,7 @@
 					},
 					"set_spawn_point": {
 						"type": "boolean",
-						"description": "If true, right-clicking the bed while sleeping is prevented with this power will still set the spawn point (similar to what happens when you right-click a bed while it's daytime).",
+						"description": "Determines whether the spawnpoint of the player is set upon right-clicking a bed while being prevented. (similar to what happens when you right-click a bed while it's daytime)",
 						"default": false
 					}
 				}

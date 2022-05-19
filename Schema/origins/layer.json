@@ -11,12 +11,12 @@
 		},
 		"origins": {
 			"type": "array",
-			"description": "Defines the origins that should be in this layer. Identifier strings and Conditioned Origin objects can be mixed in the same array.",
+			"description": "Defines the origins that should be in this layer.\nIdentifier strings and Conditioned Origin objects can be mixed in the same array.",
 			"items": {
 				"type": ["string", "object"],
 				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 				"properties": {
-					"condition": { "$ref": "#/definitions/conditions/properties/entity_condition" },
+					"condition": {"$ref": "#/definitions/conditions/properties/entity_condition"},
 					"origins": {
 						"type": "array",
 						"description": "IDs of the origins which should become available when the condition is fulfilled.",
@@ -28,7 +28,9 @@
 					}
 				},
 				"required": ["condition", "origins"]
-			}
+			},
+			"minItems":1,
+			"uniqueItems": true
 		},
 		"enabled": {
 			"type": "boolean",
@@ -43,6 +45,20 @@
 		"name": {
 			"type": "string",
 			"description": "The display name of the layer. Will show at the top of the GUI saying \"Choose your [name here]\". Can be a literal string or a translation key."
+		},
+		"gui_title": {
+			"type":"object",
+			"description": "If specified, the choose/view origin title for the layer (the text that shows at the top of the GUI) will be overridden by this.",
+			"properties": {
+				"choose_origin": {
+					"type":"string",
+					"description": "If specified, this will override the title that shows up when choosing an origin in the layer."
+				},
+				"view_origin": {
+					"type":"string",
+					"description": "If specified, this will override the title that shows up when viewing an origin in the layer."
+				}
+			}
 		},
 		"missing_name": {
 			"type": "string",
@@ -59,7 +75,7 @@
 		},
 		"allow_random_unchoosable": {
 			"type": "boolean",
-			"description": "Whether origins which are unchoosable (unchoosable field set to true in the origin file) should be included in the random option. Can for example be used to force players to choose a random origin, by setting this to true and making all origins in the layer unchoosable.",
+			"description": "Whether origins which are unchoosable (`unchoosable` field set to true in the origin file) should be included in the random option. Can for example be used to force players to choose a random origin, by setting this to true and making all origins in the layer unchoosable.",
 			"default": false
 		},
 		"exclude_random": {
@@ -69,17 +85,28 @@
 				"type": "string",
 				"description": "Identifier string",
 				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
-			}
+			},
+			"uniqueItems": true
 		},
 		"default_origin": {
 			"type": "string",
-			"description": "If set, the origin with this ID will automatically be chosen for a new player. If an orb of origin is used later on, the player will be able to choose another origin then and the default_origin will not apply. Could for example be used to make all players start as human, and then use the orb as a progression item to select an origin.",
+			"description": "If set, the origin with this ID will automatically be chosen for a new player. If an orb of origin is used later on, the player will be able to choose another origin then and the `default_origin` will not apply. Could for example be used to make all players start as human, and then use the orb as a progression item to select an origin.",
 			"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 		},
 		"auto_choose": {
 			"type": "boolean",
 			"description": "If set to true, this layer will automatically pick an origin for the player if only one option is available. This also applies when an orb of origin is used.",
 			"default": false
+		},
+		"hidden": {
+			"type":"boolean",
+			"description": "If set to true, this layer will be hidden from the \"View Origin\" screen.",
+			"default":false
+		},
+		"loading_priority": {
+			"type":"integer",
+			"description": "Specifies when this layer is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID.",
+			"default": 0
 		}
 	},
 	"required": ["origins"],
