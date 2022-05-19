@@ -82,7 +82,7 @@
 			"default": false
 		}
 	},
-	"required": [ "origins" ],
+	"required": ["origins"],
 	"definitions": {
 		"conditions": {
 			"type": "object",
@@ -116,7 +116,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -133,7 +133,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -148,7 +148,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -165,7 +165,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:actor_condition" } },
+								"properties": { "type": {"const":"origins:actor_condition"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -180,7 +180,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:both" } },
+								"properties": { "type": {"const":"origins:both"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -195,7 +195,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:either" } },
+								"properties": { "type": {"const":"origins:either"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -210,7 +210,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:invert" } },
+								"properties": { "type": {"const":"origins:invert"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -225,7 +225,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:target_condition" } },
+								"properties": { "type": {"const":"origins:target_condition"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -240,7 +240,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:undirected" } },
+								"properties": { "type": {"const":"origins:undirected"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -256,7 +256,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:can_see" } },
+								"properties": { "type": {"const":"origins:can_see"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/can_see/"
 							},
@@ -277,7 +277,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance" } },
+								"properties": { "type": {"const":"origins:distance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/distance/"
 							},
@@ -297,7 +297,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:relative_rotation" } },
+								"properties": { "type": {"const":"origins:relative_rotation"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/relative_rotation/"
 							},
@@ -360,7 +360,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -377,7 +377,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -393,7 +393,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -410,7 +410,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:category" } },
+								"properties": { "type": {"const":"origins:category"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/biome_condition_types/category/"
 							},
@@ -431,7 +431,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:precipitation" } },
+								"properties": { "type": {"const":"origins:precipitation"} },
 								"required": ["type"],
 								"$comment":"https://origins.readthedocs.io/en/latest/types/biome_condition_types/precipitation/"
 							},
@@ -447,7 +447,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:temperature" } },
+								"properties": { "type": {"const":"origins:temperature"} },
 								"required": ["type"],
 								"$comment":"https://origins.readthedocs.io/en/latest/types/biome_condition_types/temperature/"
 							},
@@ -496,7 +496,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -513,7 +513,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -528,7 +528,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -545,7 +545,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:offset" } },
+								"properties": { "type": {"const":"origins:offset"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/offset/"
 							},
@@ -577,7 +577,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:adjacent" } },
+								"properties": { "type": {"const":"origins:adjacent"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/adjacent/"
 							},
@@ -601,7 +601,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:blast_resistance" } },
+								"properties": { "type": {"const":"origins:blast_resistance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/blast_resistance/"
 							},
@@ -621,7 +621,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_state" } },
+								"properties": { "type": {"const":"origins:block_state"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/block_state/"
 							},
@@ -658,7 +658,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block" } },
+								"properties": { "type": {"const":"origins:block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/block/"
 							},
@@ -676,7 +676,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance_from_coordinates" } },
+								"properties": { "type": {"const":"origins:distance_from_coordinates"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/distance_from_coordinates/"
 							},
@@ -738,7 +738,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fluid" } },
+								"properties": { "type": {"const":"origins:fluid"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/fluid/"
 							},
@@ -754,7 +754,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:hardness" } },
+								"properties": { "type": {"const":"origins:hardness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/hardness/"
 							},
@@ -774,7 +774,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:height" } },
+								"properties": { "type": {"const":"origins:height"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/height/"
 							},
@@ -794,7 +794,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/in_tag/"
 							},
@@ -812,7 +812,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:light_level" } },
+								"properties": { "type": {"const":"origins:light_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/light_level/"
 							},
@@ -836,7 +836,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:origins:material" } },
+								"properties": { "type": {"const":"origins:origins:material"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/material/"
 							},
@@ -886,7 +886,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/nbt/"
 							},
@@ -903,7 +903,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:slipperiness" } },
+								"properties": { "type": {"const":"origins:slipperiness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/slipperiness/"
 							},
@@ -948,7 +948,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -965,7 +965,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -980,7 +980,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -998,7 +998,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:amount" } },
+								"properties": { "type": {"const":"origins:amount"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/amount/"
 							},
@@ -1018,7 +1018,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:attacker" } },
+								"properties": { "type": {"const":"origins:attacker"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/attacker/"
 							},
@@ -1033,7 +1033,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:name" } },
+								"properties": { "type": {"const":"origins:name"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/name/"
 							},
@@ -1072,7 +1072,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:projectile" } },
+								"properties": { "type": {"const":"origins:projectile"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/projectile/"
 							},
@@ -1134,7 +1134,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1151,7 +1151,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1166,7 +1166,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1184,7 +1184,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:ability" } },
+								"properties": { "type": {"const":"origins:ability"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/ability/"
 							},
@@ -1202,7 +1202,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:advancement" } },
+								"properties": { "type": {"const":"origins:advancement"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/advancement/"
 							},
@@ -1220,7 +1220,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:air" } },
+								"properties": { "type": {"const":"origins:air"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/air/"
 							},
@@ -1240,7 +1240,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:attribute" } },
+								"properties": { "type": {"const":"origins:attribute"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/attribute/"
 							},
@@ -1275,7 +1275,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:biome" } },
+								"properties": { "type": {"const":"origins:biome"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/biome/"
 							},
@@ -1310,7 +1310,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_collision" } },
+								"properties": { "type": {"const":"origins:block_collision"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/block_collision/"
 							},
@@ -1334,7 +1334,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_in_radius" } },
+								"properties": { "type": {"const":"origins:block_in_radius"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/block_in_radius/"
 							},
@@ -1369,7 +1369,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:brightness" } },
+								"properties": { "type": {"const":"origins:brightness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/brightness/"
 							},
@@ -1391,7 +1391,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:command" } },
+								"properties": { "type": {"const":"origins:command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/command/"
 							},
@@ -1424,7 +1424,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:dimension" } },
+								"properties": { "type": {"const":"origins:dimension"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/dimension/"
 							},
@@ -1442,7 +1442,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance_from_coordinates" } },
+								"properties": { "type": {"const":"origins:distance_from_coordinates"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/distance_from_coordinates/"
 							},
@@ -1504,7 +1504,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:elytra_flight_possible" } },
+								"properties": { "type": {"const":"origins:elytra_flight_possible"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/elytra_flight_possible/"
 							},
@@ -1525,7 +1525,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:enchantment" } },
+								"properties": { "type": {"const":"origins:enchantment"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/enchantment/"
 							},
@@ -1556,7 +1556,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:entity_group" } },
+								"properties": { "type": {"const":"origins:entity_group"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/entity_group/"
 							},
@@ -1572,7 +1572,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:entity_type" } },
+								"properties": { "type": {"const":"origins:entity_type"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/entity_type/"
 							},
@@ -1590,7 +1590,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:equipped_item" } },
+								"properties": { "type": {"const":"origins:equipped_item"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/equipped_item/"
 							},
@@ -1610,7 +1610,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fall_distance" } },
+								"properties": { "type": {"const":"origins:fall_distance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/fall_distance/"
 							},
@@ -1630,7 +1630,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fluid_height" } },
+								"properties": { "type": {"const":"origins:fluid_height"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/fluid_height/"
 							},
@@ -1656,7 +1656,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:food_level" } },
+								"properties": { "type": {"const":"origins:food_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/food_level/"
 							},
@@ -1676,7 +1676,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:gamemode" } },
+								"properties": { "type": {"const":"origins:gamemode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/gamemode/"
 							},
@@ -1692,7 +1692,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:health" } },
+								"properties": { "type": {"const":"origins:health"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/health/"
 							},
@@ -1712,7 +1712,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_block_anywhere" } },
+								"properties": { "type": {"const":"origins:in_block_anywhere"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/in_block_anywhere/"
 							},
@@ -1738,7 +1738,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_block" } },
+								"properties": { "type": {"const":"origins:in_block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/in_block/"
 							},
@@ -1754,7 +1754,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/in_tag/"
 							},
@@ -1772,7 +1772,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/nbt/"
 							},
@@ -1790,7 +1790,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:on_block" } },
+								"properties": { "type": {"const":"origins:on_block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/on_block/"
 							},
@@ -1805,7 +1805,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:origin" } },
+								"properties": { "type": {"const":"origins:origin"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/origin/"
 							},
@@ -1854,7 +1854,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power_active" } },
+								"properties": { "type": {"const":"origins:power_active"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power_active/"
 							},
@@ -1872,7 +1872,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power_type" } },
+								"properties": { "type": {"const":"origins:power_type"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power_type/"
 							},
@@ -1890,7 +1890,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power" } },
+								"properties": { "type": {"const":"origins:power"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power/"
 							},
@@ -1913,7 +1913,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:predicate" } },
+								"properties": { "type": {"const":"origins:predicate"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/predicate/"
 							},
@@ -1931,7 +1931,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:raycast" } },
+								"properties": { "type": {"const":"origins:raycast"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/raycast/"
 							},
@@ -1979,7 +1979,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:relative_health" } },
+								"properties": { "type": {"const":"origins:relative_health"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/relative_health/"
 							},
@@ -2001,7 +2001,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:resource" } },
+								"properties": { "type": {"const":"origins:resource"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/resource/"
 							},
@@ -2027,7 +2027,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:riding_recursive" } },
+								"properties": { "type": {"const":"origins:riding_recursive"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/riding_recursive/"
 							},
@@ -2067,7 +2067,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:saturation_level" } },
+								"properties": { "type": {"const":"origins:saturation_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/saturation_level/"
 							},
@@ -2087,7 +2087,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:scoreboard" } },
+								"properties": { "type": {"const":"origins:scoreboard"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/scoreboard/"
 							},
@@ -2111,7 +2111,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:status_effect" } },
+								"properties": { "type": {"const":"origins:status_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/status_effect/"
 							},
@@ -2155,7 +2155,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:submerged_in" } },
+								"properties": { "type": {"const":"origins:submerged_in"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/submerged_in/"
 							},
@@ -2173,7 +2173,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:time_of_day" } },
+								"properties": { "type": {"const":"origins:time_of_day"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/time_of_day/"
 							},
@@ -2195,7 +2195,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:using_item" } },
+								"properties": { "type": {"const":"origins:using_item"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/using_item/"
 							},
@@ -2210,7 +2210,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:xp_levels" } },
+								"properties": { "type": {"const":"origins:xp_levels"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/xp_levels/"
 							},
@@ -2230,7 +2230,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:xp_points" } },
+								"properties": { "type": {"const":"origins:xp_points"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/xp_points/"
 							},
@@ -2274,7 +2274,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2291,7 +2291,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2306,7 +2306,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2324,7 +2324,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/fluid_condition_types/in_tag/"
 							},
@@ -2367,7 +2367,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2384,7 +2384,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2399,7 +2399,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2417,7 +2417,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:amount" } },
+								"properties": { "type": {"const":"origins:amount"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/amount/"
 							},
@@ -2437,7 +2437,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:armor_value" } },
+								"properties": { "type": {"const":"origins:armor_value"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/armor_value/"
 							},
@@ -2457,7 +2457,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:enchantment" } },
+								"properties": { "type": {"const":"origins:enchantment"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/enchantment/"
 							},
@@ -2483,7 +2483,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:harvest_level" } },
+								"properties": { "type": {"const":"origins:harvest_level"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/harvest_level/"
 							},
@@ -2504,7 +2504,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:ingredient" } },
+								"properties": { "type": {"const":"origins:ingredient"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/ingredient/"
 							},
@@ -2520,7 +2520,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/nbt/"
 							},
@@ -2566,7 +2566,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2583,7 +2583,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -2609,7 +2609,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -2634,7 +2634,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -2654,7 +2654,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2678,7 +2678,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -2702,7 +2702,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:actor_action" } },
+								"properties": { "type": {"const":"origins:actor_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/actor_action/"
 							},
@@ -2718,7 +2718,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:invert" } },
+								"properties": { "type": {"const":"origins:invert"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/invert/"
 							},
@@ -2734,7 +2734,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:target_action" } },
+								"properties": { "type": {"const":"origins:target_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/target_action/"
 							},
@@ -2751,7 +2751,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_velocity" } },
+								"properties": { "type": {"const":"origins:add_velocity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/add_velocity/"
 							},
@@ -2802,7 +2802,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/damage/"
 							},
@@ -2843,7 +2843,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2860,7 +2860,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -2886,7 +2886,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -2911,7 +2911,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -2931,7 +2931,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2955,7 +2955,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -2979,7 +2979,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:offset" } },
+								"properties": { "type": {"const":"origins:offset"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/offset/"
 							},
@@ -3032,7 +3032,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:bonemeal" } },
+								"properties": { "type": {"const":"origins:bonemeal"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/bonemeal/"
 							},
@@ -3049,7 +3049,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:execute_command" } },
+								"properties": { "type": {"const":"origins:execute_command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/execute_command/"
 							},
@@ -3074,7 +3074,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:explode" } },
+								"properties": { "type": {"const":"origins:explode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/explode/"
 							},
@@ -3114,7 +3114,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:modify_block_state" } },
+								"properties": { "type": {"const":"origins:modify_block_state"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/modify_block_state/"
 							},
@@ -3183,7 +3183,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3200,7 +3200,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -3226,7 +3226,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -3251,7 +3251,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -3271,7 +3271,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3295,7 +3295,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -3320,7 +3320,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_velocity" } },
+								"properties": { "type": {"const":"origins:add_velocity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/add_velocity/"
 							},
@@ -3376,7 +3376,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_xp" } },
+								"properties": { "type": {"const":"origins:add_xp"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/add_xp/"
 							},
@@ -3400,7 +3400,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:apply_effect" } },
+								"properties": { "type": {"const":"origins:apply_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/apply_effect/"
 							},
@@ -3422,7 +3422,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:area_of_effect" } },
+								"properties": { "type": {"const":"origins:area_of_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/area_of_effect/"
 							},
@@ -3452,7 +3452,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_action_at" } },
+								"properties": { "type": {"const":"origins:block_action_at"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/block_action_at/"
 							},
@@ -3468,7 +3468,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:change_resource" } },
+								"properties": { "type": {"const":"origins:change_resource"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/change_resource/"
 							},
@@ -3493,7 +3493,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:clear_effect" } },
+								"properties": { "type": {"const":"origins:clear_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/clear_effect/"
 							},
@@ -3510,7 +3510,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/damage/"
 							},
@@ -3527,7 +3527,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:emit_game_event" } },
+								"properties": { "type": {"const":"origins:emit_game_event"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3560,7 +3560,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:equipped_item_action" } },
+								"properties": { "type": {"const":"origins:equipped_item_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/equipped_item_action/"
 							},
@@ -3580,7 +3580,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:execute_command" } },
+								"properties": { "type": {"const":"origins:execute_command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/execute_command/"
 							},
@@ -3604,7 +3604,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:exhaust" } },
+								"properties": { "type": {"const":"origins:exhaust"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/exhaust/"
 							},
@@ -3620,7 +3620,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:explode" } },
+								"properties": { "type": {"const":"origins:explode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/explode/"
 							},
@@ -3660,7 +3660,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:feed" } },
+								"properties": { "type": {"const":"origins:feed"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/feed/"
 							},
@@ -3680,7 +3680,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:gain_air" } },
+								"properties": { "type": {"const":"origins:gain_air"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/gain_air/"
 							},
@@ -3696,7 +3696,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:give" } },
+								"properties": { "type": {"const":"origins:give"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/give/"
 							},
@@ -3744,7 +3744,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:heal" } },
+								"properties": { "type": {"const":"origins:heal"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/heal/"
 							},
@@ -3760,7 +3760,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:passenger_action" } },
+								"properties": { "type": {"const":"origins:passenger_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/passenger_action/"
 							},
@@ -3788,7 +3788,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:play_sound" } },
+								"properties": { "type": {"const":"origins:play_sound"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/play_sound/"
 							},
@@ -3817,7 +3817,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:raycast" } },
+								"properties": { "type": {"const":"origins:raycast"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/raycast/"
 							},
@@ -3900,7 +3900,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:riding_action" } },
+								"properties": { "type": {"const":"origins:riding_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/riding_action/"
 							},
@@ -3928,7 +3928,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:set_fall_distance" } },
+								"properties": { "type": {"const":"origins:set_fall_distance"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3943,7 +3943,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:set_on_fire" } },
+								"properties": { "type": {"const":"origins:set_on_fire"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/set_on_fire/"
 							},
@@ -3960,7 +3960,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_effect_cloud" } },
+								"properties": { "type": {"const":"origins:spawn_effect_cloud"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_effect_cloud/"
 							},
@@ -3998,7 +3998,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_entity" } },
+								"properties": { "type": {"const":"origins:spawn_entity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_entity/"
 							},
@@ -4025,7 +4025,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_particles" } },
+								"properties": { "type": {"const":"origins:spawn_particles"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_particles/"
 							},
@@ -4065,7 +4065,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:swing_hand" } },
+								"properties": { "type": {"const":"origins:swing_hand"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/swing_hand/"
 							},
@@ -4081,7 +4081,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:toggle" } },
+								"properties": { "type": {"const":"origins:toggle"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/toggle/"
 							},
@@ -4099,7 +4099,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:trigger_cooldown" } },
+								"properties": { "type": {"const":"origins:trigger_cooldown"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4135,7 +4135,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4152,7 +4152,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -4178,7 +4178,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -4203,7 +4203,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -4223,7 +4223,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4247,7 +4247,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -4272,7 +4272,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:consume" } },
+								"properties": { "type": {"const":"origins:consume"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/consume/"
 							},
@@ -4289,7 +4289,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4309,7 +4309,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:modify" } },
+								"properties": { "type": {"const":"origins:modify"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/modify/"
 							},
@@ -4411,7 +4411,7 @@
 					"allOf": [
 						{
 							"if": {
-								"properties": { "type": { "const": "minecraft:crafting_shapeless" } },
+								"properties": { "type": {"const":"minecraft:crafting_shapeless"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4429,7 +4429,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "minecraft:crafting_shaped" } },
+								"properties": { "type": {"const":"minecraft:crafting_shaped"} },
 								"required": ["type"]
 							},
 							"then": {

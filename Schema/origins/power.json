@@ -30,7 +30,8 @@
 				"origins:modify_air_speed", "origins:modify_block_render", "origins:modify_break_speed", "origins:modify_camera_submersion",
 				"origins:modify_crafting", "origins:modify_damage_dealt", "origins:modify_damage_taken", "origins:modify_exhaustion",
 				"origins:modify_falling", "origins:modify_fluid_render", "origins:modify_food", "origins:modify_harvest", "origins:modify_jump",
-				"origins:modify_lava_speed", "origins:modify_player_spawn", "origins:modify_projectile_damage", "origins:modify_swim_speed",
+				"origins:modify_lava_speed", "origins:modify_player_spawn", "origins:modify_projectile_damage", "origins:modify_slipperiness",
+				"origins:modify_status_effect_amplifier", "origins:modify_status_effect_duration", "origins:modify_swim_speed",
 				"origins:modify_xp_gain",
 
 				"origins:prevent_being_used", "origins:prevent_block_selection", "origins:prevent_block_use", "origins:prevent_death",
@@ -118,7 +119,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -135,7 +136,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -150,7 +151,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -167,7 +168,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:actor_condition" } },
+								"properties": { "type": {"const":"origins:actor_condition"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -182,7 +183,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:both" } },
+								"properties": { "type": {"const":"origins:both"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -197,7 +198,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:either" } },
+								"properties": { "type": {"const":"origins:either"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -212,7 +213,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:invert" } },
+								"properties": { "type": {"const":"origins:invert"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -227,7 +228,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:target_condition" } },
+								"properties": { "type": {"const":"origins:target_condition"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -242,7 +243,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:undirected" } },
+								"properties": { "type": {"const":"origins:undirected"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -258,7 +259,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:can_see" } },
+								"properties": { "type": {"const":"origins:can_see"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/can_see/"
 							},
@@ -279,7 +280,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance" } },
+								"properties": { "type": {"const":"origins:distance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/distance/"
 							},
@@ -299,7 +300,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:relative_rotation" } },
+								"properties": { "type": {"const":"origins:relative_rotation"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_condition_types/relative_rotation/"
 							},
@@ -362,7 +363,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -379,7 +380,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -395,7 +396,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -412,7 +413,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:category" } },
+								"properties": { "type": {"const":"origins:category"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/biome_condition_types/category/"
 							},
@@ -433,7 +434,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:precipitation" } },
+								"properties": { "type": {"const":"origins:precipitation"} },
 								"required": ["type"],
 								"$comment":"https://origins.readthedocs.io/en/latest/types/biome_condition_types/precipitation/"
 							},
@@ -449,7 +450,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:temperature" } },
+								"properties": { "type": {"const":"origins:temperature"} },
 								"required": ["type"],
 								"$comment":"https://origins.readthedocs.io/en/latest/types/biome_condition_types/temperature/"
 							},
@@ -498,7 +499,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -515,7 +516,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -530,7 +531,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -547,7 +548,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:offset" } },
+								"properties": { "type": {"const":"origins:offset"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/offset/"
 							},
@@ -579,7 +580,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:adjacent" } },
+								"properties": { "type": {"const":"origins:adjacent"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/adjacent/"
 							},
@@ -603,7 +604,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:blast_resistance" } },
+								"properties": { "type": {"const":"origins:blast_resistance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/blast_resistance/"
 							},
@@ -623,7 +624,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_state" } },
+								"properties": { "type": {"const":"origins:block_state"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/block_state/"
 							},
@@ -660,7 +661,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block" } },
+								"properties": { "type": {"const":"origins:block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/block/"
 							},
@@ -678,7 +679,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance_from_coordinates" } },
+								"properties": { "type": {"const":"origins:distance_from_coordinates"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/distance_from_coordinates/"
 							},
@@ -740,7 +741,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fluid" } },
+								"properties": { "type": {"const":"origins:fluid"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/fluid/"
 							},
@@ -756,7 +757,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:hardness" } },
+								"properties": { "type": {"const":"origins:hardness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/hardness/"
 							},
@@ -776,7 +777,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:height" } },
+								"properties": { "type": {"const":"origins:height"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/height/"
 							},
@@ -796,7 +797,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/in_tag/"
 							},
@@ -814,7 +815,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:light_level" } },
+								"properties": { "type": {"const":"origins:light_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/light_level/"
 							},
@@ -838,7 +839,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:origins:material" } },
+								"properties": { "type": {"const":"origins:origins:material"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/material/"
 							},
@@ -888,7 +889,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/nbt/"
 							},
@@ -905,7 +906,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:slipperiness" } },
+								"properties": { "type": {"const":"origins:slipperiness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_condition_types/slipperiness/"
 							},
@@ -950,7 +951,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -967,7 +968,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -982,7 +983,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1000,7 +1001,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:amount" } },
+								"properties": { "type": {"const":"origins:amount"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/amount/"
 							},
@@ -1020,7 +1021,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:attacker" } },
+								"properties": { "type": {"const":"origins:attacker"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/attacker/"
 							},
@@ -1035,7 +1036,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:name" } },
+								"properties": { "type": {"const":"origins:name"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/name/"
 							},
@@ -1074,7 +1075,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:projectile" } },
+								"properties": { "type": {"const":"origins:projectile"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/damage_condition_types/projectile/"
 							},
@@ -1136,7 +1137,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1153,7 +1154,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1168,7 +1169,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -1186,7 +1187,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:ability" } },
+								"properties": { "type": {"const":"origins:ability"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/ability/"
 							},
@@ -1204,7 +1205,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:advancement" } },
+								"properties": { "type": {"const":"origins:advancement"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/advancement/"
 							},
@@ -1222,7 +1223,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:air" } },
+								"properties": { "type": {"const":"origins:air"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/air/"
 							},
@@ -1242,7 +1243,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:attribute" } },
+								"properties": { "type": {"const":"origins:attribute"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/attribute/"
 							},
@@ -1277,7 +1278,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:biome" } },
+								"properties": { "type": {"const":"origins:biome"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/biome/"
 							},
@@ -1312,7 +1313,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_collision" } },
+								"properties": { "type": {"const":"origins:block_collision"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/block_collision/"
 							},
@@ -1336,7 +1337,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_in_radius" } },
+								"properties": { "type": {"const":"origins:block_in_radius"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/block_in_radius/"
 							},
@@ -1371,7 +1372,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:brightness" } },
+								"properties": { "type": {"const":"origins:brightness"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/brightness/"
 							},
@@ -1393,7 +1394,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:command" } },
+								"properties": { "type": {"const":"origins:command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/command/"
 							},
@@ -1426,7 +1427,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:dimension" } },
+								"properties": { "type": {"const":"origins:dimension"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/dimension/"
 							},
@@ -1444,7 +1445,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:distance_from_coordinates" } },
+								"properties": { "type": {"const":"origins:distance_from_coordinates"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/distance_from_coordinates/"
 							},
@@ -1506,7 +1507,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:elytra_flight_possible" } },
+								"properties": { "type": {"const":"origins:elytra_flight_possible"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/elytra_flight_possible/"
 							},
@@ -1527,7 +1528,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:enchantment" } },
+								"properties": { "type": {"const":"origins:enchantment"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/enchantment/"
 							},
@@ -1558,7 +1559,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:entity_group" } },
+								"properties": { "type": {"const":"origins:entity_group"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/entity_group/"
 							},
@@ -1574,7 +1575,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:entity_type" } },
+								"properties": { "type": {"const":"origins:entity_type"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/entity_type/"
 							},
@@ -1592,7 +1593,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:equipped_item" } },
+								"properties": { "type": {"const":"origins:equipped_item"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/equipped_item/"
 							},
@@ -1612,7 +1613,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fall_distance" } },
+								"properties": { "type": {"const":"origins:fall_distance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/fall_distance/"
 							},
@@ -1632,7 +1633,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:fluid_height" } },
+								"properties": { "type": {"const":"origins:fluid_height"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/fluid_height/"
 							},
@@ -1658,7 +1659,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:food_level" } },
+								"properties": { "type": {"const":"origins:food_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/food_level/"
 							},
@@ -1678,7 +1679,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:gamemode" } },
+								"properties": { "type": {"const":"origins:gamemode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/gamemode/"
 							},
@@ -1694,7 +1695,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:health" } },
+								"properties": { "type": {"const":"origins:health"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/health/"
 							},
@@ -1714,7 +1715,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_block_anywhere" } },
+								"properties": { "type": {"const":"origins:in_block_anywhere"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/in_block_anywhere/"
 							},
@@ -1740,7 +1741,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_block" } },
+								"properties": { "type": {"const":"origins:in_block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/in_block/"
 							},
@@ -1756,7 +1757,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/entity_conditions/in_tag/"
 							},
@@ -1774,7 +1775,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/nbt/"
 							},
@@ -1792,7 +1793,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:on_block" } },
+								"properties": { "type": {"const":"origins:on_block"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/on_block/"
 							},
@@ -1807,7 +1808,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:origin" } },
+								"properties": { "type": {"const":"origins:origin"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/origin/"
 							},
@@ -1856,7 +1857,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power_active" } },
+								"properties": { "type": {"const":"origins:power_active"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power_active/"
 							},
@@ -1874,7 +1875,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power_type" } },
+								"properties": { "type": {"const":"origins:power_type"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power_type/"
 							},
@@ -1892,7 +1893,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:power" } },
+								"properties": { "type": {"const":"origins:power"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/power/"
 							},
@@ -1915,7 +1916,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:predicate" } },
+								"properties": { "type": {"const":"origins:predicate"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/predicate/"
 							},
@@ -1933,7 +1934,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:raycast" } },
+								"properties": { "type": {"const":"origins:raycast"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/raycast/"
 							},
@@ -1981,7 +1982,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:relative_health" } },
+								"properties": { "type": {"const":"origins:relative_health"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/relative_health/"
 							},
@@ -2003,7 +2004,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:resource" } },
+								"properties": { "type": {"const":"origins:resource"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/resource/"
 							},
@@ -2029,7 +2030,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:riding_recursive" } },
+								"properties": { "type": {"const":"origins:riding_recursive"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/riding_recursive/"
 							},
@@ -2069,7 +2070,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:saturation_level" } },
+								"properties": { "type": {"const":"origins:saturation_level"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/saturation_level/"
 							},
@@ -2089,7 +2090,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:scoreboard" } },
+								"properties": { "type": {"const":"origins:scoreboard"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/scoreboard/"
 							},
@@ -2113,7 +2114,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:status_effect" } },
+								"properties": { "type": {"const":"origins:status_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/status_effect/"
 							},
@@ -2157,7 +2158,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:submerged_in" } },
+								"properties": { "type": {"const":"origins:submerged_in"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/submerged_in/"
 							},
@@ -2175,7 +2176,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:time_of_day" } },
+								"properties": { "type": {"const":"origins:time_of_day"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/time_of_day/"
 							},
@@ -2197,7 +2198,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:using_item" } },
+								"properties": { "type": {"const":"origins:using_item"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/using_item/"
 							},
@@ -2212,7 +2213,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:xp_levels" } },
+								"properties": { "type": {"const":"origins:xp_levels"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/xp_levels/"
 							},
@@ -2232,7 +2233,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:xp_points" } },
+								"properties": { "type": {"const":"origins:xp_points"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_condition_types/xp_points/"
 							},
@@ -2276,7 +2277,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2293,7 +2294,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2308,7 +2309,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2326,7 +2327,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:in_tag" } },
+								"properties": { "type": {"const":"origins:in_tag"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/fluid_condition_types/in_tag/"
 							},
@@ -2369,7 +2370,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2386,7 +2387,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:constant" } },
+								"properties": { "type": {"const":"origins:constant"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2401,7 +2402,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:or" } },
+								"properties": { "type": {"const":"origins:or"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2419,7 +2420,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:amount" } },
+								"properties": { "type": {"const":"origins:amount"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/amount/"
 							},
@@ -2439,7 +2440,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:armor_value" } },
+								"properties": { "type": {"const":"origins:armor_value"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/armor_value/"
 							},
@@ -2459,7 +2460,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:enchantment" } },
+								"properties": { "type": {"const":"origins:enchantment"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/enchantment/"
 							},
@@ -2485,7 +2486,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:harvest_level" } },
+								"properties": { "type": {"const":"origins:harvest_level"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/harvest_level/"
 							},
@@ -2506,7 +2507,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:ingredient" } },
+								"properties": { "type": {"const":"origins:ingredient"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/ingredient/"
 							},
@@ -2522,7 +2523,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:nbt" } },
+								"properties": { "type": {"const":"origins:nbt"} },
 								"require": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_condition_types/nbt/"
 							},
@@ -2568,7 +2569,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2585,7 +2586,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -2611,7 +2612,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -2636,7 +2637,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -2656,7 +2657,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2680,7 +2681,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -2704,7 +2705,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:actor_action" } },
+								"properties": { "type": {"const":"origins:actor_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/actor_action/"
 							},
@@ -2720,7 +2721,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:invert" } },
+								"properties": { "type": {"const":"origins:invert"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/invert/"
 							},
@@ -2736,7 +2737,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:target_action" } },
+								"properties": { "type": {"const":"origins:target_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/target_action/"
 							},
@@ -2753,7 +2754,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_velocity" } },
+								"properties": { "type": {"const":"origins:add_velocity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/add_velocity/"
 							},
@@ -2804,7 +2805,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/bientity_action_types/damage/"
 							},
@@ -2845,7 +2846,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2862,7 +2863,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -2888,7 +2889,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -2913,7 +2914,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -2933,7 +2934,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -2957,7 +2958,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -2981,7 +2982,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:offset" } },
+								"properties": { "type": {"const":"origins:offset"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/offset/"
 							},
@@ -3034,7 +3035,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:bonemeal" } },
+								"properties": { "type": {"const":"origins:bonemeal"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/bonemeal/"
 							},
@@ -3051,7 +3052,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:execute_command" } },
+								"properties": { "type": {"const":"origins:execute_command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/execute_command/"
 							},
@@ -3076,7 +3077,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:explode" } },
+								"properties": { "type": {"const":"origins:explode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/explode/"
 							},
@@ -3116,7 +3117,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:modify_block_state" } },
+								"properties": { "type": {"const":"origins:modify_block_state"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/block_action_types/modify_block_state/"
 							},
@@ -3185,7 +3186,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3202,7 +3203,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -3228,7 +3229,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -3253,7 +3254,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -3273,7 +3274,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3297,7 +3298,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -3322,7 +3323,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_velocity" } },
+								"properties": { "type": {"const":"origins:add_velocity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/add_velocity/"
 							},
@@ -3369,7 +3370,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:add_xp" } },
+								"properties": { "type": {"const":"origins:add_xp"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/add_xp/"
 							},
@@ -3393,7 +3394,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:apply_effect" } },
+								"properties": { "type": {"const":"origins:apply_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/apply_effect/"
 							},
@@ -3415,7 +3416,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:area_of_effect" } },
+								"properties": { "type": {"const":"origins:area_of_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/area_of_effect/"
 							},
@@ -3445,7 +3446,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:block_action_at" } },
+								"properties": { "type": {"const":"origins:block_action_at"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/block_action_at/"
 							},
@@ -3461,7 +3462,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:change_resource" } },
+								"properties": { "type": {"const":"origins:change_resource"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/change_resource/"
 							},
@@ -3486,7 +3487,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:clear_effect" } },
+								"properties": { "type": {"const":"origins:clear_effect"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/clear_effect/"
 							},
@@ -3503,7 +3504,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/damage/"
 							},
@@ -3520,7 +3521,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:emit_game_event" } },
+								"properties": { "type": {"const":"origins:emit_game_event"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3553,7 +3554,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:equipped_item_action" } },
+								"properties": { "type": {"const":"origins:equipped_item_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/equipped_item_action/"
 							},
@@ -3573,7 +3574,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:execute_command" } },
+								"properties": { "type": {"const":"origins:execute_command"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/execute_command/"
 							},
@@ -3597,7 +3598,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:exhaust" } },
+								"properties": { "type": {"const":"origins:exhaust"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/exhaust/"
 							},
@@ -3613,7 +3614,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:explode" } },
+								"properties": { "type": {"const":"origins:explode"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/explode/"
 							},
@@ -3653,7 +3654,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:feed" } },
+								"properties": { "type": {"const":"origins:feed"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/feed/"
 							},
@@ -3673,7 +3674,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:gain_air" } },
+								"properties": { "type": {"const":"origins:gain_air"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/gain_air/"
 							},
@@ -3689,7 +3690,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:give" } },
+								"properties": { "type": {"const":"origins:give"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/give/"
 							},
@@ -3737,7 +3738,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:heal" } },
+								"properties": { "type": {"const":"origins:heal"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/heal/"
 							},
@@ -3753,7 +3754,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:passenger_action" } },
+								"properties": { "type": {"const":"origins:passenger_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/passenger_action/"
 							},
@@ -3781,7 +3782,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:play_sound" } },
+								"properties": { "type": {"const":"origins:play_sound"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/play_sound/"
 							},
@@ -3810,7 +3811,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:raycast" } },
+								"properties": { "type": {"const":"origins:raycast"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/raycast/"
 							},
@@ -3893,7 +3894,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:riding_action" } },
+								"properties": { "type": {"const":"origins:riding_action"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/riding_action/"
 							},
@@ -3921,7 +3922,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:set_fall_distance" } },
+								"properties": { "type": {"const":"origins:set_fall_distance"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -3936,7 +3937,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:set_on_fire" } },
+								"properties": { "type": {"const":"origins:set_on_fire"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/set_on_fire/"
 							},
@@ -3953,7 +3954,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_effect_cloud" } },
+								"properties": { "type": {"const":"origins:spawn_effect_cloud"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_effect_cloud/"
 							},
@@ -3991,7 +3992,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_entity" } },
+								"properties": { "type": {"const":"origins:spawn_entity"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_entity/"
 							},
@@ -4018,7 +4019,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:spawn_particles" } },
+								"properties": { "type": {"const":"origins:spawn_particles"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/spawn_particles/"
 							},
@@ -4058,7 +4059,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:swing_hand" } },
+								"properties": { "type": {"const":"origins:swing_hand"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/swing_hand/"
 							},
@@ -4074,7 +4075,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:toggle" } },
+								"properties": { "type": {"const":"origins:toggle"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/entity_action_types/toggle/"
 							},
@@ -4092,7 +4093,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:trigger_cooldown" } },
+								"properties": { "type": {"const":"origins:trigger_cooldown"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4128,7 +4129,7 @@
 						{
 							"$comment": "#region meta",
 							"if": {
-								"properties": { "type": { "const": "origins:and" } },
+								"properties": { "type": {"const":"origins:and"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4145,7 +4146,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:chance" } },
+								"properties": { "type": {"const":"origins:chance"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/chance/"
 							},
@@ -4171,7 +4172,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:choice" } },
+								"properties": { "type": {"const":"origins:choice"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/choice/"
 							},
@@ -4196,7 +4197,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:delay" } },
+								"properties": { "type": {"const":"origins:delay"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/delay/"
 							},
@@ -4216,7 +4217,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else_list" } },
+								"properties": { "type": {"const":"origins:if_else_list"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4240,7 +4241,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:if_else" } },
+								"properties": { "type": {"const":"origins:if_else"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/meta_action_types/if_else/"
 							},
@@ -4265,7 +4266,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:consume" } },
+								"properties": { "type": {"const":"origins:consume"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/consume/"
 							},
@@ -4282,7 +4283,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:damage" } },
+								"properties": { "type": {"const":"origins:damage"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4302,7 +4303,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "origins:modify" } },
+								"properties": { "type": {"const":"origins:modify"} },
 								"required": ["type"],
 								"$comment": "https://origins.readthedocs.io/en/latest/types/item_action_types/modify/"
 							},
@@ -4404,7 +4405,7 @@
 					"allOf": [
 						{
 							"if": {
-								"properties": { "type": { "const": "minecraft:crafting_shapeless" } },
+								"properties": { "type": {"const":"minecraft:crafting_shapeless"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4422,7 +4423,7 @@
 						},
 						{
 							"if": {
-								"properties": { "type": { "const": "minecraft:crafting_shaped" } },
+								"properties": { "type": {"const":"minecraft:crafting_shaped"} },
 								"required": ["type"]
 							},
 							"then": {
@@ -4758,7 +4759,7 @@
 		{
 			"$comment": "#region Regular types",
 			"if": {
-				"properties": { "type": { "const": "origins:attribute_modify_transfer" } },
+				"properties": { "type": {"const":"origins:attribute_modify_transfer"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attribute_modify_transfer/"
 			},
@@ -4800,7 +4801,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:attribute" } },
+				"properties": { "type": {"const":"origins:attribute"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attribute/"
 			},
@@ -4829,7 +4830,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:burn" } },
+				"properties": { "type": {"const":"origins:burn"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/burn/"
 			},
@@ -4851,7 +4852,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:climbing" } },
+				"properties": { "type": {"const":"origins:climbing"} },
 				"required": ["type"]
 			},
 			"then": {
@@ -4870,7 +4871,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:conditioned_attribute" } },
+				"properties": { "type": {"const":"origins:conditioned_attribute"} },
 				"required": ["type"]
 			},
 			"then": {
@@ -4903,7 +4904,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:conditioned_restrict_armor" } },
+				"properties": { "type": {"const":"origins:conditioned_restrict_armor"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/conditioned_restrict_armor/"
 			},
@@ -4941,7 +4942,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:cooldown" } },
+				"properties": { "type": {"const":"origins:cooldown"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/cooldown/"
 			},
@@ -4959,7 +4960,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:damage_over_time" } },
+				"properties": { "type": {"const":"origins:damage_over_time"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/damage_over_time/"
 			},
@@ -5000,7 +5001,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:effect_immunity" } },
+				"properties": { "type": {"const":"origins:effect_immunity"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/effect_immunity/"
 			},
@@ -5031,7 +5032,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:elytra_flight" } },
+				"properties": { "type": {"const":"origins:elytra_flight"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/elytra_flight/"
 			},
@@ -5052,7 +5053,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:entity_glow" } },
+				"properties": { "type": {"const":"origins:entity_glow"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/entity_glow/"
 			},
@@ -5094,7 +5095,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:entity_group" } },
+				"properties": { "type": {"const":"origins:entity_group"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/entity_group/"
 			},
@@ -5110,7 +5111,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:exhaust" } },
+				"properties": { "type": {"const":"origins:exhaust"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/exhaust/"
 			},
@@ -5131,7 +5132,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:fire_projectile" } },
+				"properties": { "type": {"const":"origins:fire_projectile"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/fire_projectile/"
 			},
@@ -5195,7 +5196,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:inventory" } },
+				"properties": { "type": {"const":"origins:inventory"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/inventory/"
 			},
@@ -5226,7 +5227,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:invisibility" } },
+				"properties": { "type": {"const":"origins:invisibility"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/invisibility/"
 			},
@@ -5242,7 +5243,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:invulnerability" } },
+				"properties": { "type": {"const":"origins:invulnerability"} },
 				"required": ["type"]
 			},
 			"then": {
@@ -5258,7 +5259,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:item_on_item" } },
+				"properties": { "type": {"const":"origins:item_on_item"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/item_on_item/"
 			},
@@ -5302,7 +5303,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:keep_inventory" } },
+				"properties": { "type": {"const":"origins:keep_inventory"} },
 				"required": ["type"]
 			},
 			"then": {
@@ -5325,7 +5326,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:launch" } },
+				"properties": { "type": {"const":"origins:launch"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/launch/"
 			},
@@ -5357,7 +5358,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:lava_vision" } },
+				"properties": { "type": {"const":"origins:lava_vision"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/lava_vision/"
 			},
@@ -5377,7 +5378,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:model_color" } },
+				"properties": { "type": {"const":"origins:model_color"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/model_color/"
 			},
@@ -5428,7 +5429,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:night_vision" } },
+				"properties": { "type": {"const":"origins:night_vision"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/night_vision/"
 			},
@@ -5445,7 +5446,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:overlay" } },
+				"properties": { "type": {"const":"origins:overlay"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/overlay/"
 			},
@@ -5504,7 +5505,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:particle" } },
+				"properties": { "type": {"const":"origins:particle"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/particle/"
 			},
@@ -5530,7 +5531,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:phasing" } },
+				"properties": { "type": {"const":"origins:phasing"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/phasing/"
 			},
@@ -5564,7 +5565,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:recipe" } },
+				"properties": { "type": {"const":"origins:recipe"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/recipe/"
 			},
@@ -5580,7 +5581,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:resource" } },
+				"properties": { "type": {"const":"origins:resource"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/resource/"
 			},
@@ -5613,7 +5614,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:restrict_armor" } },
+				"properties": { "type": {"const":"origins:restrict_armor"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/restrict_armor/"
 			},
@@ -5646,7 +5647,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:self_glow" } },
+				"properties": { "type": {"const":"origins:self_glow"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/self_glow/"
 			},
@@ -5688,7 +5689,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:shader" } },
+				"properties": { "type": {"const":"origins:shader"} },
 				"required": ["type"]
 			},
 			"then": {
@@ -5710,7 +5711,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:stacking_status_effect" } },
+				"properties": { "type": {"const":"origins:stacking_status_effect"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/stacking_status_effect/"
 			},
@@ -5753,7 +5754,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:starting_equipment" } },
+				"properties": { "type": {"const":"origins:starting_equipment"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/starting_equipment/"
 			},
@@ -5783,7 +5784,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:status_bar_texture" } },
+				"properties": { "type": {"const":"origins:status_bar_texture"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/status_bar_texture/"
 			},
@@ -5800,7 +5801,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:toggle_night_vision" } },
+				"properties": { "type": {"const":"origins:toggle_night_vision"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/toggle_night_vision/"
 			},
@@ -5827,7 +5828,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:toggle" } },
+				"properties": { "type": {"const":"origins:toggle"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/toggle/"
 			},
@@ -5853,7 +5854,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:tooltip" } },
+				"properties": { "type": {"const":"origins:tooltip"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/tooltip/"
 			},
@@ -5882,7 +5883,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:walk_on_fluid" } },
+				"properties": { "type": {"const":"origins:walk_on_fluid"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/walk_on_fluid/"
 			},
@@ -5956,7 +5957,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_block_break" } },
+				"properties": { "type": {"const":"origins:action_on_block_break"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_block_break/"
 			},
@@ -5988,7 +5989,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_block_use" } },
+				"properties": { "type": {"const":"origins:action_on_block_use"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_block_use/"
 			},
@@ -6054,7 +6055,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_callback" } },
+				"properties": { "type": {"const":"origins:action_on_callback"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_callback/"
 			},
@@ -6103,7 +6104,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_hit" } },
+				"properties": { "type": {"const":"origins:action_on_hit"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_hit/"
 			},
@@ -6138,7 +6139,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_item_use" } },
+				"properties": { "type": {"const":"origins:action_on_item_use"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_item_use/"
 			},
@@ -6165,7 +6166,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_land" } },
+				"properties": { "type": {"const":"origins:action_on_land"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_land/"
 			},
@@ -6181,7 +6182,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_on_wake_up" } },
+				"properties": { "type": {"const":"origins:action_on_wake_up"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_on_wake_up/"
 			},
@@ -6208,7 +6209,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_over_time" } },
+				"properties": { "type": {"const":"origins:action_over_time"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_over_time/"
 			},
@@ -6246,7 +6247,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_when_damage_taken" } },
+				"properties": { "type": {"const":"origins:action_when_damage_taken"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_when_damage_taken/"
 			},
@@ -6276,7 +6277,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:action_when_hit" } },
+				"properties": { "type": {"const":"origins:action_when_hit"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/action_when_hit/"
 			},
@@ -6311,7 +6312,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:active_self" } },
+				"properties": { "type": {"const":"origins:active_self"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/active_self/"
 			},
@@ -6343,7 +6344,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:attacker_action_when_hit" } },
+				"properties": { "type": {"const":"origins:attacker_action_when_hit"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/attacker_action_when_hit/"
 			},
@@ -6409,7 +6410,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:self_action_when_hit" } },
+				"properties": { "type": {"const":"origins:self_action_when_hit"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/self_action_when_hit/"
 			},
@@ -6440,7 +6441,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:target_action_on_hit" } },
+				"properties": { "type": {"const":"origins:target_action_on_hit"} },
 				"required": ["type"],
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/target_action_on_hit/"
 			},
@@ -6476,8 +6477,9 @@
 		{
 			"$comment": "#region Modifying types",
 			"if": {
-				"properties": { "type": { "const": "origins:modify_air_speed" } },
-				"required": ["type"]
+				"properties": { "type": {"const":"origins:modify_air_speed"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_air_speed/"
 			},
 			"then": {
 				"properties": {
@@ -6500,44 +6502,46 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_block_render" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_block_render"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_block_render/"
 			},
 			"then": {
 				"properties": {
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, modifies how the block would look like that meets this condition."
+						"description": "If specified, only modify how the blocks that fulfill this condition would look like."
 					},
 					"block": {
 						"type": "string",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "The ID of the block that would replace the block that meets the condition from the block_condition object field would look like."
+						"description": "The namespace and ID of the replacement block\nCurrently, this power type does not work properly if you have installed a mod that changes the rendering engine, such as Sodium.\nThis power type does not support a condition. If the condition field is present, it will be ignored."
 					}
 				},
-				"required": [ "block" ]
+				"required": ["block"]
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_break_speed" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_break_speed"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_break_speed/"
 			},
 			"then": {
 				"properties": {
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, the modifiers will only apply to blocks which satisfy this condition."
+						"description": "If specified, the modifier(s) will only apply to the blocks that fulfills this condition."
 					},
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the break speed."
+						"description": "If specified, this modifier will be applied to the break speed."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the break speed.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will be applied to the break speed.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -6548,8 +6552,9 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_camera_submersion" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_camera_submersion"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_camera_submersion/"
 			},
 			"then": {
 				"properties": {
@@ -6570,71 +6575,81 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_crafting" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_crafting"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_crafting/"
 			},
 			"then": {
 				"properties": {
 					"recipe": {
 						"type": "string",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "The ID of the recipe to be modified."
+						"description": "If specified, modifies the result item of the recipe that matches the specified namespace and ID.\nThis power type cannot modify the result item from recipes added by the Recipe Power Type."
 					},
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, it will only apply the item stack from the result field, and trigger the actions when this condition is met by the result item from the crafting recipe."
+						"description": "If specified, the item from the `result` field and the specified actions will only be applied if this condition is fulfilled by the result item of a recipe."
 					},
 					"result": {
 						"$ref": "#/definitions/origins_data_types/properties/item_stack",
-						"description": "If set, replaces the result item stack of the recipe."
+						"description": "If specified, this item will replace the item of a recipe."
 					},
 					"item_action": {
 						"$ref": "#/definitions/actions/properties/item_action",
-						"description": "If set, execute this item action on the result item stack."
+						"description": "If specified, this action will be executed on the result item of a recipe."
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, execute this entity action on the player."
+						"description": "If specified, this action will be executed on the player upon crafting a recipe."
 					},
 					"block_action": {
 						"$ref": "#/definitions/actions/properties/block_action",
-						"description": "If set, execute this block action at the block used for crafting the recipe."
+						"description": "If specified, this action will be executed on the block used for crafting a recipe."
 					}
 				}
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_damage_dealt" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_damage_dealt"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_damage_dealt/"
 			},
 			"then": {
 				"properties": {
+					"bientity_condition": {
+						"$ref": "#/definitions/conditions/properties/bientity_condition",
+						"description": "If specified, the specified modifier(s) and/or action(s) will only apply if either or both 'actor' (the entity that has the power) and 'target' (the entity that has been hit) fulfills this bi-entity condition type."
+					},
 					"damage_condition": {
-						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, the modifiers will only apply to damage which satisfies this condition."
-					},
-					"modifier": {
-						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the damage amount."
-					},
-					"modifiers": {
-						"type": "array",
-						"description": "If set, these modifiers will apply to the damage amount.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"$ref": "#/definitions/conditions/properties/damage_condition",
+						"description": "If specified, the specified modifier(s) and/or action(s) will only apply if the dealt damage fulfills this condition."
 					},
 					"target_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is hit."
+						"description": "If specified, the specified modifier(s) and action(s) will only be applied if the entity/entities that has been hit fulfills this condition."
+					},
+					"modifier": {
+						"$ref": "#/definitions/origins_data_types/properties/modifier",
+						"description": "If specified, this modifier will apply to the damage amount."
+					},
+					"modifiers": {
+						"type": "array",
+						"description": "If specified, these modifiers will apply to the damage amount.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
+					},
+					"bientity_action": {
+						"$ref": "#/definitions/actions/properties/bientity_action",
+						"description": "If specified, this bi-entity action type will be executed on either or both 'actor' (the entity that has the power) and 'target' (the entity that has been hit)."
 					},
 					"self_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the entity that has the power whenever the modifier(s) is applied."
 					},
 					"target_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the target whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the entity/entities that has been hit whenever the modifier(s) is applied."
 					}
 				},
 				"oneOf": [
@@ -6645,36 +6660,41 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_damage_taken" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_damage_taken"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_damage_taken/"
 			},
 			"then": {
 				"properties": {
+					"bientity_condition": {
+						"$ref": "#/definitions/conditions/properties/bientity_condition",
+						"description": "If specified, the specified modifier(s) and/or action(s) will only apply if either or both 'actor' (the attacker) and 'target' (the entity that has the power) fulfills this bi-entity condition type."
+					},
 					"damage_condition": {
 						"$ref": "#/definitions/conditions/properties/damage_condition",
-						"description": "If set, the modifiers will only apply to damage which satisfies this condition."
+						"description": "If specified, the specified modifiers(s) and/or action(s) will only apply if the taken damage fulfills this condition."
 					},
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the damage amount."
+						"description": "If specified, this modifier will apply to the damage amount."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the damage amount.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the damage amount.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					},
-					"target_condition": {
-						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is hit."
+					"bientity_action": {
+						"$ref": "#/definitions/actions/properties/bientity_action",
+						"description": "If specified, this bi-entity action type will be executed on either or both 'actor' (the attacker) and 'target' (the entity that has the power)."
 					},
 					"self_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the entity that has the power whenever the modifier(s) is applied."
 					},
 					"attacker_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the attacker whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the entity/entities that has been hit whenever the modifier(s) is applied."
 					}
 				},
 				"oneOf": [
@@ -6685,20 +6705,21 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_exhaustion" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_exhaustion"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_exhaustion/"
 			},
 			"then": {
 				"properties": {
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the exhaustion amount."
+						"description": "If specified, this modifier will be applied to the received exhaustion amount."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the exhaustion amount.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will be applied to the received exhaustion amount.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -6709,18 +6730,19 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_falling" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_falling"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_falling/"
 			},
 			"then": {
 				"properties": {
 					"velocity": {
 						"type": "number",
-						"description": "How slow/fast the falling velocity should be. By default, the player falls at a speed of 0.08, or 0.01 if a slow falling potion is active."
+						"description": "Determines the speed of the falling velocity.\nBy default, the player falls at a speed of 0.08, or 0.01 if a slow falling potion is active."
 					},
 					"take_fall_damage": {
 						"type": "boolean",
-						"description": "Whether the player should take fall damage or not.",
+						"description": "Determines whether the entity should take fall damage or not.",
 						"default": true
 					}
 				},
@@ -6729,82 +6751,92 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_fluid_render" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_fluid_render"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_fluid_render/"
 			},
 			"then": {
 				"properties": {
 					"block_condition": {
 						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, modifies how the block that meets this condition would look like."
+						"description": "If specified, only modify how the blocks that fulfills this condition would look like."
 					},
 					"fluid_condition": {
 						"$ref": "#/definitions/conditions/properties/fluid_condition",
-						"description": "If set, modifies how the fluid that meets the condition would look like."
+						"description": "If specified, only modify how the fluids that fulfills this condition would look like."
 					},
 					"fluid": {
 						"type": "string",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"description": "The ID of the fluid that would replace how the block/fluid that meets the conditions in the block_condition and/or fluid_condition object field would look like."
+						"description": "The namespace and ID of the replacement fluid.",
+						"examples": ["minecraft:water", "minecraft:lava"]
 					}
 				},
-				"required": [ "fluid" ]
+				"required": ["fluid"]
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_food" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_food"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_food/"
 			},
 			"then": {
 				"properties": {
 					"item_condition": {
 						"$ref": "#/definitions/conditions/properties/item_condition",
-						"description": "If set, the modifiers will only apply to food items which satisfy this condition."
+						"description": "If specified, the specified actions and modifier(s) will only apply to food items that fulfills this condition."
+					},
+					"item_action": {
+						"$ref": "#/definitions/actions/properties/item_action",
+						"description": "If specified, this item action type will be executed on the remaining item stacks that was consumed."
+					},
+					"replace_stack": {
+						"$ref": "#/definitions/origins_data_types/properties/item_stack",
+						"description": "If specified, this item stack will replace the item stack that was consumed after consuming it."
 					},
 					"food_modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the food amount gained by eating."
+						"description": "If specified, this modifier will apply to the food amount gained by eating a food item."
 					},
 					"food_modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the food amount gained by eating.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the food amount gained by eating a food item.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					},
 					"saturation_modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the saturation gained by eating."
+						"description": "If specified, this modifier will apply to the saturation amount gained by eating a food item."
 					},
 					"saturation_modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the saturation gained by eating.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the saturation amount gained by eating a food item.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the entity eating this item."
+						"description": "If specified, this action will be executed on the player that has ate a food item."
+					},
+					"always_edible": {
+						"type":"boolean",
+						"description": "Determines whether a food item can be eaten regardless of the player's hunger bar being full.",
+						"default":false
+					},
+					"prevent_effects": {
+						"type":"boolean",
+						"description": "If set to `true`, prevent status effects from being applied.",
+						"default":false
 					}
-				},
-				"allOf": [
-					{ "not": {"required": ["food_modifier", "food_modifiers"]} },
-					{ "not": {"required": ["saturation_modifier", "saturation_modifiers"]} },
-					{
-						"anyOf": [
-							{"required": ["food_modifier"]},
-							{"required": ["food_modifiers"]},
-							{"required": ["saturation_modifier"]},
-							{"required": ["saturation_modifiers"]}
-						]
-					}
-				]
+				}
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_harvest" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_harvest"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_harvest/"
 			},
 			"then": {
 				"properties": {
@@ -6817,62 +6849,57 @@
 						"description": "When true, the player will be able to harvest the blocks. When false, the player will not be able to harvest the blocks."
 					}
 				},
-				"anyOf": [
-					{"required": ["block_condition"]},
-					{"required": ["allow"]}
-				]
+				"required": ["allow"]
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_jump" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_jump"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_jump/"
 			},
 			"then": {
 				"properties": {
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the upwards jump velocity."
+						"description": "If specified, this modifier will be applied to the upwards velocity."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the upwards jump velocity.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will be applied to the upwards velocity.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					},
 					"entity_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will execute when the player jumps."
+						"description": "If specified, this action will be executed on the entity that has the power whenever the entity jumps."
 					}
 				},
-				"allOf": [
-					{ "not": {"required": ["modifier", "modifiers"]} },
-					{
-						"anyOf": [
-							{"required": ["modifier"]},
-							{"required": ["modifiers"]},
-							{"required": ["entity_action"]}
-						]
-					}
+				"not": {"required": ["modifier", "modifiers"]},
+				"anyOf": [
+					{"required": ["modifier"]},
+					{"required": ["modifiers"]},
+					{"required": ["entity_action"]}
 				]
 			}
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_lava_speed" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const": "origins:modify_lava_speed"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_lava_speed/"
 			},
 			"then": {
 				"properties": {
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the speed in lava."
+						"description": "If specified, this modifier will be applied to the movement speed while in lava."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the speed in lava.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will be applied to the movement speed while in lava.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -6883,44 +6910,46 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_player_spawn" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const": "origins:modify_player_spawn"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_player_spawn/"
 			},
 			"then": {
 				"properties": {
 					"dimension": {
 						"type": "string",
-						"description": "ID of the dimension the player should spawn in.",
+						"description": "The namespace and ID of the dimension the player should spawn in.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"examples": [ "minecraft:overworld", "minecraft:the_nether", "minecraft:the_end" ]
+						"examples": ["minecraft:overworld", "minecraft:the_nether", "minecraft:the_end"]
 					},
 					"biome": {
 						"type": "string",
-						"description": "If set, the player will spawn in the biome with this ID.",
+						"description": "If specified, the player will only spawn in the biome that matches the specified namespace and ID.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"examples": [ "minecraft:savanna" ]
+						"examples": ["minecraft:savanna"]
 					},
 					"structure": {
 						"type": "string",
-						"description": "ID of the structure the player should spawn in. Keep in mind that the structure needs to generate in the specified dimension!",
+						"description": "If specified, the player will only spawn in the specified namespace and ID of the structure.\nThe structure needs to generate in the specified dimension!\nKeep in mind that structure location is costly and it might take one or two seconds before the player gets teleported when choosing the power.",
 						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-						"examples": [ "minecraft:endcity" ]
+						"examples": ["minecraft:endcity"]
 					},
 					"spawn_strategy": {
 						"type": "string",
-						"description": "Either default or center. default tries to find a spawn close to the coordinates of the overworld spawn (while considering the dimension_distance_multiplier). center tries to spawn the player close to 0, 0 of the dimension.",
+						"description": "Determines whether the player should spawn near the world spawnpoint (0, 0) of the dimension (`\"center\"`) or near the coordinates of the Overworld spawnpoint (whilst considering the value of the `dimension_distance_multiplier` field) (`\"default\"`).",
 						"enum": ["default", "center"],
 						"default": "default"
 					},
 					"dimension_distance_multiplier": {
 						"type": "number",
-						"description": "Needs to be set when spawn_strategy is default. Defines the ratio of overworld blocks to blocks in this dimension, e.g. for the Nether this would be 0.125."
+						"description": "Defines the ratio of Overworld blocks to blocks in the specified dimension.\ne.g: for The Nether dimension, this would be set to `0.125`.\nThis needs to be set when `spawn_strategy` is set to `\"default\"`!",
+						"examples": [1, 0.125]
 					}
 				},
 				"required": ["dimension"],
 				"if": {
-					"properties": { "spawn_strategy": { "const": "default" } },
-					"required": [ "spawn_strategy" ]
+					"properties": { "spawn_strategy": {"const": "default"} },
+					"required": ["spawn_strategy"]
 				},
 				"then": {
 					"required": ["dimension_distance_multiplier"]
@@ -6929,37 +6958,70 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_projectile_damage" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_projectile_damage"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_projectile_damage/"
 			},
 			"then": {
 				"properties": {
 					"damage_condition": {
-						"$ref": "#/definitions/conditions/properties/block_condition",
-						"description": "If set, the modifiers will only apply to damage which satisfies this condition.",
+						"$ref": "#/definitions/conditions/properties/damage_condition",
+						"description": "If specified, the specified modifier(s) and action(s) will only apply if the dealt damage fulfills by this condition.",
 						"examples": [{"type": "origins:projectile", "projectile": "minecraft:spectral_arrow"}]
 					},
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the damage amount."
+						"description": "If specified, this modifier will apply to the damage amount."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the damage amount.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the damage amount.",
+						"items": {"$ref":"#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					},
 					"target_condition": {
 						"$ref": "#/definitions/conditions/properties/entity_condition",
-						"description": "If set, the action will only be triggered when a target matching this condition is hit."
+						"description": "If specified, the specified modifier(s) and action(s) will only apply if the the entity that has been hit fulfills this condition."
 					},
 					"self_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the player whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the 'actor' entity (the entity that has the power) whenever the modifier(s) are applied."
 					},
 					"target_action": {
 						"$ref": "#/definitions/actions/properties/entity_action",
-						"description": "If set, this action will be executed on the target whenever this power applies a modification."
+						"description": "If specified, this action will be executed on the the entity that has been hit whenever the modifier(s) are applied."
+					}
+				},
+				"anyOf": [
+					{"required": ["modifier"]},
+					{"required": ["modifiers"]},
+					{"required": ["self_action"]},
+					{"required": ["target_action"]}
+				],
+				"not": {"required": ["modifier", "modifiers"]}
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": {"const":"origins:modify_slipperiness"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_slipperiness/"
+			},
+			"then": {
+				"properties": {
+					"block_condition": {
+						"$ref": "#/definitions/conditions/properties/block_condition",
+						"description": "If specified, the modifier(s) will only apply to the blocks that fulfills this condition."
+					},
+					"modifier": {
+						"$ref": "#/definitions/origins_data_types/properties/modifier",
+						"description": "If specified, this modifier will be applied to the entity's slipperiness."
+					},
+					"modifiers": {
+						"type": "array",
+						"description": "If specified, these modifiers will be applied to the entity's slipperiness.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -6970,20 +7032,42 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_swim_speed" } },
-				"required": [ "type" ]
+				"properties": { "type": {"enum":["origins:modify_status_effect_amplifier", "origins:modify_status_effect_duration"]} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_status_effect_amplifier/ https://origins.readthedocs.io/en/latest/types/power_types/modify_status_effect_duration/"
+			},
+			"then": {
+				"properties": {
+					"status_effect": {
+						"type":"string",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+						"description": "The namespace and ID of the status effect that will have its amplifier/duration modified."
+					},
+					"modifier": {
+						"$ref": "#/definitions/origins_data_types/properties/modifier",
+						"description": "The modifier to apply to the amplifier/duration of the specified status effect."
+					}
+				},
+				"required": ["status_effect", "modifier"]
+			}
+		},
+		{
+			"if": {
+				"properties": { "type": {"const":"origins:modify_swim_speed"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_swim_speed/"
 			},
 			"then": {
 				"properties": {
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the swim speed."
+						"description": "If specified, this modifier will apply to the swim speed."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the swim speed.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the swim speed.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -6994,20 +7078,21 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:modify_xp_gain" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:modify_xp_gain"} },
+				"required": ["type"],
+				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/modify_xp_gain/"
 			},
 			"then": {
 				"properties": {
 					"modifier": {
 						"$ref": "#/definitions/origins_data_types/properties/modifier",
-						"description": "If set, this modifier will apply to the experience gained."
+						"description": "If specified, this modifier will apply to the experience gained."
 					},
 					"modifiers": {
 						"type": "array",
-						"description": "If set, these modifiers will apply to the experience gained.",
-						"items": { "$ref": "#/definitions/origins_data_types/properties/modifier" },
-						"minItems": 2
+						"description": "If specified, these modifiers will apply to the experience gained.",
+						"items": {"$ref": "#/definitions/origins_data_types/properties/modifier"},
+						"minItems": 1
 					}
 				},
 				"oneOf": [
@@ -7020,8 +7105,8 @@
 		{
 			"$comment": "#region Preventing types",
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_being_used" } },
-				"required": [ "type" ]
+				"properties": { "type": {"const":"origins:prevent_being_used"} },
+				"required": ["type"]
 			},
 			"then": {
 				"properties": {
@@ -7056,7 +7141,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_block_selection" } },
+				"properties": { "type": {"const":"origins:prevent_block_selection"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7070,7 +7155,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_block_use" } },
+				"properties": { "type": {"const":"origins:prevent_block_use"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7084,7 +7169,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_death" } },
+				"properties": { "type": {"const":"origins:prevent_death"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7102,7 +7187,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_entity_render" } },
+				"properties": { "type": {"const":"origins:prevent_entity_render"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7116,7 +7201,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_entity_use" } },
+				"properties": { "type": {"const":"origins:prevent_entity_use"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7156,7 +7241,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_item_use" } },
+				"properties": { "type": {"const":"origins:prevent_item_use"} },
 				"required": [ "type" ]
 			},
 			"then": {
@@ -7170,7 +7255,7 @@
 		},
 		{
 			"if": {
-				"properties": { "type": { "const": "origins:prevent_sleep" } },
+				"properties": { "type": {"const":"origins:prevent_sleep"} },
 				"required": [ "type" ]
 			},
 			"then": {
