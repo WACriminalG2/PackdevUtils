@@ -87,6 +87,10 @@
 		}
 	},
 	"required": ["type"],
+	"patternProperties": {
+		"^[a-z0-9/._-]+$": true
+	},
+	"additionalProperties": false,
 	"definitions": {
 		"conditions": {
 			"type": "object",
@@ -5424,8 +5428,9 @@
 				"$comment": "https://origins.readthedocs.io/en/latest/types/power_types/multiple/"
 			},
 			"then": {
-				"$comment": "Should work but incorrectly marks contents of properties: {} as wrong\n\"additionalProperties\": {\"$ref\": \"#\"}",
-				"additionalProperties": true
+				"patternProperties": {
+					"^[a-z0-9/._-]+$": {"$ref": "#"}
+				}
 			}
 		},
 		{
