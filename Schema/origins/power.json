@@ -5426,6 +5426,7 @@
 			"then": {
 				"$comment": "We check for vallid properties with `^[a-z0-9/._-]+$`.\nBecause we don't want to match properties already defined we add them to a negative lookahead `(?!)` directly after the start of the string.\nWe also put them in their own group so we can independantly check for the end of the string to allow things like 'conditional' to match while 'condition' won't. `(?!(?:)$)`",
 				"patternProperties": {
+					"^(?:type|name|description|hidden|condition|loading_priority|badges)$": true,
 					"^(?!(?:type|name|description|hidden|condition|loading_priority|badges)$)[a-z0-9/._-]+$": {"$ref": "#"}
 				},
 				"additionalProperties": false
