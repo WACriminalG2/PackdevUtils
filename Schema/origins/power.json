@@ -1,8 +1,8 @@
 {
-	"$id": "https://raw.githubusercontent.com/WACriminalG2/PackdevUtils/main/Schema/origins/power.json",
+	"$id": "https://cdn.jsdelivr.net/gh/S-K-Tiger/PackdevUtils@unstable/Schema/origins/layer.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Origins power JSON schema by S_K_Tiger",
-	"description": "See https://origins.readthedocs.io/en/latest/json/power/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/WACriminalG2/PackdevUtils/issues",
+	"description": "See https://origins.readthedocs.io/en/latest/json/power/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues",
 	"type": "object",
 	"properties": {
 		"type": {
