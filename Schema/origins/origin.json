@@ -90,10 +90,6 @@
 			"description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
 		}
 	},
-	"patternProperties": {
-		"^[a-z0-9/._-]+$": true
-	},
-	"additionalProperties": false,
 	"definitions": {
 		"item_stack": {
 			"type": "object",

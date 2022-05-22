@@ -110,10 +110,6 @@
 		}
 	},
 	"required": ["origins"],
-	"patternProperties": {
-		"^[a-z0-9/._-]+$": true
-	},
-	"additionalProperties": false,
 	"definitions": {
 		"conditions": {
 			"type": "object",
