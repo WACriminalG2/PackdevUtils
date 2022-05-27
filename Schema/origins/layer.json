@@ -1,8 +1,8 @@
 {
-	"$id": "https://raw.githubusercontent.com/WACriminalG2/PackdevUtils/main/Schema/origins/layer.json",
+	"$id": "https://cdn.jsdelivr.net/gh/S-K-Tiger/PackdevUtils@main/Schema/origins/layer.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Origins layer JSON schema by S_K_Tiger",
-	"description": "See: https://origins.readthedocs.io/en/latest/layer_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/WACriminalG2/PackdevUtils/issues",
+	"description": "See: https://origins.readthedocs.io/en/latest/json/origin_layer/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues",
 	"type": "object",
 	"properties": {
 		"order": {
@@ -3389,16 +3389,7 @@
 										"description": "If this is true, the action will act as a \"set\" velocity action, overriding the entity's current velocity instead of adding to it."
 									}
 								},
-								"$comment": "origins:nothing should be used instead if you want no change.",
-								"allOf": [
-									{"not": { "properties": {
-										"x": {"const": 0}, "y": {"const": 0}, "z": {"const": 0},
-										"set": {"const": false}
-									}}},
-									{"not": { "properties": {
-										"client": {"const": false}, "server": {"const": false}
-									}}}
-								]
+								"$comment": "origins:nothing should be used instead if you want no change."
 							}
 						},
 						{
@@ -3756,7 +3747,7 @@
 									"power": {
 										"type": "string",
 										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-										"description": "The namespace and ID of the power to be granted/revoked to/from the entity.\nSince only Living Entities can have powers, using this entity action on a non-living entity might crash the game.",
+										"description": "The namespace and ID of the power to be granted/revoked to/from the entity.",
 										"examples": ["origins:elytra"]
 									},
 									"source": {
@@ -4381,17 +4372,17 @@
 				},
 				"attributed_modifier": {
 					"type": "object",
-					"description": "An Object used to specify how a specific attribute should be modified. Basically an Attribute Modifier with an additional attribute field.",
+					"description": "An Object used to specify how a specific attribute should be modified.\nBasically an Attribute Modifier with an additional attribute field.",
 					"properties": {
 						"attribute": {
 							"type": "string",
 							"description": "ID of the attribute which will be modified by this modifier.",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-							"examples": [ "minecraft:generic.attack_speed" ]
+							"examples": ["minecraft:generic.attack_speed"]
 						},
 						"operation": {
 							"description": "The operation which will be performed by this modifier.",
-							"enum": [ "addition", "multiply_base", "multiply_total" ]
+							"enum": ["addition", "multiply_base", "multiply_total"]
 						},
 						"value": {
 							"type": "number",
@@ -4426,7 +4417,8 @@
 									"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
 								},
 								"count": {
-									"type": "integer"
+									"type": "integer",
+									"minimum": 1
 								}
 							},
 							"required": ["item", "count"],
@@ -4465,9 +4457,7 @@
 										"$comment": "As some mods add crafting tables with larger than 3 by 3 grids I've not added a maxItems restiction",
 										"type": "array",
 										"description": "Specifies the pattern, with each element representing one row. Use a single character to describe one item. A space means that position is empty.",
-										"items": {
-											"type": "string"
-										},
+										"items": {"type": "string"},
 										"minItems": 1
 									},
 									"key": {
@@ -4475,6 +4465,7 @@
 										"patternProperties": {
 											"^[^\\ ]$": {"$ref": "#/definitions/origins_data_types/properties/ingredient"}
 										},
+										"additionalProperties": false,
 										"minProperties": 1
 									}
 								},
@@ -4489,7 +4480,7 @@
 					"properties": {
 						"name": {
 							"type": "string",
-							"description": "The name of the damage source. Controls death message as well as other interactions. Consider https://origins.readthedocs.io/en/latest/misc/vanilla_damage_sources/ when picking a name.",
+							"description": "The name of the damage source.\nControls death message as well as other interactions.\nConsider https://origins.readthedocs.io/en/latest/misc/extras/damage_source_names/ when picking a name.",
 							"examples": [
 								"anvil.player", "anvil", "arrow.item", "arrow", "badRespawnPoint",
 								"cactus.player", "cactus", "cramming.player", "cramming",
@@ -4554,7 +4545,7 @@
 						},
 						"sprite_location": {
 							"type": "string",
-							"description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/resource_bars/ for a list of files included by default in the mod.",
+							"description": "The path to the file in the assets which contains what the bar looks like. See https://origins.readthedocs.io/en/latest/misc/extras/sprites/ for a list of files included by default in the mod.",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
 							"default": "origins:textures/gui/resource_bar.png",
 							"examples": [
@@ -4598,7 +4589,7 @@
 							"tag": {
 								"type": "string",
 								"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-								"description": "ID of an item tag. Will be ignored if item is set."
+								"description": "ID of an item tag.\nWill be ignored if item is set."
 							}
 						},
 						"anyOf": [
@@ -4615,7 +4606,7 @@
 						"tag": {
 							"type": "string",
 							"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-							"description": "ID of an item tag. Will be ignored if item is set."
+							"description": "ID of an item tag.\nWill be ignored if item is set."
 						}
 					},
 					"additionalProperties": false,
@@ -4656,7 +4647,7 @@
 					"properties": {
 						"key": {
 							"type": "string",
-							"description": "A string specifying the keybinding.\nSee https://origins.readthedocs.io/en/latest/misc/keybindings/ for possible values.",
+							"description": "A string specifying the keybinding.\nSee https://origins.readthedocs.io/en/latest/misc/extras/keybindings/ for possible values.",
 							"pattern": "^[a-z0-9\\-\\_\\.]+$",
 							"examples": [
 								"key.origins.primary_active", "key.origins.secondary_active", "key.origins.view_origin",
@@ -4718,7 +4709,7 @@
 						"slot": {
 							"$comment": "Because certian mods add inventory slots I've not specified a maximum",
 							"type": "integer",
-							"description": "Inventory slot position of the stack. If not specified, will be the first free slot in the inventory. See https://origins.readthedocs.io/en/latest/misc/positioned_item_stack_slots/ for possible values",
+							"description": "Inventory slot position of the stack.\nIf not specified, will be the first free slot in the inventory.\nSee https://origins.readthedocs.io/en/latest/misc/extras/positioned_item_stack_slots/ for possible values",
 							"minimum": 0
 						}
 					},
