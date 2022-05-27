@@ -3724,7 +3724,7 @@
 									"power": {
 										"type": "string",
 										"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
-										"description": "The namespace and ID of the power to be granted/revoked to/from the entity.\nSince only Living Entities can have powers, using this entity action on a non-living entity might crash the game.",
+										"description": "The namespace and ID of the power to be granted/revoked to/from the entity.",
 										"examples": ["origins:elytra"]
 									},
 									"source": {
