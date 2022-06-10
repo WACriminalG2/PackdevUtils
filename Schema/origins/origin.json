@@ -1,116 +1,120 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Origins origin JSON schema by S_K_Tiger",
-    "description": "See: https://origins.readthedocs.io/en/latest/origin_json/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues or https://github.com/WACriminalG2/PackdevUtils/issues",
-    "type": "object",
-    "properties": {
-        "powers": {
-            "type": "array",
-            "description": "IDs of the powers this origin should have.",
-            "items": {
-                "type": "string",
-                "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$",
-                "examples": [
-                    "origins:fall_immunity", "origins:aerial_combatant", "origins:aqua_affinity", "origins:aquatic",
-                    "origins:arthropod", "origins:more_kinetic_damage", "origins:burning_wrath", "origins:carnivore",
-                    "origins:scare_creepers", "origins:claustrophobia", "origins:climbing", "origins:hunger_over_time",
-                    "origins:slow_falling", "origins:swim_speed", "origins:fire_immunity", "origins:fragile", "origins:fresh_air",
-                    "origins:water_breathing", "origins:launch_into_air", "origins:shulker_inventory", "origins:hotblooded",
-                    "origins:water_vulnerability", "origins:invisibility", "origins:more_exhaustion", "origins:like_water",
-                    "origins:master_of_webs", "origins:light_armor", "origins:nether_spawn", "origins:nine_lives",
-                    "origins:cat_vision", "origins:lay_eggs", "origins:phasing", "origins:burn_in_daylight", "origins:pumpkin_hate",
-                    "origins:extra_reach", "origins:sprint_jump", "origins:strong_arms", "origins:natural_armor",
-                    "origins:tailwind", "origins:throw_ender_pearl", "origins:translucent", "origins:no_shield",
-                    "origins:vegetarian", "origins:weak_arms", "origins:webbing", "origins:water_vision", "origins:elytra",
-                    "origins:arcane_skin", "origins:end_spawn", "origins:air_from_potions", "origins:conduit_power_on_land",
-                    "origins:damage_from_potions", "origins:damage_from_snowballs", "origins:ender_particles",
-                    "origins:flame_particles", "origins:no_cobweb_slowdown", "origins:phantomize", "origins:strong_arms_break_speed"
-                ]
-            }
-        },
-        "icon": {
-            "$ref": "#/definitions/item_stack",
-            "description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen.",
-            "examples": [{"item": "minecraft:golden_helmet"}]
-        },
-        "unchoosable": {
-            "type": "boolean",
-            "description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade.",
-            "default": false
-        },
-        "order": {
-            "type": "integer",
-            "description": "Specifies the position of this origin in the choose origin screen among the other origins with the same impact in the layer. If not specified, will be a really large number - basically adding it in the end."
-        },
-        "impact": {
-            "type": "integer",
-            "description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high).",
-            "minimum": 0,
-            "maximum": 3,
-            "default": 0
-        },
-        "name": {
-            "type": "string",
-            "description": "The display name of the origin. Can be a translation key which is localized in a language file, or the literal display name."
-        },
-        "description": {
-            "type": "string",
-            "description": "The description of the origin. Can be a translation key which is localized in a language file, or the literal description."
-        },
-        "upgrades": {
-            "type": "array",
-            "description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "condition": {
-                        "type": "string",
-                        "description": "ID of an advancement which should trigger this upgrade.",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                    },
-                    "origin": {
-                        "type": "string",
-                        "description": "ID of an origin the origin with this upgrade should upgrade to.",
-                        "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                    },
-                    "announcement": {
-                        "type": "string",
-                        "description": "A text which will show up in the local chat of the player in a pretty color. If none is specified, there won't be a message."
-                    }
-                },
-                "required": [ "condition", "origin" ]
-            }
-        },
-        "loading_priority": {
-            "type": "integer",
-            "default": 0,
-            "description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
-        }
-    },
-    "definitions": {
-        "item_stack": {
-            "type": "object",
-            "description": "An Object which defines a new item stack.",
-            "properties": {
-                "item": {
-                    "type": "string",
-                    "description": "ID of a registered item.",
-                    "pattern": "^([a-z0-9\\-\\_\\.]+\\:)?[a-z0-9\\-\\_\\.\\/]+$"
-                },
-                "amount": {
-                    "type": "integer",
-                    "description": "Size of the stack.",
-                    "default": 1,
-                    "minimum": 1
-                },
-                "tag": {
-                    "$comment": "Is there a better pattern for NBT data?",
-                    "type": "string",
-                    "description": "NBT data of the item.",
-                    "pattern": "\\{.*\\:.*\\}"
-                }
-            },
-            "required": ["item"]
-        }
-    }
+	"$id": "https://cdn.jsdelivr.net/gh/S-K-Tiger/PackdevUtils@main/Schema/origins/origin.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Origins origin JSON schema by S_K_Tiger",
+	"description": "See: https://origins.readthedocs.io/en/latest/json/origin/ if you have any questions.\nFound any mistakes? Open a issue at https://github.com/S-K-Tiger/PackdevUtils/issues",
+	"type": "object",
+	"properties": {
+		"powers": {
+			"type": "array",
+			"description": "The namespace and IDs of the powers this origin should have.",
+			"items": {
+				"type": "string",
+				"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$",
+				"examples": [
+					"origins:fall_immunity", "origins:aerial_combatant", "origins:aqua_affinity", "origins:aquatic",
+					"origins:arthropod", "origins:more_kinetic_damage", "origins:burning_wrath", "origins:carnivore",
+					"origins:scare_creepers", "origins:claustrophobia", "origins:climbing", "origins:hunger_over_time",
+					"origins:slow_falling", "origins:swim_speed", "origins:fire_immunity", "origins:fragile", "origins:fresh_air",
+					"origins:water_breathing", "origins:launch_into_air", "origins:shulker_inventory", "origins:hotblooded",
+					"origins:water_vulnerability", "origins:invisibility", "origins:more_exhaustion", "origins:like_water",
+					"origins:master_of_webs", "origins:light_armor", "origins:nether_spawn", "origins:nine_lives",
+					"origins:cat_vision", "origins:lay_eggs", "origins:phasing", "origins:burn_in_daylight", "origins:pumpkin_hate",
+					"origins:extra_reach", "origins:sprint_jump", "origins:strong_arms", "origins:natural_armor",
+					"origins:tailwind", "origins:throw_ender_pearl", "origins:translucent", "origins:no_shield",
+					"origins:vegetarian", "origins:weak_arms", "origins:webbing", "origins:water_vision", "origins:elytra",
+					"origins:arcane_skin", "origins:end_spawn", "origins:air_from_potions", "origins:conduit_power_on_land",
+					"origins:damage_from_potions", "origins:damage_from_snowballs", "origins:ender_particles",
+					"origins:flame_particles", "origins:no_cobweb_slowdown", "origins:phantomize", "origins:strong_arms_break_speed"
+				]
+			}
+		},
+		"icon": {
+			"$ref": "#/definitions/item_stack",
+			"description": "The item stack which is displayed as the icon for the origin in the top-left corner of the choose/view origin screen.",
+			"examples": [{"item": "minecraft:golden_helmet"}, {"item": "minecraft:zombie_head"}, {"item": "minecraft:cobweb"}]
+		},
+		"unchoosable": {
+			"type": "boolean",
+			"description": "If set to true, this origin will not show up in any origin layer to choose it, but it will still be able to be set for that layer with a command or via an origin upgrade.",
+			"default": false
+		},
+		"order": {
+			"type": "integer",
+			"description": "Specifies the position of this origin in the choose origin screen among the other origins with the same impact in the layer.\nIf not specified, will be a really large number - basically adding it in the end."
+		},
+		"impact": {
+			"type": "integer",
+			"description": "Specifies the impact of this origin with a number from 0 (none) to 3 (high).",
+			"minimum": 0,
+			"maximum": 3,
+			"default": 0
+		},
+		"name": {
+			"type": "string",
+			"description": "The display name of the origin. Can be a translation key which is localized in a language file, or the literal display name."
+		},
+		"description": {
+			"type": "string",
+			"description": "The description of the origin. Can be a translation key which is localized in a language file, or the literal description."
+		},
+		"upgrades": {
+			"type": "array",
+			"description": "A list of upgrades for this origin, specifying which advancements turn this origin into which other origin.\nSee: https://origins.readthedocs.io/en/latest/json/upgrade/",
+			"items": {
+				"type": "object",
+				"description": "An Object used to specify an upgrade of an origin within an Origin JSON.",
+				"properties": {
+					"condition": {
+						"type": "string",
+						"description": "The namespace and ID of an advancement which should trigger this upgrade.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+					},
+					"origin": {
+						"type": "string",
+						"description": "The namespace and ID of an origin the origin with this upgrade should upgrade to.",
+						"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+					},
+					"announcement": {
+						"type": "string",
+						"description": "A text which will show up in the local chat of the player in a pretty color. If none is specified, there won't be a message."
+					}
+				},
+				"required": ["condition", "origin"],
+				"examples": [{"condition": "minecraft:end/kill_dragon", "origin": "origins:elytrian", "announcement": "You have killed an ender dragon! You have evolved to Elytrian"}]
+			}
+		},
+		"loading_priority": {
+			"type": "integer",
+			"default": 0,
+			"description": "Specifies when this origin is loaded. Higher numbers mean it's loaded later, which means it will override those with lower loading priorities which share the same ID."
+		}
+	},
+	"definitions": {
+		"item_stack": {
+			"type": "object",
+			"description": "An Object which defines a new item stack.\nSee: https://origins.readthedocs.io/en/latest/types/data_types/item_stack/",
+			"properties": {
+				"item": {
+					"type": "string",
+					"description": "ID of a registered item.",
+					"pattern": "^[a-z0-9\\-_\\.]+:[a-z0-9\\-_\\./]+$"
+				},
+				"amount": {
+					"type": "integer",
+					"description": "Size of the stack.",
+					"default": 1,
+					"minimum": 1
+				},
+				"tag": {
+					"$comment": "Is there a better pattern for NBT data?",
+					"type": "string",
+					"description": "NBT data of the item.",
+					"pattern": "\\{.*\\:.*\\}"
+				}
+			},
+			"required": ["item"],
+			"additionalProperties": false
+		}
+	}
 }
